@@ -21,5 +21,9 @@ namespace GBRenderer
 				gbPaletteSetSelector1.SelectedColor = colorPicker1.MainViewColor;
 			} catch (Exception) { }
 		}
+
+		private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+			colorPicker1.Enabled = checkBox1.Checked;
+		}
 	}
 }

@@ -50,6 +50,7 @@
 			this.FGamma.Size = new System.Drawing.Size(45, 96);
 			this.FGamma.TabIndex = 6;
 			this.FGamma.TabStop = false;
+			this.FGamma.Paint += new System.Windows.Forms.PaintEventHandler(this.FGamma_Paint);
 			this.FGamma.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GammaClick);
 			this.FGamma.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ImgMouseMove);
 			// 
@@ -155,6 +156,7 @@
 			this.FFirst.Name = "FFirst";
 			this.FFirst.Size = new System.Drawing.Size(47, 28);
 			this.FFirst.TabIndex = 0;
+			this.FFirst.Paint += new System.Windows.Forms.PaintEventHandler(this.FFirst_Paint);
 			this.FFirst.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FirstMouseDown);
 			this.FFirst.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FirstMouseMove);
 			// 
@@ -170,6 +172,7 @@
 			this.MinimumSize = new System.Drawing.Size(53, 230);
 			this.Name = "TGammaPanel";
 			this.Size = new System.Drawing.Size(53, 230);
+			this.EnabledChanged += new System.EventHandler(this.TGammaPanel_EnabledChanged);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.ColorPicker_Paint);
 			this.Resize += new System.EventHandler(this.TGammaPanel_Resize);
 			this.StyleChanged += new System.EventHandler(this.TGammaPanel_StyleChanged);

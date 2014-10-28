@@ -452,6 +452,7 @@ namespace GBRenderer
   FStatePanel.BorderStyle:=bsNone;
   FStatePanel.BorderWidth:=0;
 			*/
+
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, FStatePanel.Width, FStatePanel.Height, Border3DStyle.SunkenOuter, Border3DSide.All);
 		}
 
@@ -465,7 +466,7 @@ namespace GBRenderer
   FViewWindow.BorderWidth:=0;
 			 */
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, FViewWindow.Width, FViewWindow.Height, Border3DStyle.SunkenOuter, Border3DSide.All);
-			using (Brush b = new Pen(FViewWindow.BackColor).Brush) { //Most definitely not the right way of getting a brush, but it works.
+			using (Brush b = new SolidBrush(FViewWindow.Enabled ? FViewWindow.BackColor : SystemColors.ControlDark)) {
 				e.Graphics.FillRectangle(b, 1, 1, FViewWindow.Width - 2, FViewWindow.Height - 2);
 			}
 			StringFormat format = new StringFormat();
@@ -712,6 +713,37 @@ end;
 		/// <param name="e"></param>
 		private void TGammaPanel_StyleChanged(object sender, EventArgs e) {
 			Refresh();
+		}
+
+		private void TGammaPanel_EnabledChanged(object sender, EventArgs e) {
+			this.FGamma.Enabled = this.Enabled;
+			this.REd.Enabled = this.Enabled;
+			this.GEd.Enabled = this.Enabled;
+			this.BEd.Enabled = this.Enabled;
+			this.RLabel.Enabled = this.Enabled;
+			this.GLabel.Enabled = this.Enabled;
+			this.BLabel.Enabled = this.Enabled;
+			this.FViewWindow.Enabled = this.Enabled;
+			this.FStatePanel.Enabled = this.Enabled;
+
+			Refresh();
+		}
+
+		/// <summary>
+		/// Paints based off of being enabled.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void FGamma_Paint(object sender, PaintEventArgs e) {
+			if (!FGamma.Enabled) {
+				ControlPaint.DrawImageDisabled(e.Graphics, FGamma.Image, 0, 0, FGamma.BackColor);
+			}
+		}
+
+		private void FFirst_Paint(object sender, PaintEventArgs e) {
+			if (!FFirst.Enabled) {
+				e.Graphics.FillRectangle(SystemBrushes.ControlDark, 0, 0, FFirst.Width, FFirst.Height);
+			}
 		}
 	}
 }
