@@ -190,7 +190,7 @@ namespace GBRenderer
 		/// <summary>
 		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to set to null.
 		/// </summary>
-		[Description("The number of rows to include."), Category("Data"), DesignTimeVisible(false)]
+		[Description("The currently-selected color."), Category("Data"), Browsable(false)]
 		public Color SelectedColor {
 			get {
 				if (selectedX == -1 || selectedY == -1) {

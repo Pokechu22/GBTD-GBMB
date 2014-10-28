@@ -19,18 +19,9 @@ namespace GBRenderer
 		}
 
 		private void colorPicker1_OnChange(object sender, EventArgs e) {
-			if (selectedControl != null) {
-				selectedControl.CurrentColor = colorPicker1.MainViewColor;
-			}
-		}
-
-		private void panelMouseDown(object sender, EventArgs e) {
-			if (sender is GBColorSetSelector) {
-				GBColorSetSelector c = (GBColorSetSelector)sender;
-				selectedControl = c;
-				colorPicker1.FirstColor = selectedControl.CurrentColor;
-			}
-			this.Refresh();
+			try {
+				gbPaletteSetSelector1.SelectedColor = colorPicker1.MainViewColor;
+			} catch (Exception) { }
 		}
 	}
 }
