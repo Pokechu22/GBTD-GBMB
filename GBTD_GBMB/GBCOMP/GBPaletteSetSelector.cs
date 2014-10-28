@@ -186,7 +186,7 @@ namespace GBRenderer
 				rows = value;
 			}
 		}
-		
+
 		/// <summary>
 		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to set to null.
 		/// </summary>
@@ -206,6 +206,22 @@ namespace GBRenderer
 					throw new ArgumentNullException();
 				}
 				entries[selectedX, selectedY].Color = value;
+			}
+		}
+
+		/// <summary>
+		/// The colors of all entries.
+		/// </summary>
+		[Description("The colors of all entries."), Category("Data"), Browsable(false)]
+		public Color[,] Colors {
+			get {
+				Color[,] temp = new Color[COLUMNS_MAX,rows];
+				for (int x = 0; x < entries.GetLength(0); x++) {
+					for (int y = 0; y < entries.GetLength(1); y++) {
+						temp[x, y] = entries[x, y].Color;
+					}
+				}
+				return temp;
 			}
 		}
 
