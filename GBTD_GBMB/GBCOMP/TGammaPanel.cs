@@ -543,7 +543,13 @@ end;
 			//int R, G, B; //Useless?
 
 			FViewWindow.Text = "";
-			c = FBmpSelector.GetPixel(e.X, e.Y);
+			try {
+				c = FBmpSelector.GetPixel(e.X, e.Y);
+			} catch (ArgumentOutOfRangeException) {
+				//For whatever reason I somehow clicked outside of the control.  Doesn't seem like something that should happen, but when I double-click it does.
+				c = Color.Gray;
+				FViewWindow.Text = "None";
+			}
 			ChangeColor(c);
 		}
 
