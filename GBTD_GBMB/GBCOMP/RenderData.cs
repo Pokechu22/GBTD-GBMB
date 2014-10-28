@@ -11,7 +11,60 @@ namespace GBRenderer
 {
 	public partial class RenderData : UserControl
 	{
-		public byte[] data = {
+		internal Color whiteColor = Color.White;
+		internal Color lightGrayColor = Color.LightGray;
+		internal Color darkGrayColor = Color.Gray;
+		internal Color blackColor = Color.Black;
+
+		/// <summary>
+		/// The whitemost color.
+		/// </summary>
+		public Color WhiteColor {
+			get {
+				return whiteColor;
+			}
+			set {
+				whiteColor = value;
+			}
+		}
+
+		/// <summary>
+		/// The light-gray color.
+		/// </summary>
+		public Color LightGrayColor {
+			get {
+				return lightGrayColor;
+			}
+			set {
+				lightGrayColor = value;
+			}
+		}
+
+		/// <summary>
+		/// The dark-gray color.
+		/// </summary>
+		public Color DarkGrayColor {
+			get {
+				return darkGrayColor;
+			}
+			set {
+				darkGrayColor = value;
+			}
+		}
+
+		/// <summary>
+		/// The black color.
+		/// </summary>
+		public Color BlackColor {
+			get {
+				return blackColor;
+			}
+			set {
+				blackColor = value;
+			}
+		}
+
+		internal byte[] data = {
 								 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 							 };
 
@@ -59,16 +112,18 @@ namespace GBRenderer
 			float y1 = (y * (this.Height / 8.0f));
 			float width = (this.Width / 8.0f);
 			float height = (this.Height / 8.0f);
-			
-			Brush brush = null;
+
+			Color c;
 			switch (color) {
-			case 0: brush = Brushes.White; break;
-			case 1: brush = Brushes.DarkGray; break;
-			case 2: brush = Brushes.Gray; break;
-			case 3: brush = Brushes.Black; break;
+			case 0: c = whiteColor; break;
+			case 1: c = darkGrayColor; break;
+			case 2: c = lightGrayColor; break;
+			case 3: c = blackColor; break;
 			}
 
-			g.FillRectangle(brush, x1, y1, width, height);
+			using (Brush brush = new SolidBrush(c)) {
+				g.FillRectangle(brush, x1, y1, width, height);
+			}
 		}
 
 		public byte[] getData() {
