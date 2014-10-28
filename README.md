@@ -1,1 +1,1 @@
-A C# port of GBTD/GBMB.
+A C# port of [GBTD](http://www.devrs.com/gb/hmgd/gbtd.html) and [GBMB](http://www.devrs.com/gb/hmgd/gbmb.html), based off of the Delphi source code found [here](http://www.devrs.com/gb/hmgd/source.html).
