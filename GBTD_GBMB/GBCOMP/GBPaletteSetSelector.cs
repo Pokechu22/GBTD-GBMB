@@ -123,6 +123,7 @@ namespace GBRenderer
 		#region Private fields
 
 		private PalatteEntry[,] entries = new PalatteEntry[ROWS_MAX, COLUMNS_MAX];
+		private Label[] labels = new Label[ROWS_MAX];
 		
 		#region Property clones
 		/// <summary>
@@ -289,6 +290,7 @@ namespace GBRenderer
 				l.SendToBack();
 
 				Controls.Add(l);
+				labels[y] = l;
 			}
 		}
 
@@ -297,6 +299,7 @@ namespace GBRenderer
 		/// </summary>
 		internal void hideUnusedControls() {
 			for (int y = 0; y < ROWS_MAX; y++) {
+				labels[y].Visible = (y < rows);
 				for (int x = 0; x < COLUMNS_MAX; x++) {
 					entries[x, y].Visible = (y < rows);
 				}
