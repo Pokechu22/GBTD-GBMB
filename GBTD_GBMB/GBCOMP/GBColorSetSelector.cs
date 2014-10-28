@@ -46,6 +46,8 @@ namespace GBRenderer
 				if (value < 1) { throw new ArgumentOutOfRangeException(); } else {
 					entryCount = value;
 
+					selectedIndex = 0;
+
 					this.Width = entryWidth * entryCount;
 					this.Height = entryHeight;
 
@@ -109,6 +111,46 @@ namespace GBRenderer
 					temp[i] = entries[i].BackColor;
 				}
 				return temp;
+			}
+		}
+
+		/// <summary>
+		/// The color of the currently-selected entry, or gray if not set.
+		/// </summary>
+		[Description("The color of the currently-selected entry."), Category("Data")]
+		public Color CurrentColor {
+			get { return selectedControl != null ? selectedControl.BackColor : Color.Gray; }
+			set { if (selectedControl != null) { selectedControl.BackColor = value; OnCurrentColorChanged(); } }
+		}
+		#endregion
+
+		#region Public Events
+		/// <summary>
+		/// Event handler for when this is changed.
+		/// </summary>
+		[Category("Action"), Description("Fires when the currently selected color is changed")]
+		public event EventHandler CurrentColorChanged;
+
+		protected virtual void OnCurrentColorChanged() {
+			// Preform color updatings.
+			if (selectedControl != null) {
+				selectedControl.BackColor = CurrentColor;
+
+				//Brightness.
+				if (((selectedControl.BackColor.R < 0x40) && (selectedControl.BackColor.G < 0x40)) ||
+						((selectedControl.BackColor.G < 0x40) && (selectedControl.BackColor.B < 0x40)) ||
+						((selectedControl.BackColor.R < 0x40) && (selectedControl.BackColor.B < 0x40))) {
+					selectedControl.ForeColor = Color.White;
+				} else {
+					selectedControl.ForeColor = Color.Black;
+				}
+
+				selectedControl.Refresh();
+			}
+
+			// Actually raise the event
+			if (CurrentColorChanged != null) {
+				CurrentColorChanged(this, new EventArgs());
 			}
 		}
 		#endregion
@@ -175,6 +217,7 @@ namespace GBRenderer
 						break;
 					}
 				}
+				OnCurrentColorChanged();
 				//TODO: Update with an event.
 			}
 			this.Refresh();

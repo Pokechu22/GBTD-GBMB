@@ -31,6 +31,7 @@
 			// 
 			// gbColorSetSelector1
 			// 
+			this.gbColorSetSelector1.CurrentColor = System.Drawing.Color.Gray;
 			this.gbColorSetSelector1.EntryCount = 4;
 			this.gbColorSetSelector1.EntryHeight = 19;
 			this.gbColorSetSelector1.EntryWidth = 19;
@@ -38,6 +39,7 @@
 			this.gbColorSetSelector1.MaximumSize = new System.Drawing.Size(76, 19);
 			this.gbColorSetSelector1.MinimumSize = new System.Drawing.Size(76, 19);
 			this.gbColorSetSelector1.Name = "gbColorSetSelector1";
+			this.gbColorSetSelector1.SelectedIndex = 0;
 			this.gbColorSetSelector1.Size = new System.Drawing.Size(76, 19);
 			this.gbColorSetSelector1.TabIndex = 1;
 			// 
