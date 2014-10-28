@@ -25,7 +25,7 @@ namespace GBRenderer
 			/// <summary>
 			/// Initial offset for each control (at no aditional offset)
 			/// </summary>
-			private const int X_OFFSET = 19, Y_OFFSET = 19;
+			private const int X_OFFSET = 16 + 20, Y_OFFSET = 19;
 
 			/// <summary>
 			/// The spacing between each control.
@@ -34,6 +34,11 @@ namespace GBRenderer
 
 			public readonly int x, y;
 			private GBPaletteSetSelector selector;
+
+			public Color color {
+				get { return this.BackColor; }
+				set { if (value == null) { throw new ArgumentNullException(); } this.BackColor = value; onColorChange(); }
+			}
 
 			public PalatteEntry(GBPaletteSetSelector selector, int x, int y) {
 				this.x = x;
@@ -50,6 +55,8 @@ namespace GBRenderer
 				this.Location = new System.Drawing.Point(X_OFFSET + (x * X_SPACING), Y_OFFSET + (y * Y_SPACING));
 
 				this.TabIndex = (y * 4) + x;
+
+				this.color = selector.defaultColorScheme[x];
 
 				this.Paint += new PaintEventHandler(PalatteEntry_Paint);
 				this.MouseDown += new MouseEventHandler(PalatteEntry_MouseDown);
@@ -88,6 +95,17 @@ namespace GBRenderer
 					selector.Refresh();
 				}
 			}
+
+			internal void onColorChange() {
+				//Changes text color.
+				if (((color.R < 0x40) && (color.G < 0x40)) ||
+						((color.G < 0x40) && (color.B < 0x40)) ||
+						((color.R < 0x40) && (color.B < 0x40))) {
+					this.ForeColor = Color.White;
+				} else {
+					this.ForeColor = Color.Black;
+				}
+			}
 		}
 		#endregion
 
@@ -113,6 +131,16 @@ namespace GBRenderer
 		private int selectedX = -1, selectedY = -1;
 
 		private int rows = 8;
+
+		/// <summary>
+		/// The default grayscale GB color shceme.
+		/// </summary>
+		private Color[] defaultColorScheme = {
+										  Color.FromArgb(255, 255, 255),
+										  Color.FromArgb(192, 192, 192),
+										  Color.FromArgb(144, 144, 144),
+										  Color.FromArgb(0, 0, 0)
+									  };
 		#endregion
 		#endregion
 
@@ -158,6 +186,42 @@ namespace GBRenderer
 				rows = value;
 			}
 		}
+
+		/// <summary>
+		/// The color used for the first entry by default.
+		/// </summary>
+		[Description("The color used for the first entry by default."), Category("Defaults")]
+		public Color WhiteColor {
+			get { return defaultColorScheme[0]; }
+			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[0] = value; }
+		}
+
+		/// <summary>
+		/// The color used for the second entry by default.
+		/// </summary>
+		[Description("The color used for the second entry by default."), Category("Defaults")]
+		public Color LightGrayColor {
+			get { return defaultColorScheme[1]; }
+			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[1] = value; }
+		}
+
+		/// <summary>
+		/// The color used for the third entry by default.
+		/// </summary>
+		[Description("The color used for the third entry by default."), Category("Defaults")]
+		public Color DarkGrayColor {
+			get { return defaultColorScheme[2]; }
+			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[2] = value; }
+		}
+
+		/// <summary>
+		/// The color used for the fourth entry by default.
+		/// </summary>
+		[Description("The color used for the fourth entry by default."), Category("Defaults")]
+		public Color BlackColor {
+			get { return defaultColorScheme[3]; }
+			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[3] = value; }
+		}
 		#endregion
 
 		public GBPaletteSetSelector() {
@@ -167,8 +231,7 @@ namespace GBRenderer
 
 		internal void addControls() {
 			this.Controls.Clear();
-			//Informational label.
-
+			
 			//Entries
 			entries = new PalatteEntry[COLUMNS_MAX, rows];
 			for (int y = 0; y < rows; y++) {
@@ -176,6 +239,18 @@ namespace GBRenderer
 					entries[x, y] = new PalatteEntry(this, x, y);
 					this.Controls.Add(entries[x, y]);
 				}
+			}
+			//Informational labels.
+			for (int y = 0; y < rows; y++) {
+				Label l = new Label();
+				l.Name = "label_y" + y;
+				l.Text = y.ToString();
+
+				l.Location = new Point(16, 23 + (y * 28));
+
+				l.SendToBack();
+
+				Controls.Add(l);
 			}
 		}
 	}
