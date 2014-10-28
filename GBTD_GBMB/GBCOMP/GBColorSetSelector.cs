@@ -28,6 +28,11 @@ namespace GBRenderer
 		/// The entries currently used.
 		/// </summary>
 		private Label[] entries;
+
+		/// <summary>
+		/// The control currently selected.
+		/// </summary>
+		private Control selectedControl;
 		#endregion
 
 		#region Public properties
@@ -153,21 +158,26 @@ namespace GBRenderer
 				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, c.Width, c.Height),
 					Color.Black, ButtonBorderStyle.Solid);
 				//If selected draw the inner border.
-				/*if (Object.ReferenceEquals(selectedControl, c)) {
+				if (Object.ReferenceEquals(selectedControl, c)) {
 					ControlPaint.DrawBorder(e.Graphics, new Rectangle(1, 1, c.Width - 2, c.Height - 2),
 						SystemColors.Highlight, ButtonBorderStyle.Solid);
-				}*/ //TODO
+				}
 			}
 		}
 
 		internal void entryMouseDown(object sender, MouseEventArgs e) {
-			/*if (sender is Control) {
+			if (sender is Control) {
 				Control c = (Control)sender;
 				selectedControl = c;
-				colorPicker1.FirstColor = selectedControl.BackColor;
+				for (int i = 0; i < entries.Length; i++) {
+					if (Object.ReferenceEquals(selectedControl, entries[i])) {
+						selectedIndex = i;
+						break;
+					}
+				}
+				//TODO: Update with an event.
 			}
-			this.Refresh();*/
-			//TODO
+			this.Refresh();
 		}
 	}
 }
