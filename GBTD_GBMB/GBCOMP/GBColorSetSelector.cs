@@ -20,6 +20,8 @@ namespace GBRenderer
 
 		private int entryWidth = 19;
 		private int entryHeight = 19;
+
+		private int selectedIndex = 0;
 		#endregion
 
 		/// <summary>
@@ -41,6 +43,9 @@ namespace GBRenderer
 
 					this.Width = entryWidth * entryCount;
 					this.Height = entryHeight;
+
+					this.MinimumSize = this.Size;
+					this.MaximumSize = this.Size;
 				}
 			}
 		}
@@ -55,6 +60,9 @@ namespace GBRenderer
 				if (value < 1) { throw new ArgumentOutOfRangeException(); } else {
 					entryWidth = value;
 					this.Width = entryWidth * entryCount;
+
+					this.MinimumSize = this.Size;
+					this.MaximumSize = this.Size;
 				}
 			}
 		}
@@ -69,7 +77,33 @@ namespace GBRenderer
 				if (value < 1) { throw new ArgumentOutOfRangeException(); } else {
 					entryHeight = value;
 					this.Height = entryHeight;
+
+					this.MinimumSize = this.Size;
+					this.MaximumSize = this.Size;
 				}
+			}
+		}
+
+		/// <summary>
+		/// The currently-selected index.
+		/// </summary>
+		[Description("The currently selected index."), Category("Data")]
+		public int SelectedIndex {
+			get { return selectedIndex; }
+			set { selectedIndex = value; }
+		}
+
+		/// <summary>
+		/// The colors on this control.
+		/// </summary>
+		[Description("The colors currently in use."), Category("Data")]
+		public Color[] Colors {
+			get {
+				Color[] temp = new Color[entries.Length];
+				for (int i = 0; i < entries.Length; i++) {
+					temp[i] = entries[i].BackColor;
+				}
+				return temp;
 			}
 		}
 		#endregion
@@ -104,7 +138,7 @@ namespace GBRenderer
 		}
 
 		/// <summary>
-		/// Paints
+		/// Paints an individual entry.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

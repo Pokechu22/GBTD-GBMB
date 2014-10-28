@@ -25,33 +25,21 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
+			this.gbColorSetSelector1 = new GBRenderer.GBColorSetSelector();
 			this.colorPicker1 = new GBRenderer.TGammaPanel();
 			this.SuspendLayout();
 			// 
-			// label1
+			// gbColorSetSelector1
 			// 
-			this.label1.Location = new System.Drawing.Point(31, 33);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(19, 19);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "0";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.label1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPaint);
-			this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMouseDown);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(53, 33);
-			this.label2.Margin = new System.Windows.Forms.Padding(0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(19, 19);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "1";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.label2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPaint);
-			this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMouseDown);
+			this.gbColorSetSelector1.EntryCount = 4;
+			this.gbColorSetSelector1.EntryHeight = 19;
+			this.gbColorSetSelector1.EntryWidth = 19;
+			this.gbColorSetSelector1.Location = new System.Drawing.Point(12, 12);
+			this.gbColorSetSelector1.MaximumSize = new System.Drawing.Size(76, 19);
+			this.gbColorSetSelector1.MinimumSize = new System.Drawing.Size(76, 19);
+			this.gbColorSetSelector1.Name = "gbColorSetSelector1";
+			this.gbColorSetSelector1.Size = new System.Drawing.Size(76, 19);
+			this.gbColorSetSelector1.TabIndex = 1;
 			// 
 			// colorPicker1
 			// 
@@ -70,8 +58,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.gbColorSetSelector1);
 			this.Controls.Add(this.colorPicker1);
 			this.MaximumSize = new System.Drawing.Size(300, 300);
 			this.MinimumSize = new System.Drawing.Size(300, 300);
@@ -84,8 +71,7 @@
 		#endregion
 
 		private TGammaPanel colorPicker1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
+		private GBColorSetSelector gbColorSetSelector1;
 
 	}
 }
