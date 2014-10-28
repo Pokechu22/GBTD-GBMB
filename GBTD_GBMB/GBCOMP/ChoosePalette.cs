@@ -19,7 +19,6 @@ namespace GBRenderer
 		}
 
 		private void colorPicker1_OnChange(object sender, EventArgs e) {
-			MessageBox.Show("" + selectedControl + selectedControl.GetType().ToString());
 			if (selectedControl != null) {
 				selectedControl.CurrentColor = colorPicker1.MainViewColor;
 			}

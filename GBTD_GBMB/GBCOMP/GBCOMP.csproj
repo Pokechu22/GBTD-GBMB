@@ -58,6 +58,12 @@
     <Compile Include="GBColorSetSelector.Designer.cs">
       <DependentUpon>GBColorSetSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="GBPaletteSetSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GBPaletteSetSelector.Designer.cs">
+      <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="TGammaPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GBColorSetSelector.resx">
       <DependentUpon>GBColorSetSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GBPaletteSetSelector.resx">
+      <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TGammaPanel.resx">
       <DependentUpon>TGammaPanel.cs</DependentUpon>
