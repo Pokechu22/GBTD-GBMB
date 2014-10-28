@@ -36,7 +36,7 @@
 			this.gbPaletteSetSelector1.LightGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.gbPaletteSetSelector1.Location = new System.Drawing.Point(12, 12);
 			this.gbPaletteSetSelector1.Name = "gbPaletteSetSelector1";
-			this.gbPaletteSetSelector1.Rows = 8;
+			this.gbPaletteSetSelector1.Rows = 1;
 			this.gbPaletteSetSelector1.SelectedX = -1;
 			this.gbPaletteSetSelector1.SelectedY = -1;
 			this.gbPaletteSetSelector1.Size = new System.Drawing.Size(112, 262);

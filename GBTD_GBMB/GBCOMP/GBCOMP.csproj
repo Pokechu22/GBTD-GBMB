@@ -52,12 +52,6 @@
     <Compile Include="ChoosePalette.Designer.cs">
       <DependentUpon>ChoosePalette.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBColorSetSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GBColorSetSelector.Designer.cs">
-      <DependentUpon>GBColorSetSelector.cs</DependentUpon>
-    </Compile>
     <Compile Include="GBPaletteSetSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,9 +80,6 @@
     </Compile>
     <EmbeddedResource Include="ChoosePalette.resx">
       <DependentUpon>ChoosePalette.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GBColorSetSelector.resx">
-      <DependentUpon>GBColorSetSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GBPaletteSetSelector.resx">
       <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
