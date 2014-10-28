@@ -11,8 +11,6 @@ namespace GBRenderer
 {
 	public partial class ChoosePalette : Form
 	{
-		private GBColorSetSelector selectedControl = null;
-
 		public ChoosePalette() {
 			InitializeComponent();
 			
