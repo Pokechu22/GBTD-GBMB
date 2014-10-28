@@ -63,7 +63,12 @@ namespace GBRenderer
 		}
 
 		private void buttonPalette_Click(object sender, EventArgs e) {
-			new ChoosePalette().ShowDialog();
+			ChoosePalette p = new ChoosePalette();
+
+			this.renderData.BlackColor = p.BlackColor;
+			this.renderData.DarkGrayColor = p.DarkGrayColor;
+			this.renderData.LightGrayColor = p.LightGrayColor;
+			this.renderData.WhiteColor = p.WhiteColor;
 		}
 	}
 }
