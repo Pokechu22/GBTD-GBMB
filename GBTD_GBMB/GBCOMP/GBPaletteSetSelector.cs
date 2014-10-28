@@ -184,6 +184,8 @@ namespace GBRenderer
 					throw new ArgumentOutOfRangeException("Rows", "Value must be between 1 and " + (ROWS_MAX) + " inclusive.");
 				}
 				rows = value;
+
+				addControls();
 			}
 		}
 
@@ -194,7 +196,7 @@ namespace GBRenderer
 		public Color SelectedColor {
 			get {
 				if (selectedX == -1 || selectedY == -1) {
-					throw new InvalidOperationException("Cannot get the selected color when there is no selection!");
+					return Color.Black;
 				}
 				return entries[selectedX, selectedY].Color;
 			}
