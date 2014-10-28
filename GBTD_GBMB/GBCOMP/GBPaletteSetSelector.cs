@@ -35,7 +35,7 @@ namespace GBRenderer
 			public readonly int x, y;
 			private GBPaletteSetSelector selector;
 
-			public Color color {
+			public Color Color {
 				get { return this.BackColor; }
 				set { if (value == null) { throw new ArgumentNullException(); } this.BackColor = value; onColorChange(); }
 			}
@@ -56,7 +56,7 @@ namespace GBRenderer
 
 				this.TabIndex = (y * 4) + x;
 
-				this.color = selector.defaultColorScheme[x];
+				this.Color = selector.defaultColorScheme[x];
 
 				this.Paint += new PaintEventHandler(PalatteEntry_Paint);
 				this.MouseDown += new MouseEventHandler(PalatteEntry_MouseDown);
@@ -98,9 +98,9 @@ namespace GBRenderer
 
 			internal void onColorChange() {
 				//Changes text color.
-				if (((color.R < 0x40) && (color.G < 0x40)) ||
-						((color.G < 0x40) && (color.B < 0x40)) ||
-						((color.R < 0x40) && (color.B < 0x40))) {
+				if (((Color.R < 0x40) && (Color.G < 0x40)) ||
+						((Color.G < 0x40) && (Color.B < 0x40)) ||
+						((Color.R < 0x40) && (Color.B < 0x40))) {
 					this.ForeColor = Color.White;
 				} else {
 					this.ForeColor = Color.Black;
@@ -184,6 +184,28 @@ namespace GBRenderer
 					throw new ArgumentOutOfRangeException("Rows", "Value must be between 1 and " + (ROWS_MAX) + " inclusive.");
 				}
 				rows = value;
+			}
+		}
+		
+		/// <summary>
+		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to set to null.
+		/// </summary>
+		[Description("The number of rows to include."), Category("Data"), DesignTimeVisible(false)]
+		public Color SelectedColor {
+			get {
+				if (selectedX == -1 || selectedY == -1) {
+					throw new InvalidOperationException("Cannot get the selected color when there is no selection!");
+				}
+				return entries[selectedX, selectedY].Color;
+			}
+			set {
+				if (selectedX == -1 || selectedY == -1) {
+					throw new InvalidOperationException("Cannot set the selected color when there is no selection!");
+				}
+				if (value == null) {
+					throw new ArgumentNullException();
+				}
+				entries[selectedX, selectedY].Color = value;
 			}
 		}
 
