@@ -185,7 +185,7 @@ namespace GBRenderer
 				}
 				rows = value;
 
-				addControls();
+				hideUnusedControls();
 			}
 		}
 
@@ -270,18 +270,16 @@ namespace GBRenderer
 		}
 
 		internal void addControls() {
-			this.Controls.Clear();
-			
 			//Entries
-			entries = new PalatteEntry[COLUMNS_MAX, rows];
-			for (int y = 0; y < rows; y++) {
+			entries = new PalatteEntry[COLUMNS_MAX, ROWS_MAX];
+			for (int y = 0; y < ROWS_MAX; y++) {
 				for (int x = 0; x < COLUMNS_MAX; x++) {
 					entries[x, y] = new PalatteEntry(this, x, y);
 					this.Controls.Add(entries[x, y]);
 				}
 			}
 			//Informational labels.
-			for (int y = 0; y < rows; y++) {
+			for (int y = 0; y < ROWS_MAX; y++) {
 				Label l = new Label();
 				l.Name = "label_y" + y;
 				l.Text = y.ToString();
@@ -291,6 +289,17 @@ namespace GBRenderer
 				l.SendToBack();
 
 				Controls.Add(l);
+			}
+		}
+
+		/// <summary>
+		/// Sets whether unused controls are hidden.
+		/// </summary>
+		internal void hideUnusedControls() {
+			for (int y = 0; y < ROWS_MAX; y++) {
+				for (int x = 0; x < COLUMNS_MAX; x++) {
+					entries[x, y].Visible = (y < rows);
+				}
 			}
 		}
 	}
