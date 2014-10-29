@@ -42,9 +42,11 @@
 			this.gbPaletteSetSelector1.Size = new System.Drawing.Size(112, 262);
 			this.gbPaletteSetSelector1.TabIndex = 1;
 			this.gbPaletteSetSelector1.WhiteColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.gbPaletteSetSelector1.SelectionChanged += new System.EventHandler(this.gbPaletteSetSelector1_SelectionChanged);
 			// 
 			// colorPicker1
 			// 
+			this.colorPicker1.Enabled = false;
 			this.colorPicker1.FirstColor = System.Drawing.Color.Black;
 			this.colorPicker1.GBCFilter = false;
 			this.colorPicker1.Location = new System.Drawing.Point(227, 12);

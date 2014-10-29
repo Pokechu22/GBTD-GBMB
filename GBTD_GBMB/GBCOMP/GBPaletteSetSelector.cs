@@ -89,8 +89,8 @@ namespace GBRenderer
 				if (sender is PalatteEntry) {
 					PalatteEntry entry = (PalatteEntry)sender;
 
-					selector.selectedX = entry.x;
-					selector.selectedY = entry.y;
+					selector.SelectedX = entry.x;
+					selector.SelectedY = entry.y;
 
 					selector.Refresh();
 				}
@@ -161,6 +161,7 @@ namespace GBRenderer
 					throw new ArgumentOutOfRangeException("SelectedX", "Value must be between 0 and " + (COLUMNS_MAX - 1) +  " inclusive, or -1 to represent no selection.");
 				}
 				selectedX = value;
+				onSelectionChange();
 			}
 		}
 
@@ -175,6 +176,7 @@ namespace GBRenderer
 					throw new ArgumentOutOfRangeException("SelectedY", "Value must be between 0 and " + (ROWS_MAX - 1) + " inclusive, or -1 to represent no selection.");
 				}
 				selectedY = value;
+				onSelectionChange();
 			}
 		}
 
@@ -197,7 +199,7 @@ namespace GBRenderer
 		/// <summary>
 		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to set to null.
 		/// </summary>
-		[Description("The currently-selected color."), Category("Data"), Browsable(false)]
+		[Description("The currently-selected color."), Category("Data"), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public Color SelectedColor {
 			get {
 				if (selectedX == -1 || selectedY == -1) {
@@ -267,6 +269,20 @@ namespace GBRenderer
 		public Color BlackColor {
 			get { return defaultColorScheme[3]; }
 			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[3] = value; }
+		}
+		#endregion
+
+		#region Events
+		/// <summary>
+		/// Event handler for when the slection is changed..
+		/// </summary>
+		[Category("Action"), Description("Fires when the selection is changed")]
+		public event EventHandler SelectionChanged;
+
+		protected void onSelectionChange() {
+			if (SelectionChanged != null) {
+				SelectionChanged(this, new EventArgs());
+			}
 		}
 		#endregion
 
