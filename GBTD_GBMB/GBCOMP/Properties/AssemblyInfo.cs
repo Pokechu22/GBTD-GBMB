@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GBRenderer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("LWSD")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GBRenderer")]
-[assembly: AssemblyCopyright("Copyright © LWSD 2014")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
