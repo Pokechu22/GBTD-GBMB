@@ -106,6 +106,10 @@ namespace GBRenderer
 					this.ForeColor = Color.Black;
 				}
 			}
+
+			public override string ToString() {
+				return base.ToString() + " @ x" + x + " y" + y;
+			}
 		}
 		#endregion
 
@@ -219,10 +223,11 @@ namespace GBRenderer
 		public Color[,] Colors {
 			get {
 				Color[,] temp = new Color[COLUMNS_MAX,rows];
-				for (int x = 0; x < entries.GetLength(0); x++) {
-					for (int y = 0; y < entries.GetLength(1); y++) {
-						temp[x, y] = entries[x, y].Color;
+				foreach (PalatteEntry e in entries) {
+					if (e.y >= rows) {
+						continue;
 					}
+					temp[e.x, e.y] = e.Color;
 				}
 				return temp;
 			}

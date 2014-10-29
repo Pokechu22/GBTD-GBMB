@@ -113,7 +113,7 @@ namespace GBRenderer
 			float width = (this.Width / 8.0f);
 			float height = (this.Height / 8.0f);
 
-			Color c;
+			Color c = Color.Black;
 			switch (color) {
 			case 0: c = whiteColor; break;
 			case 1: c = darkGrayColor; break;

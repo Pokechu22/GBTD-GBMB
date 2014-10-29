@@ -60,15 +60,20 @@ namespace GBRenderer
 			}
 
 			renderData.setData(newBytes);
+
+			this.Refresh();
 		}
 
 		private void buttonPalette_Click(object sender, EventArgs e) {
 			ChoosePalette p = new ChoosePalette();
+			p.ShowDialog();
 
 			this.renderData.BlackColor = p.BlackColor;
 			this.renderData.DarkGrayColor = p.DarkGrayColor;
 			this.renderData.LightGrayColor = p.LightGrayColor;
 			this.renderData.WhiteColor = p.WhiteColor;
+
+			this.Refresh();
 		}
 	}
 }
