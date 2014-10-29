@@ -25,8 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.gbPaletteSetSelector1 = new GBRenderer.GBPaletteSetSelector();
-			this.colorPicker1 = new GBRenderer.TGammaPanel();
+			this.gbPaletteSetSelector1 = new GB.Shared.Palette.GBPaletteSetSelector();
+			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
 			this.SuspendLayout();
 			// 
 			// gbPaletteSetSelector1
@@ -74,8 +74,8 @@
 
 		#endregion
 
-		private TGammaPanel colorPicker1;
-		private GBPaletteSetSelector gbPaletteSetSelector1;
+		private GB.Shared.Palette.TGammaPanel colorPicker1;
+		private GB.Shared.Palette.GBPaletteSetSelector gbPaletteSetSelector1;
 
 	}
 }

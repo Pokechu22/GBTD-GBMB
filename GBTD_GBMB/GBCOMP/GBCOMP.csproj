@@ -52,18 +52,6 @@
     <Compile Include="ChoosePalette.Designer.cs">
       <DependentUpon>ChoosePalette.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBPaletteSetSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GBPaletteSetSelector.Designer.cs">
-      <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TGammaPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TGammaPanel.Designer.cs">
-      <DependentUpon>TGammaPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,12 +68,6 @@
     </Compile>
     <EmbeddedResource Include="ChoosePalette.resx">
       <DependentUpon>ChoosePalette.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GBPaletteSetSelector.resx">
-      <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TGammaPanel.resx">
-      <DependentUpon>TGammaPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -118,6 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GBCGAMMA.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GBPalette\GBPalette.csproj">
+      <Project>{E35C123C-601F-4B1B-9E80-858E14DF9AA1}</Project>
+      <Name>GBPalette</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

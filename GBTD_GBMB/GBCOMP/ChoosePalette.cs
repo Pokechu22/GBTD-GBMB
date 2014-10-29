@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using GB.Shared.Palette;
+
 namespace GBRenderer
 {
 	public partial class ChoosePalette : Form
