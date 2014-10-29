@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBCOMP", "GBCOMP\GBCOMP.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBPalette", "GBPalette\GBPalette.csproj", "{E35C123C-601F-4B1B-9E80-858E14DF9AA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBTile", "GBTile\GBTile.csproj", "{144B0760-8612-4695-BE59-3547CE449BCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{E35C123C-601F-4B1B-9E80-858E14DF9AA1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E35C123C-601F-4B1B-9E80-858E14DF9AA1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E35C123C-601F-4B1B-9E80-858E14DF9AA1}.Release|x86.ActiveCfg = Release|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{144B0760-8612-4695-BE59-3547CE449BCA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
