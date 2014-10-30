@@ -223,16 +223,18 @@ namespace GB.Shared.Tile
 			//This is ported ASM.
 			GBRegisters reg = new GBRegisters();
 
-			int index = 0;
+			//int index = 0;
 
 			UInt16 tempHL = 0x0;
 
 		NextCommand:
-			reg.A = data[index++];
+			reg.A = data[reg.HL + 1];
 			//or a?
-			if (reg.A == 0) { //jz z, .EndFound    ; This means jump if [z]ero.
-				goto EndFound;
-			}
+		if (reg.HL > data.Length) {
+			//if (reg.A == 0) { //jz z, .EndFound    ; This means jump if [z]ero.
+							goto EndFound;
+			//}
+		}
 
 			//Test if bit 7 is set in a:
 			//bit 7,a
@@ -247,7 +249,7 @@ namespace GB.Shared.Tile
 			reg.A &= 0x3F;
 			reg.A++;
 			reg.B = reg.A;
-			reg.A = data[index++];
+			reg.A = data[reg.HL+1];
 			reg.C = reg.A;
 
 		db1:
@@ -256,7 +258,7 @@ namespace GB.Shared.Tile
 			mem[reg.DE] = reg.A;
 			reg.DE++;
 			reg.B--;
-			if (reg.A != 0) {
+			if (reg.B != 0) {
 				goto db1;
 			}
 
@@ -267,9 +269,9 @@ namespace GB.Shared.Tile
 			reg.A++;
 			reg.C = reg.A;
 
-			reg.B = data[index];
-			index++;
-			reg.A = data[index++];
+			reg.B = data[reg.HL];
+			reg.HL++;
+			reg.A = data[reg.HL+1];
 
 			tempHL = reg.HL;
 
@@ -284,7 +286,7 @@ namespace GB.Shared.Tile
 			mem[reg.DE] = reg.A;
 			reg.DE++;
 			reg.C--;
-			if (reg.A != 0) {
+			if (reg.C != 0) {
 				goto dw2;
 			}
 
@@ -311,11 +313,11 @@ namespace GB.Shared.Tile
 
 		dr1:
 			//WaitForVRAM();
-			reg.A = mem[reg.HL++];
+			reg.A = mem[reg.HL+1];
 			mem[reg.DE] = reg.A;
 			reg.DE++;
 			reg.B--;
-			if (reg.A != 0) {
+			if (reg.B != 0) {
 				goto dr1;
 			}
 			reg.HL = tempHL;
@@ -330,16 +332,16 @@ namespace GB.Shared.Tile
 
 		dc1:
 			//WaitForVRAM
-			reg.A = mem[reg.HL++];
+			reg.A = mem[reg.HL+1];
 			mem[reg.DE] = reg.A;
 			reg.DE++;
-			if (reg.A != 0) {
+			if (reg.DE != 0) {
 				goto dc1;
 			}
 			goto NextCommand;
 		EndFound:
 			//Take stuff at reg.de out.
-			byte[] usedMem = new byte[reg.DE];
+			byte[] usedMem = new byte[((reg.DE / 16) + 1) * 16];
 			Array.Copy(mem, usedMem, reg.DE);
 
 			VRAMTileProvider vprov = new VRAMTileProvider(usedMem);
