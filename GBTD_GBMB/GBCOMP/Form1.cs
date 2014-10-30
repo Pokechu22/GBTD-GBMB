@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using GB.Shared.Tile;
+
 namespace GBRenderer
 {
 	public partial class Form1 : Form
@@ -55,11 +57,14 @@ namespace GBRenderer
 
 			byte[] newBytes = new byte[16];
 
+			//Not the best way to use a tileprovider, but it works.
 			for (int i = 0; i < newBytes.Length; i++) {
 				newBytes[i] = fullBytes[i + index];
 			}
 
-			renderData.setData(newBytes);
+			VRAMTileProvider t = new VRAMTileProvider(newBytes);
+
+			this.renderData.Tile = t.getTiles().ElementAt(0);
 
 			this.Refresh();
 		}

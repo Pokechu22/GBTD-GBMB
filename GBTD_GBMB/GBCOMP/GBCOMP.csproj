@@ -106,6 +106,10 @@
       <Project>{E35C123C-601F-4B1B-9E80-858E14DF9AA1}</Project>
       <Name>GBPalette</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GBTile\GBTile.csproj">
+      <Project>{144B0760-8612-4695-BE59-3547CE449BCA}</Project>
+      <Name>GBTile</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

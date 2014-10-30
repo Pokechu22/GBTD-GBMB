@@ -10,7 +10,7 @@ namespace GB.Shared.Tile
 	/// Reads a tile as it appears in Gameboy VRAM: 
 	/// For each row of pixels, 2 bytes.  
 	/// </summary>
-	class VRAMTileProvider : TileProvider
+	public class VRAMTileProvider : TileProvider
 	{
 		private List<Tile> tiles = new List<Tile>();
 
