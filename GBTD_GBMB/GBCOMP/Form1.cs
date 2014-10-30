@@ -46,12 +46,14 @@ namespace GBRenderer
 				
 				this.offsetUpDown.Value = 0;
 				this.offsetUpDown.Maximum = fullBytes.Length - 17;
+
+				this.offsetUpDown_ValueChanged(this.offsetUpDown, new EventArgs());
 			}
 		}
 
 		private void offsetUpDown_ValueChanged(object sender, EventArgs e) {
 			int index = (int)offsetUpDown.Value;
-			if (index + 16 >= fullBytes.Length) {
+			/*if (index + 16 >= fullBytes.Length) {
 				throw new InvalidOperationException("OffsetUpDown went out of bounds!  (" + index + " + 16 is more than file length " + fullBytes.Length + ")");
 			}
 
@@ -66,7 +68,10 @@ namespace GBRenderer
 
 			this.renderData.Tile = t.getTiles().ElementAt(0);
 
-			this.Refresh();
+			this.Refresh();*/
+			CompressedTileProvider p = new CompressedTileProvider(fullBytes);
+			this.renderData.Tile = p.getTiles().ElementAt(index);
+			this.renderData.Refresh();
 		}
 
 		private void buttonPalette_Click(object sender, EventArgs e) {
