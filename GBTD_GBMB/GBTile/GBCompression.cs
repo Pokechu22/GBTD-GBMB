@@ -84,6 +84,19 @@ namespace GB.Shared.Tile
 		}
 
 		/// <summary>
+		/// Returns true if the end of input has been reached.
+		/// Does not advance position.
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		protected static Boolean reached_end(Stream input) {
+			int read = input.ReadByte();
+			input.Position--; //reset position in streem.
+
+			return (read == EOFMarker);
+		}
+
+		/// <summary>
 		/// GB-Compresses data.
 		/// This origionally returned an integer, but that was the size of the stream, and thus is not needed.
 		/// </summary>
@@ -177,6 +190,18 @@ namespace GB.Shared.Tile
 			}
 
 			write_end(output);
+		}
+
+		public static void write_data(byte[] input, Stream output) {
+			using (Stream stream = new MemoryStream(input)) {
+				write_data(stream, output);
+			}
+		}
+
+		public static void write_data(Stream input, Stream output) {
+			while (!reached_end(input)) {
+				
+			}
 		}
 	}
 }
