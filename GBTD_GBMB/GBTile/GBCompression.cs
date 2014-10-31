@@ -10,7 +10,7 @@ namespace GB.Shared.Tile
 	/// <summary>
 	/// Handles GB compression.  Based off of GBCompress.pas.
 	/// </summary>
-	static class GBCompression
+	/*static class GBCompression
 	{
 		/// <summary>
 		/// The byte used to mark the end of a GB-Compresed file.
@@ -203,5 +203,5 @@ namespace GB.Shared.Tile
 				
 			}
 		}
-	}
+	}*/
 }
