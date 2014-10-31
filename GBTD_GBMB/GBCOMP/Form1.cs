@@ -64,9 +64,9 @@ namespace GBRenderer
 				newBytes[i] = fullBytes[i + index];
 			}
 
-			VRAMTileProvider t = new VRAMTileProvider(newBytes);
+			VRAMTileParser parser = new VRAMTileParser(newBytes);
 
-			this.renderData.Tile = t.getTiles().ElementAt(0);
+			this.renderData.Tile = parser.ElementAt(0);
 
 			this.Refresh();
 		}
