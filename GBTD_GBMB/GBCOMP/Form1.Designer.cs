@@ -26,7 +26,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.renderData = new GBRenderer.RenderData();
+			this.tileRenderer = new GB.Shared.Tile.TileRenderer();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -37,7 +37,7 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.renderData);
+			this.groupBox1.Controls.Add(this.tileRenderer);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(268, 249);
@@ -47,14 +47,14 @@
 			// 
 			// renderData
 			// 
-			this.renderData.BlackColor = System.Drawing.Color.Black;
-			this.renderData.DarkGrayColor = System.Drawing.Color.Gray;
-			this.renderData.LightGrayColor = System.Drawing.Color.LightGray;
-			this.renderData.Location = new System.Drawing.Point(6, 19);
-			this.renderData.Name = "renderData";
-			this.renderData.Size = new System.Drawing.Size(256, 224);
-			this.renderData.TabIndex = 1;
-			this.renderData.WhiteColor = System.Drawing.Color.White;
+			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
+			this.tileRenderer.Name = "renderData";
+			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
+			this.tileRenderer.TabIndex = 1;
+			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
 			// 
 			// buttonOpen
 			// 
@@ -118,7 +118,7 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox groupBox1;
-		private RenderData renderData;
+		private GB.Shared.Tile.TileRenderer tileRenderer;
 		private System.Windows.Forms.Button buttonOpen;
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;

@@ -66,7 +66,7 @@ namespace GBRenderer
 
 			VRAMTileParser parser = new VRAMTileParser(newBytes);
 
-			this.renderData.Tile = parser.ElementAt(0);
+			this.tileRenderer.Tile = parser.ElementAt(0);
 
 			this.Refresh();
 		}
@@ -75,10 +75,10 @@ namespace GBRenderer
 			ChoosePalette p = new ChoosePalette();
 			p.ShowDialog();
 
-			this.renderData.BlackColor = p.BlackColor;
-			this.renderData.DarkGrayColor = p.DarkGrayColor;
-			this.renderData.LightGrayColor = p.LightGrayColor;
-			this.renderData.WhiteColor = p.WhiteColor;
+			this.tileRenderer.BlackColor = p.BlackColor;
+			this.tileRenderer.DarkGrayColor = p.DarkGrayColor;
+			this.tileRenderer.LightGrayColor = p.LightGrayColor;
+			this.tileRenderer.WhiteColor = p.WhiteColor;
 
 			this.Refresh();
 		}
