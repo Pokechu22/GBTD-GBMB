@@ -35,9 +35,18 @@ namespace GB.Shared.Palette
 			public readonly int x, y;
 			private GBPaletteSetSelector selector;
 
+			private Color color;
+
 			public Color Color {
-				get { return this.BackColor; }
-				set { if (value == null) { throw new ArgumentNullException(); } this.BackColor = value; onColorChange(); }
+				get { return this.color; }
+				set { 
+					if (value == null) {
+						throw new ArgumentNullException();
+					}
+					this.color = value;
+					this.BackColor = (selector.GBCFilter ? GBCFiltration.TranslateToGBCColor(value) : value);
+					onColorChange();
+				}
 			}
 
 			public PalatteEntry(GBPaletteSetSelector selector, int x, int y) {
@@ -73,6 +82,7 @@ namespace GB.Shared.Palette
 					e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.None;
 
 					PalatteEntry c = (PalatteEntry)sender;
+					c.BackColor = (selector.GBCFilter ? GBCFiltration.TranslateToGBCColor(c.color) : c.color);
 
 					//Draw the main border.
 					ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, c.Width, c.Height),
