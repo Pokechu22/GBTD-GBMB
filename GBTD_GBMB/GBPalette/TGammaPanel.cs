@@ -415,10 +415,10 @@ namespace GB.Shared.Palette
   BEd.Text := IntToStr(GetBValue(ColorToRGB(FFirst.Brush.Color)) shr 3);
 			 */
 			FViewWindow.Text = "";
-			ViewColor = FFirst.BackColor;
-			REd.Text = (FFirst.BackColor.R >> 3).ToString();
-			GEd.Text = (FFirst.BackColor.G >> 3).ToString();
-			BEd.Text = (FFirst.BackColor.B >> 3).ToString();
+			ViewColor = FirstColor;
+			REd.Text = (FirstColor.R >> 3).ToString();
+			GEd.Text = (FirstColor.G >> 3).ToString();
+			BEd.Text = (FirstColor.B >> 3).ToString();
 		}
 
 		/// <summary>
