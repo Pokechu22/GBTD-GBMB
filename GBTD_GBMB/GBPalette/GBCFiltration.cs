@@ -40,7 +40,7 @@ namespace GB.Shared.Palette
 					m[i, j] = (byte)((intensity[rgb[i]] * influence[i, j]) >> 5);
 				}
 			}
-			for (i = 1; i < 3; i++) {
+			for (i = 0; i < 3; i++) {
 				if (m[0, i] > m[1, i]) { j = m[0, i]; m[0, i] = m[1, i]; m[1, i] = j; }
 				if (m[1, i] > m[2, i]) { j = m[1, i]; m[1, i] = m[2, i]; m[2, i] = j; };
 				if (m[0, i] > m[1, i]) { j = m[0, i]; m[0, i] = m[1, i]; m[1, i] = j; };
