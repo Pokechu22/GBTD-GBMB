@@ -146,6 +146,10 @@ namespace GB.Shared.Palette
 										  Color.FromArgb(144, 144, 144),
 										  Color.FromArgb(0, 0, 0)
 									  };
+
+		//Use the GBC filter?
+		private bool FGBCFilter = false;
+
 		#endregion
 		#endregion
 
@@ -270,19 +274,44 @@ namespace GB.Shared.Palette
 			get { return defaultColorScheme[3]; }
 			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[3] = value; }
 		}
+
+		/// <summary>
+		/// Use the GBC Filter?
+		/// 
+		/// Declared line 123:
+		///      property GBCFilter : boolean read FGBCFilter write SetGBCFilter;
+		/// </summary>
+		[Description("Use the regular GBC filter, rather than the regular colors.  GBC colors are paler."), Category("Data")]
+		public bool GBCFilter {
+			get { return FGBCFilter; }
+			set { FGBCFilter = value; OnUseGBCFilterChange(); }
+		}
 		#endregion
 
 		#region Events
 		/// <summary>
-		/// Event handler for when the slection is changed..
+		/// Event handler for when the slection is changed.
 		/// </summary>
 		[Category("Action"), Description("Fires when the selection is changed")]
 		public event EventHandler SelectionChanged;
+
+		/// <summary>
+		/// Event handler for when the use of the GBC filter is toggled.
+		/// </summary>
+		[Category("Property Changed"), Description("Fires when the use of the GBC filter is toggled.")]
+		public event EventHandler UseGBCFilterChanged;
 
 		protected void onSelectionChange() {
 			if (SelectionChanged != null) {
 				SelectionChanged(this, new EventArgs());
 			}
+		}
+
+		protected void OnUseGBCFilterChange() {
+			if (UseGBCFilterChanged != null) {
+				UseGBCFilterChanged(this, new EventArgs());
+			}
+			this.Refresh();
 		}
 		#endregion
 
