@@ -9,7 +9,7 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// Applies the GBCFilter when needed.
 	/// </summary>
-	public static sealed class GBCFilter
+	public static sealed class GBCFiltration
 	{
 		/// <summary>
 		/// Filters the color.
