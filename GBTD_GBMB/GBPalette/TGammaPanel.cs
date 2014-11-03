@@ -120,87 +120,11 @@ namespace GB.Shared.Palette
 		private void SetViewColor(Color c) {
 			FClrSelector = c;
 			if (FGBCFilter) {
-				FViewWindow.BackColor = TranslateToGBCColor(FClrSelector);
+				FViewWindow.BackColor = GBCFiltration.TranslateToGBCColor(FClrSelector);
 			} else {
 				FViewWindow.BackColor = FClrSelector;
 			}
 			FViewWindow.Refresh();
-		}
-
-		/// <summary>
-		/// Translates a color.
-		/// 
-		/// Declared line 63 ColorControlor.pas:
-		/// function TranslateToGBCColor( clr : TColor) : TColor;
-		/// 
-		/// Defined lines 78-110 ColorControlor.pas: 
-		/// function TranslateToGBCColor( clr : TColor) : TColor;
-		/// 
-		/// //procedure translate(var rgb : rgbtype);
-		/// const intensity : array[0..$1f] of byte = (
-		///  $00,$10,$20,$30,$40,$50,$5e,$6c,$7a,$88,$94,$a0,$ae,$b7,$bf,$c6,
-		///  $ce,$d3,$d9,$df,$e3,$e7,$eb,$ef,$f3,$f6,$f9,$fb,$fd,$fe,$ff,$ff);
-		/// 
-		/// const influence : array[1..3,1..3] of byte = ((16,4,4),(8,16,8),(0,8,16));
-		/// var
-		///   m   : array[1..3,1..3] of byte;
-		///   i,j : byte;
-		///   rgb : rgbtype;
-		///   c : tColor;
-		/// begin
-		///   rgb[1] := (clr and $0000FF) shr (0+3);
-		///   rgb[2] := (clr and $00FF00) shr (8+3);
-		///   rgb[3] := (clr and $FF0000) shr (16+3);
-		/// 
-		///   for i:=1 to 3 do                
-		///     for j:=1 to 3 do
-		///       m[i,j] := (intensity[rgb[i]] * influence[i,j]) shr 5;
-		/// 
-		///   for i:=1 to 3 do begin
-		///     if m[1,i]>m[2,i] then begin j:=m[1,i]; m[1,i]:=m[2,i]; m[2,i]:=j; end;
-		///     if m[2,i]>m[3,i] then begin j:=m[2,i]; m[2,i]:=m[3,i]; m[3,i]:=j; end;
-		///     if m[1,i]>m[2,i] then begin j:=m[1,i]; m[1,i]:=m[2,i]; m[2,i]:=j; end;
-		///     rgb[i]:=(((m[1,i]+m[2,i]*2+m[3,i]*4)*5) shr 4)+32;
-		///   end;
-		/// 
-		/// //  Result := TColor( rgb[1] + (rgb[2] shl 8) + (rgb[3] shl 16) );
-		///   c := TColor( rgb[1] + (rgb[2] shl 8) + (rgb[3] shl 16) );
-		///   Result := c;
-		/// end;
-		/// </summary>
-		/// <param name="clr"></param>
-		/// <returns></returns>
-		private Color TranslateToGBCColor(Color clr) {
-			byte[] intensity = new byte[0x20] {
-				0x00,0x10,0x20,0x30,0x40,0x50,0x5e,0x6c,0x7a,0x88,0x94,0xa0,0xae,0xb7,0xbf,0xc6,
-				0xce,0xd3,0xd9,0xdf,0xe3,0xe7,0xeb,0xef,0xf3,0xf6,0xf9,0xfb,0xfd,0xfe,0xff,0xff
-			};
-
-			byte[,] influence = new byte[3, 3] { { 16, 4, 4 }, { 8, 16, 8 }, { 0, 8, 16 } };
-
-			byte[,] m = new byte[3, 3];
-			byte i, j;
-			byte[] rgb = new byte[3];
-			Color c;
-
-			rgb[0] = (byte)(clr.R >> 3);
-			rgb[1] = (byte)(clr.G >> 3);
-			rgb[2] = (byte)(clr.B >> 3);
-
-			for (i = 0; i < 3; i++) {
-				for (j = 0; j < 3; j++) {
-					m[i, j] = (byte)((intensity[rgb[i]] * influence[i, j]) >> 5);
-				}
-			}
-			for (i = 1; i < 3; i++) {
-				if (m[0, i] > m[1, i]) { j = m[0, i]; m[0, i] = m[1, i]; m[1, i] = j; }
-				if (m[1, i] > m[2, i]) { j = m[1, i]; m[1, i] = m[2, i]; m[2, i] = j; };
-				if (m[0, i] > m[1, i]) { j = m[0, i]; m[0, i] = m[1, i]; m[1, i] = j; };
-				rgb[i] = (byte)((((m[0, i] + m[1, i] * 2 + m[2, i] * 4) * 5) >> 4) + 32);
-			}
-
-			c = Color.FromArgb(rgb[0], rgb[1], rgb[2]);
-			return c;
 		}
 
 		/// <summary>
@@ -252,7 +176,7 @@ namespace GB.Shared.Palette
 		/// <param name="c"></param>
 		private void SetFirstControls(Color c) {
 			switch (FGBCFilter) {
-			case true: FFirst.BackColor = TranslateToGBCColor(c); break;
+			case true: FFirst.BackColor = GBCFiltration.TranslateToGBCColor(c); break;
 			case false: FFirst.BackColor = c; break;
 			}
 			FFirst.Refresh();
