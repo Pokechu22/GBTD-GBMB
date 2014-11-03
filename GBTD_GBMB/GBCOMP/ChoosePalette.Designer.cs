@@ -27,6 +27,7 @@
 		private void InitializeComponent() {
 			this.gbPaletteSetSelector1 = new GB.Shared.Palette.GBPaletteSetSelector();
 			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
+			this.filterCheckBox = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// gbPaletteSetSelector1
@@ -57,11 +58,23 @@
 			this.colorPicker1.TabIndex = 0;
 			this.colorPicker1.OnChange += new System.EventHandler(this.colorPicker1_OnChange);
 			// 
+			// filterCheckBox
+			// 
+			this.filterCheckBox.AutoSize = true;
+			this.filterCheckBox.Location = new System.Drawing.Point(141, 32);
+			this.filterCheckBox.Name = "filterCheckBox";
+			this.filterCheckBox.Size = new System.Drawing.Size(79, 17);
+			this.filterCheckBox.TabIndex = 2;
+			this.filterCheckBox.Text = "Filter colors";
+			this.filterCheckBox.UseVisualStyleBackColor = true;
+			this.filterCheckBox.CheckedChanged += new System.EventHandler(this.filterCheckBox_CheckedChanged);
+			// 
 			// ChoosePalette
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.Controls.Add(this.filterCheckBox);
 			this.Controls.Add(this.gbPaletteSetSelector1);
 			this.Controls.Add(this.colorPicker1);
 			this.MaximumSize = new System.Drawing.Size(300, 300);
@@ -69,6 +82,7 @@
 			this.Name = "ChoosePalette";
 			this.Text = "Palettes";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -76,6 +90,7 @@
 
 		private GB.Shared.Palette.TGammaPanel colorPicker1;
 		private GB.Shared.Palette.GBPaletteSetSelector gbPaletteSetSelector1;
+		private System.Windows.Forms.CheckBox filterCheckBox;
 
 	}
 }
