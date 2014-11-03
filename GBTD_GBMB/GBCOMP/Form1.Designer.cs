@@ -47,10 +47,14 @@
 			// 
 			// renderData
 			// 
+			this.renderData.BlackColor = System.Drawing.Color.Black;
+			this.renderData.DarkGrayColor = System.Drawing.Color.Gray;
+			this.renderData.LightGrayColor = System.Drawing.Color.LightGray;
 			this.renderData.Location = new System.Drawing.Point(6, 19);
 			this.renderData.Name = "renderData";
 			this.renderData.Size = new System.Drawing.Size(256, 224);
 			this.renderData.TabIndex = 1;
+			this.renderData.WhiteColor = System.Drawing.Color.White;
 			// 
 			// buttonOpen
 			// 
@@ -100,8 +104,11 @@
 			this.Controls.Add(this.offsetUpDown);
 			this.Controls.Add(this.buttonOpen);
 			this.Controls.Add(this.groupBox1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).EndInit();
 			this.ResumeLayout(false);

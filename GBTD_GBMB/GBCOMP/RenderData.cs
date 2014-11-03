@@ -68,6 +68,7 @@ namespace GBRenderer
 			}
 		}
 
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public Tile Tile {
 			get {
 				return tile;
