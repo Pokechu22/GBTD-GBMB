@@ -35,7 +35,7 @@
 			this.Name = "TileRenderer";
 			this.Size = new System.Drawing.Size(8, 8);
 			this.Load += new System.EventHandler(this.RenderData_Load);
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.RenderData_Paint);
+			this.Paint += new System.Windows.Forms.PaintEventHandler(this.TileRenderer_Paint);
 			this.Resize += new System.EventHandler(this.TileRenderer_Resize);
 			this.ResumeLayout(false);
 

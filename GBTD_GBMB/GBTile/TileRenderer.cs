@@ -11,13 +11,16 @@ namespace GB.Shared.Tile
 {
 	public partial class TileRenderer : UserControl
 	{
-		internal Color whiteColor = Color.White;
-		internal Color lightGrayColor = Color.LightGray;
-		internal Color darkGrayColor = Color.Gray;
-		internal Color blackColor = Color.Black;
+		#region Internal members
+		protected internal Color whiteColor = Color.White;
+		protected internal Color lightGrayColor = Color.LightGray;
+		protected internal Color darkGrayColor = Color.Gray;
+		protected internal Color blackColor = Color.Black;
 
-		internal Tile tile = new Tile();
+		protected internal Tile tile = new Tile();
+		#endregion
 
+		#region Public properties
 		/// <summary>
 		/// The whitemost color.
 		/// </summary>
@@ -76,16 +79,13 @@ namespace GB.Shared.Tile
 				this.Refresh();
 			}
 		}
+		#endregion
 
 		public TileRenderer() {
 			InitializeComponent();
 		}
 
-		private void RenderData_Load(object sender, EventArgs e) {
-
-		}
-
-		private void RenderData_Paint(object sender, PaintEventArgs e) {
+		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
 			for (byte x = 0; x < 8; x++) {
 				for (byte y = 0; y < 8; y++) {
 					drawPixel(x, y, tile[x, y], e.Graphics);
