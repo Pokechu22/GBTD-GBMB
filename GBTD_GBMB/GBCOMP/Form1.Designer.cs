@@ -26,11 +26,11 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.tileRenderer = new GB.Shared.Tile.TileRenderer();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
+			this.tileRenderer = new GB.Shared.Tile.TileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
@@ -44,17 +44,6 @@
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Tile";
-			// 
-			// renderData
-			// 
-			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
-			this.tileRenderer.Name = "renderData";
-			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
-			this.tileRenderer.TabIndex = 1;
-			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
 			// 
 			// buttonOpen
 			// 
@@ -94,6 +83,18 @@
 			this.buttonPalette.Text = "Palette....";
 			this.buttonPalette.UseVisualStyleBackColor = true;
 			this.buttonPalette.Click += new System.EventHandler(this.buttonPalette_Click);
+			// 
+			// tileRenderer
+			// 
+			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
+			this.tileRenderer.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer.Name = "tileRenderer";
+			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
+			this.tileRenderer.TabIndex = 1;
+			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
 			// 
 			// Form1
 			// 

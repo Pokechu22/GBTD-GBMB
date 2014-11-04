@@ -125,6 +125,18 @@ namespace GB.Shared.Tile
 				g.FillRectangle(brush, x1, y1, width, height);
 			}
 		}
+
+		/// <summary>
+		/// Ensure that it is divisible evenly by 8.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void TileRenderer_Resize(object sender, EventArgs e) {
+			this.Resize -= new EventHandler(TileRenderer_Resize);
+			this.Width &= ~0x07;
+			this.Height &= ~0x07;
+			this.Resize += new EventHandler(TileRenderer_Resize);
+		}
 	}
 }
 

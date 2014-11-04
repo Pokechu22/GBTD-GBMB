@@ -55,6 +55,11 @@
     </Compile>
     <Compile Include="VRAMTileParser.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TileRenderer.resx">
+      <DependentUpon>TileRenderer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
