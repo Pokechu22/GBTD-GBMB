@@ -98,6 +98,13 @@ namespace GB.Shared.Tile
 		[Category("Property Changed"), Description("Fires when the currently-used palatte is changed.")]
 		public event EventHandler PalatteChanged;
 
+		/// <summary>
+		/// Fires when a pixel in the tile is clicked.  
+		/// Use this over OnClick.
+		/// </summary>
+		[Category("Property Changed"), Description("Fires when a pixel in the tile is clicked.  Use this over OnClick.")]
+		public event PixelClickedEvent PixelClicked;
+
 		protected void OnPalatteChange() {
 			if (PalatteChanged != null) {
 				PalatteChanged(this, new EventArgs());
@@ -170,5 +177,45 @@ namespace GB.Shared.Tile
 			this.Resize += new EventHandler(TileRenderer_Resize);
 		}
 	}
+
+	/// <summary>
+	/// EventArgs for anything dealing with a tile's pixel.
+	/// </summary>
+	public class PixelEventArgs : EventArgs
+	{
+		public readonly byte x;
+		public readonly byte y;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		public PixelEventArgs(byte x, byte y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+
+	/// <summary>
+	/// EventArgs for when a pixel is clicked on.
+	/// </summary>
+	public class PixelClickEventArgs : PixelEventArgs
+	{
+		public readonly MouseButtons mouseButton;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="button"></param>
+		public PixelClickEventArgs(byte x, byte y, MouseButtons mouseButton)
+			: base(x, y) {
+			this.mouseButton = mouseButton;
+		}
+	}
+
+	public delegate void PixelClickedEvent(object sender, PixelClickEventArgs e);
 }
 
