@@ -176,6 +176,41 @@ namespace GB.Shared.Tile
 			this.Height &= ~0x07;
 			this.Resize += new EventHandler(TileRenderer_Resize);
 		}
+
+		protected internal byte getClickedPixelX(int clickedX) {
+			if (clickedX < 0 || clickedX > this.Width) {
+				throw new InvalidOperationException("Mouse out of bounds.");
+			}
+			return (byte)((clickedX * 8) / this.Width);
+		}
+
+		protected internal byte getClickedPixelY(int clickedY) {
+			if (clickedY < 0 || clickedY > this.Width) {
+				throw new InvalidOperationException("Mouse out of bounds.");
+			}
+			return (byte)((clickedY * 8) / this.Height);
+		}
+
+		/// <summary>
+		/// Called when something about the mouse is changed: Mouse buttons or position.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void TileRenderer_MouseChanged(object sender, MouseEventArgs e) {
+			byte x = 0, y = 0;
+			MouseButtons buttons;
+			try {
+				x = getClickedPixelX(e.X);
+				y = getClickedPixelY(e.Y);
+				buttons = e.Button;
+			} catch (InvalidOperationException) {
+				return;
+			}
+
+			if (PixelClicked != null) {
+				PixelClicked(this, new PixelClickEventArgs(x, y, buttons));
+			}
+		}
 	}
 
 	/// <summary>

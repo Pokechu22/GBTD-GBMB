@@ -34,8 +34,10 @@
 			this.Margin = new System.Windows.Forms.Padding(0);
 			this.Name = "TileRenderer";
 			this.Size = new System.Drawing.Size(8, 8);
-			this.Load += new System.EventHandler(this.RenderData_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.TileRenderer_Paint);
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TileRenderer_MouseChanged);
+			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TileRenderer_MouseChanged);
+			this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TileRenderer_MouseChanged);
 			this.Resize += new System.EventHandler(this.TileRenderer_Resize);
 			this.ResumeLayout(false);
 
