@@ -102,7 +102,7 @@ namespace GB.Shared.Tile
 		/// Fires when a pixel in the tile is clicked.  
 		/// Use this over OnClick.
 		/// </summary>
-		[Category("Property Changed"), Description("Fires when a pixel in the tile is clicked.  Use this over OnClick.")]
+		[Category("Action"), Description("Fires when a pixel in the tile is clicked.  Use this over OnClick.")]
 		public event PixelClickedEvent PixelClicked;
 
 		protected void OnPalatteChange() {
