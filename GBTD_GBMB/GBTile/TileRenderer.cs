@@ -181,17 +181,21 @@ namespace GB.Shared.Tile
 		}
 
 		protected internal byte getClickedPixelX(int clickedX) {
-			if (clickedX < 0 || clickedX > this.Width) {
+			byte returned = (byte)((clickedX * 8) / this.Width);
+
+			if (returned < 0 || returned >= 8) {
 				throw new InvalidOperationException("Mouse out of bounds.");
 			}
-			return (byte)((clickedX * 8) / this.Width);
+			return returned;
 		}
 
 		protected internal byte getClickedPixelY(int clickedY) {
-			if (clickedY < 0 || clickedY > this.Width) {
+			byte returned = (byte)((clickedY * 8) / this.Height);
+
+			if (returned < 0 || returned >= 8) {
 				throw new InvalidOperationException("Mouse out of bounds.");
 			}
-			return (byte)((clickedY * 8) / this.Height);
+			return returned;
 		}
 
 		/// <summary>
