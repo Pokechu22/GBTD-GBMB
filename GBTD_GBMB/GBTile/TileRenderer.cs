@@ -18,6 +18,9 @@ namespace GB.Shared.Tile
 		protected internal Color blackColor = Color.Black;
 
 		protected internal Tile tile = new Tile();
+
+		protected internal byte clickedX = 0, clickedY = 0;
+		protected internal MouseButtons buttons = MouseButtons.None;
 		#endregion
 
 		#region Public properties
@@ -207,8 +210,18 @@ namespace GB.Shared.Tile
 				return;
 			}
 
-			if (PixelClicked != null) {
-				PixelClicked(this, new PixelClickEventArgs(x, y, buttons));
+			if (x != this.clickedX || y != this.clickedY || buttons != this.buttons) {
+				this.clickedX = x;
+				this.clickedY = y;
+				this.buttons = buttons;
+
+				if (e.Button != MouseButtons.None) {
+					if (PixelClicked != null) {
+						PixelClicked(this, new PixelClickEventArgs(x, y, buttons));
+					}
+
+					this.Refresh();
+				}
 			}
 		}
 	}
