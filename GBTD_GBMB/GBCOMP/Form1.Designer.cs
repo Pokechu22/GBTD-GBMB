@@ -88,13 +88,18 @@
 			// 
 			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
 			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
 			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
 			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
 			this.tileRenderer.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
 			this.tileRenderer.Name = "tileRenderer";
+			this.tileRenderer.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
 			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
 			this.tileRenderer.TabIndex = 1;
 			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
+			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			// 
 			// Form1
 			// 
