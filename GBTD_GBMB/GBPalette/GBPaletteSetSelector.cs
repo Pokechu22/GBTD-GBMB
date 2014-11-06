@@ -12,113 +12,34 @@ namespace GB.Shared.Palette
 	public partial class GBPaletteSetSelector : UserControl
 	{
 		#region Private inner classes
-		/// <summary>
-		/// Internal class which represents an individual entry.
-		/// </summary>
-		private class PalatteEntry : Label
+		private sealed class PaletteSetEntry : PaletteEntry
 		{
-			/// <summary>
-			/// Width/height of the individual control.
-			/// </summary>
-			private const int WIDTH = 19, HEIGHT = 19;
+			internal GBPaletteSetSelector selector;
 
-			/// <summary>
-			/// Initial offset for each control (at no aditional offset)
-			/// </summary>
-			private const int X_OFFSET = 16 + 20, Y_OFFSET = 19;
-
-			/// <summary>
-			/// The spacing between each control.
-			/// </summary>
-			private const int X_SPACING = WIDTH, Y_SPACING = HEIGHT + 9;
-
-			public readonly int x, y;
-			private GBPaletteSetSelector selector;
-
-			private Color color;
-
-			public Color Color {
-				get { return this.color; }
-				set { 
-					if (value == null) {
-						throw new ArgumentNullException();
-					}
-					this.color = value;
-					this.BackColor = (selector.GBCFilter ? GBCFiltration.TranslateToGBCColor(value) : value);
-					onColorChange();
-				}
-			}
-
-			public PalatteEntry(GBPaletteSetSelector selector, int x, int y) {
-				this.x = x;
-				this.y = y;
-
+			public PaletteSetEntry(GBPaletteSetSelector selector, int x, int y) : base(x, y) {
 				this.selector = selector;
-
-				this.Text = x.ToString();
-				this.Name = "entry_x" + x + "_y" + y;
-
-				this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
-				this.Size = new System.Drawing.Size(WIDTH, HEIGHT);
-				this.Location = new System.Drawing.Point(X_OFFSET + (x * X_SPACING), Y_OFFSET + (y * Y_SPACING));
-
-				this.TabIndex = (y * 4) + x;
-
-				this.Color = selector.defaultColorScheme[x];
-
-				this.Paint += new PaintEventHandler(PalatteEntry_Paint);
-				this.MouseDown += new MouseEventHandler(PalatteEntry_MouseDown);
 			}
 
-			/// <summary>
-			/// Paints an individual entry.
-			/// </summary>
-			/// <param name="sender"></param>
-			/// <param name="e"></param>
-			internal void PalatteEntry_Paint(object sender, PaintEventArgs e) {
-				if (sender is PalatteEntry) {
-					e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-					e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.None;
+			protected override void SetSelected() {
+				selector.SelectedX = this.x;
+				selector.SelectedY = this.y;
+			}
 
-					PalatteEntry c = (PalatteEntry)sender;
-					c.BackColor = (selector.GBCFilter ? GBCFiltration.TranslateToGBCColor(c.color) : c.color);
+			protected override bool IsSelected() {
+				return (selector.SelectedX == this.x && selector.SelectedY == this.y);
+			}
 
-					//Draw the main border.
-					ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, c.Width, c.Height),
-						Color.Black, ButtonBorderStyle.Solid);
-					//If selected draw the inner border.
-					if (selector.selectedX == c.x && selector.selectedY == c.y) {
-						ControlPaint.DrawBorder(e.Graphics, new Rectangle(1, 1, c.Width - 2, c.Height - 2),
-							SystemColors.Highlight, ButtonBorderStyle.Solid);
-					}
+			protected override bool UseGBCFilter {
+				get {
+					return selector.GBCFilter;
+				}
+				set {
+					selector.GBCFilter = value;
 				}
 			}
 
-			internal void PalatteEntry_MouseDown(object sender, MouseEventArgs e) {
-				if (sender is PalatteEntry) {
-					PalatteEntry entry = (PalatteEntry)sender;
-
-					selector.SelectedX = entry.x;
-					selector.SelectedY = entry.y;
-
-					selector.Refresh();
-				}
-			}
-
-			internal void onColorChange() {
-				//Changes text color.
-				if (((Color.R < 0x40) && (Color.G < 0x40)) ||
-						((Color.G < 0x40) && (Color.B < 0x40)) ||
-						((Color.R < 0x40) && (Color.B < 0x40))) {
-					this.ForeColor = Color.White;
-				} else {
-					this.ForeColor = Color.Black;
-				}
-			}
-
-			public override string ToString() {
-				return base.ToString() + " @ x" + x + " y" + y;
+			protected override Color GetDefaultColor() {
+				return selector.defaultColorScheme[this.x];
 			}
 		}
 		#endregion
@@ -136,7 +57,7 @@ namespace GB.Shared.Palette
 
 		#region Private fields
 
-		private PalatteEntry[,] entries = new PalatteEntry[ROWS_MAX, COLUMNS_MAX];
+		private PaletteSetEntry[,] entries = new PaletteSetEntry[ROWS_MAX, COLUMNS_MAX];
 		private Label[] labels = new Label[ROWS_MAX];
 		
 		#region Property clones
@@ -239,7 +160,7 @@ namespace GB.Shared.Palette
 		public Color[,] Colors {
 			get {
 				Color[,] temp = new Color[COLUMNS_MAX,rows];
-				foreach (PalatteEntry e in entries) {
+				foreach (PaletteSetEntry e in entries) {
 					if (e.y >= rows) {
 						continue;
 					}
@@ -315,6 +236,7 @@ namespace GB.Shared.Palette
 			if (SelectionChanged != null) {
 				SelectionChanged(this, new EventArgs());
 			}
+			this.Refresh();
 		}
 
 		protected void OnUseGBCFilterChange() {
@@ -332,10 +254,10 @@ namespace GB.Shared.Palette
 
 		internal void addControls() {
 			//Entries
-			entries = new PalatteEntry[COLUMNS_MAX, ROWS_MAX];
+			entries = new PaletteSetEntry[COLUMNS_MAX, ROWS_MAX];
 			for (int y = 0; y < ROWS_MAX; y++) {
 				for (int x = 0; x < COLUMNS_MAX; x++) {
-					entries[x, y] = new PalatteEntry(this, x, y);
+					entries[x, y] = new PaletteSetEntry(this, x, y);
 					this.Controls.Add(entries[x, y]);
 				}
 			}
