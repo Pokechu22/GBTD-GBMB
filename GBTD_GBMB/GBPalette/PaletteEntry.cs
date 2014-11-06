@@ -13,19 +13,43 @@ namespace GB.Shared.Palette
 	internal abstract class PaletteEntry : Label
 	{
 		/// <summary>
-		/// Width/height of the individual control.
+		/// Width of the individual control.
 		/// </summary>
-		protected const int WIDTH = 19, HEIGHT = 19;
+		protected virtual int WIDTH {
+			get { return 19; }
+		}
+		/// <summary>
+		/// Height of the individual control.
+		/// </summary>
+		protected virtual int HEIGHT {
+			get { return 19; }
+		}
 
 		/// <summary>
 		/// Initial offset for each control (at no aditional offset)
 		/// </summary>
-		protected const int X_OFFSET = 16 + 20, Y_OFFSET = 19;
+		protected virtual int X_OFFSET {
+			get { return 16 + 20; }
+		}
+		/// <summary>
+		/// Initial offset for each control (at no aditional offset)
+		/// </summary>
+		protected virtual int Y_OFFSET {
+			get { return 19; }
+		}
 
 		/// <summary>
 		/// The spacing between each control.
 		/// </summary>
-		protected const int X_SPACING = WIDTH, Y_SPACING = HEIGHT + 9;
+		protected virtual int X_SPACING {
+			get { return WIDTH; }
+		}
+		/// <summary>
+		/// The spacing between each control.
+		/// </summary>
+		protected virtual int Y_SPACING {
+			get { return HEIGHT + 9; }
+		}
 
 		public readonly int x, y;
 
