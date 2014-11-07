@@ -31,12 +31,14 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
 			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
+			this.colorComboBox1 = new GB.Shared.Palette.ColorComboBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.colorComboBox1);
 			this.groupBox1.Controls.Add(this.tileRenderer);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
@@ -101,6 +103,15 @@
 			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			// 
+			// colorComboBox1
+			// 
+			this.colorComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.colorComboBox1.FormattingEnabled = true;
+			this.colorComboBox1.Location = new System.Drawing.Point(46, 0);
+			this.colorComboBox1.Name = "colorComboBox1";
+			this.colorComboBox1.Size = new System.Drawing.Size(121, 21);
+			this.colorComboBox1.TabIndex = 2;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +140,7 @@
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.Button buttonPalette;
+		private GB.Shared.Palette.ColorComboBox colorComboBox1;
 
 
 

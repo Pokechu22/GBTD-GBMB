@@ -13,38 +13,24 @@ namespace GB.Shared.Palette
 	/// Based off of this:
 	/// http://www.csharphelp.com/2006/08/combobox-with-images/
 	/// </summary>
-	internal class ColorComboBox : ComboBox
+	public class ColorComboBox : ComboBox
 	{
-		private ImageList imageList;
-		public ImageList ImageList {
-			get { return imageList; }
-			set { imageList = value; }
-		}
-
 		public ColorComboBox() {
 			DrawMode = DrawMode.OwnerDrawFixed;
+			ItemHeight = 19;
 		}
 
 		protected override void OnDrawItem(DrawItemEventArgs ea) {
 			ea.DrawBackground();
 			ea.DrawFocusRectangle();
 
-			ComboBoxExItem item;
-			Size imageSize = imageList.ImageSize;
+			ColorItem item;
 			Rectangle bounds = ea.Bounds;
 
 			try {
-				item = (ComboBoxExItem)Items[ea.Index];
+				item = (ColorItem)Items[ea.Index];
 
-				if (item.ImageIndex != -1) {
-					imageList.Draw(ea.Graphics, bounds.Left, bounds.Top,
-				   item.ImageIndex);
-					ea.Graphics.DrawString(item.Text, ea.Font, new
-				   SolidBrush(ea.ForeColor), bounds.Left + imageSize.Width, bounds.Top);
-				} else {
-					ea.Graphics.DrawString(item.Text, ea.Font, new
-				   SolidBrush(ea.ForeColor), bounds.Left, bounds.Top);
-				}
+				ea.Graphics.DrawImage(item.DrawToBitmap(), ea.Bounds.X, ea.Bounds.Y);
 			} catch {
 				if (ea.Index != -1) {
 					ea.Graphics.DrawString(Items[ea.Index].ToString(), ea.Font, new
@@ -59,8 +45,51 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	class ColorItem
+	public class ColorItem
 	{
+		internal class ComboBoxPaletteEntry : PaletteEntry
+		{
+			public ComboBoxPaletteEntry(int x, int y) : base(x, y) { }
+
+			protected override void SetSelected() {
+				//Do nothing
+			}
+
+			protected override bool IsSelected() {
+				return false;
+			}
+
+			protected override bool UseGBCFilter {
+				get {
+					return false;
+				}
+				set {
+					throw new NotImplementedException();
+				}
+			}
+
+			protected override Color GetDefaultColor() {
+				return Color.Black;
+			}
+		}
+
+		internal Image DrawToBitmap() {
+			Bitmap returned = null;
+			
+			for (int i = 0; i < colors.Length; i++) {
+				ComboBoxPaletteEntry e = new ComboBoxPaletteEntry(i, 0);
+				if (returned == null) {
+					returned = new Bitmap(e.Width * 4, e.Height);
+				}
+
+				e.Color = this[i];
+
+				e.DrawToBitmap(returned, new Rectangle(e.Width * i, 0, e.Width, e.Height));
+			}
+
+			return returned;
+		}
+	
 		private Color[] colors = new Color[4];
 
 		public Color White {
@@ -117,37 +146,4 @@ namespace GB.Shared.Palette
 			}
 		}
 	}
-
-	class ComboBoxExItem
-	{
-		private string _text;
-		public string Text {
-			get { return _text; }
-			set { _text = value; }
-		}
-
-		private int _imageIndex;
-		public int ImageIndex {
-			get { return _imageIndex; }
-			set { _imageIndex = value; }
-		}
-
-		public ComboBoxExItem()
-			: this("") {
-		}
-
-		public ComboBoxExItem(string text)
-			: this(text, -1) {
-		}
-
-		public ComboBoxExItem(string text, int imageIndex) {
-			_text = text;
-			_imageIndex = imageIndex;
-		}
-
-		public override string ToString() {
-			return _text;
-		}
-	}
 }
-

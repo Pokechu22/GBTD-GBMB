@@ -102,7 +102,7 @@ namespace GB.Shared.Palette
 
 				PaletteEntry c = (PaletteEntry)sender;
 				c.BackColor = (UseGBCFilter ? GBCFiltration.TranslateToGBCColor(c.color) : c.color);
-
+				
 				//Draw the main border.
 				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, c.Width, c.Height),
 					Color.Black, ButtonBorderStyle.Solid);
