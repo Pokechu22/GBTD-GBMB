@@ -46,12 +46,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GBCFiltration.cs" />
-    <Compile Include="GBPaletteChooser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GBPaletteChooser.Designer.cs">
-      <DependentUpon>GBPaletteChooser.cs</DependentUpon>
-    </Compile>
     <Compile Include="GBPaletteSetSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -77,9 +71,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ColorComboBox.resx">
       <DependentUpon>ColorComboBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GBPaletteChooser.resx">
-      <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

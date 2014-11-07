@@ -15,8 +15,11 @@ namespace GB.Shared.Palette
 	/// </summary>
 	public class ColorComboBox : ComboBox
 	{
-		public ColorComboBox() {
-
+		protected override void OnPaint(PaintEventArgs e) {
+			try {
+				ColorItem item = (ColorItem)SelectedItem;
+				e.Graphics.DrawImage(item.DrawToBitmap(), 0, 0);
+			} catch { }
 		}
 
 		protected override void OnDrawItem(DrawItemEventArgs ea) {
@@ -62,7 +65,6 @@ namespace GB.Shared.Palette
 			this.MinimumSize = new System.Drawing.Size(76, 0);
 			this.Size = new System.Drawing.Size(76, 25);
 			this.ResumeLayout(false);
-
 		}
 	}
 
