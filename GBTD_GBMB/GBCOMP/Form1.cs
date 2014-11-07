@@ -83,15 +83,5 @@ namespace GBRenderer
 
 			this.Refresh();
 		}
-
-		private void Form1_Load(object sender, EventArgs e) {
-			//colorComboBox1.Items.Add();
-			ColorItem item = new ColorItem();
-			item.Black = Color.Black;
-			item.LightGray = Color.Magenta;
-			item.DarkGray = Color.Lime;
-			item.White = Color.Linen;
-			colorComboBox1.Items.Add(item);
-		}
 	}
 }

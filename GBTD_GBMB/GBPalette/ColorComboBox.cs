@@ -16,8 +16,7 @@ namespace GB.Shared.Palette
 	public class ColorComboBox : ComboBox
 	{
 		public ColorComboBox() {
-			DrawMode = DrawMode.OwnerDrawFixed;
-			ItemHeight = 19;
+
 		}
 
 		protected override void OnDrawItem(DrawItemEventArgs ea) {
@@ -28,9 +27,15 @@ namespace GB.Shared.Palette
 			Rectangle bounds = ea.Bounds;
 
 			try {
-				item = (ColorItem)Items[ea.Index];
+				if (ea.Index == -1) {
+					item = (ColorItem)SelectedItem;
 
-				ea.Graphics.DrawImage(item.DrawToBitmap(), ea.Bounds.X, ea.Bounds.Y);
+					ea.Graphics.DrawImage(item.DrawToBitmap(), ea.Bounds.X, ea.Bounds.Y);
+				} else {
+					item = (ColorItem)Items[ea.Index];
+
+					ea.Graphics.DrawImage(item.DrawToBitmap(), ea.Bounds.X, ea.Bounds.Y);
+				}
 			} catch {
 				if (ea.Index != -1) {
 					ea.Graphics.DrawString(Items[ea.Index].ToString(), ea.Font, new
@@ -42,6 +47,22 @@ namespace GB.Shared.Palette
 			}
 
 			base.OnDrawItem(ea);
+		}
+
+		private void InitializeComponent() {
+			this.SuspendLayout();
+			// 
+			// ColorComboBox
+			// 
+			this.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.DropDownHeight = 152;
+			this.IntegralHeight = false;
+			this.ItemHeight = 19;
+			this.MaximumSize = new System.Drawing.Size(76, 0);
+			this.MinimumSize = new System.Drawing.Size(76, 0);
+			this.Size = new System.Drawing.Size(76, 25);
+			this.ResumeLayout(false);
+
 		}
 	}
 
