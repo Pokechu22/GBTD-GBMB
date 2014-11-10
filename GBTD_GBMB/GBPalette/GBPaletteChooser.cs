@@ -1,70 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Drawing;
 
 using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	/// <summary>
-	/// Based off of this:
-	/// http://www.csharphelp.com/2006/08/combobox-with-images/
-	/// </summary>
-	public class ColorComboBox : ComboBox
+	public partial class GBPaletteChooser : UserControl
 	{
-		protected override void OnPaint(PaintEventArgs e) {
-			try {
-				ColorItem item = (ColorItem)SelectedItem;
-				e.Graphics.DrawImage(item.DrawToBitmap(), 0, 0);
-			} catch { }
+		private ColorItem[] colors = new ColorItem[8] {
+			new ColorItem(),
+			new ColorItem(),
+			new ColorItem(),
+			new ColorItem(),
+			new ColorItem(),
+			new ColorItem(),
+			new ColorItem(),
+			new ColorItem()
+		};
+
+		[Category("Data")]
+		public ColorItem[] Colors {
+			get { return colors; }
+			set { colors = value; }
 		}
 
-		protected override void OnDrawItem(DrawItemEventArgs ea) {
-			ea.DrawBackground();
-			ea.DrawFocusRectangle();
+		public GBPaletteChooser() {
+			InitializeComponent();
+		}
 
-			ColorItem item;
-			Rectangle bounds = ea.Bounds;
-
-			try {
-				if (ea.Index == -1) {
-					item = (ColorItem)SelectedItem;
-
-					ea.Graphics.DrawImage(item.DrawToBitmap(), ea.Bounds.X, ea.Bounds.Y);
-				} else {
-					item = (ColorItem)Items[ea.Index];
-
-					ea.Graphics.DrawImage(item.DrawToBitmap(), ea.Bounds.X, ea.Bounds.Y);
-				}
-			} catch {
-				if (ea.Index != -1) {
-					ea.Graphics.DrawString(Items[ea.Index].ToString(), ea.Font, new
-				   SolidBrush(ea.ForeColor), bounds.Left, bounds.Top);
-				} else {
-					ea.Graphics.DrawString(Text, ea.Font, new
-				   SolidBrush(ea.ForeColor), bounds.Left, bounds.Top);
-				}
+		private void comboBox1_DrawItem(object sender, DrawItemEventArgs e) {
+			if (e.Index >= 0 && e.Index < colors.Length) {
+				e.Graphics.DrawImage(colors[e.Index].DrawToBitmap(), e.Bounds);
 			}
-
-			base.OnDrawItem(ea);
-		}
-
-		private void InitializeComponent() {
-			this.SuspendLayout();
-			// 
-			// ColorComboBox
-			// 
-			this.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.DropDownHeight = 152;
-			this.IntegralHeight = false;
-			this.ItemHeight = 19;
-			this.MaximumSize = new System.Drawing.Size(76, 0);
-			this.MinimumSize = new System.Drawing.Size(76, 0);
-			this.Size = new System.Drawing.Size(76, 25);
-			this.ResumeLayout(false);
 		}
 	}
 
@@ -98,7 +71,7 @@ namespace GB.Shared.Palette
 
 		internal Image DrawToBitmap() {
 			Bitmap returned = null;
-			
+
 			for (int i = 0; i < colors.Length; i++) {
 				ComboBoxPaletteEntry e = new ComboBoxPaletteEntry(i, 0);
 				if (returned == null) {
@@ -112,9 +85,10 @@ namespace GB.Shared.Palette
 
 			return returned;
 		}
-	
+
 		private Color[] colors = new Color[4];
 
+		[Category("Data")]
 		public Color White {
 			get {
 				return colors[(int)GBColor.WHITE];
@@ -124,6 +98,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
+		[Category("Data")]
 		public Color LightGray {
 			get {
 				return colors[(int)GBColor.LIGHT_GRAY];
@@ -133,6 +108,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
+		[Category("Data")]
 		public Color DarkGray {
 			get {
 				return colors[(int)GBColor.DARK_GRAY];
@@ -142,6 +118,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
+		[Category("Data")]
 		public Color Black {
 			get {
 				return colors[(int)GBColor.BLACK];
@@ -167,6 +144,13 @@ namespace GB.Shared.Palette
 			set {
 				colors[(int)color] = value;
 			}
+		}
+
+		public ColorItem() {
+			this.Black = Color.Black;
+			this.DarkGray = Color.DarkGray;
+			this.LightGray = Color.LightGray;
+			this.White = Color.White;
 		}
 	}
 }

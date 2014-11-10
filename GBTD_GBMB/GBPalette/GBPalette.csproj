@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,10 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="GBCFiltration.cs" />
+    <Compile Include="GBPaletteChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GBPaletteChooser.Designer.cs">
+      <DependentUpon>GBPaletteChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="GBPaletteSetSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,8 +75,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ColorComboBox.resx">
-      <DependentUpon>ColorComboBox.cs</DependentUpon>
+    <EmbeddedResource Include="GBPaletteChooser.resx">
+      <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
