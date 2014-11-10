@@ -36,7 +36,10 @@ namespace GB.Shared.Palette
 
 		private void comboBox1_DrawItem(object sender, DrawItemEventArgs e) {
 			if (e.Index >= 0 && e.Index < colors.Length) {
-				e.Graphics.DrawImage(colors[e.Index].DrawToBitmap(), e.Bounds);
+				e.Graphics.DrawImageUnscaled(colors[e.Index].DrawToBitmap(), e.Bounds);
+			} else {
+				e.Graphics.DrawImageUnscaled(colors[0].DrawToBitmap(), e.Bounds);
+				((ComboBox)(sender)).SelectedIndex = 0;
 			}
 		}
 	}
