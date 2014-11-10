@@ -12,6 +12,18 @@ namespace GB.Shared.Palette
 	/// </summary>
 	internal abstract class PaletteEntry : Label
 	{
+		protected override Padding DefaultMargin {
+			get {
+				return new Padding(0);
+			}
+		}
+
+		protected override Padding DefaultPadding {
+			get {
+				return new Padding(0);
+			}
+		}
+
 		/// <summary>
 		/// Width of the individual control.
 		/// </summary>
