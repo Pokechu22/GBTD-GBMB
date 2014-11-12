@@ -53,10 +53,10 @@ namespace GB.Shared.Palette
 		public GBPaletteChooser() {
 			InitializeComponent();
 
-			entry0 = new PaletteChooserEntry(0, 0, comboBox1);
-			entry1 = new PaletteChooserEntry(1, 0, comboBox1);
-			entry2 = new PaletteChooserEntry(2, 0, comboBox1);
-			entry3 = new PaletteChooserEntry(3, 0, comboBox1);
+			entry0 = new PaletteChooserEntry(0, 0, dropDown);
+			entry1 = new PaletteChooserEntry(1, 0, dropDown);
+			entry2 = new PaletteChooserEntry(2, 0, dropDown);
+			entry3 = new PaletteChooserEntry(3, 0, dropDown);
 
 			Random r = new Random();
 			for (int x = 0; x < 8; x++) {
@@ -72,13 +72,13 @@ namespace GB.Shared.Palette
 			this.Controls.Add(entry2);
 			this.Controls.Add(entry3);
 
-			this.comboBox1.SendToBack();
+			this.dropDown.SendToBack();
 			this.ResumeLayout();
 
-			vScrollBar1.Maximum = comboBox1.Items.Count - 1;
+			vScrollBar.Maximum = dropDown.Items.Count - 1;
 		}
 
-		private void comboBox1_DrawItem(object sender, DrawItemEventArgs e) {
+		private void dropDown_DrawItem(object sender, DrawItemEventArgs e) {
 			if (e.Index >= 0 && e.Index < colors.Length) {
 				e.Graphics.DrawImageUnscaled(colors[e.Index].DrawToBitmap(), e.Bounds);
 			} else {
@@ -87,43 +87,35 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		private void comboBox1_MeasureItem(object sender, MeasureItemEventArgs e) {
+		private void dropDown_MeasureItem(object sender, MeasureItemEventArgs e) {
 			e.ItemHeight = 19;
 			e.ItemWidth = 19 * 5;
 		}
 
-		private void vScrollBar1_ValueChanged(object sender, EventArgs e) {
-			comboBox1.SelectedIndex = vScrollBar1.Value;
+		private void vScrollBar_ValueChanged(object sender, EventArgs e) {
+			dropDown.SelectedIndex = vScrollBar.Value;
 		}
 
-		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-			vScrollBar1.Value = comboBox1.SelectedIndex;
+		private void dropDown_SelectedIndexChanged(object sender, EventArgs e) {
+			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
-			//if (sender is ComboBox) {
-				ComboBox box = (ComboBox)sender;
-				//if (box.SelectedItem is ColorItem) {
-					ColorItem item = colors[Convert.ToInt32((String)box.Text)];
-					entry0.Color = item.White;
-					entry1.Color = item.LightGray;
-					entry2.Color = item.DarkGray;
-					entry3.Color = item.Black;
-				//}
-			//}
+			ComboBox box = (ComboBox)sender;
+			ColorItem item = colors[Convert.ToInt32((String)box.Text)];
+			entry0.Color = item.White;
+			entry1.Color = item.LightGray;
+			entry2.Color = item.DarkGray;
+			entry3.Color = item.Black;
 		}
 
-		private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e) {
-			vScrollBar1.Value = comboBox1.SelectedIndex;
+		private void dropDown_electionChangeCommitted(object sender, EventArgs e) {
+			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
-			//if (sender is ComboBox) {
-				ComboBox box = (ComboBox)sender;
-				//if (box.SelectedItem is ColorItem) {
-					ColorItem item = colors[Convert.ToInt32((String)box.Text)];
-					entry0.Color = item.White;
-					entry1.Color = item.LightGray;
-					entry2.Color = item.DarkGray;
-					entry3.Color = item.Black;
-				//}
-			//}
+			ComboBox box = (ComboBox)sender;
+			ColorItem item = colors[Convert.ToInt32((String)box.Text)];
+			entry0.Color = item.White;
+			entry1.Color = item.LightGray;
+			entry2.Color = item.DarkGray;
+			entry3.Color = item.Black;
 		}
 	}
 
