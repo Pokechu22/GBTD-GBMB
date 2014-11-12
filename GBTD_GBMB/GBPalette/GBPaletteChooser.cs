@@ -97,6 +97,7 @@ namespace GB.Shared.Palette
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+			vScrollBar1.Value = comboBox1.SelectedIndex;
 			//Update the other icons.
 			//if (sender is ComboBox) {
 				ComboBox box = (ComboBox)sender;
@@ -111,6 +112,7 @@ namespace GB.Shared.Palette
 		}
 
 		private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e) {
+			vScrollBar1.Value = comboBox1.SelectedIndex;
 			//Update the other icons.
 			//if (sender is ComboBox) {
 				ComboBox box = (ComboBox)sender;
