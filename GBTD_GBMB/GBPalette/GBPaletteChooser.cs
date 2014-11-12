@@ -13,6 +13,59 @@ namespace GB.Shared.Palette
 {
 	internal partial class GBPaletteChooser : UserControl
 	{
+		private class PaletteChooserEntry : PaletteEntry
+		{
+			protected override int X_OFFSET {
+				get {
+					return toOverlay.Location.X + 1;
+				}
+			}
+
+			protected override int Y_OFFSET {
+				get {
+					return toOverlay.Location.Y + 1;
+				}
+			}
+
+			/// <summary>
+			/// Control to put these over.
+			/// </summary>
+			private Control toOverlay;
+			private GBPaletteChooser chooser;
+
+			public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser chooser)
+				: base(x, y) {
+				this.toOverlay = toOverlay;
+				this.chooser = chooser;
+			}
+
+			protected override void SetSelected() {
+				chooser.FirstMouseSelectedIndex = this.x;
+			}
+
+			protected override bool IsSelected() {
+				return this.x == chooser.FirstMouseSelectedIndex;
+			}
+
+			protected override bool UseGBCFilter {
+				get {
+					return chooser.UseGBCFilter;
+				}
+				set {
+					chooser.UseGBCFilter = value;
+				}
+			}
+
+			protected override Color GetDefaultColor() {
+				return Color.Black;
+			}
+
+			protected override void OnClick(EventArgs e) {
+				base.OnClick(e);
+
+			}
+		}
+
 		private bool useGBCFilter;
 		public bool UseGBCFilter {
 			get { return useGBCFilter; }
@@ -264,58 +317,6 @@ namespace GB.Shared.Palette
 			this.DarkGray = Color.DarkGray;
 			this.LightGray = Color.LightGray;
 			this.White = Color.White;
-		}
-	}
-
-	internal class PaletteChooserEntry : PaletteEntry
-	{
-		protected override int X_OFFSET {
-			get {
-				return toOverlay.Location.X + 1;
-			}
-		}
-
-		protected override int Y_OFFSET {
-			get {
-				return toOverlay.Location.Y + 1;
-			}
-		}
-
-		/// <summary>
-		/// Control to put these over.
-		/// </summary>
-		private Control toOverlay;
-		private GBPaletteChooser chooser;
-
-		public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser chooser) : base(x, y) {
-			this.toOverlay = toOverlay;
-			this.chooser = chooser;
-		}
-
-		protected override void SetSelected() {
-			chooser.FirstMouseSelectedIndex = this.x;
-		}
-
-		protected override bool IsSelected() {
-			return this.x == chooser.FirstMouseSelectedIndex;
-		}
-
-		protected override bool UseGBCFilter {
-			get {
-				return chooser.UseGBCFilter;
-			}
-			set {
-				chooser.UseGBCFilter = value;
-			}
-		}
-
-		protected override Color GetDefaultColor() {
-			return Color.Black;
-		}
-
-		protected override void OnClick(EventArgs e) {
-			base.OnClick(e);
-			
 		}
 	}
 
