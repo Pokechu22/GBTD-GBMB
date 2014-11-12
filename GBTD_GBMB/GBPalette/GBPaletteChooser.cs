@@ -44,7 +44,7 @@ namespace GB.Shared.Palette
 			new ColorItem()
 		};
 
-		[Category("Data")]
+		[Category("Data"), ReadOnly(true), Browsable(true)]
 		public ColorItem[] Colors {
 			get { return colors; }
 			set { colors = value; }
