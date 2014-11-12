@@ -25,13 +25,21 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			GB.Shared.Palette.ColorItem colorItem9 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem10 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem11 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem12 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem13 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem14 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem15 = new GB.Shared.Palette.ColorItem();
+			GB.Shared.Palette.ColorItem colorItem16 = new GB.Shared.Palette.ColorItem();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
 			this.gbPaletteChooser1 = new GB.Shared.Palette.GBPaletteChooser();
+			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
@@ -46,23 +54,6 @@
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Tile";
-			// 
-			// tileRenderer
-			// 
-			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
-			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
-			this.tileRenderer.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
-			this.tileRenderer.Name = "tileRenderer";
-			this.tileRenderer.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
-			this.tileRenderer.TabIndex = 1;
-			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
-			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			// 
 			// buttonOpen
 			// 
@@ -105,10 +96,68 @@
 			// 
 			// gbPaletteChooser1
 			// 
-			this.gbPaletteChooser1.Location = new System.Drawing.Point(72, 16);
+			colorItem9.Black = System.Drawing.Color.Black;
+			colorItem9.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem9.LightGray = System.Drawing.Color.LightGray;
+			colorItem9.White = System.Drawing.Color.White;
+			colorItem10.Black = System.Drawing.Color.Black;
+			colorItem10.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem10.LightGray = System.Drawing.Color.LightGray;
+			colorItem10.White = System.Drawing.Color.White;
+			colorItem11.Black = System.Drawing.Color.Black;
+			colorItem11.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem11.LightGray = System.Drawing.Color.LightGray;
+			colorItem11.White = System.Drawing.Color.White;
+			colorItem12.Black = System.Drawing.Color.Black;
+			colorItem12.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem12.LightGray = System.Drawing.Color.LightGray;
+			colorItem12.White = System.Drawing.Color.White;
+			colorItem13.Black = System.Drawing.Color.Black;
+			colorItem13.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem13.LightGray = System.Drawing.Color.LightGray;
+			colorItem13.White = System.Drawing.Color.White;
+			colorItem14.Black = System.Drawing.Color.Black;
+			colorItem14.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem14.LightGray = System.Drawing.Color.LightGray;
+			colorItem14.White = System.Drawing.Color.White;
+			colorItem15.Black = System.Drawing.Color.Black;
+			colorItem15.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem15.LightGray = System.Drawing.Color.LightGray;
+			colorItem15.White = System.Drawing.Color.White;
+			colorItem16.Black = System.Drawing.Color.Black;
+			colorItem16.DarkGray = System.Drawing.Color.DarkGray;
+			colorItem16.LightGray = System.Drawing.Color.LightGray;
+			colorItem16.White = System.Drawing.Color.White;
+			this.gbPaletteChooser1.Colors = new GB.Shared.Palette.ColorItem[] {
+        colorItem9,
+        colorItem10,
+        colorItem11,
+        colorItem12,
+        colorItem13,
+        colorItem14,
+        colorItem15,
+        colorItem16};
+			this.gbPaletteChooser1.Location = new System.Drawing.Point(66, 55);
 			this.gbPaletteChooser1.Name = "gbPaletteChooser1";
-			this.gbPaletteChooser1.Size = new System.Drawing.Size(150, 150);
+			this.gbPaletteChooser1.Size = new System.Drawing.Size(108, 21);
 			this.gbPaletteChooser1.TabIndex = 2;
+			// 
+			// tileRenderer
+			// 
+			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
+			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
+			this.tileRenderer.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
+			this.tileRenderer.Name = "tileRenderer";
+			this.tileRenderer.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
+			this.tileRenderer.TabIndex = 1;
+			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
+			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			// 
 			// Form1
 			// 

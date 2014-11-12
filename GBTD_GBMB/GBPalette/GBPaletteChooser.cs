@@ -13,6 +13,26 @@ namespace GB.Shared.Palette
 {
 	public partial class GBPaletteChooser : UserControl
 	{
+		protected override Size DefaultMaximumSize {
+			get {
+				return new Size(108, 21);
+			}
+		}
+
+		protected override Size DefaultMinimumSize {
+			get {
+				return new Size(108, 21);
+			}
+		}
+
+		protected override Size DefaultSize {
+			get {
+				return new Size(108, 21);
+			}
+		}
+
+		private PaletteChooserEntry entry0, entry1, entry2, entry3;
+		
 		private ColorItem[] colors = new ColorItem[8] {
 			new ColorItem(),
 			new ColorItem(),
@@ -32,6 +52,20 @@ namespace GB.Shared.Palette
 
 		public GBPaletteChooser() {
 			InitializeComponent();
+
+			entry0 = new PaletteChooserEntry(0, 0, comboBox1);
+			entry1 = new PaletteChooserEntry(1, 0, comboBox1);
+			entry2 = new PaletteChooserEntry(2, 0, comboBox1);
+			entry3 = new PaletteChooserEntry(3, 0, comboBox1);
+
+			this.SuspendLayout();
+			this.Controls.Add(entry0);
+			this.Controls.Add(entry1);
+			this.Controls.Add(entry2);
+			this.Controls.Add(entry3);
+
+			this.comboBox1.SendToBack();
+			this.ResumeLayout();
 		}
 
 		private void comboBox1_DrawItem(object sender, DrawItemEventArgs e) {
@@ -42,13 +76,20 @@ namespace GB.Shared.Palette
 				((ComboBox)(sender)).SelectedIndex = 0;
 			}
 		}
+
+		private void comboBox1_MeasureItem(object sender, MeasureItemEventArgs e) {
+			e.ItemHeight = 19;
+			e.ItemWidth = 19 * 5;
+		}
 	}
 
 	public class ColorItem
 	{
 		internal class ComboBoxPaletteEntry : PaletteEntry
 		{
-			public ComboBoxPaletteEntry(int x, int y) : base(x, y) { }
+			public ComboBoxPaletteEntry(int x, int y) : base(x, y) {
+				this.InitLayout();
+			}
 
 			protected override void SetSelected() {
 				//Do nothing
@@ -154,6 +195,51 @@ namespace GB.Shared.Palette
 			this.DarkGray = Color.DarkGray;
 			this.LightGray = Color.LightGray;
 			this.White = Color.White;
+		}
+	}
+
+	internal class PaletteChooserEntry : PaletteEntry
+	{
+		protected override int X_OFFSET {
+			get {
+				return toOverlay.Location.X + 1;
+			}
+		}
+
+		protected override int Y_OFFSET {
+			get {
+				return toOverlay.Location.Y + 1;
+			}
+		}
+
+		/// <summary>
+		/// Control to put these over.
+		/// </summary>
+		private Control toOverlay;
+
+		public PaletteChooserEntry(int x, int y, Control toOverlay) : base(x, y) {
+			this.toOverlay = toOverlay;
+		}
+
+		protected override void SetSelected() {
+			//Do nothing
+		}
+
+		protected override bool IsSelected() {
+			return false;
+		}
+
+		protected override bool UseGBCFilter {
+			get {
+				return false;
+			}
+			set {
+				throw new NotImplementedException();
+			}
+		}
+
+		protected override Color GetDefaultColor() {
+			return Color.Black;
 		}
 	}
 }

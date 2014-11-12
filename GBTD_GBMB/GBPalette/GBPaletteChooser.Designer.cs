@@ -41,13 +41,13 @@
 			// comboBox1
 			// 
 			this.comboBox1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
 			this.comboBox1.DropDownHeight = 152;
 			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.DropDownWidth = 76;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.IntegralHeight = false;
-			this.comboBox1.ItemHeight = 15;
+			this.comboBox1.ItemHeight = 16;
 			this.comboBox1.Items.AddRange(new object[] {
             "0",
             "1",
@@ -60,9 +60,10 @@
 			this.comboBox1.Location = new System.Drawing.Point(16, 0);
 			this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
 			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(134, 21);
+			this.comboBox1.Size = new System.Drawing.Size(95, 22);
 			this.comboBox1.TabIndex = 1;
 			this.comboBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox1_DrawItem);
+			this.comboBox1.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox1_MeasureItem);
 			// 
 			// GBPaletteChooser
 			// 
@@ -70,9 +71,10 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.vScrollBar1);
-			this.MinimumSize = new System.Drawing.Size(0, 21);
+			this.MaximumSize = new System.Drawing.Size(111, 21);
+			this.MinimumSize = new System.Drawing.Size(111, 21);
 			this.Name = "GBPaletteChooser";
-			this.Size = new System.Drawing.Size(150, 21);
+			this.Size = new System.Drawing.Size(111, 21);
 			this.ResumeLayout(false);
 
 		}

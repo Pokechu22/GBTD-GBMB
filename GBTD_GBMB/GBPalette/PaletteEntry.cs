@@ -88,9 +88,6 @@ namespace GB.Shared.Palette
 
 			this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
-			this.Size = new System.Drawing.Size(WIDTH, HEIGHT);
-			this.Location = new System.Drawing.Point(X_OFFSET + (x * X_SPACING), Y_OFFSET + (y * Y_SPACING));
-
 			this.TabIndex = (y * 4) + x;
 
 			this.Paint += new PaintEventHandler(PalatteEntry_Paint);
@@ -100,6 +97,9 @@ namespace GB.Shared.Palette
 		protected override void InitLayout() {
 			base.InitLayout();
 			this.Color = GetDefaultColor();
+
+			this.Size = new System.Drawing.Size(WIDTH, HEIGHT);
+			this.Location = new System.Drawing.Point(X_OFFSET + (x * X_SPACING), Y_OFFSET + (y * Y_SPACING));
 		}
 
 		/// <summary>
