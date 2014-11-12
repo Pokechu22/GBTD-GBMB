@@ -30,7 +30,6 @@
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
-			this.gbPaletteChooser1 = new GB.Shared.Palette.GBPaletteChooser();
 			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
@@ -38,7 +37,6 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.gbPaletteChooser1);
 			this.groupBox1.Controls.Add(this.tileRenderer);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
@@ -86,15 +84,6 @@
 			this.buttonPalette.UseVisualStyleBackColor = true;
 			this.buttonPalette.Click += new System.EventHandler(this.buttonPalette_Click);
 			// 
-			// gbPaletteChooser1
-			// 
-			this.gbPaletteChooser1.Location = new System.Drawing.Point(66, 55);
-			this.gbPaletteChooser1.MaximumSize = new System.Drawing.Size(111, 21);
-			this.gbPaletteChooser1.MinimumSize = new System.Drawing.Size(111, 21);
-			this.gbPaletteChooser1.Name = "gbPaletteChooser1";
-			this.gbPaletteChooser1.Size = new System.Drawing.Size(111, 21);
-			this.gbPaletteChooser1.TabIndex = 2;
-			// 
 			// tileRenderer
 			// 
 			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
@@ -140,7 +129,6 @@
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.Button buttonPalette;
-		private GB.Shared.Palette.GBPaletteChooser gbPaletteChooser1;
 
 
 

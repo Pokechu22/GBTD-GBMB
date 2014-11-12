@@ -11,8 +11,23 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	public partial class GBPaletteChooser : UserControl
+	internal partial class GBPaletteChooser : UserControl
 	{
+		private bool useGBCFilter;
+		public bool UseGBCFilter {
+			get { return useGBCFilter; }
+			set { useGBCFilter = value; this.Refresh(); }
+		}
+		private int firstMouseSelectedIndex = 0;
+		public int FirstMouseSelectedIndex {
+			get { return firstMouseSelectedIndex; }
+			set {
+				if (value < 0 || value > 3) {
+					throw new ArgumentOutOfRangeException("value", value, "Must be between 0 and 3 (inclusive)");
+				}
+				OnPaletteEntryClicked(value);
+			}
+		}
 		protected override Size DefaultMaximumSize {
 			get {
 				return new Size(108, 21);
@@ -44,6 +59,32 @@ namespace GB.Shared.Palette
 			new ColorItem()
 		};
 
+		#region Events
+		public event SelectedPaletteEventHandler SelectedPaletteChanged;
+
+		protected void OnSelectionChanged() {
+			if (SelectedPaletteChanged != null) {
+				SelectedPaletteChanged(this, new SelectedPaletteEventArgs(dropDown.SelectedIndex, colors[dropDown.SelectedIndex]));
+			}
+			this.Refresh();
+		}
+
+		public event PaletteEntryClickEventHandler PaletteEntryClicked;
+
+		protected void OnPaletteEntryClicked(int clickedIndex) {
+			if (PaletteEntryClicked != null) {
+				PaletteEntryClickEventArgs args = new PaletteEntryClickEventArgs(clickedIndex, this.firstMouseSelectedIndex);
+				PaletteEntryClicked(this, args);
+				if (args.shouldChange) {
+					this.firstMouseSelectedIndex = clickedIndex;
+				}
+			} else {
+				this.firstMouseSelectedIndex = clickedIndex;
+			}
+			this.Refresh();
+		}
+		#endregion
+
 		[Category("Data"), ReadOnly(true), Browsable(true)]
 		public ColorItem[] Colors {
 			get { return colors; }
@@ -53,18 +94,10 @@ namespace GB.Shared.Palette
 		public GBPaletteChooser() {
 			InitializeComponent();
 
-			entry0 = new PaletteChooserEntry(0, 0, dropDown);
-			entry1 = new PaletteChooserEntry(1, 0, dropDown);
-			entry2 = new PaletteChooserEntry(2, 0, dropDown);
-			entry3 = new PaletteChooserEntry(3, 0, dropDown);
-
-			Random r = new Random();
-			for (int x = 0; x < 8; x++) {
-				colors[x].Black = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
-				colors[x].DarkGray = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
-				colors[x].LightGray = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
-				colors[x].White = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
-			}
+			entry0 = new PaletteChooserEntry(0, 0, dropDown, this);
+			entry1 = new PaletteChooserEntry(1, 0, dropDown, this);
+			entry2 = new PaletteChooserEntry(2, 0, dropDown, this);
+			entry3 = new PaletteChooserEntry(3, 0, dropDown, this);
 
 			this.SuspendLayout();
 			this.Controls.Add(entry0);
@@ -119,9 +152,9 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	public class ColorItem
+	internal class ColorItem
 	{
-		internal class ComboBoxPaletteEntry : PaletteEntry
+		private class ComboBoxPaletteEntry : PaletteEntry
 		{
 			public ComboBoxPaletteEntry(int x, int y) : base(x, y) {
 				this.InitLayout();
@@ -252,30 +285,68 @@ namespace GB.Shared.Palette
 		/// Control to put these over.
 		/// </summary>
 		private Control toOverlay;
+		private GBPaletteChooser chooser;
 
-		public PaletteChooserEntry(int x, int y, Control toOverlay) : base(x, y) {
+		public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser chooser) : base(x, y) {
 			this.toOverlay = toOverlay;
+			this.chooser = chooser;
 		}
 
 		protected override void SetSelected() {
-			//Do nothing
+			chooser.FirstMouseSelectedIndex = this.x;
 		}
 
 		protected override bool IsSelected() {
-			return false;
+			return this.x == chooser.FirstMouseSelectedIndex;
 		}
 
 		protected override bool UseGBCFilter {
 			get {
-				return false;
+				return chooser.UseGBCFilter;
 			}
 			set {
-				throw new NotImplementedException();
+				chooser.UseGBCFilter = value;
 			}
 		}
 
 		protected override Color GetDefaultColor() {
 			return Color.Black;
+		}
+
+		protected override void OnClick(EventArgs e) {
+			base.OnClick(e);
+			
+		}
+	}
+
+	internal delegate void SelectedPaletteEventHandler(object sender, SelectedPaletteEventArgs args);
+
+	internal class SelectedPaletteEventArgs : EventArgs
+	{
+		public readonly int index;
+		public readonly ColorItem item;
+
+		public SelectedPaletteEventArgs(int index, ColorItem item) {
+			this.index = index;
+			this.item = item;
+		}
+	}
+
+	internal delegate void PaletteEntryClickEventHandler(object sender, PaletteEntryClickEventArgs e);
+
+	/// <summary>
+	/// Event for when an entry is clicked.
+	/// </summary>
+	internal class PaletteEntryClickEventArgs : EventArgs
+	{
+		public readonly int clickedIndex;
+		public readonly int oldIndex;
+
+		public bool shouldChange = true;
+
+		public PaletteEntryClickEventArgs(int clickedIndex, int oldIndex) {
+			this.clickedIndex = clickedIndex;
+			this.oldIndex = oldIndex;
 		}
 	}
 }
