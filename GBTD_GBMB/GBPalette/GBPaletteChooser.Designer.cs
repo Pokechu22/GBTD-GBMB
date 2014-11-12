@@ -43,9 +43,9 @@
 			// 
 			this.comboBox1.Dock = System.Windows.Forms.DockStyle.Right;
 			this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-			this.comboBox1.DropDownHeight = 152;
+			this.comboBox1.DropDownHeight = 160;
 			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.DropDownWidth = 76;
+			this.comboBox1.DropDownWidth = 95;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.IntegralHeight = false;
 			this.comboBox1.ItemHeight = 16;
