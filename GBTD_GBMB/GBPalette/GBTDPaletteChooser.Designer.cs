@@ -33,10 +33,8 @@
 			this.gbPaletteChooser1.FirstMouseSelectedIndex = 0;
 			this.gbPaletteChooser1.Location = new System.Drawing.Point(2, 2);
 			this.gbPaletteChooser1.Margin = new System.Windows.Forms.Padding(0);
-			this.gbPaletteChooser1.MaximumSize = new System.Drawing.Size(111, 21);
-			this.gbPaletteChooser1.MinimumSize = new System.Drawing.Size(111, 21);
 			this.gbPaletteChooser1.Name = "gbPaletteChooser1";
-			this.gbPaletteChooser1.Size = new System.Drawing.Size(111, 21);
+			this.gbPaletteChooser1.Size = new System.Drawing.Size(111, 22);
 			this.gbPaletteChooser1.TabIndex = 0;
 			this.gbPaletteChooser1.UseGBCFilter = false;
 			// 

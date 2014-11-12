@@ -31,7 +31,6 @@
 			// 
 			// vScrollBar
 			// 
-			this.vScrollBar.Dock = System.Windows.Forms.DockStyle.Left;
 			this.vScrollBar.LargeChange = 1;
 			this.vScrollBar.Location = new System.Drawing.Point(0, 0);
 			this.vScrollBar.Name = "vScrollBar";
@@ -74,10 +73,10 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.dropDown);
 			this.Controls.Add(this.vScrollBar);
-			this.MaximumSize = new System.Drawing.Size(111, 21);
-			this.MinimumSize = new System.Drawing.Size(111, 21);
+			this.MaximumSize = new System.Drawing.Size(111, 22);
+			this.MinimumSize = new System.Drawing.Size(111, 22);
 			this.Name = "GBPaletteChooser";
-			this.Size = new System.Drawing.Size(111, 21);
+			this.Size = new System.Drawing.Size(111, 22);
 			this.ResumeLayout(false);
 
 		}

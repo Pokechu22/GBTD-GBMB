@@ -83,19 +83,19 @@ namespace GB.Shared.Palette
 		}
 		protected override Size DefaultMaximumSize {
 			get {
-				return new Size(108, 21);
+				return new Size(111, 22);
 			}
 		}
 
 		protected override Size DefaultMinimumSize {
 			get {
-				return new Size(108, 21);
+				return new Size(111, 22);
 			}
 		}
 
 		protected override Size DefaultSize {
 			get {
-				return new Size(108, 21);
+				return new Size(111, 22);
 			}
 		}
 

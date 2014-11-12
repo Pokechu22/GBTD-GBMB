@@ -26,12 +26,12 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDPaletteChooser();
 			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
+			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDPaletteChooser();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
@@ -46,14 +46,6 @@
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Tile";
-			// 
-			// gbtdPaletteChooser1
-			// 
-			this.gbtdPaletteChooser1.Location = new System.Drawing.Point(54, 51);
-			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
-			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
-			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(184, 150);
-			this.gbtdPaletteChooser1.TabIndex = 2;
 			// 
 			// tileRenderer
 			// 
@@ -110,6 +102,15 @@
 			this.buttonPalette.Text = "Palette....";
 			this.buttonPalette.UseVisualStyleBackColor = true;
 			this.buttonPalette.Click += new System.EventHandler(this.buttonPalette_Click);
+			// 
+			// gbtdPaletteChooser1
+			// 
+			this.gbtdPaletteChooser1.Location = new System.Drawing.Point(54, 51);
+			this.gbtdPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
+			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
+			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
+			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(184, 150);
+			this.gbtdPaletteChooser1.TabIndex = 2;
 			// 
 			// Form1
 			// 
