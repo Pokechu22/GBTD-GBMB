@@ -151,6 +151,7 @@ namespace GB.Shared.Palette
 			} else {
 				this.ForeColor = Color.Black;
 			}
+			this.Refresh();
 		}
 
 		/// <summary>

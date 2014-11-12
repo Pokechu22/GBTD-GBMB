@@ -58,6 +58,14 @@ namespace GB.Shared.Palette
 			entry2 = new PaletteChooserEntry(2, 0, comboBox1);
 			entry3 = new PaletteChooserEntry(3, 0, comboBox1);
 
+			Random r = new Random();
+			for (int x = 0; x < 8; x++) {
+				colors[x].Black = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
+				colors[x].DarkGray = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
+				colors[x].LightGray = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
+				colors[x].White = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
+			}
+
 			this.SuspendLayout();
 			this.Controls.Add(entry0);
 			this.Controls.Add(entry1);
@@ -66,6 +74,8 @@ namespace GB.Shared.Palette
 
 			this.comboBox1.SendToBack();
 			this.ResumeLayout();
+
+			vScrollBar1.Maximum = comboBox1.Items.Count - 1;
 		}
 
 		private void comboBox1_DrawItem(object sender, DrawItemEventArgs e) {
@@ -80,6 +90,38 @@ namespace GB.Shared.Palette
 		private void comboBox1_MeasureItem(object sender, MeasureItemEventArgs e) {
 			e.ItemHeight = 19;
 			e.ItemWidth = 19 * 5;
+		}
+
+		private void vScrollBar1_ValueChanged(object sender, EventArgs e) {
+			comboBox1.SelectedIndex = vScrollBar1.Value;
+		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+			//Update the other icons.
+			//if (sender is ComboBox) {
+				ComboBox box = (ComboBox)sender;
+				//if (box.SelectedItem is ColorItem) {
+					ColorItem item = colors[Convert.ToInt32((String)box.Text)];
+					entry0.Color = item.White;
+					entry1.Color = item.LightGray;
+					entry2.Color = item.DarkGray;
+					entry3.Color = item.Black;
+				//}
+			//}
+		}
+
+		private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e) {
+			//Update the other icons.
+			//if (sender is ComboBox) {
+				ComboBox box = (ComboBox)sender;
+				//if (box.SelectedItem is ColorItem) {
+					ColorItem item = colors[Convert.ToInt32((String)box.Text)];
+					entry0.Color = item.White;
+					entry1.Color = item.LightGray;
+					entry2.Color = item.DarkGray;
+					entry3.Color = item.Black;
+				//}
+			//}
 		}
 	}
 
