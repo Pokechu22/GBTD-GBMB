@@ -62,7 +62,7 @@ namespace GB.Shared.Palette
 
 			protected override void OnClick(EventArgs e) {
 				base.OnClick(e);
-
+				
 			}
 		}
 

@@ -58,6 +58,12 @@
     <Compile Include="GBPaletteSetSelector.Designer.cs">
       <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="GBTDPaletteChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GBTDPaletteChooser.Designer.cs">
+      <DependentUpon>GBTDPaletteChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaletteEntry.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -77,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="GBPaletteChooser.resx">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GBTDPaletteChooser.resx">
+      <DependentUpon>GBTDPaletteChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

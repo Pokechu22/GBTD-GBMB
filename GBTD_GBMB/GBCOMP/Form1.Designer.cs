@@ -26,17 +26,19 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDPaletteChooser();
+			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
-			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.gbtdPaletteChooser1);
 			this.groupBox1.Controls.Add(this.tileRenderer);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
@@ -44,6 +46,31 @@
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Tile";
+			// 
+			// gbtdPaletteChooser1
+			// 
+			this.gbtdPaletteChooser1.Location = new System.Drawing.Point(54, 51);
+			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
+			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
+			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(184, 150);
+			this.gbtdPaletteChooser1.TabIndex = 2;
+			// 
+			// tileRenderer
+			// 
+			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
+			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
+			this.tileRenderer.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
+			this.tileRenderer.Name = "tileRenderer";
+			this.tileRenderer.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
+			this.tileRenderer.TabIndex = 1;
+			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
+			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			// 
 			// buttonOpen
 			// 
@@ -84,23 +111,6 @@
 			this.buttonPalette.UseVisualStyleBackColor = true;
 			this.buttonPalette.Click += new System.EventHandler(this.buttonPalette_Click);
 			// 
-			// tileRenderer
-			// 
-			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
-			this.tileRenderer.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer.Location = new System.Drawing.Point(6, 19);
-			this.tileRenderer.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
-			this.tileRenderer.Name = "tileRenderer";
-			this.tileRenderer.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.tileRenderer.Size = new System.Drawing.Size(256, 224);
-			this.tileRenderer.TabIndex = 1;
-			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
-			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +139,7 @@
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.Button buttonPalette;
+		private GB.Shared.Palette.GBTDPaletteChooser gbtdPaletteChooser1;
 
 
 
