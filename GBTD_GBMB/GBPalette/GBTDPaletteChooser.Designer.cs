@@ -25,28 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.borderL = new System.Windows.Forms.Panel();
-			this.borderR = new System.Windows.Forms.Panel();
 			this.gbPaletteChooser1 = new GB.Shared.Palette.GBPaletteChooser();
 			this.SuspendLayout();
-			// 
-			// borderL
-			// 
-			this.borderL.Location = new System.Drawing.Point(2, 2);
-			this.borderL.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-			this.borderL.Name = "borderL";
-			this.borderL.Size = new System.Drawing.Size(36, 22);
-			this.borderL.TabIndex = 1;
-			this.borderL.Paint += new System.Windows.Forms.PaintEventHandler(this.paintInnerBorder);
-			// 
-			// borderR
-			// 
-			this.borderR.Location = new System.Drawing.Point(39, 2);
-			this.borderR.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-			this.borderR.Name = "borderR";
-			this.borderR.Size = new System.Drawing.Size(36, 22);
-			this.borderR.TabIndex = 2;
-			this.borderR.Paint += new System.Windows.Forms.PaintEventHandler(this.paintInnerBorder);
 			// 
 			// gbPaletteChooser1
 			// 
@@ -63,8 +43,6 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.borderR);
-			this.Controls.Add(this.borderL);
 			this.Controls.Add(this.gbPaletteChooser1);
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "GBTDPaletteChooser";
@@ -78,7 +56,5 @@
 		#endregion
 
 		private GBPaletteChooser gbPaletteChooser1;
-		private System.Windows.Forms.Panel borderL;
-		private System.Windows.Forms.Panel borderR;
 	}
 }
