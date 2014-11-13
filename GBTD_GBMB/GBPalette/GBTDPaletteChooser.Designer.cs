@@ -31,7 +31,6 @@
 			// gbPaletteChooser1
 			// 
 			this.gbPaletteChooser1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.gbPaletteChooser1.FirstMouseSelectedIndex = 0;
 			this.gbPaletteChooser1.Location = new System.Drawing.Point(78, 2);
 			this.gbPaletteChooser1.Margin = new System.Windows.Forms.Padding(0);
 			this.gbPaletteChooser1.Name = "gbPaletteChooser1";

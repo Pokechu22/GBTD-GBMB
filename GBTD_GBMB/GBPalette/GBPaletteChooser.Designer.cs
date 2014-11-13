@@ -65,7 +65,7 @@
 			this.dropDown.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.dropDown_DrawItem);
 			this.dropDown.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.dropDown_MeasureItem);
 			this.dropDown.SelectedIndexChanged += new System.EventHandler(this.dropDown_SelectedIndexChanged);
-			this.dropDown.SelectionChangeCommitted += new System.EventHandler(this.dropDown_electionChangeCommitted);
+			this.dropDown.SelectionChangeCommitted += new System.EventHandler(this.dropDown_SelectionChangeCommitted);
 			// 
 			// GBPaletteChooser
 			// 

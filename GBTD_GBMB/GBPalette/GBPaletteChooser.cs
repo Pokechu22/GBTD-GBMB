@@ -13,7 +13,7 @@ namespace GB.Shared.Palette
 {
 	internal partial class GBPaletteChooser : UserControl
 	{
-		private class PaletteChooserEntry : PaletteEntry
+		protected class PaletteChooserEntry : PaletteEntry
 		{
 			protected override int X_OFFSET {
 				get {
@@ -40,11 +40,13 @@ namespace GB.Shared.Palette
 			}
 
 			protected override void SetSelected() {
-				chooser.FirstMouseSelectedIndex = this.x;
+				if (chooser.SelectOnLeftClick) {
+					chooser.SelectedIndex = this.x;
+				}
 			}
 
 			protected override bool IsSelected() {
-				return this.x == chooser.FirstMouseSelectedIndex;
+				return this.x == chooser.SelectedIndex;
 			}
 
 			protected override bool UseGBCFilter {
@@ -60,27 +62,43 @@ namespace GB.Shared.Palette
 				return Color.Black;
 			}
 
-			protected override void OnClick(EventArgs e) {
-				base.OnClick(e);
-				
+			protected override void OnMouseDown(MouseEventArgs e) {
+				base.OnMouseDown(e);
+
+				chooser.OnPaletteEntryClicked(this, e.Button);
 			}
 		}
 
 		private bool useGBCFilter;
+		/// <summary>
+		/// Controls whether or not to render with the GBC Filter.
+		/// </summary>
+		[Category("Behavior"), Description("Controls whether or not to render with the GBC Filter.")]
 		public bool UseGBCFilter {
 			get { return useGBCFilter; }
 			set { useGBCFilter = value; this.Refresh(); }
 		}
-		private int firstMouseSelectedIndex = 0;
-		public int FirstMouseSelectedIndex {
-			get { return firstMouseSelectedIndex; }
-			set {
-				if (value < 0 || value > 3) {
-					throw new ArgumentOutOfRangeException("value", value, "Must be between 0 and 3 (inclusive)");
-				}
-				OnPaletteEntryClicked(value);
-			}
+
+		private int selectedIndex = -1;
+		/// <summary>
+		/// The currently-selected index.
+		/// </summary>
+		[Category("Data"), Description("The currently-selected index.")]
+		public int SelectedIndex {
+			get { return selectedIndex; }
+			set { selectedIndex = value; this.Refresh(); }
 		}
+
+		private bool selectOnLeftClick = true;
+		/// <summary>
+		/// Controls whether or not to select a value on left click.
+		/// </summary>
+		[Category("Behavior"), Description("Controls whether or not to select a value on left click.")]
+		public bool SelectOnLeftClick {
+			get { return selectOnLeftClick; }
+			set { selectOnLeftClick = value; }
+		}
+
 		protected override Size DefaultMaximumSize {
 			get {
 				return new Size(111, 22);
@@ -113,26 +131,20 @@ namespace GB.Shared.Palette
 		};
 
 		#region Events
-		public event SelectedPaletteEventHandler SelectedPaletteChanged;
+		public event SelectedPaletteChangeEventHandler SelectedPaletteChanged;
 
-		protected void OnSelectionChanged() {
+		protected void OnSelectedPaletteChanged() {
 			if (SelectedPaletteChanged != null) {
-				SelectedPaletteChanged(this, new SelectedPaletteEventArgs(dropDown.SelectedIndex, colors[dropDown.SelectedIndex]));
+				SelectedPaletteChanged(this, new SelectedPaletteChangeEventArgs(this, dropDown.SelectedIndex));
 			}
 			this.Refresh();
 		}
 
 		public event PaletteEntryClickEventHandler PaletteEntryClicked;
 
-		protected void OnPaletteEntryClicked(int clickedIndex) {
+		protected void OnPaletteEntryClicked(PaletteChooserEntry entry, MouseButtons buttons) {
 			if (PaletteEntryClicked != null) {
-				PaletteEntryClickEventArgs args = new PaletteEntryClickEventArgs(clickedIndex, this.firstMouseSelectedIndex);
-				PaletteEntryClicked(this, args);
-				if (args.shouldChange) {
-					this.firstMouseSelectedIndex = clickedIndex;
-				}
-			} else {
-				this.firstMouseSelectedIndex = clickedIndex;
+				PaletteEntryClicked(this, new PaletteEntryClickEventArgs(this, this.dropDown.SelectedIndex, entry.x, buttons));
 			}
 			this.Refresh();
 		}
@@ -193,7 +205,7 @@ namespace GB.Shared.Palette
 			entry3.Color = item.Black;
 		}
 
-		private void dropDown_electionChangeCommitted(object sender, EventArgs e) {
+		private void dropDown_SelectionChangeCommitted(object sender, EventArgs e) {
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
@@ -320,34 +332,52 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	internal delegate void SelectedPaletteEventHandler(object sender, SelectedPaletteEventArgs args);
+	/// <summary>
+	/// Event for when the selected palette is changed.
+	/// </summary>
+	internal delegate void SelectedPaletteChangeEventHandler(object sender, SelectedPaletteChangeEventArgs e);
 
-	internal class SelectedPaletteEventArgs : EventArgs
+	/// <summary>
+	/// Event for when the selected palette is changed.
+	/// </summary>
+	internal class SelectedPaletteChangeEventArgs : EventArgs
 	{
-		public readonly int index;
-		public readonly ColorItem item;
+		private readonly GBPaletteChooser sender;
 
-		public SelectedPaletteEventArgs(int index, ColorItem item) {
-			this.index = index;
-			this.item = item;
+		public readonly int newIndex;
+		public readonly ColorItem newItem;
+
+		public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
+			this.sender = sender;
+			this.newIndex = newIndex;
+			this.newItem = sender.Colors[newIndex];
 		}
 	}
 
 	internal delegate void PaletteEntryClickEventHandler(object sender, PaletteEntryClickEventArgs e);
 
-	/// <summary>
-	/// Event for when an entry is clicked.
-	/// </summary>
 	internal class PaletteEntryClickEventArgs : EventArgs
 	{
-		public readonly int clickedIndex;
-		public readonly int oldIndex;
+		private readonly GBPaletteChooser sender;
 
-		public bool shouldChange = true;
+		public readonly int paletteIndex;
+		public readonly ColorItem palette;
 
-		public PaletteEntryClickEventArgs(int clickedIndex, int oldIndex) {
-			this.clickedIndex = clickedIndex;
-			this.oldIndex = oldIndex;
+		public readonly int clickedEntry;
+		public readonly Color clickedEntryColor;
+
+		public readonly MouseButtons button;
+
+		public PaletteEntryClickEventArgs(GBPaletteChooser sender, int paletteIndex, int clickedEntry, MouseButtons button) {
+			this.sender = sender;
+			
+			this.paletteIndex = paletteIndex;
+			this.palette = sender.Colors[paletteIndex];
+
+			this.clickedEntry = clickedEntry;
+			this.clickedEntryColor = palette[clickedEntry];
+
+			this.button = button;
 		}
 	}
 }
