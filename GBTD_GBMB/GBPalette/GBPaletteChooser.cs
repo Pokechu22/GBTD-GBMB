@@ -275,40 +275,40 @@ namespace GB.Shared.Palette
 		[Category("Data")]
 		public Color White {
 			get {
-				return colors[(int)GBColor.WHITE];
+				return colors[0];
 			}
 			set {
-				colors[(int)GBColor.WHITE] = value;
+				colors[0] = value;
 			}
 		}
 
 		[Category("Data")]
 		public Color LightGray {
 			get {
-				return colors[(int)GBColor.LIGHT_GRAY];
+				return colors[1];
 			}
 			set {
-				colors[(int)GBColor.LIGHT_GRAY] = value;
+				colors[1] = value;
 			}
 		}
 
 		[Category("Data")]
 		public Color DarkGray {
 			get {
-				return colors[(int)GBColor.DARK_GRAY];
+				return colors[2];
 			}
 			set {
-				colors[(int)GBColor.DARK_GRAY] = value;
+				colors[2] = value;
 			}
 		}
 
 		[Category("Data")]
 		public Color Black {
 			get {
-				return colors[(int)GBColor.BLACK];
+				return colors[3];
 			}
 			set {
-				colors[(int)GBColor.BLACK] = value;
+				colors[3] = value;
 			}
 		}
 
@@ -323,10 +323,22 @@ namespace GB.Shared.Palette
 
 		public Color this[GBColor color] {
 			get {
-				return colors[(int)color];
+				switch (color) {
+				case GBColor.BLACK: return this.Black;
+				case GBColor.DARK_GRAY: return this.DarkGray;
+				case GBColor.LIGHT_GRAY: return this.LightGray;
+				case GBColor.WHITE: return this.White;
+				default: throw new ArgumentException("Color " + color + " (int: " + ((int)color) + ") is not valid.");
+				}
 			}
 			set {
-				colors[(int)color] = value;
+				switch (color) {
+				case GBColor.BLACK: this.Black = value; return;
+				case GBColor.DARK_GRAY: this.DarkGray = value; return;
+				case GBColor.LIGHT_GRAY: this.LightGray = value; return;
+				case GBColor.WHITE: this.White = value; return;
+				default: throw new ArgumentException("Color " + color + " (int: " + ((int)color) + ") is not valid.");
+				}
 			}
 		}
 
