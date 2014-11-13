@@ -27,6 +27,12 @@ namespace GB.Shared.Palette
 				}
 			}
 
+			protected override System.Windows.Forms.MouseButtons SelectionButtons {
+				get {
+					return MouseButtons.Left;
+				}
+			}
+
 			/// <summary>
 			/// Control to put these over.
 			/// </summary>

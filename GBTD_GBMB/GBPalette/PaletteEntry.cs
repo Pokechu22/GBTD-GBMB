@@ -63,6 +63,20 @@ namespace GB.Shared.Palette
 			get { return HEIGHT + 9; }
 		}
 
+		/// <summary>
+		/// MouseButtons that can be used to select this control.
+		/// </summary>
+		protected virtual MouseButtons SelectionButtons {
+			get {
+				//By default, all butons.
+				return System.Windows.Forms.MouseButtons.Left |
+					System.Windows.Forms.MouseButtons.Right |
+					System.Windows.Forms.MouseButtons.Middle |
+					System.Windows.Forms.MouseButtons.XButton1 |
+					System.Windows.Forms.MouseButtons.XButton2;
+			}
+		}
+
 		public readonly int x, y;
 
 		private Color color;
@@ -130,7 +144,9 @@ namespace GB.Shared.Palette
 			if (sender is PaletteEntry) {
 				PaletteEntry entry = (PaletteEntry)sender;
 
-				entry.SetSelected();
+				if (entry.SelectionButtons.HasFlag(e.Button)) {
+					entry.SetSelected();
+				}
 			}
 		}
 
