@@ -34,9 +34,13 @@
 			this.gbPaletteChooser1.Location = new System.Drawing.Point(78, 2);
 			this.gbPaletteChooser1.Margin = new System.Windows.Forms.Padding(0);
 			this.gbPaletteChooser1.Name = "gbPaletteChooser1";
+			this.gbPaletteChooser1.SelectedIndex = -1;
+			this.gbPaletteChooser1.SelectOnLeftClick = true;
 			this.gbPaletteChooser1.Size = new System.Drawing.Size(111, 22);
 			this.gbPaletteChooser1.TabIndex = 0;
 			this.gbPaletteChooser1.UseGBCFilter = false;
+			this.gbPaletteChooser1.SelectedPaletteChanged += new GB.Shared.Palette.SelectedPaletteChangeEventHandler(this.gbPaletteChooser1_SelectedPaletteChanged);
+			this.gbPaletteChooser1.PaletteEntryClicked += new GB.Shared.Palette.PaletteEntryClickEventHandler(this.gbPaletteChooser1_PaletteEntryClicked);
 			// 
 			// GBTDPaletteChooser
 			// 

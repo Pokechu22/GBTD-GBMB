@@ -47,6 +47,12 @@ namespace GB.Shared.Palette
 					}
 				}
 
+				private int index = 0;
+				public int Index {
+					get { return index; }
+					set { index = value; this.Text = value.ToString(); this.Refresh(); }
+				}
+
 				public GBTDPaletteChooserMouseEntryPaletteEntry(MouseButtons buttons, GBTDPaletteChooser chooser) : base(0, 0) {
 					this.chooser = chooser;
 				}
@@ -93,9 +99,30 @@ namespace GB.Shared.Palette
 			}
 
 			private GBTDPaletteChooserMouseEntryPaletteEntry entry;
+			private MouseButtons buttons;
+
+			private ColorItem item = new ColorItem();
+			public ColorItem Item {
+				get { return item; }
+				set { item = value; OnValueChange(); }
+			}
+
+			private int index;
+			public int Index {
+				get { return entry.Index; }
+				set { index = value; OnValueChange(); }
+			}
+
+			private void OnValueChange() {
+				entry.Color = item[index];
+				entry.Index = index;
+				this.Refresh();
+			}
 
 			public GBTDPaletteChooserMouseEntry(MouseButtons buttons, GBTDPaletteChooser chooser) : base() {
 				String identifier;
+
+				this.buttons = buttons;
 
 				switch (buttons) {
 				case System.Windows.Forms.MouseButtons.Left: identifier = "L"; break;
@@ -254,6 +281,32 @@ namespace GB.Shared.Palette
 		private void GBTDPaletteChooser_Paint(object sender, PaintEventArgs e) {
 			//Paints a border.
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, this.Width, this.Height, Border3DStyle.RaisedInner);
+		}
+
+		private void gbPaletteChooser1_SelectedPaletteChanged(object sender, SelectedPaletteChangeEventArgs e) {
+			this.mouseButtonL.Item = e.newItem;
+			this.mouseButtonR.Item = e.newItem;
+			this.mouseButtonM.Item = e.newItem;
+			this.mouseButtonX1.Item = e.newItem;
+			this.mouseButtonX2.Item = e.newItem;
+		}
+
+		private void gbPaletteChooser1_PaletteEntryClicked(object sender, PaletteEntryClickEventArgs e) {
+			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
+				this.mouseButtonL.Index = e.clickedEntry;
+			}
+			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
+				this.mouseButtonR.Index = e.clickedEntry;
+			}
+			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.Middle)) {
+				this.mouseButtonM.Index = e.clickedEntry;
+			}
+			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.XButton1)) {
+				this.mouseButtonX1.Index = e.clickedEntry;
+			}
+			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.XButton2)) {
+				this.mouseButtonX2.Index = e.clickedEntry;
+			}
 		}
 	}
 }
