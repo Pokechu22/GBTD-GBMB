@@ -115,7 +115,7 @@ namespace GB.Shared.Palette
 				Label label = new Label();
 				label.Name = "label_" + this.Name;
 				label.Text = identifier;
-				label.Location = new Point(2, 2);
+				label.Location = new Point(2, 5);
 				label.BackColor = Color.FromArgb(0, 0, 0, 0);
 
 				this.entry = new GBTDPaletteChooserMouseEntryPaletteEntry(buttons, chooser);
