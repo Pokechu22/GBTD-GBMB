@@ -157,19 +157,98 @@ namespace GB.Shared.Palette
 			}
 		}
 
+		private MouseButtons displayedButtons = System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right;
+
+		private GBTDPaletteChooserMouseEntry mouseButtonL, mouseButtonR, mouseButtonM, mouseButtonX1, mouseButtonX2;
+
+		[Category("Display"), Description("Controls which buttons are displayed.")]
+		public MouseButtons DisplayedButtons {
+			get { return displayedButtons; }
+			set { displayedButtons = value; OnButtonsChange(value); }
+		}
+
+		protected void OnButtonsChange(MouseButtons change) {
+			//Values for individual controls
+			//Initial value of each coord
+			const int INITIAL_X = 2, INITIAL_Y = 2;
+			//Change applied to each coord
+			const int X_OFFSET = 38, Y_OFFSET = 0;
+			//Current coords
+			int x = INITIAL_X, y = INITIAL_Y;
+
+			if (change.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
+				mouseButtonL.Visible = mouseButtonL.Enabled = true;
+				mouseButtonL.Location = new Point(x, y);
+
+				x += X_OFFSET; y += Y_OFFSET;
+			} else {
+				mouseButtonL.Visible = mouseButtonL.Enabled = false;
+			}
+			if (change.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
+				mouseButtonR.Visible = mouseButtonR.Enabled = true;
+				mouseButtonR.Location = new Point(x, y);
+
+				x += X_OFFSET; y += Y_OFFSET;
+			} else {
+				mouseButtonR.Visible = mouseButtonR.Enabled = false;
+			}
+			if (change.HasFlag(System.Windows.Forms.MouseButtons.Middle)) {
+				mouseButtonM.Visible = mouseButtonM.Enabled = true;
+				mouseButtonM.Location = new Point(x, y);
+
+				x += X_OFFSET; y += Y_OFFSET;
+			} else {
+				mouseButtonM.Visible = mouseButtonM.Enabled = false;
+			}
+			if (change.HasFlag(System.Windows.Forms.MouseButtons.XButton1)) {
+				mouseButtonX1.Visible = mouseButtonX1.Enabled = true;
+				mouseButtonX1.Location = new Point(x, y);
+
+				x += X_OFFSET; y += Y_OFFSET;
+			} else {
+				mouseButtonX1.Visible = mouseButtonX1.Enabled = false;
+			}
+			if (change.HasFlag(System.Windows.Forms.MouseButtons.XButton2)) {
+				mouseButtonX2.Visible = mouseButtonX2.Enabled = true;
+				mouseButtonX2.Location = new Point(x, y);
+
+				x += X_OFFSET; y += Y_OFFSET;
+			} else {
+				mouseButtonX2.Visible = mouseButtonX2.Enabled = false;
+			}
+
+			this.MaximumSize = new Size(113 + x, 26);
+			this.MinimumSize = new Size(113 + x, 26);
+			this.Size = new Size(113 + x, 26);
+
+			this.Refresh();
+		}
+
 		public GBTDPaletteChooser() {
 			InitializeComponent();
 
 			this.SuspendLayout();
-			GBTDPaletteChooserMouseEntry mouseButtonL = new GBTDPaletteChooserMouseEntry(MouseButtons.Left, this);
-			mouseButtonL.Location = new Point(2, 2);
 
-			GBTDPaletteChooserMouseEntry mouseButtonR = new GBTDPaletteChooserMouseEntry(MouseButtons.Right, this);
-			mouseButtonR.Location = new Point(40, 2);
+			mouseButtonL = new GBTDPaletteChooserMouseEntry(MouseButtons.Left, this);
+			mouseButtonR = new GBTDPaletteChooserMouseEntry(MouseButtons.Right, this);
+			mouseButtonM = new GBTDPaletteChooserMouseEntry(MouseButtons.Middle, this);
+			mouseButtonX1 = new GBTDPaletteChooserMouseEntry(MouseButtons.XButton1, this);
+			mouseButtonX2 = new GBTDPaletteChooserMouseEntry(MouseButtons.XButton2, this);
+
+			mouseButtonL.Visible = mouseButtonL.Enabled = false;
+			mouseButtonR.Visible = mouseButtonR.Enabled = false;
+			mouseButtonM.Visible = mouseButtonM.Enabled = false;
+			mouseButtonX1.Visible = mouseButtonX1.Enabled = false;
+			mouseButtonX2.Visible = mouseButtonX2.Enabled = false;
 
 			this.Controls.Add(mouseButtonL);
 			this.Controls.Add(mouseButtonR);
+			this.Controls.Add(mouseButtonM);
+			this.Controls.Add(mouseButtonX1);
+			this.Controls.Add(mouseButtonX2);
 			this.ResumeLayout();
+
+			this.OnButtonsChange(this.displayedButtons);
 		}
 
 		private void GBTDPaletteChooser_Paint(object sender, PaintEventArgs e) {
