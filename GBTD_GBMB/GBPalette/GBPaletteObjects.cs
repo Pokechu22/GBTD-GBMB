@@ -192,5 +192,14 @@ namespace GB.Shared.Palette
 		/// Sets the color of this value to the wanted color.
 		/// </summary>
 		public abstract void SetToDefaultColor();
+
+		/// <summary>
+		/// Converts this to the actual color used.
+		/// </summary>
+		/// <param name="entry"></param>
+		/// <returns></returns>
+		public virtual implicit operator Color(GBPaletteEntry entry) {
+			return entry.Color;
+		}
 	}
 }
