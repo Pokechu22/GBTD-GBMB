@@ -52,6 +52,7 @@
     <Compile Include="GBPaletteChooser.Designer.cs">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </Compile>
+    <Compile Include="GBPaletteObjects.cs" />
     <Compile Include="GBPaletteSetSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
