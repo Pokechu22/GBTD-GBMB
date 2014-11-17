@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Drawing;
@@ -30,18 +31,38 @@ namespace GB.Shared.Palette
 	/// <typeparam name="Entry"></typeparam>
 	public interface GBPalette<Entry> where Entry : GBPaletteEntry
 	{
+		/// <summary>
+		/// The 'White' color used on this.
+		/// (White is in quotes because it could be anything)
+		/// </summary>
+		[Category("Data"), Description("The 'White' color used on this.\n(White is in quotes because it could be anything)")]
 		public abstract Entry EntryWhite {
 			get;
 			set;
 		}
+		/// <summary>
+		/// The 'Light gray' color used on this.
+		/// (Light gray is in quotes because it could be anything)
+		/// </summary>
+		[Category("Data"), Description("The 'Light gray' color used on this.\n(Light gray is in quotes because it could be anything)")]
 		public abstract Entry EntryLightGray {
 			get;
 			set;
 		}
+		/// <summary>
+		/// The 'Dark gray' color used on this.
+		/// (Dark gray is in quotes because it could be anything)
+		/// </summary>
+		[Category("Data"), Description("The 'Dark gray' color used on this.\n(Dark gray is in quotes because it could be anything)")]
 		public abstract Entry EntryDarkGray {
 			get;
 			set;
 		}
+		/// <summary>
+		/// The 'Black' color used on this.
+		/// (Black is in quotes because it could be anything)
+		/// </summary>
+		[Category("Data"), Description("The 'Black' color used on this.\n(Black is in quotes because it could be anything)")]
 		public abstract Entry EntryBlack {
 			get;
 			set;
@@ -165,15 +186,21 @@ namespace GB.Shared.Palette
 		/// <summary>
 		/// The ID used to render this.
 		/// </summary>
+		[Category("Data"), Description("The ID used in rendering.  Controls position.")]
+		[ReadOnly(true)]
 		public readonly int CorespondingID;
 		/// <summary>
 		/// The GBColor that is repersented by this.
 		/// </summary>
+		[Category("Data"), Description("The GBColor that this repersents.")]
+		[ReadOnly(true)]
 		public readonly GBColor CorespondingColor;
 
 		/// <summary>
 		/// The color used to display the entry.
 		/// </summary>
+		[Category("Data"), Description("The color that is displayed by this.")]
+		[ReadOnly(true)]
 		public virtual Color DisplayColor {
 			get {
 				return Color;
@@ -183,6 +210,7 @@ namespace GB.Shared.Palette
 		/// <summary>
 		/// The color used by this entry.
 		/// </summary>
+		[Category("Data"), Description("The color used by this entry.")]
 		public abstract Color Color {
 			get;
 			set;
