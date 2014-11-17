@@ -15,10 +15,16 @@ namespace GB.Shared.Palette
 	/// <typeparam name="Row"></typeparam>
 	public interface GBPaletteSet<Row> where Row : GBPalette<GBPaletteEntry>
 	{
+		/// <summary>
+		/// The total number for rows.
+		/// </summary>
 		public abstract int NumberOfRows {
 			get;
 		}
 
+		/// <summary>
+		/// Each individual row.
+		/// </summary>
 		public abstract Row[] Rows {
 			get;
 			set;
