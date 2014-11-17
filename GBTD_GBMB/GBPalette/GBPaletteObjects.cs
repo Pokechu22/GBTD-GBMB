@@ -18,6 +18,7 @@ namespace GB.Shared.Palette
 		/// <summary>
 		/// The total number for rows.
 		/// </summary>
+		[Category("Data"), Description("The total number of rows.")]
 		public abstract int NumberOfRows {
 			get;
 		}
@@ -25,9 +26,27 @@ namespace GB.Shared.Palette
 		/// <summary>
 		/// Each individual row.
 		/// </summary>
+		[Category("Data"), Description("Each individual row.")]
 		public abstract Row[] Rows {
 			get;
 			set;
+		}
+
+		/// <summary>
+		/// Gets or sets the specified row, for convineince.
+		/// </summary>
+		/// <param name="row"></param>
+		/// <returns></returns>
+		[Category("Data"), Description("Gets or sets the specified row.")]
+		[NonSerialized]
+		public virtual Row this[int row] {
+			get { return Rows[row]; }
+			set {
+				if (row < 0 || row >= Rows.Length) {
+					throw new IndexOutOfRangeException("Must be between 0 and " + (Rows.Length - 1) + ".");
+				}
+				Rows[row] = value;
+			}
 		}
 	}
 
