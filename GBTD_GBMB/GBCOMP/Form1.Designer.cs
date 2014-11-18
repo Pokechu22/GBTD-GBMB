@@ -31,7 +31,7 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
 			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
-			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDPaletteChooser();
+			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
@@ -142,7 +142,7 @@
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.Button buttonPalette;
-		private GB.Shared.Palette.GBTDPaletteChooser gbtdPaletteChooser1;
+		private GB.Shared.Palette.GBTDGBCPaletteChooser gbtdPaletteChooser1;
 
 
 

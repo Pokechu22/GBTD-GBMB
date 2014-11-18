@@ -11,8 +11,60 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	internal partial class GBPaletteChooser : UserControl
+	internal partial class GBPaletteChooser<TSet, TRow, TEntry> : UserControl
+		where TSet : IPaletteSet<TRow, TEntry>
+		where TRow : IPalette<TEntry>
+		where TEntry: IPaletteEntry
 	{
+		/// <summary>
+		/// Event for when the selected palette is changed.
+		/// </summary>
+		internal delegate void SelectedPaletteChangeEventHandler(object sender, SelectedPaletteChangeEventArgs e);
+
+		internal delegate void PaletteEntryClickEventHandler(object sender, PaletteEntryClickEventArgs e);
+
+		/// <summary>
+		/// Event for when the selected palette is changed.
+		/// </summary>
+		internal class SelectedPaletteChangeEventArgs : EventArgs
+		{
+			private readonly GBPaletteChooser<TSet, TRow, TEntry> sender;
+
+			public readonly int newIndex;
+			public readonly ColorItem newItem;
+
+			public SelectedPaletteChangeEventArgs(GBPaletteChooser<TSet, TRow, TEntry> sender, int newIndex) {
+				this.sender = sender;
+				this.newIndex = newIndex;
+				this.newItem = sender.Colors[newIndex];
+			}
+		}
+
+		internal class PaletteEntryClickEventArgs : EventArgs
+		{
+			private readonly GBPaletteChooser<TSet, TRow, TEntry> sender;
+
+			public readonly int paletteIndex;
+			public readonly ColorItem palette;
+
+			public readonly int clickedEntry;
+			public readonly Color clickedEntryColor;
+
+			public readonly MouseButtons button;
+
+			public PaletteEntryClickEventArgs(GBPaletteChooser<TSet, TRow, TEntry> sender, int paletteIndex, int clickedEntry, MouseButtons button) {
+				this.sender = sender;
+
+				this.paletteIndex = paletteIndex;
+				this.palette = sender.Colors[paletteIndex];
+
+				this.clickedEntry = clickedEntry;
+				this.clickedEntryColor = palette[clickedEntry];
+
+				this.button = button;
+			}
+		}
+
 		protected class PaletteChooserEntry : PaletteEntry
 		{
 			protected override int X_OFFSET {
@@ -37,9 +89,9 @@ namespace GB.Shared.Palette
 			/// Control to put these over.
 			/// </summary>
 			private Control toOverlay;
-			private GBPaletteChooser chooser;
+			private GBPaletteChooser<TSet, TRow, TEntry> chooser;
 
-			public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser chooser)
+			public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser<TSet, TRow, TEntry> chooser)
 				: base(x, y) {
 				this.toOverlay = toOverlay;
 				this.chooser = chooser;
@@ -347,55 +399,6 @@ namespace GB.Shared.Palette
 			this.DarkGray = Color.DarkGray;
 			this.LightGray = Color.LightGray;
 			this.White = Color.White;
-		}
-	}
-
-	/// <summary>
-	/// Event for when the selected palette is changed.
-	/// </summary>
-	internal delegate void SelectedPaletteChangeEventHandler(object sender, SelectedPaletteChangeEventArgs e);
-
-	/// <summary>
-	/// Event for when the selected palette is changed.
-	/// </summary>
-	internal class SelectedPaletteChangeEventArgs : EventArgs
-	{
-		private readonly GBPaletteChooser sender;
-
-		public readonly int newIndex;
-		public readonly ColorItem newItem;
-
-		public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
-			this.sender = sender;
-			this.newIndex = newIndex;
-			this.newItem = sender.Colors[newIndex];
-		}
-	}
-
-	internal delegate void PaletteEntryClickEventHandler(object sender, PaletteEntryClickEventArgs e);
-
-	internal class PaletteEntryClickEventArgs : EventArgs
-	{
-		private readonly GBPaletteChooser sender;
-
-		public readonly int paletteIndex;
-		public readonly ColorItem palette;
-
-		public readonly int clickedEntry;
-		public readonly Color clickedEntryColor;
-
-		public readonly MouseButtons button;
-
-		public PaletteEntryClickEventArgs(GBPaletteChooser sender, int paletteIndex, int clickedEntry, MouseButtons button) {
-			this.sender = sender;
-			
-			this.paletteIndex = paletteIndex;
-			this.palette = sender.Colors[paletteIndex];
-
-			this.clickedEntry = clickedEntry;
-			this.clickedEntryColor = palette[clickedEntry];
-
-			this.button = button;
 		}
 	}
 }
