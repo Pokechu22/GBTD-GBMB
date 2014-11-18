@@ -12,8 +12,8 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// An entire group of Palettes.
 	/// </summary>
-	/// <typeparam name="Row"></typeparam>
-	public abstract class GBPaletteSet<Row, Entry> where Row : GBPalette<Entry> where Entry : GBCPaletteEntry
+	/// <typeparam name="TRow"></typeparam>
+	public abstract class GBPaletteSet<TRow, TEntry> where TRow : GBPalette<TEntry> where TEntry : GBCPaletteEntry
 	{
 		/// <summary>
 		/// The total number for rows.
@@ -27,7 +27,7 @@ namespace GB.Shared.Palette
 		/// Each individual row.
 		/// </summary>
 		[Category("Data"), Description("Each individual row.")]
-		public abstract Row[] Rows {
+		public abstract TRow[] Rows {
 			get;
 			set;
 		}
@@ -38,7 +38,7 @@ namespace GB.Shared.Palette
 		/// <param name="row"></param>
 		/// <returns></returns>
 		[Category("Data"), Description("Gets or sets the specified row.")]
-		public virtual Row this[int row] {
+		public virtual TRow this[int row] {
 			get { return Rows[row]; }
 			set {
 				if (row < 0 || row >= Rows.Length) {
@@ -52,15 +52,15 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// A single row of entries, 4 in length.
 	/// </summary>
-	/// <typeparam name="Entry"></typeparam>
-	public abstract class GBPalette<Entry> where Entry : GBPaletteEntry
+	/// <typeparam name="TEntry"></typeparam>
+	public abstract class GBPalette<TEntry> where TEntry : GBPaletteEntry
 	{
 		/// <summary>
 		/// The 'White' color used on this.
 		/// (White is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'White' color used on this.\n(White is in quotes because it could be anything)")]
-		public abstract Entry EntryWhite {
+		public abstract TEntry EntryWhite {
 			get;
 			set;
 		}
@@ -69,7 +69,7 @@ namespace GB.Shared.Palette
 		/// (Light gray is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'Light gray' color used on this.\n(Light gray is in quotes because it could be anything)")]
-		public abstract Entry EntryLightGray {
+		public abstract TEntry EntryLightGray {
 			get;
 			set;
 		}
@@ -78,7 +78,7 @@ namespace GB.Shared.Palette
 		/// (Dark gray is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'Dark gray' color used on this.\n(Dark gray is in quotes because it could be anything)")]
-		public abstract Entry EntryDarkGray {
+		public abstract TEntry EntryDarkGray {
 			get;
 			set;
 		}
@@ -87,7 +87,7 @@ namespace GB.Shared.Palette
 		/// (Black is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'Black' color used on this.\n(Black is in quotes because it could be anything)")]
-		public abstract Entry EntryBlack {
+		public abstract TEntry EntryBlack {
 			get;
 			set;
 		}
@@ -120,7 +120,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="num"></param>
 		/// <returns></returns>
-		public virtual Entry this[int num] {
+		public virtual TEntry this[int num] {
 			get {
 				switch (num) {
 				case 0: return this.EntryWhite;
@@ -146,7 +146,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="color"></param>
 		/// <returns></returns>
-		public virtual Entry this[GBColor color] {
+		public virtual TEntry this[GBColor color] {
 			get {
 				switch (color) {
 				case GBColor.WHITE: return this.EntryWhite;
