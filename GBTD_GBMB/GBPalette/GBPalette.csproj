@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GBCFiltration.cs" />
+    <Compile Include="GBCPaletteObjects.cs" />
     <Compile Include="GBPaletteChooser.cs">
       <SubType>UserControl</SubType>
     </Compile>
