@@ -8,7 +8,7 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	public class GBCPaletteSet : GBPaletteSet<GBCPalette, GBCPaletteEntry> {
+	public class GBCPaletteSet : IPaletteSet<GBCPalette, GBCPaletteEntry> {
 
 		public override int NumberOfRows {
 			get { return 8; }
@@ -29,7 +29,7 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	public class GBCPalette : GBPalette<GBCPaletteEntry> {
+	public class GBCPalette : IPalette<GBCPaletteEntry> {
 		private GBCPaletteEntry entryWhite, entryLightGray, entryDarkGray, entryBlack;
 
 		public override GBCPaletteEntry EntryWhite {
@@ -53,7 +53,7 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	public class GBCPaletteEntry : GBPaletteEntry {
+	public class GBCPaletteEntry : IPaletteEntry {
 		/// <summary>
 		/// Creates a PaletteEntry using the default color value.
 		/// </summary>

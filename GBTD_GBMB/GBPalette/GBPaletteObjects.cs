@@ -13,7 +13,7 @@ namespace GB.Shared.Palette
 	/// An entire group of Palettes.
 	/// </summary>
 	/// <typeparam name="TRow"></typeparam>
-	public abstract class GBPaletteSet<TRow, TEntry> where TRow : GBPalette<TEntry> where TEntry : GBCPaletteEntry
+	public abstract class IPaletteSet<TRow, TEntry> where TRow : IPalette<TEntry> where TEntry : IPaletteEntry
 	{
 		/// <summary>
 		/// The total number for rows.
@@ -53,7 +53,7 @@ namespace GB.Shared.Palette
 	/// A single row of entries, 4 in length.
 	/// </summary>
 	/// <typeparam name="TEntry"></typeparam>
-	public abstract class GBPalette<TEntry> where TEntry : GBPaletteEntry
+	public abstract class IPalette<TEntry> where TEntry : IPaletteEntry
 	{
 		/// <summary>
 		/// The 'White' color used on this.
@@ -171,13 +171,13 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// An individual entry in the palette.
 	/// </summary>
-	public abstract class GBPaletteEntry
+	public abstract class IPaletteEntry
 	{
 		/// <summary>
 		/// Creates a PaletteEntry using the default value for that color.
 		/// </summary>
 		/// <param name="color"></param>
-		protected GBPaletteEntry(GBColor color) {
+		protected IPaletteEntry(GBColor color) {
 			switch (color) {
 			case GBColor.WHITE: this.CorespondingID = 0; break;
 			case GBColor.DARK_GRAY: this.CorespondingID = 1; break;
@@ -194,7 +194,7 @@ namespace GB.Shared.Palette
 		/// Creates a PaletteEntry using the default color value.
 		/// </summary>
 		/// <param name="id"></param>
-		protected GBPaletteEntry(int id) {
+		protected IPaletteEntry(int id) {
 			switch (id) {
 			case 0: this.CorespondingColor = GBColor.WHITE; break;
 			case 1: this.CorespondingColor = GBColor.DARK_GRAY; break;
@@ -250,7 +250,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="entry"></param>
 		/// <returns></returns>
-		public static implicit operator Color(GBPaletteEntry entry) {
+		public static implicit operator Color(IPaletteEntry entry) {
 			return entry.Color;
 		}
 	}
