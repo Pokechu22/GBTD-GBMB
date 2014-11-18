@@ -13,7 +13,7 @@ namespace GB.Shared.Palette
 	/// An entire group of Palettes.
 	/// </summary>
 	/// <typeparam name="Row"></typeparam>
-	public interface GBPaletteSet<Row> where Row : GBPalette<GBPaletteEntry>
+	public abstract class GBPaletteSet<Row, Entry> where Row : GBPalette<Entry> where Entry : GBCPaletteEntry
 	{
 		/// <summary>
 		/// The total number for rows.
@@ -38,7 +38,6 @@ namespace GB.Shared.Palette
 		/// <param name="row"></param>
 		/// <returns></returns>
 		[Category("Data"), Description("Gets or sets the specified row.")]
-		[NonSerialized]
 		public virtual Row this[int row] {
 			get { return Rows[row]; }
 			set {
@@ -54,7 +53,7 @@ namespace GB.Shared.Palette
 	/// A single row of entries, 4 in length.
 	/// </summary>
 	/// <typeparam name="Entry"></typeparam>
-	public interface GBPalette<Entry> where Entry : GBPaletteEntry
+	public abstract class GBPalette<Entry> where Entry : GBPaletteEntry
 	{
 		/// <summary>
 		/// The 'White' color used on this.
@@ -172,7 +171,7 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// An individual entry in the palette.
 	/// </summary>
-	public interface GBPaletteEntry
+	public abstract class GBPaletteEntry
 	{
 		/// <summary>
 		/// Creates a PaletteEntry using the default value for that color.
@@ -251,7 +250,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="entry"></param>
 		/// <returns></returns>
-		public virtual implicit operator Color(GBPaletteEntry entry) {
+		public static implicit operator Color(GBPaletteEntry entry) {
 			return entry.Color;
 		}
 	}
