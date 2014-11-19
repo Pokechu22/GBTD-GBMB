@@ -25,24 +25,23 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.gbPaletteSetSelector1 = new GB.Shared.Palette.GBPaletteSetSelector();
+			this.gbPaletteSetSelector1 = new GB.Shared.Palette.GBCPaletteSetSelector();
 			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
 			this.filterCheckBox = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// gbPaletteSetSelector1
 			// 
-			this.gbPaletteSetSelector1.BlackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.gbPaletteSetSelector1.DarkGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(144)))), ((int)(((byte)(144)))));
-			this.gbPaletteSetSelector1.LightGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.gbPaletteSetSelector1.DefaultBlackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.gbPaletteSetSelector1.DefaultDarkGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(144)))), ((int)(((byte)(144)))));
+			this.gbPaletteSetSelector1.DefaultLightGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.gbPaletteSetSelector1.Location = new System.Drawing.Point(12, 12);
 			this.gbPaletteSetSelector1.Name = "gbPaletteSetSelector1";
-			this.gbPaletteSetSelector1.Rows = 1;
 			this.gbPaletteSetSelector1.SelectedX = -1;
 			this.gbPaletteSetSelector1.SelectedY = -1;
 			this.gbPaletteSetSelector1.Size = new System.Drawing.Size(112, 262);
 			this.gbPaletteSetSelector1.TabIndex = 1;
-			this.gbPaletteSetSelector1.WhiteColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.gbPaletteSetSelector1.DefaultWhiteColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.gbPaletteSetSelector1.SelectionChanged += new System.EventHandler(this.gbPaletteSetSelector1_SelectionChanged);
 			// 
 			// colorPicker1
@@ -89,7 +88,7 @@
 		#endregion
 
 		private GB.Shared.Palette.TGammaPanel colorPicker1;
-		private GB.Shared.Palette.GBPaletteSetSelector gbPaletteSetSelector1;
+		private GB.Shared.Palette.GBCPaletteSetSelector gbPaletteSetSelector1;
 		private System.Windows.Forms.CheckBox filterCheckBox;
 
 	}

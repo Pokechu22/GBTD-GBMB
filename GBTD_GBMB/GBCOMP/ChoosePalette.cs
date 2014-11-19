@@ -18,7 +18,7 @@ namespace GBRenderer
 		/// </summary>
 		public Color WhiteColor {
 			get {
-				return gbPaletteSetSelector1.Colors[0, 0];
+				return gbPaletteSetSelector1.Set.Rows[0][0];
 			}
 		}
 
@@ -27,7 +27,7 @@ namespace GBRenderer
 		/// </summary>
 		public Color LightGrayColor {
 			get {
-				return gbPaletteSetSelector1.Colors[1, 0];
+				return gbPaletteSetSelector1.Set.Rows[0][1];
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace GBRenderer
 		/// </summary>
 		public Color DarkGrayColor {
 			get {
-				return gbPaletteSetSelector1.Colors[2, 0];
+				return gbPaletteSetSelector1.Set.Rows[0][2];
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace GBRenderer
 		/// </summary>
 		public Color BlackColor {
 			get {
-				return gbPaletteSetSelector1.Colors[3, 0];
+				return gbPaletteSetSelector1.Set.Rows[0][3];
 			}
 		}
 

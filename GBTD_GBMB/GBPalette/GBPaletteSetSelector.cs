@@ -9,14 +9,21 @@ using System.Windows.Forms;
 
 namespace GB.Shared.Palette
 {
-	public partial class GBPaletteSetSelector : UserControl
+	/// <summary>
+	/// Control that edits a Palette Set.
+	/// </summary>
+	public abstract partial class GBPaletteSetSelector<TSet, TRow, TEntry> : UserControl
+		where TSet : IPaletteSet<TRow, TEntry>, new()
+		where TRow : IPalette<TEntry>
+		where TEntry : IPaletteEntry
 	{
 		#region Private inner classes
 		private sealed class PaletteSetEntry : PaletteEntry
 		{
-			internal GBPaletteSetSelector selector;
+			internal GBPaletteSetSelector<TSet, TRow, TEntry> selector;
 
-			public PaletteSetEntry(GBPaletteSetSelector selector, int x, int y) : base(x, y) {
+			public PaletteSetEntry(GBPaletteSetSelector<TSet, TRow, TEntry> selector, int x, int y)
+				: base(x, y) {
 				this.selector = selector;
 			}
 
@@ -44,21 +51,10 @@ namespace GB.Shared.Palette
 		}
 		#endregion
 
-		#region Constants
-		/// <summary>
-		/// Total number of columns.
-		/// </summary>
-		public const int COLUMNS_MAX = 4;
-		/// <summary>
-		/// Total number of rows.
-		/// </summary>
-		public const int ROWS_MAX = 8;
-		#endregion
-
 		#region Private fields
 
-		private PaletteSetEntry[,] entries = new PaletteSetEntry[ROWS_MAX, COLUMNS_MAX];
-		private Label[] labels = new Label[ROWS_MAX];
+		private PaletteSetEntry[,] entries = null;
+		private Label[] labels = null;
 		
 		#region Property clones
 		/// <summary>
@@ -66,7 +62,8 @@ namespace GB.Shared.Palette
 		/// </summary>
 		private int selectedX = -1, selectedY = -1;
 
-		private int rows = 8;
+		//Use the GBC filter?
+		private bool FGBCFilter = false;
 
 		/// <summary>
 		/// The default grayscale GB color shceme.
@@ -78,9 +75,7 @@ namespace GB.Shared.Palette
 										  Color.FromArgb(0, 0, 0)
 									  };
 
-		//Use the GBC filter?
-		private bool FGBCFilter = false;
-
+		private TSet set = new TSet();
 		#endregion
 		#endregion
 
@@ -92,8 +87,8 @@ namespace GB.Shared.Palette
 		public int SelectedX {
 			get { return selectedX; }
 			set {
-				if ((value >= COLUMNS_MAX) || (value < -1)) {
-					throw new ArgumentOutOfRangeException("SelectedX", "Value must be between 0 and " + (COLUMNS_MAX - 1) +  " inclusive, or -1 to represent no selection.");
+				if ((value >= 4) || (value < -1)) {
+					throw new ArgumentOutOfRangeException("SelectedX", "Value must be between 0 and " + (4 - 1) +  " inclusive, or -1 to represent no selection.");
 				}
 				selectedX = value;
 				onSelectionChange();
@@ -107,30 +102,14 @@ namespace GB.Shared.Palette
 		public int SelectedY {
 			get { return selectedY; }
 			set {
-				if ((value >= ROWS_MAX) || (value < -1)) {
-					throw new ArgumentOutOfRangeException("SelectedY", "Value must be between 0 and " + (ROWS_MAX - 1) + " inclusive, or -1 to represent no selection.");
+				if ((value >= set.NumberOfRows) || (value < -1)) {
+					throw new ArgumentOutOfRangeException("SelectedY", "Value must be between 0 and " + (set.NumberOfRows - 1) + " inclusive, or -1 to represent no selection.");
 				}
 				selectedY = value;
 				onSelectionChange();
 			}
 		}
-
-		/// <summary>
-		/// The number of rows to include.
-		/// </summary>
-		[Description("The number of rows to include."), Category("Data")]
-		public int Rows {
-			get { return rows; }
-			set {
-				if ((value > ROWS_MAX) || (value < 1)) {
-					throw new ArgumentOutOfRangeException("Rows", "Value must be between 1 and " + (ROWS_MAX) + " inclusive.");
-				}
-				rows = value;
-
-				hideUnusedControls();
-			}
-		}
-
+		
 		/// <summary>
 		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to set to null.
 		/// </summary>
@@ -154,27 +133,19 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// The colors of all entries.
+		/// The palette set used for this.
 		/// </summary>
-		[Description("The colors of all entries."), Category("Data"), Browsable(false)]
-		public Color[,] Colors {
-			get {
-				Color[,] temp = new Color[COLUMNS_MAX,rows];
-				foreach (PaletteSetEntry e in entries) {
-					if (e.y >= rows) {
-						continue;
-					}
-					temp[e.x, e.y] = e.Color;
-				}
-				return temp;
-			}
+		[Description("The palette set used for this."), Category("Data")]
+		public TSet Set {
+			get { freshenToSet(); return set; }
+			set { if (value == null) { throw new ArgumentNullException(); } set = value; }
 		}
 
 		/// <summary>
 		/// The color used for the first entry by default.
 		/// </summary>
 		[Description("The color used for the first entry by default."), Category("Defaults")]
-		public Color WhiteColor {
+		public Color DefaultWhiteColor {
 			get { return defaultColorScheme[0]; }
 			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[0] = value; }
 		}
@@ -183,7 +154,7 @@ namespace GB.Shared.Palette
 		/// The color used for the second entry by default.
 		/// </summary>
 		[Description("The color used for the second entry by default."), Category("Defaults")]
-		public Color LightGrayColor {
+		public Color DefaultLightGrayColor {
 			get { return defaultColorScheme[1]; }
 			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[1] = value; }
 		}
@@ -192,7 +163,7 @@ namespace GB.Shared.Palette
 		/// The color used for the third entry by default.
 		/// </summary>
 		[Description("The color used for the third entry by default."), Category("Defaults")]
-		public Color DarkGrayColor {
+		public Color DefaultDarkGrayColor {
 			get { return defaultColorScheme[2]; }
 			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[2] = value; }
 		}
@@ -201,10 +172,11 @@ namespace GB.Shared.Palette
 		/// The color used for the fourth entry by default.
 		/// </summary>
 		[Description("The color used for the fourth entry by default."), Category("Defaults")]
-		public Color BlackColor {
+		public Color DefaultBlackColor {
 			get { return defaultColorScheme[3]; }
 			set { if (value == null) { throw new ArgumentNullException(); } defaultColorScheme[3] = value; }
 		}
+
 
 		/// <summary>
 		/// Use the GBC Filter?
@@ -252,17 +224,19 @@ namespace GB.Shared.Palette
 			addControls();
 		}
 
-		internal void addControls() {
+		private void addControls() {
 			//Entries
-			entries = new PaletteSetEntry[COLUMNS_MAX, ROWS_MAX];
-			for (int y = 0; y < ROWS_MAX; y++) {
-				for (int x = 0; x < COLUMNS_MAX; x++) {
+			entries = new PaletteSetEntry[4, set.NumberOfRows];
+			for (int y = 0; y < set.NumberOfRows; y++) {
+				for (int x = 0; x < 4; x++) {
 					entries[x, y] = new PaletteSetEntry(this, x, y);
 					this.Controls.Add(entries[x, y]);
 				}
 			}
+
 			//Informational labels.
-			for (int y = 0; y < ROWS_MAX; y++) {
+			labels = new Label[set.NumberOfRows];
+			for (int y = 0; y < set.NumberOfRows; y++) {
 				Label l = new Label();
 				l.Name = "label_y" + y;
 				l.Text = y.ToString();
@@ -277,15 +251,14 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// Sets whether unused controls are hidden.
+		/// Updates the TSet used with the current data.
 		/// </summary>
-		internal void hideUnusedControls() {
-			for (int y = 0; y < ROWS_MAX; y++) {
-				labels[y].Visible = (y < rows);
-				for (int x = 0; x < COLUMNS_MAX; x++) {
-					entries[x, y].Visible = (y < rows);
-				}
+		protected virtual void freshenToSet() {
+			foreach (PaletteSetEntry e in this.entries) {
+				set.Rows[e.y][e.x].Color = e.Color;
 			}
 		}
 	}
+
+	public class GBCPaletteSetSelector : GBPaletteSetSelector<GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }
 }

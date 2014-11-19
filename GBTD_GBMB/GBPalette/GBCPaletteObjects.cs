@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Drawing;
@@ -8,6 +9,7 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
+	[EditorAttribute(typeof(GBCPaletteObjectsEditor), typeof(System.Drawing.Design.UITypeEditor))]
 	public class GBCPaletteSet : IPaletteSet<GBCPalette, GBCPaletteEntry> {
 
 		public override int NumberOfRows {
