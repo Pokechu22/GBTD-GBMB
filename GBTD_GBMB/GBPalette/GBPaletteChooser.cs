@@ -12,7 +12,7 @@ using GB.Shared.Tile;
 namespace GB.Shared.Palette
 {
 	internal partial class GBPaletteChooser<TSet, TRow, TEntry> : UserControl
-		where TSet : IPaletteSet<TRow, TEntry>
+		where TSet : IPaletteSet<TRow, TEntry>, new()
 		where TRow : IPalette<TEntry>
 		where TEntry: IPaletteEntry
 	{
@@ -31,12 +31,12 @@ namespace GB.Shared.Palette
 			private readonly GBPaletteChooser<TSet, TRow, TEntry> sender;
 
 			public readonly int newIndex;
-			public readonly ColorItem newItem;
+			public readonly TRow newItem;
 
 			public SelectedPaletteChangeEventArgs(GBPaletteChooser<TSet, TRow, TEntry> sender, int newIndex) {
 				this.sender = sender;
 				this.newIndex = newIndex;
-				this.newItem = sender.Colors[newIndex];
+				this.newItem = sender.set[newIndex];
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace GB.Shared.Palette
 			private readonly GBPaletteChooser<TSet, TRow, TEntry> sender;
 
 			public readonly int paletteIndex;
-			public readonly ColorItem palette;
+			public readonly TRow palette;
 
 			public readonly int clickedEntry;
 			public readonly Color clickedEntryColor;
@@ -56,7 +56,7 @@ namespace GB.Shared.Palette
 				this.sender = sender;
 
 				this.paletteIndex = paletteIndex;
-				this.palette = sender.Colors[paletteIndex];
+				this.palette = sender.set[paletteIndex];
 
 				this.clickedEntry = clickedEntry;
 				this.clickedEntryColor = palette[clickedEntry];
@@ -127,6 +127,35 @@ namespace GB.Shared.Palette
 			}
 		}
 
+		private class ComboBoxPaletteEntry : PaletteEntry
+		{
+			public ComboBoxPaletteEntry(int x, int y)
+				: base(x, y) {
+				this.InitLayout();
+			}
+
+			protected override void SetSelected() {
+				//Do nothing
+			}
+
+			protected override bool IsSelected() {
+				return false;
+			}
+
+			protected override bool UseGBCFilter {
+				get {
+					return false;
+				}
+				set {
+					throw new NotImplementedException();
+				}
+			}
+
+			protected override Color GetDefaultColor() {
+				return Color.Black;
+			}
+		}
+
 		private bool useGBCFilter;
 		/// <summary>
 		/// Controls whether or not to render with the GBC Filter.
@@ -176,8 +205,15 @@ namespace GB.Shared.Palette
 		}
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
-		
-		private ColorItem[] colors = new ColorItem[8] {
+
+		private TSet set = new TSet();
+
+		public TSet Set {
+			get { return set; }
+			set { set = value; }
+		}
+
+		/*private ColorItem[] colors = new ColorItem[8] {
 			new ColorItem(),
 			new ColorItem(),
 			new ColorItem(),
@@ -187,6 +223,11 @@ namespace GB.Shared.Palette
 			new ColorItem(),
 			new ColorItem()
 		};
+
+		public ColorItem[] Colors {
+			get { return colors; }
+			set { colors = value; }
+		}*/
 
 		#region Events
 		public event SelectedPaletteChangeEventHandler SelectedPaletteChanged;
@@ -207,12 +248,6 @@ namespace GB.Shared.Palette
 			this.Refresh();
 		}
 		#endregion
-
-		[Category("Data"), ReadOnly(true), Browsable(true)]
-		public ColorItem[] Colors {
-			get { return colors; }
-			set { colors = value; }
-		}
 
 		public GBPaletteChooser() {
 			InitializeComponent();
@@ -235,10 +270,10 @@ namespace GB.Shared.Palette
 		}
 
 		private void dropDown_DrawItem(object sender, DrawItemEventArgs e) {
-			if (e.Index >= 0 && e.Index < colors.Length) {
-				e.Graphics.DrawImageUnscaled(colors[e.Index].DrawToBitmap(), e.Bounds);
+			if (e.Index >= 0 && e.Index < set.NumberOfRows) {
+				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(set[e.Index]), e.Bounds);
 			} else {
-				e.Graphics.DrawImageUnscaled(colors[0].DrawToBitmap(), e.Bounds);
+				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(set[0]), e.Bounds);
 				((ComboBox)(sender)).SelectedIndex = 0;
 			}
 		}
@@ -256,71 +291,51 @@ namespace GB.Shared.Palette
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			ColorItem item = colors[Convert.ToInt32((String)box.Text)];
-			entry0.Color = item.White;
-			entry1.Color = item.LightGray;
-			entry2.Color = item.DarkGray;
-			entry3.Color = item.Black;
+			TRow item = set[Convert.ToInt32((String)box.Text)];
+			entry0.Color = item[0];
+			entry1.Color = item[1];
+			entry2.Color = item[2];
+			entry3.Color = item[3];
 		}
 
 		private void dropDown_SelectionChangeCommitted(object sender, EventArgs e) {
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			ColorItem item = colors[Convert.ToInt32((String)box.Text)];
-			entry0.Color = item.White;
-			entry1.Color = item.LightGray;
-			entry2.Color = item.DarkGray;
-			entry3.Color = item.Black;
-		}
-	}
-
-	internal class ColorItem
-	{
-		private class ComboBoxPaletteEntry : PaletteEntry
-		{
-			public ComboBoxPaletteEntry(int x, int y) : base(x, y) {
-				this.InitLayout();
-			}
-
-			protected override void SetSelected() {
-				//Do nothing
-			}
-
-			protected override bool IsSelected() {
-				return false;
-			}
-
-			protected override bool UseGBCFilter {
-				get {
-					return false;
-				}
-				set {
-					throw new NotImplementedException();
-				}
-			}
-
-			protected override Color GetDefaultColor() {
-				return Color.Black;
-			}
+			TRow item = set[Convert.ToInt32((String)box.Text)];
+			entry0.Color = item[0];
+			entry1.Color = item[1];
+			entry2.Color = item[2];
+			entry3.Color = item[3];
 		}
 
-		internal Image DrawToBitmap() {
+		/// <summary>
+		/// Draws TRow to a bitmap.
+		/// </summary>
+		/// <param name="row"></param>
+		/// <returns></returns>
+		protected virtual Image DrawRowToBitmap(TRow row) {
 			Bitmap returned = null;
 
-			for (int i = 0; i < colors.Length; i++) {
+			for (int i = 0; i < 4; i++) {
 				ComboBoxPaletteEntry e = new ComboBoxPaletteEntry(i, 0);
 				if (returned == null) {
 					returned = new Bitmap(e.Width * 4, e.Height);
 				}
 
-				e.Color = this[i];
+				e.Color = row[i];
 
 				e.DrawToBitmap(returned, new Rectangle(e.Width * i, 0, e.Width, e.Height));
 			}
 
 			return returned;
 		}
+	}
+
+	[Obsolete("Use TRow", true)]
+	internal class ColorItem
+	{
+		
 
 		private Color[] colors = new Color[4];
 

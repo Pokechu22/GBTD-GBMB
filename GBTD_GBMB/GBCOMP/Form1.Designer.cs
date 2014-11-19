@@ -111,6 +111,7 @@
 			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
 			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
 			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(191, 26);
+			this.gbtdPaletteChooser1.Set = new GB.Shared.Palette.GBCPaletteSet();
 			this.gbtdPaletteChooser1.TabIndex = 2;
 			this.gbtdPaletteChooser1.UseGBCFilter = false;
 			// 

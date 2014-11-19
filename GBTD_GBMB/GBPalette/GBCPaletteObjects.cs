@@ -14,7 +14,16 @@ namespace GB.Shared.Palette
 			get { return 8; }
 		}
 
-		private GBCPalette[] rows;
+		private GBCPalette[] rows = new GBCPalette[8] {
+			new GBCPalette(),
+			new GBCPalette(),
+			new GBCPalette(),
+			new GBCPalette(),
+			new GBCPalette(),
+			new GBCPalette(),
+			new GBCPalette(),
+			new GBCPalette(),
+		};
 
 		public override GBCPalette[] Rows {
 			get {
@@ -30,7 +39,10 @@ namespace GB.Shared.Palette
 	}
 
 	public class GBCPalette : IPalette<GBCPaletteEntry> {
-		private GBCPaletteEntry entryWhite, entryLightGray, entryDarkGray, entryBlack;
+		private GBCPaletteEntry entryWhite = new GBCPaletteEntry(GBColor.WHITE);
+		private GBCPaletteEntry entryLightGray = new GBCPaletteEntry(GBColor.LIGHT_GRAY);
+		private GBCPaletteEntry entryDarkGray = new GBCPaletteEntry(GBColor.DARK_GRAY);
+		private GBCPaletteEntry entryBlack = new GBCPaletteEntry(GBColor.BLACK);
 
 		public override GBCPaletteEntry EntryWhite {
 			get { return entryWhite; }
@@ -58,7 +70,13 @@ namespace GB.Shared.Palette
 		/// Creates a PaletteEntry using the default color value.
 		/// </summary>
 		/// <param name="id"></param>
-		public GBCPaletteEntry() : base(0) { }
+		public GBCPaletteEntry(GBColor color) : base(color) { }
+
+		/// <summary>
+		/// Creates a PaletteEntry using the default color value.
+		/// </summary>
+		/// <param name="id"></param>
+		public GBCPaletteEntry(int color) : base(color) { }
 
 		private Color color;
 

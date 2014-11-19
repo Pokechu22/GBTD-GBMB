@@ -10,10 +10,15 @@ using System.Windows.Forms;
 namespace GB.Shared.Palette
 {
 	public abstract partial class GBTDPaletteChooser<TSet, TRow, TEntry> : UserControl
-		where TSet : IPaletteSet<TRow, TEntry>
+		where TSet : IPaletteSet<TRow, TEntry>, new()
 		where TRow : IPalette<TEntry>
 		where TEntry: IPaletteEntry
 	{
+		public TSet Set {
+			get { return this.gbPaletteChooser1.Set; }
+			set { this.gbPaletteChooser1.Set = value; }
+		}
+
 		/// <summary>
 		/// Mouse entry used to contain one of the colors for a mouse button.
 		/// </summary>
@@ -105,8 +110,8 @@ namespace GB.Shared.Palette
 			private GBTDPaletteChooserMouseEntryPaletteEntry entry;
 			private MouseButtons buttons;
 
-			private ColorItem item = new ColorItem();
-			public ColorItem Item {
+			private TRow item = default(TRow);
+			public TRow Item {
 				get { return item; }
 				set { item = value; OnValueChange(); }
 			}

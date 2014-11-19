@@ -1,7 +1,7 @@
 ﻿namespace GB.Shared.Palette
 {
 	partial class GBTDPaletteChooser<TSet, TRow, TEntry>
-		where TSet : IPaletteSet<TRow, TEntry>
+		where TSet : IPaletteSet<TRow, TEntry>, new()
 		where TRow : IPalette<TEntry>
 		where TEntry : IPaletteEntry
 	{
