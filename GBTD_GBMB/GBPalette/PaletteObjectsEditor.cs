@@ -46,7 +46,6 @@ namespace GB.Shared.Palette
 		public override void PaintValue(PaintValueEventArgs e) {
 			TSet set = e.Value as TSet;
 			if (set != null) {
-				e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 				//Draws horizontally.
 				float width = (float)e.Bounds.Width / 4f;
 				float height = (float)e.Bounds.Height / (float)set.NumberOfRows;
