@@ -101,12 +101,12 @@ namespace GB.Shared.Palette
 
 			protected override void SetSelected() {
 				if (chooser.SelectOnLeftClick) {
-					chooser.SelectedIndex = this.x;
+					chooser.HighlightedEntryIndex = this.x;
 				}
 			}
 
 			protected override bool IsSelected() {
-				return this.x == chooser.SelectedIndex;
+				return this.x == chooser.HighlightedEntryIndex;
 			}
 
 			protected override bool UseGBCFilter {
@@ -168,14 +168,49 @@ namespace GB.Shared.Palette
 			set { useGBCFilter = value; this.Refresh(); }
 		}
 
-		private int selectedIndex = -1;
+		private int highlightedEntryIndex = -1;
 		/// <summary>
-		/// The currently-selected index.
+		/// The index of the entry that is currently highlighted (surrounded with a blue outline)
 		/// </summary>
 		[Category("Data"), Description("The currently-selected index.")]
-		public int SelectedIndex {
-			get { return selectedIndex; }
-			set { selectedIndex = value; this.Refresh(); }
+		public int HighlightedEntryIndex {
+			get { return highlightedEntryIndex; }
+			set { highlightedEntryIndex = value; this.Refresh(); }
+		}
+
+		/// <summary>
+		/// The index of the row currently selected.
+		/// </summary>
+		public int SelectedRowIndex {
+			get { return dropDown.SelectedIndex; }
+			set {
+				if (value < 0 || value >= set.NumberOfRows) {
+					throw new ArgumentOutOfRangeException("value", "Must be between 0 and " + (set.NumberOfRows-1) + "; got " + value + ".");
+				}
+				dropDown.SelectedIndex = value;
+			}
+		}
+
+		/// <summary>
+		/// The row currently selected.
+		/// </summary>
+		public TRow SelectedRow {
+			get {
+				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
+					SelectedRowIndex = 0;
+				}
+				return set[SelectedRowIndex];
+			}
+			set {
+				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
+					SelectedRowIndex = 0;
+				}
+				if (value == null) {
+					throw new ArgumentNullException();
+				}
+				set[SelectedRowIndex] = value;
+				reloadFromSet();
+			}
 		}
 
 		private bool selectOnLeftClick = true;
@@ -214,22 +249,6 @@ namespace GB.Shared.Palette
 			get { return set; }
 			set { set = value; reloadFromSet(); }
 		}
-
-		/*private ColorItem[] colors = new ColorItem[8] {
-			new ColorItem(),
-			new ColorItem(),
-			new ColorItem(),
-			new ColorItem(),
-			new ColorItem(),
-			new ColorItem(),
-			new ColorItem(),
-			new ColorItem()
-		};
-
-		public ColorItem[] Colors {
-			get { return colors; }
-			set { colors = value; }
-		}*/
 
 		#region Events
 		public event SelectedPaletteChangeEventHandler SelectedPaletteChanged;
