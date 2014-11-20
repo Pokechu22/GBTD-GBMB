@@ -73,9 +73,7 @@ namespace GBRenderer
 		}
 
 		private void buttonPalette_Click(object sender, EventArgs e) {
-			GBCChoosePalette p = new GBCChoosePalette();
-
-			p.Set = this.gbtdPaletteChooser1.Set;
+			GBCChoosePalette p = new GBCChoosePalette(this.gbtdPaletteChooser1.Set);
 
 			DialogResult result = p.ShowDialog();
 			if (result != DialogResult.OK) {

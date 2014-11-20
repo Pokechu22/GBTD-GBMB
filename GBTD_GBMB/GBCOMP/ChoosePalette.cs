@@ -19,7 +19,10 @@ namespace GBRenderer
 	{
 		public ChoosePalette() {
 			InitializeComponent();
-			
+		}
+
+		public ChoosePalette(TSet set) : this() {
+			this.Set = set;
 		}
 
 		public TSet Set {
@@ -43,5 +46,10 @@ namespace GBRenderer
 		}
 	}
 
-	public class GBCChoosePalette : ChoosePalette<GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }
+	public class GBCChoosePalette : ChoosePalette<GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>
+	{
+		public GBCChoosePalette() : base() { }
+
+		public GBCChoosePalette(GBCPaletteSet set) : base(set) { }
+	}
 }

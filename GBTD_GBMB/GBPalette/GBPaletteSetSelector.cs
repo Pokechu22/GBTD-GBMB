@@ -138,7 +138,7 @@ namespace GB.Shared.Palette
 		[Description("The palette set used for this."), Category("Data")]
 		public TSet Set {
 			get { freshenToSet(); return set; }
-			set { if (value == null) { throw new ArgumentNullException(); } set = value; }
+			set { if (value == null) { throw new ArgumentNullException(); } set = value; freshenFromSet(); }
 		}
 
 		/// <summary>
@@ -256,6 +256,17 @@ namespace GB.Shared.Palette
 		protected virtual void freshenToSet() {
 			foreach (PaletteSetEntry e in this.entries) {
 				set.Rows[e.y][e.x].Color = e.Color;
+			}
+		}
+
+		/// <summary>
+		/// Updates the controls here with those from the TSet.
+		/// </summary>
+		protected virtual void freshenFromSet() {
+			for (int row = 0; row < set.NumberOfRows; row++) {
+				for (int x = 0; x < 4; x++) {
+					entries[x, row].Color = set[row][x];
+				}
 			}
 		}
 	}

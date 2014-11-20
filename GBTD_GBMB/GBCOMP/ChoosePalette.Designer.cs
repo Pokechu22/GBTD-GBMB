@@ -30,6 +30,7 @@ namespace GBRenderer
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			TSet set = new TSet();
 			this.gbPaletteSetSelector1 = new TSelector();
 
 			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
@@ -49,7 +50,7 @@ namespace GBRenderer
 			this.gbPaletteSetSelector1.Name = "gbPaletteSetSelector1";
 			this.gbPaletteSetSelector1.SelectedX = -1;
 			this.gbPaletteSetSelector1.SelectedY = -1;
-			//this.gbPaletteSetSelector1.Set = set;
+			this.gbPaletteSetSelector1.Set = set;
 			this.gbPaletteSetSelector1.Size = new System.Drawing.Size(112, 262);
 			this.gbPaletteSetSelector1.TabIndex = 1;
 			this.gbPaletteSetSelector1.SelectionChanged += new System.EventHandler(this.gbPaletteSetSelector1_SelectionChanged);
