@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChoosePalette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoosePalette.Designer.cs">
+      <DependentUpon>ChoosePalette.cs</DependentUpon>
+    </Compile>
     <Compile Include="GBCFiltration.cs" />
     <Compile Include="GBCPaletteObjects.cs" />
     <Compile Include="GBPaletteChooser.cs">
@@ -84,6 +90,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChoosePalette.resx">
+      <DependentUpon>ChoosePalette.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GBPaletteChooser.resx">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </EmbeddedResource>
