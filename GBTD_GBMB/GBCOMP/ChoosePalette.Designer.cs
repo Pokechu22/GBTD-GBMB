@@ -1,6 +1,11 @@
-﻿namespace GBRenderer
+﻿using GB.Shared.Palette;
+namespace GBRenderer
 {
-	partial class ChoosePalette
+	partial class ChoosePalette<TSelector, TSet, TRow, TEntry>
+		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
+		where TSet : IPaletteSet<TRow, TEntry>, new()
+		where TRow : IPalette<TEntry>
+		where TEntry : IPaletteEntry
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -25,9 +30,12 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.gbPaletteSetSelector1 = new GB.Shared.Palette.GBCPaletteSetSelector();
+			this.gbPaletteSetSelector1 = new TSelector();
+
 			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
 			this.filterCheckBox = new System.Windows.Forms.CheckBox();
+			this.okButton = new System.Windows.Forms.Button();
+			this.cancelButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// gbPaletteSetSelector1
@@ -35,13 +43,15 @@
 			this.gbPaletteSetSelector1.DefaultBlackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.gbPaletteSetSelector1.DefaultDarkGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(144)))), ((int)(((byte)(144)))));
 			this.gbPaletteSetSelector1.DefaultLightGrayColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.gbPaletteSetSelector1.DefaultWhiteColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.gbPaletteSetSelector1.GBCFilter = false;
 			this.gbPaletteSetSelector1.Location = new System.Drawing.Point(12, 12);
 			this.gbPaletteSetSelector1.Name = "gbPaletteSetSelector1";
 			this.gbPaletteSetSelector1.SelectedX = -1;
 			this.gbPaletteSetSelector1.SelectedY = -1;
+			//this.gbPaletteSetSelector1.Set = set;
 			this.gbPaletteSetSelector1.Size = new System.Drawing.Size(112, 262);
 			this.gbPaletteSetSelector1.TabIndex = 1;
-			this.gbPaletteSetSelector1.DefaultWhiteColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.gbPaletteSetSelector1.SelectionChanged += new System.EventHandler(this.gbPaletteSetSelector1_SelectionChanged);
 			// 
 			// colorPicker1
@@ -68,11 +78,33 @@
 			this.filterCheckBox.UseVisualStyleBackColor = true;
 			this.filterCheckBox.CheckedChanged += new System.EventHandler(this.filterCheckBox_CheckedChanged);
 			// 
+			// okButton
+			// 
+			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.okButton.Location = new System.Drawing.Point(141, 174);
+			this.okButton.Name = "okButton";
+			this.okButton.Size = new System.Drawing.Size(75, 23);
+			this.okButton.TabIndex = 3;
+			this.okButton.Text = "OK";
+			this.okButton.UseVisualStyleBackColor = true;
+			// 
+			// cancelButton
+			// 
+			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.cancelButton.Location = new System.Drawing.Point(141, 203);
+			this.cancelButton.Name = "cancelButton";
+			this.cancelButton.Size = new System.Drawing.Size(75, 23);
+			this.cancelButton.TabIndex = 4;
+			this.cancelButton.Text = "Cancel";
+			this.cancelButton.UseVisualStyleBackColor = true;
+			// 
 			// ChoosePalette
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.Controls.Add(this.cancelButton);
+			this.Controls.Add(this.okButton);
 			this.Controls.Add(this.filterCheckBox);
 			this.Controls.Add(this.gbPaletteSetSelector1);
 			this.Controls.Add(this.colorPicker1);
@@ -88,8 +120,10 @@
 		#endregion
 
 		private GB.Shared.Palette.TGammaPanel colorPicker1;
-		private GB.Shared.Palette.GBCPaletteSetSelector gbPaletteSetSelector1;
+		private TSelector gbPaletteSetSelector1;
 		private System.Windows.Forms.CheckBox filterCheckBox;
+		private System.Windows.Forms.Button okButton;
+		private System.Windows.Forms.Button cancelButton;
 
 	}
 }

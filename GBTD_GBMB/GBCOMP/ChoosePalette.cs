@@ -11,47 +11,20 @@ using GB.Shared.Palette;
 
 namespace GBRenderer
 {
-	public partial class ChoosePalette : Form
+	public partial class ChoosePalette<TSelector, TSet, TRow, TEntry> : Form
+		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
+		where TSet : IPaletteSet<TRow, TEntry>, new()
+		where TRow : IPalette<TEntry>
+		where TEntry : IPaletteEntry
 	{
-		/// <summary>
-		/// The whitemost color.
-		/// </summary>
-		public Color WhiteColor {
-			get {
-				return gbPaletteSetSelector1.Set.Rows[0][0];
-			}
-		}
-
-		/// <summary>
-		/// The light-gray color.
-		/// </summary>
-		public Color LightGrayColor {
-			get {
-				return gbPaletteSetSelector1.Set.Rows[0][1];
-			}
-		}
-
-		/// <summary>
-		/// The dark-gray color.
-		/// </summary>
-		public Color DarkGrayColor {
-			get {
-				return gbPaletteSetSelector1.Set.Rows[0][2];
-			}
-		}
-
-		/// <summary>
-		/// The black color.
-		/// </summary>
-		public Color BlackColor {
-			get {
-				return gbPaletteSetSelector1.Set.Rows[0][3];
-			}
-		}
-
 		public ChoosePalette() {
 			InitializeComponent();
 			
+		}
+
+		public TSet Set {
+			get { return gbPaletteSetSelector1.Set; }
+			set { if (value == null) { throw new ArgumentNullException(); } gbPaletteSetSelector1.Set = value; }
 		}
 
 		private void colorPicker1_OnChange(object sender, EventArgs e) {
@@ -69,4 +42,6 @@ namespace GBRenderer
 			gbPaletteSetSelector1.GBCFilter = filterCheckBox.Checked;
 		}
 	}
+
+	public class GBCChoosePalette : ChoosePalette<GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }
 }

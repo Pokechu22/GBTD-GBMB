@@ -73,13 +73,21 @@ namespace GBRenderer
 		}
 
 		private void buttonPalette_Click(object sender, EventArgs e) {
-			ChoosePalette p = new ChoosePalette();
-			p.ShowDialog();
+			GBCChoosePalette p = new GBCChoosePalette();
 
-			this.tileRenderer.BlackColor = p.BlackColor;
-			this.tileRenderer.DarkGrayColor = p.DarkGrayColor;
-			this.tileRenderer.LightGrayColor = p.LightGrayColor;
-			this.tileRenderer.WhiteColor = p.WhiteColor;
+			p.Set = this.gbtdPaletteChooser1.Set;
+
+			DialogResult result = p.ShowDialog();
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			this.tileRenderer.BlackColor = p.Set.Rows[0][GBColor.BLACK];
+			this.tileRenderer.DarkGrayColor = p.Set.Rows[0][GBColor.DARK_GRAY];
+			this.tileRenderer.LightGrayColor = p.Set.Rows[0][GBColor.LIGHT_GRAY];
+			this.tileRenderer.WhiteColor = p.Set.Rows[0][GBColor.WHITE];
+
+			this.gbtdPaletteChooser1.Set = p.Set;
 
 			this.Refresh();
 		}
