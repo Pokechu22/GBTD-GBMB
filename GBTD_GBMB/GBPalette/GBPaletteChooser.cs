@@ -36,7 +36,8 @@ namespace GB.Shared.Palette
 			public SelectedPaletteChangeEventArgs(GBPaletteChooser<TSet, TRow, TEntry> sender, int newIndex) {
 				this.sender = sender;
 				this.newIndex = newIndex;
-				this.newItem = sender.set[newIndex];
+				TSet set = sender.set;
+				this.newItem = set[newIndex];
 			}
 		}
 
@@ -56,7 +57,8 @@ namespace GB.Shared.Palette
 				this.sender = sender;
 
 				this.paletteIndex = paletteIndex;
-				this.palette = sender.set[paletteIndex];
+				TSet set = sender.set;
+				this.palette = set[paletteIndex];
 
 				this.clickedEntry = clickedEntry;
 				this.clickedEntryColor = palette[clickedEntry];
@@ -210,7 +212,7 @@ namespace GB.Shared.Palette
 
 		public TSet Set {
 			get { return set; }
-			set { set = value; }
+			set { set = value; reloadFromSet(); }
 		}
 
 		/*private ColorItem[] colors = new ColorItem[8] {
@@ -330,90 +332,20 @@ namespace GB.Shared.Palette
 
 			return returned;
 		}
-	}
 
-	[Obsolete("Use TRow", true)]
-	internal class ColorItem
-	{
-		
+		/// <summary>
+		/// Reloads the contents of this from the TSet.
+		/// </summary>
+		protected virtual void reloadFromSet() {
+			if (this.dropDown.SelectedIndex < 0 || this.dropDown.SelectedIndex >= set.NumberOfRows) {
+				this.dropDown.SelectedIndex = 0;
+			}
+			this.entry0.Color = Set[this.dropDown.SelectedIndex][0];
+			this.entry1.Color = Set[this.dropDown.SelectedIndex][1];
+			this.entry2.Color = Set[this.dropDown.SelectedIndex][2];
+			this.entry3.Color = Set[this.dropDown.SelectedIndex][3];
 
-		private Color[] colors = new Color[4];
-
-		[Category("Data")]
-		public Color White {
-			get {
-				return colors[0];
-			}
-			set {
-				colors[0] = value;
-			}
-		}
-
-		[Category("Data")]
-		public Color LightGray {
-			get {
-				return colors[1];
-			}
-			set {
-				colors[1] = value;
-			}
-		}
-
-		[Category("Data")]
-		public Color DarkGray {
-			get {
-				return colors[2];
-			}
-			set {
-				colors[2] = value;
-			}
-		}
-
-		[Category("Data")]
-		public Color Black {
-			get {
-				return colors[3];
-			}
-			set {
-				colors[3] = value;
-			}
-		}
-
-		public Color this[int index] {
-			get {
-				return colors[index];
-			}
-			set {
-				colors[index] = value;
-			}
-		}
-
-		public Color this[GBColor color] {
-			get {
-				switch (color) {
-				case GBColor.BLACK: return this.Black;
-				case GBColor.DARK_GRAY: return this.DarkGray;
-				case GBColor.LIGHT_GRAY: return this.LightGray;
-				case GBColor.WHITE: return this.White;
-				default: throw new ArgumentException("Color " + color + " (int: " + ((int)color) + ") is not valid.");
-				}
-			}
-			set {
-				switch (color) {
-				case GBColor.BLACK: this.Black = value; return;
-				case GBColor.DARK_GRAY: this.DarkGray = value; return;
-				case GBColor.LIGHT_GRAY: this.LightGray = value; return;
-				case GBColor.WHITE: this.White = value; return;
-				default: throw new ArgumentException("Color " + color + " (int: " + ((int)color) + ") is not valid.");
-				}
-			}
-		}
-
-		public ColorItem() {
-			this.Black = Color.Black;
-			this.DarkGray = Color.DarkGray;
-			this.LightGray = Color.LightGray;
-			this.White = Color.White;
+			this.Refresh();
 		}
 	}
 }

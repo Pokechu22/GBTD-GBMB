@@ -268,6 +268,8 @@ namespace GB.Shared.Palette
 					entries[x, row].Color = set[row][x];
 				}
 			}
+
+
 		}
 	}
 
