@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 using GB.Shared.Palette;
 
-namespace GBRenderer
+namespace GB.Shared.Palette
 {
 	public partial class ChoosePalette<TSelector, TSet, TRow, TEntry> : Form
 		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()

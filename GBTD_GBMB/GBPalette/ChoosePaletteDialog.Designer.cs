@@ -1,5 +1,5 @@
 ﻿using GB.Shared.Palette;
-namespace GBRenderer
+namespace GB.Shared.Palette
 {
 	partial class ChoosePalette<TSelector, TSet, TRow, TEntry>
 		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
