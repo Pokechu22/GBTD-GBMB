@@ -9,12 +9,17 @@ using System.Windows.Forms.Design;
 
 namespace GB.Shared.Palette
 {
-	class GBCPaletteObjectsEditor : UITypeEditor
+	class PaletteObjectsEditor<TForm, TSelector, TSet, TRow, TEntry> : UITypeEditor
+		where TForm : ChoosePalette<TSelector, TSet, TRow, TEntry>, new()
+		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
+		where TSet : IPaletteSet<TRow, TEntry>, new()
+		where TRow : IPalette<TEntry>
+		where TEntry : IPaletteEntry
 	{
 		IWindowsFormsEditorService editorService = null;
 
 		public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) {
-			return UITypeEditorEditStyle.DropDown;
+			return UITypeEditorEditStyle.Modal;
 		}
 
 		public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value) {
@@ -23,13 +28,13 @@ namespace GB.Shared.Palette
 			}
 
 			if (editorService != null) {
-				GBCPaletteSetSelector chooser = new GBCPaletteSetSelector();
+				TForm form = new TForm();
 
-				chooser.Set = (GBCPaletteSet)value;
+				form.Set = (TSet)value;
 
-				editorService.DropDownControl(chooser);
+				editorService.ShowDialog(form);
 
-				value = chooser.Set;
+				value = form.Set;
 			}
 
 			return value;

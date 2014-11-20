@@ -9,7 +9,7 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	[EditorAttribute(typeof(GBCPaletteObjectsEditor), typeof(System.Drawing.Design.UITypeEditor))]
+	[EditorAttribute(typeof(PaletteObjectsEditor<GBCChoosePalette, GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>), typeof(System.Drawing.Design.UITypeEditor))]
 	public class GBCPaletteSet : IPaletteSet<GBCPalette, GBCPaletteEntry> {
 
 		public override int NumberOfRows {

@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChoosePalette.cs">
+    <Compile Include="ChoosePaletteDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChoosePalette.Designer.cs">
-      <DependentUpon>ChoosePalette.cs</DependentUpon>
+    <Compile Include="ChoosePaletteDialog.Designer.cs">
+      <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="GBCFiltration.cs" />
     <Compile Include="GBCPaletteObjects.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="PaletteEntry.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GBCPaletteObjectsEditor.cs" />
+    <Compile Include="PaletteObjectsEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -90,8 +90,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ChoosePalette.resx">
-      <DependentUpon>ChoosePalette.cs</DependentUpon>
+    <EmbeddedResource Include="ChoosePaletteDialog.resx">
+      <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GBPaletteChooser.resx">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
