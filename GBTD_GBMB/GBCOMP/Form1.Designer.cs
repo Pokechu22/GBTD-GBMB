@@ -25,13 +25,22 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			GB.Shared.Palette.GBCPaletteSet gbcPaletteSet1 = new GB.Shared.Palette.GBCPaletteSet();
+			GB.Shared.Palette.GBCPalette gbcPalette1 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette2 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette3 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette4 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette5 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette6 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette7 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette8 = new GB.Shared.Palette.GBCPalette();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
-			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
+			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
@@ -86,6 +95,59 @@
 			this.buttonPalette.UseVisualStyleBackColor = true;
 			this.buttonPalette.Click += new System.EventHandler(this.buttonPalette_Click);
 			// 
+			// gbtdPaletteChooser1
+			// 
+			this.gbtdPaletteChooser1.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
+			this.gbtdPaletteChooser1.Location = new System.Drawing.Point(54, 51);
+			this.gbtdPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
+			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
+			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
+			gbcPalette1.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette1.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette1.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette1.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette2.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette2.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette2.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette2.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette3.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette3.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette3.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette3.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette4.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette4.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette4.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette4.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette5.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette5.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette5.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette5.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette6.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette6.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette6.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette6.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette7.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette7.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette7.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette7.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette8.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette8.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette8.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette8.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPaletteSet1.Rows = new GB.Shared.Palette.GBCPalette[] {
+        gbcPalette1,
+        gbcPalette2,
+        gbcPalette3,
+        gbcPalette4,
+        gbcPalette5,
+        gbcPalette6,
+        gbcPalette7,
+        gbcPalette8};
+			this.gbtdPaletteChooser1.Set = gbcPaletteSet1;
+			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(191, 26);
+			this.gbtdPaletteChooser1.TabIndex = 2;
+			this.gbtdPaletteChooser1.UseGBCFilter = false;
+			// 
 			// tileRenderer
 			// 
 			this.tileRenderer.BlackColor = System.Drawing.Color.Black;
@@ -102,18 +164,6 @@
 			this.tileRenderer.WhiteColor = System.Drawing.Color.White;
 			this.tileRenderer.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
 			this.tileRenderer.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			// 
-			// gbtdPaletteChooser1
-			// 
-			this.gbtdPaletteChooser1.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
-			this.gbtdPaletteChooser1.Location = new System.Drawing.Point(54, 51);
-			this.gbtdPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
-			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
-			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
-			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(191, 26);
-			this.gbtdPaletteChooser1.Set = new GB.Shared.Palette.GBCPaletteSet();
-			this.gbtdPaletteChooser1.TabIndex = 2;
-			this.gbtdPaletteChooser1.UseGBCFilter = false;
 			// 
 			// Form1
 			// 

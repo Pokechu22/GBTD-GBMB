@@ -26,18 +26,19 @@ namespace GB.Shared.Palette
 			if (provider != null) {
 				editorService = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
 			}
-
+			
 			if (editorService != null) {
-				TSet set = value as TSet;
-				if (set != null) {
-					TForm form = new TForm();
+				TForm form = new TForm();
 
-					form.Set = (TSet)value;
+				form.Set = (TSet)value;
 
-					editorService.ShowDialog(form);
+				System.Windows.Forms.MessageBox.Show("A");
 
-					value = form.Set;
-				}
+				editorService.ShowDialog(form);
+
+				System.Windows.Forms.MessageBox.Show("B");
+
+				return form.Set;
 			}
 
 			return value;

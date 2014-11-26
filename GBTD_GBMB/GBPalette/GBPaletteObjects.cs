@@ -27,6 +27,7 @@ namespace GB.Shared.Palette
 		/// Each individual row.
 		/// </summary>
 		[Category("Data"), Description("Each individual row.")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public abstract TRow[] Rows {
 			get;
 			set;
@@ -47,6 +48,62 @@ namespace GB.Shared.Palette
 				Rows[row] = value;
 			}
 		}
+
+		public override string ToString() {
+			StringBuilder builder = new StringBuilder();
+			builder.Append(this.GetType().Name).Append(": ");
+
+			builder.Append("[");
+			for (int row = 0; row < NumberOfRows; row++) {
+				builder.Append("[");
+				for (int x = 0; x < 4; x++) {
+					builder.Append(Rows[row][x].Color.ToString());
+					if (x != 3) {
+						builder.Append(", ");
+					}
+				}
+				builder.Append("]");
+				if (row != NumberOfRows - 1) {
+					builder.Append(", ");
+				}
+			}
+			builder.Append("]");
+
+			return builder.ToString();
+		}
+
+		public override bool Equals(object obj) {
+			if (obj == null || GetType() != obj.GetType()) {
+				return false;
+			}
+
+			IPaletteSet<TRow, TEntry> entry = (IPaletteSet<TRow, TEntry>)obj;
+
+			if (entry.Rows.Length != this.Rows.Length) {
+				return false;
+			}
+
+			for (int i = 0; i < this.Rows.Length; i++) {
+				if (!entry.Rows[i].Equals(this.Rows[i])) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		public override int GetHashCode() {
+			const int PRIME = 31;
+
+			int hashcode = base.GetHashCode();
+
+			foreach (TRow row in this.Rows) {
+				hashcode *= PRIME;
+				hashcode += row == null ? 0 : row.GetHashCode();
+			}
+
+			return hashcode;
+		}
 	}
 
 	/// <summary>
@@ -60,6 +117,7 @@ namespace GB.Shared.Palette
 		/// (White is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'White' color used on this.\n(White is in quotes because it could be anything)")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public abstract TEntry EntryWhite {
 			get;
 			set;
@@ -69,6 +127,7 @@ namespace GB.Shared.Palette
 		/// (Light gray is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'Light gray' color used on this.\n(Light gray is in quotes because it could be anything)")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public abstract TEntry EntryLightGray {
 			get;
 			set;
@@ -78,6 +137,7 @@ namespace GB.Shared.Palette
 		/// (Dark gray is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'Dark gray' color used on this.\n(Dark gray is in quotes because it could be anything)")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public abstract TEntry EntryDarkGray {
 			get;
 			set;
@@ -87,6 +147,7 @@ namespace GB.Shared.Palette
 		/// (Black is in quotes because it could be anything)
 		/// </summary>
 		[Category("Data"), Description("The 'Black' color used on this.\n(Black is in quotes because it could be anything)")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public abstract TEntry EntryBlack {
 			get;
 			set;
@@ -165,6 +226,36 @@ namespace GB.Shared.Palette
 				default: throw new ArgumentOutOfRangeException("Unrecognised GBColor: " + color + " (int: " + ((int)color) + ")");
 				}
 			}
+		}
+
+		public override bool Equals(object obj) {
+			if (obj == null || GetType() != obj.GetType()) {
+				return false;
+			}
+
+			IPalette<TEntry> pal = (IPalette<TEntry>)obj;
+
+			if (!pal.EntryBlack.Equals(this.EntryBlack) ||
+				!pal.EntryDarkGray.Equals(this.EntryDarkGray) ||
+				!pal.EntryLightGray.Equals(this.EntryLightGray) ||
+				!pal.EntryWhite.Equals(this.EntryWhite)) {
+					return false;
+			}
+
+			return true;
+		}
+
+		public override int GetHashCode() {
+			const int PRIME = 31;
+
+			int hashcode = base.GetHashCode();
+
+			hashcode = (hashcode * PRIME) + (EntryBlack == null ? 0 : EntryBlack.GetHashCode());
+			hashcode = (hashcode * PRIME) + (EntryDarkGray == null ? 0 : EntryDarkGray.GetHashCode());
+			hashcode = (hashcode * PRIME) + (EntryLightGray == null ? 0 : EntryLightGray.GetHashCode());
+			hashcode = (hashcode * PRIME) + (EntryWhite == null ? 0 : EntryWhite.GetHashCode());
+
+			return hashcode;
 		}
 	}
 
@@ -252,6 +343,26 @@ namespace GB.Shared.Palette
 		/// <returns></returns>
 		public static implicit operator Color(IPaletteEntry entry) {
 			return entry.Color;
+		}
+
+		public override bool Equals(object obj) {
+			if (obj == null || GetType() != obj.GetType()) {
+				return false;
+			}
+
+			IPaletteEntry entry = (IPaletteEntry)obj;
+
+			return entry.Color.Equals(this.Color);
+		}
+
+		public override int GetHashCode() {
+			const int PRIME = 31;
+
+			int hashcode = base.GetHashCode();
+
+			hashcode = (hashcode * PRIME) + (Color.GetHashCode());
+
+			return hashcode;
 		}
 	}
 }

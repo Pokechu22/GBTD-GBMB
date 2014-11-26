@@ -14,9 +14,11 @@ namespace GB.Shared.Palette
 		where TRow : IPalette<TEntry>
 		where TEntry: IPaletteEntry
 	{
+		private TSet set = new TSet();
+
 		public TSet Set {
-			get { return this.gbPaletteChooser1.Set; }
-			set { this.gbPaletteChooser1.Set = value; }
+			get { set = this.gbPaletteChooser1.Set; return this.set; }
+			set { if (value == null) { throw new ArgumentNullException(); } this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
 		}
 
 		/// <summary>
