@@ -13,9 +13,9 @@ namespace GB.Shared.Palette
 	/// An entire group of Palettes.
 	/// </summary>
 	/// <typeparam name="TRow"></typeparam>
-	public abstract class IPaletteSet<TRow, TEntry> : ICloneable
-		where TRow : IPalette<TEntry>
-		where TEntry : IPaletteEntry
+	public abstract class PaletteSetBase<TRow, TEntry> : ICloneable
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		/// <summary>
 		/// The total number for rows.
@@ -79,7 +79,7 @@ namespace GB.Shared.Palette
 				return false;
 			}
 
-			IPaletteSet<TRow, TEntry> entry = (IPaletteSet<TRow, TEntry>)obj;
+			PaletteSetBase<TRow, TEntry> entry = (PaletteSetBase<TRow, TEntry>)obj;
 
 			if (entry.Rows.Length != this.Rows.Length) {
 				return false;
@@ -114,8 +114,8 @@ namespace GB.Shared.Palette
 	/// A single row of entries, 4 in length.
 	/// </summary>
 	/// <typeparam name="TEntry"></typeparam>
-	public abstract class IPalette<TEntry> : ICloneable
-		where TEntry : IPaletteEntry
+	public abstract class PaletteBase<TEntry> : ICloneable
+		where TEntry : PaletteEntryBase
 	{
 		/// <summary>
 		/// The 'White' color used on this.
@@ -238,7 +238,7 @@ namespace GB.Shared.Palette
 				return false;
 			}
 
-			IPalette<TEntry> pal = (IPalette<TEntry>)obj;
+			PaletteBase<TEntry> pal = (PaletteBase<TEntry>)obj;
 
 			if (!pal.EntryBlack.Equals(this.EntryBlack) ||
 				!pal.EntryDarkGray.Equals(this.EntryDarkGray) ||
@@ -269,13 +269,13 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// An individual entry in the palette.
 	/// </summary>
-	public abstract class IPaletteEntry : ICloneable
+	public abstract class PaletteEntryBase : ICloneable
 	{
 		/// <summary>
 		/// Creates a PaletteEntry using the default value for that color.
 		/// </summary>
 		/// <param name="color"></param>
-		protected IPaletteEntry(GBColor color) {
+		protected PaletteEntryBase(GBColor color) {
 			switch (color) {
 			case GBColor.WHITE: this.CorespondingID = 0; break;
 			case GBColor.DARK_GRAY: this.CorespondingID = 1; break;
@@ -292,7 +292,7 @@ namespace GB.Shared.Palette
 		/// Creates a PaletteEntry using the default color value.
 		/// </summary>
 		/// <param name="id"></param>
-		protected IPaletteEntry(int id) {
+		protected PaletteEntryBase(int id) {
 			switch (id) {
 			case 0: this.CorespondingColor = GBColor.WHITE; break;
 			case 1: this.CorespondingColor = GBColor.DARK_GRAY; break;
@@ -349,7 +349,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="entry"></param>
 		/// <returns></returns>
-		public static implicit operator Color(IPaletteEntry entry) {
+		public static implicit operator Color(PaletteEntryBase entry) {
 			return entry.Color;
 		}
 
@@ -358,7 +358,7 @@ namespace GB.Shared.Palette
 				return false;
 			}
 
-			IPaletteEntry entry = (IPaletteEntry)obj;
+			PaletteEntryBase entry = (PaletteEntryBase)obj;
 
 			return entry.Color.Equals(this.Color);
 		}

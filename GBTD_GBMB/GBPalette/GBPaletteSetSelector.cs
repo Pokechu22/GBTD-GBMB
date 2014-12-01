@@ -13,9 +13,9 @@ namespace GB.Shared.Palette
 	/// Control that edits a Palette Set.
 	/// </summary>
 	public abstract partial class GBPaletteSetSelector<TSet, TRow, TEntry> : UserControl
-		where TSet : IPaletteSet<TRow, TEntry>, new()
-		where TRow : IPalette<TEntry>
-		where TEntry : IPaletteEntry
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		#region Private inner classes
 		private sealed class PaletteSetEntry : PaletteEntry

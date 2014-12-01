@@ -13,9 +13,9 @@ namespace GB.Shared.Palette
 {
 	public partial class ChoosePalette<TSelector, TSet, TRow, TEntry> : Form
 		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
-		where TSet : IPaletteSet<TRow, TEntry>, new()
-		where TRow : IPalette<TEntry>
-		where TEntry : IPaletteEntry
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		public ChoosePalette() {
 			InitializeComponent();

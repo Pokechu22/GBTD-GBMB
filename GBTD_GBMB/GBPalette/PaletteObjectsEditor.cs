@@ -12,9 +12,9 @@ namespace GB.Shared.Palette
 	class PaletteObjectsEditor<TForm, TSelector, TSet, TRow, TEntry> : UITypeEditor
 		where TForm : ChoosePalette<TSelector, TSet, TRow, TEntry>, new()
 		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
-		where TSet : IPaletteSet<TRow, TEntry>, new()
-		where TRow : IPalette<TEntry>
-		where TEntry : IPaletteEntry
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		IWindowsFormsEditorService editorService = null;
 

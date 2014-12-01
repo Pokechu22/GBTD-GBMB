@@ -10,9 +10,9 @@ using System.Windows.Forms;
 namespace GB.Shared.Palette
 {
 	public abstract partial class GBTDPaletteChooser<TSet, TRow, TEntry> : UserControl
-		where TSet : IPaletteSet<TRow, TEntry>, new()
-		where TRow : IPalette<TEntry>
-		where TEntry: IPaletteEntry
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry: PaletteEntryBase
 	{
 		private TSet set = new TSet();
 

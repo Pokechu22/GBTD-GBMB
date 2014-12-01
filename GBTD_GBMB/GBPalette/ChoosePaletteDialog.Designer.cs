@@ -3,9 +3,9 @@ namespace GB.Shared.Palette
 {
 	partial class ChoosePalette<TSelector, TSet, TRow, TEntry>
 		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
-		where TSet : IPaletteSet<TRow, TEntry>, new()
-		where TRow : IPalette<TEntry>
-		where TEntry : IPaletteEntry
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		/// <summary>
 		/// Required designer variable.

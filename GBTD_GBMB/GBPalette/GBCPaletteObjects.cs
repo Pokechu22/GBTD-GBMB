@@ -10,7 +10,7 @@ using GB.Shared.Tile;
 namespace GB.Shared.Palette
 {
 	[EditorAttribute(typeof(PaletteObjectsEditor<GBCChoosePalette, GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>), typeof(System.Drawing.Design.UITypeEditor))]
-	public class GBCPaletteSet : IPaletteSet<GBCPalette, GBCPaletteEntry> {
+	public class GBCPaletteSet : PaletteSetBase<GBCPalette, GBCPaletteEntry> {
 
 		public override int NumberOfRows {
 			get { return 8; }
@@ -48,7 +48,7 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	public class GBCPalette : IPalette<GBCPaletteEntry> {
+	public class GBCPalette : PaletteBase<GBCPaletteEntry> {
 		private GBCPaletteEntry entryWhite = new GBCPaletteEntry(GBColor.WHITE);
 		private GBCPaletteEntry entryLightGray = new GBCPaletteEntry(GBColor.LIGHT_GRAY);
 		private GBCPaletteEntry entryDarkGray = new GBCPaletteEntry(GBColor.DARK_GRAY);
@@ -84,7 +84,7 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	public class GBCPaletteEntry : IPaletteEntry {
+	public class GBCPaletteEntry : PaletteEntryBase {
 		/// <summary>
 		/// Creates a PaletteEntry using the default color value.
 		/// </summary>
