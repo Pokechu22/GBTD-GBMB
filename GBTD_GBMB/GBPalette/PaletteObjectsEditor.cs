@@ -32,13 +32,9 @@ namespace GB.Shared.Palette
 
 				form.Set = (TSet)value;
 
-				System.Windows.Forms.MessageBox.Show("A");
-
 				editorService.ShowDialog(form);
 
-				System.Windows.Forms.MessageBox.Show("B");
-
-				return form.Set;
+				return form.Set.Clone();
 			}
 
 			return value;
