@@ -13,7 +13,9 @@ namespace GB.Shared.Palette
 	/// An entire group of Palettes.
 	/// </summary>
 	/// <typeparam name="TRow"></typeparam>
-	public abstract class IPaletteSet<TRow, TEntry> where TRow : IPalette<TEntry> where TEntry : IPaletteEntry
+	public abstract class IPaletteSet<TRow, TEntry> : ICloneable
+		where TRow : IPalette<TEntry>
+		where TEntry : IPaletteEntry
 	{
 		/// <summary>
 		/// The total number for rows.
@@ -27,7 +29,7 @@ namespace GB.Shared.Palette
 		/// Each individual row.
 		/// </summary>
 		[Category("Data"), Description("Each individual row.")]
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		public abstract TRow[] Rows {
 			get;
 			set;
@@ -104,13 +106,16 @@ namespace GB.Shared.Palette
 
 			return hashcode;
 		}
+
+		public abstract object Clone();
 	}
 
 	/// <summary>
 	/// A single row of entries, 4 in length.
 	/// </summary>
 	/// <typeparam name="TEntry"></typeparam>
-	public abstract class IPalette<TEntry> where TEntry : IPaletteEntry
+	public abstract class IPalette<TEntry> : ICloneable
+		where TEntry : IPaletteEntry
 	{
 		/// <summary>
 		/// The 'White' color used on this.
@@ -257,12 +262,14 @@ namespace GB.Shared.Palette
 
 			return hashcode;
 		}
+
+		public abstract object Clone();
 	}
 
 	/// <summary>
 	/// An individual entry in the palette.
 	/// </summary>
-	public abstract class IPaletteEntry
+	public abstract class IPaletteEntry : ICloneable
 	{
 		/// <summary>
 		/// Creates a PaletteEntry using the default value for that color.
@@ -326,6 +333,7 @@ namespace GB.Shared.Palette
 		/// The color used by this entry.
 		/// </summary>
 		[Category("Data"), Description("The color used by this entry.")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		public abstract Color Color {
 			get;
 			set;
@@ -361,8 +369,10 @@ namespace GB.Shared.Palette
 			int hashcode = base.GetHashCode();
 
 			hashcode = (hashcode * PRIME) + (Color.GetHashCode());
-
+			
 			return hashcode;
 		}
+
+		public abstract object Clone();
 	}
 }

@@ -38,6 +38,14 @@ namespace GB.Shared.Palette
 				rows = value;
 			}
 		}
+
+		public override object Clone() {
+			GBCPaletteSet returned = new GBCPaletteSet();
+			for (int i = 0; i < returned.rows.Length; i++) {
+				returned.rows[i] = (GBCPalette)this.rows[i].Clone();
+			}
+			return returned;
+		}
 	}
 
 	public class GBCPalette : IPalette<GBCPaletteEntry> {
@@ -64,6 +72,15 @@ namespace GB.Shared.Palette
 		public override GBCPaletteEntry EntryBlack {
 			get { return entryBlack; }
 			set { entryBlack = value; }
+		}
+
+		public override object Clone() {
+			GBCPalette returned = new GBCPalette();
+			returned.entryBlack = (GBCPaletteEntry)this.entryBlack.Clone();
+			returned.entryDarkGray = (GBCPaletteEntry)this.entryDarkGray.Clone();
+			returned.entryLightGray = (GBCPaletteEntry)this.entryLightGray.Clone();
+			returned.entryWhite = (GBCPaletteEntry)this.entryWhite.Clone();
+			return returned;
 		}
 	}
 
@@ -99,6 +116,12 @@ namespace GB.Shared.Palette
 			case GBColor.BLACK: this.Color = Color.Black; return;
 			default: throw new InvalidOperationException("Got invalid GBColor " + this.CorespondingColor + "(int: " + ((int)this.CorespondingColor) + ")");
 			}
+		}
+
+		public override object Clone() {
+			GBCPaletteEntry returned = new GBCPaletteEntry(this.CorespondingColor);
+			returned.color = this.color;
+			return returned;
 		}
 	}
 }

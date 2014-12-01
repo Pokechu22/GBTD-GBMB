@@ -16,6 +16,8 @@ namespace GB.Shared.Palette
 	{
 		private TSet set = new TSet();
 
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+		[Category("Data"), Description("The used set.")]
 		public TSet Set {
 			get { set = this.gbPaletteChooser1.Set; return this.set; }
 			set { if (value == null) { throw new ArgumentNullException(); } this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
