@@ -21,6 +21,8 @@ namespace GB.Shared.Tile
 
 		protected internal byte clickedX = 0, clickedY = 0;
 		protected internal MouseButtons buttons = MouseButtons.None;
+
+		protected bool grid = true;
 		#endregion
 
 		#region Public properties
@@ -86,6 +88,17 @@ namespace GB.Shared.Tile
 				OnTileChange();
 			}
 		}
+
+		[Category("Display"), Description("Controls drawing of a pixel grid.")]
+		public bool Grid {
+			get {
+				return grid;
+			}
+			set {
+				this.grid = value;
+				this.Refresh();
+			}
+		}
 		#endregion
 
 		#region Events
@@ -132,6 +145,22 @@ namespace GB.Shared.Tile
 				for (byte y = 0; y < 8; y++) {
 					drawPixel(x, y, tile[x, y], e.Graphics);
 				}
+			}
+
+			if (grid) {
+				for (byte i = 1; i < 8; i++) {
+					e.Graphics.DrawLine(Pens.Black,
+						i * (this.Width / 8.0f),
+						0,
+						i * (this.Width / 8.0f),
+						this.Height);
+					e.Graphics.DrawLine(Pens.Black,
+						0,
+						i * (this.Height / 8.0f),
+						this.Width,
+						i * (this.Height / 8.0f));
+				}
+				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Color.Black, ButtonBorderStyle.Solid);
 			}
 		}
 
