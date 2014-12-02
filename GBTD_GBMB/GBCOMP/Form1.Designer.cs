@@ -25,7 +25,6 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palette.GBCPaletteSet gbcPaletteSet1 = new GB.Shared.Palette.GBCPaletteSet();
 			GB.Shared.Palette.GBCPalette gbcPalette1 = new GB.Shared.Palette.GBCPalette();
 			GB.Shared.Palette.GBCPalette gbcPalette2 = new GB.Shared.Palette.GBCPalette();
 			GB.Shared.Palette.GBCPalette gbcPalette3 = new GB.Shared.Palette.GBCPalette();
@@ -105,8 +104,8 @@
 			gbcPalette1.EntryBlack.Color = System.Drawing.Color.Black;
 			gbcPalette1.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
 			gbcPalette1.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette1.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette2.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette1.EntryWhite.Color = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+			gbcPalette2.EntryBlack.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			gbcPalette2.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
 			gbcPalette2.EntryLightGray.Color = System.Drawing.Color.LightGray;
 			gbcPalette2.EntryWhite.Color = System.Drawing.Color.White;
@@ -134,7 +133,7 @@
 			gbcPalette8.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
 			gbcPalette8.EntryLightGray.Color = System.Drawing.Color.LightGray;
 			gbcPalette8.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPaletteSet1.Rows = new GB.Shared.Palette.GBCPalette[] {
+			this.gbtdPaletteChooser1.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
         gbcPalette1,
         gbcPalette2,
         gbcPalette3,
@@ -143,7 +142,6 @@
         gbcPalette6,
         gbcPalette7,
         gbcPalette8};
-			this.gbtdPaletteChooser1.Set = gbcPaletteSet1;
 			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(191, 26);
 			this.gbtdPaletteChooser1.TabIndex = 2;
 			this.gbtdPaletteChooser1.UseGBCFilter = false;

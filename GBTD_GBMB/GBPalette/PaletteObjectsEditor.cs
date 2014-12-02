@@ -26,15 +26,18 @@ namespace GB.Shared.Palette
 			if (provider != null) {
 				editorService = provider.GetService(typeof(IWindowsFormsEditorService)) as IWindowsFormsEditorService;
 			}
-			
+
 			if (editorService != null) {
 				TForm form = new TForm();
 
-				form.Set = (TSet)value;
+				//Clone the origional one so that modifications aren't made to it.
+				form.Set = (TSet)((TSet)value).Clone();
 
 				editorService.ShowDialog(form);
 
-				return form.Set.Clone();
+				if (form.DialogResult == System.Windows.Forms.DialogResult.OK) {
+					return form.Set;
+				}
 			}
 
 			return value;

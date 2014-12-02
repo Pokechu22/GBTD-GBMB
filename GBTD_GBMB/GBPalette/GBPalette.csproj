@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -59,7 +61,7 @@
     <Compile Include="GBPaletteChooser.Designer.cs">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBPaletteObjects.cs" />
+    <Compile Include="PaletteObjects.cs" />
     <Compile Include="GBPaletteSetSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
