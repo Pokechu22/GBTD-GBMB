@@ -83,6 +83,48 @@
       <Name>GBTile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cut_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cut_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_NoHover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
