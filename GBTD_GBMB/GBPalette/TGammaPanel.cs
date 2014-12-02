@@ -12,11 +12,6 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// Based off of TGammaPanel, from the origional source, written in delfi, by TRSOFT.  See http://www.abcnet.de/TRSOFT/
 	/// Ported to C# by Pokechu22.
-	/// 
-	/// 
-	/// Copyright © 1998 by TRSOFT  All Rights Reserved.
-	/// Thomas Radtke Software Entwicklung.
-	/// http://www.abcnet.de/TRSOFT/
 	/// </summary>
 	public partial class TGammaPanel : UserControl
 	{
@@ -297,7 +292,7 @@ namespace GB.Shared.Palette
 		#endregion
 
 		/// The publicly used feilds.
-		#region Public Fields
+		#region Public properties
 		/// <summary>
 		/// Use the GBC Filter?
 		/// 

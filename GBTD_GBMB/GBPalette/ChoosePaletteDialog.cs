@@ -38,6 +38,9 @@ namespace GB.Shared.Palette
 
 		private void gbPaletteSetSelector1_SelectionChanged(object sender, EventArgs e) {
 			colorPicker1.Enabled = (gbPaletteSetSelector1.SelectedX != -1 && gbPaletteSetSelector1.SelectedY != -1);
+			if (colorPicker1.Enabled) {
+				colorPicker1.FirstColor = gbPaletteSetSelector1.SelectedColor;
+			}
 		}
 
 		private void filterCheckBox_CheckedChanged(object sender, EventArgs e) {
