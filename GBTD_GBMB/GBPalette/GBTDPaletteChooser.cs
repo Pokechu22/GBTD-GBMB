@@ -14,15 +14,6 @@ namespace GB.Shared.Palette
 		where TRow : PaletteBase<TEntry>
 		where TEntry: PaletteEntryBase
 	{
-		private TSet set = new TSet();
-
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-		[Category("Data"), Description("The used set.")]
-		public TSet Set {
-			get { set = this.gbPaletteChooser1.Set; return this.set; }
-			set { if (value == null) { throw new ArgumentNullException(); } this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
-		}
-
 		/// <summary>
 		/// Mouse entry used to contain one of the colors for a mouse button.
 		/// </summary>
@@ -120,7 +111,7 @@ namespace GB.Shared.Palette
 				set { item = value; OnValueChange(); }
 			}
 
-			private int index;
+			private int index = 0;
 			public int Index {
 				get { return entry.Index; }
 				set { index = value; OnValueChange(); }
@@ -161,6 +152,8 @@ namespace GB.Shared.Palette
 
 				this.entry = new GBTDPaletteChooserMouseEntryPaletteEntry(buttons, chooser);
 
+				this.Item = chooser.Set[0];
+
 				this.Controls.Add(label);
 				this.Controls.Add(entry);
 
@@ -176,10 +169,27 @@ namespace GB.Shared.Palette
 
 		private bool useGBCFilter = false;
 
+		[Category("Display"), Description("Use the GBC filter?")]
 		public bool UseGBCFilter {
 			get { return useGBCFilter; }
 			set { useGBCFilter = value; this.Refresh(); }
 		}
+
+		private TSet set = new TSet();
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+		[Category("Data"), Description("The used set.")]
+		public TSet Set {
+			get { set = this.gbPaletteChooser1.Set; return this.set; }
+			set { if (value == null) { throw new ArgumentNullException(); } this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
+		}
+
+		[Category("Data"), Description("The row currently used.")]
+		public int SelectedRow {
+			get { return this.gbPaletteChooser1.SelectedRowIndex; }
+			set { this.gbPaletteChooser1.SelectedRowIndex = value; }
+		}
+
 		protected override Size DefaultMaximumSize {
 			get {
 				return new Size(191, 26);

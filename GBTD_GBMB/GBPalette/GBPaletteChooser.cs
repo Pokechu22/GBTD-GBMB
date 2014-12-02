@@ -317,6 +317,8 @@ namespace GB.Shared.Palette
 			entry1.Color = item[1];
 			entry2.Color = item[2];
 			entry3.Color = item[3];
+
+			OnSelectedPaletteChanged();
 		}
 
 		private void dropDown_SelectionChangeCommitted(object sender, EventArgs e) {
@@ -328,6 +330,8 @@ namespace GB.Shared.Palette
 			entry1.Color = item[1];
 			entry2.Color = item[2];
 			entry3.Color = item[3];
+
+			OnSelectedPaletteChanged();
 		}
 
 		/// <summary>
