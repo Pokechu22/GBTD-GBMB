@@ -26,9 +26,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,48 +68,21 @@
 			this.flipColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pixelEditableTileRenderer1 = new GB.Shared.Tile.PixelEditableTileRenderer();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.exportToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.toolStrip1.SuspendLayout();
+			this.pixelEditableTileRenderer1 = new GB.Shared.Tile.PixelEditableTileRenderer();
+			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.cutToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.menuStrip1.SuspendLayout();
+			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// toolStrip1
-			// 
-			this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripButton,
-            this.saveToolStripButton,
-            this.exportToolStripButton,
-            this.toolStripSeparator1,
-            this.cutToolStripButton,
-            this.copyToolStripButton,
-            this.pasteToolStripButton,
-            this.toolStripSeparator2,
-            this.helpToolStripButton});
-			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			this.toolStrip1.Size = new System.Drawing.Size(292, 25);
-			this.toolStrip1.TabIndex = 1;
-			this.toolStrip1.Text = "toolStrip1";
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
 			// 
 			// toolStrip2
 			// 
@@ -431,9 +401,10 @@
 			// openToolStripButton
 			// 
 			this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.openToolStripButton.Image = global::GB.GBTD.Properties.Resources.Open_NoHover;
+			this.openToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
 			this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripButton.Name = "openToolStripButton";
+			this.openToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
 			this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.openToolStripButton.Text = "Open";
 			this.openToolStripButton.ToolTipText = "Open";
@@ -441,9 +412,10 @@
 			// saveToolStripButton
 			// 
 			this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.saveToolStripButton.Image = global::GB.GBTD.Properties.Resources.Save_NoHover;
+			this.saveToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
 			this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripButton.Name = "saveToolStripButton";
+			this.saveToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
 			this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.saveToolStripButton.Text = "Save";
 			this.saveToolStripButton.ToolTipText = "Save";
@@ -451,19 +423,26 @@
 			// exportToolStripButton
 			// 
 			this.exportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.exportToolStripButton.Image = global::GB.GBTD.Properties.Resources.Export_NoHover;
+			this.exportToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
 			this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.exportToolStripButton.Name = "exportToolStripButton";
+			this.exportToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
 			this.exportToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.exportToolStripButton.Text = "Export";
 			this.exportToolStripButton.ToolTipText = "Export";
 			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+			// 
 			// cutToolStripButton
 			// 
 			this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.cutToolStripButton.Image = global::GB.GBTD.Properties.Resources.Cut_NoHover;
+			this.cutToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
 			this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.cutToolStripButton.Name = "cutToolStripButton";
+			this.cutToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
 			this.cutToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.cutToolStripButton.Text = "Cut";
 			this.cutToolStripButton.ToolTipText = "Cut";
@@ -471,9 +450,10 @@
 			// copyToolStripButton
 			// 
 			this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.copyToolStripButton.Image = global::GB.GBTD.Properties.Resources.Copy_NoHover;
+			this.copyToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
 			this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.copyToolStripButton.Name = "copyToolStripButton";
+			this.copyToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
 			this.copyToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.copyToolStripButton.Text = "Copy";
 			this.copyToolStripButton.ToolTipText = "Copy";
@@ -482,22 +462,49 @@
 			// 
 			this.pasteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.pasteToolStripButton.Enabled = false;
-			this.pasteToolStripButton.Image = global::GB.GBTD.Properties.Resources.Paste_NoHover;
+			this.pasteToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
 			this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.pasteToolStripButton.Name = "pasteToolStripButton";
+			this.pasteToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
 			this.pasteToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.pasteToolStripButton.Text = "Paste";
 			this.pasteToolStripButton.ToolTipText = "Paste";
 			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+			// 
 			// helpToolStripButton
 			// 
 			this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.helpToolStripButton.Image = global::GB.GBTD.Properties.Resources.Help_NoHover;
+			this.helpToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
 			this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.helpToolStripButton.Name = "helpToolStripButton";
+			this.helpToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
 			this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
+			// 
+			// toolStrip1
+			// 
+			this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripButton,
+            this.saveToolStripButton,
+            this.exportToolStripButton,
+            this.toolStripSeparator1,
+            this.cutToolStripButton,
+            this.copyToolStripButton,
+            this.pasteToolStripButton,
+            this.toolStripSeparator2,
+            this.helpToolStripButton});
+			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+			this.toolStrip1.Name = "toolStrip1";
+			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			this.toolStrip1.Size = new System.Drawing.Size(292, 25);
+			this.toolStrip1.TabIndex = 1;
+			this.toolStrip1.Text = "toolStrip1";
 			// 
 			// TileEdit
 			// 
@@ -511,10 +518,10 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "TileEdit";
 			this.Text = "Form1";
-			this.toolStrip1.ResumeLayout(false);
-			this.toolStrip1.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.toolStrip1.ResumeLayout(false);
+			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -523,15 +530,6 @@
 		#endregion
 
 		private Shared.Tile.PixelEditableTileRenderer pixelEditableTileRenderer1;
-		private System.Windows.Forms.ToolStrip toolStrip1;
-		private System.Windows.Forms.ToolStripButton openToolStripButton;
-		private System.Windows.Forms.ToolStripButton saveToolStripButton;
-		private System.Windows.Forms.ToolStripButton exportToolStripButton;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripButton copyToolStripButton;
-		private System.Windows.Forms.ToolStripButton pasteToolStripButton;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-		private System.Windows.Forms.ToolStripButton helpToolStripButton;
 		private System.Windows.Forms.ToolStrip toolStrip2;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -575,7 +573,16 @@
 		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolTip toolTip1;
-		private System.Windows.Forms.ToolStripButton cutToolStripButton;
+		private TileEdit.HoverChangingToolStripButton openToolStripButton;
+		private TileEdit.HoverChangingToolStripButton saveToolStripButton;
+		private TileEdit.HoverChangingToolStripButton exportToolStripButton;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private TileEdit.HoverChangingToolStripButton cutToolStripButton;
+		private TileEdit.HoverChangingToolStripButton copyToolStripButton;
+		private TileEdit.HoverChangingToolStripButton pasteToolStripButton;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private TileEdit.HoverChangingToolStripButton helpToolStripButton;
+		private System.Windows.Forms.ToolStrip toolStrip1;
 
 	}
 }
