@@ -247,7 +247,7 @@ namespace GB.Shared.Palette
 
 		public TSet Set {
 			get { return set; }
-			set { set = value; reloadFromSet(); }
+			set { set = value; reloadFromSet(); OnSelectedPaletteChanged(); }
 		}
 
 		#region Events
