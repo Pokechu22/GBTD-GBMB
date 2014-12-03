@@ -143,7 +143,7 @@
             this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
-			this.fileToolStripMenuItem.Text = "File";
+			this.fileToolStripMenuItem.Text = "&File";
 			// 
 			// openToolStripMenuItem
 			// 
@@ -230,7 +230,7 @@
             this.splitOptionsToolStripMenuItem});
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.editToolStripMenuItem.Text = "Edit";
+			this.editToolStripMenuItem.Text = "&Edit";
 			// 
 			// undoToolStripMenuItem
 			// 
@@ -303,7 +303,7 @@
             this.flipColorsToolStripMenuItem});
 			this.designToolStripMenuItem.Name = "designToolStripMenuItem";
 			this.designToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-			this.designToolStripMenuItem.Text = "Design";
+			this.designToolStripMenuItem.Text = "&Design";
 			// 
 			// penToolStripMenuItem
 			// 
@@ -405,7 +405,7 @@
             this.gotoBookmarkToolStripMenuItem});
 			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
 			this.viewToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-			this.viewToolStripMenuItem.Text = "View";
+			this.viewToolStripMenuItem.Text = "&View";
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -416,7 +416,7 @@
             this.aboutToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-			this.helpToolStripMenuItem.Text = "Help";
+			this.helpToolStripMenuItem.Text = "&Help";
 			// 
 			// pixelEditableTileRenderer1
 			// 
