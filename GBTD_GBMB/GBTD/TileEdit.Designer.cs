@@ -26,7 +26,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,19 +79,38 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.tileSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.x16ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.x16ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.x32ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tileCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+			this.simpleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.gridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.nibbleMarkersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+			this.autoUpdatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.colorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+			this.palettesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+			this.setBookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.gotoBookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpTopicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpIndexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// toolStrip2
-			// 
-			this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-			this.toolStrip2.Location = new System.Drawing.Point(0, 49);
-			this.toolStrip2.Name = "toolStrip2";
-			this.toolStrip2.Size = new System.Drawing.Size(26, 224);
-			this.toolStrip2.TabIndex = 2;
-			this.toolStrip2.Text = "toolStrip2";
 			// 
 			// menuStrip1
 			// 
@@ -105,7 +123,7 @@
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			this.menuStrip1.Size = new System.Drawing.Size(292, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(395, 24);
 			this.menuStrip1.TabIndex = 3;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -370,12 +388,32 @@
 			// 
 			// viewToolStripMenuItem
 			// 
+			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tileSizeToolStripMenuItem,
+            this.tileCountToolStripMenuItem,
+            this.toolStripSeparator11,
+            this.simpleToolStripMenuItem,
+            this.gridToolStripMenuItem,
+            this.nibbleMarkersToolStripMenuItem,
+            this.toolStripSeparator12,
+            this.autoUpdatedToolStripMenuItem,
+            this.toolStripSeparator13,
+            this.colorSetToolStripMenuItem,
+            this.palettesToolStripMenuItem,
+            this.toolStripSeparator14,
+            this.setBookmarkToolStripMenuItem,
+            this.gotoBookmarkToolStripMenuItem});
 			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
 			this.viewToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.viewToolStripMenuItem.Text = "View";
 			// 
 			// helpToolStripMenuItem
 			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpTopicsToolStripMenuItem,
+            this.helpIndexToolStripMenuItem,
+            this.toolStripSeparator15,
+            this.aboutToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
 			this.helpToolStripMenuItem.Text = "Help";
@@ -502,16 +540,199 @@
 			this.toolStrip1.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			this.toolStrip1.Size = new System.Drawing.Size(292, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(395, 25);
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
+			// 
+			// tileSizeToolStripMenuItem
+			// 
+			this.tileSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aToolStripMenuItem1,
+            this.x16ToolStripMenuItem,
+            this.x16ToolStripMenuItem1,
+            this.x32ToolStripMenuItem});
+			this.tileSizeToolStripMenuItem.Name = "tileSizeToolStripMenuItem";
+			this.tileSizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.tileSizeToolStripMenuItem.Text = "Tile size";
+			// 
+			// aToolStripMenuItem1
+			// 
+			this.aToolStripMenuItem1.Name = "aToolStripMenuItem1";
+			this.aToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.aToolStripMenuItem1.Text = "8 x 8";
+			// 
+			// x16ToolStripMenuItem
+			// 
+			this.x16ToolStripMenuItem.Name = "x16ToolStripMenuItem";
+			this.x16ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.x16ToolStripMenuItem.Text = "8 x 16";
+			// 
+			// x16ToolStripMenuItem1
+			// 
+			this.x16ToolStripMenuItem1.Name = "x16ToolStripMenuItem1";
+			this.x16ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.x16ToolStripMenuItem1.Text = "16 x 16";
+			// 
+			// x32ToolStripMenuItem
+			// 
+			this.x32ToolStripMenuItem.Name = "x32ToolStripMenuItem";
+			this.x32ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.x32ToolStripMenuItem.Text = "32 x 32";
+			// 
+			// tileCountToolStripMenuItem
+			// 
+			this.tileCountToolStripMenuItem.Name = "tileCountToolStripMenuItem";
+			this.tileCountToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.tileCountToolStripMenuItem.Text = "Tile count";
+			// 
+			// toolStripSeparator11
+			// 
+			this.toolStripSeparator11.Name = "toolStripSeparator11";
+			this.toolStripSeparator11.Size = new System.Drawing.Size(149, 6);
+			// 
+			// simpleToolStripMenuItem
+			// 
+			this.simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
+			this.simpleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.simpleToolStripMenuItem.Text = "Simple";
+			// 
+			// gridToolStripMenuItem
+			// 
+			this.gridToolStripMenuItem.Name = "gridToolStripMenuItem";
+			this.gridToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.gridToolStripMenuItem.Text = "Grid";
+			// 
+			// nibbleMarkersToolStripMenuItem
+			// 
+			this.nibbleMarkersToolStripMenuItem.Name = "nibbleMarkersToolStripMenuItem";
+			this.nibbleMarkersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.nibbleMarkersToolStripMenuItem.Text = "Nibble markers";
+			// 
+			// toolStripSeparator12
+			// 
+			this.toolStripSeparator12.Name = "toolStripSeparator12";
+			this.toolStripSeparator12.Size = new System.Drawing.Size(149, 6);
+			// 
+			// autoUpdatedToolStripMenuItem
+			// 
+			this.autoUpdatedToolStripMenuItem.Name = "autoUpdatedToolStripMenuItem";
+			this.autoUpdatedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.autoUpdatedToolStripMenuItem.Text = "Auto update";
+			// 
+			// colorSetToolStripMenuItem
+			// 
+			this.colorSetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aToolStripMenuItem2});
+			this.colorSetToolStripMenuItem.Name = "colorSetToolStripMenuItem";
+			this.colorSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.colorSetToolStripMenuItem.Text = "Color set";
+			// 
+			// aToolStripMenuItem2
+			// 
+			this.aToolStripMenuItem2.Name = "aToolStripMenuItem2";
+			this.aToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+			this.aToolStripMenuItem2.Text = "A";
+			// 
+			// toolStripSeparator13
+			// 
+			this.toolStripSeparator13.Name = "toolStripSeparator13";
+			this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
+			// 
+			// palettesToolStripMenuItem
+			// 
+			this.palettesToolStripMenuItem.Name = "palettesToolStripMenuItem";
+			this.palettesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.palettesToolStripMenuItem.Text = "Palettes";
+			// 
+			// toolStripSeparator14
+			// 
+			this.toolStripSeparator14.Name = "toolStripSeparator14";
+			this.toolStripSeparator14.Size = new System.Drawing.Size(149, 6);
+			// 
+			// setBookmarkToolStripMenuItem
+			// 
+			this.setBookmarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+			this.setBookmarkToolStripMenuItem.Name = "setBookmarkToolStripMenuItem";
+			this.setBookmarkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.setBookmarkToolStripMenuItem.Text = "Set bookmark";
+			// 
+			// gotoBookmarkToolStripMenuItem
+			// 
+			this.gotoBookmarkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+			this.gotoBookmarkToolStripMenuItem.Name = "gotoBookmarkToolStripMenuItem";
+			this.gotoBookmarkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.gotoBookmarkToolStripMenuItem.Text = "Goto bookmark";
+			// 
+			// toolStripMenuItem2
+			// 
+			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem2.Text = "1";
+			// 
+			// toolStripMenuItem3
+			// 
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem3.Text = "2";
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem4.Text = "3";
+			// 
+			// toolStripMenuItem5
+			// 
+			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+			this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem5.Text = "1";
+			// 
+			// toolStripMenuItem6
+			// 
+			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem6.Text = "2";
+			// 
+			// toolStripMenuItem7
+			// 
+			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem7.Text = "3";
+			// 
+			// helpTopicsToolStripMenuItem
+			// 
+			this.helpTopicsToolStripMenuItem.Name = "helpTopicsToolStripMenuItem";
+			this.helpTopicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.helpTopicsToolStripMenuItem.Text = "Help topics";
+			// 
+			// helpIndexToolStripMenuItem
+			// 
+			this.helpIndexToolStripMenuItem.Name = "helpIndexToolStripMenuItem";
+			this.helpIndexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.helpIndexToolStripMenuItem.Text = "Help index";
+			// 
+			// toolStripSeparator15
+			// 
+			this.toolStripSeparator15.Name = "toolStripSeparator15";
+			this.toolStripSeparator15.Size = new System.Drawing.Size(149, 6);
+			// 
+			// aboutToolStripMenuItem
+			// 
+			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.aboutToolStripMenuItem.Text = "About";
 			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 273);
-			this.Controls.Add(this.toolStrip2);
+			this.ClientSize = new System.Drawing.Size(395, 281);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.pixelEditableTileRenderer1);
@@ -530,7 +751,6 @@
 		#endregion
 
 		private Shared.Tile.PixelEditableTileRenderer pixelEditableTileRenderer1;
-		private System.Windows.Forms.ToolStrip toolStrip2;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -583,6 +803,35 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private TileEdit.HoverChangingToolStripButton helpToolStripButton;
 		private System.Windows.Forms.ToolStrip toolStrip1;
+		private System.Windows.Forms.ToolStripMenuItem tileSizeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem x16ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem x16ToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem x32ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem tileCountToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+		private System.Windows.Forms.ToolStripMenuItem simpleToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem gridToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem nibbleMarkersToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+		private System.Windows.Forms.ToolStripMenuItem autoUpdatedToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+		private System.Windows.Forms.ToolStripMenuItem colorSetToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem2;
+		private System.Windows.Forms.ToolStripMenuItem palettesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+		private System.Windows.Forms.ToolStripMenuItem setBookmarkToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+		private System.Windows.Forms.ToolStripMenuItem gotoBookmarkToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem helpTopicsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem helpIndexToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 
 	}
 }
