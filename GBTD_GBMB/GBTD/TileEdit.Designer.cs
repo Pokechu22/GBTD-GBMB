@@ -100,6 +100,8 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.tileEditBorder = new System.Windows.Forms.Panel();
+			this.toolList1 = new GB.GBTD.ToolList();
 			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
@@ -107,9 +109,9 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.tileEditBorder = new System.Windows.Forms.Panel();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
+			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -652,6 +654,23 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
+			// tileEditBorder
+			// 
+			this.tileEditBorder.Controls.Add(this.toolList1);
+			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
+			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
+			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
+			this.tileEditBorder.TabIndex = 4;
+			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
+			// 
+			// toolList1
+			// 
+			this.toolList1.Location = new System.Drawing.Point(4, 4);
+			this.toolList1.Name = "toolList1";
+			this.toolList1.Size = new System.Drawing.Size(27, 217);
+			this.toolList1.TabIndex = 0;
+			// 
 			// openToolStripButton
 			// 
 			this.openToolStripButton.AutoSize = false;
@@ -751,15 +770,6 @@
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
 			// 
-			// tileEditBorder
-			// 
-			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
-			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
-			this.tileEditBorder.Name = "tileEditBorder";
-			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
-			this.tileEditBorder.TabIndex = 4;
-			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
-			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -777,6 +787,7 @@
 			this.menuStrip1.PerformLayout();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
+			this.tileEditBorder.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -865,6 +876,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.Panel tileEditBorder;
+		private ToolList toolList1;
 
 	}
 }
