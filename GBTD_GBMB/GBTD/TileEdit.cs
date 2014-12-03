@@ -69,5 +69,9 @@ namespace GB.GBTD
 		public TileEdit() {
 			InitializeComponent();
 		}
+
+		private void tileEditBorder_Paint(object sender, PaintEventArgs e) {
+			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, tileEditBorder.Width, tileEditBorder.Height, Border3DStyle.SunkenOuter);
+		}
 	}
 }
