@@ -11,10 +11,11 @@ namespace GB.GBTD
 {
 	public partial class ToolList : UserControl
 	{
+		#region Inner classes
 		/// <summary>
 		/// Radio button used within the ToolList.
 		/// 
-		/// Uses 3 images: Clicked, nonclicked, hovered.
+		/// Uses 3 foreground images and one background image: Clicked, Hovered, nonhovered, and selectedbackground.
 		/// </summary>
 		private class ToolListRadioButton : RadioButton
 		{
@@ -97,8 +98,7 @@ namespace GB.GBTD
 
 			//Border painting.
 			protected override void OnPaint(PaintEventArgs e) {
-				PaintEventArgs ranged = new PaintEventArgs(e.Graphics, new Rectangle(e.ClipRectangle.X + 2, e.ClipRectangle.Y + 2, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2));
-				base.OnPaint(ranged);
+				base.OnPaint(e);
 
 				if (Checked) {
 					ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.SunkenOuter);
@@ -111,6 +111,7 @@ namespace GB.GBTD
 				}
 			}
 		}
+		#endregion
 
 		//Sizes.
 		protected override Size DefaultSize { get { return new Size(26, 217); } }
