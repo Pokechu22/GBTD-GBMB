@@ -111,6 +111,73 @@ namespace GB.GBTD
 				}
 			}
 		}
+
+		/// <summary>
+		/// Regular button used within the toollist.
+		/// 
+		/// It has two images, one used when the mouse is over, and one when not.
+		/// </summary>
+		private class ToolListButton : Button
+		{
+			private bool mouseInside = false;
+			private bool MouseInside {
+				get { return mouseInside; }
+				set { mouseInside = value; UpdateImage(); }
+			}
+
+			private Image nonhoveredImage = new Bitmap(16, 16);
+			private Image hoveredImage = new Bitmap(16, 16);
+			
+			[Category("Appearance"), Description("The image to use when not hovered over.")]
+			public Image NonhoveredImage {
+				get { return nonhoveredImage; }
+				set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; UpdateImage(); }
+			}
+			[Category("Appearance"), Description("The image to use when hovered over.")]
+			public Image HoveredImage {
+				get { return hoveredImage; }
+				set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; UpdateImage(); }
+			}
+
+			[DefaultValue("")]
+			public override string Text {
+				get { return base.Text; }
+				set { base.Text = value; }
+			}
+
+			public ToolListButton() : base() {
+				AutoSize = false;
+			}
+
+			protected override void OnMouseEnter(EventArgs eventargs) {
+				mouseInside = true;
+				base.OnMouseEnter(eventargs);
+				UpdateImage();
+			}
+			protected override void OnMouseLeave(EventArgs eventargs) {
+				mouseInside = false;
+				base.OnMouseLeave(eventargs);
+				UpdateImage();
+			}
+
+			protected void UpdateImage() {
+				if (mouseInside) {
+					this.Image = hoveredImage;
+				} else {
+					this.Image = nonhoveredImage;
+				}
+				this.Refresh();
+			}
+
+			//Border painting.
+			protected override void OnPaint(PaintEventArgs e) {
+				base.OnPaint(e);
+
+				if (mouseInside) {
+					ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
+				}
+			}
+		}
 		#endregion
 
 		//Sizes.
