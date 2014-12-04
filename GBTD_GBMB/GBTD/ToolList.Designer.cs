@@ -26,6 +26,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolList));
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.radioButton2 = new GB.GBTD.ToolList.ToolListRadioButton();
 			this.radioButton1 = new GB.GBTD.ToolList.ToolListRadioButton();
@@ -34,13 +35,21 @@
 			// radioButton2
 			// 
 			this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
+			this.radioButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("radioButton2.BackgroundImage")));
+			this.radioButton2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+			this.radioButton2.FlatAppearance.BorderSize = 0;
+			this.radioButton2.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
+			this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+			this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
 			this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.radioButton2.HoveredImage = global::GB.GBTD.Properties.Resources.Flood_Hover;
-			this.radioButton2.Location = new System.Drawing.Point(4, 36);
+			this.radioButton2.Image = global::GB.GBTD.Properties.Resources.Flood_NoHover;
+			this.radioButton2.Location = new System.Drawing.Point(3, 25);
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.NonhoveredImage = global::GB.GBTD.Properties.Resources.Flood_NoHover;
+			this.radioButton2.PressedImage = global::GB.GBTD.Properties.Resources.Flood_Pressed;
 			this.radioButton2.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
-			this.radioButton2.Size = new System.Drawing.Size(23, 24);
+			this.radioButton2.Size = new System.Drawing.Size(22, 22);
 			this.radioButton2.TabIndex = 1;
 			this.radioButton2.TabStop = true;
 			this.radioButton2.UseVisualStyleBackColor = true;
@@ -48,6 +57,7 @@
 			// radioButton1
 			// 
 			this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
+			this.radioButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("radioButton1.BackgroundImage")));
 			this.radioButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
 			this.radioButton1.FlatAppearance.BorderSize = 0;
 			this.radioButton1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
@@ -55,11 +65,13 @@
 			this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
 			this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.radioButton1.HoveredImage = global::GB.GBTD.Properties.Resources.Pen_Hover;
-			this.radioButton1.Location = new System.Drawing.Point(4, 6);
+			this.radioButton1.Image = global::GB.GBTD.Properties.Resources.Pen_NoHover;
+			this.radioButton1.Location = new System.Drawing.Point(3, 3);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.NonhoveredImage = global::GB.GBTD.Properties.Resources.Pen_NoHover;
+			this.radioButton1.PressedImage = global::GB.GBTD.Properties.Resources.Pen_Pressed;
 			this.radioButton1.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
-			this.radioButton1.Size = new System.Drawing.Size(23, 24);
+			this.radioButton1.Size = new System.Drawing.Size(22, 22);
 			this.radioButton1.TabIndex = 0;
 			this.radioButton1.TabStop = true;
 			this.radioButton1.UseVisualStyleBackColor = true;
@@ -82,7 +94,7 @@
 		#endregion
 
 		private System.Windows.Forms.ToolTip toolTip1;
-		private ToolListRadioButton radioButton1;
-		private ToolListRadioButton radioButton2;
+		private ToolList.ToolListRadioButton radioButton2;
+		private ToolList.ToolListRadioButton radioButton1;
 	}
 }

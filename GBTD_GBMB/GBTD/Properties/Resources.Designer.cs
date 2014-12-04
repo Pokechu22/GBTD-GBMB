@@ -203,6 +203,16 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Flood_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("Flood_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Help_Hover {
             get {
                 object obj = ResourceManager.GetObject("Help_Hover", resourceCulture);
@@ -276,6 +286,16 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap Pen_NoHover {
             get {
                 object obj = ResourceManager.GetObject("Pen_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pen_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("Pen_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

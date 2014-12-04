@@ -26,6 +26,7 @@ namespace GB.GBTD
 
 			private Image nonhoveredImage = new Bitmap(16, 16);
 			private Image hoveredImage = new Bitmap(16, 16);
+			private Image pressedImage = new Bitmap(16, 16);
 			private Image selectedBackgroundImage = new Bitmap(16, 16);
 			private Image nonselectedBackgroundImage = new Bitmap(16, 16);
 
@@ -38,6 +39,11 @@ namespace GB.GBTD
 			public Image HoveredImage {
 				get { return hoveredImage; }
 				set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; UpdateImage(); }
+			}
+			[Category("Appearance"), Description("The image to use when pressed.")]
+			public Image PressedImage {
+				get { return pressedImage; }
+				set { if (value == null) { value = new Bitmap(16, 16); } pressedImage = value; UpdateImage(); }
 			}
 			[Category("Appearance"), Description("The image to put in the background when selected.")]
 			public Image SelectedBackgroundImage {
@@ -77,7 +83,7 @@ namespace GB.GBTD
 					} else {
 						this.BackgroundImage = selectedBackgroundImage;
 					}
-					this.Image = hoveredImage;
+					this.Image = pressedImage;
 				} else {
 					this.BackgroundImage = nonselectedBackgroundImage;
 					if (mouseInside) {
@@ -87,15 +93,6 @@ namespace GB.GBTD
 					}
 				}
 				this.Refresh();
-				/*if (mouseInside) {
-					this.Image = hoveredImage;
-				} else {
-					if (this.Checked) {
-						this.Image = selectedImage;
-					} else {
-						this.Image = nonselectedImage;
-					}
-				}*/
 			}
 
 			//Border painting.
