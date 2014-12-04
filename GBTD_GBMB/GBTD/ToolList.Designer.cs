@@ -144,10 +144,10 @@
 			this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
 			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button4.HoveredImage = global::GB.GBTD.Properties.Resources.ScrollDown_Hover;
-			this.button4.Image = global::GB.GBTD.Properties.Resources.ScrollUp_NoHover;
+			this.button4.Image = global::GB.GBTD.Properties.Resources.ScrollDown_NoHover;
 			this.button4.Location = new System.Drawing.Point(1, 59);
 			this.button4.Name = "button4";
-			this.button4.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollUp_NoHover;
+			this.button4.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollDown_NoHover;
 			this.button4.Size = new System.Drawing.Size(20, 20);
 			this.button4.TabIndex = 3;
 			this.button4.UseVisualStyleBackColor = true;
