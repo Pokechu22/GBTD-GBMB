@@ -30,7 +30,7 @@
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.button8 = new GB.GBTD.ToolList.ToolListButton();
+			this.button8 = new GB.GBTD.ToolList.ToolListCheckBox();
 			this.button7 = new GB.GBTD.ToolList.ToolListButton();
 			this.button6 = new GB.GBTD.ToolList.ToolListButton();
 			this.button5 = new GB.GBTD.ToolList.ToolListButton();
@@ -69,6 +69,8 @@
 			// 
 			// button8
 			// 
+			this.button8.Appearance = System.Windows.Forms.Appearance.Button;
+			this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
 			this.button8.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
 			this.button8.FlatAppearance.BorderSize = 0;
 			this.button8.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
@@ -80,6 +82,8 @@
 			this.button8.Location = new System.Drawing.Point(2, 200);
 			this.button8.Name = "button8";
 			this.button8.NonhoveredImage = global::GB.GBTD.Properties.Resources.AutoUpdate_NoHover;
+			this.button8.PressedImage = global::GB.GBTD.Properties.Resources.AutoUpdate_Pressed;
+			this.button8.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.button8.Size = new System.Drawing.Size(22, 15);
 			this.button8.TabIndex = 4;
 			this.button8.UseVisualStyleBackColor = true;
@@ -290,6 +294,6 @@
 		private ToolList.ToolListButton button7;
 		private ToolList.ToolListButton button6;
 		private ToolList.ToolListButton button5;
-		private ToolList.ToolListButton button8;
+		private ToolList.ToolListCheckBox button8;
 	}
 }
