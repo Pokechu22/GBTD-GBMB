@@ -60,6 +60,9 @@
     <Compile Include="ToolList.Designer.cs">
       <DependentUpon>ToolList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToolstripControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -137,6 +140,69 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Save_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AutoUpdate_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AutoUpdate_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlipHorizontally_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlipHorizontally_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlipVertically_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlipVertically_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flood_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flood_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pen_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pen_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RotateClockwise_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RotateClockwise_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollDown_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollDown_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollLeft_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollLeft_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollRight_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollRight_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollUp_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollUp_NoHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectionBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

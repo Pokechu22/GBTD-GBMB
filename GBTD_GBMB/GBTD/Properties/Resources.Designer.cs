@@ -63,6 +63,26 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AutoUpdate_Hover {
+            get {
+                object obj = ResourceManager.GetObject("AutoUpdate_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AutoUpdate_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("AutoUpdate_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Copy_Hover {
             get {
                 object obj = ResourceManager.GetObject("Copy_Hover", resourceCulture);
@@ -116,6 +136,66 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap Export_NoHover {
             get {
                 object obj = ResourceManager.GetObject("Export_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlipHorizontally_Hover {
+            get {
+                object obj = ResourceManager.GetObject("FlipHorizontally_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlipHorizontally_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("FlipHorizontally_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlipVertically_Hover {
+            get {
+                object obj = ResourceManager.GetObject("FlipVertically_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlipVertically_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("FlipVertically_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Flood_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Flood_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Flood_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("Flood_NoHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,6 +263,46 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Pen_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Pen_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pen_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("Pen_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RotateClockwise_Hover {
+            get {
+                object obj = ResourceManager.GetObject("RotateClockwise_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RotateClockwise_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("RotateClockwise_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Save_Hover {
             get {
                 object obj = ResourceManager.GetObject("Save_Hover", resourceCulture);
@@ -196,6 +316,96 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap Save_NoHover {
             get {
                 object obj = ResourceManager.GetObject("Save_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollDown_Hover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollDown_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollDown_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollDown_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollLeft_Hover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollLeft_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollLeft_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollLeft_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollRight_Hover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollRight_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollRight_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollRight_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollUp_Hover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollUp_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScrollUp_NoHover {
+            get {
+                object obj = ResourceManager.GetObject("ScrollUp_NoHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SelectionBackground {
+            get {
+                object obj = ResourceManager.GetObject("SelectionBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -25,7 +25,6 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.components = new System.ComponentModel.Container();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +95,6 @@
 			this.helpIndexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -835,7 +833,6 @@
 		private System.Windows.Forms.ToolStripMenuItem flipColorsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolTip toolTip1;
 		private TileEdit.HoverChangingToolStripButton openToolStripButton;
 		private TileEdit.HoverChangingToolStripButton saveToolStripButton;
 		private TileEdit.HoverChangingToolStripButton exportToolStripButton;
