@@ -22,7 +22,8 @@ namespace GB.Shared.Tile
 		protected internal byte clickedX = 0, clickedY = 0;
 		protected internal MouseButtons buttons = MouseButtons.None;
 
-		protected bool grid = true;
+		protected bool grid = false;
+		protected bool border = true;
 		#endregion
 
 		#region Public properties
@@ -99,6 +100,18 @@ namespace GB.Shared.Tile
 				this.Refresh();
 			}
 		}
+
+		[Category("Display"), Description("Controls drawing of a border around the control.  Also effects the size.")]
+		public bool Border {
+			get {
+				return border;
+			}
+			set {
+				border = value;
+				this.OnResize(new EventArgs());
+				this.Refresh();
+			}
+		}
 		#endregion
 
 		#region Events
@@ -147,20 +160,27 @@ namespace GB.Shared.Tile
 				}
 			}
 
+			//Offset sizes.
+			int w = this.Width - 1;
+			int h = this.Height - 1;
+
 			if (grid) {
 				for (byte i = 1; i < 8; i++) {
 					e.Graphics.DrawLine(Pens.Black,
-						i * (this.Width / 8.0f),
+						i * ((this.Width - (border ? 1 : 0)) / 8.0f),
 						0,
-						i * (this.Width / 8.0f),
+						i * ((this.Width - (border ? 1 : 0))  / 8.0f),
 						this.Height);
 					e.Graphics.DrawLine(Pens.Black,
 						0,
-						i * (this.Height / 8.0f),
+						i * ((this.Height - (border ? 1 : 0)) / 8.0f),
 						this.Width,
-						i * (this.Height / 8.0f));
+						i * ((this.Height - (border ? 1 : 0)) / 8.0f));
 				}
-				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Color.Black, ButtonBorderStyle.Solid);
+
+				if (border) {
+					ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Color.Black, ButtonBorderStyle.Solid);
+				}
 			}
 		}
 
@@ -179,10 +199,16 @@ namespace GB.Shared.Tile
 				throw new InvalidOperationException("y must be between 0 and 7; got " + y);
 			}
 
-			float x1 = (x * (this.Width / 8.0f));
-			float y1 = (y * (this.Height / 8.0f));
-			float width = (this.Width / 8.0f);
-			float height = (this.Height / 8.0f);
+			float x1 = (x * ((this.Width - (border ? 1 : 0)) / 8.0f));
+			float y1 = (y * ((this.Height - (border ? 1 : 0)) / 8.0f));
+
+			if (border) {
+				x1++;
+				y1++;
+			}
+
+			float width = ((this.Width - (border ? 1 : 0)) / 8.0f);
+			float height = ((this.Height - (border ? 1 : 0)) / 8.0f);
 
 			Color c = Color.Black;
 			switch (color) {
@@ -206,11 +232,16 @@ namespace GB.Shared.Tile
 			this.Resize -= new EventHandler(TileRenderer_Resize);
 			this.Width &= ~0x07;
 			this.Height &= ~0x07;
+
+			if (this.border) {
+				this.Width++;
+				this.Height++;
+			}
 			this.Resize += new EventHandler(TileRenderer_Resize);
 		}
 
 		protected internal byte getClickedPixelX(int clickedX) {
-			byte returned = (byte)((clickedX * 8) / this.Width);
+			byte returned = (byte)(((clickedX - (border ? 1 : 0)) * 8) / this.Width);
 
 			if (returned < 0 || returned >= 8) {
 				throw new InvalidOperationException("Mouse out of bounds.");
@@ -219,7 +250,7 @@ namespace GB.Shared.Tile
 		}
 
 		protected internal byte getClickedPixelY(int clickedY) {
-			byte returned = (byte)((clickedY * 8) / this.Height);
+			byte returned = (byte)(((clickedY - (border ? 1 : 0)) * 8) / this.Height);
 
 			if (returned < 0 || returned >= 8) {
 				throw new InvalidOperationException("Mouse out of bounds.");
