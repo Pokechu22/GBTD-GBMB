@@ -169,7 +169,7 @@ namespace GB.Shared.Tile
 					e.Graphics.DrawLine(Pens.Black,
 						i * ((this.Width - (border ? 1 : 0)) / 8.0f),
 						0,
-						i * ((this.Width - (border ? 1 : 0))  / 8.0f),
+						i * ((this.Width - (border ? 1 : 0)) / 8.0f),
 						this.Height);
 					e.Graphics.DrawLine(Pens.Black,
 						0,
@@ -177,10 +177,9 @@ namespace GB.Shared.Tile
 						this.Width,
 						i * ((this.Height - (border ? 1 : 0)) / 8.0f));
 				}
-
-				if (border) {
-					ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Color.Black, ButtonBorderStyle.Solid);
-				}
+			}
+			if (border) {
+				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Color.Black, ButtonBorderStyle.Solid);
 			}
 		}
 
