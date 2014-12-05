@@ -34,19 +34,19 @@ namespace GB.Shared.Palette
 
 				protected override int X_OFFSET {
 					get {
-						return 16;
+						return 15;
 					}
 				}
 
 				protected override int WIDTH {
 					get {
-						return 19;
+						return 20;
 					}
 				}
 
 				protected override int HEIGHT {
 					get {
-						return 19;
+						return 20;
 					}
 				}
 
@@ -223,7 +223,7 @@ namespace GB.Shared.Palette
 			//Initial value of each coord
 			const int INITIAL_X = 2, INITIAL_Y = 2;
 			//Change applied to each coord
-			const int X_OFFSET = 38, Y_OFFSET = 0;
+			const int X_OFFSET = 37, Y_OFFSET = 0;
 			//Current coords
 			int x = INITIAL_X, y = INITIAL_Y;
 
@@ -268,9 +268,9 @@ namespace GB.Shared.Palette
 				mouseButtonX2.Visible = mouseButtonX2.Enabled = false;
 			}
 
-			this.MaximumSize = new Size(113 + x, 26);
-			this.MinimumSize = new Size(113 + x, 26);
-			this.Size = new Size(113 + x, 26);
+			this.MaximumSize = new Size(115 + x, 26);
+			this.MinimumSize = new Size(115 + x, 26);
+			this.Size = new Size(115 + x, 26);
 
 			this.Refresh();
 		}
