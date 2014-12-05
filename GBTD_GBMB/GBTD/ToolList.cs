@@ -483,9 +483,11 @@ namespace GB.GBTD
 			set {
 				if (value == 0) {
 					penButton.Checked = true;
+					return;
 				}
 				if (value == 1) {
 					floodButton.Checked = true;
+					return;
 				}
 				throw new InvalidEnumArgumentException();
 			}

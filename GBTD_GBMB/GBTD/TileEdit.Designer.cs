@@ -25,6 +25,14 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			GB.Shared.Palette.GBCPalette gbcPalette1 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette2 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette3 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette4 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette5 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette6 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette7 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette8 = new GB.Shared.Palette.GBCPalette();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,8 +106,6 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.tileEditBorder = new System.Windows.Forms.Panel();
-			this.toolList1 = new GB.GBTD.ToolList();
 			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
@@ -107,6 +113,10 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.tileEditBorder = new System.Windows.Forms.Panel();
+			this.gbtdgbcPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
+			this.pixelEditableTileRenderer1 = new GB.Shared.Tile.PixelEditableTileRenderer();
+			this.toolList1 = new GB.GBTD.ToolList();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
@@ -652,23 +662,6 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// tileEditBorder
-			// 
-			this.tileEditBorder.Controls.Add(this.toolList1);
-			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
-			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
-			this.tileEditBorder.Name = "tileEditBorder";
-			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
-			this.tileEditBorder.TabIndex = 4;
-			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
-			// 
-			// toolList1
-			// 
-			this.toolList1.Location = new System.Drawing.Point(4, 4);
-			this.toolList1.Name = "toolList1";
-			this.toolList1.Size = new System.Drawing.Size(27, 217);
-			this.toolList1.TabIndex = 0;
-			// 
 			// openToolStripButton
 			// 
 			this.openToolStripButton.AutoSize = false;
@@ -767,6 +760,98 @@
 			this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
+			// 
+			// tileEditBorder
+			// 
+			this.tileEditBorder.Controls.Add(this.gbtdgbcPaletteChooser1);
+			this.tileEditBorder.Controls.Add(this.pixelEditableTileRenderer1);
+			this.tileEditBorder.Controls.Add(this.toolList1);
+			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
+			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
+			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
+			this.tileEditBorder.TabIndex = 4;
+			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
+			// 
+			// gbtdgbcPaletteChooser1
+			// 
+			this.gbtdgbcPaletteChooser1.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
+			this.gbtdgbcPaletteChooser1.Location = new System.Drawing.Point(34, 200);
+			this.gbtdgbcPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
+			this.gbtdgbcPaletteChooser1.Name = "gbtdgbcPaletteChooser1";
+			this.gbtdgbcPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
+			this.gbtdgbcPaletteChooser1.SelectedRow = 0;
+			gbcPalette1.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette1.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette1.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette1.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette2.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette2.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette2.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette2.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette3.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette3.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette3.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette3.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette4.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette4.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette4.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette4.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette5.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette5.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette5.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette5.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette6.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette6.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette6.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette6.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette7.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette7.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette7.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette7.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette8.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette8.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette8.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette8.EntryWhite.Color = System.Drawing.Color.White;
+			this.gbtdgbcPaletteChooser1.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
+        gbcPalette1,
+        gbcPalette2,
+        gbcPalette3,
+        gbcPalette4,
+        gbcPalette5,
+        gbcPalette6,
+        gbcPalette7,
+        gbcPalette8};
+			this.gbtdgbcPaletteChooser1.Size = new System.Drawing.Size(191, 26);
+			this.gbtdgbcPaletteChooser1.TabIndex = 2;
+			this.gbtdgbcPaletteChooser1.UseGBCFilter = false;
+			// 
+			// pixelEditableTileRenderer1
+			// 
+			this.pixelEditableTileRenderer1.BlackColor = System.Drawing.Color.Black;
+			this.pixelEditableTileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
+			this.pixelEditableTileRenderer1.Grid = true;
+			this.pixelEditableTileRenderer1.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
+			this.pixelEditableTileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;
+			this.pixelEditableTileRenderer1.Location = new System.Drawing.Point(33, 4);
+			this.pixelEditableTileRenderer1.Margin = new System.Windows.Forms.Padding(0);
+			this.pixelEditableTileRenderer1.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
+			this.pixelEditableTileRenderer1.Name = "pixelEditableTileRenderer1";
+			this.pixelEditableTileRenderer1.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.pixelEditableTileRenderer1.Size = new System.Drawing.Size(192, 192);
+			this.pixelEditableTileRenderer1.TabIndex = 1;
+			this.pixelEditableTileRenderer1.WhiteColor = System.Drawing.Color.White;
+			this.pixelEditableTileRenderer1.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.pixelEditableTileRenderer1.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			// 
+			// toolList1
+			// 
+			this.toolList1.AutoUpdate = false;
+			this.toolList1.Location = new System.Drawing.Point(4, 4);
+			this.toolList1.Name = "toolList1";
+			this.toolList1.SelectedTool = 0;
+			this.toolList1.Size = new System.Drawing.Size(26, 217);
+			this.toolList1.TabIndex = 0;
 			// 
 			// TileEdit
 			// 
@@ -874,6 +959,8 @@
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.Panel tileEditBorder;
 		private ToolList toolList1;
+		private Shared.Palette.GBTDGBCPaletteChooser gbtdgbcPaletteChooser1;
+		private Shared.Tile.PixelEditableTileRenderer pixelEditableTileRenderer1;
 
 	}
 }
