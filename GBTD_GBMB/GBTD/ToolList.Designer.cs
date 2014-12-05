@@ -27,7 +27,7 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolList));
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.autoUpdateCheckbox = new GB.GBTD.ToolList.ToolListCheckBox();
@@ -87,6 +87,7 @@
 			this.autoUpdateCheckbox.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.autoUpdateCheckbox.Size = new System.Drawing.Size(22, 15);
 			this.autoUpdateCheckbox.TabIndex = 4;
+			this.toolTip.SetToolTip(this.autoUpdateCheckbox, "Auto update");
 			this.autoUpdateCheckbox.UseVisualStyleBackColor = true;
 			// 
 			// rotateClockwiseButton
@@ -107,6 +108,7 @@
 			this.rotateClockwiseButton.PressedImage = global::GB.GBTD.Properties.Resources.RotateClockwise_Pressed;
 			this.rotateClockwiseButton.Size = new System.Drawing.Size(20, 20);
 			this.rotateClockwiseButton.TabIndex = 2;
+			this.toolTip.SetToolTip(this.rotateClockwiseButton, "Rotate clockwise");
 			this.rotateClockwiseButton.UseVisualStyleBackColor = true;
 			// 
 			// flipHorizButton
@@ -127,6 +129,7 @@
 			this.flipHorizButton.PressedImage = global::GB.GBTD.Properties.Resources.FlipHorizontally_Pressed;
 			this.flipHorizButton.Size = new System.Drawing.Size(20, 20);
 			this.flipHorizButton.TabIndex = 1;
+			this.toolTip.SetToolTip(this.flipHorizButton, "Flip horizontally");
 			this.flipHorizButton.UseVisualStyleBackColor = true;
 			// 
 			// flipVertButton
@@ -147,6 +150,7 @@
 			this.flipVertButton.PressedImage = global::GB.GBTD.Properties.Resources.FlipVertically_Pressed;
 			this.flipVertButton.Size = new System.Drawing.Size(20, 20);
 			this.flipVertButton.TabIndex = 0;
+			this.toolTip.SetToolTip(this.flipVertButton, "Flip vertically");
 			this.flipVertButton.UseVisualStyleBackColor = true;
 			// 
 			// scrollDownButton
@@ -167,6 +171,7 @@
 			this.scrollDownButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollDown_Pressed;
 			this.scrollDownButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollDownButton.TabIndex = 3;
+			this.toolTip.SetToolTip(this.scrollDownButton, "Scroll down");
 			this.scrollDownButton.UseVisualStyleBackColor = true;
 			// 
 			// scrollRightButton
@@ -187,6 +192,7 @@
 			this.scrollRightButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollRight_Pressed;
 			this.scrollRightButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollRightButton.TabIndex = 2;
+			this.toolTip.SetToolTip(this.scrollRightButton, "Scroll right");
 			this.scrollRightButton.UseVisualStyleBackColor = true;
 			// 
 			// scrollLeftButton
@@ -207,6 +213,7 @@
 			this.scrollLeftButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollLeft_Pressed;
 			this.scrollLeftButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollLeftButton.TabIndex = 1;
+			this.toolTip.SetToolTip(this.scrollLeftButton, "Scroll left");
 			this.scrollLeftButton.UseVisualStyleBackColor = true;
 			// 
 			// scrollUpButton
@@ -227,6 +234,7 @@
 			this.scrollUpButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollUp_Pressed;
 			this.scrollUpButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollUpButton.TabIndex = 0;
+			this.toolTip.SetToolTip(this.scrollUpButton, "Scroll up");
 			this.scrollUpButton.UseVisualStyleBackColor = true;
 			// 
 			// floodButton
@@ -250,6 +258,7 @@
 			this.floodButton.Size = new System.Drawing.Size(22, 22);
 			this.floodButton.TabIndex = 1;
 			this.floodButton.TabStop = true;
+			this.toolTip.SetToolTip(this.floodButton, "Flood fill");
 			this.floodButton.UseVisualStyleBackColor = true;
 			// 
 			// penButton
@@ -273,6 +282,7 @@
 			this.penButton.Size = new System.Drawing.Size(22, 22);
 			this.penButton.TabIndex = 0;
 			this.penButton.TabStop = true;
+			this.toolTip.SetToolTip(this.penButton, "Pen");
 			this.penButton.UseVisualStyleBackColor = true;
 			// 
 			// ToolList
@@ -297,7 +307,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.ToolTip toolTip;
 		private ToolList.ToolListRadioButton floodButton;
 		private ToolList.ToolListRadioButton penButton;
 		private System.Windows.Forms.Panel panel1;
