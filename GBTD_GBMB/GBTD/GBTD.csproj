@@ -210,6 +210,27 @@
   <ItemGroup>
     <None Include="Resources\AutoUpdate_Pressed.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlipHorizontally_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlipVertically_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RotateClockwise_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollDown_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollLeft_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollRight_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScrollUp_Pressed.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

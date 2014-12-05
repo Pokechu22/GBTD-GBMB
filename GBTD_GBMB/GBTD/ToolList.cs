@@ -12,6 +12,7 @@ namespace GB.GBTD
 	public partial class ToolList : UserControl
 	{
 		#region Inner classes
+
 		/// <summary>
 		/// Radio button used within the ToolList.
 		/// 
@@ -56,6 +57,10 @@ namespace GB.GBTD
 			public override string Text {
 				get { return base.Text; }
 				set { base.Text = value; }
+			}
+
+			protected override Padding DefaultPadding {
+				get { return new Padding(0, 0, 1, 1); }
 			}
 
 			public ToolListRadioButton() : base() {
@@ -115,7 +120,7 @@ namespace GB.GBTD
 		/// <summary>
 		/// Regular button used within the toollist.
 		/// 
-		/// It has two images, one used when the mouse is over, and one when not.
+		/// It has three images: Mouse over, mouse not over; mouse down and over.
 		/// </summary>
 		private class ToolListButton : Button
 		{
@@ -124,9 +129,15 @@ namespace GB.GBTD
 				get { return mouseInside; }
 				set { mouseInside = value; UpdateImage(); }
 			}
+			private bool mouseDown = false;
+			private bool IsMouseDown {
+				get { return mouseDown; }
+				set { mouseDown = value; UpdateImage(); }
+			}
 
 			private Image nonhoveredImage = new Bitmap(16, 16);
 			private Image hoveredImage = new Bitmap(16, 16);
+			private Image pressedImage = new Bitmap(16, 16);
 			
 			[Category("Appearance"), Description("The image to use when not hovered over.")]
 			public Image NonhoveredImage {
@@ -138,6 +149,11 @@ namespace GB.GBTD
 				get { return hoveredImage; }
 				set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; UpdateImage(); }
 			}
+			[Category("Appearance"), Description("The image to use when pressed.")]
+			public Image PressedImage {
+				get { return pressedImage; }
+				set { if (value == null) { value = new Bitmap(16, 16); } pressedImage = value; UpdateImage(); }
+			}
 
 			[DefaultValue("")]
 			public override string Text {
@@ -145,26 +161,49 @@ namespace GB.GBTD
 				set { base.Text = value; }
 			}
 
+			protected override Padding DefaultPadding {
+				get { return new Padding(0, 0, 1, 1); }
+			}
+
 			public ToolListButton() : base() {
 				AutoSize = false;
 			}
 
 			protected override void OnMouseEnter(EventArgs eventargs) {
-				mouseInside = true;
+				MouseInside = true;
 				base.OnMouseEnter(eventargs);
-				UpdateImage();
 			}
 			protected override void OnMouseLeave(EventArgs eventargs) {
-				mouseInside = false;
+				IsMouseDown = false;
+				MouseInside = false;
 				base.OnMouseLeave(eventargs);
-				UpdateImage();
+			}
+			protected override void OnMouseDown(MouseEventArgs e) {
+				if (e.Button.HasFlag(MouseButtons.Left)) {
+					IsMouseDown = true;
+				}
+				base.OnMouseDown(e);
+			}
+			protected override void OnMouseUp(MouseEventArgs e) {
+				if (e.Button.HasFlag(MouseButtons.Left)) {
+					IsMouseDown = false;
+				}
+				base.OnMouseUp(e);
 			}
 
 			protected void UpdateImage() {
-				if (mouseInside) {
-					this.Image = hoveredImage;
+				if (mouseDown) {
+					if (mouseInside) {
+						this.Image = pressedImage;
+					} else {
+						this.Image = hoveredImage;
+					}
 				} else {
-					this.Image = nonhoveredImage;
+					if (mouseInside) {
+						this.Image = hoveredImage;
+					} else {
+						this.Image = nonhoveredImage;
+					}
 				}
 				this.Refresh();
 			}
@@ -173,8 +212,18 @@ namespace GB.GBTD
 			protected override void OnPaint(PaintEventArgs e) {
 				base.OnPaint(e);
 
-				if (mouseInside) {
-					ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
+				if (mouseDown) {
+					if (mouseInside) {
+						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.SunkenOuter);
+					} else {
+						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
+					}
+				} else {
+					if (mouseInside) {
+						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
+					} else {
+						//Do nothing.
+					}
 				}
 			}
 		}
@@ -225,6 +274,10 @@ namespace GB.GBTD
 			public override string Text {
 				get { return base.Text; }
 				set { base.Text = value; }
+			}
+
+			protected override Padding DefaultPadding {
+				get { return new Padding(0, 0, 1, 1); }
 			}
 
 			public ToolListCheckBox() : base() {
