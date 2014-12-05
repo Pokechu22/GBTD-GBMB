@@ -414,21 +414,21 @@ namespace GB.GBTD
 		[Category("Data"), Description("The currently-selected tool.")]
 		public int SelectedTool {
 			get {
-				if (radioButton1.Checked) {
+				if (penButton.Checked) {
 					return 0;
 				}
-				if (radioButton2.Checked) {
+				if (floodButton.Checked) {
 					return 1;
 				}
-				radioButton1.Checked = true;
+				penButton.Checked = true;
 				return 0;
 			}
 			set {
 				if (value == 0) {
-					radioButton1.Checked = true;
+					penButton.Checked = true;
 				}
 				if (value == 1) {
-					radioButton2.Checked = true;
+					floodButton.Checked = true;
 				}
 				throw new InvalidEnumArgumentException();
 			}
@@ -440,10 +440,10 @@ namespace GB.GBTD
 		[Category("Data"), Description("Is automatic updating enabled?")]
 		public bool AutoUpdate {
 			get {
-				return button8.Checked;
+				return autoUpdateCheckbox.Checked;
 			}
 			set {
-				button8.Checked = value;
+				autoUpdateCheckbox.Checked = value;
 			}
 		}
 	}
