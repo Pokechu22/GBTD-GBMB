@@ -355,5 +355,96 @@ namespace GB.GBTD
 			Control control = sender as Control;
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, control.Width, control.Height, Border3DStyle.SunkenOuter);
 		}
+
+		#region Events
+		/// <summary>
+		/// Triggers when the selected tool is changed.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the selected tool is changed.")]
+		public event EventHandler OnSelectedToolChanged;
+
+		/// <summary>
+		/// Triggers when the scroll up button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the scroll up button is clicked.")]
+		public event EventHandler OnScrollUpClicked;
+		/// <summary>
+		/// Triggers when the scroll down button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the scroll down button is clicked.")]
+		public event EventHandler OnScrollDownClicked;
+		/// <summary>
+		/// Triggers when the scroll left button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the scroll left button is clicked.")]
+		public event EventHandler OnScrollLeftClicked;
+		/// <summary>
+		/// Triggers when the scroll right button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the scroll right button is clicked.")]
+		public event EventHandler OnScrollRightClicked;
+
+		/// <summary>
+		/// Triggers when the flip vertically button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the flip vertically button is clicked.")]
+		public event EventHandler OnFlipVerticallyClicked;
+		/// <summary>
+		/// Triggers when the flip horizontally button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the flip horizontally button is clicked.")]
+		public event EventHandler OnFlipHorizontallyClicked;
+		/// <summary>
+		/// Triggers when the rotate clockwise button is clicked.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the rotate clockwise button is clicked.")]
+		public event EventHandler OnRotateClockwiseClicked;
+
+		/// <summary>
+		/// Triggers when the Auto Update mode is changed.
+		/// </summary>
+		[Category("Action"), Description("Triggers when the Auto Update mode is changed.")]
+		public event EventHandler OnAutoUpdateChanged;
+		#endregion
+
+		/// <summary>
+		/// The currently selected tool.
+		/// TODO replace int with an enum.
+		/// </summary>
+		[Category("Data"), Description("The currently-selected tool.")]
+		public int SelectedTool {
+			get {
+				if (radioButton1.Checked) {
+					return 0;
+				}
+				if (radioButton2.Checked) {
+					return 1;
+				}
+				radioButton1.Checked = true;
+				return 0;
+			}
+			set {
+				if (value == 0) {
+					radioButton1.Checked = true;
+				}
+				if (value == 1) {
+					radioButton2.Checked = true;
+				}
+				throw new InvalidEnumArgumentException();
+			}
+		}
+
+		/// <summary>
+		/// Should auto update?
+		/// </summary>
+		[Category("Data"), Description("Is automatic updating enabled?")]
+		public bool AutoUpdate {
+			get {
+				return button8.Checked;
+			}
+			set {
+				button8.Checked = value;
+			}
+		}
 	}
 }
