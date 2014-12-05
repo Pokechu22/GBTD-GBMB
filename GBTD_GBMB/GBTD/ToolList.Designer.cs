@@ -89,6 +89,7 @@
 			this.autoUpdateCheckbox.TabIndex = 4;
 			this.toolTip.SetToolTip(this.autoUpdateCheckbox, "Auto update");
 			this.autoUpdateCheckbox.UseVisualStyleBackColor = true;
+			this.autoUpdateCheckbox.CheckedChanged += new System.EventHandler(this.OnAutoUpdateChanged);
 			// 
 			// rotateClockwiseButton
 			// 
@@ -110,6 +111,7 @@
 			this.rotateClockwiseButton.TabIndex = 2;
 			this.toolTip.SetToolTip(this.rotateClockwiseButton, "Rotate clockwise");
 			this.rotateClockwiseButton.UseVisualStyleBackColor = true;
+			this.rotateClockwiseButton.Click += new System.EventHandler(this.OnRotateClockwiseClicked);
 			// 
 			// flipHorizButton
 			// 
@@ -131,6 +133,7 @@
 			this.flipHorizButton.TabIndex = 1;
 			this.toolTip.SetToolTip(this.flipHorizButton, "Flip horizontally");
 			this.flipHorizButton.UseVisualStyleBackColor = true;
+			this.flipHorizButton.Click += new System.EventHandler(this.OnFlipHorizontallyClicked);
 			// 
 			// flipVertButton
 			// 
@@ -152,6 +155,7 @@
 			this.flipVertButton.TabIndex = 0;
 			this.toolTip.SetToolTip(this.flipVertButton, "Flip vertically");
 			this.flipVertButton.UseVisualStyleBackColor = true;
+			this.flipVertButton.Click += new System.EventHandler(this.OnFlipVerticallyClicked);
 			// 
 			// scrollDownButton
 			// 
@@ -173,6 +177,7 @@
 			this.scrollDownButton.TabIndex = 3;
 			this.toolTip.SetToolTip(this.scrollDownButton, "Scroll down");
 			this.scrollDownButton.UseVisualStyleBackColor = true;
+			this.scrollDownButton.Click += new System.EventHandler(this.OnScrollDownClicked);
 			// 
 			// scrollRightButton
 			// 
@@ -194,6 +199,7 @@
 			this.scrollRightButton.TabIndex = 2;
 			this.toolTip.SetToolTip(this.scrollRightButton, "Scroll right");
 			this.scrollRightButton.UseVisualStyleBackColor = true;
+			this.scrollRightButton.Click += new System.EventHandler(this.OnScrollRightClicked);
 			// 
 			// scrollLeftButton
 			// 
@@ -215,6 +221,7 @@
 			this.scrollLeftButton.TabIndex = 1;
 			this.toolTip.SetToolTip(this.scrollLeftButton, "Scroll left");
 			this.scrollLeftButton.UseVisualStyleBackColor = true;
+			this.scrollLeftButton.Click += new System.EventHandler(this.OnScrollLeftClicked);
 			// 
 			// scrollUpButton
 			// 
@@ -236,6 +243,7 @@
 			this.scrollUpButton.TabIndex = 0;
 			this.toolTip.SetToolTip(this.scrollUpButton, "Scroll up");
 			this.scrollUpButton.UseVisualStyleBackColor = true;
+			this.scrollUpButton.Click += new System.EventHandler(this.OnScrollUpClicked);
 			// 
 			// floodButton
 			// 
@@ -260,6 +268,7 @@
 			this.floodButton.TabStop = true;
 			this.toolTip.SetToolTip(this.floodButton, "Flood fill");
 			this.floodButton.UseVisualStyleBackColor = true;
+			this.floodButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
 			// 
 			// penButton
 			// 
@@ -284,6 +293,7 @@
 			this.penButton.TabStop = true;
 			this.toolTip.SetToolTip(this.penButton, "Pen");
 			this.penButton.UseVisualStyleBackColor = true;
+			this.penButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
 			// 
 			// ToolList
 			// 
