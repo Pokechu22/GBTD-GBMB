@@ -151,10 +151,10 @@ namespace GB.GBTD
 		}
 
 		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {
-			mainTileEdit.BlackColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryBlack;
-			mainTileEdit.WhiteColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryWhite;
-			mainTileEdit.LightGrayColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryLightGray;
-			mainTileEdit.DarkGrayColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryDarkGray;
+			mainTileEdit.SetColors(paletteChooser.Set[paletteChooser.SelectedRow].EntryBlack,
+				paletteChooser.Set[paletteChooser.SelectedRow].EntryWhite,
+				paletteChooser.Set[paletteChooser.SelectedRow].EntryLightGray,
+				paletteChooser.Set[paletteChooser.SelectedRow].EntryDarkGray);
 		}
 	}
 }

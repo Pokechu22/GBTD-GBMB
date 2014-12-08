@@ -167,6 +167,23 @@ namespace GB.Shared.Tile
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Sets all colors on this at once.
+		/// Use this over setting each value individually, as otherwise you will end up redrawing several times, resulting in lag.
+		/// </summary>
+		/// <param name="black"></param>
+		/// <param name="darkgray"></param>
+		/// <param name="lightgray"></param>
+		/// <param name="white"></param>
+		public void SetColors(Color black, Color darkgray, Color lightgray, Color white) {
+			this.blackColor = black;
+			this.darkGrayColor = darkgray;
+			this.lightGrayColor = lightgray;
+			this.whiteColor = white;
+
+			OnPalatteChange();
+		}
+
 		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
 			for (byte x = 0; x < 8; x++) {
 				for (byte y = 0; y < 8; y++) {
