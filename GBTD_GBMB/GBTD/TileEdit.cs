@@ -141,5 +141,20 @@ namespace GB.GBTD
 		private void gridToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
 			mainTileEdit.Grid = gridToolStripMenuItem.Checked;
 		}
+
+		private void palettesToolStripMenuItem_Click(object sender, EventArgs e) {
+			GBCChoosePalette d = new GBCChoosePalette(paletteChooser.Set.Clone() as GBCPaletteSet);
+			d.ShowDialog();
+			if (d.DialogResult == DialogResult.OK) {
+				paletteChooser.Set = d.Set;
+			}
+		}
+
+		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {
+			mainTileEdit.BlackColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryBlack;
+			mainTileEdit.WhiteColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryWhite;
+			mainTileEdit.LightGrayColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryLightGray;
+			mainTileEdit.DarkGrayColor = paletteChooser.Set[paletteChooser.SelectedRow].EntryDarkGray;
+		}
 	}
 }
