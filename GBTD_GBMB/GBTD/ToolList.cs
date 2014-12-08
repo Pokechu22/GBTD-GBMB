@@ -490,6 +490,11 @@ namespace GB.GBTD
 					floodButton.Checked = true;
 					return;
 				}
+				if (value == TileEditorID.NoEdit) {
+					penButton.Checked = false;
+					floodButton.Checked = false;
+					return;
+				}
 				throw new InvalidEnumArgumentException();
 			}
 		}

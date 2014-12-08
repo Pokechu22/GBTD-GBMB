@@ -1224,6 +1224,7 @@
 			this.toolList1.SelectedTool = 0;
 			this.toolList1.Size = new System.Drawing.Size(26, 217);
 			this.toolList1.TabIndex = 0;
+			this.toolList1.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
 			// 
 			// TileEdit
 			// 

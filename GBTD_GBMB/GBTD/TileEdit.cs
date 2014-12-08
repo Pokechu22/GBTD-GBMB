@@ -73,5 +73,12 @@ namespace GB.GBTD
 		private void tileEditBorder_Paint(object sender, PaintEventArgs e) {
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, tileEditBorder.Width, tileEditBorder.Height, Border3DStyle.SunkenOuter);
 		}
+
+		private void toolList1_SelectedToolChanged(object sender, EventArgs e) {
+			ToolList list = sender as ToolList;
+			if (list != null) {
+				pixelEditableTileRenderer1.EditorTypeID = list.SelectedTool;
+			}
+		}
 	}
 }
