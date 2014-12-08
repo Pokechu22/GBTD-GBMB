@@ -33,7 +33,7 @@
 			GB.Shared.Palette.GBCPalette gbcPalette6 = new GB.Shared.Palette.GBCPalette();
 			GB.Shared.Palette.GBCPalette gbcPalette7 = new GB.Shared.Palette.GBCPalette();
 			GB.Shared.Palette.GBCPalette gbcPalette8 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Tile.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tile.PixelTileEditor();
+			GB.Shared.Tile.FloodFillTileEditor floodFillTileEditor1 = new GB.Shared.Tile.FloodFillTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1200,8 +1200,8 @@
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
 			this.pixelEditableTileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
-			this.pixelEditableTileRenderer1.Editor = pixelTileEditor1;
-			this.pixelEditableTileRenderer1.EditorTypeID = GB.Shared.Tile.TileEditorID.PixelEdit;
+			this.pixelEditableTileRenderer1.Editor = floodFillTileEditor1;
+			this.pixelEditableTileRenderer1.EditorTypeID = GB.Shared.Tile.TileEditorID.FloodFill;
 			this.pixelEditableTileRenderer1.Grid = false;
 			this.pixelEditableTileRenderer1.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
 			this.pixelEditableTileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;

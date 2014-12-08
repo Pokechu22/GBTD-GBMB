@@ -18,7 +18,11 @@ namespace GB.Shared.Tile
 		/// <summary>
 		/// Refers to <see cref="PixelTileEditor"/>.
 		/// </summary>
-		PixelEdit = 1
+		PixelEdit = 1,
+		/// <summary>
+		/// Refers to <see cref="FloodFillTileEditor"/>.
+		/// </summary>
+		FloodFill = 2
 	}
 
 	/// <summary>
@@ -35,6 +39,7 @@ namespace GB.Shared.Tile
 			switch (id) {
 			case TileEditorID.NoEdit: return new NoEditTileEditor();
 			case TileEditorID.PixelEdit: return new PixelTileEditor();
+			case TileEditorID.FloodFill: return new FloodFillTileEditor();
 			}
 			throw new InvalidEnumArgumentException("id", (int)id, typeof(TileEditorID));
 		}
