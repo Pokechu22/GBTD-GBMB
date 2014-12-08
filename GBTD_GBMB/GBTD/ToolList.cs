@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Tile;
 
 namespace GB.GBTD
 {
@@ -469,23 +470,23 @@ namespace GB.GBTD
 		/// TODO replace int with an enum.
 		/// </summary>
 		[Category("Data"), Description("The currently-selected tool.")]
-		public int SelectedTool {
+		public TileEditorID SelectedTool {
 			get {
 				if (penButton.Checked) {
-					return 0;
+					return TileEditorID.PixelEdit;
 				}
 				if (floodButton.Checked) {
-					return 1;
+					return TileEditorID.FloodFill;
 				}
 				penButton.Checked = true;
-				return 0;
+				return TileEditorID.PixelEdit;
 			}
 			set {
-				if (value == 0) {
+				if (value == TileEditorID.PixelEdit) {
 					penButton.Checked = true;
 					return;
 				}
-				if (value == 1) {
+				if (value == TileEditorID.FloodFill) {
 					floodButton.Checked = true;
 					return;
 				}
