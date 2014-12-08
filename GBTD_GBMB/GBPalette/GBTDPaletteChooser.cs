@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
@@ -117,6 +118,27 @@ namespace GB.Shared.Palette
 				set { index = value; OnValueChange(); }
 			}
 
+			public GBColor MatchingGBColor {
+				get {
+					switch (index) {
+					case 0: return GBColor.WHITE;
+					case 1: return GBColor.LIGHT_GRAY;
+					case 2: return GBColor.DARK_GRAY;
+					case 3: return GBColor.BLACK;
+					default: throw new InvalidEnumArgumentException();
+					}
+				}
+				set {
+					switch (value) {
+					case GBColor.WHITE: index = 0; return;
+					case GBColor.LIGHT_GRAY: index = 1; return;
+					case GBColor.DARK_GRAY: index = 2; return;
+					case GBColor.BLACK: index = 3; return;
+					default: throw new InvalidEnumArgumentException();
+					}
+				}
+			}
+
 			private void OnValueChange() {
 				entry.Color = item[index];
 				entry.Index = index;
@@ -218,6 +240,32 @@ namespace GB.Shared.Palette
 			set { displayedButtons = value; OnButtonsChange(value); }
 		}
 
+		[Category("Value"), Description("The color used by the left mouse button.")]
+		public GBColor LeftMouseColor {
+			get { return mouseButtonL.MatchingGBColor; }
+			set { mouseButtonL.MatchingGBColor = value; }
+		}
+		[Category("Value"), Description("The color used by the right mouse button.")]
+		public GBColor RightMouseColor {
+			get { return mouseButtonR.MatchingGBColor; }
+			set { mouseButtonR.MatchingGBColor = value; }
+		}
+		[Category("Value"), Description("The color used by the middle mouse button.")]
+		public GBColor MiddleMouseColor {
+			get { return mouseButtonM.MatchingGBColor; }
+			set { mouseButtonM.MatchingGBColor = value; }
+		}
+		[Category("Value"), Description("The color used by the X1 mouse button.")]
+		public GBColor X1MouseColor {
+			get { return mouseButtonX1.MatchingGBColor; }
+			set { mouseButtonX1.MatchingGBColor = value; }
+		}
+		[Category("Value"), Description("The color used by the X2 mouse button.")]
+		public GBColor X2MouseColor {
+			get { return mouseButtonX2.MatchingGBColor; }
+			set { mouseButtonX2.MatchingGBColor = value; }
+		}
+
 		protected void OnButtonsChange(MouseButtons change) {
 			//Values for individual controls
 			//Initial value of each coord
@@ -313,6 +361,10 @@ namespace GB.Shared.Palette
 			this.mouseButtonM.Item = e.newItem;
 			this.mouseButtonX1.Item = e.newItem;
 			this.mouseButtonX2.Item = e.newItem;
+
+			if (SelectedPaletteChanged != null) {
+				SelectedPaletteChanged(this, new EventArgs());
+			}
 		}
 
 		private void gbPaletteChooser1_PaletteEntryClicked(object sender, GBPaletteChooser<TSet, TRow, TEntry>.PaletteEntryClickEventArgs e) {
@@ -331,7 +383,24 @@ namespace GB.Shared.Palette
 			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.XButton2)) {
 				this.mouseButtonX2.Index = e.clickedEntry;
 			}
+
+			if (MouseButtonColorChanged != null) {
+				MouseButtonColorChanged(this, new EventArgs());
+			}
 		}
+
+		/// <summary>
+		/// Triggers when the selected palette is changed.
+		/// </summary>
+		[Category("Data"), Description("Triggers when the selected palette is changed.")]
+		public event EventHandler SelectedPaletteChanged;
+
+		/// <summary>
+		/// Triggers when one of the mouse button effects is changed, even ones that aren't visible.
+		/// By ones that aren't visible, I mean XButton1, ect.
+		/// </summary>
+		[Category("Data"), Description("Triggers when one of the mouse button effects is changed, even ones that aren't visible.")]
+		public event EventHandler MouseButtonColorChanged;
 	}
 
 	public class GBTDGBCPaletteChooser : GBTDPaletteChooser<GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }

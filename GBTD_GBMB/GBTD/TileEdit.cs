@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Palette;
 
 namespace GB.GBTD
 {
@@ -78,6 +79,17 @@ namespace GB.GBTD
 			ToolList list = sender as ToolList;
 			if (list != null) {
 				pixelEditableTileRenderer1.EditorTypeID = list.SelectedTool;
+			}
+		}
+
+		private void gbtdgbcPaletteChooser1_MouseButtonColorChanged(object sender, EventArgs e) {
+			GBTDGBCPaletteChooser chooser = sender as GBTDGBCPaletteChooser;
+			if (chooser != null) {
+				pixelEditableTileRenderer1.LeftMouseColor = chooser.LeftMouseColor;
+				pixelEditableTileRenderer1.RightMouseColor = chooser.RightMouseColor;
+				pixelEditableTileRenderer1.MiddleMouseColor = chooser.MiddleMouseColor;
+				pixelEditableTileRenderer1.XButton1MouseColor = chooser.X1MouseColor;
+				pixelEditableTileRenderer1.XButton2MouseColor = chooser.X2MouseColor;
 			}
 		}
 	}
