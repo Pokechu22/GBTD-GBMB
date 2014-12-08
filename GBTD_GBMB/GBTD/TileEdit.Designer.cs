@@ -107,17 +107,10 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.cutToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.tileEditBorder = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.miniPreviewRenderer = new GB.Shared.Tile.TileRenderer();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.miniPreviewRenderer = new GB.Shared.Tile.TileRenderer();
 			this.groupedTileRenderer11 = new GB.Shared.Tile.TileRenderer();
 			this.groupedTileRenderer15 = new GB.Shared.Tile.TileRenderer();
 			this.groupedTileRenderer14 = new GB.Shared.Tile.TileRenderer();
@@ -137,6 +130,13 @@
 			this.paletteChooser = new GB.Shared.Palette.GBTDGBCPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tile.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
+			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.cutToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
@@ -187,33 +187,33 @@
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.openToolStripMenuItem.Text = "&Open";
 			// 
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.saveToolStripMenuItem.Text = "&Save";
 			// 
 			// saveAsToolStripMenuItem
 			// 
 			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.saveAsToolStripMenuItem.Text = "Save &As";
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
 			// 
 			// reopenToolStripMenuItem
 			// 
 			this.reopenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aToolStripMenuItem});
 			this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
-			this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.reopenToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.reopenToolStripMenuItem.Text = "&Reopen";
 			// 
 			// aToolStripMenuItem
@@ -225,36 +225,36 @@
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(141, 6);
 			// 
 			// exportToolStripMenuItem
 			// 
 			this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
 			this.exportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-			this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exportToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.exportToolStripMenuItem.Text = "&Export";
 			// 
 			// exportToToolStripMenuItem
 			// 
 			this.exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
-			this.exportToToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exportToToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.exportToToolStripMenuItem.Text = "Ex&port to";
 			// 
 			// improtFromToolStripMenuItem
 			// 
 			this.improtFromToolStripMenuItem.Name = "improtFromToolStripMenuItem";
-			this.improtFromToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.improtFromToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.improtFromToolStripMenuItem.Text = "&Import from";
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(141, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			// 
 			// editToolStripMenuItem
@@ -278,54 +278,63 @@
 			// undoToolStripMenuItem
 			// 
 			this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-			this.undoToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.undoToolStripMenuItem.Text = "Undo";
+			this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+			this.undoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.undoToolStripMenuItem.Text = "&Undo";
 			// 
 			// toolStripSeparator6
 			// 
 			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(129, 6);
+			this.toolStripSeparator6.Size = new System.Drawing.Size(189, 6);
 			// 
 			// cutTileToolStripMenuItem
 			// 
 			this.cutTileToolStripMenuItem.Name = "cutTileToolStripMenuItem";
-			this.cutTileToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.cutTileToolStripMenuItem.Text = "Cut tile";
+			this.cutTileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+			this.cutTileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.cutTileToolStripMenuItem.Text = "Cu&t tile";
 			// 
 			// copyTileToolStripMenuItem
 			// 
 			this.copyTileToolStripMenuItem.Name = "copyTileToolStripMenuItem";
-			this.copyTileToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.copyTileToolStripMenuItem.Text = "Copy tile";
+			this.copyTileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+			this.copyTileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.copyTileToolStripMenuItem.Text = "&Copy tile";
 			// 
 			// pasteTileToolStripMenuItem
 			// 
 			this.pasteTileToolStripMenuItem.Name = "pasteTileToolStripMenuItem";
-			this.pasteTileToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.pasteTileToolStripMenuItem.Text = "Paste tile";
+			this.pasteTileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+			this.pasteTileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.pasteTileToolStripMenuItem.Text = "&Paste tile";
 			// 
 			// toolStripSeparator7
 			// 
 			this.toolStripSeparator7.Name = "toolStripSeparator7";
-			this.toolStripSeparator7.Size = new System.Drawing.Size(129, 6);
+			this.toolStripSeparator7.Size = new System.Drawing.Size(189, 6);
 			// 
 			// splitCopyToolStripMenuItem
 			// 
 			this.splitCopyToolStripMenuItem.Name = "splitCopyToolStripMenuItem";
-			this.splitCopyToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.splitCopyToolStripMenuItem.Text = "Split Copy";
+			this.splitCopyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+			this.splitCopyToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.splitCopyToolStripMenuItem.Text = "Split C&opy";
 			// 
 			// splitPasteToolStripMenuItem
 			// 
 			this.splitPasteToolStripMenuItem.Name = "splitPasteToolStripMenuItem";
-			this.splitPasteToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.splitPasteToolStripMenuItem.Text = "Split Paste";
+			this.splitPasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.V)));
+			this.splitPasteToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.splitPasteToolStripMenuItem.Text = "Split P&aste";
 			// 
 			// splitOptionsToolStripMenuItem
 			// 
 			this.splitOptionsToolStripMenuItem.Name = "splitOptionsToolStripMenuItem";
-			this.splitOptionsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.splitOptionsToolStripMenuItem.Text = "Split options";
+			this.splitOptionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+			this.splitOptionsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this.splitOptionsToolStripMenuItem.Text = "Sp&lit options";
 			// 
 			// designToolStripMenuItem
 			// 
@@ -462,7 +471,7 @@
             this.x16ToolStripMenuItem1,
             this.x32ToolStripMenuItem});
 			this.tileSizeToolStripMenuItem.Name = "tileSizeToolStripMenuItem";
-			this.tileSizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.tileSizeToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.tileSizeToolStripMenuItem.Text = "Tile size";
 			// 
 			// aToolStripMenuItem1
@@ -492,54 +501,54 @@
 			// tileCountToolStripMenuItem
 			// 
 			this.tileCountToolStripMenuItem.Name = "tileCountToolStripMenuItem";
-			this.tileCountToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.tileCountToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.tileCountToolStripMenuItem.Text = "Tile count";
 			// 
 			// toolStripSeparator11
 			// 
 			this.toolStripSeparator11.Name = "toolStripSeparator11";
-			this.toolStripSeparator11.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator11.Size = new System.Drawing.Size(143, 6);
 			// 
 			// simpleToolStripMenuItem
 			// 
 			this.simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
-			this.simpleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.simpleToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.simpleToolStripMenuItem.Text = "Simple";
 			// 
 			// gridToolStripMenuItem
 			// 
 			this.gridToolStripMenuItem.Name = "gridToolStripMenuItem";
-			this.gridToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.gridToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.gridToolStripMenuItem.Text = "Grid";
 			// 
 			// nibbleMarkersToolStripMenuItem
 			// 
 			this.nibbleMarkersToolStripMenuItem.Name = "nibbleMarkersToolStripMenuItem";
-			this.nibbleMarkersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.nibbleMarkersToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.nibbleMarkersToolStripMenuItem.Text = "Nibble markers";
 			// 
 			// toolStripSeparator12
 			// 
 			this.toolStripSeparator12.Name = "toolStripSeparator12";
-			this.toolStripSeparator12.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator12.Size = new System.Drawing.Size(143, 6);
 			// 
 			// autoUpdatedToolStripMenuItem
 			// 
 			this.autoUpdatedToolStripMenuItem.Name = "autoUpdatedToolStripMenuItem";
-			this.autoUpdatedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.autoUpdatedToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.autoUpdatedToolStripMenuItem.Text = "Auto update";
 			// 
 			// toolStripSeparator13
 			// 
 			this.toolStripSeparator13.Name = "toolStripSeparator13";
-			this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator13.Size = new System.Drawing.Size(143, 6);
 			// 
 			// colorSetToolStripMenuItem
 			// 
 			this.colorSetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aToolStripMenuItem2});
 			this.colorSetToolStripMenuItem.Name = "colorSetToolStripMenuItem";
-			this.colorSetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.colorSetToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.colorSetToolStripMenuItem.Text = "Color set";
 			// 
 			// aToolStripMenuItem2
@@ -551,13 +560,13 @@
 			// palettesToolStripMenuItem
 			// 
 			this.palettesToolStripMenuItem.Name = "palettesToolStripMenuItem";
-			this.palettesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.palettesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.palettesToolStripMenuItem.Text = "Palettes";
 			// 
 			// toolStripSeparator14
 			// 
 			this.toolStripSeparator14.Name = "toolStripSeparator14";
-			this.toolStripSeparator14.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator14.Size = new System.Drawing.Size(143, 6);
 			// 
 			// setBookmarkToolStripMenuItem
 			// 
@@ -566,7 +575,7 @@
             this.toolStripMenuItem6,
             this.toolStripMenuItem7});
 			this.setBookmarkToolStripMenuItem.Name = "setBookmarkToolStripMenuItem";
-			this.setBookmarkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.setBookmarkToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.setBookmarkToolStripMenuItem.Text = "Set bookmark";
 			// 
 			// toolStripMenuItem5
@@ -594,7 +603,7 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
 			this.gotoBookmarkToolStripMenuItem.Name = "gotoBookmarkToolStripMenuItem";
-			this.gotoBookmarkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.gotoBookmarkToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.gotoBookmarkToolStripMenuItem.Text = "Goto bookmark";
 			// 
 			// toolStripMenuItem2
@@ -687,105 +696,6 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// openToolStripButton
-			// 
-			this.openToolStripButton.AutoSize = false;
-			this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.openToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
-			this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.openToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.openToolStripButton.Name = "openToolStripButton";
-			this.openToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
-			this.openToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.openToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.openToolStripButton.Text = "Open";
-			this.openToolStripButton.ToolTipText = "Open";
-			// 
-			// saveToolStripButton
-			// 
-			this.saveToolStripButton.AutoSize = false;
-			this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.saveToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
-			this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.saveToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.saveToolStripButton.Name = "saveToolStripButton";
-			this.saveToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
-			this.saveToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.saveToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.saveToolStripButton.Text = "Save";
-			this.saveToolStripButton.ToolTipText = "Save";
-			// 
-			// exportToolStripButton
-			// 
-			this.exportToolStripButton.AutoSize = false;
-			this.exportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.exportToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
-			this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.exportToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.exportToolStripButton.Name = "exportToolStripButton";
-			this.exportToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
-			this.exportToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.exportToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.exportToolStripButton.Text = "Export";
-			this.exportToolStripButton.ToolTipText = "Export";
-			// 
-			// cutToolStripButton
-			// 
-			this.cutToolStripButton.AutoSize = false;
-			this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.cutToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
-			this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.cutToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.cutToolStripButton.Name = "cutToolStripButton";
-			this.cutToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
-			this.cutToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.cutToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.cutToolStripButton.Text = "Cut";
-			this.cutToolStripButton.ToolTipText = "Cut";
-			// 
-			// copyToolStripButton
-			// 
-			this.copyToolStripButton.AutoSize = false;
-			this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.copyToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
-			this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.copyToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.copyToolStripButton.Name = "copyToolStripButton";
-			this.copyToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
-			this.copyToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.copyToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.copyToolStripButton.Text = "Copy";
-			this.copyToolStripButton.ToolTipText = "Copy";
-			// 
-			// pasteToolStripButton
-			// 
-			this.pasteToolStripButton.AutoSize = false;
-			this.pasteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.pasteToolStripButton.Enabled = false;
-			this.pasteToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
-			this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.pasteToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.pasteToolStripButton.Name = "pasteToolStripButton";
-			this.pasteToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
-			this.pasteToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.pasteToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.pasteToolStripButton.Text = "Paste";
-			this.pasteToolStripButton.ToolTipText = "Paste";
-			// 
-			// helpToolStripButton
-			// 
-			this.helpToolStripButton.AutoSize = false;
-			this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.helpToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
-			this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.helpToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
-			this.helpToolStripButton.Name = "helpToolStripButton";
-			this.helpToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
-			this.helpToolStripButton.Padding = new System.Windows.Forms.Padding(1);
-			this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
-			this.helpToolStripButton.Text = "Help topics";
-			this.helpToolStripButton.ToolTipText = "Help topics";
-			// 
 			// tileEditBorder
 			// 
 			this.tileEditBorder.Controls.Add(this.panel2);
@@ -809,24 +719,6 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(26, 26);
 			this.panel2.TabIndex = 4;
-			// 
-			// miniPreviewRenderer
-			// 
-			this.miniPreviewRenderer.BlackColor = System.Drawing.Color.Black;
-			this.miniPreviewRenderer.Border = false;
-			this.miniPreviewRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.miniPreviewRenderer.DarkGrayColor = System.Drawing.Color.Gray;
-			this.miniPreviewRenderer.Grid = false;
-			this.miniPreviewRenderer.LightGrayColor = System.Drawing.Color.LightGray;
-			this.miniPreviewRenderer.Location = new System.Drawing.Point(0, 0);
-			this.miniPreviewRenderer.Margin = new System.Windows.Forms.Padding(0);
-			this.miniPreviewRenderer.Name = "miniPreviewRenderer";
-			this.miniPreviewRenderer.Size = new System.Drawing.Size(24, 24);
-			this.miniPreviewRenderer.TabIndex = 5;
-			this.miniPreviewRenderer.WhiteColor = System.Drawing.Color.White;
 			// 
 			// panel1
 			// 
@@ -852,6 +744,24 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(98, 98);
 			this.panel1.TabIndex = 3;
+			// 
+			// miniPreviewRenderer
+			// 
+			this.miniPreviewRenderer.BlackColor = System.Drawing.Color.Black;
+			this.miniPreviewRenderer.Border = false;
+			this.miniPreviewRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.miniPreviewRenderer.DarkGrayColor = System.Drawing.Color.Gray;
+			this.miniPreviewRenderer.Grid = false;
+			this.miniPreviewRenderer.LightGrayColor = System.Drawing.Color.LightGray;
+			this.miniPreviewRenderer.Location = new System.Drawing.Point(0, 0);
+			this.miniPreviewRenderer.Margin = new System.Windows.Forms.Padding(0);
+			this.miniPreviewRenderer.Name = "miniPreviewRenderer";
+			this.miniPreviewRenderer.Size = new System.Drawing.Size(24, 24);
+			this.miniPreviewRenderer.TabIndex = 5;
+			this.miniPreviewRenderer.WhiteColor = System.Drawing.Color.White;
 			// 
 			// groupedTileRenderer11
 			// 
@@ -1236,6 +1146,105 @@
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 0;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
+			// 
+			// openToolStripButton
+			// 
+			this.openToolStripButton.AutoSize = false;
+			this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.openToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
+			this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.openToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.openToolStripButton.Name = "openToolStripButton";
+			this.openToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
+			this.openToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.openToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.openToolStripButton.Text = "Open";
+			this.openToolStripButton.ToolTipText = "Open";
+			// 
+			// saveToolStripButton
+			// 
+			this.saveToolStripButton.AutoSize = false;
+			this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.saveToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
+			this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.saveToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.saveToolStripButton.Name = "saveToolStripButton";
+			this.saveToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
+			this.saveToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.saveToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.saveToolStripButton.Text = "Save";
+			this.saveToolStripButton.ToolTipText = "Save";
+			// 
+			// exportToolStripButton
+			// 
+			this.exportToolStripButton.AutoSize = false;
+			this.exportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.exportToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
+			this.exportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.exportToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.exportToolStripButton.Name = "exportToolStripButton";
+			this.exportToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
+			this.exportToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.exportToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.exportToolStripButton.Text = "Export";
+			this.exportToolStripButton.ToolTipText = "Export";
+			// 
+			// cutToolStripButton
+			// 
+			this.cutToolStripButton.AutoSize = false;
+			this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.cutToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
+			this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.cutToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.cutToolStripButton.Name = "cutToolStripButton";
+			this.cutToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
+			this.cutToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.cutToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.cutToolStripButton.Text = "Cut";
+			this.cutToolStripButton.ToolTipText = "Cut";
+			// 
+			// copyToolStripButton
+			// 
+			this.copyToolStripButton.AutoSize = false;
+			this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.copyToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
+			this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.copyToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.copyToolStripButton.Name = "copyToolStripButton";
+			this.copyToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
+			this.copyToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.copyToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.copyToolStripButton.Text = "Copy";
+			this.copyToolStripButton.ToolTipText = "Copy";
+			// 
+			// pasteToolStripButton
+			// 
+			this.pasteToolStripButton.AutoSize = false;
+			this.pasteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.pasteToolStripButton.Enabled = false;
+			this.pasteToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
+			this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.pasteToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.pasteToolStripButton.Name = "pasteToolStripButton";
+			this.pasteToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
+			this.pasteToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.pasteToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.pasteToolStripButton.Text = "Paste";
+			this.pasteToolStripButton.ToolTipText = "Paste";
+			// 
+			// helpToolStripButton
+			// 
+			this.helpToolStripButton.AutoSize = false;
+			this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.helpToolStripButton.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
+			this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.helpToolStripButton.Margin = new System.Windows.Forms.Padding(0, 0, -1, 0);
+			this.helpToolStripButton.Name = "helpToolStripButton";
+			this.helpToolStripButton.NonHoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
+			this.helpToolStripButton.Padding = new System.Windows.Forms.Padding(1);
+			this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
+			this.helpToolStripButton.Text = "Help topics";
+			this.helpToolStripButton.ToolTipText = "Help topics";
 			// 
 			// TileEdit
 			// 
