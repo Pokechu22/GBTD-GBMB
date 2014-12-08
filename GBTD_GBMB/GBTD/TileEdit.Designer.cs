@@ -25,15 +25,15 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palette.GBCPalette gbcPalette25 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette26 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette27 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette28 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette29 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette30 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette31 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette32 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Tile.PixelTileEditor pixelTileEditor4 = new GB.Shared.Tile.PixelTileEditor();
+			GB.Shared.Palette.GBCPalette gbcPalette17 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette18 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette19 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette20 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette21 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette22 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette23 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette24 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Tile.PixelTileEditor pixelTileEditor3 = new GB.Shared.Tile.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -376,7 +376,7 @@
 			// toolStripSeparator8
 			// 
 			this.toolStripSeparator8.Name = "toolStripSeparator8";
-			this.toolStripSeparator8.Size = new System.Drawing.Size(153, 6);
+			this.toolStripSeparator8.Size = new System.Drawing.Size(192, 6);
 			// 
 			// flipVerticallyToolStripMenuItem
 			// 
@@ -402,7 +402,7 @@
 			// toolStripSeparator9
 			// 
 			this.toolStripSeparator9.Name = "toolStripSeparator9";
-			this.toolStripSeparator9.Size = new System.Drawing.Size(153, 6);
+			this.toolStripSeparator9.Size = new System.Drawing.Size(192, 6);
 			// 
 			// scrollLeftToolStripMenuItem
 			// 
@@ -431,7 +431,7 @@
 			// toolStripSeparator10
 			// 
 			this.toolStripSeparator10.Name = "toolStripSeparator10";
-			this.toolStripSeparator10.Size = new System.Drawing.Size(153, 6);
+			this.toolStripSeparator10.Size = new System.Drawing.Size(192, 6);
 			// 
 			// clearTilesToolStripMenuItem
 			// 
@@ -483,25 +483,25 @@
 			// aToolStripMenuItem1
 			// 
 			this.aToolStripMenuItem1.Name = "aToolStripMenuItem1";
-			this.aToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+			this.aToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.aToolStripMenuItem1.Text = "8 x 8";
 			// 
 			// x16ToolStripMenuItem
 			// 
 			this.x16ToolStripMenuItem.Name = "x16ToolStripMenuItem";
-			this.x16ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.x16ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.x16ToolStripMenuItem.Text = "8 x 16";
 			// 
 			// x16ToolStripMenuItem1
 			// 
 			this.x16ToolStripMenuItem1.Name = "x16ToolStripMenuItem1";
-			this.x16ToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+			this.x16ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.x16ToolStripMenuItem1.Text = "16 x 16";
 			// 
 			// x32ToolStripMenuItem
 			// 
 			this.x32ToolStripMenuItem.Name = "x32ToolStripMenuItem";
-			this.x32ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.x32ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.x32ToolStripMenuItem.Text = "32 x 32";
 			// 
 			// tileCountToolStripMenuItem
@@ -513,10 +513,11 @@
 			// toolStripSeparator11
 			// 
 			this.toolStripSeparator11.Name = "toolStripSeparator11";
-			this.toolStripSeparator11.Size = new System.Drawing.Size(143, 6);
+			this.toolStripSeparator11.Size = new System.Drawing.Size(180, 6);
 			// 
 			// simpleToolStripMenuItem
 			// 
+			this.simpleToolStripMenuItem.CheckOnClick = true;
 			this.simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
 			this.simpleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
 			this.simpleToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
@@ -524,13 +525,16 @@
 			// 
 			// gridToolStripMenuItem
 			// 
+			this.gridToolStripMenuItem.CheckOnClick = true;
 			this.gridToolStripMenuItem.Name = "gridToolStripMenuItem";
 			this.gridToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
 			this.gridToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.gridToolStripMenuItem.Text = "&Grid";
+			this.gridToolStripMenuItem.CheckedChanged += new System.EventHandler(this.gridToolStripMenuItem_CheckedChanged);
 			// 
 			// nibbleMarkersToolStripMenuItem
 			// 
+			this.nibbleMarkersToolStripMenuItem.CheckOnClick = true;
 			this.nibbleMarkersToolStripMenuItem.Name = "nibbleMarkersToolStripMenuItem";
 			this.nibbleMarkersToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
 			this.nibbleMarkersToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
@@ -539,19 +543,21 @@
 			// toolStripSeparator12
 			// 
 			this.toolStripSeparator12.Name = "toolStripSeparator12";
-			this.toolStripSeparator12.Size = new System.Drawing.Size(143, 6);
+			this.toolStripSeparator12.Size = new System.Drawing.Size(180, 6);
 			// 
 			// autoUpdatedToolStripMenuItem
 			// 
+			this.autoUpdatedToolStripMenuItem.CheckOnClick = true;
 			this.autoUpdatedToolStripMenuItem.Name = "autoUpdatedToolStripMenuItem";
 			this.autoUpdatedToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
 			this.autoUpdatedToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.autoUpdatedToolStripMenuItem.Text = "Auto &update";
+			this.autoUpdatedToolStripMenuItem.CheckedChanged += new System.EventHandler(this.autoUpdatedToolStripMenuItem_CheckedChanged);
 			// 
 			// toolStripSeparator13
 			// 
 			this.toolStripSeparator13.Name = "toolStripSeparator13";
-			this.toolStripSeparator13.Size = new System.Drawing.Size(143, 6);
+			this.toolStripSeparator13.Size = new System.Drawing.Size(180, 6);
 			// 
 			// colorSetToolStripMenuItem
 			// 
@@ -564,7 +570,7 @@
 			// aToolStripMenuItem2
 			// 
 			this.aToolStripMenuItem2.Name = "aToolStripMenuItem2";
-			this.aToolStripMenuItem2.Size = new System.Drawing.Size(81, 22);
+			this.aToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
 			this.aToolStripMenuItem2.Text = "A";
 			// 
 			// palettesToolStripMenuItem
@@ -577,7 +583,7 @@
 			// toolStripSeparator14
 			// 
 			this.toolStripSeparator14.Name = "toolStripSeparator14";
-			this.toolStripSeparator14.Size = new System.Drawing.Size(143, 6);
+			this.toolStripSeparator14.Size = new System.Drawing.Size(180, 6);
 			// 
 			// setBookmarkToolStripMenuItem
 			// 
@@ -592,19 +598,19 @@
 			// toolStripMenuItem5
 			// 
 			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-			this.toolStripMenuItem5.Size = new System.Drawing.Size(80, 22);
+			this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
 			this.toolStripMenuItem5.Text = "1";
 			// 
 			// toolStripMenuItem6
 			// 
 			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-			this.toolStripMenuItem6.Size = new System.Drawing.Size(80, 22);
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
 			this.toolStripMenuItem6.Text = "2";
 			// 
 			// toolStripMenuItem7
 			// 
 			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-			this.toolStripMenuItem7.Size = new System.Drawing.Size(80, 22);
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
 			this.toolStripMenuItem7.Text = "3";
 			// 
 			// gotoBookmarkToolStripMenuItem
@@ -620,19 +626,19 @@
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 22);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
 			this.toolStripMenuItem2.Text = "1";
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 22);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
 			this.toolStripMenuItem3.Text = "2";
 			// 
 			// toolStripMenuItem4
 			// 
 			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(80, 22);
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
 			this.toolStripMenuItem4.Text = "3";
 			// 
 			// helpToolStripMenuItem
@@ -663,7 +669,7 @@
 			// toolStripSeparator15
 			// 
 			this.toolStripSeparator15.Name = "toolStripSeparator15";
-			this.toolStripSeparator15.Size = new System.Drawing.Size(123, 6);
+			this.toolStripSeparator15.Size = new System.Drawing.Size(149, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
@@ -1073,47 +1079,47 @@
 			this.paletteChooser.Padding = new System.Windows.Forms.Padding(2);
 			this.paletteChooser.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
 			this.paletteChooser.SelectedRow = 0;
-			gbcPalette25.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette25.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette25.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette25.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette26.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette26.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette26.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette26.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette27.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette27.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette27.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette27.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette28.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette28.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette28.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette28.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette29.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette29.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette29.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette29.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette30.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette30.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette30.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette30.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette31.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette31.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette31.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette31.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette32.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette32.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette32.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette32.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette17.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette17.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette17.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette17.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette18.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette18.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette18.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette18.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette19.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette19.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette19.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette19.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette20.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette20.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette20.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette20.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette21.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette21.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette21.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette21.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette22.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette22.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette22.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette22.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette23.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette23.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette23.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette23.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette24.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette24.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette24.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette24.EntryWhite.Color = System.Drawing.Color.White;
 			this.paletteChooser.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
-        gbcPalette25,
-        gbcPalette26,
-        gbcPalette27,
-        gbcPalette28,
-        gbcPalette29,
-        gbcPalette30,
-        gbcPalette31,
-        gbcPalette32};
+        gbcPalette17,
+        gbcPalette18,
+        gbcPalette19,
+        gbcPalette20,
+        gbcPalette21,
+        gbcPalette22,
+        gbcPalette23,
+        gbcPalette24};
 			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
 			this.paletteChooser.TabIndex = 2;
 			this.paletteChooser.UseGBCFilter = false;
@@ -1130,7 +1136,7 @@
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
 			this.mainTileEdit.DarkGrayColor = System.Drawing.Color.Gray;
-			this.mainTileEdit.Editor = pixelTileEditor4;
+			this.mainTileEdit.Editor = pixelTileEditor3;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tile.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;

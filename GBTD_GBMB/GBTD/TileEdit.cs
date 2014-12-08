@@ -133,5 +133,13 @@ namespace GB.GBTD
 				v.DarkGrayColor = mainTileEdit.DarkGrayColor;
 			}
 		}
+
+		private void autoUpdatedToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
+			toolList.AutoUpdate = autoUpdatedToolStripMenuItem.Checked;
+		}
+
+		private void gridToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
+			mainTileEdit.Grid = gridToolStripMenuItem.Checked;
+		}
 	}
 }
