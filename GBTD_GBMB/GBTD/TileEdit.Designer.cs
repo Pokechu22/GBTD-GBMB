@@ -25,14 +25,15 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palette.GBCPalette gbcPalette17 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette18 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette19 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette20 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette21 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette22 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette23 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette24 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette1 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette2 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette3 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette4 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette5 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette6 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette7 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette8 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Tile.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tile.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,10 +107,6 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.tileEditBorder = new System.Windows.Forms.Panel();
-			this.gbtdgbcPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
-			this.pixelEditableTileRenderer1 = new GB.Shared.Tile.PixelEditableTileRenderer();
-			this.toolList1 = new GB.GBTD.ToolList();
 			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
@@ -117,30 +114,34 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.tileRenderer1 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer2 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer3 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer4 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer5 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer6 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer7 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer8 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer9 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer10 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer11 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer12 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer13 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer14 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer15 = new GB.Shared.Tile.TileRenderer();
-			this.tileRenderer16 = new GB.Shared.Tile.TileRenderer();
+			this.tileEditBorder = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.tileRenderer17 = new GB.Shared.Tile.TileRenderer();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.tileRenderer16 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer15 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer14 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer13 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer12 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer11 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer10 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer9 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer8 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer7 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer6 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer5 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer4 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer3 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer2 = new GB.Shared.Tile.TileRenderer();
+			this.tileRenderer1 = new GB.Shared.Tile.TileRenderer();
+			this.gbtdgbcPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
+			this.pixelEditableTileRenderer1 = new GB.Shared.Tile.EditableTileRenderer();
+			this.toolList1 = new GB.GBTD.ToolList();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
-			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -683,105 +684,6 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// tileEditBorder
-			// 
-			this.tileEditBorder.Controls.Add(this.panel2);
-			this.tileEditBorder.Controls.Add(this.panel1);
-			this.tileEditBorder.Controls.Add(this.gbtdgbcPaletteChooser1);
-			this.tileEditBorder.Controls.Add(this.pixelEditableTileRenderer1);
-			this.tileEditBorder.Controls.Add(this.toolList1);
-			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
-			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
-			this.tileEditBorder.Name = "tileEditBorder";
-			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
-			this.tileEditBorder.TabIndex = 4;
-			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
-			// 
-			// gbtdgbcPaletteChooser1
-			// 
-			this.gbtdgbcPaletteChooser1.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
-			this.gbtdgbcPaletteChooser1.Location = new System.Drawing.Point(34, 200);
-			this.gbtdgbcPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
-			this.gbtdgbcPaletteChooser1.Name = "gbtdgbcPaletteChooser1";
-			this.gbtdgbcPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
-			this.gbtdgbcPaletteChooser1.SelectedRow = 0;
-			gbcPalette17.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette17.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette17.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette17.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette18.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette18.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette18.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette18.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette19.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette19.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette19.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette19.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette20.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette20.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette20.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette20.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette21.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette21.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette21.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette21.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette22.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette22.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette22.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette22.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette23.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette23.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette23.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette23.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette24.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette24.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette24.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette24.EntryWhite.Color = System.Drawing.Color.White;
-			this.gbtdgbcPaletteChooser1.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
-        gbcPalette17,
-        gbcPalette18,
-        gbcPalette19,
-        gbcPalette20,
-        gbcPalette21,
-        gbcPalette22,
-        gbcPalette23,
-        gbcPalette24};
-			this.gbtdgbcPaletteChooser1.Size = new System.Drawing.Size(191, 26);
-			this.gbtdgbcPaletteChooser1.TabIndex = 2;
-			this.gbtdgbcPaletteChooser1.UseGBCFilter = false;
-			// 
-			// pixelEditableTileRenderer1
-			// 
-			this.pixelEditableTileRenderer1.BlackColor = System.Drawing.Color.Black;
-			this.pixelEditableTileRenderer1.Border = true;
-			this.pixelEditableTileRenderer1.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.pixelEditableTileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
-			this.pixelEditableTileRenderer1.Grid = false;
-			this.pixelEditableTileRenderer1.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
-			this.pixelEditableTileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;
-			this.pixelEditableTileRenderer1.Location = new System.Drawing.Point(33, 4);
-			this.pixelEditableTileRenderer1.Margin = new System.Windows.Forms.Padding(0);
-			this.pixelEditableTileRenderer1.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
-			this.pixelEditableTileRenderer1.Name = "pixelEditableTileRenderer1";
-			this.pixelEditableTileRenderer1.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.pixelEditableTileRenderer1.Size = new System.Drawing.Size(193, 193);
-			this.pixelEditableTileRenderer1.TabIndex = 1;
-			this.pixelEditableTileRenderer1.WhiteColor = System.Drawing.Color.White;
-			this.pixelEditableTileRenderer1.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.pixelEditableTileRenderer1.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			// 
-			// toolList1
-			// 
-			this.toolList1.AutoUpdate = false;
-			this.toolList1.Location = new System.Drawing.Point(4, 4);
-			this.toolList1.Name = "toolList1";
-			this.toolList1.SelectedTool = 0;
-			this.toolList1.Size = new System.Drawing.Size(26, 217);
-			this.toolList1.TabIndex = 0;
-			// 
 			// openToolStripButton
 			// 
 			this.openToolStripButton.AutoSize = false;
@@ -881,318 +783,19 @@
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
 			// 
-			// panel1
+			// tileEditBorder
 			// 
-			this.panel1.BackColor = System.Drawing.Color.Magenta;
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Controls.Add(this.tileRenderer16);
-			this.panel1.Controls.Add(this.tileRenderer15);
-			this.panel1.Controls.Add(this.tileRenderer14);
-			this.panel1.Controls.Add(this.tileRenderer13);
-			this.panel1.Controls.Add(this.tileRenderer12);
-			this.panel1.Controls.Add(this.tileRenderer11);
-			this.panel1.Controls.Add(this.tileRenderer10);
-			this.panel1.Controls.Add(this.tileRenderer9);
-			this.panel1.Controls.Add(this.tileRenderer8);
-			this.panel1.Controls.Add(this.tileRenderer7);
-			this.panel1.Controls.Add(this.tileRenderer6);
-			this.panel1.Controls.Add(this.tileRenderer5);
-			this.panel1.Controls.Add(this.tileRenderer4);
-			this.panel1.Controls.Add(this.tileRenderer3);
-			this.panel1.Controls.Add(this.tileRenderer2);
-			this.panel1.Controls.Add(this.tileRenderer1);
-			this.panel1.Location = new System.Drawing.Point(235, 99);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(98, 98);
-			this.panel1.TabIndex = 3;
-			// 
-			// tileRenderer1
-			// 
-			this.tileRenderer1.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer1.Border = false;
-			this.tileRenderer1.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer1.Grid = false;
-			this.tileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer1.Location = new System.Drawing.Point(0, 0);
-			this.tileRenderer1.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer1.Name = "tileRenderer1";
-			this.tileRenderer1.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer1.TabIndex = 4;
-			this.tileRenderer1.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer2
-			// 
-			this.tileRenderer2.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer2.Border = false;
-			this.tileRenderer2.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer2.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer2.Grid = false;
-			this.tileRenderer2.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer2.Location = new System.Drawing.Point(24, 0);
-			this.tileRenderer2.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer2.Name = "tileRenderer2";
-			this.tileRenderer2.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer2.TabIndex = 5;
-			this.tileRenderer2.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer3
-			// 
-			this.tileRenderer3.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer3.Border = false;
-			this.tileRenderer3.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer3.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer3.Grid = false;
-			this.tileRenderer3.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer3.Location = new System.Drawing.Point(48, 0);
-			this.tileRenderer3.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer3.Name = "tileRenderer3";
-			this.tileRenderer3.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer3.TabIndex = 6;
-			this.tileRenderer3.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer4
-			// 
-			this.tileRenderer4.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer4.Border = false;
-			this.tileRenderer4.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer4.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer4.Grid = false;
-			this.tileRenderer4.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer4.Location = new System.Drawing.Point(72, 0);
-			this.tileRenderer4.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer4.Name = "tileRenderer4";
-			this.tileRenderer4.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer4.TabIndex = 7;
-			this.tileRenderer4.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer5
-			// 
-			this.tileRenderer5.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer5.Border = false;
-			this.tileRenderer5.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer5.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer5.Grid = false;
-			this.tileRenderer5.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer5.Location = new System.Drawing.Point(0, 24);
-			this.tileRenderer5.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer5.Name = "tileRenderer5";
-			this.tileRenderer5.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer5.TabIndex = 8;
-			this.tileRenderer5.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer6
-			// 
-			this.tileRenderer6.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer6.Border = false;
-			this.tileRenderer6.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer6.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer6.Grid = false;
-			this.tileRenderer6.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer6.Location = new System.Drawing.Point(24, 24);
-			this.tileRenderer6.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer6.Name = "tileRenderer6";
-			this.tileRenderer6.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer6.TabIndex = 9;
-			this.tileRenderer6.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer7
-			// 
-			this.tileRenderer7.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer7.Border = false;
-			this.tileRenderer7.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer7.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer7.Grid = false;
-			this.tileRenderer7.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer7.Location = new System.Drawing.Point(48, 24);
-			this.tileRenderer7.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer7.Name = "tileRenderer7";
-			this.tileRenderer7.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer7.TabIndex = 10;
-			this.tileRenderer7.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer8
-			// 
-			this.tileRenderer8.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer8.Border = false;
-			this.tileRenderer8.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer8.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer8.Grid = false;
-			this.tileRenderer8.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer8.Location = new System.Drawing.Point(72, 24);
-			this.tileRenderer8.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer8.Name = "tileRenderer8";
-			this.tileRenderer8.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer8.TabIndex = 11;
-			this.tileRenderer8.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer9
-			// 
-			this.tileRenderer9.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer9.Border = false;
-			this.tileRenderer9.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer9.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer9.Grid = false;
-			this.tileRenderer9.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer9.Location = new System.Drawing.Point(0, 48);
-			this.tileRenderer9.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer9.Name = "tileRenderer9";
-			this.tileRenderer9.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer9.TabIndex = 12;
-			this.tileRenderer9.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer10
-			// 
-			this.tileRenderer10.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer10.Border = false;
-			this.tileRenderer10.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer10.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer10.Grid = false;
-			this.tileRenderer10.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer10.Location = new System.Drawing.Point(24, 48);
-			this.tileRenderer10.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer10.Name = "tileRenderer10";
-			this.tileRenderer10.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer10.TabIndex = 13;
-			this.tileRenderer10.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer11
-			// 
-			this.tileRenderer11.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer11.Border = false;
-			this.tileRenderer11.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer11.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer11.Grid = false;
-			this.tileRenderer11.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer11.Location = new System.Drawing.Point(0, 72);
-			this.tileRenderer11.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer11.Name = "tileRenderer11";
-			this.tileRenderer11.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer11.TabIndex = 14;
-			this.tileRenderer11.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer12
-			// 
-			this.tileRenderer12.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer12.Border = false;
-			this.tileRenderer12.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer12.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer12.Grid = false;
-			this.tileRenderer12.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer12.Location = new System.Drawing.Point(72, 48);
-			this.tileRenderer12.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer12.Name = "tileRenderer12";
-			this.tileRenderer12.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer12.TabIndex = 15;
-			this.tileRenderer12.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer13
-			// 
-			this.tileRenderer13.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer13.Border = false;
-			this.tileRenderer13.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer13.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer13.Grid = false;
-			this.tileRenderer13.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer13.Location = new System.Drawing.Point(72, 72);
-			this.tileRenderer13.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer13.Name = "tileRenderer13";
-			this.tileRenderer13.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer13.TabIndex = 16;
-			this.tileRenderer13.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer14
-			// 
-			this.tileRenderer14.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer14.Border = false;
-			this.tileRenderer14.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer14.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer14.Grid = false;
-			this.tileRenderer14.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer14.Location = new System.Drawing.Point(24, 72);
-			this.tileRenderer14.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer14.Name = "tileRenderer14";
-			this.tileRenderer14.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer14.TabIndex = 17;
-			this.tileRenderer14.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer15
-			// 
-			this.tileRenderer15.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer15.Border = false;
-			this.tileRenderer15.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer15.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer15.Grid = false;
-			this.tileRenderer15.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer15.Location = new System.Drawing.Point(48, 72);
-			this.tileRenderer15.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer15.Name = "tileRenderer15";
-			this.tileRenderer15.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer15.TabIndex = 18;
-			this.tileRenderer15.WhiteColor = System.Drawing.Color.White;
-			// 
-			// tileRenderer16
-			// 
-			this.tileRenderer16.BlackColor = System.Drawing.Color.Black;
-			this.tileRenderer16.Border = false;
-			this.tileRenderer16.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer16.DarkGrayColor = System.Drawing.Color.Gray;
-			this.tileRenderer16.Grid = false;
-			this.tileRenderer16.LightGrayColor = System.Drawing.Color.LightGray;
-			this.tileRenderer16.Location = new System.Drawing.Point(48, 48);
-			this.tileRenderer16.Margin = new System.Windows.Forms.Padding(0);
-			this.tileRenderer16.Name = "tileRenderer16";
-			this.tileRenderer16.Size = new System.Drawing.Size(24, 24);
-			this.tileRenderer16.TabIndex = 19;
-			this.tileRenderer16.WhiteColor = System.Drawing.Color.White;
+			this.tileEditBorder.Controls.Add(this.panel2);
+			this.tileEditBorder.Controls.Add(this.panel1);
+			this.tileEditBorder.Controls.Add(this.gbtdgbcPaletteChooser1);
+			this.tileEditBorder.Controls.Add(this.pixelEditableTileRenderer1);
+			this.tileEditBorder.Controls.Add(this.toolList1);
+			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
+			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
+			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
+			this.tileEditBorder.TabIndex = 4;
+			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
 			// 
 			// panel2
 			// 
@@ -1222,6 +825,406 @@
 			this.tileRenderer17.TabIndex = 5;
 			this.tileRenderer17.WhiteColor = System.Drawing.Color.White;
 			// 
+			// panel1
+			// 
+			this.panel1.BackColor = System.Drawing.Color.Magenta;
+			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.Controls.Add(this.tileRenderer16);
+			this.panel1.Controls.Add(this.tileRenderer15);
+			this.panel1.Controls.Add(this.tileRenderer14);
+			this.panel1.Controls.Add(this.tileRenderer13);
+			this.panel1.Controls.Add(this.tileRenderer12);
+			this.panel1.Controls.Add(this.tileRenderer11);
+			this.panel1.Controls.Add(this.tileRenderer10);
+			this.panel1.Controls.Add(this.tileRenderer9);
+			this.panel1.Controls.Add(this.tileRenderer8);
+			this.panel1.Controls.Add(this.tileRenderer7);
+			this.panel1.Controls.Add(this.tileRenderer6);
+			this.panel1.Controls.Add(this.tileRenderer5);
+			this.panel1.Controls.Add(this.tileRenderer4);
+			this.panel1.Controls.Add(this.tileRenderer3);
+			this.panel1.Controls.Add(this.tileRenderer2);
+			this.panel1.Controls.Add(this.tileRenderer1);
+			this.panel1.Location = new System.Drawing.Point(235, 99);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(98, 98);
+			this.panel1.TabIndex = 3;
+			// 
+			// tileRenderer16
+			// 
+			this.tileRenderer16.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer16.Border = false;
+			this.tileRenderer16.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer16.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer16.Grid = false;
+			this.tileRenderer16.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer16.Location = new System.Drawing.Point(48, 48);
+			this.tileRenderer16.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer16.Name = "tileRenderer16";
+			this.tileRenderer16.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer16.TabIndex = 19;
+			this.tileRenderer16.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer15
+			// 
+			this.tileRenderer15.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer15.Border = false;
+			this.tileRenderer15.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer15.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer15.Grid = false;
+			this.tileRenderer15.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer15.Location = new System.Drawing.Point(48, 72);
+			this.tileRenderer15.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer15.Name = "tileRenderer15";
+			this.tileRenderer15.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer15.TabIndex = 18;
+			this.tileRenderer15.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer14
+			// 
+			this.tileRenderer14.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer14.Border = false;
+			this.tileRenderer14.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer14.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer14.Grid = false;
+			this.tileRenderer14.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer14.Location = new System.Drawing.Point(24, 72);
+			this.tileRenderer14.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer14.Name = "tileRenderer14";
+			this.tileRenderer14.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer14.TabIndex = 17;
+			this.tileRenderer14.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer13
+			// 
+			this.tileRenderer13.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer13.Border = false;
+			this.tileRenderer13.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer13.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer13.Grid = false;
+			this.tileRenderer13.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer13.Location = new System.Drawing.Point(72, 72);
+			this.tileRenderer13.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer13.Name = "tileRenderer13";
+			this.tileRenderer13.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer13.TabIndex = 16;
+			this.tileRenderer13.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer12
+			// 
+			this.tileRenderer12.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer12.Border = false;
+			this.tileRenderer12.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer12.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer12.Grid = false;
+			this.tileRenderer12.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer12.Location = new System.Drawing.Point(72, 48);
+			this.tileRenderer12.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer12.Name = "tileRenderer12";
+			this.tileRenderer12.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer12.TabIndex = 15;
+			this.tileRenderer12.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer11
+			// 
+			this.tileRenderer11.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer11.Border = false;
+			this.tileRenderer11.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer11.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer11.Grid = false;
+			this.tileRenderer11.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer11.Location = new System.Drawing.Point(0, 72);
+			this.tileRenderer11.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer11.Name = "tileRenderer11";
+			this.tileRenderer11.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer11.TabIndex = 14;
+			this.tileRenderer11.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer10
+			// 
+			this.tileRenderer10.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer10.Border = false;
+			this.tileRenderer10.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer10.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer10.Grid = false;
+			this.tileRenderer10.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer10.Location = new System.Drawing.Point(24, 48);
+			this.tileRenderer10.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer10.Name = "tileRenderer10";
+			this.tileRenderer10.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer10.TabIndex = 13;
+			this.tileRenderer10.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer9
+			// 
+			this.tileRenderer9.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer9.Border = false;
+			this.tileRenderer9.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer9.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer9.Grid = false;
+			this.tileRenderer9.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer9.Location = new System.Drawing.Point(0, 48);
+			this.tileRenderer9.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer9.Name = "tileRenderer9";
+			this.tileRenderer9.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer9.TabIndex = 12;
+			this.tileRenderer9.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer8
+			// 
+			this.tileRenderer8.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer8.Border = false;
+			this.tileRenderer8.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer8.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer8.Grid = false;
+			this.tileRenderer8.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer8.Location = new System.Drawing.Point(72, 24);
+			this.tileRenderer8.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer8.Name = "tileRenderer8";
+			this.tileRenderer8.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer8.TabIndex = 11;
+			this.tileRenderer8.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer7
+			// 
+			this.tileRenderer7.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer7.Border = false;
+			this.tileRenderer7.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer7.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer7.Grid = false;
+			this.tileRenderer7.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer7.Location = new System.Drawing.Point(48, 24);
+			this.tileRenderer7.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer7.Name = "tileRenderer7";
+			this.tileRenderer7.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer7.TabIndex = 10;
+			this.tileRenderer7.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer6
+			// 
+			this.tileRenderer6.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer6.Border = false;
+			this.tileRenderer6.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer6.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer6.Grid = false;
+			this.tileRenderer6.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer6.Location = new System.Drawing.Point(24, 24);
+			this.tileRenderer6.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer6.Name = "tileRenderer6";
+			this.tileRenderer6.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer6.TabIndex = 9;
+			this.tileRenderer6.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer5
+			// 
+			this.tileRenderer5.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer5.Border = false;
+			this.tileRenderer5.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer5.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer5.Grid = false;
+			this.tileRenderer5.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer5.Location = new System.Drawing.Point(0, 24);
+			this.tileRenderer5.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer5.Name = "tileRenderer5";
+			this.tileRenderer5.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer5.TabIndex = 8;
+			this.tileRenderer5.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer4
+			// 
+			this.tileRenderer4.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer4.Border = false;
+			this.tileRenderer4.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer4.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer4.Grid = false;
+			this.tileRenderer4.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer4.Location = new System.Drawing.Point(72, 0);
+			this.tileRenderer4.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer4.Name = "tileRenderer4";
+			this.tileRenderer4.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer4.TabIndex = 7;
+			this.tileRenderer4.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer3
+			// 
+			this.tileRenderer3.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer3.Border = false;
+			this.tileRenderer3.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer3.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer3.Grid = false;
+			this.tileRenderer3.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer3.Location = new System.Drawing.Point(48, 0);
+			this.tileRenderer3.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer3.Name = "tileRenderer3";
+			this.tileRenderer3.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer3.TabIndex = 6;
+			this.tileRenderer3.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer2
+			// 
+			this.tileRenderer2.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer2.Border = false;
+			this.tileRenderer2.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer2.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer2.Grid = false;
+			this.tileRenderer2.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer2.Location = new System.Drawing.Point(24, 0);
+			this.tileRenderer2.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer2.Name = "tileRenderer2";
+			this.tileRenderer2.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer2.TabIndex = 5;
+			this.tileRenderer2.WhiteColor = System.Drawing.Color.White;
+			// 
+			// tileRenderer1
+			// 
+			this.tileRenderer1.BlackColor = System.Drawing.Color.Black;
+			this.tileRenderer1.Border = false;
+			this.tileRenderer1.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
+			this.tileRenderer1.Grid = false;
+			this.tileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;
+			this.tileRenderer1.Location = new System.Drawing.Point(0, 0);
+			this.tileRenderer1.Margin = new System.Windows.Forms.Padding(0);
+			this.tileRenderer1.Name = "tileRenderer1";
+			this.tileRenderer1.Size = new System.Drawing.Size(24, 24);
+			this.tileRenderer1.TabIndex = 4;
+			this.tileRenderer1.WhiteColor = System.Drawing.Color.White;
+			// 
+			// gbtdgbcPaletteChooser1
+			// 
+			this.gbtdgbcPaletteChooser1.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
+			this.gbtdgbcPaletteChooser1.Location = new System.Drawing.Point(34, 200);
+			this.gbtdgbcPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
+			this.gbtdgbcPaletteChooser1.Name = "gbtdgbcPaletteChooser1";
+			this.gbtdgbcPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
+			this.gbtdgbcPaletteChooser1.SelectedRow = 0;
+			gbcPalette1.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette1.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette1.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette1.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette2.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette2.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette2.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette2.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette3.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette3.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette3.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette3.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette4.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette4.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette4.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette4.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette5.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette5.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette5.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette5.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette6.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette6.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette6.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette6.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette7.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette7.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette7.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette7.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette8.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette8.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette8.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette8.EntryWhite.Color = System.Drawing.Color.White;
+			this.gbtdgbcPaletteChooser1.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
+        gbcPalette1,
+        gbcPalette2,
+        gbcPalette3,
+        gbcPalette4,
+        gbcPalette5,
+        gbcPalette6,
+        gbcPalette7,
+        gbcPalette8};
+			this.gbtdgbcPaletteChooser1.Size = new System.Drawing.Size(191, 26);
+			this.gbtdgbcPaletteChooser1.TabIndex = 2;
+			this.gbtdgbcPaletteChooser1.UseGBCFilter = false;
+			// 
+			// pixelEditableTileRenderer1
+			// 
+			this.pixelEditableTileRenderer1.BlackColor = System.Drawing.Color.Black;
+			this.pixelEditableTileRenderer1.Border = true;
+			this.pixelEditableTileRenderer1.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.pixelEditableTileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
+			this.pixelEditableTileRenderer1.Editor = pixelTileEditor1;
+			this.pixelEditableTileRenderer1.EditorTypeID = GB.Shared.Tile.TileEditorID.PixelEdit;
+			this.pixelEditableTileRenderer1.Grid = false;
+			this.pixelEditableTileRenderer1.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
+			this.pixelEditableTileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;
+			this.pixelEditableTileRenderer1.Location = new System.Drawing.Point(33, 4);
+			this.pixelEditableTileRenderer1.Margin = new System.Windows.Forms.Padding(0);
+			this.pixelEditableTileRenderer1.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
+			this.pixelEditableTileRenderer1.Name = "pixelEditableTileRenderer1";
+			this.pixelEditableTileRenderer1.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.pixelEditableTileRenderer1.Size = new System.Drawing.Size(193, 193);
+			this.pixelEditableTileRenderer1.TabIndex = 1;
+			this.pixelEditableTileRenderer1.WhiteColor = System.Drawing.Color.White;
+			this.pixelEditableTileRenderer1.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.pixelEditableTileRenderer1.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			// 
+			// toolList1
+			// 
+			this.toolList1.AutoUpdate = false;
+			this.toolList1.Location = new System.Drawing.Point(4, 4);
+			this.toolList1.Name = "toolList1";
+			this.toolList1.SelectedTool = 0;
+			this.toolList1.Size = new System.Drawing.Size(26, 217);
+			this.toolList1.TabIndex = 0;
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1240,8 +1243,8 @@
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.tileEditBorder.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -1331,7 +1334,7 @@
 		private System.Windows.Forms.Panel tileEditBorder;
 		private ToolList toolList1;
 		private Shared.Palette.GBTDGBCPaletteChooser gbtdgbcPaletteChooser1;
-		private Shared.Tile.PixelEditableTileRenderer pixelEditableTileRenderer1;
+		private Shared.Tile.EditableTileRenderer pixelEditableTileRenderer1;
 		private System.Windows.Forms.Panel panel2;
 		private Shared.Tile.TileRenderer tileRenderer17;
 		private System.Windows.Forms.Panel panel1;

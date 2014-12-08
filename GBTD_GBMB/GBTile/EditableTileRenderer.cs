@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GB.Shared.Tile
 {
-	public partial class PixelEditableTileRenderer : TileRenderer
+	public partial class EditableTileRenderer : TileRenderer
 	{
 		#region Private fields
 		private GBColor leftMouseColor = GBColor.BLACK;
@@ -17,6 +17,8 @@ namespace GB.Shared.Tile
 		private GBColor middleMouseColor = GBColor.DARK_GRAY;
 		private GBColor xButton1MouseColor = GBColor.WHITE;
 		private GBColor xButton2MouseColor = GBColor.WHITE;
+
+		private TileEditor editor = new NoEditTileEditor();
 		#endregion
 
 		#region Public Properties
@@ -65,10 +67,39 @@ namespace GB.Shared.Tile
 			get { return xButton2MouseColor; }
 			set { xButton2MouseColor = value; }
 		}
+
+		/// <summary>
+		/// The editor that is used to edit the tile.\nIf null, uses a NoEditTileEditor.
+		/// </summary>
+		[Category("Behavior"), Description("The editor that is used to edit the tile.\nIf null, uses a NoEditTileEditor.")]
+		public TileEditor Editor {
+			get {
+				return editor;
+			}
+			set {
+				if (value == null) {
+					value = new NoEditTileEditor();
+				}
+				editor = value;
+			}
+		}
+
+		/// <summary>
+		/// Sets the type used for the editor, based off of a <see cref="TileEditorID"/>.
+		/// </summary>
+		[Category("Behavior"), Description("Sets the type used for the editor, based off of a TileEditorID.")]
+		public TileEditorID EditorTypeID {
+			set {
+				editor = TileEditorProvider.GetEditorForID(value);
+			}
+			get {
+				return editor.GetID();
+			}
+		}
 		#endregion
 
 
-		public PixelEditableTileRenderer() {
+		public EditableTileRenderer() {
 			InitializeComponent();
 		}
 
@@ -89,7 +120,7 @@ namespace GB.Shared.Tile
 				color = GBColor.WHITE;
 			}
 
-			Tile[e.x, e.y] = color;
+			Tile = editor.EditTile(Tile, e.x, e.y, color);
 		}
 	}
 }

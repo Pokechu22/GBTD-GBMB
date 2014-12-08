@@ -1,6 +1,6 @@
 ﻿namespace GB.Shared.Tile
 {
-	partial class PixelEditableTileRenderer
+	partial class EditableTileRenderer
 	{
 		/// <summary> 
 		/// Required designer variable.

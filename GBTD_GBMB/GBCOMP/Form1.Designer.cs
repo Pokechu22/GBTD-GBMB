@@ -39,7 +39,7 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
 			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
-			this.tileRenderer = new GB.Shared.Tile.PixelEditableTileRenderer();
+			this.tileRenderer = new GB.Shared.Tile.EditableTileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
 			this.SuspendLayout();
@@ -186,7 +186,7 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox groupBox1;
-		private GB.Shared.Tile.PixelEditableTileRenderer tileRenderer;
+		private GB.Shared.Tile.EditableTileRenderer tileRenderer;
 		private System.Windows.Forms.Button buttonOpen;
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;

@@ -44,14 +44,16 @@
   <ItemGroup>
     <Compile Include="GBColor.cs" />
     <Compile Include="GBCompression.cs" />
-    <Compile Include="PixelEditableTileRenderer.cs">
+    <Compile Include="EditableTileRenderer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PixelEditableTileRenderer.Designer.cs">
-      <DependentUpon>PixelEditableTileRenderer.cs</DependentUpon>
+    <Compile Include="EditableTileRenderer.Designer.cs">
+      <DependentUpon>EditableTileRenderer.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="TileEditor.cs" />
+    <Compile Include="TileEditorProvider.cs" />
     <Compile Include="TileParser.cs" />
     <Compile Include="TileRenderer.cs">
       <SubType>UserControl</SubType>
@@ -62,8 +64,8 @@
     <Compile Include="VRAMTileParser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="PixelEditableTileRenderer.resx">
-      <DependentUpon>PixelEditableTileRenderer.cs</DependentUpon>
+    <EmbeddedResource Include="EditableTileRenderer.resx">
+      <DependentUpon>EditableTileRenderer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TileRenderer.resx">
       <DependentUpon>TileRenderer.cs</DependentUpon>
