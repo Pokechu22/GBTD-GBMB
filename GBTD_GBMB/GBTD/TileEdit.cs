@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GB.Shared.Palette;
+using GB.Shared.Tile;
 
 namespace GB.GBTD
 {
@@ -67,8 +68,33 @@ namespace GB.GBTD
 			}
 		}
 
+		/// <summary>
+		/// Contains all of the tilerenderers used to preview, so that I don't have to refer to all of them seperately.
+		/// </summary>
+		private List<TileRenderer> previewRenderers = new List<TileRenderer>();
+
 		public TileEdit() {
 			InitializeComponent();
+
+			//Set up the preview renderers.
+			previewRenderers.Add(miniPreviewRenderer);
+
+			previewRenderers.Add(groupedTileRenderer1);
+			previewRenderers.Add(groupedTileRenderer2);
+			previewRenderers.Add(groupedTileRenderer3);
+			previewRenderers.Add(groupedTileRenderer4);
+			previewRenderers.Add(groupedTileRenderer5);
+			previewRenderers.Add(groupedTileRenderer6);
+			previewRenderers.Add(groupedTileRenderer7);
+			previewRenderers.Add(groupedTileRenderer8);
+			previewRenderers.Add(groupedTileRenderer9);
+			previewRenderers.Add(groupedTileRenderer10);
+			previewRenderers.Add(groupedTileRenderer11);
+			previewRenderers.Add(groupedTileRenderer12);
+			previewRenderers.Add(groupedTileRenderer13);
+			previewRenderers.Add(groupedTileRenderer14);
+			previewRenderers.Add(groupedTileRenderer15);
+			previewRenderers.Add(groupedTileRenderer16);
 		}
 
 		private void tileEditBorder_Paint(object sender, PaintEventArgs e) {
@@ -78,18 +104,33 @@ namespace GB.GBTD
 		private void toolList1_SelectedToolChanged(object sender, EventArgs e) {
 			ToolList list = sender as ToolList;
 			if (list != null) {
-				pixelEditableTileRenderer1.EditorTypeID = list.SelectedTool;
+				mainTileEdit.EditorTypeID = list.SelectedTool;
 			}
 		}
 
 		private void gbtdgbcPaletteChooser1_MouseButtonColorChanged(object sender, EventArgs e) {
 			GBTDGBCPaletteChooser chooser = sender as GBTDGBCPaletteChooser;
 			if (chooser != null) {
-				pixelEditableTileRenderer1.LeftMouseColor = chooser.LeftMouseColor;
-				pixelEditableTileRenderer1.RightMouseColor = chooser.RightMouseColor;
-				pixelEditableTileRenderer1.MiddleMouseColor = chooser.MiddleMouseColor;
-				pixelEditableTileRenderer1.XButton1MouseColor = chooser.X1MouseColor;
-				pixelEditableTileRenderer1.XButton2MouseColor = chooser.X2MouseColor;
+				mainTileEdit.LeftMouseColor = chooser.LeftMouseColor;
+				mainTileEdit.RightMouseColor = chooser.RightMouseColor;
+				mainTileEdit.MiddleMouseColor = chooser.MiddleMouseColor;
+				mainTileEdit.XButton1MouseColor = chooser.X1MouseColor;
+				mainTileEdit.XButton2MouseColor = chooser.X2MouseColor;
+			}
+		}
+
+		private void mainTileEdit_TileChanged(object sender, EventArgs e) {
+			foreach (var v in previewRenderers) {
+				v.Tile = mainTileEdit.Tile;
+			}
+		}
+
+		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
+			foreach (var v in previewRenderers) {
+				v.BlackColor = mainTileEdit.BlackColor;
+				v.WhiteColor = mainTileEdit.WhiteColor;
+				v.LightGrayColor = mainTileEdit.LightGrayColor;
+				v.DarkGrayColor = mainTileEdit.DarkGrayColor;
 			}
 		}
 	}
