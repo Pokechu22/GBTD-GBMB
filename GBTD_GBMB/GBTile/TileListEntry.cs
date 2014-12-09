@@ -66,21 +66,13 @@ namespace GB.Shared.Tile
 			InitializeComponent();
 		}
 
-		private void textLabel_Paint(object sender, PaintEventArgs e) {
-			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textLabel.Width, textLabel.Height, Border3DStyle.RaisedInner, Border3DSide.Left);
-			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textLabel.Width, textLabel.Height, Border3DStyle.RaisedInner, Border3DSide.Bottom);
-			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textLabel.Width, textLabel.Height, Border3DStyle.RaisedInner, Border3DSide.Right);
-			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textLabel.Width, textLabel.Height, Border3DStyle.RaisedInner, Border3DSide.Top);
-			
-		}
+		
 
 		protected virtual void SetupApearence() {
 			if (Enabled) {
-				textLabel.Text = number.ToString();
 				tileRenderer1.Tile = this.tile;
 				tileRenderer1.SetColors(black, darkGray, lightGray, white);
 			} else {
-				textLabel.Text = "";
 				tileRenderer1.Tile = this.tile;
 				tileRenderer1.SetColors(SystemColors.Control, SystemColors.Control, SystemColors.Control, SystemColors.Control);
 			}
@@ -90,6 +82,24 @@ namespace GB.Shared.Tile
 		protected override void OnEnabledChanged(EventArgs e) {
 			base.OnEnabledChanged(e);
 			SetupApearence();
+		}
+
+		private void textDisplay_Paint(object sender, PaintEventArgs e) {
+			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textDisplay.Width, textDisplay.Height, Border3DStyle.RaisedInner, Border3DSide.Left);
+			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textDisplay.Width, textDisplay.Height, Border3DStyle.RaisedInner, Border3DSide.Bottom);
+			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textDisplay.Width, textDisplay.Height, Border3DStyle.RaisedInner, Border3DSide.Right);
+			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, textDisplay.Width, textDisplay.Height, Border3DStyle.RaisedInner, Border3DSide.Top);
+
+			StringFormat format = new StringFormat(StringFormatFlags.NoClip);
+			format.Alignment = StringAlignment.Center;
+			format.LineAlignment = StringAlignment.Center;
+
+			String usedText = "";
+			if (this.Enabled) {
+				usedText = this.number.ToString();
+			}
+			e.Graphics.DrawString(usedText, new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black, 
+				new RectangleF(0, -1, textDisplay.Width, textDisplay.Height), format);
 		}
 	}
 }

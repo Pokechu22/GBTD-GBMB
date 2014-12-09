@@ -26,7 +26,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			System.Windows.Forms.Panel background;
-			this.textLabel = new System.Windows.Forms.Label();
+			this.textDisplay = new System.Windows.Forms.Panel();
 			this.tileRenderer1 = new GB.Shared.Tile.TileRenderer();
 			background = new System.Windows.Forms.Panel();
 			background.SuspendLayout();
@@ -34,27 +34,23 @@
 			// 
 			// background
 			// 
+			background.Controls.Add(this.textDisplay);
 			background.Controls.Add(this.tileRenderer1);
-			background.Controls.Add(this.textLabel);
 			background.Dock = System.Windows.Forms.DockStyle.Fill;
 			background.Location = new System.Drawing.Point(0, 0);
 			background.Name = "background";
 			background.Size = new System.Drawing.Size(38, 17);
 			background.TabIndex = 2;
 			// 
-			// textLabel
+			// textDisplay
 			// 
-			this.textLabel.BackColor = System.Drawing.SystemColors.Control;
-			this.textLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textLabel.Location = new System.Drawing.Point(0, 0);
-			this.textLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.textLabel.Name = "textLabel";
-			this.textLabel.Padding = new System.Windows.Forms.Padding(3, 0, 0, 1);
-			this.textLabel.Size = new System.Drawing.Size(21, 16);
-			this.textLabel.TabIndex = 2;
-			this.textLabel.Text = "0";
-			this.textLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.textLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.textLabel_Paint);
+			this.textDisplay.BackColor = System.Drawing.SystemColors.Control;
+			this.textDisplay.Location = new System.Drawing.Point(0, 0);
+			this.textDisplay.Margin = new System.Windows.Forms.Padding(0, 0, 1, 1);
+			this.textDisplay.Name = "textDisplay";
+			this.textDisplay.Size = new System.Drawing.Size(21, 16);
+			this.textDisplay.TabIndex = 4;
+			this.textDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.textDisplay_Paint);
 			// 
 			// tileRenderer1
 			// 
@@ -90,7 +86,7 @@
 		#endregion
 
 		private TileRenderer tileRenderer1;
-		private System.Windows.Forms.Label textLabel;
+		private System.Windows.Forms.Panel textDisplay;
 
 
 
