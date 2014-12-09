@@ -137,6 +137,7 @@
 			this.paletteChooser = new GB.Shared.Palette.GBTDGBCPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tile.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
+			this.tileList1 = new GB.Shared.Tile.TileList();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
@@ -658,24 +659,24 @@
 			// helpTopicsToolStripMenuItem
 			// 
 			this.helpTopicsToolStripMenuItem.Name = "helpTopicsToolStripMenuItem";
-			this.helpTopicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.helpTopicsToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
 			this.helpTopicsToolStripMenuItem.Text = "&Help topics";
 			// 
 			// helpIndexToolStripMenuItem
 			// 
 			this.helpIndexToolStripMenuItem.Name = "helpIndexToolStripMenuItem";
-			this.helpIndexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.helpIndexToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
 			this.helpIndexToolStripMenuItem.Text = "Help &index";
 			// 
 			// toolStripSeparator15
 			// 
 			this.toolStripSeparator15.Name = "toolStripSeparator15";
-			this.toolStripSeparator15.Size = new System.Drawing.Size(149, 6);
+			this.toolStripSeparator15.Size = new System.Drawing.Size(123, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
 			this.aboutToolStripMenuItem.Text = "&About";
 			// 
 			// toolStripSeparator1
@@ -1265,11 +1266,19 @@
 			this.toolList.TabIndex = 0;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
 			// 
+			// tileList1
+			// 
+			this.tileList1.Location = new System.Drawing.Point(341, 57);
+			this.tileList1.Name = "tileList1";
+			this.tileList1.Size = new System.Drawing.Size(56, 222);
+			this.tileList1.TabIndex = 5;
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 283);
+			this.Controls.Add(this.tileList1);
 			this.Controls.Add(this.tileEditBorder);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.menuStrip1);
@@ -1394,6 +1403,7 @@
 		private Shared.Tile.TileRenderer groupedTileRenderer2;
 		private Shared.Tile.TileRenderer groupedTileRenderer1;
 		private Shared.Tile.TileRenderer groupedTileRenderer10;
+		private Shared.Tile.TileList tileList1;
 
 	}
 }
