@@ -1270,7 +1270,8 @@
 			// 
 			this.tileList1.Location = new System.Drawing.Point(341, 57);
 			this.tileList1.Name = "tileList1";
-			this.tileList1.Size = new System.Drawing.Size(56, 222);
+			this.tileList1.NumberOfEntries = 16;
+			this.tileList1.Size = new System.Drawing.Size(56, 223);
 			this.tileList1.TabIndex = 5;
 			// 
 			// TileEdit
