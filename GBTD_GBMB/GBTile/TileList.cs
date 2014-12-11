@@ -33,6 +33,31 @@ namespace GB.Shared.Tile
 			set { numberOfEntries = value; OnNumberOfEntriesChanged(); }
 		}
 
+		private Tile[] tiles = new Tile[0];
+
+		/// <summary>
+		/// The tiles used on this.
+		/// </summary>
+		/// <param name="tile"></param>
+		/// <returns></returns>
+		[Category("Data"), Description("The tiles used.")]
+		[Browsable(false), ReadOnly(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public Tile this[int tile] {
+			get {
+				if (tile < 0 || tile >= numberOfEntries) {
+					throw new ArgumentOutOfRangeException("tile", tile, "Tile out of range - must be between 0 and " + numberOfEntries + ".");
+				}
+				return tiles[tile];
+			}
+			set {
+				if (value == null) {
+					throw new ArgumentNullException();
+				}
+				tiles[tile] = value;
+				onTileChanged(tile);
+			}
+		}
+
 		public TileList() {
 			InitializeComponent();
 		}
@@ -78,12 +103,11 @@ namespace GB.Shared.Tile
 		}
 
 		private void OnNumberOfEntriesChanged() {
-			int max = numberOfEntries - numberOfVisibleEntries;
-
-			if (max < 0) { max = 0; }
-			vScrollBar1.Maximum = max;
+			vScrollBar1.Maximum = numberOfEntries;
 			vScrollBar1.Minimum = 0;
 			vScrollBar1.Value = 0;
+
+			Array.Resize(ref tiles, numberOfEntries);
 		}
 
 		private void TileList_Load(object sender, EventArgs e) {
@@ -91,17 +115,38 @@ namespace GB.Shared.Tile
 		}
 
 		private void vScrollBar1_ValueChanged(object sender, EventArgs e) {
+			int scrolledIndex = vScrollBar1.Value - numberOfVisibleEntries;
+			if (scrolledIndex < 0) {
+				scrolledIndex = 0;
+			}
+
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
 				TileListEntry entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntry;
-				entry.Number = vScrollBar1.Value + i;
+				entry.Number = scrolledIndex + i;
 				//TODO grab the tile.
-				if (vScrollBar1.Value + i >= numberOfEntries) {
+				if (scrolledIndex + i >= numberOfEntries) {
 					entry.Enabled = false;
 				} else {
 					entry.Enabled = true;
 				}
 				entry.Refresh();
 			}
+		}
+
+		/// <summary>
+		/// Processes a change to a tile and redraws it.
+		/// </summary>
+		/// <param name="tile"></param>
+		private void onTileChanged(int tile) {
+			//Check if tile is on screen; stop if it isn't visible since it doesn't need to be redrawn.
+			int visibleIndex = tile - vScrollBar1.Value;
+			if (visibleIndex < 0 || visibleIndex >= numberOfVisibleEntries) {
+				return;
+			}
+
+			//Update the entry.
+			TileListEntry entry = entriesPanel.Controls.Find("Entry" + visibleIndex, false)[0] as TileListEntry;
+			entry.Tile = tiles[tile];
 		}
 	}
 }

@@ -123,6 +123,7 @@ namespace GB.GBTD
 			foreach (var v in previewRenderers) {
 				v.Tile = mainTileEdit.Tile;
 			}
+			this.tileList1[0] = mainTileEdit.Tile;
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
