@@ -8,15 +8,20 @@ namespace GB.Shared.Tile
 	/// <summary>
 	/// A single tile.
 	/// </summary>
-	public class Tile
+	public struct Tile
 	{
-		internal GBColor[,] pixels = new GBColor[8, 8];
+		internal GBColor[,] pixels;
 
 		/// <summary>
 		/// Pixels on the tile.  MUST BE 8 by 8 exactly.
 		/// </summary>
 		public GBColor[,] Pixels {
 			get {
+				//Initialize pixels if needed.
+				if (pixels == null) {
+					pixels = new GBColor[8, 8];
+				}
+
 				return pixels;
 			}
 			set {
@@ -35,6 +40,11 @@ namespace GB.Shared.Tile
 		/// <returns>Pixel at (x,y).</returns>
 		public GBColor this[int x, int y] {
 			get {
+				//Initialize pixels if needed.
+				if (pixels == null) {
+					pixels = new GBColor[8, 8];
+				}
+				
 				if (x < 0 || x > 7) {
 					throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7");
 				}

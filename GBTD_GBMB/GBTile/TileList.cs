@@ -50,9 +50,9 @@ namespace GB.Shared.Tile
 				return tiles[tile];
 			}
 			set {
-				if (value == null) {
+				/*if (value == null) {
 					throw new ArgumentNullException();
-				}
+				}*/
 				tiles[tile] = value;
 				onTileChanged(tile);
 			}
@@ -85,12 +85,14 @@ namespace GB.Shared.Tile
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
 				TileListEntry newEntry = new TileListEntry();
 				newEntry.Location = new Point(1, 1 + (ENTRY_HEIGHT * i));
-				newEntry.Tile = new Tile(); //TODO
+				newEntry.Tile = new Tile();
 				newEntry.Number = i;
 				newEntry.Name = "Entry" + i;
 				if (vScrollBar1.Value + i >= numberOfEntries) {
+					newEntry.Tile = new Tile();
 					newEntry.Enabled = false;
 				} else {
+					newEntry.Tile = tiles[vScrollBar1.Value + i];
 					newEntry.Enabled = true;
 				}
 				//TODO colors.
@@ -125,8 +127,10 @@ namespace GB.Shared.Tile
 				entry.Number = scrolledIndex + i;
 				//TODO grab the tile.
 				if (scrolledIndex + i >= numberOfEntries) {
+					entry.Tile = new Tile();
 					entry.Enabled = false;
 				} else {
+					entry.Tile = tiles[vScrollBar1.Value + i];
 					entry.Enabled = true;
 				}
 				entry.Refresh();
