@@ -25,15 +25,15 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palette.GBCPalette gbcPalette1 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette2 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette3 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette4 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette5 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette6 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette7 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette8 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Tile.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tile.PixelTileEditor();
+			GB.Shared.Palette.GBCPalette gbcPalette17 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette18 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette19 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette20 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette21 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette22 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette23 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.GBCPalette gbcPalette24 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Tile.PixelTileEditor pixelTileEditor3 = new GB.Shared.Tile.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1180,47 +1180,47 @@
 			this.paletteChooser.Padding = new System.Windows.Forms.Padding(2);
 			this.paletteChooser.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
 			this.paletteChooser.SelectedRow = 0;
-			gbcPalette1.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette1.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette1.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette1.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette2.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette2.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette2.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette2.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette3.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette3.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette3.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette3.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette4.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette4.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette4.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette4.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette5.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette5.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette5.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette5.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette6.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette6.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette6.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette6.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette7.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette7.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette7.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette7.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette8.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette8.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette8.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette8.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette17.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette17.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette17.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette17.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette18.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette18.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette18.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette18.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette19.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette19.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette19.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette19.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette20.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette20.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette20.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette20.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette21.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette21.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette21.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette21.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette22.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette22.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette22.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette22.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette23.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette23.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette23.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette23.EntryWhite.Color = System.Drawing.Color.White;
+			gbcPalette24.EntryBlack.Color = System.Drawing.Color.Black;
+			gbcPalette24.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
+			gbcPalette24.EntryLightGray.Color = System.Drawing.Color.LightGray;
+			gbcPalette24.EntryWhite.Color = System.Drawing.Color.White;
 			this.paletteChooser.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
-        gbcPalette1,
-        gbcPalette2,
-        gbcPalette3,
-        gbcPalette4,
-        gbcPalette5,
-        gbcPalette6,
-        gbcPalette7,
-        gbcPalette8};
+        gbcPalette17,
+        gbcPalette18,
+        gbcPalette19,
+        gbcPalette20,
+        gbcPalette21,
+        gbcPalette22,
+        gbcPalette23,
+        gbcPalette24};
 			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
 			this.paletteChooser.TabIndex = 2;
 			this.paletteChooser.UseGBCFilter = false;
@@ -1238,7 +1238,7 @@
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
 			this.mainTileEdit.DarkGrayColor = System.Drawing.Color.Gray;
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor3;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tile.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
@@ -1265,6 +1265,10 @@
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 0;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
+			this.toolList.ScrollUpClicked += new System.EventHandler(this.toolList_ScrollUpClicked);
+			this.toolList.ScrollDownClicked += new System.EventHandler(this.toolList_ScrollDownClicked);
+			this.toolList.ScrollLeftClicked += new System.EventHandler(this.toolList_ScrollLeftClicked);
+			this.toolList.ScrollRightClicked += new System.EventHandler(this.toolList_ScrollRightClicked);
 			// 
 			// tileList1
 			// 

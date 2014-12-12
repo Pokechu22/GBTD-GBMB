@@ -73,6 +73,7 @@
     <Compile Include="TileRenderer.Designer.cs">
       <DependentUpon>TileRenderer.cs</DependentUpon>
     </Compile>
+    <Compile Include="TileTransformations.cs" />
     <Compile Include="VRAMTileParser.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -158,5 +158,21 @@ namespace GB.GBTD
 				paletteChooser.Set[paletteChooser.SelectedRow].EntryLightGray,
 				paletteChooser.Set[paletteChooser.SelectedRow].EntryWhite);
 		}
+
+		private void toolList_ScrollLeftClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.ScrolledLeft(mainTileEdit.Tile);
+		}
+
+		private void toolList_ScrollDownClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.ScrolledDown(mainTileEdit.Tile);
+		}
+
+		private void toolList_ScrollRightClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.ScrolledRight(mainTileEdit.Tile);
+		}
+
+		private void toolList_ScrollUpClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.ScrolledUp(mainTileEdit.Tile);
+		}
 	}
 }
