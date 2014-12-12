@@ -182,5 +182,9 @@ namespace GB.GBTD
 		private void toolList_FlipVerticallyClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.FlippedVertically(mainTileEdit.Tile);
 		}
+
+		private void toolList_RotateClockwiseClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.RotateClockwise(mainTileEdit.Tile);
+		}
 	}
 }

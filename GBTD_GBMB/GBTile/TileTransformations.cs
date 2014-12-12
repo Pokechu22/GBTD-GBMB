@@ -119,5 +119,45 @@ namespace GB.Shared.Tile
 
 			return returned;
 		}
+
+		/// <summary>
+		/// Rotates a tile clockwise.
+		/// </summary>
+		/// <param name="tile"></param>
+		/// <returns></returns>
+		public static Tile RotateClockwise(Tile tile) {
+			Tile returned = new Tile();
+
+			returned.pixels = new GBColor[8, 8];
+
+			for (uint x = 0; x < 8; x++) {
+				for (uint y = 0; y < 8; y++) {
+					returned.pixels[x, y] = tile.pixels[y, 7 - x];//tile.pixels[y + 4, x];
+				}
+			}
+
+			return returned;
+		}
+
+		/// <summary>
+		/// Rotates a tile counterclockwise.
+		/// 
+		/// This is not used in the regular GBTD.
+		/// </summary>
+		/// <param name="tile"></param>
+		/// <returns></returns>
+		public static Tile RotateCounterclockwise(Tile tile) {
+			Tile returned = new Tile();
+
+			returned.pixels = new GBColor[8, 8];
+
+			for (uint x = 0; x < 8; x++) {
+				for (uint y = 0; y < 8; y++) {
+					returned.pixels[x, y] = tile.pixels[7 - y, x];
+				}
+			}
+
+			return returned;
+		}
 	}
 }
