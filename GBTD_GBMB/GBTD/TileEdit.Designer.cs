@@ -385,6 +385,7 @@
 			this.flipVerticallyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
 			this.flipVerticallyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.flipVerticallyToolStripMenuItem.Text = "Flip Verticall&y";
+			this.flipVerticallyToolStripMenuItem.Click += new System.EventHandler(this.flipVerticallyClicked);
 			// 
 			// flipHorizontallyToolStripMenuItem
 			// 
@@ -392,6 +393,7 @@
 			this.flipHorizontallyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
 			this.flipHorizontallyToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.flipHorizontallyToolStripMenuItem.Text = "Flip &Horizontally";
+			this.flipHorizontallyToolStripMenuItem.Click += new System.EventHandler(this.flipHorizontallyClicked);
 			// 
 			// rotateClockwiseToolStripMenuItem
 			// 
@@ -399,6 +401,7 @@
 			this.rotateClockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
 			this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.rotateClockwiseToolStripMenuItem.Text = "&Rotate Clockwise";
+			this.rotateClockwiseToolStripMenuItem.Click += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
 			// toolStripSeparator9
 			// 
@@ -410,24 +413,28 @@
 			this.scrollLeftToolStripMenuItem.Name = "scrollLeftToolStripMenuItem";
 			this.scrollLeftToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.scrollLeftToolStripMenuItem.Text = "Scroll &Left";
+			this.scrollLeftToolStripMenuItem.Click += new System.EventHandler(this.scrollLeftClicked);
 			// 
 			// scrollRightToolStripMenuItem
 			// 
 			this.scrollRightToolStripMenuItem.Name = "scrollRightToolStripMenuItem";
 			this.scrollRightToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.scrollRightToolStripMenuItem.Text = "Scroll &Right";
+			this.scrollRightToolStripMenuItem.Click += new System.EventHandler(this.scrollRightClicked);
 			// 
 			// scrollUpToolStripMenuItem
 			// 
 			this.scrollUpToolStripMenuItem.Name = "scrollUpToolStripMenuItem";
 			this.scrollUpToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.scrollUpToolStripMenuItem.Text = "Scroll &Up";
+			this.scrollUpToolStripMenuItem.Click += new System.EventHandler(this.scrollUpClicked);
 			// 
 			// scrollDownToolStripMenuItem
 			// 
 			this.scrollDownToolStripMenuItem.Name = "scrollDownToolStripMenuItem";
 			this.scrollDownToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
 			this.scrollDownToolStripMenuItem.Text = "Scroll &Down";
+			this.scrollDownToolStripMenuItem.Click += new System.EventHandler(this.scrollDownClicked);
 			// 
 			// toolStripSeparator10
 			// 
@@ -1265,13 +1272,13 @@
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 0;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
-			this.toolList.ScrollUpClicked += new System.EventHandler(this.toolList_ScrollUpClicked);
-			this.toolList.ScrollDownClicked += new System.EventHandler(this.toolList_ScrollDownClicked);
-			this.toolList.ScrollLeftClicked += new System.EventHandler(this.toolList_ScrollLeftClicked);
-			this.toolList.ScrollRightClicked += new System.EventHandler(this.toolList_ScrollRightClicked);
-			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.toolList_FlipVerticallyClicked);
-			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.toolList_FlipHorizontallyClicked);
-			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.toolList_RotateClockwiseClicked);
+			this.toolList.ScrollUpClicked += new System.EventHandler(this.scrollUpClicked);
+			this.toolList.ScrollDownClicked += new System.EventHandler(this.scrollDownClicked);
+			this.toolList.ScrollLeftClicked += new System.EventHandler(this.scrollLeftClicked);
+			this.toolList.ScrollRightClicked += new System.EventHandler(this.scrollRightClicked);
+			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
+			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
+			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
 			// tileList1
 			// 

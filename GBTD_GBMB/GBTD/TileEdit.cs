@@ -159,31 +159,31 @@ namespace GB.GBTD
 				paletteChooser.Set[paletteChooser.SelectedRow].EntryWhite);
 		}
 
-		private void toolList_ScrollLeftClicked(object sender, EventArgs e) {
+		private void scrollLeftClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.ScrolledLeft(mainTileEdit.Tile);
 		}
 
-		private void toolList_ScrollDownClicked(object sender, EventArgs e) {
+		private void scrollDownClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.ScrolledDown(mainTileEdit.Tile);
 		}
 
-		private void toolList_ScrollRightClicked(object sender, EventArgs e) {
+		private void scrollRightClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.ScrolledRight(mainTileEdit.Tile);
 		}
 
-		private void toolList_ScrollUpClicked(object sender, EventArgs e) {
+		private void scrollUpClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.ScrolledUp(mainTileEdit.Tile);
 		}
 
-		private void toolList_FlipHorizontallyClicked(object sender, EventArgs e) {
+		private void flipHorizontallyClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.FlippedHoriziontally(mainTileEdit.Tile);
 		}
 
-		private void toolList_FlipVerticallyClicked(object sender, EventArgs e) {
+		private void flipVerticallyClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.FlippedVertically(mainTileEdit.Tile);
 		}
 
-		private void toolList_RotateClockwiseClicked(object sender, EventArgs e) {
+		private void rotateClockwiseClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.RotateClockwise(mainTileEdit.Tile);
 		}
 	}
