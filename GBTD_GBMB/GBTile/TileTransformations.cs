@@ -81,5 +81,43 @@ namespace GB.Shared.Tile
 
 			return returned;
 		}
+
+		/// <summary>
+		/// Flips a tile vertically.
+		/// </summary>
+		/// <param name="tile"></param>
+		/// <returns></returns>
+		public static Tile FlippedVertically(Tile tile) {
+			Tile returned = new Tile();
+
+			returned.pixels = new GBColor[8, 8];
+
+			for (uint x = 0; x < 8; x++) {
+				for (uint y = 0; y < 8; y++) {
+					returned.pixels[x, y] = tile.pixels[7 - x, y];
+				}
+			}
+
+			return returned;
+		}
+
+		/// <summary>
+		/// Flips a tile horizontally.
+		/// </summary>
+		/// <param name="tile"></param>
+		/// <returns></returns>
+		public static Tile FlippedHoriziontally(Tile tile) {
+			Tile returned = new Tile();
+
+			returned.pixels = new GBColor[8, 8];
+
+			for (uint x = 0; x < 8; x++) {
+				for (uint y = 0; y < 8; y++) {
+					returned.pixels[x, y] = tile.pixels[x, 7 - y];
+				}
+			}
+
+			return returned;
+		}
 	}
 }

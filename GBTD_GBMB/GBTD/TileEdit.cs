@@ -174,5 +174,13 @@ namespace GB.GBTD
 		private void toolList_ScrollUpClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.ScrolledUp(mainTileEdit.Tile);
 		}
+
+		private void toolList_FlipHorizontallyClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.FlippedHoriziontally(mainTileEdit.Tile);
+		}
+
+		private void toolList_FlipVerticallyClicked(object sender, EventArgs e) {
+			mainTileEdit.Tile = TileTransform.FlippedVertically(mainTileEdit.Tile);
+		}
 	}
 }
