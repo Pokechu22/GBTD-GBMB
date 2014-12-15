@@ -54,6 +54,13 @@ namespace GB.Shared.Tile
 			set { this.white = value; SetupApearence(); }
 		}
 
+		private bool selected;
+		[Category("Data"), Description("Whether or not this has been selected.")]
+		public bool Selected {
+			get { return selected; }
+			set { selected = value; SetupApearence(); }
+		}
+
 		public void SetColors(Color black, Color darkGray, Color lightGray, Color white) {
 			this.white = white;
 			this.darkGray = darkGray;
@@ -70,8 +77,17 @@ namespace GB.Shared.Tile
 
 		protected virtual void SetupApearence() {
 			if (Enabled) {
-				tileRenderer1.Tile = this.tile;
-				tileRenderer1.SetColors(black, darkGray, lightGray, white);
+				if (Selected) {
+					tileRenderer1.Tile = this.tile;
+					tileRenderer1.SetColors(
+						ColorFiltration.GetSelectedColor(black),
+						ColorFiltration.GetSelectedColor(darkGray),
+						ColorFiltration.GetSelectedColor(lightGray),
+						ColorFiltration.GetSelectedColor(white));
+				} else {
+					tileRenderer1.Tile = this.tile;
+					tileRenderer1.SetColors(black, darkGray, lightGray, white);
+				}
 			} else {
 				tileRenderer1.Tile = this.tile;
 				tileRenderer1.SetColors(SystemColors.Control, SystemColors.Control, SystemColors.Control, SystemColors.Control);

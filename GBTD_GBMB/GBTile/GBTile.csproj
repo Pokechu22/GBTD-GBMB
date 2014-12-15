@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorFiltration.cs" />
     <Compile Include="GBColor.cs" />
     <Compile Include="GBCompression.cs" />
     <Compile Include="EditableTileRenderer.cs">
