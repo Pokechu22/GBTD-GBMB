@@ -11,19 +11,23 @@ using GB.Shared.Palette;
 
 namespace GB.Shared.Palette
 {
-	public partial class ChoosePalette : Form
+	public partial class ChoosePalette<TSelector, TSet, TRow, TEntry> : Form
+		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		public ChoosePalette() {
 			InitializeComponent();
 		}
 
-		public ChoosePalette(PaletteSet_ set) : this() {
+		public ChoosePalette(TSet set) : this() {
 			this.Set = set;
 		}
 
-		public PaletteSet_ Set {
+		public TSet Set {
 			get { return gbPaletteSetSelector1.Set; }
-			set { gbPaletteSetSelector1.Set = value; }
+			set { if (value == null) { throw new ArgumentNullException(); } gbPaletteSetSelector1.Set = value; }
 		}
 
 		private void colorPicker1_OnChange(object sender, EventArgs e) {
@@ -45,10 +49,10 @@ namespace GB.Shared.Palette
 		}
 	}
 
-	/*public class GBCChoosePalette : ChoosePalette<GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>
+	public class GBCChoosePalette : ChoosePalette<GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>
 	{
 		public GBCChoosePalette() : base() { }
 
 		public GBCChoosePalette(GBCPaletteSet set) : base(set) { }
-	}*/
+	}
 }

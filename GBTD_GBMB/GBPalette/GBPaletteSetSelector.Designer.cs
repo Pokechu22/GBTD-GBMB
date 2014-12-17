@@ -1,6 +1,9 @@
 ﻿namespace GB.Shared.Palette
 {
-	partial class GBPaletteSetSelector
+	abstract partial class GBPaletteSetSelector<TSet, TRow, TEntry>
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry : PaletteEntryBase
 	{
 		/// <summary> 
 		/// Required designer variable.

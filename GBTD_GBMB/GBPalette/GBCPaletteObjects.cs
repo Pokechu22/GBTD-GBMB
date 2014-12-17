@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +9,7 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	[EditorAttribute(typeof(PaletteObjectsEditor<GBCChoosePalette, GBCPaletteSeGBPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>), typeof(System.Drawing.Design.UITypeEditor))]
+	[EditorAttribute(typeof(PaletteObjectsEditor<GBCChoosePalette, GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>), typeof(System.Drawing.Design.UITypeEditor))]
 	public class GBCPaletteSet : PaletteSetBase<GBCPalette, GBCPaletteEntry> {
 
 		public override int NumberOfRows {
@@ -125,4 +125,3 @@ namespace GB.Shared.Palette
 		}
 	}
 }
-*/

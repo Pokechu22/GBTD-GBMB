@@ -11,7 +11,10 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	internal partial class GBPaletteChooser : UserControl
+	internal partial class GBPaletteChooser<TSet, TRow, TEntry> : UserControl
+		where TSet : PaletteSetBase<TRow, TEntry>, new()
+		where TRow : PaletteBase<TEntry>
+		where TEntry: PaletteEntryBase
 	{
 		/// <summary>
 		/// Event for when the selected palette is changed.
@@ -25,35 +28,37 @@ namespace GB.Shared.Palette
 		/// </summary>
 		internal class SelectedPaletteChangeEventArgs : EventArgs
 		{
-			private readonly GBPaletteChooser sender;
+			private readonly GBPaletteChooser<TSet, TRow, TEntry> sender;
 
 			public readonly int newIndex;
-			public readonly Palette_ newItem;
+			public readonly TRow newItem;
 
-			public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
+			public SelectedPaletteChangeEventArgs(GBPaletteChooser<TSet, TRow, TEntry> sender, int newIndex) {
 				this.sender = sender;
 				this.newIndex = newIndex;
-				this.newItem = sender.set[newIndex];
+				TSet set = sender.set;
+				this.newItem = set[newIndex];
 			}
 		}
 
 		internal class PaletteEntryClickEventArgs : EventArgs
 		{
-			private readonly GBPaletteChooser sender;
+			private readonly GBPaletteChooser<TSet, TRow, TEntry> sender;
 
 			public readonly int paletteIndex;
-			public readonly Palette_ palette;
+			public readonly TRow palette;
 
 			public readonly int clickedEntry;
 			public readonly Color clickedEntryColor;
 
 			public readonly MouseButtons button;
 
-			public PaletteEntryClickEventArgs(GBPaletteChooser sender, int paletteIndex, int clickedEntry, MouseButtons button) {
+			public PaletteEntryClickEventArgs(GBPaletteChooser<TSet, TRow, TEntry> sender, int paletteIndex, int clickedEntry, MouseButtons button) {
 				this.sender = sender;
 
 				this.paletteIndex = paletteIndex;
-				this.palette = sender.set[paletteIndex];
+				TSet set = sender.set;
+				this.palette = set[paletteIndex];
 
 				this.clickedEntry = clickedEntry;
 				this.clickedEntryColor = palette[clickedEntry];
@@ -86,9 +91,9 @@ namespace GB.Shared.Palette
 			/// Control to put these over.
 			/// </summary>
 			private Control toOverlay;
-			private GBPaletteChooser chooser;
+			private GBPaletteChooser<TSet, TRow, TEntry> chooser;
 
-			public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser chooser)
+			public PaletteChooserEntry(int x, int y, Control toOverlay, GBPaletteChooser<TSet, TRow, TEntry> chooser)
 				: base(x, y) {
 				this.toOverlay = toOverlay;
 				this.chooser = chooser;
@@ -189,7 +194,7 @@ namespace GB.Shared.Palette
 		/// <summary>
 		/// The row currently selected.
 		/// </summary>
-		public Palette_ SelectedRow {
+		public TRow SelectedRow {
 			get {
 				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
 					SelectedRowIndex = 0;
@@ -200,9 +205,10 @@ namespace GB.Shared.Palette
 				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
 					SelectedRowIndex = 0;
 				}
-				int i = 0;
-				i = i; //To create a warning.  TODO.
-				//set[SelectedRowIndex] = value;
+				if (value == null) {
+					throw new ArgumentNullException();
+				}
+				set[SelectedRowIndex] = value;
 				reloadFromSet();
 			}
 		}
@@ -237,9 +243,9 @@ namespace GB.Shared.Palette
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
 
-		private PaletteSet_ set = new PaletteSet_();
+		private TSet set = new TSet();
 
-		public PaletteSet_ Set {
+		public TSet Set {
 			get { return set; }
 			set { set = value; reloadFromSet(); OnSelectedPaletteChanged(); }
 		}
@@ -306,7 +312,7 @@ namespace GB.Shared.Palette
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette_ item = set[Convert.ToInt32((String)box.Text)];
+			TRow item = set[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -319,7 +325,7 @@ namespace GB.Shared.Palette
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette_ item = set[Convert.ToInt32((String)box.Text)];
+			TRow item = set[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -329,11 +335,11 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// Draws Palette_ to a bitmap.
+		/// Draws TRow to a bitmap.
 		/// </summary>
 		/// <param name="row"></param>
 		/// <returns></returns>
-		protected virtual Image DrawRowToBitmap(Palette_ row) {
+		protected virtual Image DrawRowToBitmap(TRow row) {
 			Bitmap returned = null;
 
 			for (int i = 0; i < 4; i++) {
@@ -351,7 +357,7 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// Reloads the contents of this from the PaletteSet_.
+		/// Reloads the contents of this from the TSet.
 		/// </summary>
 		protected virtual void reloadFromSet() {
 			if (this.dropDown.SelectedIndex < 0 || this.dropDown.SelectedIndex >= set.NumberOfRows) {
