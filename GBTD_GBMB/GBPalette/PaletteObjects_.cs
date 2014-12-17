@@ -7,10 +7,17 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
+	public interface IPaletteSetBehavior
+	{
+		IPaletteEntryBehavior EntryBehavior { get; }
+		int Width { get; }
+		int Height { get; }
+	}
+
 	/// <summary>
 	/// Modifies properites of the palette.
 	/// </summary>
-	public interface IPaletteTransform
+	public interface IPaletteEntryBehavior
 	{
 		/// <summary>
 		/// Gets the color used with filters applied.
@@ -19,17 +26,11 @@ namespace GB.Shared.Palette
 		/// <returns></returns>
 		Color GetFilteredColor(PaletteEntry_ entry);
 	}
-
-	public sealed class NoChangePaletteTransform : IPaletteTransform
-	{
-		public Color GetFilteredColor(PaletteEntry_ entry) {
-			return entry.color;
-		}
-	}
 	
 	public struct PaletteSet_
 	{
-		public Palette_[] palettes;
+		public readonly Palette_[] palettes;
+		public readonly IPaletteSetBehavior behaviour;
 	}
 
 	public struct Palette_
@@ -38,15 +39,27 @@ namespace GB.Shared.Palette
 		public readonly PaletteEntry_ entry1;
 		public readonly PaletteEntry_ entry2;
 		public readonly PaletteEntry_ entry3;
+
+		public PaletteEntry_ this[int entryNum] {
+			get {
+				switch (entryNum) {
+				case 0: return entry0;
+				case 1: return entry1;
+				case 2: return entry2;
+				case 3: return entry3;
+				default: throw new ArgumentOutOfRangeException("entryNum", entryNum, "Must be between 0 and 3 (inclusive)");
+				}
+			}
+		}
 	}
 
 	public struct PaletteEntry_
 	{
-		public readonly int? y;
+		public readonly int y;
 		public readonly int x;
 		public readonly Color color;
 
-		public readonly IPaletteTransform transform;
+		public readonly IPaletteEntryBehavior transform;
 
 		public Color DisplayColor {
 			get {
