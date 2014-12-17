@@ -6,7 +6,7 @@ using System.Text;
 using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
-{
+{	
 	public interface IPaletteSetBehavior
 	{
 		IPaletteEntryBehavior EntryBehavior { get; }
@@ -30,6 +30,12 @@ namespace GB.Shared.Palette
 	{
 		public readonly Palette_[] palettes;
 		public readonly IPaletteSetBehavior behaviour;
+
+		public int NumberOfRows { get { return behaviour.Height; } }
+
+		public Palette_ this[int row] {
+			get { return palettes[row]; }
+		}
 
 		public PaletteSet_(Palette_[] palettes, IPaletteSetBehavior behaviour) {
 			this.palettes = palettes;
@@ -88,6 +94,10 @@ namespace GB.Shared.Palette
 			this.color = color;
 			this.behavior = behavior;
 		}
+
+		public static implicit operator Color(PaletteEntry_ @this) {
+			return @this.color;
+		}
 	}
 
 	/// <summary>
@@ -95,7 +105,7 @@ namespace GB.Shared.Palette
 	/// </summary>
 	public static class PaletteExtensions
 	{
-		public static PaletteSet_ SetEntryColor(this PaletteSet_ @this, int x, int y, Color color) {
+		public static PaletteSet_ SePaletteEntry_Color(this PaletteSet_ @this, int x, int y, Color color) {
 			if (x < 0 || x >= 4) {
 				throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 			}
@@ -103,12 +113,12 @@ namespace GB.Shared.Palette
 				throw new ArgumentOutOfRangeException("y", y, "Must be in range of 0 ≤ y < " + @this.behaviour.Height + " (the height)");
 			}
 
-			Palette_[] palettes = @this.palettes.SetEntryColor(x, y, color);
+			Palette_[] palettes = @this.palettes.SePaletteEntry_Color(x, y, color);
 
 			return new PaletteSet_(palettes, @this.behaviour);
 		}
 
-		public static Palette_[] SetEntryColor(this Palette_[] @this, int x, int y, Color color) {
+		public static Palette_[] SePaletteEntry_Color(this Palette_[] @this, int x, int y, Color color) {
 			if (x < 0 || x >= 4) {
 				throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 			}
@@ -117,12 +127,12 @@ namespace GB.Shared.Palette
 			}
 
 			Palette_[] palettes = (Palette_[])@this.Clone();
-			palettes[y] = @this[y].SetEntryColor(x, color);
+			palettes[y] = @this[y].SePaletteEntry_Color(x, color);
 
 			return palettes;
 		}
 
-		public static Palette_ SetEntryColor(this Palette_ @this, int x, Color color) {
+		public static Palette_ SePaletteEntry_Color(this Palette_ @this, int x, Color color) {
 			switch (x) {
 			case 0: return new Palette_(@this.entry0.SetColor(color), @this.entry1, @this.entry2, @this.entry3);
 			case 1: return new Palette_(@this.entry0, @this.entry1.SetColor(color), @this.entry2, @this.entry3);

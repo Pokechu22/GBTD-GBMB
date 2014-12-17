@@ -1,11 +1,7 @@
 ﻿using GB.Shared.Palette;
 namespace GB.Shared.Palette
 {
-	partial class ChoosePalette<TSelector, TSet, TRow, TEntry>
-		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
-		where TSet : PaletteSetBase<TRow, TEntry>, new()
-		where TRow : PaletteBase<TEntry>
-		where TEntry : PaletteEntryBase
+	partial class ChoosePalette
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,8 +26,8 @@ namespace GB.Shared.Palette
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			TSet set = new TSet();
-			this.gbPaletteSetSelector1 = new TSelector();
+			PaletteSet_ set = new PaletteSet_();
+			this.gbPaletteSetSelector1 = new GBPaletteSetSelector();
 
 			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
 			this.filterCheckBox = new System.Windows.Forms.CheckBox();
@@ -121,7 +117,7 @@ namespace GB.Shared.Palette
 		#endregion
 
 		private GB.Shared.Palette.TGammaPanel colorPicker1;
-		private TSelector gbPaletteSetSelector1;
+		private GBPaletteSetSelector gbPaletteSetSelector1;
 		private System.Windows.Forms.CheckBox filterCheckBox;
 		private System.Windows.Forms.Button okButton;
 		private System.Windows.Forms.Button cancelButton;

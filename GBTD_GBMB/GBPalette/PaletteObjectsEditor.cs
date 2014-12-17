@@ -9,12 +9,8 @@ using System.Windows.Forms.Design;
 
 namespace GB.Shared.Palette
 {
-	class PaletteObjectsEditor<TForm, TSelector, TSet, TRow, TEntry> : UITypeEditor
-		where TForm : ChoosePalette<TSelector, TSet, TRow, TEntry>, new()
-		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
-		where TSet : PaletteSetBase<TRow, TEntry>, new()
-		where TRow : PaletteBase<TEntry>
-		where TEntry : PaletteEntryBase
+	class PaletteObjectsEditor<TForm> : UITypeEditor
+		where TForm : ChoosePalette, new()
 	{
 		IWindowsFormsEditorService editorService = null;
 
@@ -29,9 +25,10 @@ namespace GB.Shared.Palette
 
 			if (editorService != null) {
 				TForm form = new TForm();
-
+				int i = 0;
+				i = i;
 				//Clone the origional one so that modifications aren't made to it.
-				form.Set = (TSet)((TSet)value).Clone();
+				//form.Set = (PaletteSet_)((PaletteSet_)value).Clone();
 
 				editorService.ShowDialog(form);
 
@@ -44,18 +41,17 @@ namespace GB.Shared.Palette
 		}
 
 		public override void PaintValue(PaintValueEventArgs e) {
-			TSet set = e.Value as TSet;
-			if (set != null) {
-				//Draws horizontally.
-				float width = (float)e.Bounds.Width / 4f;
-				float height = (float)e.Bounds.Height / (float)set.NumberOfRows;
+			PaletteSet_ set = (PaletteSet_)e.Value;
+			
+			//Draws horizontally.
+			float width = (float)e.Bounds.Width / 4f;
+			float height = (float)e.Bounds.Height / (float)set.NumberOfRows;
 
-				for (int x = 0; x < 4; x++) {
-					for (int y = 0; y < set.NumberOfRows; y++) {
-						using (Brush b = new SolidBrush(set[y][x])) {
-							e.Graphics.FillRectangle(b, e.Bounds.X + (x * width), e.Bounds.Y + (y * height), width, height);
-							//e.Graphics.DrawRectangle(Pens.Black, e.Bounds.X + (x * width), e.Bounds.Y + (y * height), width, height);
-						}
+			for (int x = 0; x < 4; x++) {
+				for (int y = 0; y < set.NumberOfRows; y++) {
+					using (Brush b = new SolidBrush(set[y][x])) {
+						e.Graphics.FillRectangle(b, e.Bounds.X + (x * width), e.Bounds.Y + (y * height), width, height);
+						//e.Graphics.DrawRectangle(Pens.Black, e.Bounds.X + (x * width), e.Bounds.Y + (y * height), width, height);
 					}
 				}
 			}
