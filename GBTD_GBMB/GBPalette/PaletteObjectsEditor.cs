@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ using System.Windows.Forms.Design;
 
 namespace GB.Shared.Palette
 {
-	class PaletteObjectsEditor<TForm, TSelector, TSet, TRow, TEntry> : UITypeEditor
-		where TForm : ChoosePalette<TSelector, TSet, TRow, TEntry>, new()
-		where TSelector : GBPaletteSetSelector<TSet, TRow, TEntry>, new()
-		where TSet : PaletteSetBase<TRow, TEntry>, new()
-		where TRow : PaletteBase<TEntry>
-		where TEntry : PaletteEntryBase
+	class PaletteObjectsEditor<TForm, GBPaletteSetSelector, PaletteSet_, Palette_, PaletteEntry_> : UITypeEditor
+		where TForm : ChoosePalette<GBPaletteSetSelector, PaletteSet_, Palette_, PaletteEntry_>, new()
+		where GBPaletteSetSelector : GBPaletteSetSelector, new()
+		where PaletteSet_ : PaletteSetBase<Palette_, PaletteEntry_>, new()
+		where Palette_ : PaletteBase<PaletteEntry_>
+		where PaletteEntry_ : PaletteEntryBase
 	{
 		IWindowsFormsEditorService editorService = null;
 
@@ -31,7 +31,7 @@ namespace GB.Shared.Palette
 				TForm form = new TForm();
 
 				//Clone the origional one so that modifications aren't made to it.
-				form.Set = (TSet)((TSet)value).Clone();
+				form.Set = (PaletteSet_)((PaletteSet_)value).Clone();
 
 				editorService.ShowDialog(form);
 
@@ -44,7 +44,7 @@ namespace GB.Shared.Palette
 		}
 
 		public override void PaintValue(PaintValueEventArgs e) {
-			TSet set = e.Value as TSet;
+			PaletteSet_ set = e.Value as PaletteSet_;
 			if (set != null) {
 				//Draws horizontally.
 				float width = (float)e.Bounds.Width / 4f;
@@ -66,3 +66,4 @@ namespace GB.Shared.Palette
 		}
 	}
 }
+*/

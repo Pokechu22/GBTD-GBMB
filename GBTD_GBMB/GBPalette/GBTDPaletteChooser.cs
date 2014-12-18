@@ -10,10 +10,7 @@ using GB.Shared.Tile;
 
 namespace GB.Shared.Palette
 {
-	public abstract partial class GBTDPaletteChooser<TSet, TRow, TEntry> : UserControl
-		where TSet : PaletteSetBase<TRow, TEntry>, new()
-		where TRow : PaletteBase<TEntry>
-		where TEntry: PaletteEntryBase
+	public partial class GBTDPaletteChooser : UserControl
 	{
 		/// <summary>
 		/// Mouse entry used to contain one of the colors for a mouse button.
@@ -25,7 +22,7 @@ namespace GB.Shared.Palette
 			/// </summary>
 			private class GBTDPaletteChooserMouseEntryPaletteEntry : PaletteEntry
 			{
-				private GBTDPaletteChooser<TSet, TRow, TEntry> chooser;
+				private GBTDPaletteChooser chooser;
 
 				protected override int Y_OFFSET {
 					get {
@@ -57,7 +54,7 @@ namespace GB.Shared.Palette
 					set { index = value; this.Text = value.ToString(); this.Refresh(); }
 				}
 
-				public GBTDPaletteChooserMouseEntryPaletteEntry(MouseButtons buttons, GBTDPaletteChooser<TSet, TRow, TEntry> chooser)
+				public GBTDPaletteChooserMouseEntryPaletteEntry(MouseButtons buttons, GBTDPaletteChooser chooser)
 					: base(0, 0) {
 					this.chooser = chooser;
 				}
@@ -106,8 +103,8 @@ namespace GB.Shared.Palette
 			private GBTDPaletteChooserMouseEntryPaletteEntry entry;
 			private MouseButtons buttons;
 
-			private TRow item = default(TRow);
-			public TRow Item {
+			private Palette_ item = default(Palette_);
+			public Palette_ Item {
 				get { return item; }
 				set { item = value; OnValueChange(); }
 			}
@@ -145,7 +142,7 @@ namespace GB.Shared.Palette
 				this.Refresh();
 			}
 
-			public GBTDPaletteChooserMouseEntry(MouseButtons buttons, GBTDPaletteChooser<TSet, TRow, TEntry> chooser)
+			public GBTDPaletteChooserMouseEntry(MouseButtons buttons, GBTDPaletteChooser chooser)
 				: base() {
 				String identifier;
 
@@ -197,13 +194,13 @@ namespace GB.Shared.Palette
 			set { useGBCFilter = value; this.Refresh(); }
 		}
 
-		private TSet set = new TSet();
+		private PaletteSet_ set = new PaletteSet_();
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		[Category("Data"), Description("The used set.")]
-		public TSet Set {
+		public PaletteSet_ Set {
 			get { set = this.gbPaletteChooser1.Set; return this.set; }
-			set { if (value == null) { throw new ArgumentNullException(); } this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
+			set { this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
 		}
 
 		[Category("Data"), Description("The row currently used.")]
@@ -355,7 +352,7 @@ namespace GB.Shared.Palette
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, this.Width, this.Height, Border3DStyle.RaisedInner);
 		}
 
-		private void gbPaletteChooser1_SelectedPaletteChanged(object sender, GBPaletteChooser<TSet, TRow, TEntry>.SelectedPaletteChangeEventArgs e) {
+		private void gbPaletteChooser1_SelectedPaletteChanged(object sender, GBPaletteChooser.SelectedPaletteChangeEventArgs e) {
 			this.mouseButtonL.Item = e.newItem;
 			this.mouseButtonR.Item = e.newItem;
 			this.mouseButtonM.Item = e.newItem;
@@ -367,7 +364,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		private void gbPaletteChooser1_PaletteEntryClicked(object sender, GBPaletteChooser<TSet, TRow, TEntry>.PaletteEntryClickEventArgs e) {
+		private void gbPaletteChooser1_PaletteEntryClicked(object sender, GBPaletteChooser.PaletteEntryClickEventArgs e) {
 			if (e.button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
 				this.mouseButtonL.Index = e.clickedEntry;
 			}
@@ -403,5 +400,5 @@ namespace GB.Shared.Palette
 		public event EventHandler MouseButtonColorChanged;
 	}
 
-	public class GBTDGBCPaletteChooser : GBTDPaletteChooser<GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }
+	//public class GBTDGBCPaletteChooser : GBTDPaletteChooser<GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }
 }

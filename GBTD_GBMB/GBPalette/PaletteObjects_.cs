@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,14 @@ namespace GB.Shared.Palette
 			this.palettes = palettes;
 			this.behaviour = behaviour;
 		}
+
+		public int NumberOfRows {
+			get { return this.behaviour.Height; }
+		}
+
+		public Palette_ this[int row] {
+			get { return palettes[row]; }
+		}
 	}
 
 	public struct Palette_
@@ -43,6 +52,23 @@ namespace GB.Shared.Palette
 		public readonly PaletteEntry_ entry1;
 		public readonly PaletteEntry_ entry2;
 		public readonly PaletteEntry_ entry3;
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public PaletteEntry_ EntryWhite {
+			get { return entry0; }
+		}
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public PaletteEntry_ EntryLightGray {
+			get { return entry1; }
+		}
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public PaletteEntry_ EntryDarkGray {
+			get { return entry2; }
+		}
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public PaletteEntry_ EntryBlack {
+			get { return entry3; }
+		}
 
 		public PaletteEntry_ this[int entryNum] {
 			get {
@@ -68,7 +94,7 @@ namespace GB.Shared.Palette
 	{
 		public readonly int y;
 		public readonly int x;
-		public readonly Color color;
+		public /*readonly*/ Color color;
 
 		public readonly IPaletteEntryBehavior behavior;
 
@@ -87,6 +113,10 @@ namespace GB.Shared.Palette
 			this.y = y;
 			this.color = color;
 			this.behavior = behavior;
+		}
+
+		public static implicit operator Color(PaletteEntry_ @this) {
+			return @this.DisplayColor;
 		}
 	}
 

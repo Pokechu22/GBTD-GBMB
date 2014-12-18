@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,10 +12,10 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// An entire group of Palettes.
 	/// </summary>
-	/// <typeparam name="TRow"></typeparam>
-	public abstract class PaletteSetBase<TRow, TEntry> : ICloneable
-		where TRow : PaletteBase<TEntry>
-		where TEntry : PaletteEntryBase
+	/// <typeparam name="Palette_"></typeparam>
+	public abstract class PaletteSetBase<Palette_, PaletteEntry_> : ICloneable
+		where Palette_ : PaletteBase<PaletteEntry_>
+		where PaletteEntry_ : PaletteEntryBase
 	{
 		/// <summary>
 		/// The total number for rows.
@@ -30,7 +30,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		[Category("Data"), Description("Each individual row.")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-		public abstract TRow[] Rows {
+		public abstract Palette_[] Rows {
 			get;
 			set;
 		}
@@ -41,7 +41,7 @@ namespace GB.Shared.Palette
 		/// <param name="row"></param>
 		/// <returns></returns>
 		[Category("Data"), Description("Gets or sets the specified row.")]
-		public virtual TRow this[int row] {
+		public virtual Palette_ this[int row] {
 			get { return Rows[row]; }
 			set {
 				if (row < 0 || row >= Rows.Length) {
@@ -79,7 +79,7 @@ namespace GB.Shared.Palette
 				return false;
 			}
 
-			PaletteSetBase<TRow, TEntry> entry = (PaletteSetBase<TRow, TEntry>)obj;
+			PaletteSetBase<Palette_, PaletteEntry_> entry = (PaletteSetBase<Palette_, PaletteEntry_>)obj;
 
 			if (entry.Rows.Length != this.Rows.Length) {
 				return false;
@@ -99,7 +99,7 @@ namespace GB.Shared.Palette
 
 			int hashcode = base.GetHashCode();
 
-			foreach (TRow row in this.Rows) {
+			foreach (Palette_ row in this.Rows) {
 				hashcode *= PRIME;
 				hashcode += row == null ? 0 : row.GetHashCode();
 			}
@@ -113,9 +113,9 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// A single row of entries, 4 in length.
 	/// </summary>
-	/// <typeparam name="TEntry"></typeparam>
-	public abstract class PaletteBase<TEntry> : ICloneable
-		where TEntry : PaletteEntryBase
+	/// <typeparam name="PaletteEntry_"></typeparam>
+	public abstract class PaletteBase<PaletteEntry_> : ICloneable
+		where PaletteEntry_ : PaletteEntryBase
 	{
 		/// <summary>
 		/// The 'White' color used on this.
@@ -123,7 +123,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		[Category("Data"), Description("The 'White' color used on this.\n(White is in quotes because it could be anything)")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-		public abstract TEntry EntryWhite {
+		public abstract PaletteEntry_ EntryWhite {
 			get;
 			set;
 		}
@@ -133,7 +133,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		[Category("Data"), Description("The 'Light gray' color used on this.\n(Light gray is in quotes because it could be anything)")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-		public abstract TEntry EntryLightGray {
+		public abstract PaletteEntry_ EntryLightGray {
 			get;
 			set;
 		}
@@ -143,7 +143,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		[Category("Data"), Description("The 'Dark gray' color used on this.\n(Dark gray is in quotes because it could be anything)")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-		public abstract TEntry EntryDarkGray {
+		public abstract PaletteEntry_ EntryDarkGray {
 			get;
 			set;
 		}
@@ -153,7 +153,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		[Category("Data"), Description("The 'Black' color used on this.\n(Black is in quotes because it could be anything)")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-		public abstract TEntry EntryBlack {
+		public abstract PaletteEntry_ EntryBlack {
 			get;
 			set;
 		}
@@ -186,7 +186,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="num"></param>
 		/// <returns></returns>
-		public virtual TEntry this[int num] {
+		public virtual PaletteEntry_ this[int num] {
 			get {
 				switch (num) {
 				case 0: return this.EntryWhite;
@@ -212,7 +212,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="color"></param>
 		/// <returns></returns>
-		public virtual TEntry this[GBColor color] {
+		public virtual PaletteEntry_ this[GBColor color] {
 			get {
 				switch (color) {
 				case GBColor.WHITE: return this.EntryWhite;
@@ -238,7 +238,7 @@ namespace GB.Shared.Palette
 				return false;
 			}
 
-			PaletteBase<TEntry> pal = (PaletteBase<TEntry>)obj;
+			PaletteBase<PaletteEntry_> pal = (PaletteBase<PaletteEntry_>)obj;
 
 			if (!pal.EntryBlack.Equals(this.EntryBlack) ||
 				!pal.EntryDarkGray.Equals(this.EntryDarkGray) ||
@@ -376,3 +376,4 @@ namespace GB.Shared.Palette
 		public abstract object Clone();
 	}
 }
+*/

@@ -12,17 +12,14 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// Control that edits a Palette Set.
 	/// </summary>
-	public abstract partial class GBPaletteSetSelector<TSet, TRow, TEntry> : UserControl
-		where TSet : PaletteSetBase<TRow, TEntry>, new()
-		where TRow : PaletteBase<TEntry>
-		where TEntry : PaletteEntryBase
+	public partial class GBPaletteSetSelector : UserControl
 	{
 		#region Private inner classes
 		private sealed class PaletteSetEntry : PaletteEntry
 		{
-			internal GBPaletteSetSelector<TSet, TRow, TEntry> selector;
+			internal GBPaletteSetSelector selector;
 
-			public PaletteSetEntry(GBPaletteSetSelector<TSet, TRow, TEntry> selector, int x, int y)
+			public PaletteSetEntry(GBPaletteSetSelector selector, int x, int y)
 				: base(x, y) {
 				this.selector = selector;
 			}
@@ -75,7 +72,7 @@ namespace GB.Shared.Palette
 										  Color.FromArgb(0, 0, 0)
 									  };
 
-		private TSet set = new TSet();
+		private PaletteSet_ set = new PaletteSet_();
 		#endregion
 		#endregion
 
@@ -136,9 +133,9 @@ namespace GB.Shared.Palette
 		/// The palette set used for this.
 		/// </summary>
 		[Description("The palette set used for this."), Category("Data")]
-		public TSet Set {
+		public PaletteSet_ Set {
 			get { freshenToSet(); return set; }
-			set { if (value == null) { throw new ArgumentNullException(); } set = value; freshenFromSet(); }
+			set { set = value; freshenFromSet(); }
 		}
 
 		/// <summary>
@@ -251,16 +248,18 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// Updates the TSet used with the current data.
+		/// Updates the PaletteSet_ used with the current data.
 		/// </summary>
 		protected virtual void freshenToSet() {
-			foreach (PaletteSetEntry e in this.entries) {
+			int i = 0;
+			i = i; //TODO
+			/*foreach (PaletteSetEntry e in this.entries) {
 				set.Rows[e.y][e.x].Color = e.Color;
-			}
+			}*/
 		}
 
 		/// <summary>
-		/// Updates the controls here with those from the TSet.
+		/// Updates the controls here with those from the PaletteSet_.
 		/// </summary>
 		protected virtual void freshenFromSet() {
 			for (int row = 0; row < set.NumberOfRows; row++) {
@@ -272,6 +271,4 @@ namespace GB.Shared.Palette
 
 		}
 	}
-
-	public class GBCPaletteSetSelector : GBPaletteSetSelector<GBCPaletteSet, GBCPalette, GBCPaletteEntry> { }
 }

@@ -1,9 +1,6 @@
 ﻿namespace GB.Shared.Palette
 {
-	partial class GBTDPaletteChooser<TSet, TRow, TEntry>
-		where TSet : PaletteSetBase<TRow, TEntry>, new()
-		where TRow : PaletteBase<TEntry>
-		where TEntry : PaletteEntryBase
+	partial class GBTDPaletteChooser
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -28,7 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.gbPaletteChooser1 = new GB.Shared.Palette.GBPaletteChooser<TSet, TRow, TEntry>();
+			this.gbPaletteChooser1 = new GB.Shared.Palette.GBPaletteChooser();
 			this.SuspendLayout();
 			// 
 			// gbPaletteChooser1
@@ -42,8 +39,8 @@
 			this.gbPaletteChooser1.Size = new System.Drawing.Size(111, 22);
 			this.gbPaletteChooser1.TabIndex = 0;
 			this.gbPaletteChooser1.UseGBCFilter = false;
-			this.gbPaletteChooser1.SelectedPaletteChanged += new GB.Shared.Palette.GBPaletteChooser<TSet, TRow, TEntry>.SelectedPaletteChangeEventHandler(this.gbPaletteChooser1_SelectedPaletteChanged);
-			this.gbPaletteChooser1.PaletteEntryClicked += new GB.Shared.Palette.GBPaletteChooser<TSet, TRow, TEntry>.PaletteEntryClickEventHandler(this.gbPaletteChooser1_PaletteEntryClicked);
+			this.gbPaletteChooser1.SelectedPaletteChanged += new GB.Shared.Palette.GBPaletteChooser.SelectedPaletteChangeEventHandler(this.gbPaletteChooser1_SelectedPaletteChanged);
+			this.gbPaletteChooser1.PaletteEntryClicked += new GB.Shared.Palette.GBPaletteChooser.PaletteEntryClickEventHandler(this.gbPaletteChooser1_PaletteEntryClicked);
 			// 
 			// GBTDPaletteChooser
 			// 
@@ -61,6 +58,6 @@
 
 		#endregion
 
-		private GBPaletteChooser<TSet, TRow, TEntry> gbPaletteChooser1;
+		private GBPaletteChooser gbPaletteChooser1;
 	}
 }
