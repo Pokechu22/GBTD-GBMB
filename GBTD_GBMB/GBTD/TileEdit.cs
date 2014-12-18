@@ -109,7 +109,7 @@ namespace GB.GBTD
 		}
 
 		private void gbtdgbcPaletteChooser1_MouseButtonColorChanged(object sender, EventArgs e) {
-			GBTDGBCPaletteChooser chooser = sender as GBTDGBCPaletteChooser;
+			GBTDPaletteChooser chooser = sender as GBTDPaletteChooser;
 			if (chooser != null) {
 				mainTileEdit.LeftMouseColor = chooser.LeftMouseColor;
 				mainTileEdit.RightMouseColor = chooser.RightMouseColor;
@@ -144,7 +144,7 @@ namespace GB.GBTD
 		}
 
 		private void palettesToolStripMenuItem_Click(object sender, EventArgs e) {
-			GBCChoosePalette d = new GBCChoosePalette(paletteChooser.Set.Clone() as GBCPaletteSet);
+			ChoosePalette d = new ChoosePalette(paletteChooser.Set/*.Clone() as Palette_Set*/);
 			d.ShowDialog();
 			if (d.DialogResult == DialogResult.OK) {
 				paletteChooser.Set = d.Set;

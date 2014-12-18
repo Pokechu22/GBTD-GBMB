@@ -25,20 +25,20 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palette.GBCPalette gbcPalette1 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette2 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette3 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette4 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette5 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette6 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette7 = new GB.Shared.Palette.GBCPalette();
-			GB.Shared.Palette.GBCPalette gbcPalette8 = new GB.Shared.Palette.GBCPalette();
+			GB.Shared.Palette.Palette_ gbcPalette1 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette2 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette3 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette4 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette5 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette6 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette7 = new GB.Shared.Palette.Palette_();
+			GB.Shared.Palette.Palette_ gbcPalette8 = new GB.Shared.Palette.Palette_();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.offsetUpDown = new System.Windows.Forms.NumericUpDown();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.buttonPalette = new System.Windows.Forms.Button();
-			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDGBCPaletteChooser();
+			this.gbtdPaletteChooser1 = new GB.Shared.Palette.GBTDPaletteChooser();
 			this.tileRenderer = new GB.Shared.Tile.EditableTileRenderer();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.offsetUpDown)).BeginInit();
@@ -101,39 +101,39 @@
 			this.gbtdPaletteChooser1.Margin = new System.Windows.Forms.Padding(2);
 			this.gbtdPaletteChooser1.Name = "gbtdPaletteChooser1";
 			this.gbtdPaletteChooser1.Padding = new System.Windows.Forms.Padding(2);
-			gbcPalette1.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette1.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette1.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette1.EntryWhite.Color = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-			gbcPalette2.EntryBlack.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			gbcPalette2.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette2.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette2.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette3.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette3.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette3.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette3.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette4.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette4.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette4.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette4.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette5.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette5.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette5.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette5.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette6.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette6.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette6.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette6.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette7.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette7.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette7.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette7.EntryWhite.Color = System.Drawing.Color.White;
-			gbcPalette8.EntryBlack.Color = System.Drawing.Color.Black;
-			gbcPalette8.EntryDarkGray.Color = System.Drawing.Color.DarkGray;
-			gbcPalette8.EntryLightGray.Color = System.Drawing.Color.LightGray;
-			gbcPalette8.EntryWhite.Color = System.Drawing.Color.White;
-			this.gbtdPaletteChooser1.Set.Rows = new GB.Shared.Palette.GBCPalette[] {
+			gbcPalette1.entry3.color = System.Drawing.Color.Black;
+			gbcPalette1.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette1.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette1.entry0.color = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+			gbcPalette2.entry3.color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			gbcPalette2.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette2.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette2.entry0.color = System.Drawing.Color.White;
+			gbcPalette3.entry3.color = System.Drawing.Color.Black;
+			gbcPalette3.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette3.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette3.entry0.color = System.Drawing.Color.White;
+			gbcPalette4.entry3.color = System.Drawing.Color.Black;
+			gbcPalette4.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette4.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette4.entry0.color = System.Drawing.Color.White;
+			gbcPalette5.entry3.color = System.Drawing.Color.Black;
+			gbcPalette5.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette5.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette5.entry0.color = System.Drawing.Color.White;
+			gbcPalette6.entry3.color = System.Drawing.Color.Black;
+			gbcPalette6.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette6.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette6.entry0.color = System.Drawing.Color.White;
+			gbcPalette7.entry3.color = System.Drawing.Color.Black;
+			gbcPalette7.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette7.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette7.entry0.color = System.Drawing.Color.White;
+			gbcPalette8.entry3.color = System.Drawing.Color.Black;
+			gbcPalette8.entry2.color = System.Drawing.Color.DarkGray;
+			gbcPalette8.entry1.color = System.Drawing.Color.LightGray;
+			gbcPalette8.entry0.color = System.Drawing.Color.White;
+			/*this.gbtdPaletteChooser1.Set.palettes = new GB.Shared.Palette.Palette_[] {
         gbcPalette1,
         gbcPalette2,
         gbcPalette3,
@@ -141,7 +141,7 @@
         gbcPalette5,
         gbcPalette6,
         gbcPalette7,
-        gbcPalette8};
+        gbcPalette8};*/
 			this.gbtdPaletteChooser1.Size = new System.Drawing.Size(191, 26);
 			this.gbtdPaletteChooser1.TabIndex = 2;
 			this.gbtdPaletteChooser1.UseGBCFilter = false;
@@ -191,7 +191,7 @@
 		private System.Windows.Forms.NumericUpDown offsetUpDown;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.Button buttonPalette;
-		private GB.Shared.Palette.GBTDGBCPaletteChooser gbtdPaletteChooser1;
+		private GB.Shared.Palette.GBTDPaletteChooser gbtdPaletteChooser1;
 
 
 

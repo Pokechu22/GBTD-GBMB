@@ -29,8 +29,8 @@ namespace GB.Shared.Palette
 	
 	public struct PaletteSet_
 	{
-		public readonly Palette_[] palettes;
-		public readonly IPaletteSetBehavior behaviour;
+		public /*readonly*/ Palette_[] palettes;
+		public /*readonly*/ IPaletteSetBehavior behaviour;
 
 		public PaletteSet_(Palette_[] palettes, IPaletteSetBehavior behaviour) {
 			this.palettes = palettes;
@@ -48,10 +48,10 @@ namespace GB.Shared.Palette
 
 	public struct Palette_
 	{
-		public readonly PaletteEntry_ entry0;
-		public readonly PaletteEntry_ entry1;
-		public readonly PaletteEntry_ entry2;
-		public readonly PaletteEntry_ entry3;
+		public /*readonly*/ PaletteEntry_ entry0;
+		public /*readonly*/ PaletteEntry_ entry1;
+		public /*readonly*/ PaletteEntry_ entry2;
+		public /*readonly*/ PaletteEntry_ entry3;
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public PaletteEntry_ EntryWhite {
@@ -78,6 +78,17 @@ namespace GB.Shared.Palette
 				case 2: return entry2;
 				case 3: return entry3;
 				default: throw new ArgumentOutOfRangeException("entryNum", entryNum, "Must be between 0 and 3 (inclusive)");
+				}
+			}
+		}
+		public PaletteEntry_ this[GBColor color] {
+			get {
+				switch (color) {
+				case GBColor.BLACK: return EntryBlack;
+				case GBColor.DARK_GRAY: return EntryDarkGray;
+				case GBColor.LIGHT_GRAY: return EntryLightGray;
+				case GBColor.WHITE: return EntryWhite;
+				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}
 			}
 		}

@@ -320,7 +320,7 @@ namespace GB.Shared.Palette
 			this.Refresh();
 		}
 
-		protected GBTDPaletteChooser() {
+		public GBTDPaletteChooser() {
 			InitializeComponent();
 
 			this.SuspendLayout();
