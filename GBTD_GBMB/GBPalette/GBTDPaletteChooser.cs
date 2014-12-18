@@ -194,13 +194,11 @@ namespace GB.Shared.Palette
 			set { useGBCFilter = value; this.Refresh(); }
 		}
 
-		private PaletteSet_ set = new PaletteSet_();
-
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		[Category("Data"), Description("The used set.")]
 		public PaletteSet_ Set {
-			get { set = this.gbPaletteChooser1.Set; return this.set; }
-			set { this.set = value; this.gbPaletteChooser1.Set = set; this.Refresh(); }
+			get { return this.gbPaletteChooser1.Set; }
+			set { this.gbPaletteChooser1.Set = value; this.Refresh(); }
 		}
 
 		[Category("Data"), Description("The row currently used.")]

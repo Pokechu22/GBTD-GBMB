@@ -14,6 +14,14 @@ namespace GB.Shared.Palette
 		int Height { get; }
 	}
 
+	public class GBCPaletteSetBehavior : IPaletteSetBehavior
+	{
+		private GBCPaletteEntryBehavior behavior = new GBCPaletteEntryBehavior();
+
+		public IPaletteEntryBehavior EntryBehavior { get { return behavior; } }
+		public int Height { get { return 8; } }
+	}
+
 	/// <summary>
 	/// Modifies properites of the palette.
 	/// </summary>
@@ -26,10 +34,20 @@ namespace GB.Shared.Palette
 		/// <returns></returns>
 		Color GetFilteredColor(PaletteEntry_ entry);
 	}
+
+	/// <summary>
+	/// Modifies properites of the palette.
+	/// </summary>
+	public class GBCPaletteEntryBehavior : IPaletteEntryBehavior
+	{
+		public Color GetFilteredColor(PaletteEntry_ entry) {
+			return entry.color;
+		}
+	}
 	
 	public struct PaletteSet_
 	{
-		public /*readonly*/ Palette_[] palettes;
+		private /*readonly*/ Palette_[] palettes;
 		public /*readonly*/ IPaletteSetBehavior behaviour;
 
 		public PaletteSet_(Palette_[] palettes, IPaletteSetBehavior behaviour) {
@@ -37,12 +55,27 @@ namespace GB.Shared.Palette
 			this.behaviour = behaviour;
 		}
 
+		public Palette_[] Rows {
+			get {
+				if (palettes == null) {
+					palettes = new Palette_[this.behaviour.Height];
+				}
+				return palettes;
+			}
+			set {
+				if (value.Length != this.behaviour.Height) {
+					throw new ArgumentOutOfRangeException("value.Length", value.Length, "Length of new array MUST match that of the behaviour's height (" + this.behaviour.Height + ")");
+				}
+				palettes = value;
+			}
+		}
+
 		public int NumberOfRows {
 			get { return this.behaviour.Height; }
 		}
 
 		public Palette_ this[int row] {
-			get { return palettes[row]; }
+			get { return Rows[row]; }
 		}
 	}
 
@@ -56,18 +89,22 @@ namespace GB.Shared.Palette
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public PaletteEntry_ EntryWhite {
 			get { return entry0; }
+			set { entry0 = value; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public PaletteEntry_ EntryLightGray {
 			get { return entry1; }
+			set { entry1 = value; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public PaletteEntry_ EntryDarkGray {
 			get { return entry2; }
+			set { entry2 = value; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public PaletteEntry_ EntryBlack {
 			get { return entry3; }
+			set { entry3 = value; }
 		}
 
 		public PaletteEntry_ this[int entryNum] {
@@ -80,6 +117,15 @@ namespace GB.Shared.Palette
 				default: throw new ArgumentOutOfRangeException("entryNum", entryNum, "Must be between 0 and 3 (inclusive)");
 				}
 			}
+			set {
+				switch (entryNum) {
+				case 0: entry0 = value; return;
+				case 1: entry1 = value; return;
+				case 2: entry2 = value; return;
+				case 3: entry3 = value; return;
+				default: throw new ArgumentOutOfRangeException("entryNum", entryNum, "Must be between 0 and 3 (inclusive)");
+				}
+			}
 		}
 		public PaletteEntry_ this[GBColor color] {
 			get {
@@ -88,6 +134,15 @@ namespace GB.Shared.Palette
 				case GBColor.DARK_GRAY: return EntryDarkGray;
 				case GBColor.LIGHT_GRAY: return EntryLightGray;
 				case GBColor.WHITE: return EntryWhite;
+				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
+				}
+			}
+			set {
+				switch (color) {
+				case GBColor.BLACK: EntryBlack = value; return;
+				case GBColor.DARK_GRAY: EntryDarkGray = value; return;
+				case GBColor.LIGHT_GRAY: EntryLightGray = value; return;
+				case GBColor.WHITE: EntryWhite = value; return;
 				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}
 			}
@@ -144,7 +199,7 @@ namespace GB.Shared.Palette
 				throw new ArgumentOutOfRangeException("y", y, "Must be in range of 0 ≤ y < " + @this.behaviour.Height + " (the height)");
 			}
 
-			Palette_[] palettes = @this.palettes.SetEntryColor(x, y, color);
+			Palette_[] palettes = @this.Rows.SetEntryColor(x, y, color);
 
 			return new PaletteSet_(palettes, @this.behaviour);
 		}

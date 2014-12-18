@@ -72,7 +72,7 @@ namespace GB.Shared.Palette
 										  Color.FromArgb(0, 0, 0)
 									  };
 
-		private PaletteSet_ set = new PaletteSet_();
+		private PaletteSet_ set = new PaletteSet_(new Palette_[8], new GBCPaletteSetBehavior());
 		#endregion
 		#endregion
 
@@ -253,9 +253,9 @@ namespace GB.Shared.Palette
 		protected virtual void freshenToSet() {
 			int i = 0;
 			i = i; //TODO
-			/*foreach (PaletteSetEntry e in this.entries) {
-				set.Rows[e.y][e.x].Color = e.Color;
-			}*/
+			foreach (PaletteSetEntry e in this.entries) {
+				set.Rows[e.y][e.x] = new PaletteEntry_(e.x, e.y, e.Color, set.Rows[e.x][e.y].behavior);
+			}
 		}
 
 		/// <summary>

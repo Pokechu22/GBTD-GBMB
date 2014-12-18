@@ -204,7 +204,7 @@ namespace GB.Shared.Palette
 				}
 				int i = 0;
 				i = i; //TODO
-				//set[SelectedRowIndex] = value;
+				set.Rows[SelectedRowIndex] = value;
 				reloadFromSet();
 			}
 		}
@@ -239,7 +239,7 @@ namespace GB.Shared.Palette
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
 
-		private PaletteSet_ set = new PaletteSet_();
+		private PaletteSet_ set = new PaletteSet_(new Palette_[8], new GBCPaletteSetBehavior());
 
 		public PaletteSet_ Set {
 			get { return set; }
