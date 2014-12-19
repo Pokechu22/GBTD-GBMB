@@ -36,7 +36,7 @@ namespace GB.Shared.Palette
 		///   
 		/// Converted to a bitmap from a basic image so that pixels can be directly accessed.
 		/// </summary>
-		private Bitmap FBmpSelector = new Bitmap(global::GB.Shared.Palette.Properties.Resources.GAMMA);
+		private Bitmap FBmpSelector = new Bitmap(global::GB.Shared.Properties.Resources.GAMMA);
 
 		/// <summary>
 		/// Use the GBC filter?
@@ -142,8 +142,8 @@ namespace GB.Shared.Palette
 
 			//Silly way to do this, but it is more consise than if/else.
 			switch (b) {
-			case false: this.FGamma.Image = global::GB.Shared.Palette.Properties.Resources.GAMMA; break;
-			case true: this.FGamma.Image = global::GB.Shared.Palette.Properties.Resources.GBCGAMMA; break;
+			case false: this.FGamma.Image = global::GB.Shared.Properties.Resources.GAMMA; break;
+			case true: this.FGamma.Image = global::GB.Shared.Properties.Resources.GBCGAMMA; break;
 			}
 		}
 

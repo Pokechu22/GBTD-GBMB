@@ -44,7 +44,7 @@
 			// 
 			// FGamma
 			// 
-			this.FGamma.Image = global::GB.Shared.Palette.Properties.Resources.GAMMA;
+			this.FGamma.Image = global::GB.Shared.Properties.Resources.GAMMA;
 			this.FGamma.Location = new System.Drawing.Point(4, 4);
 			this.FGamma.Name = "FGamma";
 			this.FGamma.Size = new System.Drawing.Size(45, 96);
