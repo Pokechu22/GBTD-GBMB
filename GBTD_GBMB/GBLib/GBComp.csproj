@@ -58,7 +58,6 @@
     <Compile Include="EditableTileRenderer.Designer.cs">
       <DependentUpon>EditableTileRenderer.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBCPaletteObjects.cs" />
     <Compile Include="GBPaletteChooser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,7 +79,6 @@
     <Compile Include="PaletteEntry.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PaletteObjects.cs" />
     <Compile Include="PaletteObjectsEditor.cs" />
     <Compile Include="PaletteObjects_.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
