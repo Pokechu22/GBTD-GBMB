@@ -115,7 +115,7 @@ namespace GB.Shared.Palette
 		private void SetViewColor(Color c) {
 			FClrSelector = c;
 			if (FGBCFilter) {
-				FViewWindow.BackColor = GBCFiltration.TranslateToGBCColor(FClrSelector);
+				FViewWindow.BackColor = ColorFiltration.TranslateToGBCColor(FClrSelector);
 			} else {
 				FViewWindow.BackColor = FClrSelector;
 			}
@@ -171,7 +171,7 @@ namespace GB.Shared.Palette
 		/// <param name="c"></param>
 		private void SetFirstControls(Color c) {
 			switch (FGBCFilter) {
-			case true: FFirst.BackColor = GBCFiltration.TranslateToGBCColor(c); break;
+			case true: FFirst.BackColor = ColorFiltration.TranslateToGBCColor(c); break;
 			case false: FFirst.BackColor = c; break;
 			}
 			FFirst.Refresh();

@@ -48,7 +48,7 @@ namespace GB.Shared.Palette
 	public struct PaletteSet_
 	{
 		private /*readonly*/ Palette_[] palettes;
-		public /*readonly*/ IPaletteSetBehavior behaviour;
+		private /*readonly*/ IPaletteSetBehavior behaviour;
 
 		public PaletteSet_(Palette_[] palettes, IPaletteSetBehavior behaviour) {
 			this.palettes = palettes;
@@ -70,8 +70,22 @@ namespace GB.Shared.Palette
 			}
 		}
 
+		public IPaletteSetBehavior Behaviour {
+			get {
+				if (this.behaviour == null) {
+					this.behaviour = new GBCPaletteSetBehavior();
+				}
+				return behaviour;
+			}
+			set {
+				if (value == null) {
+					throw new ArgumentNullException();
+				}
+				behaviour = value; }
+		}
+
 		public int NumberOfRows {
-			get { return this.behaviour.Height; }
+			get { return this.Behaviour.Height; }
 		}
 
 		public Palette_ this[int row] {
@@ -154,6 +168,32 @@ namespace GB.Shared.Palette
 			this.entry2 = entry2;
 			this.entry3 = entry3;
 		}
+
+		/// <summary>
+		/// Default-used palette.
+		/// </summary>
+		public static Palette_ DefaultPalette {
+			get {
+				return new Palette_(
+					new PaletteEntry_(0, 0, Color.White, new GBCPaletteEntryBehavior()),
+					new PaletteEntry_(1, 0, Color.LightGray, new GBCPaletteEntryBehavior()),
+					new PaletteEntry_(2, 0, Color.DarkGray, new GBCPaletteEntryBehavior()),
+					new PaletteEntry_(3, 0, Color.Black, new GBCPaletteEntryBehavior()));
+			}
+		}
+
+		/// <summary>
+		/// Disabled-appearence palette.
+		/// </summary>
+		public static Palette_ DisabledPalette {
+			get {
+				return new Palette_(
+					new PaletteEntry_(0, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
+					new PaletteEntry_(1, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
+					new PaletteEntry_(2, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
+					new PaletteEntry_(3, 0, SystemColors.Control, new GBCPaletteEntryBehavior()));
+			}
+		}
 	}
 
 	public struct PaletteEntry_
@@ -195,13 +235,13 @@ namespace GB.Shared.Palette
 			if (x < 0 || x >= 4) {
 				throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 			}
-			if (y < 0 || y >= @this.behaviour.Height) {
-				throw new ArgumentOutOfRangeException("y", y, "Must be in range of 0 ≤ y < " + @this.behaviour.Height + " (the height)");
+			if (y < 0 || y >= @this.Behaviour.Height) {
+				throw new ArgumentOutOfRangeException("y", y, "Must be in range of 0 ≤ y < " + @this.Behaviour.Height + " (the height)");
 			}
 
 			Palette_[] palettes = @this.Rows.SetEntryColor(x, y, color);
 
-			return new PaletteSet_(palettes, @this.behaviour);
+			return new PaletteSet_(palettes, @this.Behaviour);
 		}
 
 		public static Palette_[] SetEntryColor(this Palette_[] @this, int x, int y, Color color) {

@@ -152,11 +152,7 @@ namespace GB.GBTD
 		}
 
 		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {
-			mainTileEdit.SetColors(
-				paletteChooser.Set[paletteChooser.SelectedRow].EntryBlack,
-				paletteChooser.Set[paletteChooser.SelectedRow].EntryDarkGray,
-				paletteChooser.Set[paletteChooser.SelectedRow].EntryLightGray,
-				paletteChooser.Set[paletteChooser.SelectedRow].EntryWhite);
+			mainTileEdit.Palette = paletteChooser.Set[paletteChooser.SelectedRow];
 		}
 
 		private void scrollLeftClicked(object sender, EventArgs e) {

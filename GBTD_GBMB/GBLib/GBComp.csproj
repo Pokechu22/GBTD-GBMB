@@ -42,109 +42,108 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChoosePaletteDialog.cs">
+    <Compile Include="Palette\ChoosePaletteDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChoosePaletteDialog.Designer.cs">
+    <Compile Include="Palette\ChoosePaletteDialog.Designer.cs">
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ColorFiltration.cs" />
-    <Compile Include="GBCFiltration.cs" />
-    <Compile Include="GBColor.cs" />
-    <Compile Include="GBCompression.cs" />
-    <Compile Include="EditableTileRenderer.cs">
+    <Compile Include="Palette\ColorFiltration.cs" />
+    <Compile Include="Tile\GBColor.cs" />
+    <Compile Include="Tile\GBCompression.cs" />
+    <Compile Include="Tile\EditableTileRenderer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditableTileRenderer.Designer.cs">
+    <Compile Include="Tile\EditableTileRenderer.Designer.cs">
       <DependentUpon>EditableTileRenderer.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBPaletteChooser.cs">
+    <Compile Include="Palette\GBPaletteChooser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GBPaletteChooser.Designer.cs">
+    <Compile Include="Palette\GBPaletteChooser.Designer.cs">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBPaletteSetSelector.cs">
+    <Compile Include="Palette\GBPaletteSetSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GBPaletteSetSelector.Designer.cs">
+    <Compile Include="Palette\GBPaletteSetSelector.Designer.cs">
       <DependentUpon>GBPaletteSetSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="GBTDPaletteChooser.cs">
+    <Compile Include="Palette\GBTDPaletteChooser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GBTDPaletteChooser.Designer.cs">
+    <Compile Include="Palette\GBTDPaletteChooser.Designer.cs">
       <DependentUpon>GBTDPaletteChooser.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaletteEntry.cs">
+    <Compile Include="Palette\PaletteEntry.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PaletteObjectsEditor.cs" />
-    <Compile Include="PaletteObjects_.cs" />
+    <Compile Include="Palette\PaletteObjectsEditor.cs" />
+    <Compile Include="Palette\PaletteObjects_.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TGammaPanel.cs">
+    <Compile Include="Palette\TGammaPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TGammaPanel.Designer.cs">
+    <Compile Include="Palette\TGammaPanel.Designer.cs">
       <DependentUpon>TGammaPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tile.cs" />
-    <Compile Include="TileEditor.cs" />
-    <Compile Include="TileEditorProvider.cs" />
-    <Compile Include="TileList.cs">
+    <Compile Include="Tile\Tile.cs" />
+    <Compile Include="Tile\TileEditor.cs" />
+    <Compile Include="Tile\TileEditorProvider.cs" />
+    <Compile Include="Tile\TileList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TileList.Designer.cs">
+    <Compile Include="Tile\TileList.Designer.cs">
       <DependentUpon>TileList.cs</DependentUpon>
     </Compile>
-    <Compile Include="TileListEntry.cs">
+    <Compile Include="Tile\TileListEntry.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TileListEntry.Designer.cs">
+    <Compile Include="Tile\TileListEntry.Designer.cs">
       <DependentUpon>TileListEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="TileParser.cs" />
-    <Compile Include="TileRenderer.cs">
+    <Compile Include="Tile\TileParser.cs" />
+    <Compile Include="Tile\TileRenderer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TileRenderer.Designer.cs">
+    <Compile Include="Tile\TileRenderer.Designer.cs">
       <DependentUpon>TileRenderer.cs</DependentUpon>
     </Compile>
-    <Compile Include="TileTransformations.cs" />
-    <Compile Include="VRAMTileParser.cs" />
+    <Compile Include="Tile\TileTransformations.cs" />
+    <Compile Include="Tile\VRAMTileParser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ChoosePaletteDialog.resx">
+    <EmbeddedResource Include="Palette\ChoosePaletteDialog.resx">
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditableTileRenderer.resx">
+    <EmbeddedResource Include="Tile\EditableTileRenderer.resx">
       <DependentUpon>EditableTileRenderer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GBPaletteChooser.resx">
+    <EmbeddedResource Include="Palette\GBPaletteChooser.resx">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GBTDPaletteChooser.resx">
+    <EmbeddedResource Include="Palette\GBTDPaletteChooser.resx">
       <DependentUpon>GBTDPaletteChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TGammaPanel.resx">
+    <EmbeddedResource Include="Palette\TGammaPanel.resx">
       <DependentUpon>TGammaPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TileList.resx">
+    <EmbeddedResource Include="Tile\TileList.resx">
       <DependentUpon>TileList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TileListEntry.resx">
+    <EmbeddedResource Include="Tile\TileListEntry.resx">
       <DependentUpon>TileListEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TileRenderer.resx">
+    <EmbeddedResource Include="Tile\TileRenderer.resx">
       <DependentUpon>TileRenderer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

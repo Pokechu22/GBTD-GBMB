@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using GB.Shared.Palette;
+
 namespace GB.Shared.Tile
 {
 	partial class TileListEntry : UserControl
@@ -18,10 +20,20 @@ namespace GB.Shared.Tile
 		protected override Padding DefaultMargin { get { return new Padding(0, 0, 0, 0); } }
 
 		private int number = 0;
+
 		[Category("Data"), Description("The tile's number.")]
 		public int Number {
 			get { return number; }
 			set { number = value; SetupApearence(); }
+		}
+
+		private Palette_ palette = Palette_.DefaultPalette;
+		/// <summary>
+		/// The full palette.
+		/// </summary>
+		public Palette_ Palette {
+			get { return palette; }
+			set { palette = value; SetupApearence(); }
 		}
 
 		private Tile tile = new Tile();
@@ -79,18 +91,14 @@ namespace GB.Shared.Tile
 			if (Enabled) {
 				if (Selected) {
 					tileRenderer1.Tile = this.tile;
-					tileRenderer1.SetColors(
-						ColorFiltration.GetSelectedColor(black),
-						ColorFiltration.GetSelectedColor(darkGray),
-						ColorFiltration.GetSelectedColor(lightGray),
-						ColorFiltration.GetSelectedColor(white));
+					tileRenderer1.Palette = this.palette.FilterAsSelected();
 				} else {
 					tileRenderer1.Tile = this.tile;
-					tileRenderer1.SetColors(black, darkGray, lightGray, white);
+					tileRenderer1.Palette = this.palette;
 				}
 			} else {
 				tileRenderer1.Tile = this.tile;
-				tileRenderer1.SetColors(SystemColors.Control, SystemColors.Control, SystemColors.Control, SystemColors.Control);
+				tileRenderer1.Palette = Palette_.DisabledPalette;
 			}
 			this.Refresh();
 		}

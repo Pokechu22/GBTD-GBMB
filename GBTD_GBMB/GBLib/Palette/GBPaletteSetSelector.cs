@@ -254,7 +254,7 @@ namespace GB.Shared.Palette
 			int i = 0;
 			i = i; //TODO
 			foreach (PaletteSetEntry e in this.entries) {
-				set.Rows[e.y][e.x] = new PaletteEntry_(e.x, e.y, e.Color, set.Rows[e.x][e.y].behavior);
+				set.Rows[e.y][e.x] = new PaletteEntry_(e.x, e.y, e.Color, set.Rows[e.y][e.x].behavior);
 			}
 		}
 

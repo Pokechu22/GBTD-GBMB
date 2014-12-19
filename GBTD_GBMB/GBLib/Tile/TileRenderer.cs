@@ -7,37 +7,50 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using GB.Shared.Palette;
+
 namespace GB.Shared.Tile
 {
 	public partial class TileRenderer : UserControl
 	{
-		#region Internal members
-		protected internal Color whiteColor = Color.White;
-		protected internal Color lightGrayColor = Color.LightGray;
-		protected internal Color darkGrayColor = Color.Gray;
-		protected internal Color blackColor = Color.Black;
+		#region Private members
+		private Palette_ palette = Palette_.DefaultPalette;
 
-		protected internal Tile tile = new Tile();
+		private Tile tile = new Tile();
 
-		protected internal byte clickedX = 0, clickedY = 0;
-		protected internal MouseButtons buttons = MouseButtons.None;
+		private byte clickedX = 0, clickedY = 0;
+		private MouseButtons buttons = MouseButtons.None;
 
-		protected bool grid = false;
-		protected bool border = true;
+		private bool grid = false;
+		private bool border = true;
 
-		protected Border3DSide borderSides = Border3DSide.All;
+		private Border3DSide borderSides = Border3DSide.All;
 		#endregion
 
 		#region Public properties
+
+		[Category("Data"), Description("The palette used by this tile.")]
+		public Palette_ Palette {
+			get {
+				return palette;
+			}
+			set {
+				palette = value;
+				OnPalatteChange();
+			}
+		}
+
 		/// <summary>
 		/// The whitemost color.
 		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), ReadOnly(true)]
 		public Color WhiteColor {
 			get {
-				return whiteColor;
+				return palette.EntryWhite;
 			}
 			set {
-				whiteColor = value;
+				palette.entry0.color = value;
 				OnPalatteChange();
 			}
 		}
@@ -45,12 +58,14 @@ namespace GB.Shared.Tile
 		/// <summary>
 		/// The light-gray color.
 		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), ReadOnly(true)]
 		public Color LightGrayColor {
 			get {
-				return lightGrayColor;
+				return palette.EntryLightGray;
 			}
 			set {
-				lightGrayColor = value;
+				palette.entry1.color = value;
 				OnPalatteChange();
 			}
 		}
@@ -58,12 +73,14 @@ namespace GB.Shared.Tile
 		/// <summary>
 		/// The dark-gray color.
 		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), ReadOnly(true)]
 		public Color DarkGrayColor {
 			get {
-				return darkGrayColor;
+				return palette.EntryLightGray;
 			}
 			set {
-				darkGrayColor = value;
+				palette.entry2.color = value;
 				OnPalatteChange();
 			}
 		}
@@ -71,12 +88,14 @@ namespace GB.Shared.Tile
 		/// <summary>
 		/// The black color.
 		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), ReadOnly(true)]
 		public Color BlackColor {
 			get {
-				return blackColor;
+				return palette.EntryBlack;
 			}
 			set {
-				blackColor = value;
+				palette.entry3.color = value;
 				OnPalatteChange();
 			}
 		}
@@ -167,23 +186,6 @@ namespace GB.Shared.Tile
 			InitializeComponent();
 		}
 
-		/// <summary>
-		/// Sets all colors on this at once.
-		/// Use this over setting each value individually, as otherwise you will end up redrawing several times, resulting in lag.
-		/// </summary>
-		/// <param name="black"></param>
-		/// <param name="darkgray"></param>
-		/// <param name="lightgray"></param>
-		/// <param name="white"></param>
-		public void SetColors(Color black, Color darkgray, Color lightgray, Color white) {
-			this.blackColor = black;
-			this.darkGrayColor = darkgray;
-			this.lightGrayColor = lightgray;
-			this.whiteColor = white;
-
-			OnPalatteChange();
-		}
-
 		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
 			for (byte x = 0; x < 8; x++) {
 				for (byte y = 0; y < 8; y++) {
@@ -247,13 +249,7 @@ namespace GB.Shared.Tile
 			float width = (w / 8.0f);
 			float height = (h / 8.0f);
 
-			Color c = Color.Black;
-			switch (color) {
-			case GBColor.WHITE: c = whiteColor; break;
-			case GBColor.DARK_GRAY: c = darkGrayColor; break;
-			case GBColor.LIGHT_GRAY: c = lightGrayColor; break;
-			case GBColor.BLACK: c = blackColor; break;
-			}
+			Color c = palette[color].DisplayColor;
 
 			using (Brush brush = new SolidBrush(c)) {
 				g.FillRectangle(brush, x1, y1, width, height);
