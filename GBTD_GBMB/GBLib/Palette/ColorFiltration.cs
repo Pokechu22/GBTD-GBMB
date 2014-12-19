@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace GB.Shared.Tile
+namespace GB.Shared.Palette
 {
 	/// <summary>
 	/// Filters colors.
@@ -72,5 +72,32 @@ namespace GB.Shared.Tile
 
 			return Color.FromArgb(r, g, b);
 		}
+
+		#region Extension methods used with Palette_
+		/// <summary>
+		/// Applies the GBC filter to a Palette_.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static Palette_ FilterWithGBC(this Palette_ @this) {
+			@this.entry0.color = TranslateToGBCColor(@this.entry0.color);
+			@this.entry1.color = TranslateToGBCColor(@this.entry1.color);
+			@this.entry2.color = TranslateToGBCColor(@this.entry2.color);
+			@this.entry3.color = TranslateToGBCColor(@this.entry3.color);
+			return @this;
+		}
+		/// <summary>
+		/// Applies the selection filter to a Palette_.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static Palette_ FilterAsSelected(this Palette_ @this) {
+			@this.entry0.color = GetSelectedColor(@this.entry0.color);
+			@this.entry1.color = GetSelectedColor(@this.entry1.color);
+			@this.entry2.color = GetSelectedColor(@this.entry2.color);
+			@this.entry3.color = GetSelectedColor(@this.entry3.color);
+			return @this;
+		}
+		#endregion
 	}
 }
