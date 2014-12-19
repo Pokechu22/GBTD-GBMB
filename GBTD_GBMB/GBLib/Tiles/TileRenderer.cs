@@ -14,7 +14,7 @@ namespace GB.Shared.Tiles
 	public partial class TileRenderer : UserControl
 	{
 		#region Private members
-		private Palette_ palette = Palette_.DefaultPalette;
+		private Palette palette = Palette.DefaultPalette;
 
 		private Tile tile = new Tile();
 
@@ -30,7 +30,7 @@ namespace GB.Shared.Tiles
 		#region Public properties
 
 		[Category("Data"), Description("The palette used by this tile.")]
-		public Palette_ Palette {
+		public Palette Palette {
 			get {
 				return palette;
 			}

@@ -9,11 +9,11 @@ using System.Windows.Forms.Design;
 
 namespace GB.Shared.Palettes
 {
-	class PaletteObjectsEditor<TForm, GBPaletteSetSelector, PaletteSet, Palette_, PaletteEntry> : UITypeEditor
-		where TForm : ChoosePalette<GBPaletteSetSelector, PaletteSet, Palette_, PaletteEntry>, new()
+	class PaletteObjectsEditor<TForm, GBPaletteSetSelector, PaletteSet, Palette, PaletteEntry> : UITypeEditor
+		where TForm : ChoosePalette<GBPaletteSetSelector, PaletteSet, Palette, PaletteEntry>, new()
 		where GBPaletteSetSelector : GBPaletteSetSelector, new()
-		where PaletteSet : PaletteSetBase<Palette_, PaletteEntry>, new()
-		where Palette_ : PaletteBase<PaletteEntry>
+		where PaletteSet : PaletteSetBase<Palette, PaletteEntry>, new()
+		where Palette : PaletteBase<PaletteEntry>
 		where PaletteEntry : PaletteEntryBase
 	{
 		IWindowsFormsEditorService editorService = null;

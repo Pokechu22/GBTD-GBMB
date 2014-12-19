@@ -25,14 +25,14 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palettes.Palette_ gbcPalette1 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette2 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette3 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette4 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette5 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette6 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette7 = new GB.Shared.Palettes.Palette_();
-			GB.Shared.Palettes.Palette_ gbcPalette8 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette gbcPalette1 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette2 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette3 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette4 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette5 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette6 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette7 = new GB.Shared.Palettes.Palette();
+			GB.Shared.Palettes.Palette gbcPalette8 = new GB.Shared.Palettes.Palette();
 			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1219,7 +1219,7 @@
 			gbcPalette8.entry2.color = System.Drawing.Color.DarkGray;
 			gbcPalette8.entry1.color = System.Drawing.Color.LightGray;
 			gbcPalette8.entry0.color = System.Drawing.Color.White;
-			/*this.paletteChooser.Set.palettes = new GB.Shared.Palettes.Palette_[] {
+			/*this.paletteChooser.Set.palettes = new GB.Shared.Palettes.Palette[] {
         gbcPalette1,
         gbcPalette2,
         gbcPalette3,

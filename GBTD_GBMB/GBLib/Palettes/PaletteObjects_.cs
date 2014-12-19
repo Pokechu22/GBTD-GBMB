@@ -47,18 +47,18 @@ namespace GB.Shared.Palettes
 	
 	public struct PaletteSet
 	{
-		private /*readonly*/ Palette_[] palettes;
+		private /*readonly*/ Palette[] palettes;
 		private /*readonly*/ IPaletteSetBehavior behaviour;
 
-		public PaletteSet(Palette_[] palettes, IPaletteSetBehavior behaviour) {
+		public PaletteSet(Palette[] palettes, IPaletteSetBehavior behaviour) {
 			this.palettes = palettes;
 			this.behaviour = behaviour;
 		}
 
-		public Palette_[] Rows {
+		public Palette[] Rows {
 			get {
 				if (palettes == null) {
-					palettes = new Palette_[this.behaviour.Height];
+					palettes = new Palette[this.behaviour.Height];
 				}
 				return palettes;
 			}
@@ -88,12 +88,12 @@ namespace GB.Shared.Palettes
 			get { return this.Behaviour.Height; }
 		}
 
-		public Palette_ this[int row] {
+		public Palette this[int row] {
 			get { return Rows[row]; }
 		}
 	}
 
-	public struct Palette_
+	public struct Palette
 	{
 		public /*readonly*/ PaletteEntry entry0;
 		public /*readonly*/ PaletteEntry entry1;
@@ -162,7 +162,7 @@ namespace GB.Shared.Palettes
 			}
 		}
 
-		public Palette_(PaletteEntry entry0, PaletteEntry entry1, PaletteEntry entry2, PaletteEntry entry3) {
+		public Palette(PaletteEntry entry0, PaletteEntry entry1, PaletteEntry entry2, PaletteEntry entry3) {
 			this.entry0 = entry0;
 			this.entry1 = entry1;
 			this.entry2 = entry2;
@@ -172,9 +172,9 @@ namespace GB.Shared.Palettes
 		/// <summary>
 		/// Default-used palette.
 		/// </summary>
-		public static Palette_ DefaultPalette {
+		public static Palette DefaultPalette {
 			get {
-				return new Palette_(
+				return new Palette(
 					new PaletteEntry(0, 0, Color.White, new GBCPaletteEntryBehavior()),
 					new PaletteEntry(1, 0, Color.LightGray, new GBCPaletteEntryBehavior()),
 					new PaletteEntry(2, 0, Color.DarkGray, new GBCPaletteEntryBehavior()),
@@ -185,9 +185,9 @@ namespace GB.Shared.Palettes
 		/// <summary>
 		/// Disabled-appearence palette.
 		/// </summary>
-		public static Palette_ DisabledPalette {
+		public static Palette DisabledPalette {
 			get {
-				return new Palette_(
+				return new Palette(
 					new PaletteEntry(0, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
 					new PaletteEntry(1, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
 					new PaletteEntry(2, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
@@ -239,12 +239,12 @@ namespace GB.Shared.Palettes
 				throw new ArgumentOutOfRangeException("y", y, "Must be in range of 0 ≤ y < " + @this.Behaviour.Height + " (the height)");
 			}
 
-			Palette_[] palettes = @this.Rows.SetEntryColor(x, y, color);
+			Palette[] palettes = @this.Rows.SetEntryColor(x, y, color);
 
 			return new PaletteSet(palettes, @this.Behaviour);
 		}
 
-		public static Palette_[] SetEntryColor(this Palette_[] @this, int x, int y, Color color) {
+		public static Palette[] SetEntryColor(this Palette[] @this, int x, int y, Color color) {
 			if (x < 0 || x >= 4) {
 				throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 			}
@@ -252,18 +252,18 @@ namespace GB.Shared.Palettes
 				throw new ArgumentOutOfRangeException("y", y, "Must be in range of 0 ≤ y < " + @this.Length + " (the height)");
 			}
 
-			Palette_[] palettes = (Palette_[])@this.Clone();
+			Palette[] palettes = (Palette[])@this.Clone();
 			palettes[y] = @this[y].SetEntryColor(x, color);
 
 			return palettes;
 		}
 
-		public static Palette_ SetEntryColor(this Palette_ @this, int x, Color color) {
+		public static Palette SetEntryColor(this Palette @this, int x, Color color) {
 			switch (x) {
-			case 0: return new Palette_(@this.entry0.SetColor(color), @this.entry1, @this.entry2, @this.entry3);
-			case 1: return new Palette_(@this.entry0, @this.entry1.SetColor(color), @this.entry2, @this.entry3);
-			case 2: return new Palette_(@this.entry0, @this.entry1, @this.entry2.SetColor(color), @this.entry3);
-			case 3: return new Palette_(@this.entry0, @this.entry1, @this.entry2, @this.entry3.SetColor(color));
+			case 0: return new Palette(@this.entry0.SetColor(color), @this.entry1, @this.entry2, @this.entry3);
+			case 1: return new Palette(@this.entry0, @this.entry1.SetColor(color), @this.entry2, @this.entry3);
+			case 2: return new Palette(@this.entry0, @this.entry1, @this.entry2.SetColor(color), @this.entry3);
+			case 3: return new Palette(@this.entry0, @this.entry1, @this.entry2, @this.entry3.SetColor(color));
 			}
 			throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 		}

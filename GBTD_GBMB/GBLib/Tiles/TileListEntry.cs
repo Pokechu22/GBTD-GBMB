@@ -27,11 +27,11 @@ namespace GB.Shared.Tiles
 			set { number = value; SetupApearence(); }
 		}
 
-		private Palette_ palette = Palette_.DefaultPalette;
+		private Palette palette = Palette.DefaultPalette;
 		/// <summary>
 		/// The full palette.
 		/// </summary>
-		public Palette_ Palette {
+		public Palette Palette {
 			get { return palette; }
 			set { palette = value; SetupApearence(); }
 		}
@@ -98,7 +98,7 @@ namespace GB.Shared.Tiles
 				}
 			} else {
 				tileRenderer1.Tile = this.tile;
-				tileRenderer1.Palette = Palette_.DisabledPalette;
+				tileRenderer1.Palette = Palette.DisabledPalette;
 			}
 			this.Refresh();
 		}

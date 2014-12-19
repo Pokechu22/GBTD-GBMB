@@ -73,13 +73,13 @@ namespace GB.Shared.Palettes
 			return Color.FromArgb(r, g, b);
 		}
 
-		#region Extension methods used with Palette_
+		#region Extension methods used with Palette
 		/// <summary>
-		/// Applies the GBC filter to a Palette_.
+		/// Applies the GBC filter to a Palette.
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
-		public static Palette_ FilterWithGBC(this Palette_ @this) {
+		public static Palette FilterWithGBC(this Palette @this) {
 			@this.entry0.color = TranslateToGBCColor(@this.entry0.color);
 			@this.entry1.color = TranslateToGBCColor(@this.entry1.color);
 			@this.entry2.color = TranslateToGBCColor(@this.entry2.color);
@@ -87,11 +87,11 @@ namespace GB.Shared.Palettes
 			return @this;
 		}
 		/// <summary>
-		/// Applies the selection filter to a Palette_.
+		/// Applies the selection filter to a Palette.
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
-		public static Palette_ FilterAsSelected(this Palette_ @this) {
+		public static Palette FilterAsSelected(this Palette @this) {
 			@this.entry0.color = GetSelectedColor(@this.entry0.color);
 			@this.entry1.color = GetSelectedColor(@this.entry1.color);
 			@this.entry2.color = GetSelectedColor(@this.entry2.color);

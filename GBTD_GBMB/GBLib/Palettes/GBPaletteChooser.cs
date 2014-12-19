@@ -28,7 +28,7 @@ namespace GB.Shared.Palettes
 			private readonly GBPaletteChooser sender;
 
 			public readonly int newIndex;
-			public readonly Palette_ newItem;
+			public readonly Palette newItem;
 
 			public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
 				this.sender = sender;
@@ -43,7 +43,7 @@ namespace GB.Shared.Palettes
 			private readonly GBPaletteChooser sender;
 
 			public readonly int paletteIndex;
-			public readonly Palette_ palette;
+			public readonly Palette palette;
 
 			public readonly int clickedEntry;
 			public readonly Color clickedEntryColor;
@@ -191,7 +191,7 @@ namespace GB.Shared.Palettes
 		/// <summary>
 		/// The row currently selected.
 		/// </summary>
-		public Palette_ SelectedRow {
+		public Palette SelectedRow {
 			get {
 				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
 					SelectedRowIndex = 0;
@@ -239,7 +239,7 @@ namespace GB.Shared.Palettes
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
 
-		private PaletteSet set = new PaletteSet(new Palette_[8], new GBCPaletteSetBehavior());
+		private PaletteSet set = new PaletteSet(new Palette[8], new GBCPaletteSetBehavior());
 
 		public PaletteSet Set {
 			get { return set; }
@@ -308,7 +308,7 @@ namespace GB.Shared.Palettes
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette_ item = set[Convert.ToInt32((String)box.Text)];
+			Palette item = set[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -321,7 +321,7 @@ namespace GB.Shared.Palettes
 			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette_ item = set[Convert.ToInt32((String)box.Text)];
+			Palette item = set[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -331,11 +331,11 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
-		/// Draws Palette_ to a bitmap.
+		/// Draws Palette to a bitmap.
 		/// </summary>
 		/// <param name="row"></param>
 		/// <returns></returns>
-		protected virtual Image DrawRowToBitmap(Palette_ row) {
+		protected virtual Image DrawRowToBitmap(Palette row) {
 			Bitmap returned = null;
 
 			for (int i = 0; i < 4; i++) {

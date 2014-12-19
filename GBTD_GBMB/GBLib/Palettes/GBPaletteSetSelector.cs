@@ -72,7 +72,7 @@ namespace GB.Shared.Palettes
 										  Color.FromArgb(0, 0, 0)
 									  };
 
-		private PaletteSet set = new PaletteSet(new Palette_[8], new GBCPaletteSetBehavior());
+		private PaletteSet set = new PaletteSet(new Palette[8], new GBCPaletteSetBehavior());
 		#endregion
 		#endregion
 
