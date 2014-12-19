@@ -6,8 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GB.Shared.Palette;
-using GB.Shared.Tile;
+using GB.Shared.Palettes;
+using GB.Shared.Tiles;
 
 namespace GB.GBTD
 {

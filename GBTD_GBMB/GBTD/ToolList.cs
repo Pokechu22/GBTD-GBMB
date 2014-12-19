@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GB.Shared.Tile;
+using GB.Shared.Tiles;
 
 namespace GB.GBTD
 {

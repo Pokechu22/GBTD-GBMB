@@ -25,15 +25,15 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Palette.Palette_ gbcPalette1 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette2 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette3 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette4 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette5 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette6 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette7 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Palette.Palette_ gbcPalette8 = new GB.Shared.Palette.Palette_();
-			GB.Shared.Tile.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tile.PixelTileEditor();
+			GB.Shared.Palettes.Palette_ gbcPalette1 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette2 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette3 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette4 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette5 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette6 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette7 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Palettes.Palette_ gbcPalette8 = new GB.Shared.Palettes.Palette_();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,28 +116,28 @@
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.tileEditBorder = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.miniPreviewRenderer = new GB.Shared.Tile.TileRenderer();
+			this.miniPreviewRenderer = new GB.Shared.Tiles.TileRenderer();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.groupedTileRenderer11 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer15 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer14 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer16 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer12 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer13 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer10 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer9 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer8 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer7 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer6 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer5 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer4 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer3 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer2 = new GB.Shared.Tile.TileRenderer();
-			this.groupedTileRenderer1 = new GB.Shared.Tile.TileRenderer();
-			this.paletteChooser = new GB.Shared.Palette.GBTDPaletteChooser();
-			this.mainTileEdit = new GB.Shared.Tile.EditableTileRenderer();
+			this.groupedTileRenderer11 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer15 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer14 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer16 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer12 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer13 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer10 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer9 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer8 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer7 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer6 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer5 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer4 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer3 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer2 = new GB.Shared.Tiles.TileRenderer();
+			this.groupedTileRenderer1 = new GB.Shared.Tiles.TileRenderer();
+			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
+			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.tileList1 = new GB.Shared.Tile.TileList();
+			this.tileList1 = new GB.Shared.Tiles.TileList();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
@@ -486,7 +486,7 @@
             this.x32ToolStripMenuItem});
 			this.tileSizeToolStripMenuItem.Name = "tileSizeToolStripMenuItem";
 			this.tileSizeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-			this.tileSizeToolStripMenuItem.Text = "&Tile size";
+			this.tileSizeToolStripMenuItem.Text = "&Tiles size";
 			// 
 			// aToolStripMenuItem1
 			// 
@@ -516,7 +516,7 @@
 			// 
 			this.tileCountToolStripMenuItem.Name = "tileCountToolStripMenuItem";
 			this.tileCountToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-			this.tileCountToolStripMenuItem.Text = "Tile &count";
+			this.tileCountToolStripMenuItem.Text = "Tiles &count";
 			// 
 			// toolStripSeparator11
 			// 
@@ -1179,13 +1179,13 @@
 			// paletteChooser
 			// 
 			this.paletteChooser.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
-			this.paletteChooser.LeftMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.paletteChooser.LeftMouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.paletteChooser.Location = new System.Drawing.Point(34, 200);
 			this.paletteChooser.Margin = new System.Windows.Forms.Padding(2);
-			this.paletteChooser.MiddleMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.paletteChooser.MiddleMouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.paletteChooser.Name = "paletteChooser";
 			this.paletteChooser.Padding = new System.Windows.Forms.Padding(2);
-			this.paletteChooser.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.paletteChooser.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.paletteChooser.SelectedRow = 0;
 			gbcPalette1.entry3.color = System.Drawing.Color.Black;
 			gbcPalette1.entry2.color = System.Drawing.Color.DarkGray;
@@ -1219,7 +1219,7 @@
 			gbcPalette8.entry2.color = System.Drawing.Color.DarkGray;
 			gbcPalette8.entry1.color = System.Drawing.Color.LightGray;
 			gbcPalette8.entry0.color = System.Drawing.Color.White;
-			/*this.paletteChooser.Set.palettes = new GB.Shared.Palette.Palette_[] {
+			/*this.paletteChooser.Set.palettes = new GB.Shared.Palettes.Palette_[] {
         gbcPalette1,
         gbcPalette2,
         gbcPalette3,
@@ -1231,8 +1231,8 @@
 			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
 			this.paletteChooser.TabIndex = 2;
 			this.paletteChooser.UseGBCFilter = false;
-			this.paletteChooser.X1MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.paletteChooser.X2MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.paletteChooser.X1MouseColor = GB.Shared.Tiles.GBColor.WHITE;
+			this.paletteChooser.X2MouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.paletteChooser.SelectedPaletteChanged += new System.EventHandler(this.paletteChooser_SelectedPaletteChanged);
 			this.paletteChooser.MouseButtonColorChanged += new System.EventHandler(this.gbtdgbcPaletteChooser1_MouseButtonColorChanged);
 			// 
@@ -1246,20 +1246,20 @@
             | System.Windows.Forms.Border3DSide.Middle)));
 			this.mainTileEdit.DarkGrayColor = System.Drawing.Color.Gray;
 			this.mainTileEdit.Editor = pixelTileEditor1;
-			this.mainTileEdit.EditorTypeID = GB.Shared.Tile.TileEditorID.PixelEdit;
+			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
-			this.mainTileEdit.LeftMouseColor = GB.Shared.Tile.GBColor.BLACK;
+			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
 			this.mainTileEdit.LightGrayColor = System.Drawing.Color.LightGray;
 			this.mainTileEdit.Location = new System.Drawing.Point(33, 4);
 			this.mainTileEdit.Margin = new System.Windows.Forms.Padding(0);
-			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tile.GBColor.DARK_GRAY;
+			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tiles.GBColor.DARK_GRAY;
 			this.mainTileEdit.Name = "mainTileEdit";
-			this.mainTileEdit.RightMouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.mainTileEdit.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
 			this.mainTileEdit.TabIndex = 1;
 			this.mainTileEdit.WhiteColor = System.Drawing.Color.White;
-			this.mainTileEdit.XButton1MouseColor = GB.Shared.Tile.GBColor.WHITE;
-			this.mainTileEdit.XButton2MouseColor = GB.Shared.Tile.GBColor.WHITE;
+			this.mainTileEdit.XButton1MouseColor = GB.Shared.Tiles.GBColor.WHITE;
+			this.mainTileEdit.XButton2MouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
 			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
 			// 
@@ -1268,7 +1268,7 @@
 			this.toolList.AutoUpdate = false;
 			this.toolList.Location = new System.Drawing.Point(4, 4);
 			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.Shared.Tile.TileEditorID.PixelEdit;
+			this.toolList.SelectedTool = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 0;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
@@ -1397,28 +1397,28 @@
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.Panel tileEditBorder;
 		private ToolList toolList;
-		private Shared.Palette.GBTDPaletteChooser paletteChooser;
-		private Shared.Tile.EditableTileRenderer mainTileEdit;
+		private Shared.Palettes.GBTDPaletteChooser paletteChooser;
+		private Shared.Tiles.EditableTileRenderer mainTileEdit;
 		private System.Windows.Forms.Panel panel2;
-		private Shared.Tile.TileRenderer miniPreviewRenderer;
+		private Shared.Tiles.TileRenderer miniPreviewRenderer;
 		private System.Windows.Forms.Panel panel1;
-		private Shared.Tile.TileRenderer groupedTileRenderer11;
-		private Shared.Tile.TileRenderer groupedTileRenderer15;
-		private Shared.Tile.TileRenderer groupedTileRenderer14;
-		private Shared.Tile.TileRenderer groupedTileRenderer16;
-		private Shared.Tile.TileRenderer groupedTileRenderer12;
-		private Shared.Tile.TileRenderer groupedTileRenderer13;
-		private Shared.Tile.TileRenderer groupedTileRenderer9;
-		private Shared.Tile.TileRenderer groupedTileRenderer8;
-		private Shared.Tile.TileRenderer groupedTileRenderer7;
-		private Shared.Tile.TileRenderer groupedTileRenderer6;
-		private Shared.Tile.TileRenderer groupedTileRenderer5;
-		private Shared.Tile.TileRenderer groupedTileRenderer4;
-		private Shared.Tile.TileRenderer groupedTileRenderer3;
-		private Shared.Tile.TileRenderer groupedTileRenderer2;
-		private Shared.Tile.TileRenderer groupedTileRenderer1;
-		private Shared.Tile.TileRenderer groupedTileRenderer10;
-		private Shared.Tile.TileList tileList1;
+		private Shared.Tiles.TileRenderer groupedTileRenderer11;
+		private Shared.Tiles.TileRenderer groupedTileRenderer15;
+		private Shared.Tiles.TileRenderer groupedTileRenderer14;
+		private Shared.Tiles.TileRenderer groupedTileRenderer16;
+		private Shared.Tiles.TileRenderer groupedTileRenderer12;
+		private Shared.Tiles.TileRenderer groupedTileRenderer13;
+		private Shared.Tiles.TileRenderer groupedTileRenderer9;
+		private Shared.Tiles.TileRenderer groupedTileRenderer8;
+		private Shared.Tiles.TileRenderer groupedTileRenderer7;
+		private Shared.Tiles.TileRenderer groupedTileRenderer6;
+		private Shared.Tiles.TileRenderer groupedTileRenderer5;
+		private Shared.Tiles.TileRenderer groupedTileRenderer4;
+		private Shared.Tiles.TileRenderer groupedTileRenderer3;
+		private Shared.Tiles.TileRenderer groupedTileRenderer2;
+		private Shared.Tiles.TileRenderer groupedTileRenderer1;
+		private Shared.Tiles.TileRenderer groupedTileRenderer10;
+		private Shared.Tiles.TileList tileList1;
 
 	}
 }
