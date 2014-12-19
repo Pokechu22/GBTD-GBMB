@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBComp", "GBTile\GBComp.csproj", "{144B0760-8612-4695-BE59-3547CE449BCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBComp", "GBLib\GBComp.csproj", "{144B0760-8612-4695-BE59-3547CE449BCA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBTD", "GBTD\GBTD.csproj", "{4E947E18-F9EA-44AB-A70D-F45A620DEEB5}"
 EndProject

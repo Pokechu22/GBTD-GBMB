@@ -87,7 +87,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GBTile\GBComp.csproj">
+    <ProjectReference Include="..\GBLib\GBComp.csproj">
       <Project>{144B0760-8612-4695-BE59-3547CE449BCA}</Project>
       <Name>GBComp</Name>
     </ProjectReference>

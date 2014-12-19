@@ -1,14 +1,8 @@
 /.project
 /GBTD_GBMB.suo
 
-/GBCOMP/bin
-/GBCOMP/obj
-
-/GBPalette/bin
-/GBPalette/obj
-
-/GBTile/bin
-/GBTile/obj
-
 /GBTD/bin
 /GBTD/obj
+
+/GBLib/bin
+/GBLib/obj
