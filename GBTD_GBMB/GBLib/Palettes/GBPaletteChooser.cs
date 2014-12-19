@@ -239,7 +239,7 @@ namespace GB.Shared.Palettes
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
 
-		private PaletteSet set = new PaletteSet(new Palette[8], new GBCPaletteSetBehavior());
+		private PaletteSet set = PaletteSet.DefaultPaletteSet;
 
 		public PaletteSet Set {
 			get { return set; }

@@ -91,6 +91,20 @@ namespace GB.Shared.Palettes
 		public Palette this[int row] {
 			get { return Rows[row]; }
 		}
+
+		/// <summary>
+		/// The default Palette set to use.
+		/// </summary>
+		public static PaletteSet DefaultPaletteSet {
+			get {
+				IPaletteSetBehavior behavior = new GBCPaletteSetBehavior();
+				Palette[] palettes = new Palette[behavior.Height];
+				for (int i = 0; i < palettes.Length; i++) {
+					palettes[i] = Palette.DefaultPalette;
+				}
+				return new PaletteSet(palettes, behavior);
+			}
+		}
 	}
 
 	public struct Palette

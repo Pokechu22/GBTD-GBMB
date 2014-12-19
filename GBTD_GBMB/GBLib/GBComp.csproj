@@ -79,7 +79,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Palettes\PaletteObjectsEditor.cs" />
-    <Compile Include="Palettes\PaletteObjects_.cs" />
+    <Compile Include="Palettes\PaletteObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
