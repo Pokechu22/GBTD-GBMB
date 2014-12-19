@@ -20,7 +20,7 @@ namespace GB.Shared.Palette
 			/// <summary>
 			/// And a palette entry for the inside of that.
 			/// </summary>
-			private class GBTDPaletteChooserMouseEntryPaletteEntry : PaletteEntry
+			private class GBTDPaletteChooserMouseEntryPaletteEntry : PaletteEntryRenderer
 			{
 				private GBTDPaletteChooser chooser;
 
@@ -196,7 +196,7 @@ namespace GB.Shared.Palette
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		[Category("Data"), Description("The used set.")]
-		public PaletteSet_ Set {
+		public PaletteSet Set {
 			get { return this.gbPaletteChooser1.Set; }
 			set { this.gbPaletteChooser1.Set = value; this.Refresh(); }
 		}

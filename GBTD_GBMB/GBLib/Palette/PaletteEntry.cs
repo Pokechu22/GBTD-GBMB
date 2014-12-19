@@ -10,7 +10,7 @@ namespace GB.Shared.Palette
 	/// <summary>
 	/// Internal class which represents an individual entry.
 	/// </summary>
-	internal abstract class PaletteEntry : Label
+	internal abstract class PaletteEntryRenderer : Label
 	{
 		protected override Padding DefaultMargin {
 			get {
@@ -93,7 +93,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		protected PaletteEntry(int x, int y) {
+		protected PaletteEntryRenderer(int x, int y) {
 			this.x = x;
 			this.y = y;
 
@@ -122,11 +122,11 @@ namespace GB.Shared.Palette
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		internal void PalatteEntry_Paint(object sender, PaintEventArgs e) {
-			if (sender is PaletteEntry) {
+			if (sender is PaletteEntryRenderer) {
 				e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 				e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.None;
 
-				PaletteEntry c = (PaletteEntry)sender;
+				PaletteEntryRenderer c = (PaletteEntryRenderer)sender;
 				c.BackColor = (UseGBCFilter ? ColorFiltration.TranslateToGBCColor(c.color) : c.color);
 				
 				//Draw the main border.
@@ -141,8 +141,8 @@ namespace GB.Shared.Palette
 		}
 
 		internal void PalatteEntry_MouseDown(object sender, MouseEventArgs e) {
-			if (sender is PaletteEntry) {
-				PaletteEntry entry = (PaletteEntry)sender;
+			if (sender is PaletteEntryRenderer) {
+				PaletteEntryRenderer entry = (PaletteEntryRenderer)sender;
 
 				if (entry.SelectionButtons.HasFlag(e.Button)) {
 					entry.SetSelected();

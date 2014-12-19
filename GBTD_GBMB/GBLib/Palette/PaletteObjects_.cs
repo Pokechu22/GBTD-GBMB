@@ -32,7 +32,7 @@ namespace GB.Shared.Palette
 		/// </summary>
 		/// <param name="color"></param>
 		/// <returns></returns>
-		Color GetFilteredColor(PaletteEntry_ entry);
+		Color GetFilteredColor(PaletteEntry entry);
 	}
 
 	/// <summary>
@@ -40,17 +40,17 @@ namespace GB.Shared.Palette
 	/// </summary>
 	public class GBCPaletteEntryBehavior : IPaletteEntryBehavior
 	{
-		public Color GetFilteredColor(PaletteEntry_ entry) {
+		public Color GetFilteredColor(PaletteEntry entry) {
 			return entry.color;
 		}
 	}
 	
-	public struct PaletteSet_
+	public struct PaletteSet
 	{
 		private /*readonly*/ Palette_[] palettes;
 		private /*readonly*/ IPaletteSetBehavior behaviour;
 
-		public PaletteSet_(Palette_[] palettes, IPaletteSetBehavior behaviour) {
+		public PaletteSet(Palette_[] palettes, IPaletteSetBehavior behaviour) {
 			this.palettes = palettes;
 			this.behaviour = behaviour;
 		}
@@ -95,33 +95,33 @@ namespace GB.Shared.Palette
 
 	public struct Palette_
 	{
-		public /*readonly*/ PaletteEntry_ entry0;
-		public /*readonly*/ PaletteEntry_ entry1;
-		public /*readonly*/ PaletteEntry_ entry2;
-		public /*readonly*/ PaletteEntry_ entry3;
+		public /*readonly*/ PaletteEntry entry0;
+		public /*readonly*/ PaletteEntry entry1;
+		public /*readonly*/ PaletteEntry entry2;
+		public /*readonly*/ PaletteEntry entry3;
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public PaletteEntry_ EntryWhite {
+		public PaletteEntry EntryWhite {
 			get { return entry0; }
 			set { entry0 = value; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public PaletteEntry_ EntryLightGray {
+		public PaletteEntry EntryLightGray {
 			get { return entry1; }
 			set { entry1 = value; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public PaletteEntry_ EntryDarkGray {
+		public PaletteEntry EntryDarkGray {
 			get { return entry2; }
 			set { entry2 = value; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public PaletteEntry_ EntryBlack {
+		public PaletteEntry EntryBlack {
 			get { return entry3; }
 			set { entry3 = value; }
 		}
 
-		public PaletteEntry_ this[int entryNum] {
+		public PaletteEntry this[int entryNum] {
 			get {
 				switch (entryNum) {
 				case 0: return entry0;
@@ -141,7 +141,7 @@ namespace GB.Shared.Palette
 				}
 			}
 		}
-		public PaletteEntry_ this[GBColor color] {
+		public PaletteEntry this[GBColor color] {
 			get {
 				switch (color) {
 				case GBColor.BLACK: return EntryBlack;
@@ -162,7 +162,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		public Palette_(PaletteEntry_ entry0, PaletteEntry_ entry1, PaletteEntry_ entry2, PaletteEntry_ entry3) {
+		public Palette_(PaletteEntry entry0, PaletteEntry entry1, PaletteEntry entry2, PaletteEntry entry3) {
 			this.entry0 = entry0;
 			this.entry1 = entry1;
 			this.entry2 = entry2;
@@ -175,10 +175,10 @@ namespace GB.Shared.Palette
 		public static Palette_ DefaultPalette {
 			get {
 				return new Palette_(
-					new PaletteEntry_(0, 0, Color.White, new GBCPaletteEntryBehavior()),
-					new PaletteEntry_(1, 0, Color.LightGray, new GBCPaletteEntryBehavior()),
-					new PaletteEntry_(2, 0, Color.DarkGray, new GBCPaletteEntryBehavior()),
-					new PaletteEntry_(3, 0, Color.Black, new GBCPaletteEntryBehavior()));
+					new PaletteEntry(0, 0, Color.White, new GBCPaletteEntryBehavior()),
+					new PaletteEntry(1, 0, Color.LightGray, new GBCPaletteEntryBehavior()),
+					new PaletteEntry(2, 0, Color.DarkGray, new GBCPaletteEntryBehavior()),
+					new PaletteEntry(3, 0, Color.Black, new GBCPaletteEntryBehavior()));
 			}
 		}
 
@@ -188,15 +188,15 @@ namespace GB.Shared.Palette
 		public static Palette_ DisabledPalette {
 			get {
 				return new Palette_(
-					new PaletteEntry_(0, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
-					new PaletteEntry_(1, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
-					new PaletteEntry_(2, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
-					new PaletteEntry_(3, 0, SystemColors.Control, new GBCPaletteEntryBehavior()));
+					new PaletteEntry(0, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
+					new PaletteEntry(1, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
+					new PaletteEntry(2, 0, SystemColors.Control, new GBCPaletteEntryBehavior()),
+					new PaletteEntry(3, 0, SystemColors.Control, new GBCPaletteEntryBehavior()));
 			}
 		}
 	}
 
-	public struct PaletteEntry_
+	public struct PaletteEntry
 	{
 		public readonly int y;
 		public readonly int x;
@@ -214,14 +214,14 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		public PaletteEntry_(int x, int y, Color color, IPaletteEntryBehavior behavior) {
+		public PaletteEntry(int x, int y, Color color, IPaletteEntryBehavior behavior) {
 			this.x = x;
 			this.y = y;
 			this.color = color;
 			this.behavior = behavior;
 		}
 
-		public static implicit operator Color(PaletteEntry_ @this) {
+		public static implicit operator Color(PaletteEntry @this) {
 			return @this.DisplayColor;
 		}
 	}
@@ -231,7 +231,7 @@ namespace GB.Shared.Palette
 	/// </summary>
 	public static class PaletteExtensions
 	{
-		public static PaletteSet_ SetEntryColor(this PaletteSet_ @this, int x, int y, Color color) {
+		public static PaletteSet SetEntryColor(this PaletteSet @this, int x, int y, Color color) {
 			if (x < 0 || x >= 4) {
 				throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 			}
@@ -241,7 +241,7 @@ namespace GB.Shared.Palette
 
 			Palette_[] palettes = @this.Rows.SetEntryColor(x, y, color);
 
-			return new PaletteSet_(palettes, @this.Behaviour);
+			return new PaletteSet(palettes, @this.Behaviour);
 		}
 
 		public static Palette_[] SetEntryColor(this Palette_[] @this, int x, int y, Color color) {
@@ -268,8 +268,8 @@ namespace GB.Shared.Palette
 			throw new ArgumentOutOfRangeException("x", x, "Must be in range of 0 ≤ x < 4 (the width)");
 		}
 
-		public static PaletteEntry_ SetColor(this PaletteEntry_ @this, Color color) {
-			return new PaletteEntry_(@this.x, @this.y, color, @this.behavior);
+		public static PaletteEntry SetColor(this PaletteEntry @this, Color color) {
+			return new PaletteEntry(@this.x, @this.y, color, @this.behavior);
 		}
 	}
 }

@@ -17,11 +17,11 @@ namespace GB.Shared.Palette
 			InitializeComponent();
 		}
 
-		public ChoosePalette(PaletteSet_ set) : this() {
+		public ChoosePalette(PaletteSet set) : this() {
 			this.Set = set;
 		}
 
-		public PaletteSet_ Set {
+		public PaletteSet Set {
 			get { return gbPaletteSetSelector1.Set; }
 			set { gbPaletteSetSelector1.Set = value; }
 		}

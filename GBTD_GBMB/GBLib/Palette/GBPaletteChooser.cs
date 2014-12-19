@@ -33,7 +33,7 @@ namespace GB.Shared.Palette
 			public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
 				this.sender = sender;
 				this.newIndex = newIndex;
-				PaletteSet_ set = sender.set;
+				PaletteSet set = sender.set;
 				this.newItem = set[newIndex];
 			}
 		}
@@ -54,7 +54,7 @@ namespace GB.Shared.Palette
 				this.sender = sender;
 
 				this.paletteIndex = paletteIndex;
-				PaletteSet_ set = sender.set;
+				PaletteSet set = sender.set;
 				this.palette = set[paletteIndex];
 
 				this.clickedEntry = clickedEntry;
@@ -64,7 +64,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		protected class PaletteChooserEntry : PaletteEntry
+		protected class PaletteChooserEntry : PaletteEntryRenderer
 		{
 			protected override int X_OFFSET {
 				get {
@@ -126,7 +126,7 @@ namespace GB.Shared.Palette
 			}
 		}
 
-		private class ComboBoxPaletteEntry : PaletteEntry
+		private class ComboBoxPaletteEntry : PaletteEntryRenderer
 		{
 			public ComboBoxPaletteEntry(int x, int y)
 				: base(x, y) {
@@ -239,9 +239,9 @@ namespace GB.Shared.Palette
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
 
-		private PaletteSet_ set = new PaletteSet_(new Palette_[8], new GBCPaletteSetBehavior());
+		private PaletteSet set = new PaletteSet(new Palette_[8], new GBCPaletteSetBehavior());
 
-		public PaletteSet_ Set {
+		public PaletteSet Set {
 			get { return set; }
 			set { set = value; reloadFromSet(); OnSelectedPaletteChanged(); }
 		}
@@ -353,7 +353,7 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// Reloads the contents of this from the PaletteSet_.
+		/// Reloads the contents of this from the PaletteSet.
 		/// </summary>
 		protected virtual void reloadFromSet() {
 			if (this.dropDown.SelectedIndex < 0 || this.dropDown.SelectedIndex >= set.NumberOfRows) {

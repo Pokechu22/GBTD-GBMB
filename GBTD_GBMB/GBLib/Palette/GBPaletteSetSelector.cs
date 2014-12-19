@@ -15,7 +15,7 @@ namespace GB.Shared.Palette
 	public partial class GBPaletteSetSelector : UserControl
 	{
 		#region Private inner classes
-		private sealed class PaletteSetEntry : PaletteEntry
+		private sealed class PaletteSetEntry : PaletteEntryRenderer
 		{
 			internal GBPaletteSetSelector selector;
 
@@ -72,7 +72,7 @@ namespace GB.Shared.Palette
 										  Color.FromArgb(0, 0, 0)
 									  };
 
-		private PaletteSet_ set = new PaletteSet_(new Palette_[8], new GBCPaletteSetBehavior());
+		private PaletteSet set = new PaletteSet(new Palette_[8], new GBCPaletteSetBehavior());
 		#endregion
 		#endregion
 
@@ -133,7 +133,7 @@ namespace GB.Shared.Palette
 		/// The palette set used for this.
 		/// </summary>
 		[Description("The palette set used for this."), Category("Data")]
-		public PaletteSet_ Set {
+		public PaletteSet Set {
 			get { freshenToSet(); return set; }
 			set { set = value; freshenFromSet(); }
 		}
@@ -248,18 +248,18 @@ namespace GB.Shared.Palette
 		}
 
 		/// <summary>
-		/// Updates the PaletteSet_ used with the current data.
+		/// Updates the PaletteSet used with the current data.
 		/// </summary>
 		protected virtual void freshenToSet() {
 			int i = 0;
 			i = i; //TODO
 			foreach (PaletteSetEntry e in this.entries) {
-				set.Rows[e.y][e.x] = new PaletteEntry_(e.x, e.y, e.Color, set.Rows[e.y][e.x].behavior);
+				set.Rows[e.y][e.x] = new PaletteEntry(e.x, e.y, e.Color, set.Rows[e.y][e.x].behavior);
 			}
 		}
 
 		/// <summary>
-		/// Updates the controls here with those from the PaletteSet_.
+		/// Updates the controls here with those from the PaletteSet.
 		/// </summary>
 		protected virtual void freshenFromSet() {
 			for (int row = 0; row < set.NumberOfRows; row++) {

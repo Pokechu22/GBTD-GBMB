@@ -26,7 +26,7 @@ namespace GB.Shared.Palette
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			PaletteSet_ set = new PaletteSet_();
+			PaletteSet set = new PaletteSet();
 			this.gbPaletteSetSelector1 = new GBPaletteSetSelector();
 
 			this.colorPicker1 = new GB.Shared.Palette.TGammaPanel();
