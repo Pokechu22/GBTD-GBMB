@@ -41,6 +41,19 @@ namespace GB.Shared.Tiles
 
 		private Tile[] tiles = new Tile[0];
 
+		public Tile[] Tiles {
+			get {
+				return tiles;
+			}
+			set {
+				if (value == null) {
+					throw new ArgumentNullException("value");
+				}
+				this.tiles = value;
+				this.NumberOfEntries = tiles.Length;
+			}
+		}
+
 		/// <summary>
 		/// The tiles used on this.
 		/// </summary>
@@ -60,6 +73,12 @@ namespace GB.Shared.Tiles
 				onTileChanged(tile);
 			}
 		}
+
+		/// <summary>
+		/// Event for when the selected entry has been changed.
+		/// </summary>
+		[Category("Property Changed"), Description("Raised when the selected entry has been changed.")]
+		public event EventHandler SelectedEntryChanged;
 
 		public TileList() {
 			InitializeComponent();
@@ -174,6 +193,10 @@ namespace GB.Shared.Tiles
 		private void OnSelectedEntryChanged() {
 			foreach (TileListEntry e in entriesPanel.Controls) {
 				e.Selected = (e.Number == selectedEntry); //Set selected if selected.
+			}
+
+			if (SelectedEntryChanged != null) {
+				SelectedEntryChanged(this, new EventArgs());
 			}
 		}
 	}

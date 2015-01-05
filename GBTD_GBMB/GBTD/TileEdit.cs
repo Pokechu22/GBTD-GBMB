@@ -73,6 +73,32 @@ namespace GB.GBTD
 		/// </summary>
 		private List<TileRenderer> previewRenderers = new List<TileRenderer>();
 
+		public Tile[] Tiles {
+			get {
+				return tileList1.Tiles;
+			}
+			/*set {
+				tileList1.Tiles = (Tile[]) value.Clone();
+			}*/
+			//TODO
+		}
+
+		private int selectedTileNumber = 0;
+
+		/// <summary>
+		/// The index of the tile currently selected.
+		/// </summary>
+		[Category("Data"), Description("The index of the tile currently selected.")]
+		public int SelectedTileNumber {
+			get {
+				return selectedTileNumber;
+			}
+			set {
+				updateTile(value);
+				value = selectedTileNumber;
+			}
+		}
+
 		public TileEdit() {
 			InitializeComponent();
 
@@ -95,6 +121,14 @@ namespace GB.GBTD
 			previewRenderers.Add(groupedTileRenderer14);
 			previewRenderers.Add(groupedTileRenderer15);
 			previewRenderers.Add(groupedTileRenderer16);
+		}
+
+		/// <summary>
+		/// Called when the selected tile is changed.
+		/// </summary>
+		protected void updateTile(int tile) {
+			//Tiles[tileList1.SelectedEntry] = this.mainTileEdit.Tile;
+			this.mainTileEdit.Tile = Tiles[tile];
 		}
 
 		private void tileEditBorder_Paint(object sender, PaintEventArgs e) {
@@ -123,7 +157,7 @@ namespace GB.GBTD
 			foreach (var v in previewRenderers) {
 				v.Tile = mainTileEdit.Tile;
 			}
-			this.tileList1[0] = mainTileEdit.Tile;
+			this.tileList1[tileList1.SelectedEntry] = mainTileEdit.Tile;
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
@@ -181,6 +215,10 @@ namespace GB.GBTD
 
 		private void rotateClockwiseClicked(object sender, EventArgs e) {
 			mainTileEdit.Tile = TileTransform.RotateClockwise(mainTileEdit.Tile);
+		}
+
+		private void tileList1_SelectedEntryChanged(object sender, EventArgs e) {
+			updateTile(tileList1.SelectedEntry);
 		}
 	}
 }
