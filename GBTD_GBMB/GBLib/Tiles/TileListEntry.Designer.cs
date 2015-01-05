@@ -41,6 +41,7 @@
 			background.Name = "background";
 			background.Size = new System.Drawing.Size(38, 17);
 			background.TabIndex = 2;
+			background.Click += new System.EventHandler(this.subcontrol_Click);
 			// 
 			// textDisplay
 			// 
@@ -50,25 +51,23 @@
 			this.textDisplay.Name = "textDisplay";
 			this.textDisplay.Size = new System.Drawing.Size(21, 16);
 			this.textDisplay.TabIndex = 4;
+			this.textDisplay.Click += new System.EventHandler(this.subcontrol_Click);
 			this.textDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.textDisplay_Paint);
 			// 
 			// tileRenderer1
 			// 
-			this.tileRenderer1.BlackColor = System.Drawing.Color.Black;
 			this.tileRenderer1.Border = false;
 			this.tileRenderer1.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.tileRenderer1.DarkGrayColor = System.Drawing.Color.Gray;
 			this.tileRenderer1.Grid = false;
-			this.tileRenderer1.LightGrayColor = System.Drawing.Color.LightGray;
 			this.tileRenderer1.Location = new System.Drawing.Point(22, 0);
 			this.tileRenderer1.Margin = new System.Windows.Forms.Padding(0);
 			this.tileRenderer1.Name = "tileRenderer1";
 			this.tileRenderer1.Size = new System.Drawing.Size(16, 16);
 			this.tileRenderer1.TabIndex = 3;
-			this.tileRenderer1.WhiteColor = System.Drawing.Color.White;
+			this.tileRenderer1.Click += new System.EventHandler(this.subcontrol_Click);
 			// 
 			// TileListEntry
 			// 

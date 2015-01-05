@@ -33,6 +33,12 @@ namespace GB.Shared.Tiles
 			set { numberOfEntries = value; OnNumberOfEntriesChanged(); }
 		}
 
+		private int selectedEntry = 0;
+		public int SelectedEntry {
+			get { return selectedEntry; }
+			set { selectedEntry = value; OnSelectedEntryChanged(); }
+		}
+
 		private Tile[] tiles = new Tile[0];
 
 		/// <summary>
@@ -50,9 +56,6 @@ namespace GB.Shared.Tiles
 				return tiles[tile];
 			}
 			set {
-				/*if (value == null) {
-					throw new ArgumentNullException();
-				}*/
 				tiles[tile] = value;
 				onTileChanged(tile);
 			}
@@ -95,6 +98,9 @@ namespace GB.Shared.Tiles
 					newEntry.Tile = tiles[vScrollBar1.Value + i];
 					newEntry.Enabled = true;
 				}
+				newEntry.Selected = (newEntry.Number == selectedEntry); //Set selected if selected.
+
+				newEntry.Click += new EventHandler(this.OnEntryClicked);
 				//TODO colors.
 				entriesPanel.Controls.Add(newEntry);
 			}
@@ -108,7 +114,6 @@ namespace GB.Shared.Tiles
 			vScrollBar1.Maximum = numberOfEntries;
 			vScrollBar1.Minimum = 0;
 			vScrollBar1.Value = 0;
-
 			Array.Resize(ref tiles, numberOfEntries);
 		}
 
@@ -125,15 +130,15 @@ namespace GB.Shared.Tiles
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
 				TileListEntry entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntry;
 				entry.Number = scrolledIndex + i;
-				//TODO grab the tile.
+				
 				if (scrolledIndex + i >= numberOfEntries) {
 					entry.Tile = new Tile();
 					entry.Enabled = false;
 				} else {
-					entry.Tile = tiles[vScrollBar1.Value + i];
+					entry.Tile = tiles[scrolledIndex + i];
 					entry.Enabled = true;
 				}
-				entry.Refresh();
+				entry.Selected = (entry.Number == selectedEntry); //Set selected if selected.
 			}
 		}
 
@@ -151,6 +156,25 @@ namespace GB.Shared.Tiles
 			//Update the entry.
 			TileListEntry entry = entriesPanel.Controls.Find("Entry" + visibleIndex, false)[0] as TileListEntry;
 			entry.Tile = tiles[tile];
+		}
+
+		/// <summary>
+		/// Called when an entry is clicked.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="args"></param>
+		private void OnEntryClicked(object sender, EventArgs args) {
+			TileListEntry entry = sender as TileListEntry;
+			SelectedEntry = entry.Number;
+		}
+
+		/// <summary>
+		/// Called when the selected entry is changed.
+		/// </summary>
+		private void OnSelectedEntryChanged() {
+			foreach (TileListEntry e in entriesPanel.Controls) {
+				e.Selected = (e.Number == selectedEntry); //Set selected if selected.
+			}
 		}
 	}
 }

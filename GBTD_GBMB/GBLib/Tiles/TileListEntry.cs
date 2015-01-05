@@ -125,5 +125,17 @@ namespace GB.Shared.Tiles
 			e.Graphics.DrawString(usedText, new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black, 
 				new RectangleF(0, -1, textDisplay.Width, textDisplay.Height), format);
 		}
+
+		/// <summary>
+		/// Propper on-click handling in an ugly way.
+		/// Calls <code>this.InvokeOnClick</code> whenever a subcontrol is clicked.
+		/// 
+		/// TODO: This is not a good way of doing this, but I don't know the right way.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void subcontrol_Click(object sender, EventArgs e) {
+			this.InvokeOnClick(this, e);
+		}
 	}
 }
