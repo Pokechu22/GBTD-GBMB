@@ -11,7 +11,7 @@ namespace GB.Shared.Tiles
 	public abstract class TileEditor
 	{
 		/// <summary>
-		/// Applies the edit to the tile.
+		/// Applies the edit to the tileData.
 		/// </summary>
 		/// <param name="input"></param>
 		/// <param name="x"></param>

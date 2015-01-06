@@ -21,49 +21,18 @@ namespace GB.Shared.Tiles
 
 		private int number = 0;
 
-		[Category("Data"), Description("The tile's number.")]
+		[Category("Data"), Description("The tileData's number.")]
 		public int Number {
 			get { return number; }
 			set { number = value; SetupApearence(); }
 		}
 
-		private Palette palette = Palette.DefaultPalette;
-		/// <summary>
-		/// The full palette.
-		/// </summary>
-		public Palette Palette {
-			get { return palette; }
-			set { palette = value; SetupApearence(); }
-		}
-
-		private Tile tile = new Tile();
-		[Category("Data"), Description("The tile used.")]
+		private TileData tileData = new TileData();
+		[Category("Data"), Description("The tileData used.")]
 		[ReadOnly(true), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public Tile Tile {
-			get { return tile; }
-			set { tile = value; SetupApearence(); }
-		}
-
-		private Color black = Color.Black, darkGray = Color.DarkGray, lightGray = Color.LightGray, white = Color.White;
-		[Category("Data"), Description("The color used for \"Black\" areas.")]
-		public Color Black {
-			get { return this.black; }
-			set { this.black = value; SetupApearence(); }
-		}
-		[Category("Data"), Description("The color used for \"Dark Gray\" areas.")]
-		public Color DarkGray {
-			get { return this.darkGray; }
-			set { this.darkGray = value; SetupApearence(); }
-		}
-		[Category("Data"), Description("The color used for \"Light Gray\" areas.")]
-		public Color LightGray {
-			get { return this.lightGray; }
-			set { this.lightGray = value; SetupApearence(); }
-		}
-		[Category("Data"), Description("The color used for \"White\" areas.")]
-		public Color White {
-			get { return this.white; }
-			set { this.white = value; SetupApearence(); }
+		public TileData TileData {
+			get { return tileData; }
+			set { tileData = value; SetupApearence(); }
 		}
 
 		private bool selected;
@@ -71,14 +40,6 @@ namespace GB.Shared.Tiles
 		public bool Selected {
 			get { return selected; }
 			set { selected = value; SetupApearence(); }
-		}
-
-		public void SetColors(Color black, Color darkGray, Color lightGray, Color white) {
-			this.white = white;
-			this.darkGray = darkGray;
-			this.lightGray = lightGray;
-			this.black = black;
-			SetupApearence();
 		}
 
 		public TileListEntry() {
@@ -90,14 +51,14 @@ namespace GB.Shared.Tiles
 		protected virtual void SetupApearence() {
 			if (Enabled) {
 				if (Selected) {
-					tileRenderer1.Tile = this.tile;
-					tileRenderer1.Palette = this.palette.FilterAsSelected();
+					tileRenderer1.Tile = this.tileData.tile;
+					tileRenderer1.Palette = this.tileData.Palette.FilterAsSelected();
 				} else {
-					tileRenderer1.Tile = this.tile;
-					tileRenderer1.Palette = this.palette;
+					tileRenderer1.Tile = this.tileData.tile;
+					tileRenderer1.Palette = this.tileData.Palette;
 				}
 			} else {
-				tileRenderer1.Tile = this.tile;
+				tileRenderer1.Tile = this.tileData.tile;
 				tileRenderer1.Palette = Palette.DisabledPalette;
 			}
 			this.Refresh();

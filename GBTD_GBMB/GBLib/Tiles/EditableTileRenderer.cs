@@ -69,9 +69,9 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// The editor that is used to edit the tile.\nIf null, uses a NoEditTileEditor.
+		/// The editor that is used to edit the tileData.\nIf null, uses a NoEditTileEditor.
 		/// </summary>
-		[Category("Behavior"), Description("The editor that is used to edit the tile.\nIf null, uses a NoEditTileEditor.")]
+		[Category("Behavior"), Description("The editor that is used to edit the tileData.\nIf null, uses a NoEditTileEditor.")]
 		public TileEditor Editor {
 			get {
 				return editor;

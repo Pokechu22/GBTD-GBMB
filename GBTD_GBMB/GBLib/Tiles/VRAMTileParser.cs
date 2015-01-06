@@ -7,7 +7,7 @@ using System.IO;
 namespace GB.Shared.Tiles
 {
 	/// <summary>
-	/// Reads or writes a tile as it appears in Gameboy VRAM: 
+	/// Reads or writes a tileData as it appears in Gameboy VRAM: 
 	/// For each row of pixels, 2 bytes.  
 	/// </summary>
 	public class VRAMTileParser : TileParser

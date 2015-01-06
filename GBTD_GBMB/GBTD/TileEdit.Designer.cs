@@ -285,21 +285,21 @@
 			this.cutTileToolStripMenuItem.Name = "cutTileToolStripMenuItem";
 			this.cutTileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
 			this.cutTileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-			this.cutTileToolStripMenuItem.Text = "Cu&t tile";
+			this.cutTileToolStripMenuItem.Text = "Cu&t tileData";
 			// 
 			// copyTileToolStripMenuItem
 			// 
 			this.copyTileToolStripMenuItem.Name = "copyTileToolStripMenuItem";
 			this.copyTileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
 			this.copyTileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-			this.copyTileToolStripMenuItem.Text = "&Copy tile";
+			this.copyTileToolStripMenuItem.Text = "&Copy tileData";
 			// 
 			// pasteTileToolStripMenuItem
 			// 
 			this.pasteTileToolStripMenuItem.Name = "pasteTileToolStripMenuItem";
 			this.pasteTileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
 			this.pasteTileToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-			this.pasteTileToolStripMenuItem.Text = "&Paste tile";
+			this.pasteTileToolStripMenuItem.Text = "&Paste tileData";
 			// 
 			// toolStripSeparator7
 			// 

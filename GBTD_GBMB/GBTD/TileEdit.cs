@@ -75,10 +75,10 @@ namespace GB.GBTD
 
 		public Tile[] Tiles {
 			get {
-				return tileList1.Tiles;
+				return Array.ConvertAll(tileList1.Tiles, item => item.tile);
 			}
 			/*set {
-				tileList1.Tiles = (Tile[]) value.Clone();
+				tileList1.Tiles = (TileData[]) value.Clone();
 			}*/
 			//TODO
 		}
@@ -86,9 +86,9 @@ namespace GB.GBTD
 		private int selectedTileNumber = 0;
 
 		/// <summary>
-		/// The index of the tile currently selected.
+		/// The index of the tileData currently selected.
 		/// </summary>
-		[Category("Data"), Description("The index of the tile currently selected.")]
+		[Category("Data"), Description("The index of the tileData currently selected.")]
 		public int SelectedTileNumber {
 			get {
 				return selectedTileNumber;
@@ -124,10 +124,10 @@ namespace GB.GBTD
 		}
 
 		/// <summary>
-		/// Called when the selected tile is changed.
+		/// Called when the selected tileData is changed.
 		/// </summary>
 		protected void updateTile(int tile) {
-			//Tiles[tileList1.SelectedEntry] = this.mainTileEdit.Tile;
+			//Tiles[tileList1.SelectedEntry] = this.mainTileEdit.TileData;
 			this.mainTileEdit.Tile = Tiles[tile];
 		}
 
@@ -157,7 +157,11 @@ namespace GB.GBTD
 			foreach (var v in previewRenderers) {
 				v.Tile = mainTileEdit.Tile;
 			}
-			this.tileList1[tileList1.SelectedEntry] = mainTileEdit.Tile;
+			TileData data = new TileData();
+			data.tile = mainTileEdit.Tile;
+			data.set = this.paletteChooser.Set;
+			data.paletteID = this.paletteChooser.SelectedRow;
+			this.tileList1[tileList1.SelectedEntry] = data;
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
@@ -167,6 +171,12 @@ namespace GB.GBTD
 				v.LightGrayColor = mainTileEdit.LightGrayColor;
 				v.DarkGrayColor = mainTileEdit.DarkGrayColor;
 			}
+
+			TileData data = new TileData();
+			data.tile = mainTileEdit.Tile;
+			data.set = this.paletteChooser.Set;
+			data.paletteID = this.paletteChooser.SelectedRow;
+			this.tileList1[tileList1.SelectedEntry] = data;
 		}
 
 		private void autoUpdatedToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {

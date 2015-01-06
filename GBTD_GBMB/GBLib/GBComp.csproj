@@ -93,6 +93,7 @@
       <DependentUpon>TGammaPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Tiles\Tile.cs" />
+    <Compile Include="Tiles\TileData.cs" />
     <Compile Include="Tiles\TileEditor.cs" />
     <Compile Include="Tiles\TileEditorProvider.cs" />
     <Compile Include="Tiles\TileList.cs">

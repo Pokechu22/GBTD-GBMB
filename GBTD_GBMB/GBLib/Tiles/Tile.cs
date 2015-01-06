@@ -6,14 +6,14 @@ using System.Text;
 namespace GB.Shared.Tiles
 {
 	/// <summary>
-	/// A single tile.
+	/// A single tileData.
 	/// </summary>
 	public struct Tile
 	{
 		internal GBColor[,] pixels;
 
 		/// <summary>
-		/// Pixels on the tile.  MUST BE 8 by 8 exactly.
+		/// Pixels on the tileData.  MUST BE 8 by 8 exactly.
 		/// </summary>
 		public GBColor[,] Pixels {
 			get {

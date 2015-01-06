@@ -29,7 +29,7 @@ namespace GB.Shared.Tiles
 
 		#region Public properties
 
-		[Category("Data"), Description("The palette used by this tile.")]
+		[Category("Data"), Description("The palette used by this tileData.")]
 		public Palette Palette {
 			get {
 				return palette;
@@ -149,9 +149,9 @@ namespace GB.Shared.Tiles
 
 		#region Events
 		/// <summary>
-		/// Fires when the currently-used tile is changed.
+		/// Fires when the currently-used tileData is changed.
 		/// </summary>
-		[Category("Property Changed"), Description("Fires when the currently-used tile is changed.")]
+		[Category("Property Changed"), Description("Fires when the currently-used tileData is changed.")]
 		public event EventHandler TileChanged;
 
 		/// <summary>
@@ -161,10 +161,10 @@ namespace GB.Shared.Tiles
 		public event EventHandler PalatteChanged;
 
 		/// <summary>
-		/// Fires when a pixel in the tile is clicked.  
+		/// Fires when a pixel in the tileData is clicked.  
 		/// Use this over OnClick.
 		/// </summary>
-		[Category("Action"), Description("Fires when a pixel in the tile is clicked.  Use this over OnClick.")]
+		[Category("Action"), Description("Fires when a pixel in the tileData is clicked.  Use this over OnClick.")]
 		public event PixelClickedEvent PixelClicked;
 
 		protected void OnPalatteChange() {
@@ -332,7 +332,7 @@ namespace GB.Shared.Tiles
 	}
 
 	/// <summary>
-	/// EventArgs for anything dealing with a tile's pixel.
+	/// EventArgs for anything dealing with a tileData's pixel.
 	/// </summary>
 	public class PixelEventArgs : EventArgs
 	{
