@@ -58,13 +58,13 @@ namespace GB.Shared.Palettes
 		public Palette[] Rows {
 			get {
 				if (palettes == null) {
-					palettes = new Palette[this.behaviour.Height];
+					palettes = new Palette[this.Behaviour.Height];
 				}
 				return palettes;
 			}
 			set {
 				if (value.Length != this.behaviour.Height) {
-					throw new ArgumentOutOfRangeException("value.Length", value.Length, "Length of new array MUST match that of the behaviour's height (" + this.behaviour.Height + ")");
+					throw new ArgumentOutOfRangeException("value.Length", value.Length, "Length of new array MUST match that of the behaviour's height (" + this.Behaviour.Height + ")");
 				}
 				palettes = value;
 			}

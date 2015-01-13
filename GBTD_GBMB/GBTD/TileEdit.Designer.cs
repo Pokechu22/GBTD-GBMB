@@ -129,7 +129,7 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.tileList1 = new GB.Shared.Tiles.TileList();
+			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
@@ -1299,7 +1299,7 @@
 		private Shared.Tiles.TileRenderer groupedTileRenderer2;
 		private Shared.Tiles.TileRenderer groupedTileRenderer1;
 		private Shared.Tiles.TileRenderer groupedTileRenderer10;
-		private Shared.Tiles.TileList tileList1;
+		private Shared.Tiles.TileListControl tileList1;
 
 	}
 }

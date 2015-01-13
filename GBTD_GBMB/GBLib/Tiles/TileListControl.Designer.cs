@@ -1,6 +1,6 @@
 ﻿namespace GB.Shared.Tiles
 {
-	partial class TileList
+	partial class TileListControl
 	{
 		/// <summary> 
 		/// Required designer variable.

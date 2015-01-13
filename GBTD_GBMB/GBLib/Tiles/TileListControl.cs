@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GB.Shared.Tiles
 {
-	public partial class TileList : UserControl
+	public partial class TileListControl : UserControl
 	{
 		/// <summary>
 		/// Width of the control.
@@ -80,7 +80,7 @@ namespace GB.Shared.Tiles
 		[Category("Property Changed"), Description("Raised when the selected entry has been changed.")]
 		public event EventHandler SelectedEntryChanged;
 
-		public TileList() {
+		public TileListControl() {
 			InitializeComponent();
 		}
 
@@ -105,7 +105,7 @@ namespace GB.Shared.Tiles
 			entriesPanel.Controls.Clear();
 
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
-				TileListEntry newEntry = new TileListEntry();
+				TileListEntryControl newEntry = new TileListEntryControl();
 				newEntry.Location = new Point(1, 1 + (ENTRY_HEIGHT * i));
 				newEntry.TileData = new TileData();
 				newEntry.Number = i;
@@ -147,7 +147,7 @@ namespace GB.Shared.Tiles
 			}
 
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
-				TileListEntry entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntry;
+				TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntryControl;
 				entry.Number = scrolledIndex + i;
 				
 				if (scrolledIndex + i >= numberOfEntries) {
@@ -173,7 +173,7 @@ namespace GB.Shared.Tiles
 			}
 
 			//Update the entry.
-			TileListEntry entry = entriesPanel.Controls.Find("Entry" + visibleIndex, false)[0] as TileListEntry;
+			TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + visibleIndex, false)[0] as TileListEntryControl;
 			entry.TileData = tiles[tile];
 		}
 
@@ -183,7 +183,7 @@ namespace GB.Shared.Tiles
 		/// <param name="sender"></param>
 		/// <param name="args"></param>
 		private void OnEntryClicked(object sender, EventArgs args) {
-			TileListEntry entry = sender as TileListEntry;
+			TileListEntryControl entry = sender as TileListEntryControl;
 			SelectedEntry = entry.Number;
 		}
 
@@ -191,7 +191,7 @@ namespace GB.Shared.Tiles
 		/// Called when the selected entry is changed.
 		/// </summary>
 		private void OnSelectedEntryChanged() {
-			foreach (TileListEntry e in entriesPanel.Controls) {
+			foreach (TileListEntryControl e in entriesPanel.Controls) {
 				e.Selected = (e.Number == selectedEntry); //Set selected if selected.
 			}
 

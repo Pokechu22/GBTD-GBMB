@@ -11,7 +11,7 @@ using GB.Shared.Palettes;
 
 namespace GB.Shared.Tiles
 {
-	partial class TileListEntry : UserControl
+	partial class TileListEntryControl : UserControl
 	{
 		//The three default sizings.
 		protected override Size DefaultMaximumSize { get { return new Size(38, 17); } }
@@ -42,7 +42,7 @@ namespace GB.Shared.Tiles
 			set { selected = value; SetupApearence(); }
 		}
 
-		public TileListEntry() {
+		public TileListEntryControl() {
 			InitializeComponent();
 		}
 
