@@ -14,9 +14,7 @@ namespace GB.Shared.Tiles
 	public partial class TileRenderer : UserControl
 	{
 		#region Private members
-		private Palette palette = Palette.DefaultPalette;
-
-		private Tile tile = new Tile();
+		private TileData tileData = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile() };
 
 		private byte clickedX = 0, clickedY = 0;
 		private MouseButtons buttons = MouseButtons.None;
@@ -29,13 +27,38 @@ namespace GB.Shared.Tiles
 
 		#region Public properties
 
-		[Category("Data"), Description("The palette used by this tileData.")]
+		[Category("Data"), Description("The palette used by this tile.")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public Palette Palette {
 			get {
-				return palette;
+				return tileData.Palette;
 			}
 			set {
-				palette = value;
+				tileData.Palette = value;
+				OnPalatteChange();
+			}
+		}
+
+		[Category("Data"), Description("The entire palette set.  It is not recomended that this be modified.")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public PaletteSet PaletteSet {
+			get {
+				return tileData.set;
+			}
+			set {
+				tileData.set = value;
+				OnPalatteChange();
+			}
+		}
+
+		[Category("Data"), Description("The ID of the palette used by this tileData.")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public int PaletteID {
+			get {
+				return tileData.paletteID;
+			}
+			set {
+				tileData.paletteID = value;
 				OnPalatteChange();
 			}
 		}
@@ -47,10 +70,10 @@ namespace GB.Shared.Tiles
 		[Browsable(false), ReadOnly(true)]
 		public Color WhiteColor {
 			get {
-				return palette.EntryWhite;
+				return tileData.Palette.EntryWhite;
 			}
 			set {
-				palette.entry0.color = value;
+				tileData.setEntryColor(0, value);
 				OnPalatteChange();
 			}
 		}
@@ -62,10 +85,10 @@ namespace GB.Shared.Tiles
 		[Browsable(false), ReadOnly(true)]
 		public Color LightGrayColor {
 			get {
-				return palette.EntryLightGray;
+				return tileData.Palette.EntryWhite;
 			}
 			set {
-				palette.entry1.color = value;
+				tileData.setEntryColor(1, value);
 				OnPalatteChange();
 			}
 		}
@@ -77,10 +100,10 @@ namespace GB.Shared.Tiles
 		[Browsable(false), ReadOnly(true)]
 		public Color DarkGrayColor {
 			get {
-				return palette.EntryLightGray;
+				return tileData.Palette.EntryLightGray;
 			}
 			set {
-				palette.entry2.color = value;
+				tileData.setEntryColor(2, value);
 				OnPalatteChange();
 			}
 		}
@@ -92,10 +115,10 @@ namespace GB.Shared.Tiles
 		[Browsable(false), ReadOnly(true)]
 		public Color BlackColor {
 			get {
-				return palette.EntryBlack;
+				return tileData.Palette.EntryBlack;
 			}
 			set {
-				palette.entry3.color = value;
+				tileData.setEntryColor(3, value);
 				OnPalatteChange();
 			}
 		}
@@ -103,10 +126,10 @@ namespace GB.Shared.Tiles
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public Tile Tile {
 			get {
-				return tile;
+				return tileData.tile;
 			}
 			set {
-				this.tile = value;
+				this.tileData.tile = value;
 				OnTileChange();
 			}
 		}
@@ -189,7 +212,7 @@ namespace GB.Shared.Tiles
 		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
 			for (byte x = 0; x < 8; x++) {
 				for (byte y = 0; y < 8; y++) {
-					drawPixel(x, y, tile[x, y], e.Graphics);
+					drawPixel(x, y, tileData.tile[x, y], e.Graphics);
 				}
 			}
 
@@ -249,7 +272,7 @@ namespace GB.Shared.Tiles
 			float width = (w / 8.0f);
 			float height = (h / 8.0f);
 
-			Color c = palette[color].DisplayColor;
+			Color c = tileData.Palette[color].DisplayColor;
 
 			using (Brush brush = new SolidBrush(c)) {
 				g.FillRectangle(brush, x1, y1, width, height);

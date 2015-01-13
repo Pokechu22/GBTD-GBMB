@@ -78,7 +78,6 @@
     <Compile Include="Palettes\PaletteEntry.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Palettes\PaletteObjectsEditor.cs" />
     <Compile Include="Palettes\PaletteObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -94,19 +93,20 @@
     </Compile>
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Tiles\TileData.cs" />
+    <Compile Include="Tiles\TileDataList.cs" />
     <Compile Include="Tiles\TileEditor.cs" />
     <Compile Include="Tiles\TileEditorProvider.cs" />
-    <Compile Include="Tiles\TileList.cs">
+    <Compile Include="Tiles\TileListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tiles\TileList.Designer.cs">
-      <DependentUpon>TileList.cs</DependentUpon>
+    <Compile Include="Tiles\TileListControl.Designer.cs">
+      <DependentUpon>TileListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tiles\TileListEntry.cs">
+    <Compile Include="Tiles\TileListEntryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tiles\TileListEntry.Designer.cs">
-      <DependentUpon>TileListEntry.cs</DependentUpon>
+    <Compile Include="Tiles\TileListEntryControl.Designer.cs">
+      <DependentUpon>TileListEntryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Tiles\TileParser.cs" />
     <Compile Include="Tiles\TileRenderer.cs">
@@ -138,11 +138,11 @@
     <EmbeddedResource Include="Palettes\TGammaPanel.resx">
       <DependentUpon>TGammaPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tiles\TileList.resx">
-      <DependentUpon>TileList.cs</DependentUpon>
+    <EmbeddedResource Include="Tiles\TileListControl.resx">
+      <DependentUpon>TileListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tiles\TileListEntry.resx">
-      <DependentUpon>TileListEntry.cs</DependentUpon>
+    <EmbeddedResource Include="Tiles\TileListEntryControl.resx">
+      <DependentUpon>TileListEntryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tiles\TileRenderer.resx">
       <DependentUpon>TileRenderer.cs</DependentUpon>

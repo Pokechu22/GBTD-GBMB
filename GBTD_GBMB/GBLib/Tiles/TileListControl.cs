@@ -23,14 +23,14 @@ namespace GB.Shared.Tiles
 		/// </summary>
 		private int numberOfVisibleEntries = 0;
 
-		private int numberOfEntries = 0;
+		private TileDataList tileDatas = new TileDataList(16);
 		/// <summary>
 		/// The total number of tiles in total.
 		/// </summary>
 		[Category("Data"), Description("The number of tiles in total.")]
 		public int NumberOfEntries {
-			get { return numberOfEntries; }
-			set { numberOfEntries = value; OnNumberOfEntriesChanged(); }
+			get { return tileDatas.Length; }
+			set { tileDatas.Length = value; OnNumberOfEntriesChanged(); }
 		}
 
 		private int selectedEntry = 0;
@@ -39,18 +39,17 @@ namespace GB.Shared.Tiles
 			set { selectedEntry = value; OnSelectedEntryChanged(); }
 		}
 
-		private TileData[] tiles = new TileData[0];
-
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileData[] Tiles {
 			get {
-				return tiles;
+				return tileDatas.Tiles;
 			}
 			set {
 				if (value == null) {
 					throw new ArgumentNullException("value");
 				}
-				this.tiles = value;
-				this.NumberOfEntries = tiles.Length;
+				tileDatas.Tiles = value;
+				onTilesChanged();
 			}
 		}
 
@@ -63,13 +62,13 @@ namespace GB.Shared.Tiles
 		[Browsable(false), ReadOnly(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileData this[int tile] {
 			get {
-				if (tile < 0 || tile >= numberOfEntries) {
-					throw new ArgumentOutOfRangeException("tileData", tile, "Tiles out of range - must be between 0 and " + numberOfEntries + ".");
+				if (tile < 0 || tile >= tileDatas.Length) {
+					throw new ArgumentOutOfRangeException("tileData", tile, "Tiles out of range - must be between 0 and " + tileDatas.Length + ".");
 				}
-				return tiles[tile];
+				return tileDatas.Tiles[tile];
 			}
 			set {
-				tiles[tile] = value;
+				tileDatas.Tiles[tile] = value;
 				onTileChanged(tile);
 			}
 		}
@@ -111,11 +110,11 @@ namespace GB.Shared.Tiles
 				newEntry.TileData = new TileData();
 				newEntry.Number = i;
 				newEntry.Name = "Entry" + i;
-				if (vScrollBar1.Value + i >= numberOfEntries) {
+				if (vScrollBar1.Value + i >= tileDatas.Length) {
 					newEntry.TileData = new TileData();
 					newEntry.Enabled = false;
 				} else {
-					newEntry.TileData = tiles[vScrollBar1.Value + i];
+					newEntry.TileData = tileDatas.Tiles[vScrollBar1.Value + i];
 					newEntry.Enabled = true;
 				}
 				newEntry.Selected = (newEntry.Number == selectedEntry); //Set selected if selected.
@@ -132,10 +131,9 @@ namespace GB.Shared.Tiles
 		}
 
 		private void OnNumberOfEntriesChanged() {
-			vScrollBar1.Maximum = numberOfEntries;
+			vScrollBar1.Maximum = tileDatas.Length;
 			vScrollBar1.Minimum = 0;
 			vScrollBar1.Value = 0;
-			Array.Resize(ref tiles, numberOfEntries);
 		}
 
 		private void TileList_Load(object sender, EventArgs e) {
@@ -160,11 +158,11 @@ namespace GB.Shared.Tiles
 				TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntryControl;
 				entry.Number = scrolledIndex + i;
 				
-				if (scrolledIndex + i >= numberOfEntries) {
+				if (scrolledIndex + i >= tileDatas.Length) {
 					entry.TileData = new TileData();
 					entry.Enabled = false;
 				} else {
-					entry.TileData = tiles[scrolledIndex + i];
+					entry.TileData = tileDatas.Tiles[scrolledIndex + i];
 					entry.Enabled = true;
 				}
 				entry.Selected = (entry.Number == selectedEntry); //Set selected if selected.
@@ -185,7 +183,26 @@ namespace GB.Shared.Tiles
 
 			//Update the entry.
 			TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + visibleIndex, false)[0] as TileListEntryControl;
-			entry.TileData = tiles[tile];
+			entry.TileData = tileDatas.Tiles[tile];
+		}
+
+		/// <summary>
+		/// Processes a change to all tiles.
+		/// </summary>
+		/// <param name="tileData"></param>
+		private void onTilesChanged() {
+			for (int i = 0; i < numberOfVisibleEntries; i++) {
+				TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntryControl;
+
+				if (scrolledIndex + i >= tileDatas.Length) {
+					entry.TileData = new TileData();
+					entry.Enabled = false;
+				} else {
+					entry.TileData = tileDatas.Tiles[scrolledIndex + i];
+					entry.Enabled = true;
+				}
+				entry.Selected = (entry.Number == selectedEntry); //Set selected if selected.
+			}
 		}
 
 		/// <summary>

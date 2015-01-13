@@ -25,7 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor4 = new GB.Shared.Tiles.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -848,6 +848,7 @@
 			this.miniPreviewRenderer.Location = new System.Drawing.Point(0, 0);
 			this.miniPreviewRenderer.Margin = new System.Windows.Forms.Padding(0);
 			this.miniPreviewRenderer.Name = "miniPreviewRenderer";
+			this.miniPreviewRenderer.PaletteID = 0;
 			this.miniPreviewRenderer.Size = new System.Drawing.Size(24, 24);
 			this.miniPreviewRenderer.TabIndex = 5;
 			// 
@@ -887,6 +888,7 @@
 			this.groupedTileRenderer11.Location = new System.Drawing.Point(48, 48);
 			this.groupedTileRenderer11.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer11.Name = "groupedTileRenderer11";
+			this.groupedTileRenderer11.PaletteID = 0;
 			this.groupedTileRenderer11.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer11.TabIndex = 19;
 			// 
@@ -901,6 +903,7 @@
 			this.groupedTileRenderer15.Location = new System.Drawing.Point(48, 72);
 			this.groupedTileRenderer15.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer15.Name = "groupedTileRenderer15";
+			this.groupedTileRenderer15.PaletteID = 0;
 			this.groupedTileRenderer15.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer15.TabIndex = 18;
 			// 
@@ -915,6 +918,7 @@
 			this.groupedTileRenderer14.Location = new System.Drawing.Point(24, 72);
 			this.groupedTileRenderer14.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer14.Name = "groupedTileRenderer14";
+			this.groupedTileRenderer14.PaletteID = 0;
 			this.groupedTileRenderer14.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer14.TabIndex = 17;
 			// 
@@ -929,6 +933,7 @@
 			this.groupedTileRenderer16.Location = new System.Drawing.Point(72, 72);
 			this.groupedTileRenderer16.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer16.Name = "groupedTileRenderer16";
+			this.groupedTileRenderer16.PaletteID = 0;
 			this.groupedTileRenderer16.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer16.TabIndex = 16;
 			// 
@@ -943,6 +948,7 @@
 			this.groupedTileRenderer12.Location = new System.Drawing.Point(72, 48);
 			this.groupedTileRenderer12.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer12.Name = "groupedTileRenderer12";
+			this.groupedTileRenderer12.PaletteID = 0;
 			this.groupedTileRenderer12.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer12.TabIndex = 15;
 			// 
@@ -957,6 +963,7 @@
 			this.groupedTileRenderer13.Location = new System.Drawing.Point(0, 72);
 			this.groupedTileRenderer13.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer13.Name = "groupedTileRenderer13";
+			this.groupedTileRenderer13.PaletteID = 0;
 			this.groupedTileRenderer13.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer13.TabIndex = 14;
 			// 
@@ -971,6 +978,7 @@
 			this.groupedTileRenderer10.Location = new System.Drawing.Point(24, 48);
 			this.groupedTileRenderer10.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer10.Name = "groupedTileRenderer10";
+			this.groupedTileRenderer10.PaletteID = 0;
 			this.groupedTileRenderer10.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer10.TabIndex = 13;
 			// 
@@ -985,6 +993,7 @@
 			this.groupedTileRenderer9.Location = new System.Drawing.Point(0, 48);
 			this.groupedTileRenderer9.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer9.Name = "groupedTileRenderer9";
+			this.groupedTileRenderer9.PaletteID = 0;
 			this.groupedTileRenderer9.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer9.TabIndex = 12;
 			// 
@@ -999,6 +1008,7 @@
 			this.groupedTileRenderer8.Location = new System.Drawing.Point(72, 24);
 			this.groupedTileRenderer8.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer8.Name = "groupedTileRenderer8";
+			this.groupedTileRenderer8.PaletteID = 0;
 			this.groupedTileRenderer8.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer8.TabIndex = 11;
 			// 
@@ -1013,6 +1023,7 @@
 			this.groupedTileRenderer7.Location = new System.Drawing.Point(48, 24);
 			this.groupedTileRenderer7.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer7.Name = "groupedTileRenderer7";
+			this.groupedTileRenderer7.PaletteID = 0;
 			this.groupedTileRenderer7.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer7.TabIndex = 10;
 			// 
@@ -1027,6 +1038,7 @@
 			this.groupedTileRenderer6.Location = new System.Drawing.Point(24, 24);
 			this.groupedTileRenderer6.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer6.Name = "groupedTileRenderer6";
+			this.groupedTileRenderer6.PaletteID = 0;
 			this.groupedTileRenderer6.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer6.TabIndex = 9;
 			// 
@@ -1041,6 +1053,7 @@
 			this.groupedTileRenderer5.Location = new System.Drawing.Point(0, 24);
 			this.groupedTileRenderer5.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer5.Name = "groupedTileRenderer5";
+			this.groupedTileRenderer5.PaletteID = 0;
 			this.groupedTileRenderer5.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer5.TabIndex = 8;
 			// 
@@ -1055,6 +1068,7 @@
 			this.groupedTileRenderer4.Location = new System.Drawing.Point(72, 0);
 			this.groupedTileRenderer4.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer4.Name = "groupedTileRenderer4";
+			this.groupedTileRenderer4.PaletteID = 0;
 			this.groupedTileRenderer4.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer4.TabIndex = 7;
 			// 
@@ -1069,6 +1083,7 @@
 			this.groupedTileRenderer3.Location = new System.Drawing.Point(48, 0);
 			this.groupedTileRenderer3.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer3.Name = "groupedTileRenderer3";
+			this.groupedTileRenderer3.PaletteID = 0;
 			this.groupedTileRenderer3.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer3.TabIndex = 6;
 			// 
@@ -1083,6 +1098,7 @@
 			this.groupedTileRenderer2.Location = new System.Drawing.Point(24, 0);
 			this.groupedTileRenderer2.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer2.Name = "groupedTileRenderer2";
+			this.groupedTileRenderer2.PaletteID = 0;
 			this.groupedTileRenderer2.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer2.TabIndex = 5;
 			// 
@@ -1097,6 +1113,7 @@
 			this.groupedTileRenderer1.Location = new System.Drawing.Point(0, 0);
 			this.groupedTileRenderer1.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer1.Name = "groupedTileRenderer1";
+			this.groupedTileRenderer1.PaletteID = 0;
 			this.groupedTileRenderer1.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer1.TabIndex = 4;
 			// 
@@ -1126,7 +1143,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor2;
+			this.mainTileEdit.Editor = pixelTileEditor4;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -1134,6 +1151,7 @@
 			this.mainTileEdit.Margin = new System.Windows.Forms.Padding(0);
 			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tiles.GBColor.DARK_GRAY;
 			this.mainTileEdit.Name = "mainTileEdit";
+			this.mainTileEdit.PaletteID = 0;
 			this.mainTileEdit.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
 			this.mainTileEdit.TabIndex = 1;
