@@ -94,6 +94,7 @@ namespace GB.Shared.Tiles
 
 		private void TileList_Resize(object sender, EventArgs e) {
 			this.Resize -= new EventHandler(TileList_Resize);
+			this.SuspendLayout();
 			
 			this.Width = WIDTH;
 
@@ -127,6 +128,7 @@ namespace GB.Shared.Tiles
 			OnNumberOfEntriesChanged();
 
 			this.Resize += new EventHandler(TileList_Resize);
+			this.ResumeLayout();
 		}
 
 		private void OnNumberOfEntriesChanged() {
@@ -140,10 +142,18 @@ namespace GB.Shared.Tiles
 			this.OnResize(e);
 		}
 
+		private int scrolledIndex = 0;
+
 		private void vScrollBar1_ValueChanged(object sender, EventArgs e) {
-			int scrolledIndex = vScrollBar1.Value - numberOfVisibleEntries;
+			this.SuspendLayout();
+
+			int oldScrolledIndex = scrolledIndex;
+			scrolledIndex = vScrollBar1.Value - numberOfVisibleEntries;
 			if (scrolledIndex < 0) {
 				scrolledIndex = 0;
+			}
+			if (scrolledIndex == oldScrolledIndex) {
+				return;
 			}
 
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
@@ -159,6 +169,7 @@ namespace GB.Shared.Tiles
 				}
 				entry.Selected = (entry.Number == selectedEntry); //Set selected if selected.
 			}
+			this.ResumeLayout();
 		}
 
 		/// <summary>
