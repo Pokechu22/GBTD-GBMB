@@ -176,7 +176,7 @@ namespace GB.Shared.Tiles
 		/// <param name="tileData"></param>
 		private void onTileChanged(int tile) {
 			//Check if tileData is on screen; stop if it isn't visible since it doesn't need to be redrawn.
-			int visibleIndex = tile - vScrollBar1.Value;
+			int visibleIndex = tile - scrolledIndex;
 			if (visibleIndex < 0 || visibleIndex >= numberOfVisibleEntries) {
 				return;
 			}
@@ -191,6 +191,11 @@ namespace GB.Shared.Tiles
 		/// </summary>
 		/// <param name="tileData"></param>
 		private void onTilesChanged() {
+			scrolledIndex = vScrollBar1.Value - numberOfVisibleEntries;
+			if (scrolledIndex < 0) {
+				scrolledIndex = 0;
+			}
+
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
 				TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntryControl;
 
