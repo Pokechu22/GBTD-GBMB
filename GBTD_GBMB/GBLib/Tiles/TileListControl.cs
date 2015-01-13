@@ -24,6 +24,17 @@ namespace GB.Shared.Tiles
 		private int numberOfVisibleEntries = 0;
 
 		private TileDataList tileDatas = new TileDataList(16);
+
+		/// <summary>
+		/// All of the tiles and their palettes.
+		/// </summary>
+		[Category("Data"), Description("All of the tiles and their palettes.")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public TileDataList TileDatas {
+			get { return tileDatas; }
+			set { if (value == null) { throw new ArgumentNullException("value"); } tileDatas = value; OnNumberOfEntriesChanged(); }
+		}
+
 		/// <summary>
 		/// The total number of tiles in total.
 		/// </summary>
