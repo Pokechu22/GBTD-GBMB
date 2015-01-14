@@ -202,8 +202,6 @@ namespace GB.Shared.Palettes
 				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
 					SelectedRowIndex = 0;
 				}
-				int i = 0;
-				i = i; //TODO
 				set.Rows[SelectedRowIndex] = value;
 				reloadFromSet();
 			}

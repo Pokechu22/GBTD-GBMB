@@ -251,8 +251,6 @@ namespace GB.Shared.Palettes
 		/// Updates the PaletteSet used with the current data.
 		/// </summary>
 		protected virtual void freshenToSet() {
-			int i = 0;
-			i = i; //TODO
 			foreach (PaletteSetEntry e in this.entries) {
 				set.Rows[e.y][e.x] = new PaletteEntry(e.x, e.y, e.Color, set.Rows[e.y][e.x].behavior);
 			}
