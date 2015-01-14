@@ -73,6 +73,26 @@ namespace GB.GBTD
 		/// </summary>
 		private List<TileRenderer> previewRenderers = new List<TileRenderer>();
 
+		/// <summary>
+		/// The currently copied tile.
+		/// May be null, in which case there is nothing copied.
+		/// </summary>
+		private Tile? clipboard = null;
+		/// <summary>
+		/// The currently copied tile.
+		/// May be null, in which case there is nothing copied.
+		/// </summary>
+		[Category("Misc."), Description("The currently-copied tile.")]
+		public Tile? Clipboard {
+			get { return clipboard; }
+			set { 
+				clipboard = value;
+				
+				pasteTileToolStripMenuItem.Enabled = clipboard != null;
+				pasteToolStripButton.Enabled = clipboard != null;
+			}
+		}
+
 		public Tile[] Tiles {
 			get {
 				return Array.ConvertAll(tileList1.Tiles, item => item.tile);
@@ -245,6 +265,22 @@ namespace GB.GBTD
 
 		private void tileList1_SelectedEntryChanged(object sender, EventArgs e) {
 			updateTile(tileList1.SelectedEntry);
+		}
+
+		private void cutButtonClicked(object sender, EventArgs e) {
+			Clipboard = mainTileEdit.Tile;
+			mainTileEdit.Tile = new Tile(); //Empty.
+		}
+
+		private void copyButtonClicked(object sender, EventArgs e) {
+			Clipboard = mainTileEdit.Tile;
+		}
+
+		private void pasteButtonClicked(object sender, EventArgs e) {
+			if (!Clipboard.HasValue) {
+				throw new InvalidOperationException("Nothing to paste right now!  The button should be disabled...");
+			}
+			mainTileEdit.Tile = Clipboard.Value;
 		}
 	}
 }
