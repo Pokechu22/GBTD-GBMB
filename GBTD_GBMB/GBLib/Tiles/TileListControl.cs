@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Palettes;
 
 namespace GB.Shared.Tiles
 {
@@ -42,6 +43,11 @@ namespace GB.Shared.Tiles
 		public int NumberOfEntries {
 			get { return tileDatas.Length; }
 			set { tileDatas.Length = value; OnNumberOfEntriesChanged(); }
+		}
+
+		public PaletteSet PaletteSet {
+			get { return tileDatas.Palette; }
+			set { tileDatas.Palette = value; onTilesChanged(); }
 		}
 
 		private int selectedEntry = 0;

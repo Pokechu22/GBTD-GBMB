@@ -192,6 +192,7 @@ namespace GB.GBTD
 			d.ShowDialog();
 			if (d.DialogResult == DialogResult.OK) {
 				paletteChooser.Set = d.Set;
+				tileList1.PaletteSet = d.Set;
 			}
 		}
 

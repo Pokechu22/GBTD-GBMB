@@ -11,6 +11,11 @@ namespace GB.Shared.Tiles
 		private TileData[] tiles;
 
 		/// <summary>
+		/// The palette set shared between all tile datas.
+		/// </summary>
+		private PaletteSet sharedPallete = PaletteSet.DefaultPaletteSet;
+
+		/// <summary>
 		/// The number of tiles represented.  Can be set.
 		/// If set, resises the tile list using <see cref="Array.Resize"/>.
 		/// </summary>
@@ -22,6 +27,16 @@ namespace GB.Shared.Tiles
 		public TileData[] Tiles {
 			get { return tiles; }
 			set { if (value == null) { throw new ArgumentNullException(); } tiles = value; }
+		}
+
+		public PaletteSet Palette {
+			get { return sharedPallete; }
+			set {
+				sharedPallete = value;
+				for (int i = 0; i < tiles.Length; i++) {
+					tiles[i].set = sharedPallete;
+				}
+			}
 		}
 
 		/// <summary>
