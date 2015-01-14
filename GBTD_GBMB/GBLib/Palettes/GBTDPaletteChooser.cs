@@ -51,7 +51,7 @@ namespace GB.Shared.Palettes
 				private int index = 0;
 				public int Index {
 					get { return index; }
-					set { index = value; this.Text = value.ToString(); this.Refresh(); }
+					set { index = value; this.Text = value.ToString(); this.Invalidate(true); }
 				}
 
 				public GBTDPaletteChooserMouseEntryPaletteEntry(MouseButtons buttons, GBTDPaletteChooser chooser)
@@ -73,7 +73,7 @@ namespace GB.Shared.Palettes
 					}
 					set {
 						chooser.UseGBCFilter = value;
-						this.Refresh();
+						this.Invalidate(true);
 					}
 				}
 
@@ -139,7 +139,7 @@ namespace GB.Shared.Palettes
 			private void OnValueChange() {
 				entry.Color = item[index];
 				entry.Index = index;
-				this.Refresh();
+				this.Invalidate(true);
 			}
 
 			public GBTDPaletteChooserMouseEntry(MouseButtons buttons, GBTDPaletteChooser chooser)
@@ -193,14 +193,14 @@ namespace GB.Shared.Palettes
 		[Category("Display"), Description("Use the GBC filter?")]
 		public bool UseGBCFilter {
 			get { return useGBCFilter; }
-			set { useGBCFilter = value; this.Refresh(); }
+			set { useGBCFilter = value; this.Invalidate(true); }
 		}
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		[Category("Data"), Description("The used set.")]
 		public PaletteSet Set {
 			get { return this.gbPaletteChooser1.Set; }
-			set { this.gbPaletteChooser1.Set = value; this.Refresh(); }
+			set { this.gbPaletteChooser1.Set = value; this.Invalidate(true); }
 		}
 
 		[Category("Data"), Description("The row currently used.")]
@@ -322,7 +322,7 @@ namespace GB.Shared.Palettes
 			this.MinimumSize = new Size(115 + x, 26);
 			this.Size = new Size(115 + x, 26);
 
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		public GBTDPaletteChooser() {

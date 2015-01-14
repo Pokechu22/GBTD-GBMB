@@ -167,7 +167,7 @@ namespace GB.Shared.Palettes
 			} else {
 				this.ForeColor = Color.Black;
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		/// <summary>

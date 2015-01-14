@@ -145,7 +145,7 @@ namespace GB.Shared.Tiles
 			}
 			set {
 				this.grid = value;
-				this.Refresh();
+				this.Invalidate(true);
 			}
 		}
 
@@ -157,7 +157,7 @@ namespace GB.Shared.Tiles
 			set {
 				border = value;
 				this.OnResize(new EventArgs());
-				this.Refresh();
+				this.Invalidate(true);
 			}
 		}
 
@@ -169,7 +169,7 @@ namespace GB.Shared.Tiles
 			set {
 				borderSides = value;
 				this.OnResize(new EventArgs());
-				this.Refresh();
+				this.Invalidate(true);
 			}
 		}
 		#endregion
@@ -198,14 +198,14 @@ namespace GB.Shared.Tiles
 			if (PalatteChanged != null) {
 				PalatteChanged(this, new EventArgs());
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		protected void OnTileChange() {
 			if (TileChanged != null) {
 				TileChanged(this, new EventArgs());
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 		#endregion
 
@@ -352,7 +352,7 @@ namespace GB.Shared.Tiles
 						PixelClicked(this, new PixelClickEventArgs(x, y, buttons));
 					}
 
-					this.Refresh();
+					this.Invalidate(true);
 				}
 			}
 		}

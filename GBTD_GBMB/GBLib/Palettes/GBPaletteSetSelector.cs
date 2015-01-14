@@ -205,14 +205,14 @@ namespace GB.Shared.Palettes
 			if (SelectionChanged != null) {
 				SelectionChanged(this, new EventArgs());
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		protected void OnUseGBCFilterChange() {
 			if (UseGBCFilterChanged != null) {
 				UseGBCFilterChanged(this, new EventArgs());
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 		#endregion
 

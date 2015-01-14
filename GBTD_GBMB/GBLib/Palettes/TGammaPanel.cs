@@ -596,7 +596,7 @@ end;
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void TGammaPanel_SystemColorsChanged(object sender, EventArgs e) {
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		/// <summary>

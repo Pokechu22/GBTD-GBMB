@@ -61,7 +61,7 @@ namespace GB.Shared.Tiles
 				tileRenderer1.Tile = this.tileData.tile;
 				tileRenderer1.Palette = Palette.DisabledPalette;
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		protected override void OnEnabledChanged(EventArgs e) {

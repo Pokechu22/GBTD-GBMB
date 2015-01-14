@@ -99,7 +99,7 @@ namespace GB.GBTD
 						this.Image = nonhoveredImage;
 					}
 				}
-				this.Refresh();
+				this.Invalidate(true);
 			}
 
 			//Border painting.
@@ -206,7 +206,7 @@ namespace GB.GBTD
 						this.Image = nonhoveredImage;
 					}
 				}
-				this.Refresh();
+				this.Invalidate(true);
 			}
 
 			//Border painting.
@@ -316,7 +316,7 @@ namespace GB.GBTD
 						this.Image = nonhoveredImage;
 					}
 				}
-				this.Refresh();
+				this.Invalidate(true);
 			}
 
 			//Border painting.

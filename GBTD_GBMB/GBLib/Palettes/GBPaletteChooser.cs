@@ -162,7 +162,7 @@ namespace GB.Shared.Palettes
 		[Category("Behavior"), Description("Controls whether or not to render with the GBC Filter.")]
 		public bool UseGBCFilter {
 			get { return useGBCFilter; }
-			set { useGBCFilter = value; this.Refresh(); }
+			set { useGBCFilter = value; this.Invalidate(true); }
 		}
 
 		private int highlightedEntryIndex = -1;
@@ -172,7 +172,7 @@ namespace GB.Shared.Palettes
 		[Category("Data"), Description("The currently-selected index.")]
 		public int HighlightedEntryIndex {
 			get { return highlightedEntryIndex; }
-			set { highlightedEntryIndex = value; this.Refresh(); }
+			set { highlightedEntryIndex = value; this.Invalidate(true); }
 		}
 
 		/// <summary>
@@ -253,7 +253,7 @@ namespace GB.Shared.Palettes
 			if (SelectedPaletteChanged != null) {
 				SelectedPaletteChanged(this, new SelectedPaletteChangeEventArgs(this, dropDown.SelectedIndex));
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 
 		public event PaletteEntryClickEventHandler PaletteEntryClicked;
@@ -262,7 +262,7 @@ namespace GB.Shared.Palettes
 			if (PaletteEntryClicked != null) {
 				PaletteEntryClicked(this, new PaletteEntryClickEventArgs(this, this.dropDown.SelectedIndex, entry.x, buttons));
 			}
-			this.Refresh();
+			this.Invalidate(true);
 		}
 		#endregion
 
@@ -364,7 +364,7 @@ namespace GB.Shared.Palettes
 			this.entry2.Color = Set[this.dropDown.SelectedIndex][2];
 			this.entry3.Color = Set[this.dropDown.SelectedIndex][3];
 
-			this.Refresh();
+			this.Invalidate(true);
 		}
 	}
 }
