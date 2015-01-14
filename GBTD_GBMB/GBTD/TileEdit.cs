@@ -191,6 +191,8 @@ namespace GB.GBTD
 			if (!updatingFromTileList) {
 				this.tileList1[tileList1.SelectedEntry] = data;
 			}
+
+			mainTileEdit.Refresh();
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
@@ -209,6 +211,8 @@ namespace GB.GBTD
 			if (!updatingFromTileList) {
 				this.tileList1[tileList1.SelectedEntry] = data;
 			}
+
+			mainTileEdit.Refresh();
 		}
 
 		private void autoUpdatedToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
