@@ -149,11 +149,11 @@ namespace GB.Shared.Palettes
 				this.buttons = buttons;
 
 				switch (buttons) {
-				case System.Windows.Forms.MouseButtons.Left: identifier = "L"; break;
-				case System.Windows.Forms.MouseButtons.Right: identifier = "R"; break;
-				case System.Windows.Forms.MouseButtons.Middle: identifier = "M"; break;
-				case System.Windows.Forms.MouseButtons.XButton1: identifier = "X1"; break;
-				case System.Windows.Forms.MouseButtons.XButton2: identifier = "X2"; break;
+				case System.Windows.Forms.MouseButtons.Left: identifier = "L"; index = 3; break;
+				case System.Windows.Forms.MouseButtons.Right: identifier = "R"; index = 0; break;
+				case System.Windows.Forms.MouseButtons.Middle: identifier = "M"; index = 2; break;
+				case System.Windows.Forms.MouseButtons.XButton1: identifier = "X1"; index = 0; break;
+				case System.Windows.Forms.MouseButtons.XButton2: identifier = "X2"; index = 0; break;
 				default: throw new InvalidOperationException("Illegal MouseButtons provided: Must only be one; got " + buttons + " (" + ((int)buttons) + ")");
 				}
 
@@ -178,6 +178,8 @@ namespace GB.Shared.Palettes
 
 				label.SendToBack();
 
+				OnValueChange();//TODO
+
 				this.ResumeLayout();
 			}
 
@@ -194,7 +196,7 @@ namespace GB.Shared.Palettes
 			set { useGBCFilter = value; this.Refresh(); }
 		}
 
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		[Category("Data"), Description("The used set.")]
 		public PaletteSet Set {
 			get { return this.gbPaletteChooser1.Set; }
@@ -236,26 +238,31 @@ namespace GB.Shared.Palettes
 		}
 
 		[Category("Value"), Description("The color used by the left mouse button.")]
+		[DefaultValue(GBColor.BLACK)]
 		public GBColor LeftMouseColor {
 			get { return mouseButtonL.MatchingGBColor; }
 			set { mouseButtonL.MatchingGBColor = value; }
 		}
 		[Category("Value"), Description("The color used by the right mouse button.")]
+		[DefaultValue(GBColor.WHITE)]
 		public GBColor RightMouseColor {
 			get { return mouseButtonR.MatchingGBColor; }
 			set { mouseButtonR.MatchingGBColor = value; }
 		}
 		[Category("Value"), Description("The color used by the middle mouse button.")]
+		[DefaultValue(GBColor.DARK_GRAY)]
 		public GBColor MiddleMouseColor {
 			get { return mouseButtonM.MatchingGBColor; }
 			set { mouseButtonM.MatchingGBColor = value; }
 		}
 		[Category("Value"), Description("The color used by the X1 mouse button.")]
+		[DefaultValue(GBColor.WHITE)]
 		public GBColor X1MouseColor {
 			get { return mouseButtonX1.MatchingGBColor; }
 			set { mouseButtonX1.MatchingGBColor = value; }
 		}
 		[Category("Value"), Description("The color used by the X2 mouse button.")]
+		[DefaultValue(GBColor.WHITE)]
 		public GBColor X2MouseColor {
 			get { return mouseButtonX2.MatchingGBColor; }
 			set { mouseButtonX2.MatchingGBColor = value; }
