@@ -211,6 +211,7 @@ namespace GB.GBTD
 		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {
 			if (updatingFromTileList) { return; }
 
+			mainTileEdit.PaletteSet = paletteChooser.Set;
 			mainTileEdit.PaletteID = paletteChooser.SelectedRow;
 		}
 
