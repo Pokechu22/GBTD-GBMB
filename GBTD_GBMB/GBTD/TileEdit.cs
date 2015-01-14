@@ -123,12 +123,18 @@ namespace GB.GBTD
 			previewRenderers.Add(groupedTileRenderer16);
 		}
 
+		private volatile bool updatingFromTileList = false;
+
 		/// <summary>
 		/// Called when the selected tileData is changed.
 		/// </summary>
 		protected void updateTile(int tile) {
-			//Tiles[tileList1.SelectedEntry] = this.mainTileEdit.TileData;
-			this.mainTileEdit.Tile = Tiles[tile];
+			if (updatingFromTileList) { return; }
+
+			updatingFromTileList = true;
+			this.mainTileEdit.TileData = tileList1.TileDatas.Tiles[tile];
+			this.paletteChooser.SelectedRow = tileList1.TileDatas.Tiles[tile].paletteID;
+			updatingFromTileList = false;
 		}
 
 		private void tileEditBorder_Paint(object sender, PaintEventArgs e) {
@@ -161,7 +167,10 @@ namespace GB.GBTD
 			data.tile = mainTileEdit.Tile;
 			data.set = this.paletteChooser.Set;
 			data.paletteID = this.paletteChooser.SelectedRow;
-			this.tileList1[tileList1.SelectedEntry] = data;
+
+			if (!updatingFromTileList) {
+				this.tileList1[tileList1.SelectedEntry] = data;
+			}
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
@@ -176,7 +185,10 @@ namespace GB.GBTD
 			data.tile = mainTileEdit.Tile;
 			data.set = this.paletteChooser.Set;
 			data.paletteID = this.paletteChooser.SelectedRow;
-			this.tileList1[tileList1.SelectedEntry] = data;
+
+			if (!updatingFromTileList) {
+				this.tileList1[tileList1.SelectedEntry] = data;
+			}
 		}
 
 		private void autoUpdatedToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
@@ -197,7 +209,9 @@ namespace GB.GBTD
 		}
 
 		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {
-			mainTileEdit.Palette = paletteChooser.Set[paletteChooser.SelectedRow];
+			if (updatingFromTileList) { return; }
+
+			mainTileEdit.PaletteID = paletteChooser.SelectedRow;
 		}
 
 		private void scrollLeftClicked(object sender, EventArgs e) {

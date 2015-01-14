@@ -502,7 +502,7 @@ namespace GB.GBTD
 		/// <summary>
 		/// Should auto update?
 		/// </summary>
-		[Category("Data"), Description("Is automatic updating enabled?")]
+		[Category("Data"), Description("Is automatic updatingFromTileList enabled?")]
 		public bool AutoUpdate {
 			get {
 				return autoUpdateCheckbox.Checked;

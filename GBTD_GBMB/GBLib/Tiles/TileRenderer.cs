@@ -26,6 +26,10 @@ namespace GB.Shared.Tiles
 		#endregion
 
 		#region Public properties
+		public TileData TileData {
+			get { return tileData; }
+			set { tileData = value; OnTileChange(); OnPalatteChange(); }
+		}
 
 		[Category("Data"), Description("The palette used by this tile.")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
