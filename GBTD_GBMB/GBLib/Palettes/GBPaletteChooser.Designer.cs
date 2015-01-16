@@ -27,12 +27,13 @@
 		private void InitializeComponent() {
 			this.vScrollBar = new System.Windows.Forms.VScrollBar();
 			this.dropDown = new System.Windows.Forms.ComboBox();
+			this.spinner1 = new GB.Shared.Palettes.Spinner();
 			this.SuspendLayout();
 			// 
 			// vScrollBar
 			// 
 			this.vScrollBar.LargeChange = 1;
-			this.vScrollBar.Location = new System.Drawing.Point(0, 0);
+			this.vScrollBar.Location = new System.Drawing.Point(69, 0);
 			this.vScrollBar.Name = "vScrollBar";
 			this.vScrollBar.Size = new System.Drawing.Size(16, 21);
 			this.vScrollBar.TabIndex = 0;
@@ -67,12 +68,21 @@
 			this.dropDown.SelectedIndexChanged += new System.EventHandler(this.dropDown_SelectedIndexChanged);
 			this.dropDown.SelectionChangeCommitted += new System.EventHandler(this.dropDown_SelectionChangeCommitted);
 			// 
+			// spinner1
+			// 
+			this.spinner1.Location = new System.Drawing.Point(0, 0);
+			this.spinner1.Name = "spinner1";
+			this.spinner1.Size = new System.Drawing.Size(16, 21);
+			this.spinner1.TabIndex = 2;
+			this.spinner1.TimerInterval = 100;
+			// 
 			// GBPaletteChooser
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.dropDown);
 			this.Controls.Add(this.vScrollBar);
+			this.Controls.Add(this.spinner1);
+			this.Controls.Add(this.dropDown);
 			this.MaximumSize = new System.Drawing.Size(111, 22);
 			this.MinimumSize = new System.Drawing.Size(111, 22);
 			this.Name = "GBPaletteChooser";
@@ -85,5 +95,6 @@
 
 		private System.Windows.Forms.VScrollBar vScrollBar;
 		private System.Windows.Forms.ComboBox dropDown;
+		private Spinner spinner1;
 	}
 }

@@ -49,6 +49,12 @@
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Palettes\ColorFiltration.cs" />
+    <Compile Include="Palettes\Spinner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Palettes\Spinner.Designer.cs">
+      <DependentUpon>Spinner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tiles\GBColor.cs" />
     <Compile Include="Tiles\GBCompression.cs" />
     <Compile Include="Tiles\EditableTileRenderer.cs">
@@ -121,6 +127,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Palettes\ChoosePaletteDialog.resx">
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Palettes\Spinner.resx">
+      <DependentUpon>Spinner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tiles\EditableTileRenderer.resx">
       <DependentUpon>EditableTileRenderer.cs</DependentUpon>
