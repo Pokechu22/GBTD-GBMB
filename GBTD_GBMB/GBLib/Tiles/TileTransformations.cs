@@ -17,11 +17,10 @@ namespace GB.Shared.Tiles
 		/// <returns></returns>
 		public static Tile ScrolledLeft(Tile tile) {
 			Tile returned = new Tile();
-			returned.Pixels = new GBColor[8, 8];
 
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[unchecked(x + 1) % 8, y];
+					returned[x, y] = tile[unchecked(x + 1) % 8, y];
 				}
 			}
 
@@ -35,11 +34,10 @@ namespace GB.Shared.Tiles
 		/// <returns></returns>
 		public static Tile ScrolledRight(Tile tile) {
 			Tile returned = new Tile();
-			returned.Pixels = new GBColor[8, 8];
 
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[unchecked(x - 1) % 8, y];
+					returned[x, y] = tile[unchecked(x - 1) % 8, y];
 				}
 			}
 
@@ -53,11 +51,10 @@ namespace GB.Shared.Tiles
 		/// <returns></returns>
 		public static Tile ScrolledDown(Tile tile) {
 			Tile returned = new Tile();
-			returned.Pixels = new GBColor[8, 8];
 
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[x, unchecked(y - 1) % 8];
+					returned[x, y] = tile[x, unchecked(y - 1) % 8];
 				}
 			}
 
@@ -71,11 +68,10 @@ namespace GB.Shared.Tiles
 		/// <returns></returns>
 		public static Tile ScrolledUp(Tile tile) {
 			Tile returned = new Tile();
-			returned.Pixels = new GBColor[8, 8];
 
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[x, unchecked(y + 1) % 8];
+					returned[x, y] = tile[x, unchecked(y + 1) % 8];
 				}
 			}
 
@@ -90,11 +86,9 @@ namespace GB.Shared.Tiles
 		public static Tile FlippedVertically(Tile tile) {
 			Tile returned = new Tile();
 
-			returned.Pixels = new GBColor[8, 8];
-
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[7 - x, y];
+					returned[x, y] = tile[7 - x, y];
 				}
 			}
 
@@ -109,11 +103,9 @@ namespace GB.Shared.Tiles
 		public static Tile FlippedHoriziontally(Tile tile) {
 			Tile returned = new Tile();
 
-			returned.Pixels = new GBColor[8, 8];
-
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[x, 7 - y];
+					returned[x, y] = tile[x, 7 - y];
 				}
 			}
 
@@ -128,11 +120,9 @@ namespace GB.Shared.Tiles
 		public static Tile RotateClockwise(Tile tile) {
 			Tile returned = new Tile();
 
-			returned.Pixels = new GBColor[8, 8];
-
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[y, 7 - x];//tileData.pixels[y + 4, x];
+					returned[x, y] = tile[y, 7 - x];//tileData.pixels[y + 4, x];
 				}
 			}
 
@@ -149,11 +139,9 @@ namespace GB.Shared.Tiles
 		public static Tile RotateCounterclockwise(Tile tile) {
 			Tile returned = new Tile();
 
-			returned.Pixels = new GBColor[8, 8];
-
 			for (uint x = 0; x < 8; x++) {
 				for (uint y = 0; y < 8; y++) {
-					returned.Pixels[x, y] = tile.Pixels[7 - y, x];
+					returned[x, y] = tile[7 - y, x];
 				}
 			}
 
