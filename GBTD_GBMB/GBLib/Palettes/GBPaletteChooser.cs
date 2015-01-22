@@ -280,8 +280,6 @@ namespace GB.Shared.Palettes
 
 			this.dropDown.SendToBack();
 			this.ResumeLayout();
-
-			vScrollBar.Maximum = dropDown.Items.Count - 1;
 		}
 
 		private void dropDown_DrawItem(object sender, DrawItemEventArgs e) {
@@ -298,12 +296,7 @@ namespace GB.Shared.Palettes
 			e.ItemWidth = 19 * 5;
 		}
 
-		private void vScrollBar_ValueChanged(object sender, EventArgs e) {
-			dropDown.SelectedIndex = vScrollBar.Value;
-		}
-
 		private void dropDown_SelectedIndexChanged(object sender, EventArgs e) {
-			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
 			Palette item = set[Convert.ToInt32((String)box.Text)];
@@ -316,7 +309,6 @@ namespace GB.Shared.Palettes
 		}
 
 		private void dropDown_SelectionChangeCommitted(object sender, EventArgs e) {
-			vScrollBar.Value = dropDown.SelectedIndex;
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
 			Palette item = set[Convert.ToInt32((String)box.Text)];
@@ -363,6 +355,14 @@ namespace GB.Shared.Palettes
 			this.entry3.Color = Set[this.dropDown.SelectedIndex][3];
 
 			this.Invalidate(true);
+		}
+
+		private void spinner_Down(object sender, EventArgs e) {
+			SelectedRowIndex = (SelectedRowIndex + 1) % set.NumberOfRows;
+		}
+
+		private void spinner_Up(object sender, EventArgs e) {
+			SelectedRowIndex = Math.Abs((SelectedRowIndex - 1) % set.NumberOfRows);
 		}
 	}
 }

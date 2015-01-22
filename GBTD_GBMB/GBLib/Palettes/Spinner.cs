@@ -30,16 +30,20 @@ namespace GB.Shared.Palettes
 					(size.Width | 0x01) + 7, //Size of 7 if odd, 8 if even.
 					(size.Height | 0x01) + 7); //Size of 7 if odd, 8 if even.
 
+				Rectangle borderRect = new Rectangle(0, 0, size.Width, size.Height);
+				Rectangle borderRectIn = new Rectangle(1, 1, size.Width - 2, size.Height - 2);
+
 				using (Bitmap temp = new Bitmap(size.Width, size.Height)) {
 					using (Graphics g = Graphics.FromImage(temp)) {
 						if (state.HasFlag(ButtonState.Pushed)) {
 							ControlPaint.DrawScrollButton(g, buttonRect, button, state);
-							ControlPaint.DrawBorder3D(g, 0, 0, size.Width, size.Height, Border3DStyle.Sunken, Border3DSide.Right | Border3DSide.Bottom);
-							ControlPaint.DrawBorder3D(g, 0, 0, size.Width, size.Height, Border3DStyle.Sunken, Border3DSide.Top | Border3DSide.Left);
+							ControlPaint.DrawBorder3D(g, borderRect, Border3DStyle.SunkenInner, Border3DSide.Right | Border3DSide.Bottom);
+							ControlPaint.DrawBorder3D(g, borderRect, Border3DStyle.SunkenInner, Border3DSide.Top | Border3DSide.Left);
+							ControlPaint.DrawBorder3D(g, borderRectIn, Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
 						} else {
 							ControlPaint.DrawScrollButton(g, buttonRect, button, state);
-							ControlPaint.DrawBorder3D(g, 0, 0, size.Width, size.Height, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
-							ControlPaint.DrawBorder3D(g, 0, 0, size.Width, size.Height, Border3DStyle.RaisedInner, Border3DSide.Top | Border3DSide.Left);
+							ControlPaint.DrawBorder3D(g, borderRect, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
+							ControlPaint.DrawBorder3D(g, borderRect, Border3DStyle.RaisedInner, Border3DSide.Top | Border3DSide.Left);
 						}
 					}
 
@@ -178,8 +182,13 @@ namespace GB.Shared.Palettes
 				upperButtonState = lowerButtonState = ButtonState.Inactive;
 			}
 
-			ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
-			ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.RaisedOuter, Border3DSide.Bottom);
+			if (clicked == SpinnerButton.DOWN) {
+				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Bottom);
+				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
+			} else {
+				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.RaisedOuter, Border3DSide.Bottom);
+			}
 
 			e.Graphics.DrawImage(SpinnerButtonRenderer.Render(upperButtonState, ScrollButton.Up, upperButtonBounds.Size), upperButtonBounds);
 			e.Graphics.DrawImage(SpinnerButtonRenderer.Render(lowerButtonState, ScrollButton.Down, lowerButtonBounds.Size), lowerButtonBounds);
