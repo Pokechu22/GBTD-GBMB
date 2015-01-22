@@ -286,5 +286,9 @@ namespace GB.GBTD
 			}
 			mainTileEdit.Tile = Clipboard.Value;
 		}
+
+		private void nibbleMarkersToolStripMenuItem_Click(object sender, EventArgs e) {
+			mainTileEdit.NibbleMarkers ^= true;
+		}
 	}
 }
