@@ -136,6 +136,7 @@ namespace GB.Shared.Tiles
 		/// <summary>
 		/// Pixels on the tileData.  MUST BE 8 by 8 exactly.
 		/// </summary>
+		[Obsolete("Can't be modified directly, and thus discards changes.  Use indexer instead.")]
 		public GBColor[,] Pixels {
 			get {
 				return pixels;
@@ -160,13 +161,34 @@ namespace GB.Shared.Tiles
 				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
 				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
 
-				return Pixels[x, y];
+				return pixels[x, y];
 			}
 			set {
 				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
 				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
 				
 				this.pixels[x, y] = value;
+			}
+		}
+
+		/// <summary>
+		/// Sets/gets the specific pixels of the image.
+		/// </summary>
+		/// <param name="x">x-coord of pixel, from 0 to 7</param>
+		/// <param name="y">y-coord of pixel, from 0 to 7</param>
+		/// <returns>Pixel at (x,y).</returns>
+		public GBColor this[uint x, uint y] {
+			get {
+				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
+				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
+
+				return pixels[(int)x, (int)y];
+			}
+			set {
+				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
+				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
+
+				this.pixels[(int)x, (int)y] = value;
 			}
 		}
 	}
