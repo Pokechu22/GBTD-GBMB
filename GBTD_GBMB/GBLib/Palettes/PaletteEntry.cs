@@ -10,7 +10,7 @@ namespace GB.Shared.Palettes
 	/// <summary>
 	/// Internal class which represents an individual entry.
 	/// </summary>
-	internal abstract class PaletteEntryRenderer : Label
+	internal abstract class PaletteEntryRenderer : Control // : Label
 	{
 		protected override Padding DefaultMargin {
 			get {
@@ -77,6 +77,15 @@ namespace GB.Shared.Palettes
 			}
 		}
 
+		private StringFormat format = new StringFormat();
+		/// <summary>
+		/// Text formating used.
+		/// </summary>
+		protected StringFormat Format {
+			get { return format; }
+			set { if (value == null) { throw new ArgumentNullException(); } format = value; }
+		}
+
 		public readonly int x, y;
 
 		private Color color;
@@ -99,8 +108,10 @@ namespace GB.Shared.Palettes
 
 			this.Text = x.ToString();
 			this.Name = "entry_x" + x + "_y" + y;
-
-			this.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			//this.Font = new Font(this.Font.FontFamily, 8.25f, this.Font.Style);
+			
+			this.Format.Alignment = StringAlignment.Center;
+			this.Format.LineAlignment = StringAlignment.Center;
 
 			this.TabIndex = (y * 4) + x;
 
@@ -152,6 +163,14 @@ namespace GB.Shared.Palettes
 
 		public override string ToString() {
 			return base.ToString() + " @ x" + x + " y" + y;
+		}
+
+		protected override void OnPaint(PaintEventArgs e) {
+			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+			using (Brush b = new SolidBrush(this.ForeColor)) {
+				e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.Width, e.ClipRectangle.Height), this.Format);
+			}
+			base.OnPaint(e);
 		}
 
 		/// <summary>
