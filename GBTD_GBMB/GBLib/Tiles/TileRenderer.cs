@@ -21,6 +21,7 @@ namespace GB.Shared.Tiles
 
 		private bool grid = false;
 		private bool border = true;
+		private bool nibbleMarkers = false;
 
 		private Border3DSide borderSides = Border3DSide.All;
 		#endregion
@@ -161,6 +162,17 @@ namespace GB.Shared.Tiles
 			}
 		}
 
+		[Category("Display"), Description("Controls drawing of nibble markers, which are blue dots every 4 pixels.")]
+		public bool NibbleMarkers {
+			get {
+				return nibbleMarkers;
+			}
+			set {
+				nibbleMarkers = value;
+				this.Invalidate(true);
+			}
+		}
+
 		[Category("Display"), Description("Controls drawing of a border around the control.  Also effects the size.")]
 		public Border3DSide BorderSides {
 			get {
@@ -214,6 +226,8 @@ namespace GB.Shared.Tiles
 		}
 
 		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
+			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+
 			for (byte x = 0; x < 8; x++) {
 				for (byte y = 0; y < 8; y++) {
 					drawPixel(x, y, tileData.tile[x, y], e.Graphics);
@@ -244,6 +258,28 @@ namespace GB.Shared.Tiles
 					Color.Black, borderSides.HasFlag(Border3DSide.Top) ? 1 : 0, ButtonBorderStyle.Solid,
 					Color.Black, borderSides.HasFlag(Border3DSide.Right) ? 1 : 0, ButtonBorderStyle.Solid,
 					Color.Black, borderSides.HasFlag(Border3DSide.Bottom) ? 1 : 0, ButtonBorderStyle.Solid);
+			}
+			if (nibbleMarkers) {
+				//3 here is the size.
+				for (int x = 0; x <= 2; x++) {
+					for (int y = 0; y <= 2; y++) {
+						int centX = 0, centY = 0;
+
+						switch (x) {
+						case 0: centX = 0; break;
+						case 1: centX = Width / 2; break;
+						case 2: centX = Width - 1; break;
+						}
+						switch (y) {
+						case 0: centY = 0; break;
+						case 1: centY = Height / 2; break;
+						case 2: centY = Height - 1; break;
+						}
+
+						e.Graphics.FillRectangle(Brushes.Blue, centX - 1, centY, 3, 1);
+						e.Graphics.FillRectangle(Brushes.Blue, centX, centY - 1, 1, 3);
+					}
+				}
 			}
 		}
 
