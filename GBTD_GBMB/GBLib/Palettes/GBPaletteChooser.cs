@@ -364,5 +364,10 @@ namespace GB.Shared.Palettes
 		private void spinner_Up(object sender, EventArgs e) {
 			SelectedRowIndex = Math.Abs((SelectedRowIndex - 1) % set.NumberOfRows);
 		}
+
+		private void spinnerBorder_Paint(object sender, PaintEventArgs e) {
+			ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Bottom);
+			ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.RaisedOuter, Border3DSide.Left);
+		}
 	}
 }

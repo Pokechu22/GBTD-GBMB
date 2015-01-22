@@ -27,6 +27,7 @@
 		private void InitializeComponent() {
 			this.dropDown = new System.Windows.Forms.ComboBox();
 			this.spinner = new GB.Shared.Palettes.Spinner();
+			this.spinnerBorder = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
 			// dropDown
@@ -68,12 +69,22 @@
 			this.spinner.Up += new System.EventHandler(this.spinner_Up);
 			this.spinner.Down += new System.EventHandler(this.spinner_Down);
 			// 
+			// spinnerBorder
+			// 
+			this.spinnerBorder.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.spinnerBorder.Location = new System.Drawing.Point(0, 0);
+			this.spinnerBorder.Name = "spinnerBorder";
+			this.spinnerBorder.Size = new System.Drawing.Size(111, 22);
+			this.spinnerBorder.TabIndex = 3;
+			this.spinnerBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.spinnerBorder_Paint);
+			// 
 			// GBPaletteChooser
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.spinner);
 			this.Controls.Add(this.dropDown);
+			this.Controls.Add(this.spinnerBorder);
 			this.MaximumSize = new System.Drawing.Size(111, 22);
 			this.MinimumSize = new System.Drawing.Size(111, 22);
 			this.Name = "GBPaletteChooser";
@@ -86,5 +97,6 @@
 
 		private System.Windows.Forms.ComboBox dropDown;
 		private Spinner spinner;
+		private System.Windows.Forms.Panel spinnerBorder;
 	}
 }
