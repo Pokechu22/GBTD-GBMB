@@ -1,4 +1,4 @@
-﻿namespace GB.Shared.Palettes
+﻿namespace GB.Shared.Controls
 {
 	partial class Spinner
 	{

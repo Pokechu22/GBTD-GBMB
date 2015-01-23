@@ -26,7 +26,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.dropDown = new System.Windows.Forms.ComboBox();
-			this.spinner = new GB.Shared.Palettes.Spinner();
+			this.spinner = new GB.Shared.Controls.Spinner();
 			this.spinnerBorder = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
@@ -96,7 +96,7 @@
 		#endregion
 
 		private System.Windows.Forms.ComboBox dropDown;
-		private Spinner spinner;
+		private GB.Shared.Controls.Spinner spinner;
 		private System.Windows.Forms.Panel spinnerBorder;
 	}
 }

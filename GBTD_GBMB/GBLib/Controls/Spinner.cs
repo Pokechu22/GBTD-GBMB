@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GB.Shared.Palettes
+namespace GB.Shared.Controls
 {
 	/// <summary>
 	/// Provides a spinner control that can be used independantly.
