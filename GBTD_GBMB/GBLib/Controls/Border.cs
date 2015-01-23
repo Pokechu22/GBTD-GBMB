@@ -58,9 +58,9 @@ namespace GB.Shared.Controls
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
+			if (topBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, topBorder.Value, Border3DSide.Top); }
 			if (leftBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, leftBorder.Value, Border3DSide.Left); }
 			if (rightBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, rightBorder.Value, Border3DSide.Right); }
-			if (topBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, topBorder.Value, Border3DSide.Top); }
 			if (bottomBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, bottomBorder.Value, Border3DSide.Bottom); }
 
 			base.OnPaint(e);

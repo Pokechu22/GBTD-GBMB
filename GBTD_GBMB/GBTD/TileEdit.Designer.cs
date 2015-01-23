@@ -106,7 +106,7 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.tileEditBorder = new System.Windows.Forms.Panel();
+			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.miniPreviewRenderer = new GB.Shared.Tiles.TileRenderer();
 			this.panel1 = new System.Windows.Forms.Panel();
@@ -822,17 +822,20 @@
 			// 
 			// tileEditBorder
 			// 
+			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.tileEditBorder.Controls.Add(this.panel2);
 			this.tileEditBorder.Controls.Add(this.panel1);
 			this.tileEditBorder.Controls.Add(this.paletteChooser);
 			this.tileEditBorder.Controls.Add(this.mainTileEdit);
 			this.tileEditBorder.Controls.Add(this.toolList);
+			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
 			this.tileEditBorder.Margin = new System.Windows.Forms.Padding(0);
 			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
 			this.tileEditBorder.TabIndex = 4;
-			this.tileEditBorder.Paint += new System.Windows.Forms.PaintEventHandler(this.tileEditBorder_Paint);
+			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
 			// panel2
 			// 
@@ -1296,7 +1299,7 @@
 		private System.Windows.Forms.ToolStripMenuItem helpIndexToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.Panel tileEditBorder;
+		private GB.Shared.Controls.Border tileEditBorder;
 		private ToolList toolList;
 		private Shared.Palettes.GBTDPaletteChooser paletteChooser;
 		private Shared.Tiles.EditableTileRenderer mainTileEdit;
