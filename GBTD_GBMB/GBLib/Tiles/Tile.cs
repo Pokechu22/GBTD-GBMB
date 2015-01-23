@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace GB.Shared.Tiles
 {
@@ -132,6 +133,66 @@ namespace GB.Shared.Tiles
 		#endregion
 
 		private PixelGroup8x8 pixels;
+
+		public static Tile FromImage(Image image) {
+			if (image == null) {
+				throw new ArgumentNullException();
+			}
+			
+			Color BLACK = Color.FromArgb(0, 0, 0);
+			Color DARK_GRAY = Color.FromArgb(128, 128, 128);
+			Color LIGHT_GRAY = Color.FromArgb(192, 192, 192);
+			Color WHITE = Color.FromArgb(255,255,255);
+
+			Tile returned = new Tile();
+
+			using (Bitmap bitmap = new Bitmap(image)) {
+				for (int x = 0; x < 8; x++) {
+					for (int y = 0; y < 8; y++) {
+						if (x > bitmap.Width || y > bitmap.Height) {
+							continue;
+						}
+						Color pixel = bitmap.GetPixel(x, y);
+
+						if (pixel == BLACK) {
+							returned[x, y] = GBColor.BLACK;
+						} else if (pixel == DARK_GRAY) {
+							returned[x, y] = GBColor.DARK_GRAY;
+						} else if (pixel == LIGHT_GRAY) {
+							returned[x, y] = GBColor.LIGHT_GRAY;
+						} else if (pixel == WHITE) {
+							returned[x, y] = GBColor.WHITE;
+						} else {
+							returned[x, y] = GBColor.WHITE; //TODO is this the best action?
+						}
+					}
+				}
+			}
+
+			return returned;
+		}
+
+		public Bitmap ToImage() {
+			Color BLACK = Color.FromArgb(0, 0, 0);
+			Color DARK_GRAY = Color.FromArgb(128, 128, 128);
+			Color LIGHT_GRAY = Color.FromArgb(192, 192, 192);
+			Color WHITE = Color.FromArgb(255,255,255);
+
+			Bitmap returned = new Bitmap(8, 8);
+			for (int x = 0; x < 8; x++) {
+				for (int y = 0; y < 8; y++) {
+					switch (this[x, y]) {
+					case GBColor.BLACK: returned.SetPixel(x, y, BLACK); break;
+					case GBColor.DARK_GRAY: returned.SetPixel(x, y, DARK_GRAY); break;
+					case GBColor.LIGHT_GRAY: returned.SetPixel(x, y, LIGHT_GRAY); break;
+					case GBColor.WHITE: returned.SetPixel(x, y, WHITE); break;
+					default: returned.SetPixel(x, y, WHITE); break; //TODO: Again, best action?
+					}
+				}
+			}
+
+			return returned;
+		}
 
 		/// <summary>
 		/// Pixels on the tileData.  MUST BE 8 by 8 exactly.

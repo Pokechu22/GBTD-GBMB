@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GB.Shared.Palettes;
 using GB.Shared.Tiles;
+using GB.Shared;
 
 namespace GB.GBTD
 {
@@ -73,26 +74,6 @@ namespace GB.GBTD
 		/// </summary>
 		private List<TileRenderer> previewRenderers = new List<TileRenderer>();
 
-		/// <summary>
-		/// The currently copied tile.
-		/// May be null, in which case there is nothing copied.
-		/// </summary>
-		private Tile? clipboard = null;
-		/// <summary>
-		/// The currently copied tile.
-		/// May be null, in which case there is nothing copied.
-		/// </summary>
-		[Category("Misc."), Description("The currently-copied tile.")]
-		public Tile? Clipboard {
-			get { return clipboard; }
-			set { 
-				clipboard = value;
-				
-				pasteTileToolStripMenuItem.Enabled = clipboard != null;
-				pasteToolStripButton.Enabled = clipboard != null;
-			}
-		}
-
 		public Tile[] Tiles {
 			get {
 				return Array.ConvertAll(tileList1.Tiles, item => item.tile);
@@ -121,6 +102,8 @@ namespace GB.GBTD
 
 		public TileEdit() {
 			InitializeComponent();
+
+			initClipboardChangeCheck();
 
 			//Set up the preview renderers.
 			previewRenderers.Add(miniPreviewRenderer);
@@ -272,23 +255,40 @@ namespace GB.GBTD
 		}
 
 		private void cutButtonClicked(object sender, EventArgs e) {
-			Clipboard = mainTileEdit.Tile;
+			Clipboard.SetImage(mainTileEdit.Tile.ToImage());
 			mainTileEdit.Tile = new Tile(); //Empty.
 		}
 
 		private void copyButtonClicked(object sender, EventArgs e) {
-			Clipboard = mainTileEdit.Tile;
+			Clipboard.SetImage(mainTileEdit.Tile.ToImage());
 		}
 
 		private void pasteButtonClicked(object sender, EventArgs e) {
-			if (!Clipboard.HasValue) {
-				throw new InvalidOperationException("Nothing to paste right now!  The button should be disabled...");
+			if (!Clipboard.ContainsImage()) {
+				return;
 			}
-			mainTileEdit.Tile = Clipboard.Value;
+			mainTileEdit.Tile = Tile.FromImage(Clipboard.GetImage());
 		}
 
 		private void nibbleMarkersToolStripMenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.NibbleMarkers ^= true;
+		}
+
+		private void initClipboardChangeCheck() {
+			NativeMethods.AddClipboardFormatListener(Handle);
+		}
+
+		private void OnClipboardUpdate() {
+			this.pasteTileToolStripMenuItem.Enabled = Clipboard.ContainsImage();
+			this.pasteToolStripButton.Enabled = Clipboard.ContainsImage();
+		}
+
+		protected override void WndProc(ref Message m) {
+			if (m.Msg == NativeMethods.WM_CLIPBOARDUPDATE) {
+				OnClipboardUpdate();
+			}
+
+			base.WndProc(ref m);
 		}
 	}
 }
