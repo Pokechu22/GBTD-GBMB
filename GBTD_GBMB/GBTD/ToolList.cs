@@ -347,11 +347,6 @@ namespace GB.GBTD
 			InitializeComponent();
 		}
 
-		private void paintBorder(object sender, PaintEventArgs e) {
-			Control control = sender as Control;
-			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, control.Width, control.Height, Border3DStyle.RaisedInner);
-		}
-
 		#region Events
 		/// <summary>
 		/// Triggers when the selected tool is changed.
