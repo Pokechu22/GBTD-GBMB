@@ -14,10 +14,16 @@ namespace GB.Shared.Palettes
 	/// </summary>
 	public partial class GBPaletteSetSelector : UserControl
 	{
+		protected override Size DefaultSize { get { return new Size(112, 216); } }
+		protected override Size DefaultMaximumSize { get { return new Size(112, 216); } }
+		protected override Size DefaultMinimumSize { get { return new Size(112, 216); } }
+
 		#region Private inner classes
 		private sealed class PaletteSetEntry : PaletteEntryRenderer
 		{
 			internal GBPaletteSetSelector selector;
+
+			protected override int Y_OFFSET { get { return 0; } }
 
 			public PaletteSetEntry(GBPaletteSetSelector selector, int x, int y)
 				: base(x, y) {
@@ -238,7 +244,7 @@ namespace GB.Shared.Palettes
 				l.Name = "label_y" + y;
 				l.Text = y.ToString();
 
-				l.Location = new Point(16, 23 + (y * 28));
+				l.Location = new Point(16, 4 + (y * 28));
 
 				l.SendToBack();
 
