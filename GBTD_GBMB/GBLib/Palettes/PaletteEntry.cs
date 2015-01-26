@@ -168,7 +168,7 @@ namespace GB.Shared.Palettes
 		protected override void OnPaint(PaintEventArgs e) {
 			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
 			using (Brush b = new SolidBrush(this.ForeColor)) {
-				e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.Width, e.ClipRectangle.Height), this.Format);
+				e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(0, 0, this.Width, this.Height), this.Format);
 			}
 			base.OnPaint(e);
 		}

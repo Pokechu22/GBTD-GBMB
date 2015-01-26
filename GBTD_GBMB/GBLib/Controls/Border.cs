@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace GB.Shared.Controls
 {
@@ -94,7 +95,7 @@ namespace GB.Shared.Controls
 		protected override void OnPaint(PaintEventArgs e) {
 			foreach (Border3DSide side in this.drawOrder) {
 				Border3DStyle? style = this[side];
-				if (style.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, style.Value, side); }
+				if (style.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), style.Value, side); }
 			}
 
 			base.OnPaint(e);

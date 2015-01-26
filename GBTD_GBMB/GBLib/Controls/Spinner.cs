@@ -183,11 +183,11 @@ namespace GB.Shared.Controls
 			}
 
 			if (clicked == SpinnerButton.DOWN) {
-				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Bottom);
-				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Border3DStyle.SunkenOuter, Border3DSide.Bottom);
+				ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
 			} else {
-				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
-				ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, Border3DStyle.RaisedOuter, Border3DSide.Bottom);
+				ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Border3DStyle.SunkenOuter, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(0, 0, this.Width, this.Height), Border3DStyle.RaisedOuter, Border3DSide.Bottom);
 			}
 
 			e.Graphics.DrawImage(SpinnerButtonRenderer.Render(upperButtonState, ScrollButton.Up, upperButtonBounds.Size), upperButtonBounds);
