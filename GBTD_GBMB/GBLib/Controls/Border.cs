@@ -10,6 +10,10 @@ namespace GB.Shared.Controls
 {
 	public class Border : Control
 	{
+		protected override Padding DefaultMargin {
+			get { return new Padding(0, 0, 0, 0); }
+		}
+
 		public Border() {
 			this.AllBorders = Border3DStyle.Raised;
 		}
