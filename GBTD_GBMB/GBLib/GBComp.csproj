@@ -45,6 +45,15 @@
     <Compile Include="Controls\Border.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\GroupBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupBox.Designer.cs">
+      <DependentUpon>GroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CleanLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Palettes\ChoosePaletteDialog.cs">
       <SubType>Form</SubType>
@@ -129,6 +138,9 @@
     <Compile Include="Tiles\VRAMTileParser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\GroupBox.resx">
+      <DependentUpon>GroupBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Palettes\ChoosePaletteDialog.resx">
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </EmbeddedResource>
