@@ -25,28 +25,47 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
 			this.cleanLabel1 = new GB.Shared.Controls.CleanLabel();
+			this.border3 = new GB.Shared.Controls.Border();
 			this.border1 = new GB.Shared.Controls.Border();
 			this.border2 = new GB.Shared.Controls.Border();
-			this.border3 = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
 			// 
 			// cleanLabel1
 			// 
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.cleanLabel1.Format = stringFormat3;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.cleanLabel1.Format = stringFormat2;
 			this.cleanLabel1.Location = new System.Drawing.Point(6, 0);
 			this.cleanLabel1.Name = "cleanLabel1";
 			this.cleanLabel1.Size = new System.Drawing.Size(65, 14);
 			this.cleanLabel1.TabIndex = 2;
 			this.cleanLabel1.Text = "cleanLabel1";
 			// 
+			// border3
+			// 
+			this.border3.BackColor = System.Drawing.Color.Transparent;
+			this.border3.BottomBorder = null;
+			this.border3.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.border3.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.border3.Location = new System.Drawing.Point(1, 6);
+			this.border3.Name = "border3";
+			this.border3.RightBorder = null;
+			this.border3.Size = new System.Drawing.Size(147, 142);
+			this.border3.TabIndex = 3;
+			this.border3.Text = "border3";
+			this.border3.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			// 
 			// border1
 			// 
+			this.border1.BackColor = System.Drawing.Color.Transparent;
 			this.border1.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			this.border1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Left,
@@ -64,6 +83,7 @@
 			// 
 			// border2
 			// 
+			this.border2.BackColor = System.Drawing.Color.Transparent;
 			this.border2.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.border2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Top,
@@ -79,27 +99,8 @@
 			this.border2.Text = "border2";
 			this.border2.TopBorder = null;
 			// 
-			// border3
-			// 
-			this.border3.BottomBorder = null;
-			this.border3.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.border3.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.border3.Location = new System.Drawing.Point(1, 6);
-			this.border3.Name = "border3";
-			this.border3.RightBorder = null;
-			this.border3.Size = new System.Drawing.Size(147, 142);
-			this.border3.TabIndex = 3;
-			this.border3.Text = "border3";
-			this.border3.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			// 
 			// GroupBox
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.cleanLabel1);
 			this.Controls.Add(this.border3);
 			this.Controls.Add(this.border1);
