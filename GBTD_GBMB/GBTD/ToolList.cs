@@ -352,11 +352,6 @@ namespace GB.GBTD
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, control.Width, control.Height, Border3DStyle.RaisedInner);
 		}
 
-		private void paintIndention(object sender, PaintEventArgs e) {
-			Control control = sender as Control;
-			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, control.Width, control.Height, Border3DStyle.SunkenOuter);
-		}
-
 		#region Events
 		/// <summary>
 		/// Triggers when the selected tool is changed.

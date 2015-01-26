@@ -15,6 +15,10 @@ namespace GB.Shared.Controls
 
 		private Border3DStyle? leftBorder, rightBorder, topBorder, bottomBorder;
 
+		private Border3DSide[] drawOrder = new Border3DSide[4] {
+			Border3DSide.Top, Border3DSide.Right, Border3DSide.Left, Border3DSide.Bottom
+		};
+
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(true)]
 		[Category("Display"), Description("Gets or sets all of the values.")]
 		public Border3DStyle? AllBorders {
@@ -57,11 +61,41 @@ namespace GB.Shared.Controls
 			set { bottomBorder = value; Invalidate(); }
 		}
 
+		[Category("Display"), Description("Controls the order in which the sides are painted.")]
+		public Border3DSide[] DrawOrder {
+			set { if (value == null) { throw new ArgumentNullException(); } drawOrder = value; }
+			get { return drawOrder; }
+		}
+
+		[ReadOnly(true), Browsable(false)]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Category("Display"), Description("Indexer for individual Border3DStyles by side.")]
+		public Border3DStyle? this[Border3DSide side] {
+			get {
+				switch (side) {
+				case Border3DSide.Top: return this.topBorder;
+				case Border3DSide.Left: return this.leftBorder;
+				case Border3DSide.Right: return this.rightBorder;
+				case Border3DSide.Bottom: return this.bottomBorder;
+				default: return null;
+				}
+			}
+			set {
+				switch (side) {
+				case Border3DSide.Top: this.topBorder = value; return;
+				case Border3DSide.Left: this.leftBorder = value; return;
+				case Border3DSide.Right: this.rightBorder = value; return;
+				case Border3DSide.Bottom: this.bottomBorder = value; return;
+				default: return;
+				}
+			}
+		}
+
 		protected override void OnPaint(PaintEventArgs e) {
-			if (topBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, topBorder.Value, Border3DSide.Top); }
-			if (leftBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, leftBorder.Value, Border3DSide.Left); }
-			if (rightBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, rightBorder.Value, Border3DSide.Right); }
-			if (bottomBorder.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, bottomBorder.Value, Border3DSide.Bottom); }
+			foreach (Border3DSide side in this.drawOrder) {
+				Border3DStyle? style = this[side];
+				if (style.HasValue) { ControlPaint.DrawBorder3D(e.Graphics, e.ClipRectangle, style.Value, side); }
+			}
 
 			base.OnPaint(e);
 		}

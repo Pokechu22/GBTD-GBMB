@@ -28,44 +28,21 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolList));
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
 			this.autoUpdateCheckbox = new GB.GBTD.ToolList.ToolListCheckBox();
+			this.panel2 = new GB.Shared.Controls.Border();
 			this.rotateClockwiseButton = new GB.GBTD.ToolList.ToolListButton();
 			this.flipHorizButton = new GB.GBTD.ToolList.ToolListButton();
 			this.flipVertButton = new GB.GBTD.ToolList.ToolListButton();
+			this.panel1 = new GB.Shared.Controls.Border();
 			this.scrollDownButton = new GB.GBTD.ToolList.ToolListButton();
 			this.scrollRightButton = new GB.GBTD.ToolList.ToolListButton();
 			this.scrollLeftButton = new GB.GBTD.ToolList.ToolListButton();
 			this.scrollUpButton = new GB.GBTD.ToolList.ToolListButton();
 			this.floodButton = new GB.GBTD.ToolList.ToolListRadioButton();
 			this.penButton = new GB.GBTD.ToolList.ToolListRadioButton();
-			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.scrollDownButton);
-			this.panel1.Controls.Add(this.scrollRightButton);
-			this.panel1.Controls.Add(this.scrollLeftButton);
-			this.panel1.Controls.Add(this.scrollUpButton);
-			this.panel1.Location = new System.Drawing.Point(2, 49);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(22, 82);
-			this.panel1.TabIndex = 2;
-			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.paintIndention);
-			// 
-			// panel2
-			// 
-			this.panel2.Controls.Add(this.rotateClockwiseButton);
-			this.panel2.Controls.Add(this.flipHorizButton);
-			this.panel2.Controls.Add(this.flipVertButton);
-			this.panel2.Location = new System.Drawing.Point(2, 134);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(22, 62);
-			this.panel2.TabIndex = 3;
-			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.paintIndention);
 			// 
 			// autoUpdateCheckbox
 			// 
@@ -82,7 +59,6 @@
 			this.autoUpdateCheckbox.Location = new System.Drawing.Point(2, 200);
 			this.autoUpdateCheckbox.Name = "autoUpdateCheckbox";
 			this.autoUpdateCheckbox.NonhoveredImage = global::GB.GBTD.Properties.Resources.AutoUpdate_NoHover;
-			this.autoUpdateCheckbox.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.autoUpdateCheckbox.PressedImage = global::GB.GBTD.Properties.Resources.AutoUpdate_Pressed;
 			this.autoUpdateCheckbox.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.autoUpdateCheckbox.Size = new System.Drawing.Size(22, 15);
@@ -90,6 +66,25 @@
 			this.toolTip.SetToolTip(this.autoUpdateCheckbox, "Auto update");
 			this.autoUpdateCheckbox.UseVisualStyleBackColor = true;
 			this.autoUpdateCheckbox.CheckedChanged += new System.EventHandler(this.OnAutoUpdateChanged);
+			// 
+			// panel2
+			// 
+			this.panel2.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.panel2.Controls.Add(this.rotateClockwiseButton);
+			this.panel2.Controls.Add(this.flipHorizButton);
+			this.panel2.Controls.Add(this.flipVertButton);
+			this.panel2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.panel2.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.panel2.Location = new System.Drawing.Point(2, 134);
+			this.panel2.Name = "panel2";
+			this.panel2.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.panel2.Size = new System.Drawing.Size(22, 62);
+			this.panel2.TabIndex = 3;
+			this.panel2.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
 			// rotateClockwiseButton
 			// 
@@ -105,7 +100,6 @@
 			this.rotateClockwiseButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.rotateClockwiseButton.Name = "rotateClockwiseButton";
 			this.rotateClockwiseButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.RotateClockwise_NoHover;
-			this.rotateClockwiseButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.rotateClockwiseButton.PressedImage = global::GB.GBTD.Properties.Resources.RotateClockwise_Pressed;
 			this.rotateClockwiseButton.Size = new System.Drawing.Size(20, 20);
 			this.rotateClockwiseButton.TabIndex = 2;
@@ -127,7 +121,6 @@
 			this.flipHorizButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.flipHorizButton.Name = "flipHorizButton";
 			this.flipHorizButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.FlipHorizontally_NoHover;
-			this.flipHorizButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.flipHorizButton.PressedImage = global::GB.GBTD.Properties.Resources.FlipHorizontally_Pressed;
 			this.flipHorizButton.Size = new System.Drawing.Size(20, 20);
 			this.flipHorizButton.TabIndex = 1;
@@ -149,13 +142,32 @@
 			this.flipVertButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.flipVertButton.Name = "flipVertButton";
 			this.flipVertButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.FlipVertically_NoHover;
-			this.flipVertButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.flipVertButton.PressedImage = global::GB.GBTD.Properties.Resources.FlipVertically_Pressed;
 			this.flipVertButton.Size = new System.Drawing.Size(20, 20);
 			this.flipVertButton.TabIndex = 0;
 			this.toolTip.SetToolTip(this.flipVertButton, "Flip vertically");
 			this.flipVertButton.UseVisualStyleBackColor = true;
 			this.flipVertButton.Click += new System.EventHandler(this.OnFlipVerticallyClicked);
+			// 
+			// panel1
+			// 
+			this.panel1.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.panel1.Controls.Add(this.scrollDownButton);
+			this.panel1.Controls.Add(this.scrollRightButton);
+			this.panel1.Controls.Add(this.scrollLeftButton);
+			this.panel1.Controls.Add(this.scrollUpButton);
+			this.panel1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.panel1.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.panel1.Location = new System.Drawing.Point(2, 49);
+			this.panel1.Name = "panel1";
+			this.panel1.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.panel1.Size = new System.Drawing.Size(22, 82);
+			this.panel1.TabIndex = 2;
+			this.panel1.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
 			// scrollDownButton
 			// 
@@ -171,7 +183,6 @@
 			this.scrollDownButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollDownButton.Name = "scrollDownButton";
 			this.scrollDownButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollDown_NoHover;
-			this.scrollDownButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.scrollDownButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollDown_Pressed;
 			this.scrollDownButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollDownButton.TabIndex = 3;
@@ -193,7 +204,6 @@
 			this.scrollRightButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollRightButton.Name = "scrollRightButton";
 			this.scrollRightButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollRight_NoHover;
-			this.scrollRightButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.scrollRightButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollRight_Pressed;
 			this.scrollRightButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollRightButton.TabIndex = 2;
@@ -215,7 +225,6 @@
 			this.scrollLeftButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollLeftButton.Name = "scrollLeftButton";
 			this.scrollLeftButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollLeft_NoHover;
-			this.scrollLeftButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.scrollLeftButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollLeft_Pressed;
 			this.scrollLeftButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollLeftButton.TabIndex = 1;
@@ -237,7 +246,6 @@
 			this.scrollUpButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollUpButton.Name = "scrollUpButton";
 			this.scrollUpButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollUp_NoHover;
-			this.scrollUpButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.scrollUpButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollUp_Pressed;
 			this.scrollUpButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollUpButton.TabIndex = 0;
@@ -260,7 +268,6 @@
 			this.floodButton.Location = new System.Drawing.Point(2, 24);
 			this.floodButton.Name = "floodButton";
 			this.floodButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Flood_NoHover;
-			this.floodButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.floodButton.PressedImage = global::GB.GBTD.Properties.Resources.Flood_Pressed;
 			this.floodButton.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.floodButton.Size = new System.Drawing.Size(22, 22);
@@ -285,7 +292,6 @@
 			this.penButton.Location = new System.Drawing.Point(2, 2);
 			this.penButton.Name = "penButton";
 			this.penButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Pen_NoHover;
-			this.penButton.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
 			this.penButton.PressedImage = global::GB.GBTD.Properties.Resources.Pen_Pressed;
 			this.penButton.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.penButton.Size = new System.Drawing.Size(22, 22);
@@ -309,8 +315,8 @@
 			this.Name = "ToolList";
 			this.Size = new System.Drawing.Size(26, 217);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.paintBorder);
-			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -320,8 +326,8 @@
 		private System.Windows.Forms.ToolTip toolTip;
 		private ToolList.ToolListRadioButton floodButton;
 		private ToolList.ToolListRadioButton penButton;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Panel panel2;
+		private GB.Shared.Controls.Border panel1;
+		private GB.Shared.Controls.Border panel2;
 		private ToolList.ToolListButton scrollDownButton;
 		private ToolList.ToolListButton scrollRightButton;
 		private ToolList.ToolListButton scrollLeftButton;
