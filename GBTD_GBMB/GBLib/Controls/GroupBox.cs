@@ -13,12 +13,23 @@ namespace GB.Shared.Controls
 	/// <summary>
 	/// Provides a GBTD-styled group box.
 	/// </summary>
-	[Designer("System.Windows.Forms.Design.ParentControlDesigner, System.Design", typeof(IDesigner))] 
-	public partial class GroupBox : UserControl
+	public partial class GroupBox : Panel
 	{
 		private string text = "";
 
-		[Browsable(true), Bindable(true)]
+		protected override void OnControlAdded(ControlEventArgs e) {
+			//Check to make sure it isn't one of the default controls.
+
+			if (!(Object.ReferenceEquals(e.Control, this.border1) ||
+					Object.ReferenceEquals(e.Control, this.border2) ||
+					Object.ReferenceEquals(e.Control, this.border3) ||
+					Object.ReferenceEquals(e.Control, this.cleanLabel1))) {
+				e.Control.BringToFront();
+			}
+			base.OnControlAdded(e);
+		}
+
+		//[Browsable(true), Bindable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		public override string Text {
 			get { return text; }

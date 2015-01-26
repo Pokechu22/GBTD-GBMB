@@ -25,7 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			this.cleanLabel1 = new GB.Shared.Controls.CleanLabel();
 			this.border3 = new GB.Shared.Controls.Border();
 			this.border1 = new GB.Shared.Controls.Border();
@@ -34,11 +34,11 @@
 			// 
 			// cleanLabel1
 			// 
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.cleanLabel1.Format = stringFormat2;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.cleanLabel1.Format = stringFormat1;
 			this.cleanLabel1.Location = new System.Drawing.Point(6, 0);
 			this.cleanLabel1.Name = "cleanLabel1";
 			this.cleanLabel1.Size = new System.Drawing.Size(65, 14);
