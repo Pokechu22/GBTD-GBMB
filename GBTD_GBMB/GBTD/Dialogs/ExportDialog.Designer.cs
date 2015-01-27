@@ -25,15 +25,15 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat34 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat33 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat32 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat31 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat30 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat29 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat28 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat35 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat36 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat43 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat42 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat41 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat40 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat39 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat38 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat37 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat44 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat45 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
@@ -170,7 +170,19 @@
 			// 
 			// counterComboBox
 			// 
+			this.counterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.counterComboBox.FormattingEnabled = true;
+			this.counterComboBox.Items.AddRange(new object[] {
+            "None",
+            "Byte-count as Byte",
+            "Byte-count as Word",
+            "Byte-count as Constant",
+            "Tile-count as Byte",
+            "Tile-count as Word",
+            "Tile-count as Constant",
+            "8x8-count as Byte",
+            "8x8-count as Word",
+            "8x8-count as Constant"});
 			this.counterComboBox.Location = new System.Drawing.Point(72, 144);
 			this.counterComboBox.Name = "counterComboBox";
 			this.counterComboBox.Size = new System.Drawing.Size(185, 21);
@@ -178,11 +190,11 @@
 			// 
 			// labelLabel
 			// 
-			stringFormat34.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat34.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat34.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat34.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelLabel.Format = stringFormat34;
+			stringFormat43.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat43.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat43.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat43.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelLabel.Format = stringFormat43;
 			this.labelLabel.Location = new System.Drawing.Point(14, 19);
 			this.labelLabel.Name = "labelLabel";
 			this.labelLabel.Size = new System.Drawing.Size(32, 14);
@@ -191,11 +203,11 @@
 			// 
 			// labelSection
 			// 
-			stringFormat33.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat33.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat33.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat33.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelSection.Format = stringFormat33;
+			stringFormat42.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat42.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat42.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat42.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelSection.Format = stringFormat42;
 			this.labelSection.Location = new System.Drawing.Point(14, 43);
 			this.labelSection.Name = "labelSection";
 			this.labelSection.Size = new System.Drawing.Size(42, 14);
@@ -204,11 +216,11 @@
 			// 
 			// labelBank
 			// 
-			stringFormat32.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat32.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat32.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat32.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBank.Format = stringFormat32;
+			stringFormat41.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat41.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat41.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat41.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBank.Format = stringFormat41;
 			this.labelBank.Location = new System.Drawing.Point(14, 67);
 			this.labelBank.Name = "labelBank";
 			this.labelBank.Size = new System.Drawing.Size(30, 14);
@@ -217,11 +229,11 @@
 			// 
 			// labelFrom
 			// 
-			stringFormat31.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat31.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat31.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat31.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFrom.Format = stringFormat31;
+			stringFormat40.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat40.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat40.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat40.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFrom.Format = stringFormat40;
 			this.labelFrom.Location = new System.Drawing.Point(14, 94);
 			this.labelFrom.Name = "labelFrom";
 			this.labelFrom.Size = new System.Drawing.Size(31, 14);
@@ -230,11 +242,11 @@
 			// 
 			// labelTo
 			// 
-			stringFormat30.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat30.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat30.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat30.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelTo.Format = stringFormat30;
+			stringFormat39.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat39.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat39.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat39.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelTo.Format = stringFormat39;
 			this.labelTo.Location = new System.Drawing.Point(118, 94);
 			this.labelTo.Name = "labelTo";
 			this.labelTo.Size = new System.Drawing.Size(17, 14);
@@ -243,11 +255,11 @@
 			// 
 			// labelFormat
 			// 
-			stringFormat29.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat29.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat29.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat29.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFormat.Format = stringFormat29;
+			stringFormat38.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat38.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat38.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat38.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFormat.Format = stringFormat38;
 			this.labelFormat.Location = new System.Drawing.Point(14, 124);
 			this.labelFormat.Name = "labelFormat";
 			this.labelFormat.Size = new System.Drawing.Size(40, 14);
@@ -256,11 +268,11 @@
 			// 
 			// labelCounter
 			// 
-			stringFormat28.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat28.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat28.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat28.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelCounter.Format = stringFormat28;
+			stringFormat37.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat37.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat37.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat37.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelCounter.Format = stringFormat37;
 			this.labelCounter.Location = new System.Drawing.Point(14, 148);
 			this.labelCounter.Name = "labelCounter";
 			this.labelCounter.Size = new System.Drawing.Size(44, 14);
@@ -307,7 +319,13 @@
 			// 
 			// formatComboBox
 			// 
+			this.formatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.formatComboBox.FormattingEnabled = true;
+			this.formatComboBox.Items.AddRange(new object[] {
+            "Gameboy 4 color",
+            "Gameboy 2 color",
+            "Byte per color",
+            "Consecutive 4 color"});
 			this.formatComboBox.Location = new System.Drawing.Point(72, 120);
 			this.formatComboBox.Name = "formatComboBox";
 			this.formatComboBox.Size = new System.Drawing.Size(185, 21);
@@ -344,11 +362,11 @@
 			// 
 			// labelFileName
 			// 
-			stringFormat35.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat35.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat35.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat35.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat35;
+			stringFormat44.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat44.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat44.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat44.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat44;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -357,11 +375,11 @@
 			// 
 			// labelType
 			// 
-			stringFormat36.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat36.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat36.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat36.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat36;
+			stringFormat45.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat45.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat45.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat45.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat45;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);

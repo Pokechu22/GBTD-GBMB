@@ -13,7 +13,16 @@ namespace GB.GBTD.Dialogs
 	{
 		public ExportDialog() {
 			InitializeComponent();
+			InitializeDropdowns();
+		}
+
+		/// <summary>
+		/// Initializes all of the dropdowns by seting their SelectedIndex's to 0.
+		/// </summary>
+		private void InitializeDropdowns() {
 			fileTypeComboBox.SelectedIndex = 0;
+			formatComboBox.SelectedIndex = 0;
+			counterComboBox.SelectedIndex = 0;
 		}
 	}
 }
