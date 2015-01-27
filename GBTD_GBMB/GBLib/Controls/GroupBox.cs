@@ -29,7 +29,7 @@ namespace GB.Shared.Controls
 			base.OnControlAdded(e);
 		}
 
-		//[Browsable(true), Bindable(true)]
+		[Browsable(true), Bindable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		public override string Text {
 			get { return text; }
@@ -39,16 +39,20 @@ namespace GB.Shared.Controls
 		protected override void OnTextChanged(EventArgs e) {
 			cleanLabel1.Text = this.Text;
 			base.OnTextChanged(e);
+			this.Invalidate();
 		}
 
 		public GroupBox() {
 			InitializeComponent();
+			this.OnSizeChanged(new EventArgs());
+			this.Text = this.Name;
 		}
 
 		protected override void OnSizeChanged(EventArgs e) {
 			base.OnSizeChanged(e);
 			border1.Size = border2.Size = new Size(this.Width - 1, this.Height - 6);
 			border3.Size = new Size(this.Width - 3, this.Height - 8);
+			this.Invalidate();
 		}
 	}
 }
