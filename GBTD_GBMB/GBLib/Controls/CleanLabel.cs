@@ -21,6 +21,7 @@ namespace GB.Shared.Controls
 				foreach (Control c in Parent.Controls) {
 					if (c.TabIndex == this.TabIndex + 1) {
 						c.Focus();
+						break;
 					}
 				}
 			}
