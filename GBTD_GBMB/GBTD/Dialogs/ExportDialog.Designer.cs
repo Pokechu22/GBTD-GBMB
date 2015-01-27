@@ -28,7 +28,7 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageStandard = new System.Windows.Forms.TabPage();
 			this.tabPageAdvanced = new System.Windows.Forms.TabPage();
 			this.groupBoxSettings = new GB.Shared.Controls.GroupBox();
@@ -36,7 +36,7 @@
 			this.groupBoxSplitData = new GB.Shared.Controls.GroupBox();
 			this.groupBoxMetatiles = new GB.Shared.Controls.GroupBox();
 			this.groupBoxColors = new GB.Shared.Controls.GroupBox();
-			this.tabControl1.SuspendLayout();
+			this.tabControl.SuspendLayout();
 			this.tabPageStandard.SuspendLayout();
 			this.tabPageAdvanced.SuspendLayout();
 			this.SuspendLayout();
@@ -69,15 +69,15 @@
 			this.cancelButton.Text = "Cancel";
 			this.cancelButton.UseVisualStyleBackColor = true;
 			// 
-			// tabControl1
+			// tabControl
 			// 
-			this.tabControl1.Controls.Add(this.tabPageStandard);
-			this.tabControl1.Controls.Add(this.tabPageAdvanced);
-			this.tabControl1.Location = new System.Drawing.Point(8, 8);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(457, 329);
-			this.tabControl1.TabIndex = 3;
+			this.tabControl.Controls.Add(this.tabPageStandard);
+			this.tabControl.Controls.Add(this.tabPageAdvanced);
+			this.tabControl.Location = new System.Drawing.Point(8, 8);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(457, 329);
+			this.tabControl.TabIndex = 3;
 			// 
 			// tabPageStandard
 			// 
@@ -85,8 +85,8 @@
 			this.tabPageStandard.Controls.Add(this.groupBoxFile);
 			this.tabPageStandard.Location = new System.Drawing.Point(4, 22);
 			this.tabPageStandard.Name = "tabPageStandard";
-			this.tabPageStandard.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageStandard.Size = new System.Drawing.Size(445, 281);
+			this.tabPageStandard.Padding = new System.Windows.Forms.Padding(5, 7, 5, 9);
+			this.tabPageStandard.Size = new System.Drawing.Size(449, 303);
 			this.tabPageStandard.TabIndex = 0;
 			this.tabPageStandard.Text = "Standard";
 			this.tabPageStandard.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
 			this.tabPageAdvanced.Controls.Add(this.groupBoxColors);
 			this.tabPageAdvanced.Location = new System.Drawing.Point(4, 22);
 			this.tabPageAdvanced.Name = "tabPageAdvanced";
-			this.tabPageAdvanced.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageAdvanced.Padding = new System.Windows.Forms.Padding(5, 7, 5, 9);
 			this.tabPageAdvanced.Size = new System.Drawing.Size(449, 303);
 			this.tabPageAdvanced.TabIndex = 1;
 			this.tabPageAdvanced.Text = "Advanced";
@@ -106,41 +106,44 @@
 			// 
 			// groupBoxSettings
 			// 
-			this.groupBoxSettings.Location = new System.Drawing.Point(6, 91);
+			this.groupBoxSettings.Location = new System.Drawing.Point(8, 90);
+			this.groupBoxSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxSettings.Name = "groupBoxSettings";
-			this.groupBoxSettings.Size = new System.Drawing.Size(436, 187);
+			this.groupBoxSettings.Size = new System.Drawing.Size(433, 201);
 			this.groupBoxSettings.TabIndex = 1;
 			this.groupBoxSettings.Text = "Settings";
 			// 
 			// groupBoxFile
 			// 
-			this.groupBoxFile.Location = new System.Drawing.Point(6, 6);
+			this.groupBoxFile.Location = new System.Drawing.Point(8, 10);
 			this.groupBoxFile.Name = "groupBoxFile";
-			this.groupBoxFile.Size = new System.Drawing.Size(436, 79);
+			this.groupBoxFile.Size = new System.Drawing.Size(433, 73);
 			this.groupBoxFile.TabIndex = 0;
 			this.groupBoxFile.Text = "File";
 			// 
 			// groupBoxSplitData
 			// 
-			this.groupBoxSplitData.Location = new System.Drawing.Point(6, 185);
+			this.groupBoxSplitData.Location = new System.Drawing.Point(8, 218);
+			this.groupBoxSplitData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxSplitData.Name = "groupBoxSplitData";
-			this.groupBoxSplitData.Size = new System.Drawing.Size(433, 83);
+			this.groupBoxSplitData.Size = new System.Drawing.Size(433, 73);
 			this.groupBoxSplitData.TabIndex = 2;
 			this.groupBoxSplitData.Text = "Split data";
 			// 
 			// groupBoxMetatiles
 			// 
-			this.groupBoxMetatiles.Location = new System.Drawing.Point(6, 112);
+			this.groupBoxMetatiles.Location = new System.Drawing.Point(8, 114);
+			this.groupBoxMetatiles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxMetatiles.Name = "groupBoxMetatiles";
-			this.groupBoxMetatiles.Size = new System.Drawing.Size(433, 66);
+			this.groupBoxMetatiles.Size = new System.Drawing.Size(433, 97);
 			this.groupBoxMetatiles.TabIndex = 1;
 			this.groupBoxMetatiles.Text = "Metatiles";
 			// 
 			// groupBoxColors
 			// 
-			this.groupBoxColors.Location = new System.Drawing.Point(6, 6);
+			this.groupBoxColors.Location = new System.Drawing.Point(8, 10);
 			this.groupBoxColors.Name = "groupBoxColors";
-			this.groupBoxColors.Size = new System.Drawing.Size(433, 100);
+			this.groupBoxColors.Size = new System.Drawing.Size(433, 97);
 			this.groupBoxColors.TabIndex = 0;
 			this.groupBoxColors.Text = "Colors";
 			// 
@@ -151,7 +154,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.cancelButton;
 			this.ClientSize = new System.Drawing.Size(477, 379);
-			this.Controls.Add(this.tabControl1);
+			this.Controls.Add(this.tabControl);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.okButton);
@@ -160,7 +163,7 @@
 			this.MinimizeBox = false;
 			this.Name = "ExportDialog";
 			this.Text = "Export";
-			this.tabControl1.ResumeLayout(false);
+			this.tabControl.ResumeLayout(false);
 			this.tabPageStandard.ResumeLayout(false);
 			this.tabPageAdvanced.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -172,7 +175,7 @@
 		private System.Windows.Forms.Button okButton;
 		private System.Windows.Forms.Button helpButton;
 		private System.Windows.Forms.Button cancelButton;
-		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.TabPage tabPageStandard;
 		private System.Windows.Forms.TabPage tabPageAdvanced;
 		private Shared.Controls.GroupBox groupBoxFile;
