@@ -13,6 +13,7 @@ namespace GB.GBTD.Dialogs
 	{
 		public ExportDialog() {
 			InitializeComponent();
+			fileTypeComboBox.SelectedIndex = 0;
 		}
 	}
 }
