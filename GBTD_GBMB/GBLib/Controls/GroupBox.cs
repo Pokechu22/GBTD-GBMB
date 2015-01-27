@@ -16,6 +16,7 @@ namespace GB.Shared.Controls
 	public partial class GroupBox : Panel
 	{
 		private string text = "";
+		protected override Padding DefaultPadding { get { return new Padding(5, 13, 5, 5); } }
 
 		protected override void OnControlAdded(ControlEventArgs e) {
 			//Check to make sure it isn't one of the default controls.
