@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using GB.Shared.Palettes;
 using GB.Shared.Tiles;
 using GB.Shared;
+using GB.GBTD.Dialogs;
 
 namespace GB.GBTD
 {
@@ -289,6 +290,12 @@ namespace GB.GBTD
 			}
 
 			base.WndProc(ref m);
+		}
+
+		private void exportToToolStripMenuItem_Click(object sender, EventArgs e) {
+			ExportDialog dialog = new ExportDialog();
+			dialog.ShowDialog();
+			//TODO
 		}
 	}
 }
