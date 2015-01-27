@@ -12,7 +12,7 @@ namespace GB.Shared.Palettes
 	/// <summary>
 	/// Control that edits a Palettes Set.
 	/// </summary>
-	public partial class GBPaletteSetSelector : UserControl
+	public partial class GBPaletteSetSelector : Control
 	{
 		protected override Size DefaultSize { get { return new Size(96, 216); } }
 		protected override Size DefaultMaximumSize { get { return new Size(96, 216); } }
@@ -226,10 +226,9 @@ namespace GB.Shared.Palettes
 		#endregion
 
 		public GBPaletteSetSelector() {
-			InitializeComponent();
 			addControls();
 		}
-
+		
 		private void addControls() {
 			//Entries
 			entries = new PaletteSetEntry[4, set.NumberOfRows];
