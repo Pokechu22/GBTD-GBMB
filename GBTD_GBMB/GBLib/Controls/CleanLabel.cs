@@ -18,7 +18,7 @@ namespace GB.Shared.Controls
 		protected override Padding DefaultMargin { get { return new Padding(0); } }
 		protected override Padding DefaultPadding { get { return new Padding(0); } }
 
-		private StringFormat format = new StringFormat();
+		private StringFormat format = new StringFormat() { HotkeyPrefix = HotkeyPrefix.Show };
 		private TextRenderingHint renderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 		private SmoothingMode smoothingMode = SmoothingMode.None;
 		private InterpolationMode interpolationMode = InterpolationMode.NearestNeighbor;

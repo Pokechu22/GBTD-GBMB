@@ -26,6 +26,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			this.cleanLabel1 = new GB.Shared.Controls.CleanLabel();
 			this.border3 = new GB.Shared.Controls.Border();
 			this.border1 = new GB.Shared.Controls.Border();
