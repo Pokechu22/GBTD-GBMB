@@ -15,6 +15,18 @@ namespace GB.Shared.Controls
 	/// </summary>
 	public class CleanLabel : Control
 	{
+		protected override bool ProcessMnemonic(char charCode) {
+			if (IsMnemonic(charCode, this.Text)) {
+				//TODO: THis probably isn't how to do this.
+				foreach (Control c in Parent.Controls) {
+					if (c.TabIndex == this.TabIndex + 1) {
+						c.Focus();
+					}
+				}
+			}
+			return base.ProcessMnemonic(charCode);
+		}
+
 		protected override Padding DefaultMargin { get { return new Padding(0); } }
 		protected override Padding DefaultPadding { get { return new Padding(0); } }
 
