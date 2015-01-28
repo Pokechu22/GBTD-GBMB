@@ -23,6 +23,8 @@ namespace GB.GBTD.Dialogs
 			fileTypeComboBox.SelectedIndex = 0;
 			formatComboBox.SelectedIndex = 0;
 			counterComboBox.SelectedIndex = 0;
+			palettesCGBComboBox.SelectedIndex = 0;
+			palettesSGBComboBox.SelectedIndex = 0;
 		}
 	}
 }
