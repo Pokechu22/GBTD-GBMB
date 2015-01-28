@@ -569,7 +569,7 @@
 			// metatileConvertCheckBox
 			// 
 			this.metatileConvertCheckBox.AutoSize = true;
-			this.metatileConvertCheckBox.Location = new System.Drawing.Point(16, 16);
+			this.metatileConvertCheckBox.Location = new System.Drawing.Point(16, 17);
 			this.metatileConvertCheckBox.Name = "metatileConvertCheckBox";
 			this.metatileConvertCheckBox.Size = new System.Drawing.Size(119, 17);
 			this.metatileConvertCheckBox.TabIndex = 4;
@@ -585,7 +585,7 @@
 			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
 			this.labelIndexCounter.Format = stringFormat11;
-			this.labelIndexCounter.Location = new System.Drawing.Point(14, 60);
+			this.labelIndexCounter.Location = new System.Drawing.Point(14, 67);
 			this.labelIndexCounter.Name = "labelIndexCounter";
 			this.labelIndexCounter.Size = new System.Drawing.Size(73, 14);
 			this.labelIndexCounter.TabIndex = 5;
@@ -594,9 +594,9 @@
 			// 
 			// indexOffsetTextBox
 			// 
-			this.indexOffsetTextBox.Location = new System.Drawing.Point(96, 36);
+			this.indexOffsetTextBox.Location = new System.Drawing.Point(96, 39);
 			this.indexOffsetTextBox.Name = "indexOffsetTextBox";
-			this.indexOffsetTextBox.Size = new System.Drawing.Size(47, 20);
+			this.indexOffsetTextBox.Size = new System.Drawing.Size(33, 20);
 			this.indexOffsetTextBox.TabIndex = 6;
 			// 
 			// labelIndexOffset
@@ -608,7 +608,7 @@
 			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
 			this.labelIndexOffset.Format = stringFormat10;
-			this.labelIndexOffset.Location = new System.Drawing.Point(14, 36);
+			this.labelIndexOffset.Location = new System.Drawing.Point(14, 43);
 			this.labelIndexOffset.Name = "labelIndexOffset";
 			this.labelIndexOffset.Size = new System.Drawing.Size(63, 14);
 			this.labelIndexOffset.TabIndex = 7;
@@ -618,7 +618,7 @@
 			// indexCounterTextBox
 			// 
 			this.indexCounterTextBox.FormattingEnabled = true;
-			this.indexCounterTextBox.Location = new System.Drawing.Point(96, 62);
+			this.indexCounterTextBox.Location = new System.Drawing.Point(96, 63);
 			this.indexCounterTextBox.Name = "indexCounterTextBox";
 			this.indexCounterTextBox.Size = new System.Drawing.Size(153, 21);
 			this.indexCounterTextBox.TabIndex = 8;
