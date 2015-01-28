@@ -37,6 +37,9 @@ namespace GB.Shared.Controls
 		private InterpolationMode interpolationMode = InterpolationMode.NearestNeighbor;
 		private PixelOffsetMode pixelOffsetMode = PixelOffsetMode.None;
 
+		private Color disabledForeColor = Color.FromArgb(128, 128, 128);
+		private Color disabledBackColor = Color.FromArgb(255, 255, 255);
+
 		[Category("Format"), Description("The StringFormat used to render.")]
 		public StringFormat Format {
 			get { return format; }
@@ -67,9 +70,25 @@ namespace GB.Shared.Controls
 			get { return pixelOffsetMode; }
 			set { pixelOffsetMode = value; this.Invalidate(); }
 		}
+
+		[Category("Appearance"), Description("The color that should be used when this is disabled.")]
+		public Color DisabledForeColor {
+			get { return disabledForeColor; }
+			set { disabledForeColor = value; this.Invalidate(); }
+		}
+		[Category("Appearance"), Description("The color that should be used when this is disabled.")]
+		public Color DisabledBackColor {
+			get { return disabledBackColor; }
+			set { disabledBackColor = value; this.Invalidate(); }
+		}
 		
 		public CleanLabel() {
 			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+		}
+
+		protected override void OnEnabledChanged(EventArgs e) {
+			base.OnEnabledChanged(e);
+			this.Invalidate();
 		}
 
 		protected override void OnTextChanged(EventArgs e) {
@@ -92,8 +111,18 @@ namespace GB.Shared.Controls
 			e.Graphics.InterpolationMode = this.interpolationMode;
 			e.Graphics.PixelOffsetMode = this.pixelOffsetMode;
 
-			using (Brush b = new SolidBrush(this.ForeColor)) {
-				e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(0, 0, this.Size.Width, this.Size.Height), format);
+			if (this.Enabled) {
+				using (Brush b = new SolidBrush(this.ForeColor)) {
+					e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(0, 0, this.Size.Width, this.Size.Height), format);
+				}
+			} else {
+				//ControlPaint.DrawStringDisabled may exist, but doesn't do what is needed.
+				using (Brush b = new SolidBrush(this.disabledBackColor)) {
+					e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(1, 1, this.Size.Width + 1, this.Size.Height + 1), format);
+				}
+				using (Brush b = new SolidBrush(this.disabledForeColor)) {
+					e.Graphics.DrawString(this.Text, this.Font, b, new RectangleF(0, 0, this.Size.Width + 0, this.Size.Height + 0), format);
+				}
 			}
 			base.OnPaint(e);
 		}
