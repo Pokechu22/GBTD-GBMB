@@ -45,8 +45,13 @@ namespace GB.Shared.Controls
 
 		public GroupBox() {
 			InitializeComponent();
+
+			this.SetStyle(ControlStyles.ContainerControl, true);
+			this.SetStyle(ControlStyles.Selectable, false);
+
 			this.OnSizeChanged(new EventArgs());
 			this.Text = this.Name;
+			this.TabStop = false;
 		}
 
 		protected override void OnSizeChanged(EventArgs e) {

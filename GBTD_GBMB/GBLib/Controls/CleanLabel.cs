@@ -17,13 +17,12 @@ namespace GB.Shared.Controls
 	{
 		protected override bool ProcessMnemonic(char charCode) {
 			if (IsMnemonic(charCode, this.Text)) {
-				//TODO: THis probably isn't how to do this.
-				foreach (Control c in Parent.Controls) {
-					if (c.TabIndex == this.TabIndex + 1) {
-						c.Focus();
-						break;
-					}
+				//Based off of the Mono source, now I know how to do this.
+				//https://github.com/mono/mono/blob/effa4c07ba850bedbe1ff54b2a5df281c058ebcb/mcs/class/Managed.Windows.Forms/System.Windows.Forms/Label.cs#L635
+				if (this.Parent != null) {
+					Parent.SelectNextControl(this, true, false, true, true);
 				}
+				return true;
 			}
 			return base.ProcessMnemonic(charCode);
 		}
@@ -84,6 +83,8 @@ namespace GB.Shared.Controls
 		
 		public CleanLabel() {
 			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+			this.SetStyle(ControlStyles.Selectable, false);
+			this.TabStop = false;
 		}
 
 		protected override void OnEnabledChanged(EventArgs e) {
