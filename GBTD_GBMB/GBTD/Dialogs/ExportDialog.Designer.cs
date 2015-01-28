@@ -35,6 +35,7 @@
 			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat13 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat14 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat12 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat11 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
@@ -80,11 +81,15 @@
 			this.indexOffsetTextBox = new System.Windows.Forms.TextBox();
 			this.labelIndexOffset = new GB.Shared.Controls.CleanLabel();
 			this.indexCounterComboBox = new System.Windows.Forms.ComboBox();
+			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
+			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
+			this.blockSizeTextBox = new System.Windows.Forms.TextBox();
 			this.tabControl.SuspendLayout();
 			this.tabPageStandard.SuspendLayout();
 			this.groupBoxSettings.SuspendLayout();
 			this.groupBoxFile.SuspendLayout();
 			this.tabPageAdvanced.SuspendLayout();
+			this.groupBoxSplitData.SuspendLayout();
 			this.groupBoxMetatiles.SuspendLayout();
 			this.groupBoxColors.SuspendLayout();
 			this.SuspendLayout();
@@ -460,6 +465,9 @@
 			// 
 			// groupBoxSplitData
 			// 
+			this.groupBoxSplitData.Controls.Add(this.blockSizeTextBox);
+			this.groupBoxSplitData.Controls.Add(this.labelBlockSize);
+			this.groupBoxSplitData.Controls.Add(this.splitDataCheckBox);
 			this.groupBoxSplitData.Location = new System.Drawing.Point(8, 218);
 			this.groupBoxSplitData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxSplitData.Name = "groupBoxSplitData";
@@ -483,11 +491,11 @@
 			// 
 			// groupBoxColors
 			// 
-			this.groupBoxColors.Controls.Add(this.includePaletteCheckBox);
-			this.groupBoxColors.Controls.Add(this.labelSGBPalettes);
-			this.groupBoxColors.Controls.Add(this.labelCGBPalettes);
-			this.groupBoxColors.Controls.Add(this.palettesSGBComboBox);
 			this.groupBoxColors.Controls.Add(this.palettesCGBComboBox);
+			this.groupBoxColors.Controls.Add(this.palettesSGBComboBox);
+			this.groupBoxColors.Controls.Add(this.labelCGBPalettes);
+			this.groupBoxColors.Controls.Add(this.labelSGBPalettes);
+			this.groupBoxColors.Controls.Add(this.includePaletteCheckBox);
 			this.groupBoxColors.Location = new System.Drawing.Point(8, 10);
 			this.groupBoxColors.Name = "groupBoxColors";
 			this.groupBoxColors.Size = new System.Drawing.Size(433, 97);
@@ -544,11 +552,11 @@
 			// 
 			this.labelSGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelSGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelSGBPalettes.Format = stringFormat12;
+			stringFormat14.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat14.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat14.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat14.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelSGBPalettes.Format = stringFormat14;
 			this.labelSGBPalettes.Location = new System.Drawing.Point(14, 43);
 			this.labelSGBPalettes.Name = "labelSGBPalettes";
 			this.labelSGBPalettes.Size = new System.Drawing.Size(71, 14);
@@ -580,11 +588,11 @@
 			// 
 			this.labelIndexCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelIndexCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelIndexCounter.Format = stringFormat11;
+			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelIndexCounter.Format = stringFormat12;
 			this.labelIndexCounter.Location = new System.Drawing.Point(14, 67);
 			this.labelIndexCounter.Name = "labelIndexCounter";
 			this.labelIndexCounter.Size = new System.Drawing.Size(73, 14);
@@ -603,11 +611,11 @@
 			// 
 			this.labelIndexOffset.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelIndexOffset.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelIndexOffset.Format = stringFormat10;
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelIndexOffset.Format = stringFormat11;
 			this.labelIndexOffset.Location = new System.Drawing.Point(14, 43);
 			this.labelIndexOffset.Name = "labelIndexOffset";
 			this.labelIndexOffset.Size = new System.Drawing.Size(63, 14);
@@ -635,6 +643,39 @@
 			this.indexCounterComboBox.Size = new System.Drawing.Size(153, 21);
 			this.indexCounterComboBox.TabIndex = 8;
 			// 
+			// splitDataCheckBox
+			// 
+			this.splitDataCheckBox.AutoSize = true;
+			this.splitDataCheckBox.Location = new System.Drawing.Point(16, 17);
+			this.splitDataCheckBox.Name = "splitDataCheckBox";
+			this.splitDataCheckBox.Size = new System.Drawing.Size(70, 17);
+			this.splitDataCheckBox.TabIndex = 4;
+			this.splitDataCheckBox.Text = "&Split data";
+			this.splitDataCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// labelBlockSize
+			// 
+			this.labelBlockSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelBlockSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBlockSize.Format = stringFormat10;
+			this.labelBlockSize.Location = new System.Drawing.Point(14, 37);
+			this.labelBlockSize.Name = "labelBlockSize";
+			this.labelBlockSize.Size = new System.Drawing.Size(55, 14);
+			this.labelBlockSize.TabIndex = 5;
+			this.labelBlockSize.TabStop = false;
+			this.labelBlockSize.Text = "&Block size";
+			// 
+			// blockSizeTextBox
+			// 
+			this.blockSizeTextBox.Location = new System.Drawing.Point(96, 37);
+			this.blockSizeTextBox.Name = "blockSizeTextBox";
+			this.blockSizeTextBox.Size = new System.Drawing.Size(59, 20);
+			this.blockSizeTextBox.TabIndex = 6;
+			// 
 			// ExportDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -658,6 +699,8 @@
 			this.groupBoxFile.ResumeLayout(false);
 			this.groupBoxFile.PerformLayout();
 			this.tabPageAdvanced.ResumeLayout(false);
+			this.groupBoxSplitData.ResumeLayout(false);
+			this.groupBoxSplitData.PerformLayout();
 			this.groupBoxMetatiles.ResumeLayout(false);
 			this.groupBoxMetatiles.PerformLayout();
 			this.groupBoxColors.ResumeLayout(false);
@@ -710,5 +753,8 @@
 		private System.Windows.Forms.TextBox indexOffsetTextBox;
 		private Shared.Controls.CleanLabel labelIndexCounter;
 		private System.Windows.Forms.CheckBox metatileConvertCheckBox;
+		private System.Windows.Forms.CheckBox splitDataCheckBox;
+		private System.Windows.Forms.TextBox blockSizeTextBox;
+		private Shared.Controls.CleanLabel labelBlockSize;
 	}
 }
