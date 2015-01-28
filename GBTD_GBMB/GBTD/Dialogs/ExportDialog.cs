@@ -25,6 +25,7 @@ namespace GB.GBTD.Dialogs
 			counterComboBox.SelectedIndex = 0;
 			palettesCGBComboBox.SelectedIndex = 0;
 			palettesSGBComboBox.SelectedIndex = 0;
+			indexCounterComboBox.SelectedIndex = 0;
 		}
 	}
 }

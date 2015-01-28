@@ -79,7 +79,7 @@
 			this.labelIndexCounter = new GB.Shared.Controls.CleanLabel();
 			this.indexOffsetTextBox = new System.Windows.Forms.TextBox();
 			this.labelIndexOffset = new GB.Shared.Controls.CleanLabel();
-			this.indexCounterTextBox = new System.Windows.Forms.ComboBox();
+			this.indexCounterComboBox = new System.Windows.Forms.ComboBox();
 			this.tabControl.SuspendLayout();
 			this.tabPageStandard.SuspendLayout();
 			this.groupBoxSettings.SuspendLayout();
@@ -469,7 +469,7 @@
 			// 
 			// groupBoxMetatiles
 			// 
-			this.groupBoxMetatiles.Controls.Add(this.indexCounterTextBox);
+			this.groupBoxMetatiles.Controls.Add(this.indexCounterComboBox);
 			this.groupBoxMetatiles.Controls.Add(this.labelIndexOffset);
 			this.groupBoxMetatiles.Controls.Add(this.indexOffsetTextBox);
 			this.groupBoxMetatiles.Controls.Add(this.labelIndexCounter);
@@ -615,13 +615,25 @@
 			this.labelIndexOffset.TabStop = false;
 			this.labelIndexOffset.Text = "In&dex offset";
 			// 
-			// indexCounterTextBox
+			// indexCounterComboBox
 			// 
-			this.indexCounterTextBox.FormattingEnabled = true;
-			this.indexCounterTextBox.Location = new System.Drawing.Point(96, 63);
-			this.indexCounterTextBox.Name = "indexCounterTextBox";
-			this.indexCounterTextBox.Size = new System.Drawing.Size(153, 21);
-			this.indexCounterTextBox.TabIndex = 8;
+			this.indexCounterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.indexCounterComboBox.FormattingEnabled = true;
+			this.indexCounterComboBox.Items.AddRange(new object[] {
+            "None",
+            "Byte-count as Byte",
+            "Byte-count as Word",
+            "Byte-count as Constant",
+            "Tile-count as Byte",
+            "Tile-count as Word",
+            "Tile-count as Constant",
+            "8x8-count as Byte",
+            "8x8-count as Word",
+            "8x8-count as Constant"});
+			this.indexCounterComboBox.Location = new System.Drawing.Point(96, 63);
+			this.indexCounterComboBox.Name = "indexCounterComboBox";
+			this.indexCounterComboBox.Size = new System.Drawing.Size(153, 21);
+			this.indexCounterComboBox.TabIndex = 8;
 			// 
 			// ExportDialog
 			// 
@@ -693,7 +705,7 @@
 		private Shared.Controls.CleanLabel labelCGBPalettes;
 		private Shared.Controls.CleanLabel labelSGBPalettes;
 		private System.Windows.Forms.CheckBox includePaletteCheckBox;
-		private System.Windows.Forms.ComboBox indexCounterTextBox;
+		private System.Windows.Forms.ComboBox indexCounterComboBox;
 		private Shared.Controls.CleanLabel labelIndexOffset;
 		private System.Windows.Forms.TextBox indexOffsetTextBox;
 		private Shared.Controls.CleanLabel labelIndexCounter;
