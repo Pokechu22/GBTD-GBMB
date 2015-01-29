@@ -25,25 +25,19 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat54 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat53 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat52 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat51 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat50 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat55 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat56 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.settingsGroupBox = new GB.Shared.Controls.GroupBox();
 			this.labelFirstGBTDTile = new GB.Shared.Controls.CleanLabel();
 			this.labelTileCount = new GB.Shared.Controls.CleanLabel();
-			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
-			this.labelFileName = new GB.Shared.Controls.CleanLabel();
-			this.fileNameTextBox = new System.Windows.Forms.TextBox();
-			this.browseButton = new System.Windows.Forms.Button();
-			this.labelType = new GB.Shared.Controls.CleanLabel();
-			this.typeComboBox = new System.Windows.Forms.ComboBox();
 			this.labelFirstImportFileTile = new GB.Shared.Controls.CleanLabel();
 			this.labelFirstByteToUse = new GB.Shared.Controls.CleanLabel();
 			this.labelFormat = new GB.Shared.Controls.CleanLabel();
@@ -52,6 +46,12 @@
 			this.firstImportFileTileTextBox = new System.Windows.Forms.TextBox();
 			this.firstByteToUseTextBox = new System.Windows.Forms.TextBox();
 			this.formatTextBox = new System.Windows.Forms.ComboBox();
+			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
+			this.labelFileName = new GB.Shared.Controls.CleanLabel();
+			this.fileNameTextBox = new System.Windows.Forms.TextBox();
+			this.browseButton = new System.Windows.Forms.Button();
+			this.labelType = new GB.Shared.Controls.CleanLabel();
+			this.typeComboBox = new System.Windows.Forms.ComboBox();
 			this.settingsGroupBox.SuspendLayout();
 			this.fileGroupBox.SuspendLayout();
 			this.SuspendLayout();
@@ -106,11 +106,11 @@
 			// 
 			this.labelFirstGBTDTile.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFirstGBTDTile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFirstGBTDTile.Format = stringFormat5;
+			stringFormat54.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat54.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat54.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat54.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFirstGBTDTile.Format = stringFormat54;
 			this.labelFirstGBTDTile.Location = new System.Drawing.Point(14, 24);
 			this.labelFirstGBTDTile.Name = "labelFirstGBTDTile";
 			this.labelFirstGBTDTile.Size = new System.Drawing.Size(90, 14);
@@ -122,17 +122,101 @@
 			// 
 			this.labelTileCount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelTileCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelTileCount.Format = stringFormat4;
+			stringFormat53.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat53.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat53.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat53.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelTileCount.Format = stringFormat53;
 			this.labelTileCount.Location = new System.Drawing.Point(14, 46);
 			this.labelTileCount.Name = "labelTileCount";
 			this.labelTileCount.Size = new System.Drawing.Size(53, 14);
 			this.labelTileCount.TabIndex = 5;
 			this.labelTileCount.TabStop = false;
 			this.labelTileCount.Text = "Tile &count";
+			// 
+			// labelFirstImportFileTile
+			// 
+			this.labelFirstImportFileTile.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFirstImportFileTile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat52.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat52.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat52.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat52.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFirstImportFileTile.Format = stringFormat52;
+			this.labelFirstImportFileTile.Location = new System.Drawing.Point(14, 69);
+			this.labelFirstImportFileTile.Name = "labelFirstImportFileTile";
+			this.labelFirstImportFileTile.Size = new System.Drawing.Size(122, 14);
+			this.labelFirstImportFileTile.TabIndex = 6;
+			this.labelFirstImportFileTile.TabStop = false;
+			this.labelFirstImportFileTile.Text = "&First tile from import file";
+			// 
+			// labelFirstByteToUse
+			// 
+			this.labelFirstByteToUse.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFirstByteToUse.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat51.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat51.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat51.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat51.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFirstByteToUse.Format = stringFormat51;
+			this.labelFirstByteToUse.Location = new System.Drawing.Point(14, 92);
+			this.labelFirstByteToUse.Name = "labelFirstByteToUse";
+			this.labelFirstByteToUse.Size = new System.Drawing.Size(84, 14);
+			this.labelFirstByteToUse.TabIndex = 7;
+			this.labelFirstByteToUse.TabStop = false;
+			this.labelFirstByteToUse.Text = "&First byte to use";
+			// 
+			// labelFormat
+			// 
+			this.labelFormat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFormat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat50.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat50.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat50.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat50.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFormat.Format = stringFormat50;
+			this.labelFormat.Location = new System.Drawing.Point(14, 120);
+			this.labelFormat.Name = "labelFormat";
+			this.labelFormat.Size = new System.Drawing.Size(40, 14);
+			this.labelFormat.TabIndex = 8;
+			this.labelFormat.TabStop = false;
+			this.labelFormat.Text = "F&ormat";
+			// 
+			// firstGBTDTileTextBox
+			// 
+			this.firstGBTDTileTextBox.Location = new System.Drawing.Point(144, 16);
+			this.firstGBTDTileTextBox.Name = "firstGBTDTileTextBox";
+			this.firstGBTDTileTextBox.Size = new System.Drawing.Size(33, 20);
+			this.firstGBTDTileTextBox.TabIndex = 9;
+			// 
+			// tileCountTextBox
+			// 
+			this.tileCountTextBox.Location = new System.Drawing.Point(144, 40);
+			this.tileCountTextBox.Name = "tileCountTextBox";
+			this.tileCountTextBox.Size = new System.Drawing.Size(33, 20);
+			this.tileCountTextBox.TabIndex = 10;
+			// 
+			// firstImportFileTileTextBox
+			// 
+			this.firstImportFileTileTextBox.Location = new System.Drawing.Point(144, 64);
+			this.firstImportFileTileTextBox.Name = "firstImportFileTileTextBox";
+			this.firstImportFileTileTextBox.Size = new System.Drawing.Size(33, 20);
+			this.firstImportFileTileTextBox.TabIndex = 11;
+			// 
+			// firstByteToUseTextBox
+			// 
+			this.firstByteToUseTextBox.Location = new System.Drawing.Point(144, 88);
+			this.firstByteToUseTextBox.Name = "firstByteToUseTextBox";
+			this.firstByteToUseTextBox.Size = new System.Drawing.Size(57, 20);
+			this.firstByteToUseTextBox.TabIndex = 12;
+			// 
+			// formatTextBox
+			// 
+			this.formatTextBox.FormattingEnabled = true;
+			this.formatTextBox.Location = new System.Drawing.Point(144, 112);
+			this.formatTextBox.Name = "formatTextBox";
+			this.formatTextBox.Size = new System.Drawing.Size(145, 21);
+			this.formatTextBox.TabIndex = 13;
 			// 
 			// fileGroupBox
 			// 
@@ -151,11 +235,11 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat7;
+			stringFormat55.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat55.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat55.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat55.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat55;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -183,11 +267,11 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat6;
+			stringFormat56.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat56.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat56.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat56.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat56;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
@@ -206,90 +290,6 @@
 			this.typeComboBox.Name = "typeComboBox";
 			this.typeComboBox.Size = new System.Drawing.Size(177, 21);
 			this.typeComboBox.TabIndex = 8;
-			// 
-			// labelFirstImportFileTile
-			// 
-			this.labelFirstImportFileTile.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelFirstImportFileTile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFirstImportFileTile.Format = stringFormat3;
-			this.labelFirstImportFileTile.Location = new System.Drawing.Point(14, 69);
-			this.labelFirstImportFileTile.Name = "labelFirstImportFileTile";
-			this.labelFirstImportFileTile.Size = new System.Drawing.Size(122, 14);
-			this.labelFirstImportFileTile.TabIndex = 6;
-			this.labelFirstImportFileTile.TabStop = false;
-			this.labelFirstImportFileTile.Text = "&First tile from import file";
-			// 
-			// labelFirstByteToUse
-			// 
-			this.labelFirstByteToUse.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelFirstByteToUse.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFirstByteToUse.Format = stringFormat2;
-			this.labelFirstByteToUse.Location = new System.Drawing.Point(14, 92);
-			this.labelFirstByteToUse.Name = "labelFirstByteToUse";
-			this.labelFirstByteToUse.Size = new System.Drawing.Size(84, 14);
-			this.labelFirstByteToUse.TabIndex = 7;
-			this.labelFirstByteToUse.TabStop = false;
-			this.labelFirstByteToUse.Text = "&First byte to use";
-			// 
-			// labelFormat
-			// 
-			this.labelFormat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelFormat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFormat.Format = stringFormat1;
-			this.labelFormat.Location = new System.Drawing.Point(14, 120);
-			this.labelFormat.Name = "labelFormat";
-			this.labelFormat.Size = new System.Drawing.Size(40, 14);
-			this.labelFormat.TabIndex = 8;
-			this.labelFormat.TabStop = false;
-			this.labelFormat.Text = "F&ormat";
-			// 
-			// firstGBTDTileTextBox
-			// 
-			this.firstGBTDTileTextBox.Location = new System.Drawing.Point(133, 19);
-			this.firstGBTDTileTextBox.Name = "firstGBTDTileTextBox";
-			this.firstGBTDTileTextBox.Size = new System.Drawing.Size(100, 20);
-			this.firstGBTDTileTextBox.TabIndex = 9;
-			// 
-			// tileCountTextBox
-			// 
-			this.tileCountTextBox.Location = new System.Drawing.Point(133, 46);
-			this.tileCountTextBox.Name = "tileCountTextBox";
-			this.tileCountTextBox.Size = new System.Drawing.Size(100, 20);
-			this.tileCountTextBox.TabIndex = 10;
-			// 
-			// firstImportFileTileTextBox
-			// 
-			this.firstImportFileTileTextBox.Location = new System.Drawing.Point(139, 66);
-			this.firstImportFileTileTextBox.Name = "firstImportFileTileTextBox";
-			this.firstImportFileTileTextBox.Size = new System.Drawing.Size(100, 20);
-			this.firstImportFileTileTextBox.TabIndex = 11;
-			// 
-			// firstByteToUseTextBox
-			// 
-			this.firstByteToUseTextBox.Location = new System.Drawing.Point(195, 92);
-			this.firstByteToUseTextBox.Name = "firstByteToUseTextBox";
-			this.firstByteToUseTextBox.Size = new System.Drawing.Size(100, 20);
-			this.firstByteToUseTextBox.TabIndex = 12;
-			// 
-			// formatTextBox
-			// 
-			this.formatTextBox.FormattingEnabled = true;
-			this.formatTextBox.Location = new System.Drawing.Point(208, 120);
-			this.formatTextBox.Name = "formatTextBox";
-			this.formatTextBox.Size = new System.Drawing.Size(121, 21);
-			this.formatTextBox.TabIndex = 13;
 			// 
 			// ImportDialog
 			// 
