@@ -25,7 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
@@ -37,7 +37,7 @@
 			// 
 			// okButton
 			// 
-			this.okButton.Location = new System.Drawing.Point(51, 62);
+			this.okButton.Location = new System.Drawing.Point(53, 64);
 			this.okButton.Name = "okButton";
 			this.okButton.Size = new System.Drawing.Size(75, 25);
 			this.okButton.TabIndex = 0;
@@ -46,7 +46,8 @@
 			// 
 			// cancelButton
 			// 
-			this.cancelButton.Location = new System.Drawing.Point(132, 62);
+			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.cancelButton.Location = new System.Drawing.Point(133, 64);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(75, 25);
 			this.cancelButton.TabIndex = 1;
@@ -55,7 +56,7 @@
 			// 
 			// helpButton
 			// 
-			this.helpButton.Location = new System.Drawing.Point(218, 62);
+			this.helpButton.Location = new System.Drawing.Point(213, 64);
 			this.helpButton.Name = "helpButton";
 			this.helpButton.Size = new System.Drawing.Size(75, 25);
 			this.helpButton.TabIndex = 2;
@@ -66,39 +67,41 @@
 			// 
 			this.tileCountGroupBox.Controls.Add(this.tileCountTextBox);
 			this.tileCountGroupBox.Controls.Add(this.labelTileCount);
-			this.tileCountGroupBox.Location = new System.Drawing.Point(0, 0);
+			this.tileCountGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.tileCountGroupBox.Name = "tileCountGroupBox";
-			this.tileCountGroupBox.Size = new System.Drawing.Size(293, 56);
+			this.tileCountGroupBox.Size = new System.Drawing.Size(289, 47);
 			this.tileCountGroupBox.TabIndex = 3;
-			this.tileCountGroupBox.Text = "Tile Count";
+			this.tileCountGroupBox.Text = "Tile count";
 			// 
 			// labelTileCount
 			// 
 			this.labelTileCount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelTileCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelTileCount.Format = stringFormat1;
-			this.labelTileCount.Location = new System.Drawing.Point(9, 13);
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelTileCount.Format = stringFormat2;
+			this.labelTileCount.Location = new System.Drawing.Point(14, 19);
 			this.labelTileCount.Name = "labelTileCount";
-			this.labelTileCount.Size = new System.Drawing.Size(141, 14);
+			this.labelTileCount.Size = new System.Drawing.Size(138, 14);
 			this.labelTileCount.TabIndex = 4;
 			this.labelTileCount.TabStop = false;
-			this.labelTileCount.Text = "&Tile Count (786 maximum):";
+			this.labelTileCount.Text = "&Tile count (768 maximum):";
 			// 
 			// tileCountTextBox
 			// 
-			this.tileCountTextBox.Location = new System.Drawing.Point(153, 16);
+			this.tileCountTextBox.Location = new System.Drawing.Point(152, 16);
 			this.tileCountTextBox.Name = "tileCountTextBox";
-			this.tileCountTextBox.Size = new System.Drawing.Size(100, 20);
+			this.tileCountTextBox.Size = new System.Drawing.Size(49, 20);
 			this.tileCountTextBox.TabIndex = 5;
 			// 
 			// TileCountDialog
 			// 
+			this.AcceptButton = this.okButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.cancelButton;
 			this.ClientSize = new System.Drawing.Size(305, 96);
 			this.Controls.Add(this.tileCountGroupBox);
 			this.Controls.Add(this.helpButton);
