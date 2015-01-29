@@ -303,5 +303,11 @@ namespace GB.GBTD
 			dialog.ShowDialog();
 			//TODO
 		}
+
+		private void tileCountToolStripMenuItem_Click(object sender, EventArgs e) {
+			TileCountDialog dialog = new TileCountDialog();
+			dialog.ShowDialog();
+			//TODO
+		}
 	}
 }

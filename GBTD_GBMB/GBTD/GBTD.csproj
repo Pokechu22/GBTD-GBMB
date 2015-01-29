@@ -61,6 +61,12 @@
     <Compile Include="Dialogs\ImportDialog.Designer.cs">
       <DependentUpon>ImportDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\TileCountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TileCountDialog.Designer.cs">
+      <DependentUpon>TileCountDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="TileEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ImportDialog.resx">
       <DependentUpon>ImportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TileCountDialog.resx">
+      <DependentUpon>TileCountDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
