@@ -18,6 +18,7 @@ namespace GB.GBTD.Dialogs
 
 		private void InitializeComboboxes() {
 			typeComboBox.SelectedIndex = 0;
+			formatComboBox.SelectedIndex = 0;
 		}
 	}
 }
