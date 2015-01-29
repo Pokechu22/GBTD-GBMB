@@ -25,8 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat12 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat11 = new System.Drawing.StringFormat();
 			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
 			this.settingsGroupBox = new GB.Shared.Controls.GroupBox();
 			this.okButton = new System.Windows.Forms.Button();
@@ -93,12 +93,12 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat4;
-			this.labelFileName.Location = new System.Drawing.Point(12, 19);
+			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat12;
+			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
 			this.labelFileName.TabIndex = 4;
@@ -107,16 +107,16 @@
 			// 
 			// fileNameTextBox
 			// 
-			this.fileNameTextBox.Location = new System.Drawing.Point(66, 16);
+			this.fileNameTextBox.Location = new System.Drawing.Point(72, 16);
 			this.fileNameTextBox.Name = "fileNameTextBox";
-			this.fileNameTextBox.Size = new System.Drawing.Size(161, 20);
+			this.fileNameTextBox.Size = new System.Drawing.Size(177, 20);
 			this.fileNameTextBox.TabIndex = 5;
 			// 
 			// browseButton
 			// 
-			this.browseButton.Location = new System.Drawing.Point(233, 19);
+			this.browseButton.Location = new System.Drawing.Point(256, 16);
 			this.browseButton.Name = "browseButton";
-			this.browseButton.Size = new System.Drawing.Size(75, 23);
+			this.browseButton.Size = new System.Drawing.Size(65, 21);
 			this.browseButton.TabIndex = 6;
 			this.browseButton.Text = "&Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
@@ -125,12 +125,12 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat3;
-			this.labelType.Location = new System.Drawing.Point(12, 47);
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat11;
+			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
 			this.labelType.TabIndex = 7;
@@ -139,10 +139,14 @@
 			// 
 			// typeComboBox
 			// 
+			this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.typeComboBox.FormattingEnabled = true;
-			this.typeComboBox.Location = new System.Drawing.Point(66, 42);
+			this.typeComboBox.Items.AddRange(new object[] {
+            "GBE Files",
+            "Binary 8x8 tiles"});
+			this.typeComboBox.Location = new System.Drawing.Point(72, 40);
 			this.typeComboBox.Name = "typeComboBox";
-			this.typeComboBox.Size = new System.Drawing.Size(161, 21);
+			this.typeComboBox.Size = new System.Drawing.Size(177, 21);
 			this.typeComboBox.TabIndex = 8;
 			// 
 			// ImportDialog
