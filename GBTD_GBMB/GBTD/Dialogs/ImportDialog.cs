@@ -13,6 +13,11 @@ namespace GB.GBTD.Dialogs
 	{
 		public ImportDialog() {
 			InitializeComponent();
+			
+		}
+
+		private void InitializeComboboxes() {
+
 		}
 	}
 }
