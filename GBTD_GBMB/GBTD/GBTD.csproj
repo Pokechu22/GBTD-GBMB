@@ -49,7 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dialogs\ExportDialog.cs" />
+    <Compile Include="Dialogs\ExportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\ExportDialog.Designer.cs">
       <DependentUpon>ExportDialog.cs</DependentUpon>
     </Compile>
