@@ -239,6 +239,7 @@
 			this.improtFromToolStripMenuItem.Name = "improtFromToolStripMenuItem";
 			this.improtFromToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.improtFromToolStripMenuItem.Text = "&Import from";
+			this.improtFromToolStripMenuItem.Click += new System.EventHandler(this.improtFromToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator5
 			// 

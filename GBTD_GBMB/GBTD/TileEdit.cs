@@ -297,5 +297,11 @@ namespace GB.GBTD
 			dialog.ShowDialog();
 			//TODO
 		}
+
+		private void improtFromToolStripMenuItem_Click(object sender, EventArgs e) {
+			ImportDialog dialog = new ImportDialog();
+			dialog.ShowDialog();
+			//TODO
+		}
 	}
 }
