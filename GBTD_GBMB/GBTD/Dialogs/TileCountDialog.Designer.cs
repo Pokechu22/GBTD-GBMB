@@ -30,8 +30,8 @@
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.tileCountGroupBox = new GB.Shared.Controls.GroupBox();
-			this.tileCountTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.labelTileCount = new GB.Shared.Controls.CleanLabel();
+			this.tileCountTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.tileCountGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -65,20 +65,13 @@
 			// 
 			// tileCountGroupBox
 			// 
-			this.tileCountGroupBox.Controls.Add(this.labelTileCount);
 			this.tileCountGroupBox.Controls.Add(this.tileCountTextBox);
+			this.tileCountGroupBox.Controls.Add(this.labelTileCount);
 			this.tileCountGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.tileCountGroupBox.Name = "tileCountGroupBox";
 			this.tileCountGroupBox.Size = new System.Drawing.Size(289, 47);
 			this.tileCountGroupBox.TabIndex = 3;
 			this.tileCountGroupBox.Text = "Tile count";
-			// 
-			// tileCountTextBox
-			// 
-			this.tileCountTextBox.Location = new System.Drawing.Point(152, 16);
-			this.tileCountTextBox.Name = "tileCountTextBox";
-			this.tileCountTextBox.Size = new System.Drawing.Size(49, 20);
-			this.tileCountTextBox.TabIndex = 5;
 			// 
 			// labelTileCount
 			// 
@@ -95,6 +88,13 @@
 			this.labelTileCount.TabIndex = 4;
 			this.labelTileCount.TabStop = false;
 			this.labelTileCount.Text = "&Tile count (768 maximum):";
+			// 
+			// tileCountTextBox
+			// 
+			this.tileCountTextBox.Location = new System.Drawing.Point(152, 16);
+			this.tileCountTextBox.Name = "tileCountTextBox";
+			this.tileCountTextBox.Size = new System.Drawing.Size(49, 20);
+			this.tileCountTextBox.TabIndex = 5;
 			// 
 			// TileCountDialog
 			// 

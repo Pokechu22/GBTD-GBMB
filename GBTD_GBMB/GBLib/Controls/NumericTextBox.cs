@@ -14,6 +14,7 @@ namespace GB.Shared.Controls
 		}
 
 		private int value = 0;
+		private bool acceptsSigned = false;
 
 		[Category("Data"), Description("The numeric value.")]
 		[DefaultValue(0)]
@@ -22,8 +23,18 @@ namespace GB.Shared.Controls
 				return this.value;
 			}
 			set {
+				if (!acceptsSigned && value < 0) {
+					return;
+				}
 				this.Text = value.ToString();
 			}
+		}
+
+		[Category("Data"), Description("Whether or not numbers are allowed to be signed (negative).")]
+		[DefaultValue(false)]
+		public bool AcceptsSigned {
+			get { return this.acceptsSigned; }
+			set { this.acceptsSigned = value; }
 		}
 
 		[DefaultValue("0")]
@@ -32,6 +43,9 @@ namespace GB.Shared.Controls
 			set {
 				int result = 0;
 				if (Int32.TryParse(value, out result)) {
+					if (!acceptsSigned && result < 0) {
+						return;
+					}
 					this.value = result;
 					base.Text = value;
 				} else {
@@ -41,7 +55,9 @@ namespace GB.Shared.Controls
 		}
 
 		protected override void OnKeyPress(KeyPressEventArgs e) {
-			if (!(char.IsNumber(e.KeyChar) || e.KeyChar == (char)0x08)) {
+			if (!(char.IsNumber(e.KeyChar) 
+					|| e.KeyChar == (char)0x08
+					|| (acceptsSigned && TextLength == 0 && e.KeyChar == '-'))) {
 				e.Handled = true;
 			}
 			base.OnKeyPress(e);
