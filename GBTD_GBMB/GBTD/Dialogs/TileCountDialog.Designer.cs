@@ -25,13 +25,13 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.tileCountGroupBox = new GB.Shared.Controls.GroupBox();
+			this.tileCountTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.labelTileCount = new GB.Shared.Controls.CleanLabel();
-			this.tileCountTextBox = new System.Windows.Forms.TextBox();
 			this.tileCountGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -65,29 +65,13 @@
 			// 
 			// tileCountGroupBox
 			// 
-			this.tileCountGroupBox.Controls.Add(this.tileCountTextBox);
 			this.tileCountGroupBox.Controls.Add(this.labelTileCount);
+			this.tileCountGroupBox.Controls.Add(this.tileCountTextBox);
 			this.tileCountGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.tileCountGroupBox.Name = "tileCountGroupBox";
 			this.tileCountGroupBox.Size = new System.Drawing.Size(289, 47);
 			this.tileCountGroupBox.TabIndex = 3;
 			this.tileCountGroupBox.Text = "Tile count";
-			// 
-			// labelTileCount
-			// 
-			this.labelTileCount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelTileCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelTileCount.Format = stringFormat2;
-			this.labelTileCount.Location = new System.Drawing.Point(14, 19);
-			this.labelTileCount.Name = "labelTileCount";
-			this.labelTileCount.Size = new System.Drawing.Size(138, 14);
-			this.labelTileCount.TabIndex = 4;
-			this.labelTileCount.TabStop = false;
-			this.labelTileCount.Text = "&Tile count (768 maximum):";
 			// 
 			// tileCountTextBox
 			// 
@@ -95,6 +79,22 @@
 			this.tileCountTextBox.Name = "tileCountTextBox";
 			this.tileCountTextBox.Size = new System.Drawing.Size(49, 20);
 			this.tileCountTextBox.TabIndex = 5;
+			// 
+			// labelTileCount
+			// 
+			this.labelTileCount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelTileCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelTileCount.Format = stringFormat3;
+			this.labelTileCount.Location = new System.Drawing.Point(14, 19);
+			this.labelTileCount.Name = "labelTileCount";
+			this.labelTileCount.Size = new System.Drawing.Size(138, 14);
+			this.labelTileCount.TabIndex = 4;
+			this.labelTileCount.TabStop = false;
+			this.labelTileCount.Text = "&Tile count (768 maximum):";
 			// 
 			// TileCountDialog
 			// 
@@ -124,7 +124,7 @@
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.Button helpButton;
 		private Shared.Controls.GroupBox tileCountGroupBox;
-		private System.Windows.Forms.TextBox tileCountTextBox;
+		private GB.Shared.Controls.NumericTextBox tileCountTextBox;
 		private Shared.Controls.CleanLabel labelTileCount;
 	}
 }
