@@ -47,9 +47,9 @@
 			this.tabPageAdvanced = new System.Windows.Forms.TabPage();
 			this.groupBoxSettings = new GB.Shared.Controls.GroupBox();
 			this.formatComboBox = new System.Windows.Forms.ComboBox();
-			this.toTextBox = new System.Windows.Forms.TextBox();
-			this.fromTextBox = new System.Windows.Forms.TextBox();
-			this.bankTextBox = new System.Windows.Forms.TextBox();
+			this.toTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.fromTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.sectionTextBox = new System.Windows.Forms.TextBox();
 			this.labelTextBox = new System.Windows.Forms.TextBox();
 			this.labelCounter = new GB.Shared.Controls.CleanLabel();
@@ -69,13 +69,13 @@
 			this.labelFileName = new GB.Shared.Controls.CleanLabel();
 			this.fileTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.groupBoxSplitData = new GB.Shared.Controls.GroupBox();
-			this.blockSizeTextBox = new System.Windows.Forms.TextBox();
+			this.blockSizeTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
 			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBoxMetatiles = new GB.Shared.Controls.GroupBox();
 			this.indexCounterComboBox = new System.Windows.Forms.ComboBox();
 			this.labelIndexOffset = new GB.Shared.Controls.CleanLabel();
-			this.indexOffsetTextBox = new System.Windows.Forms.TextBox();
+			this.indexOffsetTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.labelIndexCounter = new GB.Shared.Controls.CleanLabel();
 			this.metatileConvertCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBoxColors = new GB.Shared.Controls.GroupBox();
@@ -751,9 +751,9 @@
 		private Shared.Controls.CleanLabel labelLabel;
 		private System.Windows.Forms.TextBox sectionTextBox;
 		private System.Windows.Forms.ComboBox counterComboBox;
-		private System.Windows.Forms.TextBox bankTextBox;
-		private System.Windows.Forms.TextBox fromTextBox;
-		private System.Windows.Forms.TextBox toTextBox;
+		private GB.Shared.Controls.NumericTextBox bankTextBox;
+		private GB.Shared.Controls.NumericTextBox fromTextBox;
+		private GB.Shared.Controls.NumericTextBox toTextBox;
 		private System.Windows.Forms.ComboBox formatComboBox;
 		private System.Windows.Forms.CheckBox gbCompressCheckBox;
 		private System.Windows.Forms.CheckBox singleUnitCheckBox;
@@ -764,11 +764,11 @@
 		private System.Windows.Forms.CheckBox includePaletteCheckBox;
 		private System.Windows.Forms.ComboBox indexCounterComboBox;
 		private Shared.Controls.CleanLabel labelIndexOffset;
-		private System.Windows.Forms.TextBox indexOffsetTextBox;
+		private GB.Shared.Controls.NumericTextBox indexOffsetTextBox;
 		private Shared.Controls.CleanLabel labelIndexCounter;
 		private System.Windows.Forms.CheckBox metatileConvertCheckBox;
 		private System.Windows.Forms.CheckBox splitDataCheckBox;
-		private System.Windows.Forms.TextBox blockSizeTextBox;
+		private GB.Shared.Controls.NumericTextBox blockSizeTextBox;
 		private Shared.Controls.CleanLabel labelBlockSize;
 	}
 }
