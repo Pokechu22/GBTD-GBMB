@@ -8,6 +8,66 @@ using GB.Shared.Tiles;
 
 namespace GB.Shared.Palettes
 {
+	public struct GBPalette
+	{
+		[DefaultValue(GBColor.BLACK)]
+		public GBColor color0;
+		[DefaultValue(GBColor.DARK_GRAY)]
+		public GBColor color1;
+		[DefaultValue(GBColor.LIGHT_GRAY)]
+		public GBColor color2;
+		[DefaultValue(GBColor.WHITE)]
+		public GBColor color3;
+
+		public byte ByteValue {
+			get {
+				byte result = 0;
+				for (int i = 0; i < 4; i++) {
+					result |= (byte)this[i];
+					result <<= 2;
+				}
+				return result;
+			}
+			set {
+				for (int i = 0; i < 4; i++) {
+					this[3 - i] = (GBColor)((value >> (2 * i)) & 0x03);
+				}
+			}
+		}
+
+		public GBColor this[int index] {
+			get {
+				switch (index) {
+				case 0: return this.color0;
+				case 1: return this.color1;
+				case 2: return this.color2;
+				case 3: return this.color3;
+				default: throw new ArgumentOutOfRangeException("index");
+				}
+			}
+			set {
+				switch (index) {
+				case 0: this.color0 = value; return;
+				case 1: this.color1 = value; return;
+				case 2: this.color2 = value; return;
+				case 3: this.color3 = value; return;
+				default: throw new ArgumentOutOfRangeException("index");
+				}
+			}
+		}
+
+		public static GBPalette DEFAULT {
+			get {
+				return new GBPalette {
+					color0 = GBColor.BLACK,
+					color1 = GBColor.DARK_GRAY,
+					color2 = GBColor.LIGHT_GRAY,
+					color3 = GBColor.WHITE
+				};
+			}
+		}
+	}
+
 	public interface IPaletteSetBehavior
 	{
 		IPaletteEntryBehavior EntryBehavior { get; }
