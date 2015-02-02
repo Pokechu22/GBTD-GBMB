@@ -32,12 +32,17 @@ namespace GB.Shared.GBRFile
 			//TODO
 		}
 
-		public abstract void LoadFromStream(Stream s) {
-			
-		}
+		public abstract void SaveToStream(Stream s);
+		public abstract void LoadFromStream(Stream s);
 
-		public static IGBRExportable Read(Stream s) {
-			
+		/// <summary>
+		/// Reads an object and its header and returns said object.
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		public static IGBRExportable ReadObject(Stream s) {
+			//TODO
+			return null;
 		}
 	}
 }
