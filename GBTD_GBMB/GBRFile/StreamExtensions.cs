@@ -71,6 +71,20 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
+		/// Writes the object header to specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		internal static void WriteHeader(this Stream stream, GBRObjectHeader header) {
+			if (!stream.CanWrite) {
+				throw new NotSupportedException("Stream cannot be written to.");
+			}
+
+			stream.WriteWord(header.ObjectID);
+			stream.WriteWord(header.UniqueID);
+			stream.WriteLong(header.Size);
+		}
+
+		/// <summary>
 		/// Reads a string to the specified stream, in the expected format.
 		/// <para>Per the doc: 
 		/// String (xx)	C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).</para>
@@ -118,6 +132,22 @@ namespace GB.Shared.GBRFile
 			stream.Read(bytes, 0, 4);
 
 			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads the object header from specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		internal static GBRObjectHeader ReadHeader(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			UInt16 TypeID = stream.ReadWord();
+			UInt16 UniqueID = stream.ReadWord();
+			UInt32 Size = stream.ReadLong();
+
+			return new GBRObjectHeader(TypeID, UniqueID, Size);
 		}
 	}
 }
