@@ -6,6 +6,10 @@ using System.IO;
 
 namespace GB.Shared.GBRFile
 {
+	/// <summary>
+	/// Provides functionality to modify streams per the GBR spec.
+	/// It's an internal class because it would otherwise conflict with the GBM spec.
+	/// </summary>
 	internal static class StreamExtensions
 	{
 		/// <summary>
@@ -23,7 +27,7 @@ namespace GB.Shared.GBRFile
 				throw new NotSupportedException("Stream cannot be written to.");
 			}
 			byte[] bytes = Encoding.ASCII.GetBytes(s);
-
+			
 			//Go until the end -1, so that if a terminator is needed it shall be added.
 			for (int i = 0; i < length - 1; i++) {
 				if (i < bytes.Length) {

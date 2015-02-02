@@ -67,7 +67,6 @@
     <Compile Include="Dialogs\TileCountDialog.Designer.cs">
       <DependentUpon>TileCountDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="IGBRExportable.cs" />
     <Compile Include="TileEdit.cs">
       <SubType>Form</SubType>
     </Compile>
