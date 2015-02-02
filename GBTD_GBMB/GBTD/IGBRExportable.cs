@@ -14,7 +14,7 @@ namespace GB.GBTD
 		/// <summary>
 		/// The typeid of this object, which should remain constant.
 		/// </summary>
-		public abstract UInt16 TypeID { get; }
+		public abstract UInt16 TypeID { get; private set; }
 
 		/// <summary>
 		/// The Unique ID of this object.
@@ -33,6 +33,20 @@ namespace GB.GBTD
 			stream.WriteWord(TypeID);
 			stream.WriteWord(UniqueID);
 			stream.WriteLong(GetSize());
+		}
+
+		/// <summary>
+		/// Reads the object header from specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		public void ReadHeader(Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			this.TypeID = stream.ReadWord();
+			this.UniqueID = stream.ReadWord();
+			stream.ReadLong(); //TODO
 		}
 
 		public abstract UInt32 GetSize();
@@ -95,6 +109,56 @@ namespace GB.GBTD
 			stream.WriteByte((byte)((n >> 8) & 0xFF));
 			stream.WriteByte((byte)((n >> 16) & 0xFF));
 			stream.WriteByte((byte)((n >> 24) & 0xFF));
+		}
+
+		/// <summary>
+		/// Reads a string to the specified stream, in the expected format.
+		/// <para>Per the doc: 
+		/// String (xx)	C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).</para>
+		/// <para>This method will read until a null terminator or the end of the length.
+		/// </para>
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="length">The maximum expected length.</param>
+		internal static String ReadString(this Stream stream, String s, uint length) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[length];
+			stream.Read(bytes, 0, (int)length);
+
+			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
+		}
+
+		/// <summary>
+		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream.
+		/// <param name="stream">The stream to write to.</param>
+		/// </summary>
+		internal static UInt16 ReadWord(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[2];
+			stream.Read(bytes, 0, 2);
+
+			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream.
+		/// <param name="stream">The stream to write to.</param>
+		/// </summary>
+		internal static UInt32 ReadLong(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[4];
+			stream.Read(bytes, 0, 4);
+
+			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
 		}
 	}
 }
