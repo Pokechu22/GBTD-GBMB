@@ -16,5 +16,9 @@ namespace GB.Shared.GBRFile
 			this.UniqueID = UniqueID;
 			this.Size = Size;
 		}
+
+		public GBRObjectHeader Resize(UInt32 newSize) {
+			return new GBRObjectHeader(this.ObjectID, this.UniqueID, newSize);
+		}
 	}
 }
