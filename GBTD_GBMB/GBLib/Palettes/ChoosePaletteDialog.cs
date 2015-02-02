@@ -15,6 +15,7 @@ namespace GB.Shared.Palettes
 	{
 		public ChoosePalette() {
 			InitializeComponent();
+			//initClipboardChangeCheck();
 		}
 
 		public ChoosePalette(PaletteSet set) : this() {
@@ -43,12 +44,38 @@ namespace GB.Shared.Palettes
 			colorPicker1.GBCFilter = filterCheckBox.Checked;
 			gbPaletteSetSelector1.GBCFilter = filterCheckBox.Checked;
 		}
+
+		private void initClipboardChangeCheck() {
+			NativeMethods.AddClipboardFormatListener(Handle);
+		}
+
+		private void OnClipboardUpdate() {
+			//TODO
+		}
+
+		protected override void WndProc(ref Message m) {
+			if (m.Msg == NativeMethods.WM_CLIPBOARDUPDATE) {
+				OnClipboardUpdate();
+			}
+
+			base.WndProc(ref m);
+		}
+
+		private void pasteButton_Click(object sender, EventArgs e) {
+			if (!Clipboard.ContainsText()) { return; }
+			if (this.gbPaletteSetSelector1.SelectedY < 0) { return; }
+
+			this.Set.StringToPaletteSet(Clipboard.GetText(), 0, this.gbPaletteSetSelector1.SelectedY);
+		}
+
+		private void copyButton_Click(object sender, EventArgs e) {
+			if (this.gbPaletteSetSelector1.SelectedY < 0) { return; }
+
+			Clipboard.SetText(this.Set[this.gbPaletteSetSelector1.SelectedY].PaletteToString());
+		}
+
+		private void copyAllButton_Click(object sender, EventArgs e) {
+			Clipboard.SetText(this.Set.PaletteSetToString());
+		}
 	}
-
-	/*public class GBCChoosePalette : ChoosePalette<GBCPaletteSetSelector, GBCPaletteSet, GBCPalette, GBCPaletteEntry>
-	{
-		public GBCChoosePalette() : base() { }
-
-		public GBCChoosePalette(GBCPaletteSet set) : base(set) { }
-	}*/
 }

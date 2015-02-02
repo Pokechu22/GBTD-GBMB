@@ -31,11 +31,11 @@ namespace GB.Shared.Palettes
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.groupBox1 = new GB.Shared.Controls.GroupBox();
-			this.pasteButton = new System.Windows.Forms.Button();
-			this.copyButton = new System.Windows.Forms.Button();
-			this.copyAllButton = new System.Windows.Forms.Button();
-			this.colorPicker1 = new GB.Shared.Palettes.TGammaPanel();
 			this.gbPaletteSetSelector1 = new GB.Shared.Palettes.GBPaletteSetSelector();
+			this.colorPicker1 = new GB.Shared.Palettes.TGammaPanel();
+			this.copyAllButton = new System.Windows.Forms.Button();
+			this.copyButton = new System.Windows.Forms.Button();
+			this.pasteButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -81,57 +81,17 @@ namespace GB.Shared.Palettes
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.gbPaletteSetSelector1);
-			this.groupBox1.Controls.Add(this.colorPicker1);
-			this.groupBox1.Controls.Add(this.copyAllButton);
-			this.groupBox1.Controls.Add(this.copyButton);
 			this.groupBox1.Controls.Add(this.pasteButton);
+			this.groupBox1.Controls.Add(this.copyButton);
+			this.groupBox1.Controls.Add(this.copyAllButton);
+			this.groupBox1.Controls.Add(this.colorPicker1);
+			this.groupBox1.Controls.Add(this.gbPaletteSetSelector1);
 			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox1.Location = new System.Drawing.Point(8, 8);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(249, 280);
 			this.groupBox1.TabIndex = 5;
 			this.groupBox1.Text = "Gameboy Color palettes";
-			// 
-			// pasteButton
-			// 
-			this.pasteButton.Location = new System.Drawing.Point(160, 254);
-			this.pasteButton.Name = "pasteButton";
-			this.pasteButton.Size = new System.Drawing.Size(57, 19);
-			this.pasteButton.TabIndex = 6;
-			this.pasteButton.Text = "&Paste";
-			this.pasteButton.UseVisualStyleBackColor = true;
-			// 
-			// copyButton
-			// 
-			this.copyButton.Location = new System.Drawing.Point(96, 254);
-			this.copyButton.Name = "copyButton";
-			this.copyButton.Size = new System.Drawing.Size(57, 19);
-			this.copyButton.TabIndex = 5;
-			this.copyButton.Text = "&Copy";
-			this.copyButton.UseVisualStyleBackColor = true;
-			// 
-			// copyAllButton
-			// 
-			this.copyAllButton.Location = new System.Drawing.Point(32, 254);
-			this.copyAllButton.Name = "copyAllButton";
-			this.copyAllButton.Size = new System.Drawing.Size(57, 19);
-			this.copyAllButton.TabIndex = 4;
-			this.copyAllButton.Text = "Copy &all";
-			this.copyAllButton.UseVisualStyleBackColor = true;
-			// 
-			// colorPicker1
-			// 
-			this.colorPicker1.Enabled = false;
-			this.colorPicker1.FirstColor = System.Drawing.Color.Black;
-			this.colorPicker1.GBCFilter = false;
-			this.colorPicker1.Location = new System.Drawing.Point(179, 19);
-			this.colorPicker1.MaximumSize = new System.Drawing.Size(53, 230);
-			this.colorPicker1.MinimumSize = new System.Drawing.Size(53, 230);
-			this.colorPicker1.Name = "colorPicker1";
-			this.colorPicker1.Size = new System.Drawing.Size(53, 230);
-			this.colorPicker1.TabIndex = 0;
-			this.colorPicker1.OnChange += new System.EventHandler(this.colorPicker1_OnChange);
 			// 
 			// gbPaletteSetSelector1
 			// 
@@ -147,6 +107,49 @@ namespace GB.Shared.Palettes
 			this.gbPaletteSetSelector1.Size = new System.Drawing.Size(96, 216);
 			this.gbPaletteSetSelector1.TabIndex = 1;
 			this.gbPaletteSetSelector1.SelectionChanged += new System.EventHandler(this.gbPaletteSetSelector1_SelectionChanged);
+			// 
+			// colorPicker1
+			// 
+			this.colorPicker1.Enabled = false;
+			this.colorPicker1.FirstColor = System.Drawing.Color.Black;
+			this.colorPicker1.GBCFilter = false;
+			this.colorPicker1.Location = new System.Drawing.Point(179, 19);
+			this.colorPicker1.MaximumSize = new System.Drawing.Size(53, 230);
+			this.colorPicker1.MinimumSize = new System.Drawing.Size(53, 230);
+			this.colorPicker1.Name = "colorPicker1";
+			this.colorPicker1.Size = new System.Drawing.Size(53, 230);
+			this.colorPicker1.TabIndex = 0;
+			this.colorPicker1.OnChange += new System.EventHandler(this.colorPicker1_OnChange);
+			// 
+			// copyAllButton
+			// 
+			this.copyAllButton.Location = new System.Drawing.Point(32, 254);
+			this.copyAllButton.Name = "copyAllButton";
+			this.copyAllButton.Size = new System.Drawing.Size(57, 19);
+			this.copyAllButton.TabIndex = 4;
+			this.copyAllButton.Text = "Copy &all";
+			this.copyAllButton.UseVisualStyleBackColor = true;
+			this.copyAllButton.Click += new System.EventHandler(this.copyAllButton_Click);
+			// 
+			// copyButton
+			// 
+			this.copyButton.Location = new System.Drawing.Point(96, 254);
+			this.copyButton.Name = "copyButton";
+			this.copyButton.Size = new System.Drawing.Size(57, 19);
+			this.copyButton.TabIndex = 5;
+			this.copyButton.Text = "&Copy";
+			this.copyButton.UseVisualStyleBackColor = true;
+			this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
+			// 
+			// pasteButton
+			// 
+			this.pasteButton.Location = new System.Drawing.Point(160, 254);
+			this.pasteButton.Name = "pasteButton";
+			this.pasteButton.Size = new System.Drawing.Size(57, 19);
+			this.pasteButton.TabIndex = 6;
+			this.pasteButton.Text = "&Paste";
+			this.pasteButton.UseVisualStyleBackColor = true;
+			this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
 			// 
 			// ChoosePalette
 			// 

@@ -285,5 +285,229 @@ namespace GB.Shared.Palettes
 		public static PaletteEntry SetColor(this PaletteEntry @this, Color color) {
 			return new PaletteEntry(@this.x, @this.y, color, @this.behavior);
 		}
+
+		private static readonly char[] EntrySplitChars = { '\t', '\r', '\n' };
+		private static readonly char[] RowSplitChars = { '\r', '\n' };
+		private static readonly char[] SetSplitChars = { '\r', '\n' };
+
+		/// <summary>
+		/// Serializes a palette set to a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static string PaletteSetToString(this PaletteSet @this) {
+			StringBuilder ret = new StringBuilder();
+
+			foreach (Palette e in @this.Rows) {
+				ret.Append(e.PaletteToString());
+			}
+
+			return ret.ToString();
+		}
+
+		/// <summary>
+		/// Deserializes a palette set from a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <param name="value"></param>
+		/// <param name="startingIndex">The first line of the string to use.  Most of the time will be left at 0.</param>
+		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
+		/// <returns>True if sucessful, false if could not be parsed.</returns>
+		/// <exception cref="ArgumentException">when format is invalid.</exception>
+		public static bool TryStringToPaletteSet(this PaletteSet @this, string value, int startingIndex = 0, int thisStartingIndex = 0) {
+			if (thisStartingIndex < 0 || startingIndex < 0) {
+				return false;
+			}
+
+			String[] splitTemp = value.Split(SetSplitChars, StringSplitOptions.RemoveEmptyEntries);
+			String[] split = new String[(splitTemp.Length - startingIndex)/ 4];
+
+			for (int i = 0; i < split.Length; i++) {
+				split[i] = splitTemp[(i * 4) + startingIndex] + "\r\n" +
+					splitTemp[(i * 4) + 1 + startingIndex] + "\r\n" +
+					splitTemp[(i * 4) + 2 + startingIndex] + "\r\n" +
+					splitTemp[(i * 4) + 3 + startingIndex] + "\r\n";
+			}
+
+			Palette[] rows = (Palette[])@this.Rows.Clone();
+			for (int i = 0; i < @this.NumberOfRows; i++) {
+				if (i > @this.NumberOfRows - thisStartingIndex) {
+					break;
+				}
+				if (!rows[i + thisStartingIndex].TryStringToPalette(split[i + startingIndex])) {
+					return false;
+				}
+			}
+			@this.Rows = rows;
+			return true;
+		}
+
+		/// <summary>
+		/// Deserializes a palette set from a string.  Throws an excpetion if invalid input is used.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <param name="value"></param>
+		/// <param name="startingIndex">The first line of the string to use.  Most of the time will be left at 0.</param>
+		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
+		/// <exception cref="ArgumentException">when format is invalid.</exception>
+		public static void StringToPaletteSet(this PaletteSet @this, string value, int startingIndex = 0, int thisStartingIndex = 0) {
+			if (thisStartingIndex < 0 || startingIndex < 0) {
+				throw new ArgumentOutOfRangeException();
+			}
+
+			String[] splitTemp = value.Split(SetSplitChars, StringSplitOptions.RemoveEmptyEntries);
+			String[] split = new String[(splitTemp.Length - startingIndex) / 4];
+
+			for (int i = 0; i < (splitTemp.Length / 4) - startingIndex; i += 4) {
+				split[i] = splitTemp[i + startingIndex] + "\r\n" +
+					splitTemp[i + 1 + startingIndex] + "\r\n" +
+					splitTemp[i + 2 + startingIndex] + "\r\n" +
+					splitTemp[i + 3 + startingIndex] + "\r\n";
+			}
+
+			Palette[] rows = (Palette[])@this.Rows.Clone();
+			for (int i = 0; i < @this.NumberOfRows; i++) {
+				if (i + thisStartingIndex >= @this.NumberOfRows) {
+					break;
+				}
+				if (i + startingIndex >= split.Length) {
+					break;
+				}
+				try {
+					rows[i + thisStartingIndex].StringToPalette(split[i + startingIndex]);
+				} catch (Exception) {
+					throw;
+				}
+			}
+			@this.Rows = rows;
+		}
+
+		/// <summary>
+		/// Serializes a palette row to a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static string PaletteToString(this Palette @this) {
+			return String.Format("{0}\r\n{1}\r\n{2}\r\n{3}\r\n", @this.entry0.EntryToString(), @this.entry1.EntryToString(), @this.entry2.EntryToString(), @this.entry3.EntryToString());
+		}
+
+		/// <summary>
+		/// Deserializes a palette row from a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <param name="value"></param>
+		/// <param name="startingIndex">The position to start at in the string, by default 0.</param>
+		/// <returns></returns>
+		public static bool TryStringToPalette(this Palette @this, string value, int startingIndex = 0) {
+			string[] split = value.Split(RowSplitChars, StringSplitOptions.RemoveEmptyEntries);
+			if (startingIndex + 4 > split.Length) { return false; }
+
+
+			PaletteEntry[] entries = new PaletteEntry[4];
+			for (int i = 0; i < 4; i++) {
+				entries[i] = @this[i];
+				if (!entries[i].TryStringToEntry(split[startingIndex + i])) {
+					return false;
+				}
+			}
+			for (int i = 0; i < 4; i++) {
+				@this[i] = entries[i];
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Deserializes a palette row from a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <param name="value"></param>
+		/// <param name="startingIndex">The position to start at in the string, by default 0.</param>
+		/// <exception cref="ArgumentException">When the value cannot be parsed.</exception>
+		public static void StringToPalette(this Palette @this, string value, int startingIndex = 0) {
+			string[] split = value.Split(RowSplitChars, StringSplitOptions.RemoveEmptyEntries);
+			if (startingIndex + 4 > split.Length) { throw new ArgumentException("Not enough room for the remaining entries!", "value"); }
+
+			PaletteEntry[] entries = new PaletteEntry[4];
+			for (int i = 0; i < 4; i++) {
+				entries[i] = @this[i];
+
+				try {
+					entries[i].StringToEntry(split[startingIndex + i]);
+				} catch (ArgumentException) {
+					throw;
+					//Probably could leave this alone, but it looks cleaner.
+				}
+			}
+			for (int i = 0; i < 4; i++) {
+				@this[i] = entries[i];
+			}
+		}
+
+		/// <summary>
+		/// Serializes an entry to a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static string EntryToString(this PaletteEntry @this) {
+			return String.Format("{0}\t{1}\t{2}", @this.color.R >> 3, @this.color.G >> 3, @this.color.B >> 3);
+		}
+
+		/// <summary>
+		/// Deserializes an entry from a string.  Throws an exception if invalid format.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <param name="value"></param>
+		/// <exception cref="ArgumentException">When given an invalid fromat.</exception>
+		public static void StringToEntry(this PaletteEntry @this, string value) {
+			string[] split = value.Split(EntrySplitChars, StringSplitOptions.RemoveEmptyEntries);
+
+			if (split.Length != 3) { throw new ArgumentException("Too many tabs in input string, expected 2, got " + value, "value"); }
+
+			int r, g, b;
+
+			if (!Int32.TryParse(split[0], out r)) { throw new ArgumentException("Could not parse r value: expected int, got " + split[0], "value"); }
+			if (!Int32.TryParse(split[1], out g)) { throw new ArgumentException("Could not parse g value: expected int, got " + split[1], "value"); }
+			if (!Int32.TryParse(split[2], out b)) { throw new ArgumentException("Could not parse b value: expected int, got " + split[2], "value"); }
+
+			r <<= 3;
+			g <<= 3;
+			b <<= 3;
+			
+			if (r < 0 || r > 255) { throw new ArgumentException("R value out of bounds: less than 0 or more than 32: got " + (r >> 3), "value"); }
+			if (g < 0 || g > 255) { throw new ArgumentException("G value out of bounds: less than 0 or more than 32: got " + (g >> 3), "value"); }
+			if (r < 0 || r > 255) { throw new ArgumentException("B value out of bounds: less than 0 or more than 32: got " + (b >> 3), "value"); }
+
+			@this.color = Color.FromArgb(r, g, b);
+		}
+
+		/// <summary>
+		/// Deserializes an entry from a string.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <param name="value"></param>
+		/// <returns>True if valid format, false otherwise.  If false is returned, no changes are made.</returns>
+		public static bool TryStringToEntry(this PaletteEntry @this, string value) {
+			string[] split = value.Split(EntrySplitChars, StringSplitOptions.RemoveEmptyEntries);
+
+			if (split.Length != 3) { return false; }
+
+			int r, g, b;
+
+			if (!Int32.TryParse(split[0], out r)) { return false; }
+			if (!Int32.TryParse(split[1], out g)) { return false; }
+			if (!Int32.TryParse(split[2], out b)) { return false; }
+
+			r <<= 3;
+			g <<= 3;
+			b <<= 3;
+
+			if (r < 0 || r > 255) { return false; }
+			if (g < 0 || g > 255) { return false; }
+			if (r < 0 || r > 255) { return false; }
+
+			@this.color = Color.FromArgb(r, g, b);
+			return true;
+		}
 	}
 }
