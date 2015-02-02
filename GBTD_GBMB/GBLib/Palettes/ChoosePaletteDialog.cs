@@ -65,7 +65,9 @@ namespace GB.Shared.Palettes
 			if (!Clipboard.ContainsText()) { return; }
 			if (this.gbPaletteSetSelector1.SelectedY < 0) { return; }
 
-			this.Set.StringToPaletteSet(Clipboard.GetText(), 0, this.gbPaletteSetSelector1.SelectedY);
+			PaletteSet set = this.Set;
+			set.StringToPaletteSet(ref set, Clipboard.GetText(), 0, this.gbPaletteSetSelector1.SelectedY);
+			this.Set = set;
 		}
 
 		private void copyButton_Click(object sender, EventArgs e) {

@@ -309,12 +309,13 @@ namespace GB.Shared.Palettes
 		/// Deserializes a palette set from a string.
 		/// </summary>
 		/// <param name="this"></param>
+		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <param name="startingIndex">The first line of the string to use.  Most of the time will be left at 0.</param>
 		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
 		/// <returns>True if sucessful, false if could not be parsed.</returns>
 		/// <exception cref="ArgumentException">when format is invalid.</exception>
-		public static bool TryStringToPaletteSet(this PaletteSet @this, string value, int startingIndex = 0, int thisStartingIndex = 0) {
+		public static bool TryStringToPaletteSet(this PaletteSet @this, ref PaletteSet toChange, string value, int startingIndex = 0, int thisStartingIndex = 0) {
 			if (thisStartingIndex < 0 || startingIndex < 0) {
 				return false;
 			}
@@ -323,19 +324,21 @@ namespace GB.Shared.Palettes
 
 			Palette[] rows = (Palette[])@this.Rows.Clone();
 			for (int i = 0; i < @this.NumberOfRows; i++) {
-				for (int j = 0; j < 4; j++) {
-					if (i >= @this.NumberOfRows - thisStartingIndex) {
-						break;
-					}
-					if ((i * 4) + j + startingIndex >= split.Length) {
-						break;
-					}
-					if (!rows[i + thisStartingIndex][j].TryStringToEntry(split[(i * 4) + j + startingIndex])) {
-						return false;
-					}
+				if (i >= @this.NumberOfRows - thisStartingIndex) {
+					break;
 				}
+				if ((i * 4) + 3 + startingIndex >= split.Length) {
+					break;
+				}
+				if (!rows[i + thisStartingIndex].entry0.TryStringToEntry(ref rows[i + thisStartingIndex].entry0, split[(i * 4) + 0 + startingIndex])) { return false; }
+				if (!rows[i + thisStartingIndex].entry0.TryStringToEntry(ref rows[i + thisStartingIndex].entry0, split[(i * 4) + 1 + startingIndex])) { return false; }
+				if (!rows[i + thisStartingIndex].entry0.TryStringToEntry(ref rows[i + thisStartingIndex].entry0, split[(i * 4) + 2 + startingIndex])) { return false; }
+				if (!rows[i + thisStartingIndex].entry0.TryStringToEntry(ref rows[i + thisStartingIndex].entry0, split[(i * 4) + 3 + startingIndex])) { return false; }
 			}
 			@this.Rows = rows;
+
+			toChange = @this;
+
 			return true;
 		}
 
@@ -343,11 +346,12 @@ namespace GB.Shared.Palettes
 		/// Deserializes a palette set from a string.  Throws an excpetion if invalid input is used.
 		/// </summary>
 		/// <param name="this"></param>
+		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <param name="startingIndex">The first line of the string to use.  Most of the time will be left at 0.</param>
 		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
 		/// <exception cref="ArgumentException">when format is invalid.</exception>
-		public static void StringToPaletteSet(this PaletteSet @this, string value, int startingIndex = 0, int thisStartingIndex = 0) {
+		public static void StringToPaletteSet(this PaletteSet @this, ref PaletteSet toChange, string value, int startingIndex = 0, int thisStartingIndex = 0) {
 			if (thisStartingIndex < 0) { throw new ArgumentOutOfRangeException("thisStartingIndex"); }
 			if (startingIndex < 0) { throw new ArgumentOutOfRangeException("startingIndex"); }
 
@@ -355,19 +359,23 @@ namespace GB.Shared.Palettes
 
 			Palette[] rows = (Palette[])@this.Rows.Clone();
 			for (int i = 0; i < @this.NumberOfRows; i++) {
-				for (int j = 0; j < 4; j++) {
-					if (i >= @this.NumberOfRows - thisStartingIndex) {
-						break;
-					}
-					if ((i * 4) + j + startingIndex >= split.Length) {
-						break;
-					}
-					
-					//Call; allow any thown exceptions to continue up.
-					rows[i + thisStartingIndex][j].StringToEntry(split[(i * 4) + j + startingIndex]);
+				if (i >= @this.NumberOfRows - thisStartingIndex) {
+					break;
 				}
+				if ((i * 4) + 3 + startingIndex >= split.Length) {
+					break;
+				}
+					
+				//Call; allow any thown exceptions to continue up.
+				//Also, this is ugly but required as far as I can tell; loops cause an error.
+				rows[i + thisStartingIndex].entry0.StringToEntry(ref rows[i + thisStartingIndex].entry0, split[(i * 4) + 0 + startingIndex]);
+				rows[i + thisStartingIndex].entry1.StringToEntry(ref rows[i + thisStartingIndex].entry1, split[(i * 4) + 1 + startingIndex]);
+				rows[i + thisStartingIndex].entry2.StringToEntry(ref rows[i + thisStartingIndex].entry2, split[(i * 4) + 2 + startingIndex]);
+				rows[i + thisStartingIndex].entry3.StringToEntry(ref rows[i + thisStartingIndex].entry3, split[(i * 4) + 3 + startingIndex]);
 			}
 			@this.Rows = rows;
+
+			toChange = @this;
 		}
 
 		/// <summary>
@@ -383,10 +391,11 @@ namespace GB.Shared.Palettes
 		/// Deserializes a palette row from a string.
 		/// </summary>
 		/// <param name="this"></param>
+		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <param name="startingIndex">The position to start at in the string, by default 0.</param>
 		/// <returns></returns>
-		public static bool TryStringToPalette(this Palette @this, string value, int startingIndex = 0) {
+		public static bool TryStringToPalette(this Palette @this, ref Palette toChange, string value, int startingIndex = 0) {
 			string[] split = value.Split(RowSplitChars, StringSplitOptions.RemoveEmptyEntries);
 			if (startingIndex + 4 > split.Length) { return false; }
 
@@ -394,7 +403,7 @@ namespace GB.Shared.Palettes
 			PaletteEntry[] entries = new PaletteEntry[4];
 			for (int i = 0; i < 4; i++) {
 				entries[i] = @this[i];
-				if (!entries[i].TryStringToEntry(split[startingIndex + i])) {
+				if (!entries[i].TryStringToEntry(ref entries[i], split[startingIndex + i])) {
 					return false;
 				}
 			}
@@ -402,6 +411,7 @@ namespace GB.Shared.Palettes
 				@this[i] = entries[i];
 			}
 
+			toChange = @this;
 			return true;
 		}
 
@@ -409,10 +419,11 @@ namespace GB.Shared.Palettes
 		/// Deserializes a palette row from a string.
 		/// </summary>
 		/// <param name="this"></param>
+		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <param name="startingIndex">The position to start at in the string, by default 0.</param>
 		/// <exception cref="ArgumentException">When the value cannot be parsed.</exception>
-		public static void StringToPalette(this Palette @this, string value, int startingIndex = 0) {
+		public static void StringToPalette(this Palette @this, ref Palette toChange, string value, int startingIndex = 0) {
 			string[] split = value.Split(RowSplitChars, StringSplitOptions.RemoveEmptyEntries);
 			if (startingIndex + 4 > split.Length) { throw new ArgumentException("Not enough room for the remaining entries!", "value"); }
 
@@ -420,16 +431,14 @@ namespace GB.Shared.Palettes
 			for (int i = 0; i < 4; i++) {
 				entries[i] = @this[i];
 
-				try {
-					entries[i].StringToEntry(split[startingIndex + i]);
-				} catch (ArgumentException) {
-					throw;
-					//Probably could leave this alone, but it looks cleaner.
-				}
+				//Allow any exceptions that occur to rise.
+				entries[i].StringToEntry(ref entries[i], split[startingIndex + i]);
 			}
 			for (int i = 0; i < 4; i++) {
 				@this[i] = entries[i];
 			}
+
+			toChange = @this;
 		}
 
 		/// <summary>
@@ -445,9 +454,10 @@ namespace GB.Shared.Palettes
 		/// Deserializes an entry from a string.  Throws an exception if invalid format.
 		/// </summary>
 		/// <param name="this"></param>
+		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <exception cref="ArgumentException">When given an invalid fromat.</exception>
-		public static void StringToEntry(this PaletteEntry @this, string value) {
+		public static void StringToEntry(this PaletteEntry @this, ref PaletteEntry toChange, string value) {
 			string[] split = value.Split(EntrySplitChars, StringSplitOptions.RemoveEmptyEntries);
 
 			if (split.Length != 3) { throw new ArgumentException("Too many tabs in input string, expected 2, got " + value, "value"); }
@@ -467,15 +477,18 @@ namespace GB.Shared.Palettes
 			if (r < 0 || r > 255) { throw new ArgumentException("B value out of bounds: less than 0 or more than 32: got " + (b >> 3), "value"); }
 
 			@this.color = Color.FromArgb(r, g, b);
+
+			toChange = @this;
 		}
 
 		/// <summary>
 		/// Deserializes an entry from a string.
 		/// </summary>
 		/// <param name="this"></param>
+		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <returns>True if valid format, false otherwise.  If false is returned, no changes are made.</returns>
-		public static bool TryStringToEntry(this PaletteEntry @this, string value) {
+		public static bool TryStringToEntry(this PaletteEntry @this, ref PaletteEntry toChange, string value) {
 			string[] split = value.Split(EntrySplitChars, StringSplitOptions.RemoveEmptyEntries);
 
 			if (split.Length != 3) { return false; }
@@ -495,6 +508,9 @@ namespace GB.Shared.Palettes
 			if (r < 0 || r > 255) { return false; }
 
 			@this.color = Color.FromArgb(r, g, b);
+
+			toChange = @this;
+
 			return true;
 		}
 	}
