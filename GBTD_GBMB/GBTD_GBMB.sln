@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBComp", "GBLib\GBComp.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBTD", "GBTD\GBTD.csproj", "{4E947E18-F9EA-44AB-A70D-F45A620DEEB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBRFile", "GBRFile\GBRFile.csproj", "{6885E633-8BA9-41EC-816D-3E95279007FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{4E947E18-F9EA-44AB-A70D-F45A620DEEB5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4E947E18-F9EA-44AB-A70D-F45A620DEEB5}.Release|x86.ActiveCfg = Release|x86
 		{4E947E18-F9EA-44AB-A70D-F45A620DEEB5}.Release|x86.Build.0 = Release|x86
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6885E633-8BA9-41EC-816D-3E95279007FF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
