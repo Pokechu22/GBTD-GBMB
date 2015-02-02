@@ -319,23 +319,20 @@ namespace GB.Shared.Palettes
 				return false;
 			}
 
-			String[] splitTemp = value.Split(SetSplitChars, StringSplitOptions.RemoveEmptyEntries);
-			String[] split = new String[(splitTemp.Length - startingIndex)/ 4];
-
-			for (int i = 0; i < split.Length; i++) {
-				split[i] = splitTemp[(i * 4) + startingIndex] + "\r\n" +
-					splitTemp[(i * 4) + 1 + startingIndex] + "\r\n" +
-					splitTemp[(i * 4) + 2 + startingIndex] + "\r\n" +
-					splitTemp[(i * 4) + 3 + startingIndex] + "\r\n";
-			}
+			String[] split = value.Split(SetSplitChars, StringSplitOptions.RemoveEmptyEntries);
 
 			Palette[] rows = (Palette[])@this.Rows.Clone();
 			for (int i = 0; i < @this.NumberOfRows; i++) {
-				if (i > @this.NumberOfRows - thisStartingIndex) {
-					break;
-				}
-				if (!rows[i + thisStartingIndex].TryStringToPalette(split[i + startingIndex])) {
-					return false;
+				for (int j = 0; j < 4; j++) {
+					if (i >= @this.NumberOfRows - thisStartingIndex) {
+						break;
+					}
+					if ((i * 4) + j + startingIndex >= split.Length) {
+						break;
+					}
+					if (!rows[i + thisStartingIndex][j].TryStringToEntry(split[(i * 4) + j + startingIndex])) {
+						return false;
+					}
 				}
 			}
 			@this.Rows = rows;
@@ -351,32 +348,23 @@ namespace GB.Shared.Palettes
 		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
 		/// <exception cref="ArgumentException">when format is invalid.</exception>
 		public static void StringToPaletteSet(this PaletteSet @this, string value, int startingIndex = 0, int thisStartingIndex = 0) {
-			if (thisStartingIndex < 0 || startingIndex < 0) {
-				throw new ArgumentOutOfRangeException();
-			}
+			if (thisStartingIndex < 0) { throw new ArgumentOutOfRangeException("thisStartingIndex"); }
+			if (startingIndex < 0) { throw new ArgumentOutOfRangeException("startingIndex"); }
 
-			String[] splitTemp = value.Split(SetSplitChars, StringSplitOptions.RemoveEmptyEntries);
-			String[] split = new String[(splitTemp.Length - startingIndex) / 4];
-
-			for (int i = 0; i < (splitTemp.Length / 4) - startingIndex; i += 4) {
-				split[i] = splitTemp[i + startingIndex] + "\r\n" +
-					splitTemp[i + 1 + startingIndex] + "\r\n" +
-					splitTemp[i + 2 + startingIndex] + "\r\n" +
-					splitTemp[i + 3 + startingIndex] + "\r\n";
-			}
+			String[] split = value.Split(SetSplitChars, StringSplitOptions.RemoveEmptyEntries);
 
 			Palette[] rows = (Palette[])@this.Rows.Clone();
 			for (int i = 0; i < @this.NumberOfRows; i++) {
-				if (i + thisStartingIndex >= @this.NumberOfRows) {
-					break;
-				}
-				if (i + startingIndex >= split.Length) {
-					break;
-				}
-				try {
-					rows[i + thisStartingIndex].StringToPalette(split[i + startingIndex]);
-				} catch (Exception) {
-					throw;
+				for (int j = 0; j < 4; j++) {
+					if (i >= @this.NumberOfRows - thisStartingIndex) {
+						break;
+					}
+					if ((i * 4) + j + startingIndex >= split.Length) {
+						break;
+					}
+					
+					//Call; allow any thown exceptions to continue up.
+					rows[i + thisStartingIndex][j].StringToEntry(split[(i * 4) + j + startingIndex]);
 				}
 			}
 			@this.Rows = rows;
