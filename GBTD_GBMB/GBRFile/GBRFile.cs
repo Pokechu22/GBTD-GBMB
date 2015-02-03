@@ -82,5 +82,25 @@ namespace GB.Shared.GBRFile
 				return VersionCode == DEFAULT_VER;
 			}
 		}
+
+		public readonly GBRFileHeader Header;
+
+		public List<IGBRExportable> Objects;
+
+		public GBRFile() {
+			this.Header = new GBRFileHeader();
+		}
+
+		public GBRFile(Stream stream) {
+			this.Header = new GBRFileHeader(stream);
+
+			while (true) {
+				try {
+					Objects.Add(IGBRExportable.ReadObject(stream));
+				} catch (EndOfStreamException) {
+					break;
+				}
+			}
+		}
 	}
 }
