@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="GBRFile.cs" />
     <Compile Include="GBRObjectDeleted.cs" />
+    <Compile Include="GBRObjectProducerInfo.cs" />
     <Compile Include="GBRObjectUnknownData.cs" />
     <Compile Include="GBRObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
