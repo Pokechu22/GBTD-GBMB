@@ -20,6 +20,7 @@ namespace GBRInfoSniffer
 		private void openButton_Click(object sender, EventArgs e) {
 			var result = openFileDialog.ShowDialog();
 			if (result == System.Windows.Forms.DialogResult.OK) {
+				groupBox.Text = openFileDialog.FileName;
 				using (Stream stream = openFileDialog.OpenFile()) {
 					LoadTreeFromStream(stream);
 				}
