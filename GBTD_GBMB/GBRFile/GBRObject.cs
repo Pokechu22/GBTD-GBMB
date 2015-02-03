@@ -58,7 +58,7 @@ namespace GB.Shared.GBRFile
 				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBRObjectHeader), typeof(Stream) });
 				exportable = (GBRObject)ctor.Invoke(new Object[] { h, s });
 			} else {
-				exportable = new GBRUnknownData(h, s);
+				exportable = new GBRObjectUnknownData(h, s);
 			}
 
 			return exportable;
@@ -96,7 +96,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		static GBRObject() {
-			RegisterExportable(0xFF, typeof(GBRUnknownData));
+			RegisterExportable(0xFF, typeof(GBRObjectDeleted));
 		}
 	}
 }

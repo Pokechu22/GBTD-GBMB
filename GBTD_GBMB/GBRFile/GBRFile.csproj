@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GBRFile.cs" />
-    <Compile Include="GBRUnknownData.cs" />
-    <Compile Include="IGBRExportable.cs" />
+    <Compile Include="GBRObjectDeleted.cs" />
+    <Compile Include="GBRObjectUnknownData.cs" />
+    <Compile Include="GBRObject.cs" />
     <Compile Include="GBRObjectHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamExtensions.cs" />
