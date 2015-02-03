@@ -93,7 +93,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="length">The maximum expected length.</param>
-		internal static String ReadString(this Stream stream, String s, uint length) {
+		internal static String ReadString(this Stream stream, uint length) {
 			if (!stream.CanRead) {
 				throw new NotSupportedException("Stream cannot be read from.");
 			}
