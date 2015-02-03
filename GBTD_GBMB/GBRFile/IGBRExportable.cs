@@ -75,7 +75,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <returns></returns>
 		public virtual string GetTreeNodeText() {
-			return GetTypeName() + " (" + this.Header.ObjectID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4");
+			return GetTypeName() + " (" + this.Header.ObjectID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4") + ", size " + this.Header.Size;
 		}
 
 		/// <summary>
