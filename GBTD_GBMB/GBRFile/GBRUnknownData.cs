@@ -26,5 +26,15 @@ namespace GB.Shared.GBRFile
 			data = new byte[header.Size];
 			s.Read(data, 0, (int)header.Size);
 		}
+
+		/// <summary>
+		/// Provides a string representation.
+		/// This probably should be cached, but I doubt that's of important yet.
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString() {
+			//http://stackoverflow.com/a/2245604/3991344
+			return String.Join(", ", this.data.Select(x => x.ToString("X2")).ToArray());
+		}
 	}
 }
