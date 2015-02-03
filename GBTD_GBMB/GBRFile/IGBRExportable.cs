@@ -6,14 +6,12 @@ using System.IO;
 
 namespace GB.Shared.GBRFile
 {
-	public delegate IGBRExportable GBRExportableContstructor(Stream s);
-
 	/// <summary>
 	/// Something that can be exported to a .GBR file.
 	/// </summary>
 	public abstract class IGBRExportable
 	{
-		private static Dictionary<UInt16, GBRExportableContstructor> mapping = new Dictionary<ushort, GBRExportableContstructor>();
+		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 
 		/// <summary>
 		/// The header of this object.
@@ -22,14 +20,21 @@ namespace GB.Shared.GBRFile
 
 		protected IGBRExportable(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) {
 			this.header = new GBRObjectHeader(TypeID, UniqueID, Size);
-
-			//TODO
+			LoadObject(stream);
 		}
 
 		protected IGBRExportable(GBRObjectHeader header, Stream stream) {
 			this.header = header;
+			LoadObject(stream);
+		}
 
-			//TODO
+		private void LoadObject(Stream s) {
+			byte[] data = new byte[header.Size];
+			s.Read(data, 0, (int)header.Size);
+
+			using (MemoryStream ns = new MemoryStream(data, false)) {
+				LoadFromStream(ns);
+			}
 		}
 
 		public abstract void SaveToStream(Stream s);
@@ -41,8 +46,32 @@ namespace GB.Shared.GBRFile
 		/// <param name="s"></param>
 		/// <returns></returns>
 		public static IGBRExportable ReadObject(Stream s) {
-			//TODO
-			return null;
+			GBRObjectHeader h = s.ReadHeader();
+
+			IGBRExportable exportable;
+			if (mapping.ContainsKey(h.ObjectID)) {
+				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBRObjectHeader), typeof(Stream) });
+				exportable = (IGBRExportable)ctor.Invoke(new Object[] { h, s });
+			} else {
+				exportable = new GBRUnknownData(h, s);
+			}
+
+			return exportable;
+		}
+
+		public static void RegisterExportable(UInt16 ID, Type type) {
+			if (mapping.ContainsKey(ID)) {
+				throw new InvalidOperationException("Already registered mapping for ID " + ID);
+			}
+			if (type == null) {
+				throw new ArgumentNullException("type");
+			}
+			
+			mapping.Add(ID, type);
+		}
+
+		static IGBRExportable() {
+			RegisterExportable(0xFF, typeof(GBRUnknownData));
 		}
 	}
 }
