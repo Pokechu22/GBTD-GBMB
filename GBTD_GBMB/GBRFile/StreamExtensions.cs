@@ -71,7 +71,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
-		/// Writes the object header to specified stream.
+		/// Writes the object Header to specified stream.
 		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
 		internal static void WriteHeader(this Stream stream, GBRObjectHeader header) {
@@ -147,7 +147,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
-		/// Reads the object header from specified stream.
+		/// Reads the object Header from specified stream.
 		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
 		internal static GBRObjectHeader ReadHeader(this Stream stream) {

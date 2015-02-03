@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GB.Shared.GBRFile
 {
@@ -19,22 +20,23 @@ namespace GB.Shared.GBRFile
 		public GBRUnknownData(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		public override void SaveToStream(Stream s) {
-			s.Write(data, 0, (int)header.Size);
+			s.Write(data, 0, (int)Header.Size);
 		}
 
 		public override void LoadFromStream(Stream s) {
-			data = new byte[header.Size];
-			s.Read(data, 0, (int)header.Size);
+			data = new byte[Header.Size];
+			s.Read(data, 0, (int)Header.Size);
 		}
 
-		/// <summary>
-		/// Provides a string representation.
-		/// This probably should be cached, but I doubt that's of important yet.
-		/// </summary>
-		/// <returns></returns>
-		public override string ToString() {
-			//http://stackoverflow.com/a/2245604/3991344
-			return String.Join(", ", this.data.Select(x => x.ToString("X2")).ToArray());
+		public override string GetTypeName() {
+			return "Unknown Data";
+		}
+
+		public override TreeNode ToTreeNode() {
+			TreeNode returned = new TreeNode(GetTreeNodeText());
+			returned.Nodes.Add(String.Join(" ", this.data.Select(x => x.ToString("X2")).ToArray()));
+			
+			return returned;
 		}
 	}
 }

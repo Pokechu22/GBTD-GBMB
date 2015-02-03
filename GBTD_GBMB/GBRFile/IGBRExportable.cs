@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GB.Shared.GBRFile
 {
@@ -14,25 +15,25 @@ namespace GB.Shared.GBRFile
 		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 
 		/// <summary>
-		/// The header of this object.
+		/// The Header of this object.
 		/// </summary>
-		protected GBRObjectHeader header;
+		public GBRObjectHeader Header { get; protected set; }
 
 		protected IGBRExportable(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) {
-			this.header = new GBRObjectHeader(TypeID, UniqueID, Size);
+			this.Header = new GBRObjectHeader(TypeID, UniqueID, Size);
 			LoadObject(stream);
 		}
 
 		protected IGBRExportable(GBRObjectHeader header, Stream stream) {
-			this.header = header;
+			this.Header = header;
 			LoadObject(stream);
 		}
 
 		private void LoadObject(Stream s) {
-			byte[] data = new byte[header.Size];
-			int read = s.Read(data, 0, (int)header.Size);
+			byte[] data = new byte[Header.Size];
+			int read = s.Read(data, 0, (int)Header.Size);
 
-			if (read != header.Size) {
+			if (read != Header.Size) {
 				throw new EndOfStreamException();
 			}
 
@@ -45,7 +46,7 @@ namespace GB.Shared.GBRFile
 		public abstract void LoadFromStream(Stream s);
 
 		/// <summary>
-		/// Reads an object and its header and returns said object.
+		/// Reads an object and its Header and returns said object.
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
@@ -62,6 +63,26 @@ namespace GB.Shared.GBRFile
 
 			return exportable;
 		}
+
+		/// <summary>
+		/// Gets the name of the object type, which should be constant for all instances.
+		/// </summary>
+		/// <returns></returns>
+		public abstract string GetTypeName();
+
+		/// <summary>
+		/// Gets the text used for the parent treenode.
+		/// </summary>
+		/// <returns></returns>
+		public virtual string GetTreeNodeText() {
+			return GetTypeName() + " (" + this.Header.ObjectID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4");
+		}
+
+		/// <summary>
+		/// Converts to a treenode, for debug purposes.
+		/// </summary>
+		/// <returns></returns>
+		public abstract TreeNode ToTreeNode();
 
 		public static void RegisterExportable(UInt16 ID, Type type) {
 			if (mapping.ContainsKey(ID)) {
