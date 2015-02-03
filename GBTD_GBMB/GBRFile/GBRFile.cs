@@ -85,7 +85,7 @@ namespace GB.Shared.GBRFile
 
 		public readonly GBRFileHeader Header;
 
-		public List<IGBRExportable> Objects;
+		public List<GBRObject> Objects;
 
 		public GBRFile() {
 			this.Header = new GBRFileHeader();
@@ -95,11 +95,11 @@ namespace GB.Shared.GBRFile
 			this.Header = new GBRFileHeader(stream);
 
 			//TODO validation here.
-			Objects = new List<IGBRExportable>();
+			Objects = new List<GBRObject>();
 
 			while (true) {
 				try {
-					Objects.Add(IGBRExportable.ReadObject(stream));
+					Objects.Add(GBRObject.ReadObject(stream));
 				} catch (EndOfStreamException) {
 					break;
 				}

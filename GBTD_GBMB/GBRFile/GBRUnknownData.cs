@@ -12,7 +12,7 @@ namespace GB.Shared.GBRFile
 	/// Just an array of bytes; can't be used to do anything.
 	/// Also used to represent FF, deleted data.
 	/// </summary>
-	public class GBRUnknownData : IGBRExportable
+	public class GBRUnknownData : GBRObject
 	{
 		private byte[] data;
 

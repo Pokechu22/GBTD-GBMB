@@ -31,7 +31,7 @@ namespace GBRInfoSniffer
 			treeView1.Nodes.Clear();
 
 			GBRFile file = new GBRFile(stream);
-			foreach (IGBRExportable obj in file.Objects) {
+			foreach (GBRObject obj in file.Objects) {
 				treeView1.Nodes.Add(obj.ToTreeNode());
 			}
 		}

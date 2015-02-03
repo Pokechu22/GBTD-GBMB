@@ -10,7 +10,7 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// Something that can be exported to a .GBR file.
 	/// </summary>
-	public abstract class IGBRExportable
+	public abstract class GBRObject
 	{
 		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 
@@ -19,12 +19,12 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public GBRObjectHeader Header { get; protected set; }
 
-		protected IGBRExportable(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) {
+		protected GBRObject(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) {
 			this.Header = new GBRObjectHeader(TypeID, UniqueID, Size);
 			LoadObject(stream);
 		}
 
-		protected IGBRExportable(GBRObjectHeader header, Stream stream) {
+		protected GBRObject(GBRObjectHeader header, Stream stream) {
 			this.Header = header;
 			LoadObject(stream);
 		}
@@ -50,13 +50,13 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
-		public static IGBRExportable ReadObject(Stream s) {
+		public static GBRObject ReadObject(Stream s) {
 			GBRObjectHeader h = s.ReadHeader();
 
-			IGBRExportable exportable;
+			GBRObject exportable;
 			if (mapping.ContainsKey(h.ObjectID)) {
 				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBRObjectHeader), typeof(Stream) });
-				exportable = (IGBRExportable)ctor.Invoke(new Object[] { h, s });
+				exportable = (GBRObject)ctor.Invoke(new Object[] { h, s });
 			} else {
 				exportable = new GBRUnknownData(h, s);
 			}
@@ -95,7 +95,7 @@ namespace GB.Shared.GBRFile
 			mapping.Add(ID, type);
 		}
 
-		static IGBRExportable() {
+		static GBRObject() {
 			RegisterExportable(0xFF, typeof(GBRUnknownData));
 		}
 	}
