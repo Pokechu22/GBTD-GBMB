@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GBRFile.cs" />
     <Compile Include="GBRUnknownData.cs" />
     <Compile Include="IGBRExportable.cs" />
     <Compile Include="GBRObjectHeader.cs" />
