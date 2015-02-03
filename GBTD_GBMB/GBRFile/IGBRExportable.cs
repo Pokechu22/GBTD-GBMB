@@ -30,7 +30,11 @@ namespace GB.Shared.GBRFile
 
 		private void LoadObject(Stream s) {
 			byte[] data = new byte[header.Size];
-			s.Read(data, 0, (int)header.Size);
+			int read = s.Read(data, 0, (int)header.Size);
+
+			if (read != header.Size) {
+				throw new EndOfStreamException();
+			}
 
 			using (MemoryStream ns = new MemoryStream(data, false)) {
 				LoadFromStream(ns);

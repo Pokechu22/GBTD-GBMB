@@ -99,7 +99,11 @@ namespace GB.Shared.GBRFile
 			}
 
 			byte[] bytes = new byte[length];
-			stream.Read(bytes, 0, (int)length);
+			int read = stream.Read(bytes, 0, (int)length);
+
+			if (read != length) {
+				throw new EndOfStreamException();
+			}
 
 			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
 		}
@@ -114,7 +118,11 @@ namespace GB.Shared.GBRFile
 			}
 
 			byte[] bytes = new byte[2];
-			stream.Read(bytes, 0, 2);
+			int read = stream.Read(bytes, 0, 2);
+
+			if (read != 2) {
+				throw new EndOfStreamException();
+			}
 
 			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
 		}
@@ -129,7 +137,11 @@ namespace GB.Shared.GBRFile
 			}
 
 			byte[] bytes = new byte[4];
-			stream.Read(bytes, 0, 4);
+			int read = stream.Read(bytes, 0, 4);
+
+			if (read != 4) {
+				throw new EndOfStreamException();
+			}
 
 			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
 		}
