@@ -29,6 +29,7 @@
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.panel = new System.Windows.Forms.Panel();
 			this.openButton = new System.Windows.Forms.Button();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.groupBox.SuspendLayout();
 			this.panel.SuspendLayout();
 			this.SuspendLayout();
@@ -39,7 +40,7 @@
 			this.groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox.Location = new System.Drawing.Point(0, 0);
 			this.groupBox.Name = "groupBox";
-			this.groupBox.Size = new System.Drawing.Size(292, 244);
+			this.groupBox.Size = new System.Drawing.Size(292, 187);
 			this.groupBox.TabIndex = 1;
 			this.groupBox.TabStop = false;
 			this.groupBox.Text = "FILE NAME HERE";
@@ -49,14 +50,14 @@
 			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.treeView1.Location = new System.Drawing.Point(3, 16);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(286, 225);
+			this.treeView1.Size = new System.Drawing.Size(286, 168);
 			this.treeView1.TabIndex = 2;
 			// 
 			// panel
 			// 
 			this.panel.Controls.Add(this.openButton);
 			this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel.Location = new System.Drawing.Point(0, 244);
+			this.panel.Location = new System.Drawing.Point(0, 187);
 			this.panel.Name = "panel";
 			this.panel.Size = new System.Drawing.Size(292, 29);
 			this.panel.TabIndex = 2;
@@ -70,12 +71,20 @@
 			this.openButton.TabIndex = 1;
 			this.openButton.Text = "Open";
 			this.openButton.UseVisualStyleBackColor = true;
+			this.openButton.Click += new System.EventHandler(this.openButton_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.DefaultExt = "gbr";
+			this.openFileDialog.FileName = "FileName";
+			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
+			this.openFileDialog.SupportMultiDottedExtensions = true;
 			// 
 			// InfoSnifferForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.ClientSize = new System.Drawing.Size(292, 216);
 			this.Controls.Add(this.groupBox);
 			this.Controls.Add(this.panel);
 			this.Name = "InfoSnifferForm";
@@ -92,6 +101,7 @@
 		private System.Windows.Forms.TreeView treeView1;
 		private System.Windows.Forms.Panel panel;
 		private System.Windows.Forms.Button openButton;
+		private System.Windows.Forms.OpenFileDialog openFileDialog;
 	}
 }
 

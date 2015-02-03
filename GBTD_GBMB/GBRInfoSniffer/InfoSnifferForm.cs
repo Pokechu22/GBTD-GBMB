@@ -14,5 +14,12 @@ namespace GBRInfoSniffer
 		public InfoSnifferForm() {
 			InitializeComponent();
 		}
+
+		private void openButton_Click(object sender, EventArgs e) {
+			var result = openFileDialog.ShowDialog();
+			if (result == System.Windows.Forms.DialogResult.OK) {
+				//TODO open file...
+			}
+		}
 	}
 }
