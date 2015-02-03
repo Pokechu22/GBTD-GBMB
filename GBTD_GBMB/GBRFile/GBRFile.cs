@@ -94,6 +94,9 @@ namespace GB.Shared.GBRFile
 		public GBRFile(Stream stream) {
 			this.Header = new GBRFileHeader(stream);
 
+			//TODO validation here.
+			Objects = new List<IGBRExportable>();
+
 			while (true) {
 				try {
 					Objects.Add(IGBRExportable.ReadObject(stream));
