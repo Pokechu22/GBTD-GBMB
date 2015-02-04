@@ -63,7 +63,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = new TreeNode(GetTreeNodeText());
+			TreeNode returned = CreateRootTreeNode();
 
 			returned.Nodes.Add("Corresponding Object: " + this.ReferedObjectID.ToString("X4"));
 
@@ -79,6 +79,8 @@ namespace GB.Shared.GBRFile
 
 			returned.Nodes.Add(gbcPal);
 			returned.Nodes.Add(sgbPal);
+
+			AddExtraDataToTreeNode(returned);
 
 			return returned;
 		}

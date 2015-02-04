@@ -32,8 +32,10 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = new TreeNode(GetTreeNodeText());
+			TreeNode returned = CreateRootTreeNode();
 			returned.Nodes.Add(String.Join(" ", this.data.Select(x => x.ToString("X2")).ToArray()));
+
+			AddExtraDataToTreeNode(returned);
 
 			return returned;
 		}

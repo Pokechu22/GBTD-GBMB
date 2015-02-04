@@ -59,11 +59,13 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = new TreeNode(GetTreeNodeText());
+			TreeNode returned = CreateRootTreeNode();
 
 			returned.Nodes.Add("name", "Name: " + name);
 			returned.Nodes.Add("version", "Version: " + version);
 			returned.Nodes.Add("info", "Info: " + info);
+
+			AddExtraDataToTreeNode(returned);
 
 			return returned;
 		}

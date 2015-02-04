@@ -17,6 +17,8 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		private byte[] loadedData;
 
+		protected byte[] extraData;
+
 		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 
 		/// <summary>
@@ -42,8 +44,15 @@ namespace GB.Shared.GBRFile
 				throw new EndOfStreamException();
 			}
 
+			loadedData = data;
+
 			using (MemoryStream ns = new MemoryStream(data, false)) {
 				LoadFromStream(ns);
+
+				if (ns.Position != ns.Length) {
+					extraData = new byte[ns.Length - ns.Position];
+					ns.Read(extraData, 0, (int)(ns.Length - ns.Position));
+				}
 			}
 		}
 
@@ -96,18 +105,31 @@ namespace GB.Shared.GBRFile
 		public abstract string GetTypeName();
 
 		/// <summary>
-		/// Gets the text used for the parent treenode.
-		/// </summary>
-		/// <returns></returns>
-		public virtual string GetTreeNodeText() {
-			return GetTypeName() + " (" + this.Header.ObjectID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4") + ", size " + this.Header.Size;
-		}
-
-		/// <summary>
 		/// Converts to a treenode, for debug purposes.
 		/// </summary>
 		/// <returns></returns>
 		public abstract TreeNode ToTreeNode();
+
+		/// <summary>
+		/// Creates a treenode for the root level, which has the proper name.
+		/// </summary>
+		/// <returns></returns>
+		protected TreeNode CreateRootTreeNode() {
+			return new TreeNode(GetTypeName() + " (" + this.Header.ObjectID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4") + ", size " + this.Header.Size);
+		}
+
+		/// <summary>
+		/// Adds the extradata to the treenode, if present.
+		/// </summary>
+		/// <param name="node"></param>
+		protected void AddExtraDataToTreeNode(TreeNode node) {
+			if (extraData != null) {
+				TreeNode extraNode = new TreeNode("Extra unknown data (" + extraData.Length + " bytes)");
+				extraNode.Nodes.Add(string.Join(" ", extraData.Select(x => x.ToString()).ToArray()));
+
+				node.Nodes.Add(extraNode);
+			}
+		}
 
 		public static void RegisterExportable(UInt16 ID, Type type) {
 			if (mapping.ContainsKey(ID)) {
