@@ -145,6 +145,7 @@ namespace GB.Shared.GBRFile
 		static GBRObject() {
 			RegisterExportable(0xFF, typeof(GBRObjectDeleted));
 			RegisterExportable(0x01, typeof(GBRObjectProducerInfo));
+			RegisterExportable(0x02, typeof(GBRObjectTileData));
 			RegisterExportable(0x0E, typeof(GBRObjectTilePalette));
 		}
 	}
