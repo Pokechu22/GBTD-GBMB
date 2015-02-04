@@ -12,6 +12,11 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public abstract class GBRObject
 	{
+		/// <summary>
+		/// The data loaded when origionally deserialized.
+		/// </summary>
+		private byte[] loadedData;
+
 		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 
 		/// <summary>
@@ -42,8 +47,28 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		public abstract void SaveToStream(Stream s);
-		public abstract void LoadFromStream(Stream s);
+		/// <summary>
+		/// Saves this object to the specified stream.
+		/// </summary>
+		/// <param name="s"></param>
+		public void SaveObject(Stream s) {
+			if (loadedData == null) {
+				s.WriteHeader(this.Header);
+				this.SaveToStream(s);
+			} else {
+				using (MemoryStream ns = new MemoryStream(loadedData, true)) {
+					ns.Position = 0;
+					this.SaveToStream(ns);
+
+					this.Header = this.Header.Resize((UInt32)ns.Length);
+					s.WriteHeader(this.Header);
+					s.Write(ns.ToArray(), 0, (int)this.Header.Size);
+				}
+			}
+		}
+
+		protected abstract void SaveToStream(Stream s);
+		protected abstract void LoadFromStream(Stream s);
 
 		/// <summary>
 		/// Reads an object and its Header and returns said object.

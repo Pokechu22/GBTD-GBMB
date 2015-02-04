@@ -18,11 +18,11 @@ namespace GB.Shared.GBRFile
 		public GBRObjectDeleted(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectDeleted(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
-		public override void SaveToStream(Stream s) {
+		protected override void SaveToStream(Stream s) {
 			s.Write(data, 0, (int)Header.Size);
 		}
 
-		public override void LoadFromStream(Stream s) {
+		protected override void LoadFromStream(Stream s) {
 			data = new byte[Header.Size];
 			s.Read(data, 0, (int)Header.Size);
 		}

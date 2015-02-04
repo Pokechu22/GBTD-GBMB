@@ -42,13 +42,13 @@ namespace GB.Shared.GBRFile
 			set { if (value == null) { throw new ArgumentNullException("value"); } info = value; }
 		}
 
-		public override void SaveToStream(Stream s) {
+		protected override void SaveToStream(Stream s) {
 			s.WriteString(name, 30);
 			s.WriteString(version, 10);
 			s.WriteString(info, 80);
 		}
 
-		public override void LoadFromStream(Stream s) {
+		protected override void LoadFromStream(Stream s) {
 			this.name = s.ReadString(30);
 			this.version = s.ReadString(10);
 			this.info = s.ReadString(80);
