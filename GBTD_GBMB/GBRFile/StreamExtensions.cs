@@ -71,6 +71,24 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
+		/// Writes a boolean to the specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="b">The boolean to write.</param>
+		internal static void WriteBool(this Stream stream, bool b) {
+			if (!stream.CanWrite) {
+				throw new NotSupportedException("Stream cannot be written to.");
+			}
+
+			//I would use the ternary opperator here, but it stangely requiers byte casts, so this seems cleaner for now.
+			if (b) {
+				stream.WriteByte(1);
+			} else {
+				stream.WriteByte(0);
+			}
+		}
+
+		/// <summary>
 		/// Writes the object Header to specified stream.
 		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
@@ -144,6 +162,25 @@ namespace GB.Shared.GBRFile
 			}
 
 			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads a boolean from the specified stream.
+		/// </summary>
+		/// <returns></returns>
+		internal static bool ReadBool(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[1];
+			int read = stream.Read(bytes, 0, 1);
+
+			if (read != 1) {
+				throw new EndOfStreamException();
+			}
+
+			return (read != 0);
 		}
 
 		/// <summary>
