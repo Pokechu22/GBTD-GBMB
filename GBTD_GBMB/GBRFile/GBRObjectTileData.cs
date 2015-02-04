@@ -100,6 +100,8 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
+			const char BLACK = '\u2588', DARK_GRAY = '\u2593', LIGHT_GRAY = '\u2592', WHITE = '\u2591';
+
 			TreeNode returned = CreateRootTreeNode();
 
 			returned.Nodes.Add("name", "Name: " + name);
@@ -115,21 +117,46 @@ namespace GB.Shared.GBRFile
 			returned.Nodes.Add(colorMapping);
 
 			TreeNode tileData = new TreeNode("Tile data");
+			TreeNode byName = new TreeNode("By color name (not aligned)");
+			TreeNode byNumber = new TreeNode("By numeric value (semi-aligned)");
+			TreeNode byChar = new TreeNode("By char version of color (aligned)");
+
 			int step = Width * Height;
 			for (int i = 0; i < Count; i++) {
-				TreeNode tile = new TreeNode("Tile " + i);
+				TreeNode tileByName = new TreeNode("Tile " + i);
+				TreeNode tileByNumber = new TreeNode("Tile " + i);
+				TreeNode tileByChar = new TreeNode("Tile " + i);
 
 				for (int y = 0; y < Height; y++) {
-					StringBuilder b = new StringBuilder();
+					StringBuilder named = new StringBuilder();
+					StringBuilder numbered = new StringBuilder();
+					StringBuilder chard = new StringBuilder();
+
 					for (int x = 0; x < Width; x++) {
-						b.Append(data[(i * step) + (y * Width) + x]).Append(' ');
+						named.Append(data[(i * step) + (y * Width) + x]).Append(' ');
+						numbered.Append((byte)data[(i * step) + (y * Width) + x]).Append(' ');
+						switch (data[(i * step) + (y * Width) + x]) {
+						case GBColor.BLACK: chard.Append(BLACK).Append(' '); break;
+						case GBColor.DARK_GRAY: chard.Append(DARK_GRAY).Append(' '); break;
+						case GBColor.LIGHT_GRAY: chard.Append(LIGHT_GRAY).Append(' '); break;
+						case GBColor.WHITE: chard.Append(WHITE).Append(' '); break;
+						default: chard.Append("?").Append(' '); break;
+						}
 					}
 
-					tile.Nodes.Add(b.ToString());
+					tileByName.Nodes.Add(named.ToString());
+					tileByNumber.Nodes.Add(numbered.ToString());
+					tileByChar.Nodes.Add(chard.ToString());
 				}
 
-				tileData.Nodes.Add(tile);
+				byName.Nodes.Add(tileByName);
+				byNumber.Nodes.Add(tileByNumber);
+				byChar.Nodes.Add(tileByChar);
 			}
+			tileData.Nodes.Add(byName);
+			tileData.Nodes.Add(byNumber);
+			tileData.Nodes.Add(byChar);
+
 			returned.Nodes.Add(tileData);
 
 			return returned;
