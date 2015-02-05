@@ -109,6 +109,25 @@ namespace GB.Shared.GBRFile
 		public bool AutoUpdate { get; set; }
 		#endregion
 
+
+		#region Since this version //TODO: Not loadable yet.
+		/// <summary>
+		/// The color used for the Middle Mouse button.
+		/// </summary>
+		/// <remarks>Since: this version.</remarks>
+		public GBColor MiddleMouseColor { get; set; }
+		/// <summary>
+		/// The color used for the XButton1 Mouse button.
+		/// </summary>
+		/// <remarks>Since: this version.</remarks>
+		public GBColor X1MouseColor { get; set; }
+		/// <summary>
+		/// The color used for the XButton2 Mouse button.
+		/// </summary>
+		/// <remarks>Since: this version.</remarks>
+		public GBColor X2MouseColor { get; set; }
+		#endregion
+
 		/// <summary>
 		/// 
 		/// </summary>
