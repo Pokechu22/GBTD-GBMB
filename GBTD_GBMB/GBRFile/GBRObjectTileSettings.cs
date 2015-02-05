@@ -13,6 +13,11 @@ namespace GB.Shared.GBRFile
 		public GBRObjectTileSettings(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileSettings(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
+		/// <summary>
+		/// The constant value that is used to represent a non-bookmarked-tile.
+		/// </summary>
+		public const UInt16 NON_BOOKMAKRED_NUMBER = UInt16.MaxValue;
+
 		#region Since initial version
 		/// <summary>
 		/// The UUID of the object that is refered to by these settings; usually a <see cref="GBRObjectTileData"/>.
@@ -176,9 +181,9 @@ namespace GB.Shared.GBRFile
 
 			ColorSet = s.ReadByte(0);
 
-			Bookmark1 = s.ReadWord(0);
-			Bookmark2 = s.ReadWord(0);
-			Bookmark3 = s.ReadWord(0);
+			Bookmark1 = s.ReadWord(NON_BOOKMAKRED_NUMBER);
+			Bookmark2 = s.ReadWord(NON_BOOKMAKRED_NUMBER);
+			Bookmark3 = s.ReadWord(NON_BOOKMAKRED_NUMBER);
 
 			this.AutoUpdate = s.ReadBool(false);
 
