@@ -67,7 +67,7 @@ namespace GB.Shared.GBRFile
 		/// TODO: Make an enum.
 		/// </summary>
 		/// <remarks>Since: GBTD 0.9</remarks>
-		public UInt32 SplitOrder { get; set; }
+		public byte SplitOrder { get; set; }
 		#endregion
 
 		#region Since GBTD 1.0
@@ -143,7 +143,7 @@ namespace GB.Shared.GBRFile
 
 			s.WriteWord(SplitWidth);
 			s.WriteWord(SplitHeight);
-			s.WriteLong(SplitOrder);
+			s.WriteByte(SplitOrder);
 
 			s.WriteByte(ColorSet);
 
@@ -172,7 +172,7 @@ namespace GB.Shared.GBRFile
 
 			SplitWidth = s.ReadWord(1);
 			SplitHeight = s.ReadWord(1);
-			SplitOrder = s.ReadLong(0);
+			SplitOrder = s.ReadByte(0);
 
 			ColorSet = s.ReadByte(0);
 
