@@ -180,7 +180,7 @@ namespace GB.Shared.GBRFile
 				throw new EndOfStreamException();
 			}
 
-			return (read != 0);
+			return (bytes[0] != 0);
 		}
 
 		/// <summary>
@@ -282,7 +282,7 @@ namespace GB.Shared.GBRFile
 				return def;
 			}
 
-			return (read != 0);
+			return (bytes[0] != 0);
 		}
 
 		/// <summary>
