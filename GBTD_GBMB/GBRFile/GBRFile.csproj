@@ -46,6 +46,7 @@
     <Compile Include="GBRObjectProducerInfo.cs" />
     <Compile Include="GBRObjectTileData.cs" />
     <Compile Include="GBRObjectTilePalette.cs" />
+    <Compile Include="GBRObjectTileSettings.cs" />
     <Compile Include="GBRObjectUnknownData.cs" />
     <Compile Include="GBRObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
