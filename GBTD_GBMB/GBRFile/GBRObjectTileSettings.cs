@@ -128,12 +128,34 @@ namespace GB.Shared.GBRFile
 		public GBColor X2MouseColor { get; set; }
 		#endregion
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="s"></param>
 		protected override void SaveToStream(Stream s) {
-			throw new NotImplementedException();
+			s.WriteWord(ReferedObjectID);
+			s.WriteBool(SimpleMode);
+			
+			//Create the flags. 
+			byte flags = 0;
+			if (this.ShowGrid) { flags |= 0x01; }
+			if (this.ShowNibbleMarkers) { flags |= 0x02; }
+			s.WriteByte(flags);
+
+			s.WriteByte((byte)LeftColor);
+			s.WriteByte((byte)RightColor);
+
+			s.WriteWord(SplitWidth);
+			s.WriteWord(SplitHeight);
+			s.WriteLong(SplitOrder);
+
+			s.WriteByte(ColorSet);
+
+			s.WriteWord(Bookmark1);
+			s.WriteWord(Bookmark2);
+			s.WriteWord(Bookmark3);
+
+			s.WriteBool(AutoUpdate);
+
+			s.WriteByte((byte)MiddleMouseColor);
+			s.WriteByte((byte)X1MouseColor);
+			s.WriteByte((byte)X2MouseColor);
 		}
 
 		protected override void LoadFromStream(Stream s) {
