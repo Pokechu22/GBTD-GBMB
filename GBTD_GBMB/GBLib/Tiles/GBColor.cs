@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Colors used for each pixel.
 	/// </summary>
-	public enum GBColor
+	public enum GBColor : byte
 	{
 		WHITE = 0x00,
 		LIGHT_GRAY = 0x02,
