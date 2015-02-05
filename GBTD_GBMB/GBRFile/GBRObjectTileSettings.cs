@@ -84,7 +84,7 @@ namespace GB.Shared.GBRFile
 		/// TODO: Make an enum.
 		/// </summary>
 		/// <remarks>Since: GBTD 1.0</remarks>
-		public byte ColorSet { get; set; }
+		public ColorSet ColorSet { get; set; }
 		#endregion
 
 		#region Since GBTD 1.1
@@ -149,7 +149,7 @@ namespace GB.Shared.GBRFile
 			s.WriteWord(SplitHeight);
 			s.WriteByte((byte)SplitOrder);
 			
-			s.WriteByte(ColorSet);
+			s.WriteByte((byte)ColorSet);
 
 			s.WriteWord(Bookmark1);
 			s.WriteWord(Bookmark2);
@@ -177,8 +177,8 @@ namespace GB.Shared.GBRFile
 			SplitWidth = s.ReadWord(1);
 			SplitHeight = s.ReadWord(1);
 			SplitOrder = (SplitOrder)s.ReadByte((byte)SplitOrder.LEFT_TO_RIGHT_FIRST);
-			
-			ColorSet = s.ReadByte(0);
+
+			ColorSet = (ColorSet)s.ReadByte((byte)ColorSet.GAMEBOY);
 
 			Bookmark1 = s.ReadWord(NON_BOOKMAKRED_NUMBER);
 			Bookmark2 = s.ReadWord(NON_BOOKMAKRED_NUMBER);
@@ -215,7 +215,7 @@ namespace GB.Shared.GBRFile
 			splitSettings.Nodes.Add("Split Order: " + SplitOrder + " (" + (byte)SplitOrder + ")");
 			returned.Nodes.Add(splitSettings);
 
-			returned.Nodes.Add("Color set: " + ColorSet);
+			returned.Nodes.Add("Color set: " + ColorSet + " (" + (byte)ColorSet + ")");
 
 			TreeNode bookmarks = new TreeNode("Bookmarks");
 			bookmarks.Nodes.Add("1: " + Bookmark1);
@@ -246,5 +246,17 @@ namespace GB.Shared.GBRFile
 		/// Ordered top to bottom and then left to right.
 		/// </summary>
 		TOP_TO_BOTTOM_FIRST
+	}
+
+	/// <summary>
+	/// Options that are valid for <see cref="GBRObjectTileSettings.ColorSet"/>.
+	/// </summary>
+	public enum ColorSet : byte
+	{
+		GAMEBOY_POCKET = 0,
+		GAMEBOY = 1,
+		GAMEBOY_COLOR = 2,
+		SUPER_GAMEBOY = 3,
+		GAMEBOY_COLOR_FILTERED = 4
 	}
 }
