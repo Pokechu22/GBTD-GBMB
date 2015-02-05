@@ -159,7 +159,32 @@ namespace GB.Shared.GBRFile
 		}
 
 		protected override void LoadFromStream(Stream s) {
-			throw new NotImplementedException();
+			this.ReferedObjectID = s.ReadWord();
+			this.SimpleMode = s.ReadBool(false);
+
+			//Create the flags. 
+			byte flags = s.ReadByte(0x00);
+			this.ShowGrid = (flags & 0x01) != 0;
+			this.ShowNibbleMarkers = (flags & 0x02) != 0;
+
+			this.LeftColor = (GBColor)s.ReadByte((byte)GBColor.BLACK);
+			this.RightColor = (GBColor)s.ReadByte((byte)GBColor.WHITE);
+
+			SplitWidth = s.ReadWord(1);
+			SplitHeight = s.ReadWord(1);
+			SplitOrder = s.ReadLong(0);
+
+			ColorSet = s.ReadByte(0);
+
+			Bookmark1 = s.ReadWord();
+			Bookmark2 = s.ReadWord();
+			Bookmark3 = s.ReadWord();
+
+			this.AutoUpdate = s.ReadBool(false);
+
+			this.MiddleMouseColor = (GBColor)s.ReadByte((byte)GBColor.DARK_GRAY);
+			this.X1MouseColor = (GBColor)s.ReadByte((byte)GBColor.BLACK);
+			this.X2MouseColor = (GBColor)s.ReadByte((byte)GBColor.BLACK);
 		}
 
 		public override string GetTypeName() {
