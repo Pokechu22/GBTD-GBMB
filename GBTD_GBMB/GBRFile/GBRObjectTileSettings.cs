@@ -69,10 +69,9 @@ namespace GB.Shared.GBRFile
 		/// The order for split copy/paste: 
 		/// <para>0:  Left to right, top to bottom</para>
 		/// <para>1:  Top to bottom, left to right</para>
-		/// TODO: Make an enum.
 		/// </summary>
 		/// <remarks>Since: GBTD 0.9</remarks>
-		public byte SplitOrder { get; set; }
+		public SplitOrder SplitOrder { get; set; }
 		#endregion
 
 		#region Since GBTD 1.0
@@ -115,7 +114,7 @@ namespace GB.Shared.GBRFile
 		#endregion
 
 
-		#region Since this version //TODO: Not loadable yet.
+		#region Since this version
 		/// <summary>
 		/// The color used for the Middle Mouse button.
 		/// </summary>
@@ -148,8 +147,8 @@ namespace GB.Shared.GBRFile
 
 			s.WriteWord(SplitWidth);
 			s.WriteWord(SplitHeight);
-			s.WriteByte(SplitOrder);
-
+			s.WriteByte((byte)SplitOrder);
+			
 			s.WriteByte(ColorSet);
 
 			s.WriteWord(Bookmark1);
@@ -177,8 +176,8 @@ namespace GB.Shared.GBRFile
 
 			SplitWidth = s.ReadWord(1);
 			SplitHeight = s.ReadWord(1);
-			SplitOrder = s.ReadByte(0);
-
+			SplitOrder = (SplitOrder)s.ReadByte((byte)SplitOrder.LEFT_TO_RIGHT_FIRST);
+			
 			ColorSet = s.ReadByte(0);
 
 			Bookmark1 = s.ReadWord(NON_BOOKMAKRED_NUMBER);
@@ -213,7 +212,7 @@ namespace GB.Shared.GBRFile
 			TreeNode splitSettings = new TreeNode("Split Copy/Paste settings");
 			splitSettings.Nodes.Add("Split Width: " + SplitWidth);
 			splitSettings.Nodes.Add("Split Height: " + SplitHeight);
-			splitSettings.Nodes.Add("Split Order: " + SplitOrder);
+			splitSettings.Nodes.Add("Split Order: " + SplitOrder + " (" + (byte)SplitOrder + ")");
 			returned.Nodes.Add(splitSettings);
 
 			returned.Nodes.Add("Color set: " + ColorSet);
@@ -232,5 +231,20 @@ namespace GB.Shared.GBRFile
 
 			return returned;
 		}
+	}
+
+	/// <summary>
+	/// Orders that are valid for <see cref="GBRObjectTileSettings.SplitOrder"/>.  
+	/// </summary>
+	public enum SplitOrder : byte
+	{
+		/// <summary>
+		/// Ordered left to right and then top to bottom.
+		/// </summary>
+		LEFT_TO_RIGHT_FIRST,
+		/// <summary>
+		/// Ordered top to bottom and then left to right.
+		/// </summary>
+		TOP_TO_BOTTOM_FIRST
 	}
 }
