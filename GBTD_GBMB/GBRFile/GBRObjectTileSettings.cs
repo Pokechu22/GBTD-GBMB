@@ -176,9 +176,9 @@ namespace GB.Shared.GBRFile
 
 			ColorSet = s.ReadByte(0);
 
-			Bookmark1 = s.ReadWord();
-			Bookmark2 = s.ReadWord();
-			Bookmark3 = s.ReadWord();
+			Bookmark1 = s.ReadWord(0);
+			Bookmark2 = s.ReadWord(0);
+			Bookmark3 = s.ReadWord(0);
 
 			this.AutoUpdate = s.ReadBool(false);
 
@@ -188,11 +188,44 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override string GetTypeName() {
-			throw new NotImplementedException();
+			return "Tile settings";
 		}
 
 		public override TreeNode ToTreeNode() {
-			throw new NotImplementedException();
+			TreeNode returned = CreateRootTreeNode();
+
+			returned.Nodes.Add("Refered Object ID: " + ReferedObjectID.ToString("X4"));
+			returned.Nodes.Add("Simple mode: " + SimpleMode);
+
+			TreeNode flags = new TreeNode("Flags"); //TODO include the numbers.
+			flags.Nodes.Add("Grid: " + this.ShowGrid);
+			flags.Nodes.Add("Nibble Markers: " + this.ShowNibbleMarkers);
+			returned.Nodes.Add(flags);
+
+			returned.Nodes.Add("Left color: " + LeftColor);
+			returned.Nodes.Add("Right color: " + RightColor);
+
+			TreeNode splitSettings = new TreeNode("Split Copy/Paste settings");
+			splitSettings.Nodes.Add("Split Width: " + SplitWidth);
+			splitSettings.Nodes.Add("Split Height: " + SplitHeight);
+			splitSettings.Nodes.Add("Split Order: " + SplitOrder);
+			returned.Nodes.Add(splitSettings);
+
+			returned.Nodes.Add("Color set: " + ColorSet);
+
+			TreeNode bookmarks = new TreeNode("Bookmarks");
+			bookmarks.Nodes.Add("1: " + Bookmark1);
+			bookmarks.Nodes.Add("2: " + Bookmark2);
+			bookmarks.Nodes.Add("3: " + Bookmark3);
+			returned.Nodes.Add(bookmarks);
+
+			returned.Nodes.Add("AutoUpdate: " + AutoUpdate);
+
+			returned.Nodes.Add("Middle color: " + MiddleMouseColor);
+			returned.Nodes.Add("X1 color: " + X1MouseColor);
+			returned.Nodes.Add("X2 color: " + X2MouseColor);
+
+			return returned;
 		}
 	}
 }
