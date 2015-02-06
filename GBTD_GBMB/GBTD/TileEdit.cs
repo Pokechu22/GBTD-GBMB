@@ -278,5 +278,9 @@ namespace GB.GBTD
 			dialog.ShowDialog();
 			//TODO
 		}
+
+		private void simpleToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
+			previewRenderer1.Simple = simpleToolStripMenuItem.Checked;
+		}
 	}
 }

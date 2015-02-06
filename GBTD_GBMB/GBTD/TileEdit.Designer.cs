@@ -508,6 +508,7 @@
 			this.simpleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
 			this.simpleToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.simpleToolStripMenuItem.Text = "Si&mple";
+			this.simpleToolStripMenuItem.CheckedChanged += new System.EventHandler(this.simpleToolStripMenuItem_CheckedChanged);
 			// 
 			// gridToolStripMenuItem
 			// 
@@ -893,7 +894,7 @@
 			this.previewRenderer1.Location = new System.Drawing.Point(236, 57);
 			this.previewRenderer1.Name = "previewRenderer1";
 			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(26, 193);
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 193);
 			this.previewRenderer1.TabIndex = 6;
 			// 
 			// TileEdit
