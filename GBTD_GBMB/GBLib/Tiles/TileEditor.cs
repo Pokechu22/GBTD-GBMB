@@ -70,24 +70,36 @@ namespace GB.Shared.Tiles
 				return input;
 			}
 
-			return chainColoration(input, x, y, color, clickedColor);
+			input.SetPixels(chainColoration(input.GetPixels(), x, y, color, clickedColor));
+
+			return input;
 		}
 
-		protected Tile chainColoration(Tile tile, int x, int y, GBColor color, GBColor toReplace) {
-			tile[x, y] = color;
-			if (x > 0 && tile[x - 1, y] == toReplace) {
-				tile = chainColoration(tile, x - 1, y, color, toReplace);
+		/// <summary>
+		/// Flood-fill chains coloration.
+		/// </summary>
+		/// <param name="colors"></param>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="color"></param>
+		/// <param name="toReplace"></param>
+		/// <returns>The passed colors param.  Both are modified, but this is for convinience only.</returns>
+		protected GBColor[,] chainColoration(GBColor[,] colors, int x, int y, GBColor color, GBColor toReplace) {
+			colors[x, y] = color;
+			if (x > 0 && colors[x - 1, y] == toReplace) {
+				chainColoration(colors, x - 1, y, color, toReplace);
 			}
-			if (x < tile.Width - 1 && tile[x + 1, y] == toReplace) {
-				tile = chainColoration(tile, x + 1, y, color, toReplace);
+			if (x < colors.GetLength(0) - 1 && colors[x + 1, y] == toReplace) {
+				chainColoration(colors, x + 1, y, color, toReplace);
 			}
-			if (y > 0 && tile[x, y - 1] == toReplace) {
-				tile = chainColoration(tile, x, y - 1, color, toReplace);
+			if (y > 0 && colors[x, y - 1] == toReplace) {
+				chainColoration(colors, x, y - 1, color, toReplace);
 			}
-			if (y < tile.Height - 1 && tile[x, y + 1] == toReplace) {
-				tile = chainColoration(tile, x, y + 1, color, toReplace);
+			if (y < colors.GetLength(1) - 1 && colors[x, y + 1] == toReplace) {
+				chainColoration(colors, x, y + 1, color, toReplace);
 			}
-			return tile;
+
+			return colors;
 		}
 
 		public override TileEditorID GetID() {
