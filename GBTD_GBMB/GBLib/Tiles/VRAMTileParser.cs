@@ -42,7 +42,7 @@ namespace GB.Shared.Tiles
 				throw new ArgumentException("Data length must be exactly 16!", "data");
 			}
 
-			Tile t = new Tile();
+			Tile t = new Tile(8, 8);
 
 			for (byte y = 0; y <= 7; y++) {
 				for (byte x = 0; x <= 7; x++) {

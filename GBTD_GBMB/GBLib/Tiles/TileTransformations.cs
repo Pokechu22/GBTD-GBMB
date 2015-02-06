@@ -11,16 +11,16 @@ namespace GB.Shared.Tiles
 	public static class TileTransform
 	{
 		/// <summary>
-		/// Scrolls a tileData leftwards.
+		/// Scrolls a tile leftwards.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile ScrolledLeft(Tile tile) {
-			Tile returned = new Tile();
+			Tile returned = new Tile(tile.Width, tile.Height);
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[unchecked(x + 1) % 8, y];
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[unchecked(x + 1) % tile.Width, y];
 				}
 			}
 
@@ -28,16 +28,16 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Scrolls a tileData rightwards.
+		/// Scrolls a tile rightwards.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile ScrolledRight(Tile tile) {
-			Tile returned = new Tile();
+			Tile returned = new Tile(tile.Width, tile.Height);
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[unchecked(x - 1) % 8, y];
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[unchecked(x - 1) % tile.Width, y];
 				}
 			}
 
@@ -45,16 +45,16 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Scrolls a tileData downwards.
+		/// Scrolls a tile downwards.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile ScrolledDown(Tile tile) {
-			Tile returned = new Tile();
+			Tile returned = new Tile(tile.Width, tile.Height);
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[x, unchecked(y - 1) % 8];
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[x, unchecked(y - 1) % tile.Height];
 				}
 			}
 
@@ -62,16 +62,16 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Scrolls a tileData upwards.
+		/// Scrolls a tile upwards.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile ScrolledUp(Tile tile) {
-			Tile returned = new Tile();
+			Tile returned = new Tile(tile.Width, tile.Height);
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[x, unchecked(y + 1) % 8];
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[x, unchecked(y + 1) % tile.Height];
 				}
 			}
 
@@ -79,16 +79,16 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Flips a tileData vertically.
+		/// Flips a tile vertically.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile FlippedVertically(Tile tile) {
-			Tile returned = new Tile();
+			Tile returned = new Tile(tile.Width, tile.Height);
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[7 - x, y];
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[tile.Width - x - 1, y];
 				}
 			}
 
@@ -96,16 +96,16 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Flips a tileData horizontally.
+		/// Flips a tile horizontally.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile FlippedHoriziontally(Tile tile) {
-			Tile returned = new Tile();
+			Tile returned = new Tile(tile.Width, tile.Height);
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[x, 7 - y];
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[x, tile.Height - y - 1];
 				}
 			}
 
@@ -113,16 +113,21 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Rotates a tileData clockwise.
+		/// Rotates a tile clockwise.
+		/// Note: the tile *must* be of the same width and height.
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile RotateClockwise(Tile tile) {
-			Tile returned = new Tile();
+			if (tile.Width != tile.Height) {
+				throw new ArgumentException("Tile width must equal tile height to rotate!  Got " + tile.Width + ", " + tile.Height + ".", "tile");
+			}
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[y, 7 - x];//tileData.pixels[y + 4, x];
+			Tile returned = new Tile(tile.Width, tile.Height);
+
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[y, tile.Width - x - 1];//tileData.pixels[y + 4, x];
 				}
 			}
 
@@ -133,15 +138,21 @@ namespace GB.Shared.Tiles
 		/// Rotates a tileData counterclockwise.
 		/// 
 		/// This is not used in the regular GBTD.
+		/// 
+		/// <para>Note: the tile *must* be of the same width and height.</para>
 		/// </summary>
-		/// <param name="tileData"></param>
+		/// <param name="tile"></param>
 		/// <returns></returns>
 		public static Tile RotateCounterclockwise(Tile tile) {
-			Tile returned = new Tile();
+			if (tile.Width != tile.Height) {
+				throw new ArgumentException("Tile width must equal tile height to rotate!  Got " + tile.Width + ", " + tile.Height + ".", "tile");
+			}
 
-			for (uint x = 0; x < 8; x++) {
-				for (uint y = 0; y < 8; y++) {
-					returned[x, y] = tile[7 - y, x];
+			Tile returned = new Tile(tile.Width, tile.Height);
+
+			for (uint x = 0; x < tile.Width; x++) {
+				for (uint y = 0; y < tile.Height; y++) {
+					returned[x, y] = tile[tile.Height - y - 1, x];
 				}
 			}
 

@@ -10,6 +10,9 @@ namespace GB.Shared.Tiles
 	{
 		private TileData[] tiles;
 
+		public UInt16 Width { get; private set; }
+		public UInt16 Height { get; private set; }
+
 		/// <summary>
 		/// The palette set shared between all tile datas.
 		/// </summary>
@@ -43,10 +46,13 @@ namespace GB.Shared.Tiles
 		/// Creates a TileDataList with empty default values.
 		/// </summary>
 		/// <param name="length"></param>
-		public TileDataList(int length) {
+		public TileDataList(int length, UInt16 Width, UInt16 Height) {
+			this.Width = Width;
+			this.Height = Height;
+
 			tiles = new TileData[length];
 			for (int i = 0; i < length; i++) {
-				tiles[i] = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile() };
+				tiles[i] = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile(Width, Height) };
 			}
 		}
 	}

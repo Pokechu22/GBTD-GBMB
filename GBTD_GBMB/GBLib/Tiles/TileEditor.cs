@@ -78,13 +78,13 @@ namespace GB.Shared.Tiles
 			if (x > 0 && tile[x - 1, y] == toReplace) {
 				tile = chainColoration(tile, x - 1, y, color, toReplace);
 			}
-			if (x < 7 && tile[x + 1, y] == toReplace) {
+			if (x < tile.Width - 1 && tile[x + 1, y] == toReplace) {
 				tile = chainColoration(tile, x + 1, y, color, toReplace);
 			}
 			if (y > 0 && tile[x, y - 1] == toReplace) {
 				tile = chainColoration(tile, x, y - 1, color, toReplace);
 			}
-			if (y < 7 && tile[x, y + 1] == toReplace) {
+			if (y < tile.Height - 1 && tile[x, y + 1] == toReplace) {
 				tile = chainColoration(tile, x, y + 1, color, toReplace);
 			}
 			return tile;

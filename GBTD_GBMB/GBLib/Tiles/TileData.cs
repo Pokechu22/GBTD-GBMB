@@ -15,6 +15,9 @@ namespace GB.Shared.Tiles
 		public int paletteID;
 		public Tile tile;
 
+		public UInt16 Width { get { return tile.Width; } }
+		public UInt16 Height { get { return tile.Height; } }
+
 		/// <summary>
 		/// The palette used for this tileData.
 		/// </summary>

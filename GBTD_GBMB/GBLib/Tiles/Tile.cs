@@ -7,132 +7,74 @@ using System.Drawing;
 namespace GB.Shared.Tiles
 {
 	/// <summary>
-	/// A single tileData.
+	/// A single tile.
 	/// </summary>
 	public struct Tile
 	{
-		#region Bad code
+		public readonly UInt16 Width;
+		public readonly UInt16 Height;
+
+		private GBColor[,] pixels;
+
 		/// <summary>
-		/// Stupid code to avoid an array.
-		/// Using an array makes modifications to duplicated tiles change through all, which is not what I want.
+		/// Creates a tile with the specified Width and Height.
 		/// </summary>
-		private struct PixelGroup8x8
-		{
-			private struct PixelGroup4x4
-			{
-				private struct PixelGroup2x2
-				{
-					/// <summary>
-					/// Groups of each set of pixels.
-					/// </summary>
-					private GBColor _0_0, _0_1, _1_0, _1_1;
+		/// <param name="Width"></param>
+		/// <param name="Height"></param>
+		public Tile(UInt16 Width, UInt16 Height) {
+			this.Width = Width;
+			this.Height = Height;
+			this.pixels = new GBColor[Width, Height];
+		}
 
-					public GBColor this[int x, int y] {
-						get {
-							const int BIT = 0x01;
+		/// <summary>
+		/// Creates a tile with the specified pixels.
+		/// </summary>
+		/// <param name="pixels"></param>
+		public Tile(GBColor[,] pixels) {
+			this.pixels = (GBColor[,])pixels.Clone();
+			this.Width = (UInt16)this.pixels.GetLength(0);
+			this.Height = (UInt16)this.pixels.GetLength(1);
+		}
 
-							if ((x & BIT) == 0) {
-								if ((y & BIT) == 0) { return _0_0; } else { return _0_1; }
-							} else {
-								if ((y & BIT) == 0) { return _1_0; } else { return _1_1; }
-							}
-						}
-						set {
-							const int BIT = 0x01;
+		/// <summary>
+		/// Creates a tile with the specified pixels of the specified width and height.
+		/// </summary>
+		/// <param name="pixels"></param>
+		/// <param name="Width"></param>
+		/// <param name="Height">The pixels to use, aranged left to right and then top to bottom.</param>
+		public Tile(GBColor[] pixels, UInt16 Width, UInt16 Height) {
+			this.Width = Width;
+			this.Height = Height;
+			this.pixels = new GBColor[Width, Height];
 
-							if ((x & BIT) == 0) {
-								if ((y & BIT) == 0) { _0_0 = value; } else { _0_1 = value; }
-							} else {
-								if ((y & BIT) == 0) { _1_0 = value; } else { _1_1 = value; }
-							}
-						}
-					}
-				}
-
-				/// <summary>
-				/// Groups of each set of pixels: _x_y
-				/// </summary>
-				private PixelGroup2x2 _0_0, _0_1, _1_0, _1_1;
-
-				public GBColor this[int x, int y] {
-					get {
-						const int BIT = 0x02;
-
-						if ((x & BIT) == 0) {
-							if ((y & BIT) == 0) { return _0_0[x, y]; } else { return _0_1[x, y]; }
-						} else {
-							if ((y & BIT) == 0) { return _1_0[x, y]; } else { return _1_1[x, y]; }
-						}
-					}
-					set {
-						const int BIT = 0x02;
-
-						if ((x & BIT) == 0) {
-							if ((y & BIT) == 0) { _0_0[x, y] = value; } else { _0_1[x, y] = value; }
-						} else {
-							if ((y & BIT) == 0) { _1_0[x, y] = value; } else { _1_1[x, y] = value; }
-						}
-					}
-				}
-			}
-
-			/// <summary>
-			/// Groups of each set of pixels: _x_y
-			/// </summary>
-			private PixelGroup4x4 _0_0, _0_1, _1_0, _1_1;
-
-			public static implicit operator PixelGroup8x8(GBColor[,] pixels) {
-				if (pixels.GetLength(0) != 8 || pixels.GetLength(1) != 8) {
-					throw new ArgumentOutOfRangeException("pixels", pixels, "must be an [8,8] array");
-				}
-
-				PixelGroup8x8 returned = new PixelGroup8x8();
-
-				for (int x = 0; x < 8; x++) {
-					for (int y = 0; y < 8; y++) {
-						returned[x, y] = pixels[x, y];
-					}
-				}
-
-				return returned;
-			}
-
-			public static implicit operator GBColor[,](PixelGroup8x8 pixels) {
-				GBColor[,] returned = new GBColor[8, 8];
-
-				for (int x = 0; x < 8; x++) {
-					for (int y = 0; y < 8; y++) {
-						returned[x, y] = pixels[x, y];
-					}
-				}
-
-				return returned;
-			}
-
-			public GBColor this[int x, int y] {
-				get {
-					const int BIT = 0x04;
-
-					if ((x & BIT) == 0) {
-						if ((y & BIT) == 0) { return _0_0[x, y]; } else { return _0_1[x, y]; }
-					} else {
-						if ((y & BIT) == 0) { return _1_0[x, y]; } else { return _1_1[x, y]; }
-					}
-				}
-				set {
-					const int BIT = 0x04;
-
-					if ((x & BIT) == 0) {
-						if ((y & BIT) == 0) { _0_0[x, y] = value; } else { _0_1[x, y] = value; }
-					} else {
-						if ((y & BIT) == 0) { _1_0[x, y] = value; } else { _1_1[x, y] = value; }
-					}
+			for (int y = 0; y < Height; y++) {
+				for (int x = 0; x < Width; x++) {
+					this.pixels[x, y] = pixels[(y * Height) + x];
 				}
 			}
 		}
-		#endregion
 
-		private PixelGroup8x8 pixels;
+		/// <summary>
+		/// Sets the pixels.
+		/// Pixels are cloned beforehand.
+		/// </summary>
+		/// <param name="pixels"></param>
+		public void SetPixels(GBColor[,] pixels) {
+			if (pixels.GetLength(0) != this.Width || pixels.GetLength(1) != this.Height) {
+				throw new ArgumentException("Array is not of valid size; should be GBColor[" + this.Width + ", " + this.Height + "], but is actually a GBColor[" + pixels.GetLength(0) + ", " + pixels.GetLength(1) + "].", "pixels");
+			}
+			this.pixels = (GBColor[,])pixels.Clone();
+		}
+
+		/// <summary>
+		/// Gets the pixels.
+		/// This is seperate copy; modifications will not pass up.
+		/// </summary>
+		/// <returns></returns>
+		public GBColor[,] GetPixels() {
+			return (GBColor[,])pixels.Clone();
+		}
 
 		public static Tile FromImage(Image image) {
 			if (image == null) {
@@ -144,7 +86,7 @@ namespace GB.Shared.Tiles
 			Color LIGHT_GRAY = Color.FromArgb(192, 192, 192);
 			Color WHITE = Color.FromArgb(255,255,255);
 
-			Tile returned = new Tile();
+			Tile returned = new Tile(8, 8); //TODO unhardcode size
 
 			using (Bitmap bitmap = new Bitmap(image)) {
 				for (int x = 0; x < 8; x++) {
@@ -195,23 +137,6 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
-		/// Pixels on the tileData.  MUST BE 8 by 8 exactly.
-		/// </summary>
-		[Obsolete("Can't be modified directly, and thus discards changes.  Use indexer instead.")]
-		public GBColor[,] Pixels {
-			get {
-				return pixels;
-			}
-			set {
-				if (value == null) { throw new ArgumentNullException("value"); }
-				if (value.GetLength(0) != 8 || value.GetLength(1) != 8) {
-					throw new ArgumentOutOfRangeException("value", value, "must be an [8,8] array");
-				}
-				pixels = value;
-			}
-		}
-
-		/// <summary>
 		/// Sets/gets the specific pixels of the image.
 		/// </summary>
 		/// <param name="x">x-coord of pixel, from 0 to 7</param>
@@ -219,14 +144,14 @@ namespace GB.Shared.Tiles
 		/// <returns>Pixel at (x,y).</returns>
 		public GBColor this[int x, int y] {
 			get {
-				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
-				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
+				if (x < 0 || x >= Width) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and " + Width); }
+				if (y < 0 || y >= Height) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and " + Height); }
 
 				return pixels[x, y];
 			}
 			set {
-				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
-				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
+				if (x < 0 || x > Width) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and " + Width); }
+				if (y < 0 || y > Height) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and " + Height); }
 				
 				this.pixels[x, y] = value;
 			}
@@ -240,14 +165,14 @@ namespace GB.Shared.Tiles
 		/// <returns>Pixel at (x,y).</returns>
 		public GBColor this[uint x, uint y] {
 			get {
-				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
-				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
+				if (x < 0 || x >= Width) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and " + Width); }
+				if (y < 0 || y >= Height) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and " + Height); }
 
 				return pixels[(int)x, (int)y];
 			}
 			set {
-				if (x < 0 || x > 7) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and 7"); }
-				if (y < 0 || y > 7) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and 7"); }
+				if (x < 0 || x >= Width) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and " + Width); }
+				if (y < 0 || y >= Height) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and " + Height); }
 
 				this.pixels[(int)x, (int)y] = value;
 			}

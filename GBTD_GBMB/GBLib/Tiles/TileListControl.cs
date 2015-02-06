@@ -24,7 +24,7 @@ namespace GB.Shared.Tiles
 		/// </summary>
 		private int numberOfVisibleEntries = 0;
 
-		private TileDataList tileDatas = new TileDataList(16);
+		private TileDataList tileDatas = new TileDataList(16, 8, 8);
 
 		/// <summary>
 		/// All of the tiles and their palettes.

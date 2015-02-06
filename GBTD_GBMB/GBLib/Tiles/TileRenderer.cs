@@ -14,7 +14,7 @@ namespace GB.Shared.Tiles
 	public partial class TileRenderer : UserControl
 	{
 		#region Private members
-		private TileData tileData = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile() };
+		private TileData tileData = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile(8, 8) };
 
 		private byte clickedX = 0, clickedY = 0;
 		private MouseButtons buttons = MouseButtons.None;

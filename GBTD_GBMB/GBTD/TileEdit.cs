@@ -257,7 +257,7 @@ namespace GB.GBTD
 
 		private void cutButtonClicked(object sender, EventArgs e) {
 			Clipboard.SetImage(mainTileEdit.Tile.ToImage());
-			mainTileEdit.Tile = new Tile(); //Empty.
+			mainTileEdit.Tile = new Tile(8, 8); //Empty.
 		}
 
 		private void copyButtonClicked(object sender, EventArgs e) {
