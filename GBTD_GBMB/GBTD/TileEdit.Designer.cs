@@ -130,11 +130,15 @@
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -866,6 +870,7 @@
 			this.miniPreviewRenderer.Margin = new System.Windows.Forms.Padding(0);
 			this.miniPreviewRenderer.Name = "miniPreviewRenderer";
 			this.miniPreviewRenderer.NibbleMarkers = false;
+			this.miniPreviewRenderer.PixelScale = 3;
 			this.miniPreviewRenderer.Size = new System.Drawing.Size(24, 24);
 			this.miniPreviewRenderer.TabIndex = 5;
 			// 
@@ -906,6 +911,7 @@
 			this.groupedTileRenderer11.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer11.Name = "groupedTileRenderer11";
 			this.groupedTileRenderer11.NibbleMarkers = false;
+			this.groupedTileRenderer11.PixelScale = 3;
 			this.groupedTileRenderer11.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer11.TabIndex = 19;
 			// 
@@ -921,6 +927,7 @@
 			this.groupedTileRenderer15.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer15.Name = "groupedTileRenderer15";
 			this.groupedTileRenderer15.NibbleMarkers = false;
+			this.groupedTileRenderer15.PixelScale = 3;
 			this.groupedTileRenderer15.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer15.TabIndex = 18;
 			// 
@@ -936,6 +943,7 @@
 			this.groupedTileRenderer14.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer14.Name = "groupedTileRenderer14";
 			this.groupedTileRenderer14.NibbleMarkers = false;
+			this.groupedTileRenderer14.PixelScale = 3;
 			this.groupedTileRenderer14.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer14.TabIndex = 17;
 			// 
@@ -951,6 +959,7 @@
 			this.groupedTileRenderer16.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer16.Name = "groupedTileRenderer16";
 			this.groupedTileRenderer16.NibbleMarkers = false;
+			this.groupedTileRenderer16.PixelScale = 3;
 			this.groupedTileRenderer16.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer16.TabIndex = 16;
 			// 
@@ -966,6 +975,7 @@
 			this.groupedTileRenderer12.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer12.Name = "groupedTileRenderer12";
 			this.groupedTileRenderer12.NibbleMarkers = false;
+			this.groupedTileRenderer12.PixelScale = 3;
 			this.groupedTileRenderer12.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer12.TabIndex = 15;
 			// 
@@ -981,6 +991,7 @@
 			this.groupedTileRenderer13.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer13.Name = "groupedTileRenderer13";
 			this.groupedTileRenderer13.NibbleMarkers = false;
+			this.groupedTileRenderer13.PixelScale = 3;
 			this.groupedTileRenderer13.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer13.TabIndex = 14;
 			// 
@@ -996,6 +1007,7 @@
 			this.groupedTileRenderer10.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer10.Name = "groupedTileRenderer10";
 			this.groupedTileRenderer10.NibbleMarkers = false;
+			this.groupedTileRenderer10.PixelScale = 3;
 			this.groupedTileRenderer10.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer10.TabIndex = 13;
 			// 
@@ -1011,6 +1023,7 @@
 			this.groupedTileRenderer9.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer9.Name = "groupedTileRenderer9";
 			this.groupedTileRenderer9.NibbleMarkers = false;
+			this.groupedTileRenderer9.PixelScale = 3;
 			this.groupedTileRenderer9.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer9.TabIndex = 12;
 			// 
@@ -1026,6 +1039,7 @@
 			this.groupedTileRenderer8.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer8.Name = "groupedTileRenderer8";
 			this.groupedTileRenderer8.NibbleMarkers = false;
+			this.groupedTileRenderer8.PixelScale = 3;
 			this.groupedTileRenderer8.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer8.TabIndex = 11;
 			// 
@@ -1041,6 +1055,7 @@
 			this.groupedTileRenderer7.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer7.Name = "groupedTileRenderer7";
 			this.groupedTileRenderer7.NibbleMarkers = false;
+			this.groupedTileRenderer7.PixelScale = 3;
 			this.groupedTileRenderer7.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer7.TabIndex = 10;
 			// 
@@ -1056,6 +1071,7 @@
 			this.groupedTileRenderer6.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer6.Name = "groupedTileRenderer6";
 			this.groupedTileRenderer6.NibbleMarkers = false;
+			this.groupedTileRenderer6.PixelScale = 3;
 			this.groupedTileRenderer6.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer6.TabIndex = 9;
 			// 
@@ -1071,6 +1087,7 @@
 			this.groupedTileRenderer5.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer5.Name = "groupedTileRenderer5";
 			this.groupedTileRenderer5.NibbleMarkers = false;
+			this.groupedTileRenderer5.PixelScale = 3;
 			this.groupedTileRenderer5.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer5.TabIndex = 8;
 			// 
@@ -1086,6 +1103,7 @@
 			this.groupedTileRenderer4.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer4.Name = "groupedTileRenderer4";
 			this.groupedTileRenderer4.NibbleMarkers = false;
+			this.groupedTileRenderer4.PixelScale = 3;
 			this.groupedTileRenderer4.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer4.TabIndex = 7;
 			// 
@@ -1101,6 +1119,7 @@
 			this.groupedTileRenderer3.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer3.Name = "groupedTileRenderer3";
 			this.groupedTileRenderer3.NibbleMarkers = false;
+			this.groupedTileRenderer3.PixelScale = 3;
 			this.groupedTileRenderer3.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer3.TabIndex = 6;
 			// 
@@ -1116,6 +1135,7 @@
 			this.groupedTileRenderer2.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer2.Name = "groupedTileRenderer2";
 			this.groupedTileRenderer2.NibbleMarkers = false;
+			this.groupedTileRenderer2.PixelScale = 3;
 			this.groupedTileRenderer2.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer2.TabIndex = 5;
 			// 
@@ -1131,6 +1151,7 @@
 			this.groupedTileRenderer1.Margin = new System.Windows.Forms.Padding(0);
 			this.groupedTileRenderer1.Name = "groupedTileRenderer1";
 			this.groupedTileRenderer1.NibbleMarkers = false;
+			this.groupedTileRenderer1.PixelScale = 3;
 			this.groupedTileRenderer1.Size = new System.Drawing.Size(24, 24);
 			this.groupedTileRenderer1.TabIndex = 4;
 			// 
@@ -1164,6 +1185,7 @@
 			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tiles.GBColor.DARK_GRAY;
 			this.mainTileEdit.Name = "mainTileEdit";
 			this.mainTileEdit.NibbleMarkers = false;
+			this.mainTileEdit.PixelScale = 24;
 			this.mainTileEdit.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
 			this.mainTileEdit.TabIndex = 1;
@@ -1199,11 +1221,39 @@
 			this.tileList1.TabIndex = 5;
 			this.tileList1.SelectedEntryChanged += new System.EventHandler(this.tileList1_SelectedEntryChanged);
 			// 
+			// numericUpDown1
+			// 
+			this.numericUpDown1.Location = new System.Drawing.Point(248, 61);
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDown1.TabIndex = 6;
+			this.numericUpDown1.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+			this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+			// 
+			// numericUpDown2
+			// 
+			this.numericUpDown2.Location = new System.Drawing.Point(248, 119);
+			this.numericUpDown2.Name = "numericUpDown2";
+			this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDown2.TabIndex = 7;
+			this.numericUpDown2.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+			this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 283);
+			this.Controls.Add(this.numericUpDown2);
+			this.Controls.Add(this.numericUpDown1);
 			this.Controls.Add(this.tileList1);
 			this.Controls.Add(this.tileEditBorder);
 			this.Controls.Add(this.toolStrip1);
@@ -1220,6 +1270,8 @@
 			this.tileEditBorder.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1330,6 +1382,8 @@
 		private Shared.Tiles.TileRenderer groupedTileRenderer1;
 		private Shared.Tiles.TileRenderer groupedTileRenderer10;
 		private Shared.Tiles.TileListControl tileList1;
+		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown numericUpDown2;
 
 	}
 }

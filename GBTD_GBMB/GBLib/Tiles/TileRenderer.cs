@@ -24,6 +24,8 @@ namespace GB.Shared.Tiles
 		private bool nibbleMarkers = false;
 
 		private Border3DSide borderSides = Border3DSide.All;
+
+		private int pixelScale = 1;
 		#endregion
 
 		#region Public properties
@@ -135,6 +137,7 @@ namespace GB.Shared.Tiles
 			}
 			set {
 				this.tileData.tile = value;
+				OnResize(new EventArgs());
 				OnTileChange();
 			}
 		}
@@ -184,6 +187,21 @@ namespace GB.Shared.Tiles
 				this.Invalidate(true);
 			}
 		}
+
+		/// <summary>
+		/// The pixelScale of the TileRenderer.
+		/// </summary>
+		[Category("Dispaly"), Description("The size of a single pixel.")]
+		public int PixelScale {
+			get { return pixelScale; }
+			set {
+				if (pixelScale <= 0) {
+					throw new ArgumentOutOfRangeException("Must be greater than 0", "value");
+				}
+				pixelScale = value;
+				OnResize(new EventArgs());
+			}
+		}
 		#endregion
 
 		#region Events
@@ -223,6 +241,8 @@ namespace GB.Shared.Tiles
 
 		public TileRenderer() {
 			InitializeComponent();
+			SetStyle(ControlStyles.FixedHeight, true);
+			SetStyle(ControlStyles.FixedWidth, true);
 		}
 
 		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
@@ -329,8 +349,8 @@ namespace GB.Shared.Tiles
 		private void TileRenderer_Resize(object sender, EventArgs e) {
 			this.Resize -= new EventHandler(TileRenderer_Resize);
 
-			this.Width /= this.tileData.Width; this.Width *= this.tileData.Width;
-			this.Height /= this.tileData.Height; this.Height *= this.tileData.Height;
+			this.Width = this.pixelScale * this.tileData.Width;
+			this.Height = this.pixelScale * this.tileData.Height;
 
 			if (this.border) {
 				if (this.borderSides.HasFlag(Border3DSide.Right)) {

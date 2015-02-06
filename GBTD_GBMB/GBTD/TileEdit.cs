@@ -309,5 +309,13 @@ namespace GB.GBTD
 			dialog.ShowDialog();
 			//TODO
 		}
+
+		private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
+			this.mainTileEdit.Tile = new Tile((UInt16)numericUpDown1.Value, (UInt16)numericUpDown2.Value);
+		}
+
+		private void numericUpDown2_ValueChanged(object sender, EventArgs e) {
+			this.mainTileEdit.Tile = new Tile((UInt16)numericUpDown1.Value, (UInt16)numericUpDown2.Value);
+		}
 	}
 }
