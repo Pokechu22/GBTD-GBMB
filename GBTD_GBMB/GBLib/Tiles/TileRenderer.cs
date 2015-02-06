@@ -29,7 +29,7 @@ namespace GB.Shared.Tiles
 		#region Public properties
 		public TileData TileData {
 			get { return tileData; }
-			set { tileData = value; OnTileChange(); OnPalatteChange(); }
+			set { tileData = value; OnResize(new EventArgs()); OnTileChange(); OnPalatteChange(); }
 		}
 
 		[Category("Data"), Description("The palette used by this tile.")]
@@ -228,28 +228,30 @@ namespace GB.Shared.Tiles
 		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
 
-			for (byte x = 0; x < 8; x++) {
-				for (byte y = 0; y < 8; y++) {
+			for (byte x = 0; x < this.tileData.Width; x++) {
+				for (byte y = 0; y < this.tileData.Height; y++) {
 					drawPixel(x, y, tileData.tile[x, y], e.Graphics);
 				}
 			}
 
 			//Offset sizes.
-			int w = this.Width - ((border && borderSides.HasFlag(Border3DSide.Right)) ? 1 : 0);
-			int h = this.Height - ((border && borderSides.HasFlag(Border3DSide.Bottom)) ? 1 : 0);
+			float w = this.Width - ((border && borderSides.HasFlag(Border3DSide.Right)) ? 1 : 0);
+			float h = this.Height - ((border && borderSides.HasFlag(Border3DSide.Bottom)) ? 1 : 0);
 
 			if (grid) {
-				for (byte i = 1; i < 8; i++) {
+				for (UInt16 x = 1; x < this.tileData.Width; x++) {
 					e.Graphics.DrawLine(Pens.Black,
-						i * (w / 8.0f),
+						x * (w / this.tileData.Width),
 						0,
-						i * (w / 8.0f),
+						x * (w / this.tileData.Width),
 						this.Height);
+				}
+				for (UInt16 y = 1; y < this.tileData.Height; y++) {
 					e.Graphics.DrawLine(Pens.Black,
 						0,
-						i * (h / 8.0f),
+						y * (h / this.tileData.Height),
 						this.Width,
-						i * (h / 8.0f));
+						y * (h / this.tileData.Height));
 				}
 			}
 			if (border) {
@@ -291,26 +293,26 @@ namespace GB.Shared.Tiles
 		/// <param name="color">color; between 0 and 3</param>
 		/// <param name="g">Graphics.</param>
 		private void drawPixel(byte x, byte y, GBColor color, Graphics g) {
-			if (x < 0 || x > 7) {
-				throw new InvalidOperationException("x must be between 0 and 7; got " + x);
+			if (x < 0 || x >= this.tileData.Width) {
+				throw new InvalidOperationException("x must be between 0 and " + (this.tileData.Width - 1) + "; got " + x);
 			}
-			if (y < 0 || y > 7) {
-				throw new InvalidOperationException("y must be between 0 and 7; got " + y);
+			if (y < 0 || y > this.tileData.Height) {
+				throw new InvalidOperationException("y must be between 0 and " + (this.tileData.Height - 1) + "; got " + y);
 			}
 
-			float x1 = (x * ((this.Width - (border ? 1 : 0)) / 8.0f));
-			float y1 = (y * ((this.Height - (border ? 1 : 0)) / 8.0f));
+			float x1 = (x * ((this.Width - (border ? 1 : 0)) / (float)this.tileData.Width));
+			float y1 = (y * ((this.Height - (border ? 1 : 0)) / (float)this.tileData.Height));
 
 			if (border) {
 				x1++;
 				y1++;
 			}
 
-			int w = this.Width - ((border && borderSides.HasFlag(Border3DSide.Right)) ? 1 : 0);
-			int h = this.Height - ((border && borderSides.HasFlag(Border3DSide.Bottom)) ? 1 : 0);
+			float w = this.Width - ((border && borderSides.HasFlag(Border3DSide.Right)) ? 1 : 0);
+			float h = this.Height - ((border && borderSides.HasFlag(Border3DSide.Bottom)) ? 1 : 0);
 
-			float width = (w / 8.0f);
-			float height = (h / 8.0f);
+			float width = (w / this.tileData.Width);
+			float height = (h / this.tileData.Height);
 
 			Color c = tileData.Palette[color].DisplayColor;
 
@@ -326,8 +328,9 @@ namespace GB.Shared.Tiles
 		/// <param name="e"></param>
 		private void TileRenderer_Resize(object sender, EventArgs e) {
 			this.Resize -= new EventHandler(TileRenderer_Resize);
-			this.Width &= ~0x07;
-			this.Height &= ~0x07;
+
+			this.Width /= this.tileData.Width; this.Width *= this.tileData.Width;
+			this.Height /= this.tileData.Height; this.Height *= this.tileData.Height;
 
 			if (this.border) {
 				if (this.borderSides.HasFlag(Border3DSide.Right)) {
@@ -343,9 +346,9 @@ namespace GB.Shared.Tiles
 		protected internal byte getClickedPixelX(int clickedX) {
 			int offset = ((border && borderSides.HasFlag(Border3DSide.Right)) ? 1 : 0);
 
-			byte returned = (byte)(((clickedX - offset) * 8) / this.Width);
+			byte returned = (byte)(((clickedX - offset) * this.tileData.Width) / this.Width);
 
-			if (returned < 0 || returned >= 8) {
+			if (returned < 0 || returned >= this.tileData.Width) {
 				throw new InvalidOperationException("Mouse out of bounds.");
 			}
 			return returned;
@@ -354,9 +357,9 @@ namespace GB.Shared.Tiles
 		protected internal byte getClickedPixelY(int clickedY) {
 			int offset = ((border && borderSides.HasFlag(Border3DSide.Bottom)) ? 1 : 0);
 
-			byte returned = (byte)(((clickedY - offset) * 8) / this.Height);
+			byte returned = (byte)(((clickedY - offset) * this.tileData.Height) / this.Height);
 
-			if (returned < 0 || returned >= 8) {
+			if (returned < 0 || returned >= this.tileData.Height) {
 				throw new InvalidOperationException("Mouse out of bounds.");
 			}
 			return returned;
