@@ -33,36 +33,28 @@ namespace GB.GBTD
 			}
 		}
 
+		private TileRenderer[,] renderers;
+
 		public PreviewRenderer() {
 			InitializeComponent();
 
 			this.SetStyle(ControlStyles.FixedWidth, true);
 			this.SetStyle(ControlStyles.FixedHeight, true);
+
+			this.renderers = new TileRenderer[4, 4] {
+				{groupedTileRenderer1, groupedTileRenderer2, groupedTileRenderer3, groupedTileRenderer4},
+				{groupedTileRenderer5, groupedTileRenderer6, groupedTileRenderer7, groupedTileRenderer8},
+				{groupedTileRenderer9, groupedTileRenderer10, groupedTileRenderer11, groupedTileRenderer12},
+				{groupedTileRenderer13, groupedTileRenderer14, groupedTileRenderer15, groupedTileRenderer16},
+			};
 		}
 
 		private void OnTileDataChanged() {
 			int oldRendererWidth = miniPreviewRenderer.Width;
 			int oldRendererHeight = miniPreviewRenderer.Height;
 
-			//The following line is massive but it changes all of the datas at once.
-			miniPreviewRenderer.TileData = 
-				groupedTileRenderer1.TileData =
-				groupedTileRenderer2.TileData =
-				groupedTileRenderer3.TileData =
-				groupedTileRenderer4.TileData =
-				groupedTileRenderer5.TileData =
-				groupedTileRenderer6.TileData =
-				groupedTileRenderer7.TileData =
-				groupedTileRenderer8.TileData =
-				groupedTileRenderer9.TileData =
-				groupedTileRenderer10.TileData =
-				groupedTileRenderer11.TileData =
-				groupedTileRenderer12.TileData =
-				groupedTileRenderer13.TileData =
-				groupedTileRenderer14.TileData =
-				groupedTileRenderer15.TileData =
-				groupedTileRenderer16.TileData =
-					this.tileData;
+			miniPreviewRenderer.TileData = this.tileData;
+			foreach (TileRenderer t in this.renderers) { t.TileData = this.tileData; }
 
 			if (miniPreviewRenderer.Width != oldRendererWidth || miniPreviewRenderer.Height != oldRendererHeight) {
 				panel1.Width = miniPreviewRenderer.Width * 4 + 2;
@@ -70,6 +62,14 @@ namespace GB.GBTD
 
 				panel2.Width = miniPreviewRenderer.Width + 2;
 				panel2.Height = miniPreviewRenderer.Height + 2;
+
+				for (int x = 0; x < 4; x++) {
+					for (int y = 0; y < 4; y++) {
+						TileRenderer r = renderers[x, y];
+						r.Location = new Point(x * r.Width, y * r.Height);
+					}
+				}
+
 				this.OnResize(new EventArgs());
 			}
 		}
