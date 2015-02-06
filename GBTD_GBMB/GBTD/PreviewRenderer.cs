@@ -53,11 +53,20 @@ namespace GB.GBTD
 		}
 
 		protected override void OnResize(EventArgs e) {
+			int spaceForP2Centering;
+
 			if (panel1.Visible) {
 				this.Width = panel1.Width;
+				
+				spaceForP2Centering = this.Height - panel1.Height;
 			} else {
 				this.Width = panel2.Width;
+
+				spaceForP2Centering = this.Height;
 			}
+
+			panel1.Location = new Point(0, this.Height - panel1.Height);
+			panel2.Location = new Point((this.Width / 2) - (panel2.Width / 2), (spaceForP2Centering / 2) - (panel2.Width / 2));
 
 			base.OnResize(e);
 		}

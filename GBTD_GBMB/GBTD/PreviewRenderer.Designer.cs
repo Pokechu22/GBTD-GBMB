@@ -79,7 +79,7 @@
 			this.panel2.BackColor = System.Drawing.Color.Magenta;
 			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel2.Controls.Add(this.miniPreviewRenderer);
-			this.panel2.Location = new System.Drawing.Point(49, 23);
+			this.panel2.Location = new System.Drawing.Point(35, 31);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(26, 26);
 			this.panel2.TabIndex = 5;
