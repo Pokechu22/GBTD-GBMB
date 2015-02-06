@@ -268,7 +268,7 @@ namespace GB.GBTD
 			if (!Clipboard.ContainsImage()) {
 				return;
 			}
-			mainTileEdit.Tile = Tile.FromImage(Clipboard.GetImage());
+			mainTileEdit.Tile = Tile.FromImage(Clipboard.GetImage(), 8, 8);
 		}
 
 		private void nibbleMarkersToolStripMenuItem_Click(object sender, EventArgs e) {

@@ -76,7 +76,7 @@ namespace GB.Shared.Tiles
 			return (GBColor[,])pixels.Clone();
 		}
 
-		public static Tile FromImage(Image image) {
+		public static Tile FromImage(Image image, UInt16 Width, UInt16 Height) {
 			if (image == null) {
 				throw new ArgumentNullException();
 			}
@@ -86,11 +86,11 @@ namespace GB.Shared.Tiles
 			Color LIGHT_GRAY = Color.FromArgb(192, 192, 192);
 			Color WHITE = Color.FromArgb(255,255,255);
 
-			Tile returned = new Tile(8, 8); //TODO unhardcode size
+			Tile returned = new Tile(Width, Height);
 
 			using (Bitmap bitmap = new Bitmap(image)) {
-				for (int x = 0; x < 8; x++) {
-					for (int y = 0; y < 8; y++) {
+				for (int x = 0; x < returned.Width; x++) {
+					for (int y = 0; y < returned.Height; y++) {
 						if (x > bitmap.Width || y > bitmap.Height) {
 							continue;
 						}
@@ -120,9 +120,9 @@ namespace GB.Shared.Tiles
 			Color LIGHT_GRAY = Color.FromArgb(192, 192, 192);
 			Color WHITE = Color.FromArgb(255,255,255);
 
-			Bitmap returned = new Bitmap(8, 8);
-			for (int x = 0; x < 8; x++) {
-				for (int y = 0; y < 8; y++) {
+			Bitmap returned = new Bitmap(this.Width, this.Height);
+			for (int x = 0; x < this.Width; x++) {
+				for (int y = 0; y < this.Height; y++) {
 					switch (this[x, y]) {
 					case GBColor.BLACK: returned.SetPixel(x, y, BLACK); break;
 					case GBColor.DARK_GRAY: returned.SetPixel(x, y, DARK_GRAY); break;
@@ -138,6 +138,8 @@ namespace GB.Shared.Tiles
 
 		/// <summary>
 		/// Sets/gets the specific pixels of the image.
+		/// <para>Note: This preforms a clone of the pixels, which is expensive.  If you need to make many modifications, look at 
+		/// <see cref="GetPixels"/> and <see cref="SetPixels"/>.</para>
 		/// </summary>
 		/// <param name="x">x-coord of pixel, from 0 to 7</param>
 		/// <param name="y">y-coord of pixel, from 0 to 7</param>
@@ -152,13 +154,16 @@ namespace GB.Shared.Tiles
 			set {
 				if (x < 0 || x > Width) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and " + Width); }
 				if (y < 0 || y > Height) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and " + Height); }
-				
+
+				this.pixels = (GBColor[,])this.pixels.Clone();
 				this.pixels[x, y] = value;
 			}
 		}
 
 		/// <summary>
 		/// Sets/gets the specific pixels of the image.
+		/// <para>Note: This preforms a clone of the pixels, which is expensive.  If you need to make many modifications, look at 
+		/// <see cref="GetPixels"/> and <see cref="SetPixels"/>.</para>
 		/// </summary>
 		/// <param name="x">x-coord of pixel, from 0 to 7</param>
 		/// <param name="y">y-coord of pixel, from 0 to 7</param>
@@ -174,6 +179,7 @@ namespace GB.Shared.Tiles
 				if (x < 0 || x >= Width) { throw new ArgumentOutOfRangeException("x", x, "Pixel x coordinate must be between 0 and " + Width); }
 				if (y < 0 || y >= Height) { throw new ArgumentOutOfRangeException("y", y, "Pixel y coordinate must be between 0 and " + Height); }
 
+				this.pixels = (GBColor[,])this.pixels.Clone();
 				this.pixels[(int)x, (int)y] = value;
 			}
 		}
