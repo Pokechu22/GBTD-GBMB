@@ -70,11 +70,6 @@ namespace GB.GBTD
 			}
 		}
 
-		/// <summary>
-		/// Contains all of the tilerenderers used to preview, so that I don't have to refer to all of them seperately.
-		/// </summary>
-		private List<TileRenderer> previewRenderers = new List<TileRenderer>();
-
 		public Tile[] Tiles {
 			get {
 				return Array.ConvertAll(tileList1.Tiles, item => item.tile);
@@ -105,26 +100,6 @@ namespace GB.GBTD
 			InitializeComponent();
 
 			initClipboardChangeCheck();
-
-			//Set up the preview renderers.
-			previewRenderers.Add(miniPreviewRenderer);
-
-			previewRenderers.Add(groupedTileRenderer1);
-			previewRenderers.Add(groupedTileRenderer2);
-			previewRenderers.Add(groupedTileRenderer3);
-			previewRenderers.Add(groupedTileRenderer4);
-			previewRenderers.Add(groupedTileRenderer5);
-			previewRenderers.Add(groupedTileRenderer6);
-			previewRenderers.Add(groupedTileRenderer7);
-			previewRenderers.Add(groupedTileRenderer8);
-			previewRenderers.Add(groupedTileRenderer9);
-			previewRenderers.Add(groupedTileRenderer10);
-			previewRenderers.Add(groupedTileRenderer11);
-			previewRenderers.Add(groupedTileRenderer12);
-			previewRenderers.Add(groupedTileRenderer13);
-			previewRenderers.Add(groupedTileRenderer14);
-			previewRenderers.Add(groupedTileRenderer15);
-			previewRenderers.Add(groupedTileRenderer16);
 		}
 
 		private volatile bool updatingFromTileList = false;
@@ -164,9 +139,6 @@ namespace GB.GBTD
 		}
 
 		private void mainTileEdit_TileChanged(object sender, EventArgs e) {
-			foreach (var v in previewRenderers) {
-				v.Tile = mainTileEdit.Tile;
-			}
 			TileData data = new TileData();
 			data.tile = mainTileEdit.Tile;
 			data.set = this.paletteChooser.Set;
@@ -175,18 +147,13 @@ namespace GB.GBTD
 			if (!updatingFromTileList) {
 				this.tileList1[tileList1.SelectedEntry] = data;
 			}
+
+			this.previewRenderer1.TileData = data;
 
 			mainTileEdit.Refresh();
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
-			foreach (var v in previewRenderers) {
-				v.BlackColor = mainTileEdit.BlackColor;
-				v.WhiteColor = mainTileEdit.WhiteColor;
-				v.LightGrayColor = mainTileEdit.LightGrayColor;
-				v.DarkGrayColor = mainTileEdit.DarkGrayColor;
-			}
-
 			TileData data = new TileData();
 			data.tile = mainTileEdit.Tile;
 			data.set = this.paletteChooser.Set;
@@ -195,6 +162,8 @@ namespace GB.GBTD
 			if (!updatingFromTileList) {
 				this.tileList1[tileList1.SelectedEntry] = data;
 			}
+
+			this.previewRenderer1.TileData = data;
 
 			mainTileEdit.Refresh();
 		}
@@ -308,14 +277,6 @@ namespace GB.GBTD
 			TileCountDialog dialog = new TileCountDialog();
 			dialog.ShowDialog();
 			//TODO
-		}
-
-		private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
-			this.mainTileEdit.Tile = new Tile((UInt16)numericUpDown1.Value, (UInt16)numericUpDown2.Value);
-		}
-
-		private void numericUpDown2_ValueChanged(object sender, EventArgs e) {
-			this.mainTileEdit.Tile = new Tile((UInt16)numericUpDown1.Value, (UInt16)numericUpDown2.Value);
 		}
 	}
 }

@@ -106,39 +106,15 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.miniPreviewRenderer = new GB.Shared.Tiles.TileRenderer();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.groupedTileRenderer11 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer15 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer14 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer16 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer12 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer13 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer10 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer9 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer8 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer7 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer6 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer5 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer4 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer3 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer2 = new GB.Shared.Tiles.TileRenderer();
-			this.groupedTileRenderer1 = new GB.Shared.Tiles.TileRenderer();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.tileList1 = new GB.Shared.Tiles.TileListControl();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
-			this.panel2.SuspendLayout();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -827,11 +803,19 @@
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
 			// 
+			// tileList1
+			// 
+			this.tileList1.Location = new System.Drawing.Point(341, 57);
+			this.tileList1.Name = "tileList1";
+			this.tileList1.NumberOfEntries = 16;
+			this.tileList1.SelectedEntry = 0;
+			this.tileList1.Size = new System.Drawing.Size(56, 223);
+			this.tileList1.TabIndex = 5;
+			this.tileList1.SelectedEntryChanged += new System.EventHandler(this.tileList1_SelectedEntryChanged);
+			// 
 			// tileEditBorder
 			// 
 			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Controls.Add(this.panel2);
-			this.tileEditBorder.Controls.Add(this.panel1);
 			this.tileEditBorder.Controls.Add(this.paletteChooser);
 			this.tileEditBorder.Controls.Add(this.mainTileEdit);
 			this.tileEditBorder.Controls.Add(this.toolList);
@@ -847,313 +831,6 @@
 			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
 			this.tileEditBorder.TabIndex = 4;
 			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// panel2
-			// 
-			this.panel2.BackColor = System.Drawing.Color.Magenta;
-			this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel2.Controls.Add(this.miniPreviewRenderer);
-			this.panel2.Location = new System.Drawing.Point(271, 39);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(26, 26);
-			this.panel2.TabIndex = 4;
-			// 
-			// miniPreviewRenderer
-			// 
-			this.miniPreviewRenderer.Border = false;
-			this.miniPreviewRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.miniPreviewRenderer.Grid = false;
-			this.miniPreviewRenderer.Location = new System.Drawing.Point(0, 0);
-			this.miniPreviewRenderer.Margin = new System.Windows.Forms.Padding(0);
-			this.miniPreviewRenderer.Name = "miniPreviewRenderer";
-			this.miniPreviewRenderer.NibbleMarkers = false;
-			this.miniPreviewRenderer.PixelScale = 3;
-			this.miniPreviewRenderer.Size = new System.Drawing.Size(24, 24);
-			this.miniPreviewRenderer.TabIndex = 5;
-			// 
-			// panel1
-			// 
-			this.panel1.BackColor = System.Drawing.Color.Magenta;
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Controls.Add(this.groupedTileRenderer11);
-			this.panel1.Controls.Add(this.groupedTileRenderer15);
-			this.panel1.Controls.Add(this.groupedTileRenderer14);
-			this.panel1.Controls.Add(this.groupedTileRenderer16);
-			this.panel1.Controls.Add(this.groupedTileRenderer12);
-			this.panel1.Controls.Add(this.groupedTileRenderer13);
-			this.panel1.Controls.Add(this.groupedTileRenderer10);
-			this.panel1.Controls.Add(this.groupedTileRenderer9);
-			this.panel1.Controls.Add(this.groupedTileRenderer8);
-			this.panel1.Controls.Add(this.groupedTileRenderer7);
-			this.panel1.Controls.Add(this.groupedTileRenderer6);
-			this.panel1.Controls.Add(this.groupedTileRenderer5);
-			this.panel1.Controls.Add(this.groupedTileRenderer4);
-			this.panel1.Controls.Add(this.groupedTileRenderer3);
-			this.panel1.Controls.Add(this.groupedTileRenderer2);
-			this.panel1.Controls.Add(this.groupedTileRenderer1);
-			this.panel1.Location = new System.Drawing.Point(235, 99);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(98, 98);
-			this.panel1.TabIndex = 3;
-			// 
-			// groupedTileRenderer11
-			// 
-			this.groupedTileRenderer11.Border = false;
-			this.groupedTileRenderer11.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer11.Grid = false;
-			this.groupedTileRenderer11.Location = new System.Drawing.Point(48, 48);
-			this.groupedTileRenderer11.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer11.Name = "groupedTileRenderer11";
-			this.groupedTileRenderer11.NibbleMarkers = false;
-			this.groupedTileRenderer11.PixelScale = 3;
-			this.groupedTileRenderer11.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer11.TabIndex = 19;
-			// 
-			// groupedTileRenderer15
-			// 
-			this.groupedTileRenderer15.Border = false;
-			this.groupedTileRenderer15.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer15.Grid = false;
-			this.groupedTileRenderer15.Location = new System.Drawing.Point(48, 72);
-			this.groupedTileRenderer15.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer15.Name = "groupedTileRenderer15";
-			this.groupedTileRenderer15.NibbleMarkers = false;
-			this.groupedTileRenderer15.PixelScale = 3;
-			this.groupedTileRenderer15.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer15.TabIndex = 18;
-			// 
-			// groupedTileRenderer14
-			// 
-			this.groupedTileRenderer14.Border = false;
-			this.groupedTileRenderer14.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer14.Grid = false;
-			this.groupedTileRenderer14.Location = new System.Drawing.Point(24, 72);
-			this.groupedTileRenderer14.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer14.Name = "groupedTileRenderer14";
-			this.groupedTileRenderer14.NibbleMarkers = false;
-			this.groupedTileRenderer14.PixelScale = 3;
-			this.groupedTileRenderer14.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer14.TabIndex = 17;
-			// 
-			// groupedTileRenderer16
-			// 
-			this.groupedTileRenderer16.Border = false;
-			this.groupedTileRenderer16.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer16.Grid = false;
-			this.groupedTileRenderer16.Location = new System.Drawing.Point(72, 72);
-			this.groupedTileRenderer16.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer16.Name = "groupedTileRenderer16";
-			this.groupedTileRenderer16.NibbleMarkers = false;
-			this.groupedTileRenderer16.PixelScale = 3;
-			this.groupedTileRenderer16.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer16.TabIndex = 16;
-			// 
-			// groupedTileRenderer12
-			// 
-			this.groupedTileRenderer12.Border = false;
-			this.groupedTileRenderer12.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer12.Grid = false;
-			this.groupedTileRenderer12.Location = new System.Drawing.Point(72, 48);
-			this.groupedTileRenderer12.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer12.Name = "groupedTileRenderer12";
-			this.groupedTileRenderer12.NibbleMarkers = false;
-			this.groupedTileRenderer12.PixelScale = 3;
-			this.groupedTileRenderer12.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer12.TabIndex = 15;
-			// 
-			// groupedTileRenderer13
-			// 
-			this.groupedTileRenderer13.Border = false;
-			this.groupedTileRenderer13.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer13.Grid = false;
-			this.groupedTileRenderer13.Location = new System.Drawing.Point(0, 72);
-			this.groupedTileRenderer13.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer13.Name = "groupedTileRenderer13";
-			this.groupedTileRenderer13.NibbleMarkers = false;
-			this.groupedTileRenderer13.PixelScale = 3;
-			this.groupedTileRenderer13.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer13.TabIndex = 14;
-			// 
-			// groupedTileRenderer10
-			// 
-			this.groupedTileRenderer10.Border = false;
-			this.groupedTileRenderer10.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer10.Grid = false;
-			this.groupedTileRenderer10.Location = new System.Drawing.Point(24, 48);
-			this.groupedTileRenderer10.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer10.Name = "groupedTileRenderer10";
-			this.groupedTileRenderer10.NibbleMarkers = false;
-			this.groupedTileRenderer10.PixelScale = 3;
-			this.groupedTileRenderer10.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer10.TabIndex = 13;
-			// 
-			// groupedTileRenderer9
-			// 
-			this.groupedTileRenderer9.Border = false;
-			this.groupedTileRenderer9.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer9.Grid = false;
-			this.groupedTileRenderer9.Location = new System.Drawing.Point(0, 48);
-			this.groupedTileRenderer9.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer9.Name = "groupedTileRenderer9";
-			this.groupedTileRenderer9.NibbleMarkers = false;
-			this.groupedTileRenderer9.PixelScale = 3;
-			this.groupedTileRenderer9.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer9.TabIndex = 12;
-			// 
-			// groupedTileRenderer8
-			// 
-			this.groupedTileRenderer8.Border = false;
-			this.groupedTileRenderer8.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer8.Grid = false;
-			this.groupedTileRenderer8.Location = new System.Drawing.Point(72, 24);
-			this.groupedTileRenderer8.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer8.Name = "groupedTileRenderer8";
-			this.groupedTileRenderer8.NibbleMarkers = false;
-			this.groupedTileRenderer8.PixelScale = 3;
-			this.groupedTileRenderer8.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer8.TabIndex = 11;
-			// 
-			// groupedTileRenderer7
-			// 
-			this.groupedTileRenderer7.Border = false;
-			this.groupedTileRenderer7.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer7.Grid = false;
-			this.groupedTileRenderer7.Location = new System.Drawing.Point(48, 24);
-			this.groupedTileRenderer7.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer7.Name = "groupedTileRenderer7";
-			this.groupedTileRenderer7.NibbleMarkers = false;
-			this.groupedTileRenderer7.PixelScale = 3;
-			this.groupedTileRenderer7.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer7.TabIndex = 10;
-			// 
-			// groupedTileRenderer6
-			// 
-			this.groupedTileRenderer6.Border = false;
-			this.groupedTileRenderer6.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer6.Grid = false;
-			this.groupedTileRenderer6.Location = new System.Drawing.Point(24, 24);
-			this.groupedTileRenderer6.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer6.Name = "groupedTileRenderer6";
-			this.groupedTileRenderer6.NibbleMarkers = false;
-			this.groupedTileRenderer6.PixelScale = 3;
-			this.groupedTileRenderer6.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer6.TabIndex = 9;
-			// 
-			// groupedTileRenderer5
-			// 
-			this.groupedTileRenderer5.Border = false;
-			this.groupedTileRenderer5.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer5.Grid = false;
-			this.groupedTileRenderer5.Location = new System.Drawing.Point(0, 24);
-			this.groupedTileRenderer5.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer5.Name = "groupedTileRenderer5";
-			this.groupedTileRenderer5.NibbleMarkers = false;
-			this.groupedTileRenderer5.PixelScale = 3;
-			this.groupedTileRenderer5.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer5.TabIndex = 8;
-			// 
-			// groupedTileRenderer4
-			// 
-			this.groupedTileRenderer4.Border = false;
-			this.groupedTileRenderer4.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer4.Grid = false;
-			this.groupedTileRenderer4.Location = new System.Drawing.Point(72, 0);
-			this.groupedTileRenderer4.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer4.Name = "groupedTileRenderer4";
-			this.groupedTileRenderer4.NibbleMarkers = false;
-			this.groupedTileRenderer4.PixelScale = 3;
-			this.groupedTileRenderer4.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer4.TabIndex = 7;
-			// 
-			// groupedTileRenderer3
-			// 
-			this.groupedTileRenderer3.Border = false;
-			this.groupedTileRenderer3.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer3.Grid = false;
-			this.groupedTileRenderer3.Location = new System.Drawing.Point(48, 0);
-			this.groupedTileRenderer3.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer3.Name = "groupedTileRenderer3";
-			this.groupedTileRenderer3.NibbleMarkers = false;
-			this.groupedTileRenderer3.PixelScale = 3;
-			this.groupedTileRenderer3.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer3.TabIndex = 6;
-			// 
-			// groupedTileRenderer2
-			// 
-			this.groupedTileRenderer2.Border = false;
-			this.groupedTileRenderer2.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer2.Grid = false;
-			this.groupedTileRenderer2.Location = new System.Drawing.Point(24, 0);
-			this.groupedTileRenderer2.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer2.Name = "groupedTileRenderer2";
-			this.groupedTileRenderer2.NibbleMarkers = false;
-			this.groupedTileRenderer2.PixelScale = 3;
-			this.groupedTileRenderer2.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer2.TabIndex = 5;
-			// 
-			// groupedTileRenderer1
-			// 
-			this.groupedTileRenderer1.Border = false;
-			this.groupedTileRenderer1.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.groupedTileRenderer1.Grid = false;
-			this.groupedTileRenderer1.Location = new System.Drawing.Point(0, 0);
-			this.groupedTileRenderer1.Margin = new System.Windows.Forms.Padding(0);
-			this.groupedTileRenderer1.Name = "groupedTileRenderer1";
-			this.groupedTileRenderer1.NibbleMarkers = false;
-			this.groupedTileRenderer1.PixelScale = 3;
-			this.groupedTileRenderer1.Size = new System.Drawing.Size(24, 24);
-			this.groupedTileRenderer1.TabIndex = 4;
 			// 
 			// paletteChooser
 			// 
@@ -1211,49 +888,20 @@
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
-			// tileList1
+			// previewRenderer1
 			// 
-			this.tileList1.Location = new System.Drawing.Point(341, 57);
-			this.tileList1.Name = "tileList1";
-			this.tileList1.NumberOfEntries = 16;
-			this.tileList1.SelectedEntry = 0;
-			this.tileList1.Size = new System.Drawing.Size(56, 223);
-			this.tileList1.TabIndex = 5;
-			this.tileList1.SelectedEntryChanged += new System.EventHandler(this.tileList1_SelectedEntryChanged);
-			// 
-			// numericUpDown1
-			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(248, 61);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDown1.TabIndex = 6;
-			this.numericUpDown1.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-			this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-			// 
-			// numericUpDown2
-			// 
-			this.numericUpDown2.Location = new System.Drawing.Point(248, 119);
-			this.numericUpDown2.Name = "numericUpDown2";
-			this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDown2.TabIndex = 7;
-			this.numericUpDown2.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-			this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+			this.previewRenderer1.Location = new System.Drawing.Point(236, 57);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(26, 193);
+			this.previewRenderer1.TabIndex = 6;
 			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 283);
-			this.Controls.Add(this.numericUpDown2);
-			this.Controls.Add(this.numericUpDown1);
+			this.Controls.Add(this.previewRenderer1);
 			this.Controls.Add(this.tileList1);
 			this.Controls.Add(this.tileEditBorder);
 			this.Controls.Add(this.toolStrip1);
@@ -1268,10 +916,6 @@
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.tileEditBorder.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1362,28 +1006,8 @@
 		private ToolList toolList;
 		private Shared.Palettes.GBTDPaletteChooser paletteChooser;
 		private Shared.Tiles.EditableTileRenderer mainTileEdit;
-		private System.Windows.Forms.Panel panel2;
-		private Shared.Tiles.TileRenderer miniPreviewRenderer;
-		private System.Windows.Forms.Panel panel1;
-		private Shared.Tiles.TileRenderer groupedTileRenderer11;
-		private Shared.Tiles.TileRenderer groupedTileRenderer15;
-		private Shared.Tiles.TileRenderer groupedTileRenderer14;
-		private Shared.Tiles.TileRenderer groupedTileRenderer16;
-		private Shared.Tiles.TileRenderer groupedTileRenderer12;
-		private Shared.Tiles.TileRenderer groupedTileRenderer13;
-		private Shared.Tiles.TileRenderer groupedTileRenderer9;
-		private Shared.Tiles.TileRenderer groupedTileRenderer8;
-		private Shared.Tiles.TileRenderer groupedTileRenderer7;
-		private Shared.Tiles.TileRenderer groupedTileRenderer6;
-		private Shared.Tiles.TileRenderer groupedTileRenderer5;
-		private Shared.Tiles.TileRenderer groupedTileRenderer4;
-		private Shared.Tiles.TileRenderer groupedTileRenderer3;
-		private Shared.Tiles.TileRenderer groupedTileRenderer2;
-		private Shared.Tiles.TileRenderer groupedTileRenderer1;
-		private Shared.Tiles.TileRenderer groupedTileRenderer10;
 		private Shared.Tiles.TileListControl tileList1;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
-		private System.Windows.Forms.NumericUpDown numericUpDown2;
+		private PreviewRenderer previewRenderer1;
 
 	}
 }
