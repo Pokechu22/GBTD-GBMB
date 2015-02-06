@@ -25,7 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor3 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,12 +99,6 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
-			this.tileList1 = new GB.Shared.Tiles.TileListControl();
-			this.tileEditBorder = new GB.Shared.Controls.Border();
-			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
-			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
-			this.toolList = new GB.GBTD.ToolList();
 			this.openToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.saveToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.exportToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
@@ -112,6 +106,12 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
+			this.tileList1 = new GB.Shared.Tiles.TileListControl();
+			this.tileEditBorder = new GB.Shared.Controls.Border();
+			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
+			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
+			this.toolList = new GB.GBTD.ToolList();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
@@ -468,28 +468,28 @@
 			// size8x8ToolStripMenuItem
 			// 
 			this.size8x8ToolStripMenuItem.Name = "size8x8ToolStripMenuItem";
-			this.size8x8ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.size8x8ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.size8x8ToolStripMenuItem.Text = "8 x 8";
 			this.size8x8ToolStripMenuItem.Click += new System.EventHandler(this.size8x8ToolStripMenuItem_Click);
 			// 
 			// size8x16ToolStripMenuItem
 			// 
 			this.size8x16ToolStripMenuItem.Name = "size8x16ToolStripMenuItem";
-			this.size8x16ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.size8x16ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.size8x16ToolStripMenuItem.Text = "8 x 16";
 			this.size8x16ToolStripMenuItem.Click += new System.EventHandler(this.size8x16ToolStripMenuItem_Click);
 			// 
 			// size16x16ToolStripMenuItem
 			// 
 			this.size16x16ToolStripMenuItem.Name = "size16x16ToolStripMenuItem";
-			this.size16x16ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.size16x16ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.size16x16ToolStripMenuItem.Text = "16 x 16";
 			this.size16x16ToolStripMenuItem.Click += new System.EventHandler(this.size16x16ToolStripMenuItem_Click);
 			// 
 			// size32x32ToolStripMenuItem
 			// 
 			this.size32x32ToolStripMenuItem.Name = "size32x32ToolStripMenuItem";
-			this.size32x32ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.size32x32ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.size32x32ToolStripMenuItem.Text = "32 x 32";
 			this.size32x32ToolStripMenuItem.Click += new System.EventHandler(this.size32x32ToolStripMenuItem_Click);
 			// 
@@ -706,99 +706,6 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 58);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
-			// 
-			// tileList1
-			// 
-			this.tileList1.Location = new System.Drawing.Point(341, 57);
-			this.tileList1.Name = "tileList1";
-			this.tileList1.NumberOfEntries = 16;
-			this.tileList1.SelectedEntry = 0;
-			this.tileList1.Size = new System.Drawing.Size(56, 223);
-			this.tileList1.TabIndex = 5;
-			this.tileList1.SelectedEntryChanged += new System.EventHandler(this.tileList1_SelectedEntryChanged);
-			// 
-			// tileEditBorder
-			// 
-			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Controls.Add(this.paletteChooser);
-			this.tileEditBorder.Controls.Add(this.mainTileEdit);
-			this.tileEditBorder.Controls.Add(this.toolList);
-			this.tileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
-			this.tileEditBorder.Name = "tileEditBorder";
-			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
-			this.tileEditBorder.TabIndex = 4;
-			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// paletteChooser
-			// 
-			this.paletteChooser.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
-			this.paletteChooser.Location = new System.Drawing.Point(34, 200);
-			this.paletteChooser.Margin = new System.Windows.Forms.Padding(2);
-			this.paletteChooser.Name = "paletteChooser";
-			this.paletteChooser.Padding = new System.Windows.Forms.Padding(2);
-			this.paletteChooser.SelectedRow = 0;
-			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
-			this.paletteChooser.TabIndex = 2;
-			this.paletteChooser.UseGBCFilter = false;
-			this.paletteChooser.SelectedPaletteChanged += new System.EventHandler(this.paletteChooser_SelectedPaletteChanged);
-			this.paletteChooser.MouseButtonColorChanged += new System.EventHandler(this.gbtdgbcPaletteChooser1_MouseButtonColorChanged);
-			// 
-			// mainTileEdit
-			// 
-			this.mainTileEdit.Border = true;
-			this.mainTileEdit.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor3;
-			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
-			this.mainTileEdit.Grid = false;
-			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
-			this.mainTileEdit.Location = new System.Drawing.Point(33, 4);
-			this.mainTileEdit.Margin = new System.Windows.Forms.Padding(0);
-			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tiles.GBColor.DARK_GRAY;
-			this.mainTileEdit.Name = "mainTileEdit";
-			this.mainTileEdit.NibbleMarkers = false;
-			this.mainTileEdit.PixelScale = 24;
-			this.mainTileEdit.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
-			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
-			this.mainTileEdit.TabIndex = 1;
-			this.mainTileEdit.XButton1MouseColor = GB.Shared.Tiles.GBColor.WHITE;
-			this.mainTileEdit.XButton2MouseColor = GB.Shared.Tiles.GBColor.WHITE;
-			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
-			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
-			// 
-			// toolList
-			// 
-			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(4, 4);
-			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.Shared.Tiles.TileEditorID.PixelEdit;
-			this.toolList.Size = new System.Drawing.Size(26, 217);
-			this.toolList.TabIndex = 0;
-			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
-			this.toolList.ScrollUpClicked += new System.EventHandler(this.scrollUpClicked);
-			this.toolList.ScrollDownClicked += new System.EventHandler(this.scrollDownClicked);
-			this.toolList.ScrollLeftClicked += new System.EventHandler(this.scrollLeftClicked);
-			this.toolList.ScrollRightClicked += new System.EventHandler(this.scrollRightClicked);
-			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
-			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
-			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
-			// 
 			// openToolStripButton
 			// 
 			this.openToolStripButton.AutoSize = false;
@@ -900,6 +807,99 @@
 			this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
+			// 
+			// previewRenderer1
+			// 
+			this.previewRenderer1.Location = new System.Drawing.Point(235, 58);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
+			this.previewRenderer1.TabIndex = 6;
+			// 
+			// tileList1
+			// 
+			this.tileList1.Location = new System.Drawing.Point(341, 57);
+			this.tileList1.Name = "tileList1";
+			this.tileList1.NumberOfEntries = 16;
+			this.tileList1.SelectedEntry = 0;
+			this.tileList1.Size = new System.Drawing.Size(56, 223);
+			this.tileList1.TabIndex = 5;
+			this.tileList1.SelectedEntryChanged += new System.EventHandler(this.tileList1_SelectedEntryChanged);
+			// 
+			// tileEditBorder
+			// 
+			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Controls.Add(this.paletteChooser);
+			this.tileEditBorder.Controls.Add(this.mainTileEdit);
+			this.tileEditBorder.Controls.Add(this.toolList);
+			this.tileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Location = new System.Drawing.Point(0, 53);
+			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
+			this.tileEditBorder.TabIndex = 4;
+			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
+			// paletteChooser
+			// 
+			this.paletteChooser.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
+			this.paletteChooser.Location = new System.Drawing.Point(34, 200);
+			this.paletteChooser.Margin = new System.Windows.Forms.Padding(2);
+			this.paletteChooser.Name = "paletteChooser";
+			this.paletteChooser.Padding = new System.Windows.Forms.Padding(2);
+			this.paletteChooser.SelectedRow = 0;
+			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
+			this.paletteChooser.TabIndex = 2;
+			this.paletteChooser.UseGBCFilter = false;
+			this.paletteChooser.SelectedPaletteChanged += new System.EventHandler(this.paletteChooser_SelectedPaletteChanged);
+			this.paletteChooser.MouseButtonColorChanged += new System.EventHandler(this.gbtdgbcPaletteChooser1_MouseButtonColorChanged);
+			// 
+			// mainTileEdit
+			// 
+			this.mainTileEdit.Border = true;
+			this.mainTileEdit.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
+			this.mainTileEdit.Grid = false;
+			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
+			this.mainTileEdit.Location = new System.Drawing.Point(33, 4);
+			this.mainTileEdit.Margin = new System.Windows.Forms.Padding(0);
+			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tiles.GBColor.DARK_GRAY;
+			this.mainTileEdit.Name = "mainTileEdit";
+			this.mainTileEdit.NibbleMarkers = false;
+			this.mainTileEdit.PixelScale = 24;
+			this.mainTileEdit.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
+			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
+			this.mainTileEdit.TabIndex = 1;
+			this.mainTileEdit.XButton1MouseColor = GB.Shared.Tiles.GBColor.WHITE;
+			this.mainTileEdit.XButton2MouseColor = GB.Shared.Tiles.GBColor.WHITE;
+			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
+			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
+			// 
+			// toolList
+			// 
+			this.toolList.AutoUpdate = false;
+			this.toolList.Location = new System.Drawing.Point(4, 4);
+			this.toolList.Name = "toolList";
+			this.toolList.SelectedTool = GB.Shared.Tiles.TileEditorID.PixelEdit;
+			this.toolList.Size = new System.Drawing.Size(26, 217);
+			this.toolList.TabIndex = 0;
+			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
+			this.toolList.ScrollUpClicked += new System.EventHandler(this.scrollUpClicked);
+			this.toolList.ScrollDownClicked += new System.EventHandler(this.scrollDownClicked);
+			this.toolList.ScrollLeftClicked += new System.EventHandler(this.scrollLeftClicked);
+			this.toolList.ScrollRightClicked += new System.EventHandler(this.scrollRightClicked);
+			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
+			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
+			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
 			// TileEdit
 			// 

@@ -69,7 +69,7 @@ namespace GB.GBTD
 				panel1.Height = miniPreviewRenderer.Height * 4 + 2;
 
 				panel2.Width = miniPreviewRenderer.Width + 2;
-				panel2.Width = miniPreviewRenderer.Height + 2;
+				panel2.Height = miniPreviewRenderer.Height + 2;
 				this.OnResize(new EventArgs());
 			}
 		}
