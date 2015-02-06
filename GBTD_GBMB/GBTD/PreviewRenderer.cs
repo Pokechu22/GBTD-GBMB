@@ -14,6 +14,7 @@ namespace GB.GBTD
 	{
 		private TileData tileData;
 
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileData TileData {
 			get { return tileData; }
 			set { tileData = value; OnTileDataChanged(); }
@@ -36,6 +37,7 @@ namespace GB.GBTD
 			InitializeComponent();
 
 			this.SetStyle(ControlStyles.FixedWidth, true);
+			this.SetStyle(ControlStyles.FixedHeight, true);
 		}
 
 		private void OnTileDataChanged() {
@@ -43,17 +45,39 @@ namespace GB.GBTD
 			int oldRendererHeight = miniPreviewRenderer.Height;
 
 			//The following line is massive but it changes all of the datas at once.
-			miniPreviewRenderer.TileData = groupedTileRenderer1.TileData = groupedTileRenderer2.TileData = groupedTileRenderer3.TileData = groupedTileRenderer4.TileData = groupedTileRenderer5.TileData = groupedTileRenderer6.TileData = groupedTileRenderer7.TileData = groupedTileRenderer8.TileData = groupedTileRenderer9.TileData = groupedTileRenderer10.TileData = groupedTileRenderer11.TileData = groupedTileRenderer12.TileData = groupedTileRenderer13.TileData = groupedTileRenderer14.TileData = groupedTileRenderer15.TileData = groupedTileRenderer16.TileData = this.tileData;
+			miniPreviewRenderer.TileData = 
+				groupedTileRenderer1.TileData =
+				groupedTileRenderer2.TileData =
+				groupedTileRenderer3.TileData =
+				groupedTileRenderer4.TileData =
+				groupedTileRenderer5.TileData =
+				groupedTileRenderer6.TileData =
+				groupedTileRenderer7.TileData =
+				groupedTileRenderer8.TileData =
+				groupedTileRenderer9.TileData =
+				groupedTileRenderer10.TileData =
+				groupedTileRenderer11.TileData =
+				groupedTileRenderer12.TileData =
+				groupedTileRenderer13.TileData =
+				groupedTileRenderer14.TileData =
+				groupedTileRenderer15.TileData =
+				groupedTileRenderer16.TileData =
+					this.tileData;
 
 			if (miniPreviewRenderer.Width != oldRendererWidth || miniPreviewRenderer.Height != oldRendererHeight) {
 				panel1.Width = miniPreviewRenderer.Width * 4 + 2;
 				panel1.Height = miniPreviewRenderer.Height * 4 + 2;
+
+				panel2.Width = miniPreviewRenderer.Width + 2;
+				panel2.Width = miniPreviewRenderer.Height + 2;
 				this.OnResize(new EventArgs());
 			}
 		}
 
 		protected override void OnResize(EventArgs e) {
 			int spaceForP2Centering;
+
+			this.Height = (24 * (tileData.Height != 0 ? tileData.Height : 8));
 
 			if (panel1.Visible) {
 				this.Width = panel1.Width;

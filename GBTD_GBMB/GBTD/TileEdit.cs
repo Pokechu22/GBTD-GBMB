@@ -100,6 +100,8 @@ namespace GB.GBTD
 			InitializeComponent();
 
 			initClipboardChangeCheck();
+
+			previewRenderer1.TileData = mainTileEdit.TileData;
 		}
 
 		private volatile bool updatingFromTileList = false;
