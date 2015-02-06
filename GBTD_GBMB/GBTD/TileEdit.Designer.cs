@@ -526,7 +526,7 @@
 			this.nibbleMarkersToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
 			this.nibbleMarkersToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.nibbleMarkersToolStripMenuItem.Text = "&Nibble markers";
-			this.nibbleMarkersToolStripMenuItem.Click += new System.EventHandler(this.nibbleMarkersToolStripMenuItem_Click);
+			this.nibbleMarkersToolStripMenuItem.CheckedChanged += new System.EventHandler(this.nibbleMarkersToolStripMenuItem_CheckedChanged);
 			// 
 			// toolStripSeparator12
 			// 

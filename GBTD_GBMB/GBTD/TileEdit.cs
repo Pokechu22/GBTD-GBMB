@@ -240,10 +240,6 @@ namespace GB.GBTD
 			mainTileEdit.Tile = Tile.FromImage(Clipboard.GetImage(), 8, 8);
 		}
 
-		private void nibbleMarkersToolStripMenuItem_Click(object sender, EventArgs e) {
-			mainTileEdit.NibbleMarkers ^= true;
-		}
-
 		private void initClipboardChangeCheck() {
 			NativeMethods.AddClipboardFormatListener(Handle);
 		}
@@ -281,6 +277,10 @@ namespace GB.GBTD
 
 		private void simpleToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
 			previewRenderer1.Simple = simpleToolStripMenuItem.Checked;
+		}
+
+		private void nibbleMarkersToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
+			mainTileEdit.NibbleMarkers = nibbleMarkersToolStripMenuItem.Checked;
 		}
 	}
 }
