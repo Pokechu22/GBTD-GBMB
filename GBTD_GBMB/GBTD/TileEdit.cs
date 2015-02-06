@@ -284,5 +284,22 @@ namespace GB.GBTD
 		private void nibbleMarkersToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
 			mainTileEdit.NibbleMarkers = nibbleMarkersToolStripMenuItem.Checked;
 		}
+
+		private void size8x8ToolStripMenuItem_Click(object sender, EventArgs e) {
+			//TODO do this better...  This is temporary.
+			mainTileEdit.Tile = new Tile(8, 8);
+		}
+
+		private void size8x16ToolStripMenuItem_Click(object sender, EventArgs e) {
+			mainTileEdit.Tile = new Tile(8, 16);
+		}
+
+		private void size16x16ToolStripMenuItem_Click(object sender, EventArgs e) {
+			mainTileEdit.Tile = new Tile(16, 16);
+		}
+
+		private void size32x32ToolStripMenuItem_Click(object sender, EventArgs e) {
+			mainTileEdit.Tile = new Tile(32, 32);
+		}
 	}
 }
