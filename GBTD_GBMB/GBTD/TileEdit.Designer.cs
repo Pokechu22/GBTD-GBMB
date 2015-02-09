@@ -88,10 +88,10 @@
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
 			this.tileSizeMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
+			this.size8x8MenuItem = new System.Windows.Forms.MenuItem();
+			this.size8x16MenuItem = new System.Windows.Forms.MenuItem();
+			this.size16x16MenuItem = new System.Windows.Forms.MenuItem();
+			this.size32x32menuItem = new System.Windows.Forms.MenuItem();
 			this.tileCountMenuItem = new System.Windows.Forms.MenuItem();
 			this.simpleModeMenuItem = new System.Windows.Forms.MenuItem();
 			this.gridMenuItem = new System.Windows.Forms.MenuItem();
@@ -648,31 +648,31 @@
 			// 
 			this.tileSizeMenuItem.Index = 0;
 			this.tileSizeMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem5});
+            this.size8x8MenuItem,
+            this.size8x16MenuItem,
+            this.size16x16MenuItem,
+            this.size32x32menuItem});
 			this.tileSizeMenuItem.Text = "&Tile size";
 			// 
-			// menuItem2
+			// size8x8MenuItem
 			// 
-			this.menuItem2.Index = 0;
-			this.menuItem2.Text = "8 x 8";
+			this.size8x8MenuItem.Index = 0;
+			this.size8x8MenuItem.Text = "&8 x 8";
 			// 
-			// menuItem3
+			// size8x16MenuItem
 			// 
-			this.menuItem3.Index = 1;
-			this.menuItem3.Text = "8 x 16";
+			this.size8x16MenuItem.Index = 1;
+			this.size8x16MenuItem.Text = "8 x &16";
 			// 
-			// menuItem4
+			// size16x16MenuItem
 			// 
-			this.menuItem4.Index = 2;
-			this.menuItem4.Text = "16 x 16";
+			this.size16x16MenuItem.Index = 2;
+			this.size16x16MenuItem.Text = "1&6 x 16";
 			// 
-			// menuItem5
+			// size32x32menuItem
 			// 
-			this.menuItem5.Index = 3;
-			this.menuItem5.Text = "32 x 32";
+			this.size32x32menuItem.Index = 3;
+			this.size32x32menuItem.Text = "&32 x 32";
 			// 
 			// tileCountMenuItem
 			// 
@@ -844,10 +844,10 @@
 		private System.Windows.Forms.MenuItem clearTilesMenuItem;
 		private System.Windows.Forms.MenuItem flipColorsMenuItem;
 		private System.Windows.Forms.MenuItem tileSizeMenuItem;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem size8x8MenuItem;
+		private System.Windows.Forms.MenuItem size8x16MenuItem;
+		private System.Windows.Forms.MenuItem size16x16MenuItem;
+		private System.Windows.Forms.MenuItem size32x32menuItem;
 		private System.Windows.Forms.MenuItem tileCountMenuItem;
 		private System.Windows.Forms.MenuItem simpleModeMenuItem;
 		private System.Windows.Forms.MenuItem gridMenuItem;
