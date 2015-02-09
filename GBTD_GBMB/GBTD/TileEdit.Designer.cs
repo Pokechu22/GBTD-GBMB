@@ -26,10 +26,21 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			System.Windows.Forms.MenuItem menuItem6;
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
+			this.openMenuItem = new System.Windows.Forms.MenuItem();
+			this.saveMenuItem = new System.Windows.Forms.MenuItem();
+			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
+			this.menuItem4 = new System.Windows.Forms.MenuItem();
+			this.menuItem5 = new System.Windows.Forms.MenuItem();
+			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem8 = new System.Windows.Forms.MenuItem();
+			this.menuItem9 = new System.Windows.Forms.MenuItem();
+			this.menuItem10 = new System.Windows.Forms.MenuItem();
+			this.menuItem11 = new System.Windows.Forms.MenuItem();
+			this.menuItem12 = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.designMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
@@ -50,21 +61,15 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem10 = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.menuItem12 = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
+			// 
+			// menuItem6
+			// 
+			menuItem6.Index = 0;
+			menuItem6.Text = "Stuff should be here";
 			// 
 			// mainMenu
 			// 
@@ -79,9 +84,9 @@
 			// 
 			this.fileMenuItem.Index = 0;
 			this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem3,
+            this.openMenuItem,
+            this.saveMenuItem,
+            this.saveAsMenuItem,
             this.menuItem4,
             this.menuItem5,
             this.menuItem7,
@@ -91,6 +96,66 @@
             this.menuItem11,
             this.menuItem12});
 			this.fileMenuItem.Text = "&File";
+			// 
+			// openMenuItem
+			// 
+			this.openMenuItem.Index = 0;
+			this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
+			this.openMenuItem.Text = "&Open...";
+			// 
+			// saveMenuItem
+			// 
+			this.saveMenuItem.Index = 1;
+			this.saveMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
+			this.saveMenuItem.Text = "&Save";
+			// 
+			// saveAsMenuItem
+			// 
+			this.saveAsMenuItem.Index = 2;
+			this.saveAsMenuItem.Text = "Save &As...";
+			// 
+			// menuItem4
+			// 
+			this.menuItem4.Index = 3;
+			this.menuItem4.Text = "-";
+			// 
+			// menuItem5
+			// 
+			this.menuItem5.Index = 4;
+			this.menuItem5.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            menuItem6});
+			this.menuItem5.Text = "&Reopen";
+			// 
+			// menuItem7
+			// 
+			this.menuItem7.Index = 5;
+			this.menuItem7.Text = "-";
+			// 
+			// menuItem8
+			// 
+			this.menuItem8.Index = 6;
+			this.menuItem8.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
+			this.menuItem8.Text = "&Export";
+			// 
+			// menuItem9
+			// 
+			this.menuItem9.Index = 7;
+			this.menuItem9.Text = "Ex&port to...";
+			// 
+			// menuItem10
+			// 
+			this.menuItem10.Index = 8;
+			this.menuItem10.Text = "&Import from...";
+			// 
+			// menuItem11
+			// 
+			this.menuItem11.Index = 9;
+			this.menuItem11.Text = "-";
+			// 
+			// menuItem12
+			// 
+			this.menuItem12.Index = 10;
+			this.menuItem12.Text = "E&xit";
 			// 
 			// editMenuItem
 			// 
@@ -308,7 +373,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -342,68 +407,6 @@
 			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
-			// 
-			// menuItem1
-			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "Open";
-			// 
-			// menuItem2
-			// 
-			this.menuItem2.Index = 1;
-			this.menuItem2.Text = "Save";
-			// 
-			// menuItem3
-			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "Save as";
-			// 
-			// menuItem4
-			// 
-			this.menuItem4.Index = 3;
-			this.menuItem4.Text = "-";
-			// 
-			// menuItem5
-			// 
-			this.menuItem5.Index = 4;
-			this.menuItem5.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            menuItem6});
-			this.menuItem5.Text = "Reopen";
-			// 
-			// menuItem6
-			// 
-			menuItem6.Index = 0;
-			menuItem6.Text = "Stuff should be here";
-			// 
-			// menuItem7
-			// 
-			this.menuItem7.Index = 5;
-			this.menuItem7.Text = "-";
-			// 
-			// menuItem8
-			// 
-			this.menuItem8.Index = 6;
-			this.menuItem8.Text = "Export";
-			// 
-			// menuItem9
-			// 
-			this.menuItem9.Index = 7;
-			this.menuItem9.Text = "Export to";
-			// 
-			// menuItem10
-			// 
-			this.menuItem10.Index = 8;
-			this.menuItem10.Text = "Import from";
-			// 
-			// menuItem11
-			// 
-			this.menuItem11.Index = 9;
-			this.menuItem11.Text = "-";
-			// 
-			// menuItem12
-			// 
-			this.menuItem12.Index = 10;
-			this.menuItem12.Text = "Exit";
 			// 
 			// TileEdit
 			// 
@@ -450,9 +453,9 @@
 		private System.Windows.Forms.MenuItem designMenuItem;
 		private System.Windows.Forms.MenuItem viewMenuItem;
 		private System.Windows.Forms.MenuItem helpMenuItem;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Windows.Forms.MenuItem openMenuItem;
+		private System.Windows.Forms.MenuItem saveMenuItem;
+		private System.Windows.Forms.MenuItem saveAsMenuItem;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem menuItem5;
 		private System.Windows.Forms.MenuItem menuItem7;
