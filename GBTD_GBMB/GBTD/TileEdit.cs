@@ -171,11 +171,11 @@ namespace GB.GBTD
 		}
 
 		private void autoUpdatedToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			toolList.AutoUpdate = autoUpdatedToolStripMenuItem.Checked;
+			//toolList.AutoUpdate = autoUpdatedToolStripMenuItem.Checked;
 		}
 
 		private void gridToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			mainTileEdit.Grid = gridToolStripMenuItem.Checked;
+			//mainTileEdit.Grid = gridToolStripMenuItem.Checked;
 		}
 
 		private void palettesToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -247,7 +247,7 @@ namespace GB.GBTD
 		}
 
 		private void OnClipboardUpdate() {
-			this.pasteTileToolStripMenuItem.Enabled = Clipboard.ContainsImage();
+		//	this.pasteTileToolStripMenuItem.Enabled = Clipboard.ContainsImage();
 			this.pasteToolStripButton.Enabled = Clipboard.ContainsImage();
 		}
 
@@ -278,48 +278,48 @@ namespace GB.GBTD
 		}
 
 		private void simpleToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			previewRenderer1.Simple = simpleToolStripMenuItem.Checked;
+			//previewRenderer1.Simple = simpleToolStripMenuItem.Checked;
 		}
 
 		private void nibbleMarkersToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			mainTileEdit.NibbleMarkers = nibbleMarkersToolStripMenuItem.Checked;
+			//mainTileEdit.NibbleMarkers = nibbleMarkersToolStripMenuItem.Checked;
 		}
 
 		private void size8x8ToolStripMenuItem_Click(object sender, EventArgs e) {
 			//TODO do this better...  This is temporary.
 			mainTileEdit.Tile = new Tile(8, 8);
 			
-			size8x8ToolStripMenuItem.Checked = true;
-			size8x16ToolStripMenuItem.Checked = false;
-			size16x16ToolStripMenuItem.Checked = false;
-			size32x32ToolStripMenuItem.Checked = false;
+			//size8x8ToolStripMenuItem.Checked = true;
+			//size8x16ToolStripMenuItem.Checked = false;
+			//size16x16ToolStripMenuItem.Checked = false;
+			//size32x32ToolStripMenuItem.Checked = false;
 		}
 
 		private void size8x16ToolStripMenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Tile = new Tile(8, 16);
 
-			size8x8ToolStripMenuItem.Checked = false;
-			size8x16ToolStripMenuItem.Checked = true;
-			size16x16ToolStripMenuItem.Checked = false;
-			size32x32ToolStripMenuItem.Checked = false;
+			//size8x8ToolStripMenuItem.Checked = false;
+			//size8x16ToolStripMenuItem.Checked = true;
+			//size16x16ToolStripMenuItem.Checked = false;
+			//size32x32ToolStripMenuItem.Checked = false;
 		}
 
 		private void size16x16ToolStripMenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Tile = new Tile(16, 16);
 
-			size8x8ToolStripMenuItem.Checked = false;
-			size8x16ToolStripMenuItem.Checked = false;
-			size16x16ToolStripMenuItem.Checked = true;
-			size32x32ToolStripMenuItem.Checked = false;
+			//size8x8ToolStripMenuItem.Checked = false;
+			//size8x16ToolStripMenuItem.Checked = false;
+			//size16x16ToolStripMenuItem.Checked = true;
+			//size32x32ToolStripMenuItem.Checked = false;
 		}
 
 		private void size32x32ToolStripMenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Tile = new Tile(32, 32);
 
-			size8x8ToolStripMenuItem.Checked = false;
-			size8x16ToolStripMenuItem.Checked = false;
-			size16x16ToolStripMenuItem.Checked = false;
-			size32x32ToolStripMenuItem.Checked = true;
+			//size8x8ToolStripMenuItem.Checked = false;
+			//size8x16ToolStripMenuItem.Checked = false;
+			//size16x16ToolStripMenuItem.Checked = false;
+			//size32x32ToolStripMenuItem.Checked = true;
 		}
 	}
 }
