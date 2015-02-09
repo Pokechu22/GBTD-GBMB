@@ -26,13 +26,13 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
+			this.fileMenuItem = new System.Windows.Forms.MenuItem();
+			this.editMenuItem = new System.Windows.Forms.MenuItem();
+			this.designMenuItem = new System.Windows.Forms.MenuItem();
+			this.viewMenuItem = new System.Windows.Forms.MenuItem();
+			this.helpMenuItem = new System.Windows.Forms.MenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -56,36 +56,36 @@
 			// mainMenu
 			// 
 			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem5});
+            this.fileMenuItem,
+            this.editMenuItem,
+            this.designMenuItem,
+            this.viewMenuItem,
+            this.helpMenuItem});
 			// 
-			// menuItem1
+			// fileMenuItem
 			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "File";
+			this.fileMenuItem.Index = 0;
+			this.fileMenuItem.Text = "&File";
 			// 
-			// menuItem2
+			// editMenuItem
 			// 
-			this.menuItem2.Index = 1;
-			this.menuItem2.Text = "Edit";
+			this.editMenuItem.Index = 1;
+			this.editMenuItem.Text = "&Edit";
 			// 
-			// menuItem3
+			// designMenuItem
 			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "Design";
+			this.designMenuItem.Index = 2;
+			this.designMenuItem.Text = "&Design";
 			// 
-			// menuItem4
+			// viewMenuItem
 			// 
-			this.menuItem4.Index = 3;
-			this.menuItem4.Text = "View";
+			this.viewMenuItem.Index = 3;
+			this.viewMenuItem.Text = "&View";
 			// 
-			// menuItem5
+			// helpMenuItem
 			// 
-			this.menuItem5.Index = 4;
-			this.menuItem5.Text = "Help";
+			this.helpMenuItem.Index = 4;
+			this.helpMenuItem.Text = "&Help";
 			// 
 			// toolStripSeparator1
 			// 
@@ -283,7 +283,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -358,11 +358,11 @@
 		private Shared.Tiles.EditableTileRenderer mainTileEdit;
 		private Shared.Tiles.TileListControl tileList1;
 		private PreviewRenderer previewRenderer1;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem fileMenuItem;
+		private System.Windows.Forms.MenuItem editMenuItem;
+		private System.Windows.Forms.MenuItem designMenuItem;
+		private System.Windows.Forms.MenuItem viewMenuItem;
+		private System.Windows.Forms.MenuItem helpMenuItem;
 
 	}
 }
