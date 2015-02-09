@@ -32,7 +32,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -478,7 +478,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -516,12 +516,14 @@
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "Pen";
+			this.menuItem1.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+			this.menuItem1.Text = "&Pen";
 			// 
 			// menuItem2
 			// 
 			this.menuItem2.Index = 1;
-			this.menuItem2.Text = "Flood Fill";
+			this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+			this.menuItem2.Text = "&Flood Fill";
 			// 
 			// menuItem3
 			// 
@@ -531,17 +533,20 @@
 			// menuItem4
 			// 
 			this.menuItem4.Index = 3;
-			this.menuItem4.Text = "Flip Vertically";
+			this.menuItem4.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
+			this.menuItem4.Text = "Flip Verticall&y";
 			// 
 			// menuItem5
 			// 
 			this.menuItem5.Index = 4;
-			this.menuItem5.Text = "Flip Horizontally";
+			this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
+			this.menuItem5.Text = "Flip &Horizontally";
 			// 
 			// menuItem7
 			// 
 			this.menuItem7.Index = 5;
-			this.menuItem7.Text = "Rotate Clockwise";
+			this.menuItem7.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			this.menuItem7.Text = "&Rotate clockwise";
 			// 
 			// menuItem8
 			// 
@@ -551,22 +556,22 @@
 			// menuItem9
 			// 
 			this.menuItem9.Index = 7;
-			this.menuItem9.Text = "Scroll Left";
+			this.menuItem9.Text = "Scroll &Left";
 			// 
 			// menuItem10
 			// 
 			this.menuItem10.Index = 8;
-			this.menuItem10.Text = "Scroll Right";
+			this.menuItem10.Text = "Scroll Ri&ght";
 			// 
 			// menuItem11
 			// 
 			this.menuItem11.Index = 9;
-			this.menuItem11.Text = "Scroll Up";
+			this.menuItem11.Text = "Scroll &Up";
 			// 
 			// menuItem12
 			// 
 			this.menuItem12.Index = 10;
-			this.menuItem12.Text = "Scroll Down";
+			this.menuItem12.Text = "Scroll &Down";
 			// 
 			// menuItem13
 			// 
@@ -576,12 +581,13 @@
 			// menuItem14
 			// 
 			this.menuItem14.Index = 12;
-			this.menuItem14.Text = "Clear tiles";
+			this.menuItem14.Text = "&Clear tiles";
 			// 
 			// menuItem15
 			// 
 			this.menuItem15.Index = 13;
-			this.menuItem15.Text = "Flip colors";
+			this.menuItem15.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
+			this.menuItem15.Text = "Fl&ip colors";
 			// 
 			// TileEdit
 			// 
