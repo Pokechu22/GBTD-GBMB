@@ -467,29 +467,31 @@
 			// 
 			// size8x8ToolStripMenuItem
 			// 
+			this.size8x8ToolStripMenuItem.Checked = true;
+			this.size8x8ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.size8x8ToolStripMenuItem.Name = "size8x8ToolStripMenuItem";
-			this.size8x8ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.size8x8ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.size8x8ToolStripMenuItem.Text = "8 x 8";
 			this.size8x8ToolStripMenuItem.Click += new System.EventHandler(this.size8x8ToolStripMenuItem_Click);
 			// 
 			// size8x16ToolStripMenuItem
 			// 
 			this.size8x16ToolStripMenuItem.Name = "size8x16ToolStripMenuItem";
-			this.size8x16ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.size8x16ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.size8x16ToolStripMenuItem.Text = "8 x 16";
 			this.size8x16ToolStripMenuItem.Click += new System.EventHandler(this.size8x16ToolStripMenuItem_Click);
 			// 
 			// size16x16ToolStripMenuItem
 			// 
 			this.size16x16ToolStripMenuItem.Name = "size16x16ToolStripMenuItem";
-			this.size16x16ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.size16x16ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.size16x16ToolStripMenuItem.Text = "16 x 16";
 			this.size16x16ToolStripMenuItem.Click += new System.EventHandler(this.size16x16ToolStripMenuItem_Click);
 			// 
 			// size32x32ToolStripMenuItem
 			// 
 			this.size32x32ToolStripMenuItem.Name = "size32x32ToolStripMenuItem";
-			this.size32x32ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.size32x32ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.size32x32ToolStripMenuItem.Text = "32 x 32";
 			this.size32x32ToolStripMenuItem.Click += new System.EventHandler(this.size32x32ToolStripMenuItem_Click);
 			// 
