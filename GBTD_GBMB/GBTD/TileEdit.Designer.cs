@@ -34,9 +34,10 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
+			System.Windows.Forms.MenuItem seperatorMenuItem13;
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -103,6 +104,9 @@
 			this.seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
 			this.gotoBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
+			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
+			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -113,6 +117,7 @@
 			seperatorMenuItem7 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem9 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem10 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem13 = new System.Windows.Forms.MenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
@@ -394,6 +399,11 @@
 			// helpMenuItem
 			// 
 			this.helpMenuItem.Index = 4;
+			this.helpMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.helpTopicsMenuItem,
+            this.helpIndexMenuItem,
+            seperatorMenuItem13,
+            this.aboutMenuItem});
 			this.helpMenuItem.Text = "&Help";
 			// 
 			// toolStripSeparator1
@@ -592,7 +602,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor2;
+			this.mainTileEdit.Editor = pixelTileEditor1;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -734,6 +744,26 @@
 			this.gotoBookmarkMenuItem.Index = 13;
 			this.gotoBookmarkMenuItem.Text = "Goto &bookmark";
 			// 
+			// helpTopicsMenuItem
+			// 
+			this.helpTopicsMenuItem.Index = 0;
+			this.helpTopicsMenuItem.Text = "&Help topics";
+			// 
+			// helpIndexMenuItem
+			// 
+			this.helpIndexMenuItem.Index = 1;
+			this.helpIndexMenuItem.Text = "Help &index";
+			// 
+			// seperatorMenuItem13
+			// 
+			seperatorMenuItem13.Index = 2;
+			seperatorMenuItem13.Text = "-";
+			// 
+			// aboutMenuItem
+			// 
+			this.aboutMenuItem.Index = 3;
+			this.aboutMenuItem.Text = "&About...";
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -823,6 +853,9 @@
 		private System.Windows.Forms.MenuItem seperatorMenuItem12;
 		private System.Windows.Forms.MenuItem setBookmarkMenuItem;
 		private System.Windows.Forms.MenuItem gotoBookmarkMenuItem;
+		private System.Windows.Forms.MenuItem helpTopicsMenuItem;
+		private System.Windows.Forms.MenuItem helpIndexMenuItem;
+		private System.Windows.Forms.MenuItem aboutMenuItem;
 
 	}
 }
