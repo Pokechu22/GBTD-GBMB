@@ -34,7 +34,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -84,6 +84,25 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
+			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.menuItem2 = new System.Windows.Forms.MenuItem();
+			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.menuItem4 = new System.Windows.Forms.MenuItem();
+			this.menuItem5 = new System.Windows.Forms.MenuItem();
+			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem8 = new System.Windows.Forms.MenuItem();
+			this.menuItem9 = new System.Windows.Forms.MenuItem();
+			this.menuItem10 = new System.Windows.Forms.MenuItem();
+			this.menuItem11 = new System.Windows.Forms.MenuItem();
+			this.menuItem12 = new System.Windows.Forms.MenuItem();
+			this.menuItem13 = new System.Windows.Forms.MenuItem();
+			this.menuItem14 = new System.Windows.Forms.MenuItem();
+			this.menuItem15 = new System.Windows.Forms.MenuItem();
+			this.menuItem16 = new System.Windows.Forms.MenuItem();
+			this.menuItem17 = new System.Windows.Forms.MenuItem();
+			this.menuItem18 = new System.Windows.Forms.MenuItem();
+			this.menuItem19 = new System.Windows.Forms.MenuItem();
+			this.menuItem20 = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -125,6 +144,16 @@
 			// 
 			seperatorMenuItem5.Index = 5;
 			seperatorMenuItem5.Text = "-";
+			// 
+			// seperatorMenuItem6
+			// 
+			seperatorMenuItem6.Index = 2;
+			seperatorMenuItem6.Text = "-";
+			// 
+			// seperatorMenuItem7
+			// 
+			seperatorMenuItem7.Index = 6;
+			seperatorMenuItem7.Text = "-";
 			// 
 			// mainMenu
 			// 
@@ -286,11 +315,6 @@
 			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
 			this.floodFillMenuItem.Text = "&Flood Fill";
 			// 
-			// seperatorMenuItem6
-			// 
-			seperatorMenuItem6.Index = 2;
-			seperatorMenuItem6.Text = "-";
-			// 
 			// flipVerticallyMenuItem
 			// 
 			this.flipVerticallyMenuItem.Index = 3;
@@ -308,11 +332,6 @@
 			this.rotateClockwiseMenuItem.Index = 5;
 			this.rotateClockwiseMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
 			this.rotateClockwiseMenuItem.Text = "&Rotate clockwise";
-			// 
-			// seperatorMenuItem7
-			// 
-			seperatorMenuItem7.Index = 6;
-			seperatorMenuItem7.Text = "-";
 			// 
 			// scrollLeftMenuItem
 			// 
@@ -353,6 +372,21 @@
 			// viewMenuItem
 			// 
 			this.viewMenuItem.Index = 3;
+			this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem1,
+            this.menuItem7,
+            this.menuItem8,
+            this.menuItem9,
+            this.menuItem10,
+            this.menuItem11,
+            this.menuItem12,
+            this.menuItem13,
+            this.menuItem14,
+            this.menuItem15,
+            this.menuItem17,
+            this.menuItem18,
+            this.menuItem19,
+            this.menuItem20});
 			this.viewMenuItem.Text = "&View";
 			// 
 			// helpMenuItem
@@ -556,7 +590,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor2;
+			this.mainTileEdit.Editor = pixelTileEditor1;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -590,6 +624,108 @@
 			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
+			// 
+			// menuItem1
+			// 
+			this.menuItem1.Index = 0;
+			this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem2,
+            this.menuItem3,
+            this.menuItem4,
+            this.menuItem5});
+			this.menuItem1.Text = "Tile size";
+			// 
+			// menuItem2
+			// 
+			this.menuItem2.Index = 0;
+			this.menuItem2.Text = "8 x 8";
+			// 
+			// menuItem3
+			// 
+			this.menuItem3.Index = 1;
+			this.menuItem3.Text = "8 x 16";
+			// 
+			// menuItem4
+			// 
+			this.menuItem4.Index = 2;
+			this.menuItem4.Text = "16 x 16";
+			// 
+			// menuItem5
+			// 
+			this.menuItem5.Index = 3;
+			this.menuItem5.Text = "32 x 32";
+			// 
+			// menuItem7
+			// 
+			this.menuItem7.Index = 1;
+			this.menuItem7.Text = "Tile count...";
+			// 
+			// menuItem8
+			// 
+			this.menuItem8.Index = 2;
+			this.menuItem8.Text = "-";
+			// 
+			// menuItem9
+			// 
+			this.menuItem9.Index = 3;
+			this.menuItem9.Text = "Simple";
+			// 
+			// menuItem10
+			// 
+			this.menuItem10.Index = 4;
+			this.menuItem10.Text = "Grid";
+			// 
+			// menuItem11
+			// 
+			this.menuItem11.Index = 5;
+			this.menuItem11.Text = "Nibble markers";
+			// 
+			// menuItem12
+			// 
+			this.menuItem12.Index = 6;
+			this.menuItem12.Text = "-";
+			// 
+			// menuItem13
+			// 
+			this.menuItem13.Index = 7;
+			this.menuItem13.Text = "Auto update";
+			// 
+			// menuItem14
+			// 
+			this.menuItem14.Index = 8;
+			this.menuItem14.Text = "-";
+			// 
+			// menuItem15
+			// 
+			this.menuItem15.Index = 9;
+			this.menuItem15.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem16});
+			this.menuItem15.Text = "Color set";
+			// 
+			// menuItem16
+			// 
+			this.menuItem16.Index = 0;
+			this.menuItem16.Text = "TODO";
+			// 
+			// menuItem17
+			// 
+			this.menuItem17.Index = 10;
+			this.menuItem17.Text = "Palettes...";
+			// 
+			// menuItem18
+			// 
+			this.menuItem18.Index = 11;
+			this.menuItem18.Text = "-";
+			// 
+			// menuItem19
+			// 
+			this.menuItem19.Index = 12;
+			this.menuItem19.Text = "Set bookmark";
+			// 
+			// menuItem20
+			// 
+			this.menuItem20.Index = 13;
+			this.menuItem20.Text = "Goto bookmark";
 			// 
 			// TileEdit
 			// 
@@ -663,6 +799,25 @@
 		private System.Windows.Forms.MenuItem seperatorMenuItem8;
 		private System.Windows.Forms.MenuItem clearTilesMenuItem;
 		private System.Windows.Forms.MenuItem flipColorsMenuItem;
+		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem menuItem2;
+		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Windows.Forms.MenuItem menuItem4;
+		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem menuItem7;
+		private System.Windows.Forms.MenuItem menuItem8;
+		private System.Windows.Forms.MenuItem menuItem9;
+		private System.Windows.Forms.MenuItem menuItem10;
+		private System.Windows.Forms.MenuItem menuItem11;
+		private System.Windows.Forms.MenuItem menuItem12;
+		private System.Windows.Forms.MenuItem menuItem13;
+		private System.Windows.Forms.MenuItem menuItem14;
+		private System.Windows.Forms.MenuItem menuItem15;
+		private System.Windows.Forms.MenuItem menuItem16;
+		private System.Windows.Forms.MenuItem menuItem17;
+		private System.Windows.Forms.MenuItem menuItem18;
+		private System.Windows.Forms.MenuItem menuItem19;
+		private System.Windows.Forms.MenuItem menuItem20;
 
 	}
 }
