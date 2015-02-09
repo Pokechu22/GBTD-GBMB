@@ -34,7 +34,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
@@ -327,38 +327,45 @@
 			this.flipVerticallyMenuItem.Index = 3;
 			this.flipVerticallyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
 			this.flipVerticallyMenuItem.Text = "Flip Verticall&y";
+			this.flipVerticallyMenuItem.Click += new System.EventHandler(this.flipVerticallyClicked);
 			// 
 			// flipHorizontallyMenuItem
 			// 
 			this.flipHorizontallyMenuItem.Index = 4;
 			this.flipHorizontallyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
 			this.flipHorizontallyMenuItem.Text = "Flip &Horizontally";
+			this.flipHorizontallyMenuItem.Click += new System.EventHandler(this.flipHorizontallyClicked);
 			// 
 			// rotateClockwiseMenuItem
 			// 
 			this.rotateClockwiseMenuItem.Index = 5;
 			this.rotateClockwiseMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
 			this.rotateClockwiseMenuItem.Text = "&Rotate clockwise";
+			this.rotateClockwiseMenuItem.Click += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
 			// scrollLeftMenuItem
 			// 
 			this.scrollLeftMenuItem.Index = 7;
 			this.scrollLeftMenuItem.Text = "Scroll &Left";
+			this.scrollLeftMenuItem.Click += new System.EventHandler(this.scrollLeftClicked);
 			// 
 			// scrollRightMenuItem
 			// 
 			this.scrollRightMenuItem.Index = 8;
 			this.scrollRightMenuItem.Text = "Scroll Ri&ght";
+			this.scrollRightMenuItem.Click += new System.EventHandler(this.scrollRightClicked);
 			// 
 			// scrollUpMenuItem
 			// 
 			this.scrollUpMenuItem.Index = 9;
 			this.scrollUpMenuItem.Text = "Scroll &Up";
+			this.scrollUpMenuItem.Click += new System.EventHandler(this.scrollUpClicked);
 			// 
 			// scrollDownMenuItem
 			// 
 			this.scrollDownMenuItem.Index = 10;
 			this.scrollDownMenuItem.Text = "Scroll &Down";
+			this.scrollDownMenuItem.Click += new System.EventHandler(this.scrollDownClicked);
 			// 
 			// seperatorMenuItem8
 			// 
@@ -602,7 +609,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
