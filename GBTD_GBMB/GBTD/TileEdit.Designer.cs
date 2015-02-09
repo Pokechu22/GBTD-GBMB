@@ -35,6 +35,8 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
 			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
+			System.Windows.Forms.MenuItem seperatorMenuItem9;
+			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -84,25 +86,23 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.tileSizeMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem2 = new System.Windows.Forms.MenuItem();
 			this.menuItem3 = new System.Windows.Forms.MenuItem();
 			this.menuItem4 = new System.Windows.Forms.MenuItem();
 			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem10 = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.menuItem12 = new System.Windows.Forms.MenuItem();
-			this.menuItem13 = new System.Windows.Forms.MenuItem();
-			this.menuItem14 = new System.Windows.Forms.MenuItem();
-			this.menuItem15 = new System.Windows.Forms.MenuItem();
+			this.tileCountMenuItem = new System.Windows.Forms.MenuItem();
+			this.simpleModeMenuItem = new System.Windows.Forms.MenuItem();
+			this.gridMenuItem = new System.Windows.Forms.MenuItem();
+			this.nibbleMarkersMenuItem = new System.Windows.Forms.MenuItem();
+			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
+			this.seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
+			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem16 = new System.Windows.Forms.MenuItem();
-			this.menuItem17 = new System.Windows.Forms.MenuItem();
-			this.menuItem18 = new System.Windows.Forms.MenuItem();
-			this.menuItem19 = new System.Windows.Forms.MenuItem();
-			this.menuItem20 = new System.Windows.Forms.MenuItem();
+			this.palettesMenuItem = new System.Windows.Forms.MenuItem();
+			this.seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
+			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmarkMenuItem = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -111,6 +111,8 @@
 			seperatorMenuItem5 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem7 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem9 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem10 = new System.Windows.Forms.MenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
@@ -373,20 +375,20 @@
 			// 
 			this.viewMenuItem.Index = 3;
 			this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem7,
-            this.menuItem8,
-            this.menuItem9,
-            this.menuItem10,
-            this.menuItem11,
-            this.menuItem12,
-            this.menuItem13,
-            this.menuItem14,
-            this.menuItem15,
-            this.menuItem17,
-            this.menuItem18,
-            this.menuItem19,
-            this.menuItem20});
+            this.tileSizeMenuItem,
+            this.tileCountMenuItem,
+            seperatorMenuItem9,
+            this.simpleModeMenuItem,
+            this.gridMenuItem,
+            this.nibbleMarkersMenuItem,
+            seperatorMenuItem10,
+            this.autoUpdateMenuItem,
+            this.seperatorMenuItem11,
+            this.colorSetMenuItem,
+            this.palettesMenuItem,
+            this.seperatorMenuItem12,
+            this.setBookmarkMenuItem,
+            this.gotoBookmarkMenuItem});
 			this.viewMenuItem.Text = "&View";
 			// 
 			// helpMenuItem
@@ -625,15 +627,15 @@
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
-			// menuItem1
+			// tileSizeMenuItem
 			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.tileSizeMenuItem.Index = 0;
+			this.tileSizeMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem2,
             this.menuItem3,
             this.menuItem4,
             this.menuItem5});
-			this.menuItem1.Text = "&Tile size";
+			this.tileSizeMenuItem.Text = "&Tile size";
 			// 
 			// menuItem2
 			// 
@@ -655,82 +657,82 @@
 			this.menuItem5.Index = 3;
 			this.menuItem5.Text = "32 x 32";
 			// 
-			// menuItem7
+			// tileCountMenuItem
 			// 
-			this.menuItem7.Index = 1;
-			this.menuItem7.Text = "Tile &count...";
+			this.tileCountMenuItem.Index = 1;
+			this.tileCountMenuItem.Text = "Tile &count...";
 			// 
-			// menuItem8
+			// seperatorMenuItem9
 			// 
-			this.menuItem8.Index = 2;
-			this.menuItem8.Text = "-";
+			seperatorMenuItem9.Index = 2;
+			seperatorMenuItem9.Text = "-";
 			// 
-			// menuItem9
+			// simpleModeMenuItem
 			// 
-			this.menuItem9.Index = 3;
-			this.menuItem9.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
-			this.menuItem9.Text = "Si&mple";
+			this.simpleModeMenuItem.Index = 3;
+			this.simpleModeMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
+			this.simpleModeMenuItem.Text = "Si&mple";
 			// 
-			// menuItem10
+			// gridMenuItem
 			// 
-			this.menuItem10.Index = 4;
-			this.menuItem10.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
-			this.menuItem10.Text = "&Grid";
+			this.gridMenuItem.Index = 4;
+			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
+			this.gridMenuItem.Text = "&Grid";
 			// 
-			// menuItem11
+			// nibbleMarkersMenuItem
 			// 
-			this.menuItem11.Index = 5;
-			this.menuItem11.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-			this.menuItem11.Text = "&Nibble markers";
+			this.nibbleMarkersMenuItem.Index = 5;
+			this.nibbleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
+			this.nibbleMarkersMenuItem.Text = "&Nibble markers";
 			// 
-			// menuItem12
+			// seperatorMenuItem10
 			// 
-			this.menuItem12.Index = 6;
-			this.menuItem12.Text = "-";
+			seperatorMenuItem10.Index = 6;
+			seperatorMenuItem10.Text = "-";
 			// 
-			// menuItem13
+			// autoUpdateMenuItem
 			// 
-			this.menuItem13.Index = 7;
-			this.menuItem13.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
-			this.menuItem13.Text = "Auto &update";
+			this.autoUpdateMenuItem.Index = 7;
+			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
+			this.autoUpdateMenuItem.Text = "Auto &update";
 			// 
-			// menuItem14
+			// seperatorMenuItem11
 			// 
-			this.menuItem14.Index = 8;
-			this.menuItem14.Text = "-";
+			this.seperatorMenuItem11.Index = 8;
+			this.seperatorMenuItem11.Text = "-";
 			// 
-			// menuItem15
+			// colorSetMenuItem
 			// 
-			this.menuItem15.Index = 9;
-			this.menuItem15.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.colorSetMenuItem.Index = 9;
+			this.colorSetMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem16});
-			this.menuItem15.Text = "C&olor set";
+			this.colorSetMenuItem.Text = "C&olor set";
 			// 
 			// menuItem16
 			// 
 			this.menuItem16.Index = 0;
 			this.menuItem16.Text = "TODO";
 			// 
-			// menuItem17
+			// palettesMenuItem
 			// 
-			this.menuItem17.Index = 10;
-			this.menuItem17.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
-			this.menuItem17.Text = "P&alettes...";
+			this.palettesMenuItem.Index = 10;
+			this.palettesMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
+			this.palettesMenuItem.Text = "P&alettes...";
 			// 
-			// menuItem18
+			// seperatorMenuItem12
 			// 
-			this.menuItem18.Index = 11;
-			this.menuItem18.Text = "-";
+			this.seperatorMenuItem12.Index = 11;
+			this.seperatorMenuItem12.Text = "-";
 			// 
-			// menuItem19
+			// setBookmarkMenuItem
 			// 
-			this.menuItem19.Index = 12;
-			this.menuItem19.Text = "&Set bookmark";
+			this.setBookmarkMenuItem.Index = 12;
+			this.setBookmarkMenuItem.Text = "&Set bookmark";
 			// 
-			// menuItem20
+			// gotoBookmarkMenuItem
 			// 
-			this.menuItem20.Index = 13;
-			this.menuItem20.Text = "Goto &bookmark";
+			this.gotoBookmarkMenuItem.Index = 13;
+			this.gotoBookmarkMenuItem.Text = "Goto &bookmark";
 			// 
 			// TileEdit
 			// 
@@ -804,25 +806,23 @@
 		private System.Windows.Forms.MenuItem seperatorMenuItem8;
 		private System.Windows.Forms.MenuItem clearTilesMenuItem;
 		private System.Windows.Forms.MenuItem flipColorsMenuItem;
-		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem tileSizeMenuItem;
 		private System.Windows.Forms.MenuItem menuItem2;
 		private System.Windows.Forms.MenuItem menuItem3;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem menuItem5;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem8;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItem10;
-		private System.Windows.Forms.MenuItem menuItem11;
-		private System.Windows.Forms.MenuItem menuItem12;
-		private System.Windows.Forms.MenuItem menuItem13;
-		private System.Windows.Forms.MenuItem menuItem14;
-		private System.Windows.Forms.MenuItem menuItem15;
+		private System.Windows.Forms.MenuItem tileCountMenuItem;
+		private System.Windows.Forms.MenuItem simpleModeMenuItem;
+		private System.Windows.Forms.MenuItem gridMenuItem;
+		private System.Windows.Forms.MenuItem nibbleMarkersMenuItem;
+		private System.Windows.Forms.MenuItem autoUpdateMenuItem;
+		private System.Windows.Forms.MenuItem seperatorMenuItem11;
+		private System.Windows.Forms.MenuItem colorSetMenuItem;
 		private System.Windows.Forms.MenuItem menuItem16;
-		private System.Windows.Forms.MenuItem menuItem17;
-		private System.Windows.Forms.MenuItem menuItem18;
-		private System.Windows.Forms.MenuItem menuItem19;
-		private System.Windows.Forms.MenuItem menuItem20;
+		private System.Windows.Forms.MenuItem palettesMenuItem;
+		private System.Windows.Forms.MenuItem seperatorMenuItem12;
+		private System.Windows.Forms.MenuItem setBookmarkMenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmarkMenuItem;
 
 	}
 }
