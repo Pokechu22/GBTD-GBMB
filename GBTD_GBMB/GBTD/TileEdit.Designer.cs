@@ -30,7 +30,9 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem1;
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor6 = new GB.Shared.Tiles.PixelTileEditor();
+			System.Windows.Forms.MenuItem seperatorMenuItem4;
+			System.Windows.Forms.MenuItem seperatorMenuItem5;
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -42,6 +44,13 @@
 			this.importFromMenuItem = new System.Windows.Forms.MenuItem();
 			this.exitMenuItem = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
+			this.undoMenuItem = new System.Windows.Forms.MenuItem();
+			this.cutMenuItem = new System.Windows.Forms.MenuItem();
+			this.copyMenuItem = new System.Windows.Forms.MenuItem();
+			this.pasteMenuItem = new System.Windows.Forms.MenuItem();
+			this.splitCopyMenuItem = new System.Windows.Forms.MenuItem();
+			this.splitPasteMenuItem = new System.Windows.Forms.MenuItem();
+			this.splitOptionsMenuItem = new System.Windows.Forms.MenuItem();
 			this.designMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpMenuItem = new System.Windows.Forms.MenuItem();
@@ -61,19 +70,12 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem10 = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem5 = new System.Windows.Forms.MenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
@@ -82,6 +84,21 @@
 			// 
 			menuItem6.Index = 0;
 			menuItem6.Text = "Stuff should be here";
+			// 
+			// seperatorMenuItem1
+			// 
+			seperatorMenuItem1.Index = 3;
+			seperatorMenuItem1.Text = "-";
+			// 
+			// seperatorMenuItem2
+			// 
+			seperatorMenuItem2.Index = 5;
+			seperatorMenuItem2.Text = "-";
+			// 
+			// seperatorMenuItem3
+			// 
+			seperatorMenuItem3.Index = 9;
+			seperatorMenuItem3.Text = "-";
 			// 
 			// mainMenu
 			// 
@@ -126,22 +143,12 @@
 			this.saveAsMenuItem.Index = 2;
 			this.saveAsMenuItem.Text = "Save &As...";
 			// 
-			// seperatorMenuItem1
-			// 
-			seperatorMenuItem1.Index = 3;
-			seperatorMenuItem1.Text = "-";
-			// 
 			// reopenMenuItem
 			// 
 			this.reopenMenuItem.Index = 4;
 			this.reopenMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             menuItem6});
 			this.reopenMenuItem.Text = "&Reopen";
-			// 
-			// seperatorMenuItem2
-			// 
-			seperatorMenuItem2.Index = 5;
-			seperatorMenuItem2.Text = "-";
 			// 
 			// exportMenuItem
 			// 
@@ -159,11 +166,6 @@
 			this.importFromMenuItem.Index = 8;
 			this.importFromMenuItem.Text = "&Import from...";
 			// 
-			// seperatorMenuItem3
-			// 
-			seperatorMenuItem3.Index = 9;
-			seperatorMenuItem3.Text = "-";
-			// 
 			// exitMenuItem
 			// 
 			this.exitMenuItem.Index = 10;
@@ -173,16 +175,68 @@
 			// 
 			this.editMenuItem.Index = 1;
 			this.editMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem5,
-            this.menuItem7,
-            this.menuItem8,
-            this.menuItem9,
-            this.menuItem10});
+            this.undoMenuItem,
+            seperatorMenuItem4,
+            this.cutMenuItem,
+            this.copyMenuItem,
+            this.pasteMenuItem,
+            seperatorMenuItem5,
+            this.splitCopyMenuItem,
+            this.splitPasteMenuItem,
+            this.splitOptionsMenuItem});
 			this.editMenuItem.Text = "&Edit";
+			// 
+			// undoMenuItem
+			// 
+			this.undoMenuItem.Index = 0;
+			this.undoMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+			this.undoMenuItem.Text = "&Undo";
+			// 
+			// seperatorMenuItem4
+			// 
+			seperatorMenuItem4.Index = 1;
+			seperatorMenuItem4.Text = "-";
+			// 
+			// cutMenuItem
+			// 
+			this.cutMenuItem.Index = 2;
+			this.cutMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
+			this.cutMenuItem.Text = "Cu&t tile";
+			// 
+			// copyMenuItem
+			// 
+			this.copyMenuItem.Index = 3;
+			this.copyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+			this.copyMenuItem.Text = "&Copy tile";
+			// 
+			// pasteMenuItem
+			// 
+			this.pasteMenuItem.Index = 4;
+			this.pasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+			this.pasteMenuItem.Text = "&Paste tile";
+			// 
+			// seperatorMenuItem5
+			// 
+			seperatorMenuItem5.Index = 5;
+			seperatorMenuItem5.Text = "-";
+			// 
+			// splitCopyMenuItem
+			// 
+			this.splitCopyMenuItem.Index = 6;
+			this.splitCopyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
+			this.splitCopyMenuItem.Text = "Split C&opy";
+			// 
+			// splitPasteMenuItem
+			// 
+			this.splitPasteMenuItem.Index = 7;
+			this.splitPasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftV;
+			this.splitPasteMenuItem.Text = "Split P&aste";
+			// 
+			// splitOptionsMenuItem
+			// 
+			this.splitOptionsMenuItem.Index = 8;
+			this.splitOptionsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
+			this.splitOptionsMenuItem.Text = "Sp&lit options";
 			// 
 			// designMenuItem
 			// 
@@ -395,7 +449,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor6;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -429,58 +483,6 @@
 			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
-			// 
-			// menuItem1
-			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
-			this.menuItem1.Text = "&Undo";
-			// 
-			// menuItem2
-			// 
-			this.menuItem2.Index = 1;
-			this.menuItem2.Text = "-";
-			// 
-			// menuItem3
-			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
-			this.menuItem3.Text = "Cu&t tile";
-			// 
-			// menuItem4
-			// 
-			this.menuItem4.Index = 3;
-			this.menuItem4.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
-			this.menuItem4.Text = "&Copy tile";
-			// 
-			// menuItem5
-			// 
-			this.menuItem5.Index = 4;
-			this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
-			this.menuItem5.Text = "&Paste tile";
-			// 
-			// menuItem7
-			// 
-			this.menuItem7.Index = 5;
-			this.menuItem7.Text = "-";
-			// 
-			// menuItem8
-			// 
-			this.menuItem8.Index = 6;
-			this.menuItem8.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
-			this.menuItem8.Text = "Split C&opy";
-			// 
-			// menuItem9
-			// 
-			this.menuItem9.Index = 7;
-			this.menuItem9.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftV;
-			this.menuItem9.Text = "Split P&aste";
-			// 
-			// menuItem10
-			// 
-			this.menuItem10.Index = 8;
-			this.menuItem10.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
-			this.menuItem10.Text = "Sp&lit options";
 			// 
 			// TileEdit
 			// 
@@ -535,15 +537,13 @@
 		private System.Windows.Forms.MenuItem exportToMenuItem;
 		private System.Windows.Forms.MenuItem importFromMenuItem;
 		private System.Windows.Forms.MenuItem exitMenuItem;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem8;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItem10;
+		private System.Windows.Forms.MenuItem undoMenuItem;
+		private System.Windows.Forms.MenuItem cutMenuItem;
+		private System.Windows.Forms.MenuItem copyMenuItem;
+		private System.Windows.Forms.MenuItem pasteMenuItem;
+		private System.Windows.Forms.MenuItem splitCopyMenuItem;
+		private System.Windows.Forms.MenuItem splitPasteMenuItem;
+		private System.Windows.Forms.MenuItem splitOptionsMenuItem;
 
 	}
 }
