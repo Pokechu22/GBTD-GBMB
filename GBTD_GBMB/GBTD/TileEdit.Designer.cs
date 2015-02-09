@@ -32,6 +32,8 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
+			System.Windows.Forms.MenuItem seperatorMenuItem6;
+			System.Windows.Forms.MenuItem seperatorMenuItem7;
 			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
@@ -52,6 +54,18 @@
 			this.splitPasteMenuItem = new System.Windows.Forms.MenuItem();
 			this.splitOptionsMenuItem = new System.Windows.Forms.MenuItem();
 			this.designMenuItem = new System.Windows.Forms.MenuItem();
+			this.penMenuItem = new System.Windows.Forms.MenuItem();
+			this.floodFillMenuItem = new System.Windows.Forms.MenuItem();
+			this.flipVerticallyMenuItem = new System.Windows.Forms.MenuItem();
+			this.flipHorizontallyMenuItem = new System.Windows.Forms.MenuItem();
+			this.rotateClockwiseMenuItem = new System.Windows.Forms.MenuItem();
+			this.scrollLeftMenuItem = new System.Windows.Forms.MenuItem();
+			this.scrollRightMenuItem = new System.Windows.Forms.MenuItem();
+			this.scrollUpMenuItem = new System.Windows.Forms.MenuItem();
+			this.scrollDownMenuItem = new System.Windows.Forms.MenuItem();
+			this.seperatorMenuItem8 = new System.Windows.Forms.MenuItem();
+			this.clearTilesMenuItem = new System.Windows.Forms.MenuItem();
+			this.flipColorsMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpMenuItem = new System.Windows.Forms.MenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -70,26 +84,14 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem10 = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.menuItem12 = new System.Windows.Forms.MenuItem();
-			this.menuItem13 = new System.Windows.Forms.MenuItem();
-			this.menuItem14 = new System.Windows.Forms.MenuItem();
-			this.menuItem15 = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem5 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem6 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem7 = new System.Windows.Forms.MenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
@@ -256,21 +258,97 @@
 			// 
 			this.designMenuItem.Index = 2;
 			this.designMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem5,
-            this.menuItem7,
-            this.menuItem8,
-            this.menuItem9,
-            this.menuItem10,
-            this.menuItem11,
-            this.menuItem12,
-            this.menuItem13,
-            this.menuItem14,
-            this.menuItem15});
+            this.penMenuItem,
+            this.floodFillMenuItem,
+            seperatorMenuItem6,
+            this.flipVerticallyMenuItem,
+            this.flipHorizontallyMenuItem,
+            this.rotateClockwiseMenuItem,
+            seperatorMenuItem7,
+            this.scrollLeftMenuItem,
+            this.scrollRightMenuItem,
+            this.scrollUpMenuItem,
+            this.scrollDownMenuItem,
+            this.seperatorMenuItem8,
+            this.clearTilesMenuItem,
+            this.flipColorsMenuItem});
 			this.designMenuItem.Text = "&Design";
+			// 
+			// penMenuItem
+			// 
+			this.penMenuItem.Index = 0;
+			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+			this.penMenuItem.Text = "&Pen";
+			// 
+			// floodFillMenuItem
+			// 
+			this.floodFillMenuItem.Index = 1;
+			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+			this.floodFillMenuItem.Text = "&Flood Fill";
+			// 
+			// seperatorMenuItem6
+			// 
+			seperatorMenuItem6.Index = 2;
+			seperatorMenuItem6.Text = "-";
+			// 
+			// flipVerticallyMenuItem
+			// 
+			this.flipVerticallyMenuItem.Index = 3;
+			this.flipVerticallyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
+			this.flipVerticallyMenuItem.Text = "Flip Verticall&y";
+			// 
+			// flipHorizontallyMenuItem
+			// 
+			this.flipHorizontallyMenuItem.Index = 4;
+			this.flipHorizontallyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
+			this.flipHorizontallyMenuItem.Text = "Flip &Horizontally";
+			// 
+			// rotateClockwiseMenuItem
+			// 
+			this.rotateClockwiseMenuItem.Index = 5;
+			this.rotateClockwiseMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			this.rotateClockwiseMenuItem.Text = "&Rotate clockwise";
+			// 
+			// seperatorMenuItem7
+			// 
+			seperatorMenuItem7.Index = 6;
+			seperatorMenuItem7.Text = "-";
+			// 
+			// scrollLeftMenuItem
+			// 
+			this.scrollLeftMenuItem.Index = 7;
+			this.scrollLeftMenuItem.Text = "Scroll &Left";
+			// 
+			// scrollRightMenuItem
+			// 
+			this.scrollRightMenuItem.Index = 8;
+			this.scrollRightMenuItem.Text = "Scroll Ri&ght";
+			// 
+			// scrollUpMenuItem
+			// 
+			this.scrollUpMenuItem.Index = 9;
+			this.scrollUpMenuItem.Text = "Scroll &Up";
+			// 
+			// scrollDownMenuItem
+			// 
+			this.scrollDownMenuItem.Index = 10;
+			this.scrollDownMenuItem.Text = "Scroll &Down";
+			// 
+			// seperatorMenuItem8
+			// 
+			this.seperatorMenuItem8.Index = 11;
+			this.seperatorMenuItem8.Text = "-";
+			// 
+			// clearTilesMenuItem
+			// 
+			this.clearTilesMenuItem.Index = 12;
+			this.clearTilesMenuItem.Text = "&Clear tiles";
+			// 
+			// flipColorsMenuItem
+			// 
+			this.flipColorsMenuItem.Index = 13;
+			this.flipColorsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
+			this.flipColorsMenuItem.Text = "Fl&ip colors";
 			// 
 			// viewMenuItem
 			// 
@@ -513,82 +591,6 @@
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
-			// menuItem1
-			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
-			this.menuItem1.Text = "&Pen";
-			// 
-			// menuItem2
-			// 
-			this.menuItem2.Index = 1;
-			this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
-			this.menuItem2.Text = "&Flood Fill";
-			// 
-			// menuItem3
-			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "-";
-			// 
-			// menuItem4
-			// 
-			this.menuItem4.Index = 3;
-			this.menuItem4.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
-			this.menuItem4.Text = "Flip Verticall&y";
-			// 
-			// menuItem5
-			// 
-			this.menuItem5.Index = 4;
-			this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
-			this.menuItem5.Text = "Flip &Horizontally";
-			// 
-			// menuItem7
-			// 
-			this.menuItem7.Index = 5;
-			this.menuItem7.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
-			this.menuItem7.Text = "&Rotate clockwise";
-			// 
-			// menuItem8
-			// 
-			this.menuItem8.Index = 6;
-			this.menuItem8.Text = "-";
-			// 
-			// menuItem9
-			// 
-			this.menuItem9.Index = 7;
-			this.menuItem9.Text = "Scroll &Left";
-			// 
-			// menuItem10
-			// 
-			this.menuItem10.Index = 8;
-			this.menuItem10.Text = "Scroll Ri&ght";
-			// 
-			// menuItem11
-			// 
-			this.menuItem11.Index = 9;
-			this.menuItem11.Text = "Scroll &Up";
-			// 
-			// menuItem12
-			// 
-			this.menuItem12.Index = 10;
-			this.menuItem12.Text = "Scroll &Down";
-			// 
-			// menuItem13
-			// 
-			this.menuItem13.Index = 11;
-			this.menuItem13.Text = "-";
-			// 
-			// menuItem14
-			// 
-			this.menuItem14.Index = 12;
-			this.menuItem14.Text = "&Clear tiles";
-			// 
-			// menuItem15
-			// 
-			this.menuItem15.Index = 13;
-			this.menuItem15.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
-			this.menuItem15.Text = "Fl&ip colors";
-			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,20 +651,18 @@
 		private System.Windows.Forms.MenuItem splitCopyMenuItem;
 		private System.Windows.Forms.MenuItem splitPasteMenuItem;
 		private System.Windows.Forms.MenuItem splitOptionsMenuItem;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem8;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItem10;
-		private System.Windows.Forms.MenuItem menuItem11;
-		private System.Windows.Forms.MenuItem menuItem12;
-		private System.Windows.Forms.MenuItem menuItem13;
-		private System.Windows.Forms.MenuItem menuItem14;
-		private System.Windows.Forms.MenuItem menuItem15;
+		private System.Windows.Forms.MenuItem penMenuItem;
+		private System.Windows.Forms.MenuItem floodFillMenuItem;
+		private System.Windows.Forms.MenuItem flipVerticallyMenuItem;
+		private System.Windows.Forms.MenuItem flipHorizontallyMenuItem;
+		private System.Windows.Forms.MenuItem rotateClockwiseMenuItem;
+		private System.Windows.Forms.MenuItem scrollLeftMenuItem;
+		private System.Windows.Forms.MenuItem scrollRightMenuItem;
+		private System.Windows.Forms.MenuItem scrollUpMenuItem;
+		private System.Windows.Forms.MenuItem scrollDownMenuItem;
+		private System.Windows.Forms.MenuItem seperatorMenuItem8;
+		private System.Windows.Forms.MenuItem clearTilesMenuItem;
+		private System.Windows.Forms.MenuItem flipColorsMenuItem;
 
 	}
 }
