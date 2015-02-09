@@ -27,20 +27,20 @@
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.MenuItem menuItem6;
+			System.Windows.Forms.MenuItem seperatorMenuItem1;
+			System.Windows.Forms.MenuItem seperatorMenuItem2;
+			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem10 = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.menuItem12 = new System.Windows.Forms.MenuItem();
+			this.reopenMenuItem = new System.Windows.Forms.MenuItem();
+			this.exportMenuItem = new System.Windows.Forms.MenuItem();
+			this.exportToMenuItem = new System.Windows.Forms.MenuItem();
+			this.importFromMenuItem = new System.Windows.Forms.MenuItem();
+			this.exitMenuItem = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.designMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
@@ -62,6 +62,9 @@
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
 			this.toolStrip1.SuspendLayout();
 			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
@@ -87,14 +90,14 @@
             this.openMenuItem,
             this.saveMenuItem,
             this.saveAsMenuItem,
-            this.menuItem4,
-            this.menuItem5,
-            this.menuItem7,
-            this.menuItem8,
-            this.menuItem9,
-            this.menuItem10,
-            this.menuItem11,
-            this.menuItem12});
+            seperatorMenuItem1,
+            this.reopenMenuItem,
+            seperatorMenuItem2,
+            this.exportMenuItem,
+            this.exportToMenuItem,
+            this.importFromMenuItem,
+            seperatorMenuItem3,
+            this.exitMenuItem});
 			this.fileMenuItem.Text = "&File";
 			// 
 			// openMenuItem
@@ -114,48 +117,48 @@
 			this.saveAsMenuItem.Index = 2;
 			this.saveAsMenuItem.Text = "Save &As...";
 			// 
-			// menuItem4
+			// seperatorMenuItem1
 			// 
-			this.menuItem4.Index = 3;
-			this.menuItem4.Text = "-";
+			seperatorMenuItem1.Index = 3;
+			seperatorMenuItem1.Text = "-";
 			// 
-			// menuItem5
+			// reopenMenuItem
 			// 
-			this.menuItem5.Index = 4;
-			this.menuItem5.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.reopenMenuItem.Index = 4;
+			this.reopenMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             menuItem6});
-			this.menuItem5.Text = "&Reopen";
+			this.reopenMenuItem.Text = "&Reopen";
 			// 
-			// menuItem7
+			// seperatorMenuItem2
 			// 
-			this.menuItem7.Index = 5;
-			this.menuItem7.Text = "-";
+			seperatorMenuItem2.Index = 5;
+			seperatorMenuItem2.Text = "-";
 			// 
-			// menuItem8
+			// exportMenuItem
 			// 
-			this.menuItem8.Index = 6;
-			this.menuItem8.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
-			this.menuItem8.Text = "&Export";
+			this.exportMenuItem.Index = 6;
+			this.exportMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
+			this.exportMenuItem.Text = "&Export";
 			// 
-			// menuItem9
+			// exportToMenuItem
 			// 
-			this.menuItem9.Index = 7;
-			this.menuItem9.Text = "Ex&port to...";
+			this.exportToMenuItem.Index = 7;
+			this.exportToMenuItem.Text = "Ex&port to...";
 			// 
-			// menuItem10
+			// importFromMenuItem
 			// 
-			this.menuItem10.Index = 8;
-			this.menuItem10.Text = "&Import from...";
+			this.importFromMenuItem.Index = 8;
+			this.importFromMenuItem.Text = "&Import from...";
 			// 
-			// menuItem11
+			// seperatorMenuItem3
 			// 
-			this.menuItem11.Index = 9;
-			this.menuItem11.Text = "-";
+			seperatorMenuItem3.Index = 9;
+			seperatorMenuItem3.Text = "-";
 			// 
-			// menuItem12
+			// exitMenuItem
 			// 
-			this.menuItem12.Index = 10;
-			this.menuItem12.Text = "E&xit";
+			this.exitMenuItem.Index = 10;
+			this.exitMenuItem.Text = "E&xit";
 			// 
 			// editMenuItem
 			// 
@@ -456,14 +459,11 @@
 		private System.Windows.Forms.MenuItem openMenuItem;
 		private System.Windows.Forms.MenuItem saveMenuItem;
 		private System.Windows.Forms.MenuItem saveAsMenuItem;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItem5;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem8;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItem10;
-		private System.Windows.Forms.MenuItem menuItem11;
-		private System.Windows.Forms.MenuItem menuItem12;
+		private System.Windows.Forms.MenuItem reopenMenuItem;
+		private System.Windows.Forms.MenuItem exportMenuItem;
+		private System.Windows.Forms.MenuItem exportToMenuItem;
+		private System.Windows.Forms.MenuItem importFromMenuItem;
+		private System.Windows.Forms.MenuItem exitMenuItem;
 
 	}
 }
