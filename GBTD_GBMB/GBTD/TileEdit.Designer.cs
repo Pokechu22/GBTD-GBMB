@@ -34,7 +34,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -590,7 +590,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -633,7 +633,7 @@
             this.menuItem3,
             this.menuItem4,
             this.menuItem5});
-			this.menuItem1.Text = "Tile size";
+			this.menuItem1.Text = "&Tile size";
 			// 
 			// menuItem2
 			// 
@@ -658,7 +658,7 @@
 			// menuItem7
 			// 
 			this.menuItem7.Index = 1;
-			this.menuItem7.Text = "Tile count...";
+			this.menuItem7.Text = "Tile &count...";
 			// 
 			// menuItem8
 			// 
@@ -668,17 +668,20 @@
 			// menuItem9
 			// 
 			this.menuItem9.Index = 3;
-			this.menuItem9.Text = "Simple";
+			this.menuItem9.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
+			this.menuItem9.Text = "Si&mple";
 			// 
 			// menuItem10
 			// 
 			this.menuItem10.Index = 4;
-			this.menuItem10.Text = "Grid";
+			this.menuItem10.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
+			this.menuItem10.Text = "&Grid";
 			// 
 			// menuItem11
 			// 
 			this.menuItem11.Index = 5;
-			this.menuItem11.Text = "Nibble markers";
+			this.menuItem11.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
+			this.menuItem11.Text = "&Nibble markers";
 			// 
 			// menuItem12
 			// 
@@ -688,7 +691,8 @@
 			// menuItem13
 			// 
 			this.menuItem13.Index = 7;
-			this.menuItem13.Text = "Auto update";
+			this.menuItem13.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
+			this.menuItem13.Text = "Auto &update";
 			// 
 			// menuItem14
 			// 
@@ -700,7 +704,7 @@
 			this.menuItem15.Index = 9;
 			this.menuItem15.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem16});
-			this.menuItem15.Text = "Color set";
+			this.menuItem15.Text = "C&olor set";
 			// 
 			// menuItem16
 			// 
@@ -710,7 +714,8 @@
 			// menuItem17
 			// 
 			this.menuItem17.Index = 10;
-			this.menuItem17.Text = "Palettes...";
+			this.menuItem17.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
+			this.menuItem17.Text = "P&alettes...";
 			// 
 			// menuItem18
 			// 
@@ -720,12 +725,12 @@
 			// menuItem19
 			// 
 			this.menuItem19.Index = 12;
-			this.menuItem19.Text = "Set bookmark";
+			this.menuItem19.Text = "&Set bookmark";
 			// 
 			// menuItem20
 			// 
 			this.menuItem20.Index = 13;
-			this.menuItem20.Text = "Goto bookmark";
+			this.menuItem20.Text = "Goto &bookmark";
 			// 
 			// TileEdit
 			// 
