@@ -30,7 +30,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem1;
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor5 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -61,6 +61,15 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
+			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.menuItem2 = new System.Windows.Forms.MenuItem();
+			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.menuItem4 = new System.Windows.Forms.MenuItem();
+			this.menuItem5 = new System.Windows.Forms.MenuItem();
+			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem8 = new System.Windows.Forms.MenuItem();
+			this.menuItem9 = new System.Windows.Forms.MenuItem();
+			this.menuItem10 = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -163,6 +172,16 @@
 			// editMenuItem
 			// 
 			this.editMenuItem.Index = 1;
+			this.editMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem1,
+            this.menuItem2,
+            this.menuItem3,
+            this.menuItem4,
+            this.menuItem5,
+            this.menuItem7,
+            this.menuItem8,
+            this.menuItem9,
+            this.menuItem10});
 			this.editMenuItem.Text = "&Edit";
 			// 
 			// designMenuItem
@@ -376,7 +395,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor2;
+			this.mainTileEdit.Editor = pixelTileEditor5;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -410,6 +429,51 @@
 			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
+			// 
+			// menuItem1
+			// 
+			this.menuItem1.Index = 0;
+			this.menuItem1.Text = "Undo";
+			// 
+			// menuItem2
+			// 
+			this.menuItem2.Index = 1;
+			this.menuItem2.Text = "-";
+			// 
+			// menuItem3
+			// 
+			this.menuItem3.Index = 2;
+			this.menuItem3.Text = "Cut tile";
+			// 
+			// menuItem4
+			// 
+			this.menuItem4.Index = 3;
+			this.menuItem4.Text = "Copy tile";
+			// 
+			// menuItem5
+			// 
+			this.menuItem5.Index = 4;
+			this.menuItem5.Text = "Paste tile";
+			// 
+			// menuItem7
+			// 
+			this.menuItem7.Index = 5;
+			this.menuItem7.Text = "-";
+			// 
+			// menuItem8
+			// 
+			this.menuItem8.Index = 6;
+			this.menuItem8.Text = "Split Copy";
+			// 
+			// menuItem9
+			// 
+			this.menuItem9.Index = 7;
+			this.menuItem9.Text = "Split Paste";
+			// 
+			// menuItem10
+			// 
+			this.menuItem10.Index = 8;
+			this.menuItem10.Text = "Split options";
 			// 
 			// TileEdit
 			// 
@@ -464,6 +528,15 @@
 		private System.Windows.Forms.MenuItem exportToMenuItem;
 		private System.Windows.Forms.MenuItem importFromMenuItem;
 		private System.Windows.Forms.MenuItem exitMenuItem;
+		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem menuItem2;
+		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Windows.Forms.MenuItem menuItem4;
+		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem menuItem7;
+		private System.Windows.Forms.MenuItem menuItem8;
+		private System.Windows.Forms.MenuItem menuItem9;
+		private System.Windows.Forms.MenuItem menuItem10;
 
 	}
 }
