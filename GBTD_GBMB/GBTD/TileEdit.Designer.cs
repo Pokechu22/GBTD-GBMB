@@ -30,7 +30,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem1;
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor5 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor6 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -395,7 +395,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor5;
+			this.mainTileEdit.Editor = pixelTileEditor6;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -433,7 +433,8 @@
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "Undo";
+			this.menuItem1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+			this.menuItem1.Text = "&Undo";
 			// 
 			// menuItem2
 			// 
@@ -443,17 +444,20 @@
 			// menuItem3
 			// 
 			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "Cut tile";
+			this.menuItem3.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
+			this.menuItem3.Text = "Cu&t tile";
 			// 
 			// menuItem4
 			// 
 			this.menuItem4.Index = 3;
-			this.menuItem4.Text = "Copy tile";
+			this.menuItem4.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+			this.menuItem4.Text = "&Copy tile";
 			// 
 			// menuItem5
 			// 
 			this.menuItem5.Index = 4;
-			this.menuItem5.Text = "Paste tile";
+			this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+			this.menuItem5.Text = "&Paste tile";
 			// 
 			// menuItem7
 			// 
@@ -463,17 +467,20 @@
 			// menuItem8
 			// 
 			this.menuItem8.Index = 6;
-			this.menuItem8.Text = "Split Copy";
+			this.menuItem8.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
+			this.menuItem8.Text = "Split C&opy";
 			// 
 			// menuItem9
 			// 
 			this.menuItem9.Index = 7;
-			this.menuItem9.Text = "Split Paste";
+			this.menuItem9.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftV;
+			this.menuItem9.Text = "Split P&aste";
 			// 
 			// menuItem10
 			// 
 			this.menuItem10.Index = 8;
-			this.menuItem10.Text = "Split options";
+			this.menuItem10.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
+			this.menuItem10.Text = "Sp&lit options";
 			// 
 			// TileEdit
 			// 
