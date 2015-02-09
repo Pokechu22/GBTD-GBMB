@@ -285,41 +285,41 @@ namespace GB.GBTD
 			//mainTileEdit.NibbleMarkers = nibbleMarkersToolStripMenuItem.Checked;
 		}
 
-		private void size8x8ToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void size8x8MenuItem_Click(object sender, EventArgs e) {
 			//TODO do this better...  This is temporary.
 			mainTileEdit.Tile = new Tile(8, 8);
-			
-			//size8x8ToolStripMenuItem.Checked = true;
-			//size8x16ToolStripMenuItem.Checked = false;
-			//size16x16ToolStripMenuItem.Checked = false;
-			//size32x32ToolStripMenuItem.Checked = false;
+
+			size8x8MenuItem.Checked = true;
+			size8x16MenuItem.Checked = false;
+			size16x16MenuItem.Checked = false;
+			size32x32MenuItem.Checked = false;
 		}
 
-		private void size8x16ToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void size8x16MenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Tile = new Tile(8, 16);
 
-			//size8x8ToolStripMenuItem.Checked = false;
-			//size8x16ToolStripMenuItem.Checked = true;
-			//size16x16ToolStripMenuItem.Checked = false;
-			//size32x32ToolStripMenuItem.Checked = false;
+			size8x8MenuItem.Checked = false;
+			size8x16MenuItem.Checked = true;
+			size16x16MenuItem.Checked = false;
+			size32x32MenuItem.Checked = false;
 		}
 
-		private void size16x16ToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void size16x16MenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Tile = new Tile(16, 16);
 
-			//size8x8ToolStripMenuItem.Checked = false;
-			//size8x16ToolStripMenuItem.Checked = false;
-			//size16x16ToolStripMenuItem.Checked = true;
-			//size32x32ToolStripMenuItem.Checked = false;
+			size8x8MenuItem.Checked = false;
+			size8x16MenuItem.Checked = false;
+			size16x16MenuItem.Checked = true;
+			size32x32MenuItem.Checked = false;
 		}
 
-		private void size32x32ToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void size32x32MenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Tile = new Tile(32, 32);
 
-			//size8x8ToolStripMenuItem.Checked = false;
-			//size8x16ToolStripMenuItem.Checked = false;
-			//size16x16ToolStripMenuItem.Checked = false;
-			//size32x32ToolStripMenuItem.Checked = true;
+			size8x8MenuItem.Checked = false;
+			size8x16MenuItem.Checked = false;
+			size16x16MenuItem.Checked = false;
+			size32x32MenuItem.Checked = true;
 		}
 	}
 }
