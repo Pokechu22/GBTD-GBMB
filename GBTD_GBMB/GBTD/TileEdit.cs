@@ -241,7 +241,7 @@ namespace GB.GBTD
 
 		private void OnClipboardUpdate() {
 			this.pasteMenuItem.Enabled = Clipboard.ContainsImage();
-			this.pasteToolStripButton.Enabled = Clipboard.ContainsImage();
+			//this.pasteToolStripButton.Enabled = Clipboard.ContainsImage();
 		}
 
 		protected override void WndProc(ref Message m) {
