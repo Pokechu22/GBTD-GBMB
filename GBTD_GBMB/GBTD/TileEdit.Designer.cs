@@ -91,12 +91,13 @@
 			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
+			this.imageButton1 = new GB.Shared.Controls.ImageButton();
+			this.border1 = new GB.Shared.Controls.Border();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
-			this.border1 = new GB.Shared.Controls.Border();
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.toolList = new GB.GBTD.ToolList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
@@ -546,6 +547,46 @@
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
 			// 
+			// imageButton1
+			// 
+			this.imageButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+			this.imageButton1.FlatAppearance.BorderSize = 0;
+			this.imageButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+			this.imageButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+			this.imageButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.imageButton1.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
+			this.imageButton1.Image = global::GB.GBTD.Properties.Resources.Open_NoHover;
+			this.imageButton1.Location = new System.Drawing.Point(7, 5);
+			this.imageButton1.Name = "imageButton1";
+			this.imageButton1.NonhoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
+			this.imageButton1.PressedImage = global::GB.GBTD.Properties.Resources.Open_Hover;
+			this.imageButton1.Size = new System.Drawing.Size(24, 24);
+			this.imageButton1.TabIndex = 8;
+			this.imageButton1.UseVisualStyleBackColor = true;
+			// 
+			// border1
+			// 
+			this.border1.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.border1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.border1.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.border1.Location = new System.Drawing.Point(0, 0);
+			this.border1.Name = "border1";
+			this.border1.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.border1.Size = new System.Drawing.Size(397, 32);
+			this.border1.TabIndex = 7;
+			this.border1.Text = "border1";
+			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
+			// 
+			// previewRenderer1
+			// 
+			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
+			this.previewRenderer1.TabIndex = 6;
+			// 
 			// tileList1
 			// 
 			this.tileList1.Location = new System.Drawing.Point(341, 38);
@@ -614,29 +655,6 @@
 			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
 			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
 			// 
-			// border1
-			// 
-			this.border1.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.border1.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.Location = new System.Drawing.Point(0, 0);
-			this.border1.Name = "border1";
-			this.border1.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.Size = new System.Drawing.Size(397, 32);
-			this.border1.TabIndex = 7;
-			this.border1.Text = "border1";
-			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
-			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
-			// 
 			// toolList
 			// 
 			this.toolList.AutoUpdate = false;
@@ -659,7 +677,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(397, 244);
+			this.ClientSize = new System.Drawing.Size(397, 224);
+			this.Controls.Add(this.imageButton1);
 			this.Controls.Add(this.border1);
 			this.Controls.Add(this.previewRenderer1);
 			this.Controls.Add(this.tileList1);
@@ -736,6 +755,7 @@
 		private System.Windows.Forms.MenuItem helpIndexMenuItem;
 		private System.Windows.Forms.MenuItem aboutMenuItem;
 		private Shared.Controls.Border border1;
+		private Shared.Controls.ImageButton imageButton1;
 
 	}
 }
