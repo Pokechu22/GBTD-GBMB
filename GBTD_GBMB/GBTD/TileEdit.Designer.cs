@@ -101,11 +101,11 @@
 			this.copyToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.pasteToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
 			this.helpToolStripButton = new GB.GBTD.TileEdit.HoverChangingToolStripButton();
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.toolList = new GB.GBTD.ToolList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
@@ -274,18 +274,21 @@
 			this.cutMenuItem.Index = 2;
 			this.cutMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
 			this.cutMenuItem.Text = "Cu&t tile";
+			this.cutMenuItem.Click += new System.EventHandler(this.cutButtonClicked);
 			// 
 			// copyMenuItem
 			// 
 			this.copyMenuItem.Index = 3;
 			this.copyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
 			this.copyMenuItem.Text = "&Copy tile";
+			this.copyMenuItem.Click += new System.EventHandler(this.copyButtonClicked);
 			// 
 			// pasteMenuItem
 			// 
 			this.pasteMenuItem.Index = 4;
 			this.pasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
 			this.pasteMenuItem.Text = "&Paste tile";
+			this.pasteMenuItem.Click += new System.EventHandler(this.pasteButtonClicked);
 			// 
 			// splitCopyMenuItem
 			// 
@@ -691,14 +694,6 @@
 			this.helpToolStripButton.Text = "Help topics";
 			this.helpToolStripButton.ToolTipText = "Help topics";
 			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
-			// 
 			// tileList1
 			// 
 			this.tileList1.Location = new System.Drawing.Point(341, 38);
@@ -767,6 +762,14 @@
 			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
 			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
 			// 
+			// previewRenderer1
+			// 
+			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
+			this.previewRenderer1.TabIndex = 6;
+			// 
 			// toolList
 			// 
 			this.toolList.AutoUpdate = false;
@@ -788,7 +791,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(397, 264);
+			this.ClientSize = new System.Drawing.Size(397, 244);
 			this.Controls.Add(this.previewRenderer1);
 			this.Controls.Add(this.tileList1);
 			this.Controls.Add(this.tileEditBorder);

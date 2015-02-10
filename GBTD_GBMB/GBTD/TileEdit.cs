@@ -236,10 +236,11 @@ namespace GB.GBTD
 
 		private void initClipboardChangeCheck() {
 			NativeMethods.AddClipboardFormatListener(Handle);
+			OnClipboardUpdate();
 		}
 
 		private void OnClipboardUpdate() {
-		//	this.pasteTileToolStripMenuItem.Enabled = Clipboard.ContainsImage();
+			this.pasteMenuItem.Enabled = Clipboard.ContainsImage();
 			this.pasteToolStripButton.Enabled = Clipboard.ContainsImage();
 		}
 
