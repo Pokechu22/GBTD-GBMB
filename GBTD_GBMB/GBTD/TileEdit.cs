@@ -322,9 +322,13 @@ namespace GB.GBTD
 			mainTileEdit.Grid = gridMenuItem.Checked;
 		}
 
+		//These two probably aren't the most logical yet.
 		private void autoUpdateMenuItem_Click(object sender, EventArgs e) {
-			autoUpdateMenuItem.Checked ^= true;
-			toolList.AutoUpdate = autoUpdateMenuItem.Checked;
+			toolList.AutoUpdate ^= true;
+		}
+
+		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
+			autoUpdateMenuItem.Checked = toolList.AutoUpdate;
 		}
 	}
 }
