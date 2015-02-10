@@ -170,14 +170,6 @@ namespace GB.GBTD
 			mainTileEdit.Refresh();
 		}
 
-		private void autoUpdatedToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			//toolList.AutoUpdate = autoUpdatedToolStripMenuItem.Checked;
-		}
-
-		private void gridToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			//mainTileEdit.Grid = gridToolStripMenuItem.Checked;
-		}
-
 		private void palettesToolStripMenuItem_Click(object sender, EventArgs e) {
 			ChoosePalette d = new ChoosePalette(paletteChooser.Set/*.Clone() as Palette_Set*/);
 			d.ShowDialog();
@@ -277,14 +269,6 @@ namespace GB.GBTD
 			//TODO
 		}
 
-		private void simpleToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			//previewRenderer1.Simple = simpleToolStripMenuItem.Checked;
-		}
-
-		private void nibbleMarkersToolStripMenuItem_CheckedChanged(object sender, EventArgs e) {
-			//mainTileEdit.NibbleMarkers = nibbleMarkersToolStripMenuItem.Checked;
-		}
-
 		private void size8x8MenuItem_Click(object sender, EventArgs e) {
 			//TODO do this better...  This is temporary.
 			mainTileEdit.Tile = new Tile(8, 8);
@@ -320,6 +304,26 @@ namespace GB.GBTD
 			size8x16MenuItem.Checked = false;
 			size16x16MenuItem.Checked = false;
 			size32x32MenuItem.Checked = true;
+		}
+
+		private void simpleModeMenuItem_Click(object sender, EventArgs e) {
+			simpleModeMenuItem.Checked ^= true;
+			previewRenderer1.Simple = simpleModeMenuItem.Checked;
+		}
+
+		private void nibbleMarkersMenuItem_Click(object sender, EventArgs e) {
+			nibbleMarkersMenuItem.Checked ^= true;
+			mainTileEdit.NibbleMarkers = nibbleMarkersMenuItem.Checked;
+		}
+
+		private void gridMenuItem_Click(object sender, EventArgs e) {
+			gridMenuItem.Checked ^= true;
+			mainTileEdit.Grid = gridMenuItem.Checked;
+		}
+
+		private void autoUpdateMenuItem_Click(object sender, EventArgs e) {
+			autoUpdateMenuItem.Checked ^= true;
+			toolList.AutoUpdate = autoUpdateMenuItem.Checked;
 		}
 	}
 }

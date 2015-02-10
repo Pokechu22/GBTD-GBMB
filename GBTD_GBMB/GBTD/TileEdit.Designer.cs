@@ -37,7 +37,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor4 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -467,24 +467,28 @@
 			this.simpleModeMenuItem.Index = 3;
 			this.simpleModeMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
 			this.simpleModeMenuItem.Text = "Si&mple";
+			this.simpleModeMenuItem.Click += new System.EventHandler(this.simpleModeMenuItem_Click);
 			// 
 			// gridMenuItem
 			// 
 			this.gridMenuItem.Index = 4;
 			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
 			this.gridMenuItem.Text = "&Grid";
+			this.gridMenuItem.Click += new System.EventHandler(this.gridMenuItem_Click);
 			// 
 			// nibbleMarkersMenuItem
 			// 
 			this.nibbleMarkersMenuItem.Index = 5;
 			this.nibbleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.nibbleMarkersMenuItem.Text = "&Nibble markers";
+			this.nibbleMarkersMenuItem.Click += new System.EventHandler(this.nibbleMarkersMenuItem_Click);
 			// 
 			// autoUpdateMenuItem
 			// 
 			this.autoUpdateMenuItem.Index = 7;
 			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
 			this.autoUpdateMenuItem.Text = "Auto &update";
+			this.autoUpdateMenuItem.Click += new System.EventHandler(this.autoUpdateMenuItem_Click);
 			// 
 			// seperatorMenuItem11
 			// 
@@ -745,7 +749,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor4;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
