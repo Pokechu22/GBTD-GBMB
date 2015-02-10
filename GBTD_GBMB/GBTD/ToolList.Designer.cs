@@ -28,16 +28,16 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolList));
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.autoUpdateCheckbox = new GB.GBTD.ToolList.ToolListCheckBox();
-			this.rotateClockwiseButton = new GB.GBTD.ToolList.ToolListButton();
-			this.flipHorizButton = new GB.GBTD.ToolList.ToolListButton();
-			this.flipVertButton = new GB.GBTD.ToolList.ToolListButton();
-			this.scrollDownButton = new GB.GBTD.ToolList.ToolListButton();
-			this.scrollRightButton = new GB.GBTD.ToolList.ToolListButton();
-			this.scrollLeftButton = new GB.GBTD.ToolList.ToolListButton();
-			this.scrollUpButton = new GB.GBTD.ToolList.ToolListButton();
-			this.floodButton = new GB.GBTD.ToolList.ToolListRadioButton();
-			this.penButton = new GB.GBTD.ToolList.ToolListRadioButton();
+			this.autoUpdateCheckbox = new GB.Shared.Controls.ImageCheckBox();
+			this.rotateClockwiseButton = new GB.Shared.Controls.ImageButton();
+			this.flipHorizButton = new GB.Shared.Controls.ImageButton();
+			this.flipVertButton = new GB.Shared.Controls.ImageButton();
+			this.scrollDownButton = new GB.Shared.Controls.ImageButton();
+			this.scrollRightButton = new GB.Shared.Controls.ImageButton();
+			this.scrollLeftButton = new GB.Shared.Controls.ImageButton();
+			this.scrollUpButton = new GB.Shared.Controls.ImageButton();
+			this.floodButton = new GB.Shared.Controls.ImageRadioButton();
+			this.penButton = new GB.Shared.Controls.ImageRadioButton();
 			this.flipBorder = new GB.Shared.Controls.Border();
 			this.moveBorder = new GB.Shared.Controls.Border();
 			this.mainBorder = new GB.Shared.Controls.Border();
@@ -342,17 +342,17 @@
 		#endregion
 
 		private System.Windows.Forms.ToolTip toolTip;
-		private ToolList.ToolListRadioButton floodButton;
-		private ToolList.ToolListRadioButton penButton;
+		private GB.Shared.Controls.ImageRadioButton floodButton;
+		private GB.Shared.Controls.ImageRadioButton penButton;
 		private GB.Shared.Controls.Border flipBorder;
-		private ToolList.ToolListButton scrollDownButton;
-		private ToolList.ToolListButton scrollRightButton;
-		private ToolList.ToolListButton scrollLeftButton;
-		private ToolList.ToolListButton scrollUpButton;
-		private ToolList.ToolListButton rotateClockwiseButton;
-		private ToolList.ToolListButton flipHorizButton;
-		private ToolList.ToolListButton flipVertButton;
-		private ToolList.ToolListCheckBox autoUpdateCheckbox;
+		private GB.Shared.Controls.ImageButton scrollDownButton;
+		private GB.Shared.Controls.ImageButton scrollRightButton;
+		private GB.Shared.Controls.ImageButton scrollLeftButton;
+		private GB.Shared.Controls.ImageButton scrollUpButton;
+		private GB.Shared.Controls.ImageButton rotateClockwiseButton;
+		private GB.Shared.Controls.ImageButton flipHorizButton;
+		private GB.Shared.Controls.ImageButton flipVertButton;
+		private GB.Shared.Controls.ImageCheckBox autoUpdateCheckbox;
 		private Shared.Controls.Border mainBorder;
 		private Shared.Controls.Border moveBorder;
 	}
