@@ -792,7 +792,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(397, 244);
+			this.ClientSize = new System.Drawing.Size(397, 264);
 			this.Controls.Add(this.previewRenderer1);
 			this.Controls.Add(this.tileList1);
 			this.Controls.Add(this.tileEditBorder);
