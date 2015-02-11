@@ -91,21 +91,21 @@
 			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
+			this.imageButton7 = new GB.Shared.Controls.ImageButton();
+			this.imageButton6 = new GB.Shared.Controls.ImageButton();
+			this.imageButton5 = new GB.Shared.Controls.ImageButton();
+			this.imageButton4 = new GB.Shared.Controls.ImageButton();
+			this.border2 = new GB.Shared.Controls.Border();
+			this.imageButton3 = new GB.Shared.Controls.ImageButton();
+			this.imageButton2 = new GB.Shared.Controls.ImageButton();
 			this.imageButton1 = new GB.Shared.Controls.ImageButton();
 			this.border1 = new GB.Shared.Controls.Border();
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.imageButton2 = new GB.Shared.Controls.ImageButton();
-			this.imageButton3 = new GB.Shared.Controls.ImageButton();
-			this.border2 = new GB.Shared.Controls.Border();
-			this.imageButton4 = new GB.Shared.Controls.ImageButton();
-			this.imageButton5 = new GB.Shared.Controls.ImageButton();
-			this.imageButton6 = new GB.Shared.Controls.ImageButton();
-			this.imageButton7 = new GB.Shared.Controls.ImageButton();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -554,10 +554,85 @@
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
 			// 
+			// imageButton7
+			// 
+			this.imageButton7.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
+			this.imageButton7.Location = new System.Drawing.Point(167, 4);
+			this.imageButton7.Name = "imageButton7";
+			this.imageButton7.NonhoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
+			this.imageButton7.Size = new System.Drawing.Size(24, 24);
+			this.imageButton7.TabIndex = 15;
+			this.imageButton7.Text = "imageButton7";
+			// 
+			// imageButton6
+			// 
+			this.imageButton6.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
+			this.imageButton6.Location = new System.Drawing.Point(133, 4);
+			this.imageButton6.Name = "imageButton6";
+			this.imageButton6.NonhoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
+			this.imageButton6.Size = new System.Drawing.Size(24, 24);
+			this.imageButton6.TabIndex = 14;
+			this.imageButton6.Text = "imageButton6";
+			// 
+			// imageButton5
+			// 
+			this.imageButton5.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
+			this.imageButton5.Location = new System.Drawing.Point(110, 4);
+			this.imageButton5.Name = "imageButton5";
+			this.imageButton5.NonhoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
+			this.imageButton5.Size = new System.Drawing.Size(24, 24);
+			this.imageButton5.TabIndex = 13;
+			this.imageButton5.Text = "imageButton5";
+			// 
+			// imageButton4
+			// 
+			this.imageButton4.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
+			this.imageButton4.Location = new System.Drawing.Point(87, 4);
+			this.imageButton4.Name = "imageButton4";
+			this.imageButton4.NonhoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
+			this.imageButton4.Size = new System.Drawing.Size(24, 24);
+			this.imageButton4.TabIndex = 12;
+			this.imageButton4.Text = "imageButton4";
+			// 
+			// border2
+			// 
+			this.border2.BottomBorder = null;
+			this.border2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.border2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.border2.Location = new System.Drawing.Point(81, 2);
+			this.border2.Name = "border2";
+			this.border2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.border2.Size = new System.Drawing.Size(82, 28);
+			this.border2.TabIndex = 11;
+			this.border2.Text = "border2";
+			this.border2.TopBorder = null;
+			// 
+			// imageButton3
+			// 
+			this.imageButton3.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
+			this.imageButton3.Location = new System.Drawing.Point(53, 4);
+			this.imageButton3.Name = "imageButton3";
+			this.imageButton3.NonhoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
+			this.imageButton3.Size = new System.Drawing.Size(24, 24);
+			this.imageButton3.TabIndex = 10;
+			this.imageButton3.Text = "imageButton3";
+			// 
+			// imageButton2
+			// 
+			this.imageButton2.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
+			this.imageButton2.Location = new System.Drawing.Point(30, 4);
+			this.imageButton2.Name = "imageButton2";
+			this.imageButton2.NonhoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
+			this.imageButton2.Size = new System.Drawing.Size(24, 24);
+			this.imageButton2.TabIndex = 9;
+			this.imageButton2.Text = "imageButton2";
+			// 
 			// imageButton1
 			// 
 			this.imageButton1.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
-			this.imageButton1.Location = new System.Drawing.Point(7, 5);
+			this.imageButton1.Location = new System.Drawing.Point(7, 4);
 			this.imageButton1.Name = "imageButton1";
 			this.imageButton1.NonhoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
 			this.imageButton1.Size = new System.Drawing.Size(24, 24);
@@ -577,14 +652,6 @@
 			this.border1.TabIndex = 7;
 			this.border1.Text = "border1";
 			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
-			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
 			// 
 			// tileList1
 			// 
@@ -654,6 +721,14 @@
 			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
 			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
 			// 
+			// previewRenderer1
+			// 
+			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
+			this.previewRenderer1.TabIndex = 6;
+			// 
 			// toolList
 			// 
 			this.toolList.AutoUpdate = false;
@@ -672,86 +747,11 @@
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
-			// imageButton2
-			// 
-			this.imageButton2.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
-			this.imageButton2.Location = new System.Drawing.Point(37, 2);
-			this.imageButton2.Name = "imageButton2";
-			this.imageButton2.NonhoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
-			this.imageButton2.Size = new System.Drawing.Size(24, 24);
-			this.imageButton2.TabIndex = 9;
-			this.imageButton2.Text = "imageButton2";
-			// 
-			// imageButton3
-			// 
-			this.imageButton3.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
-			this.imageButton3.Location = new System.Drawing.Point(78, 5);
-			this.imageButton3.Name = "imageButton3";
-			this.imageButton3.NonhoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
-			this.imageButton3.Size = new System.Drawing.Size(24, 24);
-			this.imageButton3.TabIndex = 10;
-			this.imageButton3.Text = "imageButton3";
-			// 
-			// border2
-			// 
-			this.border2.BottomBorder = null;
-			this.border2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left};
-			this.border2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border2.Location = new System.Drawing.Point(118, 2);
-			this.border2.Name = "border2";
-			this.border2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border2.Size = new System.Drawing.Size(107, 28);
-			this.border2.TabIndex = 11;
-			this.border2.Text = "border2";
-			this.border2.TopBorder = null;
-			// 
-			// imageButton4
-			// 
-			this.imageButton4.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
-			this.imageButton4.Location = new System.Drawing.Point(123, 7);
-			this.imageButton4.Name = "imageButton4";
-			this.imageButton4.NonhoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
-			this.imageButton4.Size = new System.Drawing.Size(24, 24);
-			this.imageButton4.TabIndex = 12;
-			this.imageButton4.Text = "imageButton4";
-			// 
-			// imageButton5
-			// 
-			this.imageButton5.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
-			this.imageButton5.Location = new System.Drawing.Point(154, 10);
-			this.imageButton5.Name = "imageButton5";
-			this.imageButton5.NonhoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
-			this.imageButton5.Size = new System.Drawing.Size(24, 24);
-			this.imageButton5.TabIndex = 13;
-			this.imageButton5.Text = "imageButton5";
-			// 
-			// imageButton6
-			// 
-			this.imageButton6.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
-			this.imageButton6.Location = new System.Drawing.Point(186, 12);
-			this.imageButton6.Name = "imageButton6";
-			this.imageButton6.NonhoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
-			this.imageButton6.Size = new System.Drawing.Size(24, 24);
-			this.imageButton6.TabIndex = 14;
-			this.imageButton6.Text = "imageButton6";
-			// 
-			// imageButton7
-			// 
-			this.imageButton7.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
-			this.imageButton7.Location = new System.Drawing.Point(237, 11);
-			this.imageButton7.Name = "imageButton7";
-			this.imageButton7.NonhoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
-			this.imageButton7.Size = new System.Drawing.Size(24, 24);
-			this.imageButton7.TabIndex = 15;
-			this.imageButton7.Text = "imageButton7";
-			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(397, 224);
+			this.ClientSize = new System.Drawing.Size(397, 264);
 			this.Controls.Add(this.imageButton7);
 			this.Controls.Add(this.imageButton6);
 			this.Controls.Add(this.imageButton5);
