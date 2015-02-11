@@ -102,6 +102,9 @@ namespace GB.GBTD
 			initClipboardChangeCheck();
 
 			previewRenderer1.TileData = mainTileEdit.TileData;
+
+			// Stupid resizing due to menus; this fixes it. :/
+			this.ClientSize = new Size(397, 264);
 		}
 
 		private volatile bool updatingFromTileList = false;
