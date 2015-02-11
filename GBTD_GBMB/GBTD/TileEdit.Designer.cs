@@ -91,6 +91,7 @@
 			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.helpButton = new GB.Shared.Controls.ImageButton();
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.copyButton = new GB.Shared.Controls.ImageButton();
@@ -100,13 +101,12 @@
 			this.saveButton = new GB.Shared.Controls.ImageButton();
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -664,6 +664,14 @@
 			this.toolStripBorder.Text = "border1";
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
+			// previewRenderer1
+			// 
+			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
+			this.previewRenderer1.TabIndex = 6;
+			// 
 			// tileList1
 			// 
 			this.tileList1.Location = new System.Drawing.Point(341, 38);
@@ -750,14 +758,6 @@
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
-			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -777,8 +777,6 @@
 			this.Controls.Add(this.tileEditBorder);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Menu = this.mainMenu;
-			this.MinimumSize = new System.Drawing.Size(0, 309);
 			this.Name = "TileEdit";
 			this.Text = " ";
 			this.tileEditBorder.ResumeLayout(false);

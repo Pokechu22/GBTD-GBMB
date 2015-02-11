@@ -107,6 +107,14 @@ namespace GB.GBTD
 			this.ClientSize = new Size(397, 264);
 		}
 
+		protected override void OnLoad(EventArgs e) {
+			//Loads the menu.
+			//http://stackoverflow.com/a/28462365/3991344
+			this.Menu = this.mainMenu;
+
+			base.OnLoad(e);
+		}
+
 		private volatile bool updatingFromTileList = false;
 
 		/// <summary>
