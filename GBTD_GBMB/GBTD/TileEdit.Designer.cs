@@ -549,20 +549,12 @@
 			// 
 			// imageButton1
 			// 
-			this.imageButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.imageButton1.FlatAppearance.BorderSize = 0;
-			this.imageButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.imageButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.imageButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.imageButton1.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
-			this.imageButton1.Image = global::GB.GBTD.Properties.Resources.Open_NoHover;
 			this.imageButton1.Location = new System.Drawing.Point(7, 5);
 			this.imageButton1.Name = "imageButton1";
 			this.imageButton1.NonhoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
-			this.imageButton1.PressedImage = global::GB.GBTD.Properties.Resources.Open_Hover;
 			this.imageButton1.Size = new System.Drawing.Size(24, 24);
 			this.imageButton1.TabIndex = 8;
-			this.imageButton1.UseVisualStyleBackColor = true;
 			// 
 			// border1
 			// 

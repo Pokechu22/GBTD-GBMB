@@ -70,149 +70,86 @@
 			// 
 			// rotateClockwiseButton
 			// 
-			this.rotateClockwiseButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.rotateClockwiseButton.FlatAppearance.BorderSize = 0;
-			this.rotateClockwiseButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.rotateClockwiseButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.rotateClockwiseButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.rotateClockwiseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.rotateClockwiseButton.HoveredImage = global::GB.GBTD.Properties.Resources.RotateClockwise_Hover;
-			this.rotateClockwiseButton.Image = global::GB.GBTD.Properties.Resources.RotateClockwise_NoHover;
 			this.rotateClockwiseButton.Location = new System.Drawing.Point(1, 41);
 			this.rotateClockwiseButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.rotateClockwiseButton.Name = "rotateClockwiseButton";
 			this.rotateClockwiseButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.RotateClockwise_NoHover;
-			this.rotateClockwiseButton.PressedImage = global::GB.GBTD.Properties.Resources.RotateClockwise_Pressed;
 			this.rotateClockwiseButton.Size = new System.Drawing.Size(20, 20);
 			this.rotateClockwiseButton.TabIndex = 2;
 			this.toolTip.SetToolTip(this.rotateClockwiseButton, "Rotate clockwise");
-			this.rotateClockwiseButton.UseVisualStyleBackColor = true;
 			this.rotateClockwiseButton.Click += new System.EventHandler(this.OnRotateClockwiseClicked);
 			// 
 			// flipHorizButton
 			// 
-			this.flipHorizButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.flipHorizButton.FlatAppearance.BorderSize = 0;
-			this.flipHorizButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.flipHorizButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.flipHorizButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.flipHorizButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.flipHorizButton.HoveredImage = global::GB.GBTD.Properties.Resources.FlipHorizontally_Hover;
-			this.flipHorizButton.Image = global::GB.GBTD.Properties.Resources.FlipHorizontally_NoHover;
 			this.flipHorizButton.Location = new System.Drawing.Point(1, 21);
 			this.flipHorizButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.flipHorizButton.Name = "flipHorizButton";
 			this.flipHorizButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.FlipHorizontally_NoHover;
-			this.flipHorizButton.PressedImage = global::GB.GBTD.Properties.Resources.FlipHorizontally_Pressed;
 			this.flipHorizButton.Size = new System.Drawing.Size(20, 20);
 			this.flipHorizButton.TabIndex = 1;
 			this.toolTip.SetToolTip(this.flipHorizButton, "Flip horizontally");
-			this.flipHorizButton.UseVisualStyleBackColor = true;
 			this.flipHorizButton.Click += new System.EventHandler(this.OnFlipHorizontallyClicked);
 			// 
 			// flipVertButton
 			// 
-			this.flipVertButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.flipVertButton.FlatAppearance.BorderSize = 0;
-			this.flipVertButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.flipVertButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.flipVertButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.flipVertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.flipVertButton.HoveredImage = global::GB.GBTD.Properties.Resources.FlipVertically_Hover;
-			this.flipVertButton.Image = global::GB.GBTD.Properties.Resources.FlipVertically_NoHover;
 			this.flipVertButton.Location = new System.Drawing.Point(1, 1);
 			this.flipVertButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.flipVertButton.Name = "flipVertButton";
 			this.flipVertButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.FlipVertically_NoHover;
-			this.flipVertButton.PressedImage = global::GB.GBTD.Properties.Resources.FlipVertically_Pressed;
 			this.flipVertButton.Size = new System.Drawing.Size(20, 20);
 			this.flipVertButton.TabIndex = 0;
 			this.toolTip.SetToolTip(this.flipVertButton, "Flip vertically");
-			this.flipVertButton.UseVisualStyleBackColor = true;
 			this.flipVertButton.Click += new System.EventHandler(this.OnFlipVerticallyClicked);
 			// 
 			// scrollDownButton
 			// 
-			this.scrollDownButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.scrollDownButton.FlatAppearance.BorderSize = 0;
-			this.scrollDownButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.scrollDownButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.scrollDownButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.scrollDownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.scrollDownButton.HoveredImage = global::GB.GBTD.Properties.Resources.ScrollDown_Hover;
-			this.scrollDownButton.Image = global::GB.GBTD.Properties.Resources.ScrollDown_NoHover;
 			this.scrollDownButton.Location = new System.Drawing.Point(1, 61);
 			this.scrollDownButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollDownButton.Name = "scrollDownButton";
 			this.scrollDownButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollDown_NoHover;
-			this.scrollDownButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollDown_Pressed;
 			this.scrollDownButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollDownButton.TabIndex = 3;
 			this.toolTip.SetToolTip(this.scrollDownButton, "Scroll down");
-			this.scrollDownButton.UseVisualStyleBackColor = true;
 			this.scrollDownButton.Click += new System.EventHandler(this.OnScrollDownClicked);
 			// 
 			// scrollRightButton
 			// 
-			this.scrollRightButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.scrollRightButton.FlatAppearance.BorderSize = 0;
-			this.scrollRightButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.scrollRightButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.scrollRightButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.scrollRightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.scrollRightButton.HoveredImage = global::GB.GBTD.Properties.Resources.ScrollRight_Hover;
-			this.scrollRightButton.Image = global::GB.GBTD.Properties.Resources.ScrollRight_NoHover;
 			this.scrollRightButton.Location = new System.Drawing.Point(1, 41);
 			this.scrollRightButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollRightButton.Name = "scrollRightButton";
 			this.scrollRightButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollRight_NoHover;
-			this.scrollRightButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollRight_Pressed;
 			this.scrollRightButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollRightButton.TabIndex = 2;
 			this.toolTip.SetToolTip(this.scrollRightButton, "Scroll right");
-			this.scrollRightButton.UseVisualStyleBackColor = true;
 			this.scrollRightButton.Click += new System.EventHandler(this.OnScrollRightClicked);
 			// 
 			// scrollLeftButton
 			// 
-			this.scrollLeftButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.scrollLeftButton.FlatAppearance.BorderSize = 0;
-			this.scrollLeftButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.scrollLeftButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.scrollLeftButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.scrollLeftButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.scrollLeftButton.HoveredImage = global::GB.GBTD.Properties.Resources.ScrollLeft_Hover;
-			this.scrollLeftButton.Image = global::GB.GBTD.Properties.Resources.ScrollLeft_NoHover;
 			this.scrollLeftButton.Location = new System.Drawing.Point(1, 21);
 			this.scrollLeftButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollLeftButton.Name = "scrollLeftButton";
 			this.scrollLeftButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollLeft_NoHover;
-			this.scrollLeftButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollLeft_Pressed;
 			this.scrollLeftButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollLeftButton.TabIndex = 1;
 			this.toolTip.SetToolTip(this.scrollLeftButton, "Scroll left");
-			this.scrollLeftButton.UseVisualStyleBackColor = true;
 			this.scrollLeftButton.Click += new System.EventHandler(this.OnScrollLeftClicked);
 			// 
 			// scrollUpButton
 			// 
-			this.scrollUpButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.scrollUpButton.FlatAppearance.BorderSize = 0;
-			this.scrollUpButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.scrollUpButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.scrollUpButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.scrollUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.scrollUpButton.HoveredImage = global::GB.GBTD.Properties.Resources.ScrollUp_Hover;
-			this.scrollUpButton.Image = global::GB.GBTD.Properties.Resources.ScrollUp_NoHover;
 			this.scrollUpButton.Location = new System.Drawing.Point(1, 1);
 			this.scrollUpButton.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
 			this.scrollUpButton.Name = "scrollUpButton";
 			this.scrollUpButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.ScrollUp_NoHover;
-			this.scrollUpButton.PressedImage = global::GB.GBTD.Properties.Resources.ScrollUp_Pressed;
 			this.scrollUpButton.Size = new System.Drawing.Size(20, 20);
 			this.scrollUpButton.TabIndex = 0;
 			this.toolTip.SetToolTip(this.scrollUpButton, "Scroll up");
-			this.scrollUpButton.UseVisualStyleBackColor = true;
 			this.scrollUpButton.Click += new System.EventHandler(this.OnScrollUpClicked);
 			// 
 			// floodButton

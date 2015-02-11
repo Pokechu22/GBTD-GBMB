@@ -13,39 +13,39 @@ namespace GB.Shared.Controls
 	/// 
 	/// It has three images: Mouse over, mouse not over; mouse down and over.
 	/// </summary>
-	public class ImageButton : Button
+	public class ImageButton : Control
 	{
 		private bool mouseInside = false;
 		private bool MouseInside {
 			get { return mouseInside; }
-			set { mouseInside = value; UpdateImage(); }
+			set {
+				mouseInside = value;
+				this.Invalidate();
+			}
 		}
 		private bool mouseDown = false;
 		private bool IsMouseDown {
 			get { return mouseDown; }
-			set { mouseDown = value; UpdateImage(); }
+			set {
+				mouseDown = value;
+				this.Invalidate();
+			}
 		}
 
 		private Image nonhoveredImage = new Bitmap(16, 16);
 		private Image hoveredImage = new Bitmap(16, 16);
-		private Image pressedImage = new Bitmap(16, 16);
 
 		[Category("Appearance"), Description("The image to use when not hovered over.")]
 		public Image NonhoveredImage {
 			get { return nonhoveredImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; UpdateImage(); }
+			set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; this.Invalidate(); }
 		}
 		[Category("Appearance"), Description("The image to use when hovered over.")]
 		public Image HoveredImage {
 			get { return hoveredImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; UpdateImage(); }
+			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(); }
 		}
-		[Category("Appearance"), Description("The image to use when pressed.")]
-		public Image PressedImage {
-			get { return pressedImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } pressedImage = value; UpdateImage(); }
-		}
-
+		
 		[DefaultValue("")]
 		public override string Text {
 			get { return base.Text; }
@@ -59,16 +59,23 @@ namespace GB.Shared.Controls
 		public ImageButton()
 			: base() {
 			AutoSize = false;
+			this.SetStyle(ControlStyles.StandardDoubleClick, false);
 		}
 
-		protected override void OnMouseEnter(EventArgs eventargs) {
-			MouseInside = true;
-			base.OnMouseEnter(eventargs);
+		protected override void OnMouseEnter(EventArgs e) {
+			MouseInside = (new Rectangle(new Point(0, 0), this.Size).Contains(PointToClient(MousePosition)));
+
+			base.OnMouseEnter(e);
 		}
-		protected override void OnMouseLeave(EventArgs eventargs) {
-			IsMouseDown = false;
-			MouseInside = false;
-			base.OnMouseLeave(eventargs);
+		protected override void OnMouseLeave(EventArgs e) {
+			MouseInside = (new Rectangle(new Point(0, 0), this.Size).Contains(PointToClient(MousePosition)));
+
+			base.OnMouseLeave(e);
+		}
+		protected override void OnMouseMove(MouseEventArgs e) {
+			MouseInside = (new Rectangle(new Point(0, 0), this.Size).Contains(PointToClient(MousePosition)));
+
+			base.OnMouseMove(e);
 		}
 		protected override void OnMouseDown(MouseEventArgs e) {
 			if (e.Button.HasFlag(MouseButtons.Left)) {
@@ -83,26 +90,27 @@ namespace GB.Shared.Controls
 			base.OnMouseUp(e);
 		}
 
-		protected void UpdateImage() {
+		//Border painting.
+		protected override void OnPaint(PaintEventArgs e) {
+			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
 			if (mouseDown) {
 				if (mouseInside) {
-					this.Image = pressedImage;
+					e.Graphics.DrawImageUnscaled(hoveredImage, 
+						(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
 				} else {
-					this.Image = hoveredImage;
+					e.Graphics.DrawImageUnscaled(hoveredImage,
+						(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
 				}
 			} else {
 				if (mouseInside) {
-					this.Image = hoveredImage;
+					e.Graphics.DrawImageUnscaled(hoveredImage,
+						(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
 				} else {
-					this.Image = nonhoveredImage;
+					e.Graphics.DrawImageUnscaled(nonhoveredImage,
+						(this.Width / 2) - (nonhoveredImage.Width / 2), (this.Height / 2) - (nonhoveredImage.Height / 2));
 				}
 			}
-			this.Invalidate(true);
-		}
-
-		//Border painting.
-		protected override void OnPaint(PaintEventArgs e) {
-			base.OnPaint(e);
 
 			if (mouseDown) {
 				if (mouseInside) {
@@ -117,6 +125,8 @@ namespace GB.Shared.Controls
 					//Do nothing.
 				}
 			}
+
+			base.OnPaint(e);
 		}
 	}
 }
