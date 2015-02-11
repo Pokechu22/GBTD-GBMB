@@ -91,21 +91,22 @@
 			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
-			this.imageButton7 = new GB.Shared.Controls.ImageButton();
-			this.imageButton6 = new GB.Shared.Controls.ImageButton();
-			this.imageButton5 = new GB.Shared.Controls.ImageButton();
-			this.imageButton4 = new GB.Shared.Controls.ImageButton();
-			this.border2 = new GB.Shared.Controls.Border();
-			this.imageButton3 = new GB.Shared.Controls.ImageButton();
-			this.imageButton2 = new GB.Shared.Controls.ImageButton();
-			this.imageButton1 = new GB.Shared.Controls.ImageButton();
-			this.border1 = new GB.Shared.Controls.Border();
+			this.helpButton = new GB.Shared.Controls.ImageButton();
+			this.pasteButton = new GB.Shared.Controls.ImageButton();
+			this.copyButton = new GB.Shared.Controls.ImageButton();
+			this.cutButton = new GB.Shared.Controls.ImageButton();
+			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
+			this.exportButton = new GB.Shared.Controls.ImageButton();
+			this.saveButton = new GB.Shared.Controls.ImageButton();
+			this.openButton = new GB.Shared.Controls.ImageButton();
+			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.toolList = new GB.GBTD.ToolList();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -554,104 +555,111 @@
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
 			// 
-			// imageButton7
+			// helpButton
 			// 
-			this.imageButton7.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
-			this.imageButton7.Location = new System.Drawing.Point(167, 4);
-			this.imageButton7.Name = "imageButton7";
-			this.imageButton7.NonhoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
-			this.imageButton7.Size = new System.Drawing.Size(24, 24);
-			this.imageButton7.TabIndex = 15;
-			this.imageButton7.Text = "imageButton7";
+			this.helpButton.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
+			this.helpButton.Location = new System.Drawing.Point(167, 4);
+			this.helpButton.Name = "helpButton";
+			this.helpButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
+			this.helpButton.Size = new System.Drawing.Size(24, 24);
+			this.helpButton.TabIndex = 15;
+			this.helpButton.Text = "imageButton7";
+			this.toolTip.SetToolTip(this.helpButton, "Help topics");
 			// 
-			// imageButton6
+			// pasteButton
 			// 
-			this.imageButton6.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
-			this.imageButton6.Location = new System.Drawing.Point(133, 4);
-			this.imageButton6.Name = "imageButton6";
-			this.imageButton6.NonhoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
-			this.imageButton6.Size = new System.Drawing.Size(24, 24);
-			this.imageButton6.TabIndex = 14;
-			this.imageButton6.Text = "imageButton6";
+			this.pasteButton.HoveredImage = global::GB.GBTD.Properties.Resources.Paste_Hover;
+			this.pasteButton.Location = new System.Drawing.Point(133, 4);
+			this.pasteButton.Name = "pasteButton";
+			this.pasteButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
+			this.pasteButton.Size = new System.Drawing.Size(24, 24);
+			this.pasteButton.TabIndex = 14;
+			this.pasteButton.Text = "imageButton6";
+			this.toolTip.SetToolTip(this.pasteButton, "Paste");
 			// 
-			// imageButton5
+			// copyButton
 			// 
-			this.imageButton5.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
-			this.imageButton5.Location = new System.Drawing.Point(110, 4);
-			this.imageButton5.Name = "imageButton5";
-			this.imageButton5.NonhoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
-			this.imageButton5.Size = new System.Drawing.Size(24, 24);
-			this.imageButton5.TabIndex = 13;
-			this.imageButton5.Text = "imageButton5";
+			this.copyButton.HoveredImage = global::GB.GBTD.Properties.Resources.Copy_Hover;
+			this.copyButton.Location = new System.Drawing.Point(110, 4);
+			this.copyButton.Name = "copyButton";
+			this.copyButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
+			this.copyButton.Size = new System.Drawing.Size(24, 24);
+			this.copyButton.TabIndex = 13;
+			this.copyButton.Text = "imageButton5";
+			this.toolTip.SetToolTip(this.copyButton, "Copy");
 			// 
-			// imageButton4
+			// cutButton
 			// 
-			this.imageButton4.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
-			this.imageButton4.Location = new System.Drawing.Point(87, 4);
-			this.imageButton4.Name = "imageButton4";
-			this.imageButton4.NonhoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
-			this.imageButton4.Size = new System.Drawing.Size(24, 24);
-			this.imageButton4.TabIndex = 12;
-			this.imageButton4.Text = "imageButton4";
+			this.cutButton.HoveredImage = global::GB.GBTD.Properties.Resources.Cut_Hover;
+			this.cutButton.Location = new System.Drawing.Point(87, 4);
+			this.cutButton.Name = "cutButton";
+			this.cutButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
+			this.cutButton.Size = new System.Drawing.Size(24, 24);
+			this.cutButton.TabIndex = 12;
+			this.cutButton.Text = "imageButton4";
+			this.toolTip.SetToolTip(this.cutButton, "Cut");
 			// 
-			// border2
+			// toolStripSeperatorBorder
 			// 
-			this.border2.BottomBorder = null;
-			this.border2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+			this.toolStripSeperatorBorder.BottomBorder = null;
+			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Right,
         System.Windows.Forms.Border3DSide.Left};
-			this.border2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border2.Location = new System.Drawing.Point(81, 2);
-			this.border2.Name = "border2";
-			this.border2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border2.Size = new System.Drawing.Size(82, 28);
-			this.border2.TabIndex = 11;
-			this.border2.Text = "border2";
-			this.border2.TopBorder = null;
+			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
+			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
+			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
+			this.toolStripSeperatorBorder.TabIndex = 11;
+			this.toolStripSeperatorBorder.Text = "border2";
+			this.toolStripSeperatorBorder.TopBorder = null;
 			// 
-			// imageButton3
+			// exportButton
 			// 
-			this.imageButton3.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
-			this.imageButton3.Location = new System.Drawing.Point(53, 4);
-			this.imageButton3.Name = "imageButton3";
-			this.imageButton3.NonhoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
-			this.imageButton3.Size = new System.Drawing.Size(24, 24);
-			this.imageButton3.TabIndex = 10;
-			this.imageButton3.Text = "imageButton3";
+			this.exportButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
+			this.exportButton.Location = new System.Drawing.Point(53, 4);
+			this.exportButton.Name = "exportButton";
+			this.exportButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
+			this.exportButton.Size = new System.Drawing.Size(24, 24);
+			this.exportButton.TabIndex = 10;
+			this.exportButton.Text = "imageButton3";
+			this.toolTip.SetToolTip(this.exportButton, "Export");
 			// 
-			// imageButton2
+			// saveButton
 			// 
-			this.imageButton2.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
-			this.imageButton2.Location = new System.Drawing.Point(30, 4);
-			this.imageButton2.Name = "imageButton2";
-			this.imageButton2.NonhoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
-			this.imageButton2.Size = new System.Drawing.Size(24, 24);
-			this.imageButton2.TabIndex = 9;
-			this.imageButton2.Text = "imageButton2";
+			this.saveButton.HoveredImage = global::GB.GBTD.Properties.Resources.Save_Hover;
+			this.saveButton.Location = new System.Drawing.Point(30, 4);
+			this.saveButton.Name = "saveButton";
+			this.saveButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
+			this.saveButton.Size = new System.Drawing.Size(24, 24);
+			this.saveButton.TabIndex = 9;
+			this.saveButton.Text = "imageButton2";
+			this.toolTip.SetToolTip(this.saveButton, "Save");
 			// 
-			// imageButton1
+			// openButton
 			// 
-			this.imageButton1.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
-			this.imageButton1.Location = new System.Drawing.Point(7, 4);
-			this.imageButton1.Name = "imageButton1";
-			this.imageButton1.NonhoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
-			this.imageButton1.Size = new System.Drawing.Size(24, 24);
-			this.imageButton1.TabIndex = 8;
+			this.openButton.HoveredImage = global::GB.GBTD.Properties.Resources.Open_Hover;
+			this.openButton.Location = new System.Drawing.Point(7, 4);
+			this.openButton.Name = "openButton";
+			this.openButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Open_NoHover;
+			this.openButton.Size = new System.Drawing.Size(24, 24);
+			this.openButton.TabIndex = 8;
+			this.toolTip.SetToolTip(this.openButton, "Open");
 			// 
-			// border1
+			// toolStripBorder
 			// 
-			this.border1.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+			this.toolStripBorder.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Top,
         System.Windows.Forms.Border3DSide.Bottom};
-			this.border1.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.Location = new System.Drawing.Point(0, 0);
-			this.border1.Name = "border1";
-			this.border1.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.Size = new System.Drawing.Size(397, 32);
-			this.border1.TabIndex = 7;
-			this.border1.Text = "border1";
-			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripBorder.Location = new System.Drawing.Point(0, 0);
+			this.toolStripBorder.Name = "toolStripBorder";
+			this.toolStripBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripBorder.Size = new System.Drawing.Size(397, 32);
+			this.toolStripBorder.TabIndex = 7;
+			this.toolStripBorder.Text = "border1";
+			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
 			// tileList1
 			// 
@@ -751,16 +759,16 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(397, 264);
-			this.Controls.Add(this.imageButton7);
-			this.Controls.Add(this.imageButton6);
-			this.Controls.Add(this.imageButton5);
-			this.Controls.Add(this.imageButton4);
-			this.Controls.Add(this.border2);
-			this.Controls.Add(this.imageButton3);
-			this.Controls.Add(this.imageButton2);
-			this.Controls.Add(this.imageButton1);
-			this.Controls.Add(this.border1);
+			this.ClientSize = new System.Drawing.Size(397, 204);
+			this.Controls.Add(this.helpButton);
+			this.Controls.Add(this.pasteButton);
+			this.Controls.Add(this.copyButton);
+			this.Controls.Add(this.cutButton);
+			this.Controls.Add(this.toolStripSeperatorBorder);
+			this.Controls.Add(this.exportButton);
+			this.Controls.Add(this.saveButton);
+			this.Controls.Add(this.openButton);
+			this.Controls.Add(this.toolStripBorder);
 			this.Controls.Add(this.previewRenderer1);
 			this.Controls.Add(this.tileList1);
 			this.Controls.Add(this.tileEditBorder);
@@ -835,15 +843,16 @@
 		private System.Windows.Forms.MenuItem helpTopicsMenuItem;
 		private System.Windows.Forms.MenuItem helpIndexMenuItem;
 		private System.Windows.Forms.MenuItem aboutMenuItem;
-		private Shared.Controls.Border border1;
-		private Shared.Controls.ImageButton imageButton1;
-		private Shared.Controls.ImageButton imageButton2;
-		private Shared.Controls.ImageButton imageButton3;
-		private Shared.Controls.Border border2;
-		private Shared.Controls.ImageButton imageButton4;
-		private Shared.Controls.ImageButton imageButton5;
-		private Shared.Controls.ImageButton imageButton6;
-		private Shared.Controls.ImageButton imageButton7;
+		private Shared.Controls.Border toolStripBorder;
+		private Shared.Controls.ImageButton openButton;
+		private Shared.Controls.ImageButton saveButton;
+		private Shared.Controls.ImageButton exportButton;
+		private Shared.Controls.Border toolStripSeperatorBorder;
+		private Shared.Controls.ImageButton cutButton;
+		private Shared.Controls.ImageButton copyButton;
+		private Shared.Controls.ImageButton pasteButton;
+		private Shared.Controls.ImageButton helpButton;
+		private System.Windows.Forms.ToolTip toolTip;
 
 	}
 }
