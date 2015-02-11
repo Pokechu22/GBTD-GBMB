@@ -15,6 +15,8 @@ namespace GB.Shared.Controls
 	/// </summary>
 	public class ImageButton : Control
 	{
+		protected override Size DefaultSize { get { return new Size(24, 24); } }
+
 		private bool mouseInside = false;
 		private bool MouseInside {
 			get { return mouseInside; }
