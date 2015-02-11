@@ -129,12 +129,43 @@ namespace GB.Shared.Controls
 					}
 				}
 			} else {
-				//TODO Not right
-				ControlPaint.DrawImageDisabled(e.Graphics, nonhoveredImage,
-							(this.Width / 2) - (nonhoveredImage.Width / 2), (this.Height / 2) - (nonhoveredImage.Height / 2), SystemColors.ControlLight);
+				//Silly method to draw an image as a disabled style, in the simple, monochrome method.
+				//DrawImageDisabled usually makes things grayscale instead, unfortunately.
+				using (Bitmap light = MakeMonochrome(nonhoveredImage, Color.FromArgb(255, 255, 255))) {
+					e.Graphics.DrawImageUnscaled(light,
+							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
+				}
+				using (Bitmap dark = MakeMonochrome(nonhoveredImage, Color.FromArgb(128, 128, 128))) {
+					e.Graphics.DrawImageUnscaled(dark,
+							(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
+				}
 			}
 
 			base.OnPaint(e);
+		}
+
+		/// <summary>
+		/// Creates a monochrome version of a bitmap - All non-transparent pixels are set to a single color.
+		/// This method is NOT efficiant whatsoever, but it's good enough with 16x16 pixels.
+		/// This only exists because the full DrawImageDisabled code is private.
+		/// </summary>
+		private Bitmap MakeMonochrome(Image image, Color c) {
+			Bitmap returned = new Bitmap(image.Width, image.Height);
+			returned.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+			using (Bitmap bmp = new Bitmap(image)) {
+				for (int x = 0; x < bmp.Width; x++) {
+					for (int y = 0; y < bmp.Height; y++) {
+						if (bmp.GetPixel(x, y).A < 255 || bmp.GetPixel(x, y).GetBrightness() > .9f) {
+							returned.SetPixel(x, y, Color.Transparent);
+						} else {
+							returned.SetPixel(x, y, c);
+						}
+					}
+				}
+			}
+
+			return returned;
 		}
 	}
 }
