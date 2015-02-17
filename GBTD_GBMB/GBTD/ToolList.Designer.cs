@@ -28,9 +28,6 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolList));
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.flipBorder = new GB.Shared.Controls.Border();
-			this.moveBorder = new GB.Shared.Controls.Border();
-			this.mainBorder = new GB.Shared.Controls.Border();
 			this.autoUpdateCheckbox = new GB.Shared.Controls.ImageCheckBox();
 			this.rotateClockwiseButton = new GB.Shared.Controls.ImageButton();
 			this.flipHorizButton = new GB.Shared.Controls.ImageButton();
@@ -41,65 +38,12 @@
 			this.scrollUpButton = new GB.Shared.Controls.ImageButton();
 			this.floodButton = new GB.Shared.Controls.ImageRadioButton();
 			this.penButton = new GB.Shared.Controls.ImageRadioButton();
+			this.flipBorder = new GB.Shared.Controls.Border();
+			this.moveBorder = new GB.Shared.Controls.Border();
+			this.mainBorder = new GB.Shared.Controls.Border();
 			this.flipBorder.SuspendLayout();
 			this.moveBorder.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// flipBorder
-			// 
-			this.flipBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.flipBorder.Controls.Add(this.rotateClockwiseButton);
-			this.flipBorder.Controls.Add(this.flipHorizButton);
-			this.flipBorder.Controls.Add(this.flipVertButton);
-			this.flipBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Bottom,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left};
-			this.flipBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.flipBorder.Location = new System.Drawing.Point(2, 134);
-			this.flipBorder.Name = "flipBorder";
-			this.flipBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.flipBorder.Size = new System.Drawing.Size(22, 62);
-			this.flipBorder.TabIndex = 3;
-			this.flipBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// moveBorder
-			// 
-			this.moveBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.moveBorder.Controls.Add(this.scrollDownButton);
-			this.moveBorder.Controls.Add(this.scrollRightButton);
-			this.moveBorder.Controls.Add(this.scrollLeftButton);
-			this.moveBorder.Controls.Add(this.scrollUpButton);
-			this.moveBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Bottom,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left};
-			this.moveBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.moveBorder.Location = new System.Drawing.Point(2, 49);
-			this.moveBorder.Name = "moveBorder";
-			this.moveBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.moveBorder.Size = new System.Drawing.Size(22, 82);
-			this.moveBorder.TabIndex = 2;
-			this.moveBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// mainBorder
-			// 
-			this.mainBorder.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.mainBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.mainBorder.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.mainBorder.Location = new System.Drawing.Point(0, 0);
-			this.mainBorder.Name = "mainBorder";
-			this.mainBorder.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.mainBorder.Size = new System.Drawing.Size(26, 217);
-			this.mainBorder.TabIndex = 5;
-			this.mainBorder.Text = "border1";
-			this.mainBorder.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
 			// autoUpdateCheckbox
 			// 
@@ -199,51 +143,85 @@
 			// 
 			// floodButton
 			// 
-			this.floodButton.Appearance = System.Windows.Forms.Appearance.Button;
 			this.floodButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("floodButton.BackgroundImage")));
-			this.floodButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.floodButton.FlatAppearance.BorderSize = 0;
-			this.floodButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.floodButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.floodButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.floodButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.floodButton.Checked = false;
 			this.floodButton.HoveredImage = global::GB.GBTD.Properties.Resources.Flood_Hover;
-			this.floodButton.Image = global::GB.GBTD.Properties.Resources.Flood_NoHover;
 			this.floodButton.Location = new System.Drawing.Point(2, 24);
 			this.floodButton.Name = "floodButton";
 			this.floodButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Flood_NoHover;
-			this.floodButton.PressedImage = ((System.Drawing.Image)(resources.GetObject("floodButton.PressedImage")));
-			this.floodButton.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.floodButton.Size = new System.Drawing.Size(22, 22);
 			this.floodButton.TabIndex = 1;
-			this.floodButton.TabStop = true;
 			this.toolTip.SetToolTip(this.floodButton, "Flood fill");
-			this.floodButton.UseVisualStyleBackColor = true;
 			this.floodButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
 			// 
 			// penButton
 			// 
-			this.penButton.Appearance = System.Windows.Forms.Appearance.Button;
 			this.penButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("penButton.BackgroundImage")));
-			this.penButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-			this.penButton.FlatAppearance.BorderSize = 0;
-			this.penButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-			this.penButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-			this.penButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-			this.penButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.penButton.Checked = false;
 			this.penButton.HoveredImage = global::GB.GBTD.Properties.Resources.Pen_Hover;
-			this.penButton.Image = global::GB.GBTD.Properties.Resources.Pen_NoHover;
 			this.penButton.Location = new System.Drawing.Point(2, 2);
 			this.penButton.Name = "penButton";
 			this.penButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Pen_NoHover;
-			this.penButton.PressedImage = ((System.Drawing.Image)(resources.GetObject("penButton.PressedImage")));
-			this.penButton.SelectedBackgroundImage = global::GB.GBTD.Properties.Resources.SelectionBackground;
 			this.penButton.Size = new System.Drawing.Size(22, 22);
 			this.penButton.TabIndex = 0;
-			this.penButton.TabStop = true;
 			this.toolTip.SetToolTip(this.penButton, "Pen");
-			this.penButton.UseVisualStyleBackColor = true;
 			this.penButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
+			// 
+			// flipBorder
+			// 
+			this.flipBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.flipBorder.Controls.Add(this.rotateClockwiseButton);
+			this.flipBorder.Controls.Add(this.flipHorizButton);
+			this.flipBorder.Controls.Add(this.flipVertButton);
+			this.flipBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.flipBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.flipBorder.Location = new System.Drawing.Point(2, 134);
+			this.flipBorder.Name = "flipBorder";
+			this.flipBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.flipBorder.Size = new System.Drawing.Size(22, 62);
+			this.flipBorder.TabIndex = 3;
+			this.flipBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
+			// moveBorder
+			// 
+			this.moveBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.moveBorder.Controls.Add(this.scrollDownButton);
+			this.moveBorder.Controls.Add(this.scrollRightButton);
+			this.moveBorder.Controls.Add(this.scrollLeftButton);
+			this.moveBorder.Controls.Add(this.scrollUpButton);
+			this.moveBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.moveBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.moveBorder.Location = new System.Drawing.Point(2, 49);
+			this.moveBorder.Name = "moveBorder";
+			this.moveBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.moveBorder.Size = new System.Drawing.Size(22, 82);
+			this.moveBorder.TabIndex = 2;
+			this.moveBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
+			// mainBorder
+			// 
+			this.mainBorder.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.mainBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.mainBorder.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.mainBorder.Location = new System.Drawing.Point(0, 0);
+			this.mainBorder.Name = "mainBorder";
+			this.mainBorder.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.mainBorder.Size = new System.Drawing.Size(26, 217);
+			this.mainBorder.TabIndex = 5;
+			this.mainBorder.Text = "border1";
+			this.mainBorder.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
 			// ToolList
 			// 
