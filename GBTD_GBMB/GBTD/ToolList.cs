@@ -133,7 +133,6 @@ namespace GB.GBTD
 
 		/// <summary>
 		/// The currently selected tool.
-		/// TODO replace int with an enum.
 		/// </summary>
 		[Category("Data"), Description("The currently-selected tool.")]
 		public TileEditorID SelectedTool {
@@ -148,20 +147,22 @@ namespace GB.GBTD
 				return TileEditorID.PixelEdit;
 			}
 			set {
-				if (value == TileEditorID.PixelEdit) {
-					penButton.Checked = true;
-					return;
-				}
-				if (value == TileEditorID.FloodFill) {
-					floodButton.Checked = true;
-					return;
-				}
-				if (value == TileEditorID.NoEdit) {
+				switch (value) {
+				case TileEditorID.NoEdit:
 					penButton.Checked = false;
 					floodButton.Checked = false;
-					return;
+					break;
+				case TileEditorID.PixelEdit:
+					penButton.Checked = true;
+					floodButton.Checked = false;
+					break;
+				case TileEditorID.FloodFill:
+					penButton.Checked = false;
+					floodButton.Checked = true;
+					break;
+				default: throw new InvalidEnumArgumentException("value", (int)value, typeof(TileEditorID));
 				}
-				throw new InvalidEnumArgumentException();
+				OnSelectedToolChanged();
 			}
 		}
 
@@ -175,6 +176,7 @@ namespace GB.GBTD
 			}
 			set {
 				autoUpdateCheckbox.Checked = value;
+				OnAutoUpdateChanged();
 			}
 		}
 	}

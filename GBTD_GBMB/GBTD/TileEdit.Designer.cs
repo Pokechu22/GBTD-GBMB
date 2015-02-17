@@ -37,7 +37,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor3 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -96,10 +96,10 @@
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.copyButton = new GB.Shared.Controls.ImageButton();
 			this.cutButton = new GB.Shared.Controls.ImageButton();
+			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.exportButton = new GB.Shared.Controls.ImageButton();
 			this.saveButton = new GB.Shared.Controls.ImageButton();
 			this.openButton = new GB.Shared.Controls.ImageButton();
-			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
@@ -606,6 +606,21 @@
 			this.toolTip.SetToolTip(this.cutButton, "Cut");
 			this.cutButton.Click += new System.EventHandler(this.cutButtonClicked);
 			// 
+			// toolStripSeperatorBorder
+			// 
+			this.toolStripSeperatorBorder.BottomBorder = null;
+			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
+			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
+			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
+			this.toolStripSeperatorBorder.TabIndex = 11;
+			this.toolStripSeperatorBorder.Text = "border2";
+			this.toolStripSeperatorBorder.TopBorder = null;
+			// 
 			// exportButton
 			// 
 			this.exportButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
@@ -637,21 +652,6 @@
 			this.openButton.Size = new System.Drawing.Size(24, 24);
 			this.openButton.TabIndex = 8;
 			this.toolTip.SetToolTip(this.openButton, "Open");
-			// 
-			// toolStripSeperatorBorder
-			// 
-			this.toolStripSeperatorBorder.BottomBorder = null;
-			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left};
-			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
-			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
-			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
-			this.toolStripSeperatorBorder.TabIndex = 11;
-			this.toolStripSeperatorBorder.Text = "border2";
-			this.toolStripSeperatorBorder.TopBorder = null;
 			// 
 			// toolStripBorder
 			// 
@@ -726,7 +726,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor3;
+			this.mainTileEdit.Editor = pixelTileEditor1;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
