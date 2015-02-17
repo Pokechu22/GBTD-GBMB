@@ -123,38 +123,6 @@ namespace GB.Shared.Controls
 							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
 					} else {
 						e.Graphics.DrawImageUnscaled(hoveredImage,
-							(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
-					}
-				} else {
-					if (mouseInside) {
-						e.Graphics.DrawImageUnscaled(hoveredImage,
-							(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
-					} else {
-						e.Graphics.DrawImageUnscaled(nonhoveredImage,
-							(this.Width / 2) - (nonhoveredImage.Width / 2), (this.Height / 2) - (nonhoveredImage.Height / 2));
-					}
-				}
-
-				if (mouseDown) {
-					if (mouseInside) {
-						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.SunkenOuter);
-					} else {
-						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
-					}
-				} else {
-					if (mouseInside) {
-						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
-					} else {
-						//Do nothing.
-					}
-				}
-			} else {
-				if (mouseDown) {
-					if (mouseInside) {
-						e.Graphics.DrawImageUnscaled(hoveredImage,
-							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
-					} else {
-						e.Graphics.DrawImageUnscaled(hoveredImage,
 							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
 					}
 				} else {
@@ -179,6 +147,38 @@ namespace GB.Shared.Controls
 						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.SunkenOuter);
 					} else {
 						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.SunkenOuter);
+					}
+				}
+			} else {
+				if (mouseDown) {
+					if (mouseInside) {
+						e.Graphics.DrawImageUnscaled(hoveredImage,
+							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
+					} else {
+						e.Graphics.DrawImageUnscaled(hoveredImage,
+							(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
+					}
+				} else {
+					if (mouseInside) {
+						e.Graphics.DrawImageUnscaled(hoveredImage,
+							(this.Width / 2) - (hoveredImage.Width / 2), (this.Height / 2) - (hoveredImage.Height / 2));
+					} else {
+						e.Graphics.DrawImageUnscaled(nonhoveredImage,
+							(this.Width / 2) - (nonhoveredImage.Width / 2), (this.Height / 2) - (nonhoveredImage.Height / 2));
+					}
+				}
+
+				if (mouseDown) {
+					if (mouseInside) {
+						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.SunkenOuter);
+					} else {
+						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
+					}
+				} else {
+					if (mouseInside) {
+						ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.RaisedInner);
+					} else {
+						//Do nothing.
 					}
 				}
 			}
