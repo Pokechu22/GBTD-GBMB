@@ -47,15 +47,14 @@ namespace GB.GBTD
 			initClipboardChangeCheck();
 
 			previewRenderer1.TileData = mainTileEdit.TileData;
-
-			// Stupid resizing due to menus; this fixes it. :/
-			this.ClientSize = new Size(397, 264);
 		}
 
 		protected override void OnLoad(EventArgs e) {
 			//Loads the menu.
 			//http://stackoverflow.com/a/28462365/3991344
 			this.Menu = this.mainMenu;
+
+			MoveControlsFromTileSize();
 
 			base.OnLoad(e);
 		}
