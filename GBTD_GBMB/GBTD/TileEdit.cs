@@ -126,7 +126,7 @@ namespace GB.GBTD
 			mainTileEdit.Refresh();
 		}
 
-		private void palettesToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void palettesMenuItem_Click(object sender, EventArgs e) {
 			ChoosePalette d = new ChoosePalette(paletteChooser.Set/*.Clone() as Palette_Set*/);
 			d.ShowDialog();
 			if (d.DialogResult == DialogResult.OK) {
@@ -208,19 +208,19 @@ namespace GB.GBTD
 			base.WndProc(ref m);
 		}
 
-		private void exportToToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void exportToMenuItem_Click(object sender, EventArgs e) {
 			ExportDialog dialog = new ExportDialog();
 			dialog.ShowDialog();
 			//TODO
 		}
 
-		private void improtFromToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void importFromMenuItem_Click(object sender, EventArgs e) {
 			ImportDialog dialog = new ImportDialog();
 			dialog.ShowDialog();
 			//TODO
 		}
 
-		private void tileCountToolStripMenuItem_Click(object sender, EventArgs e) {
+		private void tileCountMenuItem_Click(object sender, EventArgs e) {
 			TileCountDialog dialog = new TileCountDialog();
 			dialog.ShowDialog();
 			//TODO
