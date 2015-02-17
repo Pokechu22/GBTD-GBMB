@@ -41,7 +41,6 @@ namespace GB.Shared.Controls
 
 		private Image nonhoveredImage = new Bitmap(16, 16);
 		private Image hoveredImage = new Bitmap(16, 16);
-		private Image checkedBackgroundImage = new Bitmap(16, 16);
 
 		public event EventHandler CheckedChanged;
 		protected virtual void OnCheckedChanged(EventArgs e) {
@@ -61,11 +60,6 @@ namespace GB.Shared.Controls
 		public Image HoveredImage {
 			get { return hoveredImage; }
 			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(); }
-		}
-		[Category("Appearance"), Description("The image to use in the background when this is checked.")]
-		public Image CheckedBackgroundImage {
-			get { return checkedBackgroundImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } checkedBackgroundImage = value; this.Invalidate(); }
 		}
 
 		[DefaultValue("")]
@@ -168,8 +162,7 @@ namespace GB.Shared.Controls
 						e.Graphics.DrawImageUnscaled(hoveredImage,
 							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
 					} else {
-						e.Graphics.DrawImageUnscaled(checkedBackgroundImage,
-							(this.Width / 2) - (checkedBackgroundImage.Width / 2), (this.Height / 2) - (checkedBackgroundImage.Height / 2));
+						paintSelectedBackground(e);
 						e.Graphics.DrawImageUnscaled(hoveredImage,
 							(this.Width / 2) - (hoveredImage.Width / 2) + 1, (this.Height / 2) - (hoveredImage.Height / 2) + 1);
 					}
@@ -191,6 +184,25 @@ namespace GB.Shared.Controls
 			}
 
 			base.OnPaint(e);
+		}
+
+		private void paintSelectedBackground(PaintEventArgs e) {
+			if (e.ClipRectangle.Width <= 0 || e.ClipRectangle.Height <= 0) {
+				return; //This happens sometimes.
+			}
+			using (Bitmap b = new Bitmap(e.ClipRectangle.Width, e.ClipRectangle.Height)) {
+				for (int x = 0; x < b.Width; x++) {
+					for (int y = 0; y < b.Height; y++) {
+						if (((x ^ y) & 0x01) == 0) {
+							b.SetPixel(x, y, Color.White);
+						} else {
+							b.SetPixel(x, y, Color.Transparent);
+						}
+					}
+				}
+
+				e.Graphics.DrawImageUnscaled(b, e.ClipRectangle.Location);
+			}
 		}
 	}
 }

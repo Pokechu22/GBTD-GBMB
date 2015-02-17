@@ -104,7 +104,6 @@
 			// autoUpdateCheckbox
 			// 
 			this.autoUpdateCheckbox.Checked = false;
-			this.autoUpdateCheckbox.CheckedBackgroundImage = global::GB.GBTD.Properties.Resources.AutoUpdateCheckedBackground;
 			this.autoUpdateCheckbox.HoveredImage = global::GB.GBTD.Properties.Resources.AutoUpdate_Hover;
 			this.autoUpdateCheckbox.Location = new System.Drawing.Point(2, 200);
 			this.autoUpdateCheckbox.Name = "autoUpdateCheckbox";
