@@ -74,6 +74,25 @@ namespace GB.GBTD
 			updatingFromTileList = false;
 		}
 
+		/// <summary>
+		/// Moves all of the controls based off of their size.
+		/// </summary>
+		protected void MoveControlsFromTileSize() {
+			this.SuspendLayout();
+
+			this.previewRenderer1.Location = new Point(33 + mainTileEdit.Width + 9, 39);
+			this.paletteChooser.Location = new Point(34, mainTileEdit.Location.Y + mainTileEdit.Height + 3);
+
+			this.tileEditBorder.Size = new Size(33 + mainTileEdit.Width + 9 + previewRenderer1.Width + 5, 32 + mainTileEdit.Height + 4);
+			this.ClientSize = new Size(tileEditBorder.Width + 3 + tileList1.Width, tileEditBorder.Top + tileEditBorder.Height + 1);
+
+			this.tileList1.Location = new Point(tileEditBorder.Location.X + tileEditBorder.Width + 3, tileEditBorder.Location.Y + 4);
+
+			this.ResumeLayout();
+
+			this.Refresh();
+		}
+
 		private void tileEditBorder_Paint(object sender, PaintEventArgs e) {
 			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, tileEditBorder.Width, tileEditBorder.Height, Border3DStyle.SunkenOuter);
 		}
@@ -234,6 +253,8 @@ namespace GB.GBTD
 			size8x16MenuItem.Checked = false;
 			size16x16MenuItem.Checked = false;
 			size32x32MenuItem.Checked = false;
+
+			this.MoveControlsFromTileSize();
 		}
 
 		private void size8x16MenuItem_Click(object sender, EventArgs e) {
@@ -243,6 +264,8 @@ namespace GB.GBTD
 			size8x16MenuItem.Checked = true;
 			size16x16MenuItem.Checked = false;
 			size32x32MenuItem.Checked = false;
+
+			this.MoveControlsFromTileSize();
 		}
 
 		private void size16x16MenuItem_Click(object sender, EventArgs e) {
@@ -252,6 +275,8 @@ namespace GB.GBTD
 			size8x16MenuItem.Checked = false;
 			size16x16MenuItem.Checked = true;
 			size32x32MenuItem.Checked = false;
+
+			this.MoveControlsFromTileSize();
 		}
 
 		private void size32x32MenuItem_Click(object sender, EventArgs e) {
@@ -261,11 +286,15 @@ namespace GB.GBTD
 			size8x16MenuItem.Checked = false;
 			size16x16MenuItem.Checked = false;
 			size32x32MenuItem.Checked = true;
+
+			this.MoveControlsFromTileSize();
 		}
 
 		private void simpleModeMenuItem_Click(object sender, EventArgs e) {
 			simpleModeMenuItem.Checked ^= true;
 			previewRenderer1.Simple = simpleModeMenuItem.Checked;
+
+			this.MoveControlsFromTileSize();
 		}
 
 		private void nibbleMarkersMenuItem_Click(object sender, EventArgs e) {
