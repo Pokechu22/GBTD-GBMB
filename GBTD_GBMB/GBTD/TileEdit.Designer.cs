@@ -37,7 +37,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -331,15 +331,20 @@
 			// 
 			// penMenuItem
 			// 
+			this.penMenuItem.Checked = true;
 			this.penMenuItem.Index = 0;
+			this.penMenuItem.RadioCheck = true;
 			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
 			this.penMenuItem.Text = "&Pen";
+			this.penMenuItem.Click += new System.EventHandler(this.penMenuItem_Click);
 			// 
 			// floodFillMenuItem
 			// 
 			this.floodFillMenuItem.Index = 1;
+			this.floodFillMenuItem.RadioCheck = true;
 			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
 			this.floodFillMenuItem.Text = "&Flood Fill";
+			this.floodFillMenuItem.Click += new System.EventHandler(this.floodFillMenuItem_Click);
 			// 
 			// flipVerticallyMenuItem
 			// 
@@ -726,7 +731,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor1;
+			this.mainTileEdit.Editor = pixelTileEditor2;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;

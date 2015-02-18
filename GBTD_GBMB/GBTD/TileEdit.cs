@@ -100,6 +100,20 @@ namespace GB.GBTD
 			ToolList list = sender as ToolList;
 			if (list != null) {
 				mainTileEdit.EditorTypeID = list.SelectedTool;
+				switch (list.SelectedTool) {
+				case TileEditorID.NoEdit:
+					penMenuItem.Checked = false;
+					floodFillMenuItem.Checked = false;
+					break;
+				case TileEditorID.PixelEdit:
+					penMenuItem.Checked = true;
+					floodFillMenuItem.Checked = false;
+					break;
+				case TileEditorID.FloodFill:
+					penMenuItem.Checked = false;
+					floodFillMenuItem.Checked = true;
+					break;
+				}
 			}
 		}
 
@@ -313,6 +327,14 @@ namespace GB.GBTD
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
 			autoUpdateMenuItem.Checked = toolList.AutoUpdate;
+		}
+
+		private void penMenuItem_Click(object sender, EventArgs e) {
+			toolList.SelectedTool = TileEditorID.PixelEdit;
+		}
+
+		private void floodFillMenuItem_Click(object sender, EventArgs e) {
+			toolList.SelectedTool = TileEditorID.FloodFill;
 		}
 	}
 }
