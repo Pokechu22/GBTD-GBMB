@@ -118,17 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AutoUpdateCheckedBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AutoUpdateCheckedBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="AutoUpdate_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AutoUpdate_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AutoUpdate_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AutoUpdate_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AutoUpdate_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AutoUpdate_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Copy_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Copy_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,26 +148,17 @@
   <data name="FlipHorizontally_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipHorizontally_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlipHorizontally_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipHorizontally_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="FlipVertically_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipVertically_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FlipVertically_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlipVertically_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlipVertically_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlipVertically_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Flood_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flood_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Flood_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flood_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flood_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Flood_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Help_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Help_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,17 +184,11 @@
   <data name="Pen_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pen_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pen_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pen_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="RotateClockwise_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RotateClockwise_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RotateClockwise_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RotateClockwise_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RotateClockwise_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RotateClockwise_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Save_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,17 +202,11 @@
   <data name="ScrollDown_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollDown_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ScrollDown_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScrollDown_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ScrollLeft_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollLeft_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ScrollLeft_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollLeft_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScrollLeft_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScrollLeft_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ScrollRight_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollRight_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,19 +214,10 @@
   <data name="ScrollRight_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollRight_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ScrollRight_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScrollRight_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ScrollUp_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollUp_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ScrollUp_NoHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScrollUp_NoHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScrollUp_Pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScrollUp_Pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SelectionBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SelectionBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

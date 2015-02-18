@@ -83,26 +83,6 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AutoUpdate_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("AutoUpdate_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AutoUpdateCheckedBackground {
-            get {
-                object obj = ResourceManager.GetObject("AutoUpdateCheckedBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Copy_Hover {
             get {
                 object obj = ResourceManager.GetObject("Copy_Hover", resourceCulture);
@@ -183,16 +163,6 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FlipHorizontally_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("FlipHorizontally_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap FlipVertically_Hover {
             get {
                 object obj = ResourceManager.GetObject("FlipVertically_Hover", resourceCulture);
@@ -213,16 +183,6 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FlipVertically_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("FlipVertically_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Flood_Hover {
             get {
                 object obj = ResourceManager.GetObject("Flood_Hover", resourceCulture);
@@ -236,16 +196,6 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap Flood_NoHover {
             get {
                 object obj = ResourceManager.GetObject("Flood_NoHover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Flood_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("Flood_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,16 +283,6 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Pen_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("Pen_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap RotateClockwise_Hover {
             get {
                 object obj = ResourceManager.GetObject("RotateClockwise_Hover", resourceCulture);
@@ -356,16 +296,6 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap RotateClockwise_NoHover {
             get {
                 object obj = ResourceManager.GetObject("RotateClockwise_NoHover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap RotateClockwise_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("RotateClockwise_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,16 +343,6 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScrollDown_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("ScrollDown_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ScrollLeft_Hover {
             get {
                 object obj = ResourceManager.GetObject("ScrollLeft_Hover", resourceCulture);
@@ -436,16 +356,6 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap ScrollLeft_NoHover {
             get {
                 object obj = ResourceManager.GetObject("ScrollLeft_NoHover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ScrollLeft_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("ScrollLeft_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,16 +383,6 @@ namespace GB.GBTD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScrollRight_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("ScrollRight_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ScrollUp_Hover {
             get {
                 object obj = ResourceManager.GetObject("ScrollUp_Hover", resourceCulture);
@@ -496,26 +396,6 @@ namespace GB.GBTD.Properties {
         internal static System.Drawing.Bitmap ScrollUp_NoHover {
             get {
                 object obj = ResourceManager.GetObject("ScrollUp_NoHover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ScrollUp_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("ScrollUp_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SelectionBackground {
-            get {
-                object obj = ResourceManager.GetObject("SelectionBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
