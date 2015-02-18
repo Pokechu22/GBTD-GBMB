@@ -226,9 +226,9 @@ namespace GB.Shared.GBRFile
 
 		/// <summary>
 		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream.
+		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
-		/// </summary>
 		internal static UInt16 ReadWord(this Stream stream, UInt16 def) {
 			if (!stream.CanRead) {
 				throw new NotSupportedException("Stream cannot be read from.");
@@ -246,9 +246,9 @@ namespace GB.Shared.GBRFile
 
 		/// <summary>
 		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream.
+		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
-		/// </summary>
 		internal static UInt32 ReadLong(this Stream stream, UInt32 def) {
 			if (!stream.CanRead) {
 				throw new NotSupportedException("Stream cannot be read from.");
@@ -266,9 +266,9 @@ namespace GB.Shared.GBRFile
 
 		/// <summary>
 		/// Reads a boolean from the specified stream.
+		/// </summary>
 		/// <param name="stream">The stream to read from.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
-		/// </summary>
 		/// <returns></returns>
 		internal static bool ReadBool(this Stream stream, bool def) {
 			if (!stream.CanRead) {
@@ -287,9 +287,9 @@ namespace GB.Shared.GBRFile
 
 		/// <summary>
 		/// Reads a boolean from the specified stream.
+		/// </summary>
 		/// <param name="stream">The stream to read from.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
-		/// </summary>
 		/// <returns></returns>
 		internal static byte ReadByte(this Stream stream, byte def) {
 			if (!stream.CanRead) {
@@ -300,6 +300,138 @@ namespace GB.Shared.GBRFile
 			int read = stream.Read(bytes, 0, 1);
 
 			if (read != 1) {
+				return def;
+			}
+
+			return bytes[0];
+		}
+
+		/// <summary>
+		/// Reads a string to the specified stream, in the expected format.
+		/// <para>Per the doc: 
+		/// String (xx)	C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).</para>
+		/// <para>This method will read until a null terminator or the end of the length.
+		/// </para>
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="length">The maximum expected length.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <param name="ended">
+		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// <para>Use it to keep track of the end.
+		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
+		/// </param>
+		internal static String ReadString(this Stream stream, uint length, string def, ref bool ended) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[length];
+			int read = stream.Read(bytes, 0, (int)length);
+
+			if (read != length) {
+				ended = true;
+				return def;
+			}
+
+			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
+		}
+
+		/// <summary>
+		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <param name="ended">
+		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// <para>Use it to keep track of the end.
+		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
+		/// </param>
+		internal static UInt16 ReadWord(this Stream stream, UInt16 def, ref bool ended) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[2];
+			int read = stream.Read(bytes, 0, 2);
+
+			if (read != 2) {
+				ended = true;
+				return def;
+			}
+
+			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <param name="ended">
+		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// <para>Use it to keep track of the end.
+		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
+		/// </param>
+		internal static UInt32 ReadLong(this Stream stream, UInt32 def, ref bool ended) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[4];
+			int read = stream.Read(bytes, 0, 4);
+
+			if (read != 4) {
+				ended = true;
+				return def;
+			}
+
+			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads a boolean from the specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to read from.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <param name="ended">
+		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// <para>Use it to keep track of the end.
+		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
+		/// </param>
+		/// <returns></returns>
+		internal static bool ReadBool(this Stream stream, bool def, ref bool ended) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[1];
+			int read = stream.Read(bytes, 0, 1);
+
+			if (read != 1) {
+				ended = true;
+				return def;
+			}
+
+			return (bytes[0] != 0);
+		}
+
+		/// <summary>
+		/// Reads a boolean from the specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to read from.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <returns></returns>
+		internal static byte ReadByte(this Stream stream, byte def, ref bool ended) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[1];
+			int read = stream.Read(bytes, 0, 1);
+
+			if (read != 1) {
+				ended = true;
 				return def;
 			}
 
