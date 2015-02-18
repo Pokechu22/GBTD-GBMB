@@ -10,6 +10,7 @@ using GB.Shared.Palettes;
 using GB.Shared.Tiles;
 using GB.Shared;
 using GB.GBTD.Dialogs;
+using GB.Shared.GBRFile;
 
 namespace GB.GBTD
 {
@@ -38,6 +39,28 @@ namespace GB.GBTD
 			set {
 				updateTile(value);
 				value = selectedTileNumber;
+			}
+		}
+
+		private ColorSet colorSet = ColorSet.GAMEBOY;
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set {
+				//TODO actually use this value.
+				colorSet = value;
+
+				MenuItem[] items = new MenuItem[] {
+					colorSetGameboyMenuItem,
+					colorSetGameboyPocketMenuItem,
+					colorSetSuperGameboyMenuItem,
+					colorSetGameboyColorMenuItem,
+					colorSetFilteredGameboyColorMenuItem
+				};
+				foreach (MenuItem item in items) {
+					if (item.Tag is ColorSet) {
+						item.Checked = ((ColorSet)item.Tag == colorSet);
+					}
+				}
 			}
 		}
 
@@ -335,6 +358,18 @@ namespace GB.GBTD
 
 		private void floodFillMenuItem_Click(object sender, EventArgs e) {
 			toolList.SelectedTool = TileEditorID.FloodFill;
+		}
+
+		/// <summary>
+		/// Called when one of the menu items for changing the color set is clicked.
+		/// </summary>
+		private void colorSetMenuItems_Click(object sender, EventArgs e) {
+			if (sender is MenuItem) {
+				MenuItem i = sender as MenuItem;
+				if (i.Tag is ColorSet) {
+					this.ColorSet = (ColorSet)i.Tag;
+				}
+			}
 		}
 	}
 }

@@ -37,7 +37,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor2 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.Shared.Tiles.PixelTileEditor pixelTileEditor1 = new GB.Shared.Tiles.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -82,6 +82,11 @@
 			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
 			this.seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
 			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetSuperGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			this.palettesMenuItem = new System.Windows.Forms.MenuItem();
 			this.seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
@@ -100,17 +105,12 @@
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
+			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.toolList = new GB.GBTD.ToolList();
-			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetSuperGameboyMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -520,6 +520,47 @@
             this.colorSetFilteredGameboyColorMenuItem});
 			this.colorSetMenuItem.Text = "C&olor set";
 			// 
+			// colorSetGameboyPocketMenuItem
+			// 
+			this.colorSetGameboyPocketMenuItem.Checked = true;
+			this.colorSetGameboyPocketMenuItem.Index = 0;
+			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
+			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY_POCKET;
+			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
+			this.colorSetGameboyPocketMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
+			// 
+			// colorSetGameboyMenuItem
+			// 
+			this.colorSetGameboyMenuItem.Index = 1;
+			this.colorSetGameboyMenuItem.RadioCheck = true;
+			this.colorSetGameboyMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY;
+			this.colorSetGameboyMenuItem.Text = "&Gameboy";
+			this.colorSetGameboyMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
+			// 
+			// colorSetSuperGameboyMenuItem
+			// 
+			this.colorSetSuperGameboyMenuItem.Index = 2;
+			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
+			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.GBRFile.ColorSet.SUPER_GAMEBOY;
+			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
+			this.colorSetSuperGameboyMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
+			// 
+			// colorSetGameboyColorMenuItem
+			// 
+			this.colorSetGameboyColorMenuItem.Index = 3;
+			this.colorSetGameboyColorMenuItem.RadioCheck = true;
+			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY_COLOR;
+			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
+			this.colorSetGameboyColorMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
+			// 
+			// colorSetFilteredGameboyColorMenuItem
+			// 
+			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
+			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
+			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY_COLOR_FILTERED;
+			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
+			this.colorSetFilteredGameboyColorMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
+			// 
 			// palettesMenuItem
 			// 
 			this.palettesMenuItem.Index = 10;
@@ -676,14 +717,6 @@
 			this.toolStripBorder.Text = "border1";
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
-			// 
 			// tileList1
 			// 
 			this.tileList1.Location = new System.Drawing.Point(341, 38);
@@ -734,7 +767,7 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.Editor = pixelTileEditor2;
+			this.mainTileEdit.Editor = pixelTileEditor1;
 			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
@@ -751,6 +784,14 @@
 			this.mainTileEdit.XButton2MouseColor = GB.Shared.Tiles.GBColor.WHITE;
 			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
 			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
+			// 
+			// previewRenderer1
+			// 
+			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
+			this.previewRenderer1.Name = "previewRenderer1";
+			this.previewRenderer1.Simple = false;
+			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
+			this.previewRenderer1.TabIndex = 6;
 			// 
 			// toolList
 			// 
@@ -769,37 +810,6 @@
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
-			// 
-			// colorSetGameboyPocketMenuItem
-			// 
-			this.colorSetGameboyPocketMenuItem.Checked = true;
-			this.colorSetGameboyPocketMenuItem.Index = 0;
-			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
-			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
-			// 
-			// colorSetGameboyMenuItem
-			// 
-			this.colorSetGameboyMenuItem.Index = 1;
-			this.colorSetGameboyMenuItem.RadioCheck = true;
-			this.colorSetGameboyMenuItem.Text = "&Gameboy";
-			// 
-			// colorSetSuperGameboyMenuItem
-			// 
-			this.colorSetSuperGameboyMenuItem.Index = 2;
-			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
-			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
-			// 
-			// colorSetGameboyColorMenuItem
-			// 
-			this.colorSetGameboyColorMenuItem.Index = 3;
-			this.colorSetGameboyColorMenuItem.RadioCheck = true;
-			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
-			// 
-			// colorSetFilteredGameboyColorMenuItem
-			// 
-			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
-			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
-			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
 			// 
 			// TileEdit
 			// 
