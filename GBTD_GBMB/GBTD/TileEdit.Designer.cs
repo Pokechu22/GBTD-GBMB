@@ -82,7 +82,6 @@
 			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
 			this.seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
 			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem16 = new System.Windows.Forms.MenuItem();
 			this.palettesMenuItem = new System.Windows.Forms.MenuItem();
 			this.seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
@@ -96,10 +95,10 @@
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.copyButton = new GB.Shared.Controls.ImageButton();
 			this.cutButton = new GB.Shared.Controls.ImageButton();
-			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.exportButton = new GB.Shared.Controls.ImageButton();
 			this.saveButton = new GB.Shared.Controls.ImageButton();
 			this.openButton = new GB.Shared.Controls.ImageButton();
+			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			this.tileList1 = new GB.Shared.Tiles.TileListControl();
@@ -107,6 +106,11 @@
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
 			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
+			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetSuperGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -509,13 +513,12 @@
 			// 
 			this.colorSetMenuItem.Index = 9;
 			this.colorSetMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem16});
+            this.colorSetGameboyPocketMenuItem,
+            this.colorSetGameboyMenuItem,
+            this.colorSetSuperGameboyMenuItem,
+            this.colorSetGameboyColorMenuItem,
+            this.colorSetFilteredGameboyColorMenuItem});
 			this.colorSetMenuItem.Text = "C&olor set";
-			// 
-			// menuItem16
-			// 
-			this.menuItem16.Index = 0;
-			this.menuItem16.Text = "TODO";
 			// 
 			// palettesMenuItem
 			// 
@@ -611,21 +614,6 @@
 			this.toolTip.SetToolTip(this.cutButton, "Cut");
 			this.cutButton.Click += new System.EventHandler(this.cutButtonClicked);
 			// 
-			// toolStripSeperatorBorder
-			// 
-			this.toolStripSeperatorBorder.BottomBorder = null;
-			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left};
-			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
-			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
-			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
-			this.toolStripSeperatorBorder.TabIndex = 11;
-			this.toolStripSeperatorBorder.Text = "border2";
-			this.toolStripSeperatorBorder.TopBorder = null;
-			// 
 			// exportButton
 			// 
 			this.exportButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
@@ -657,6 +645,21 @@
 			this.openButton.Size = new System.Drawing.Size(24, 24);
 			this.openButton.TabIndex = 8;
 			this.toolTip.SetToolTip(this.openButton, "Open");
+			// 
+			// toolStripSeperatorBorder
+			// 
+			this.toolStripSeperatorBorder.BottomBorder = null;
+			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
+			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
+			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
+			this.toolStripSeperatorBorder.TabIndex = 11;
+			this.toolStripSeperatorBorder.Text = "border2";
+			this.toolStripSeperatorBorder.TopBorder = null;
 			// 
 			// toolStripBorder
 			// 
@@ -767,6 +770,37 @@
 			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
+			// colorSetGameboyPocketMenuItem
+			// 
+			this.colorSetGameboyPocketMenuItem.Checked = true;
+			this.colorSetGameboyPocketMenuItem.Index = 0;
+			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
+			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
+			// 
+			// colorSetGameboyMenuItem
+			// 
+			this.colorSetGameboyMenuItem.Index = 1;
+			this.colorSetGameboyMenuItem.RadioCheck = true;
+			this.colorSetGameboyMenuItem.Text = "&Gameboy";
+			// 
+			// colorSetSuperGameboyMenuItem
+			// 
+			this.colorSetSuperGameboyMenuItem.Index = 2;
+			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
+			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
+			// 
+			// colorSetGameboyColorMenuItem
+			// 
+			this.colorSetGameboyColorMenuItem.Index = 3;
+			this.colorSetGameboyColorMenuItem.RadioCheck = true;
+			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
+			// 
+			// colorSetFilteredGameboyColorMenuItem
+			// 
+			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
+			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
+			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,7 +880,6 @@
 		private System.Windows.Forms.MenuItem autoUpdateMenuItem;
 		private System.Windows.Forms.MenuItem seperatorMenuItem11;
 		private System.Windows.Forms.MenuItem colorSetMenuItem;
-		private System.Windows.Forms.MenuItem menuItem16;
 		private System.Windows.Forms.MenuItem palettesMenuItem;
 		private System.Windows.Forms.MenuItem seperatorMenuItem12;
 		private System.Windows.Forms.MenuItem setBookmarkMenuItem;
@@ -864,6 +897,11 @@
 		private Shared.Controls.ImageButton pasteButton;
 		private Shared.Controls.ImageButton helpButton;
 		private System.Windows.Forms.ToolTip toolTip;
+		private System.Windows.Forms.MenuItem colorSetGameboyPocketMenuItem;
+		private System.Windows.Forms.MenuItem colorSetGameboyMenuItem;
+		private System.Windows.Forms.MenuItem colorSetSuperGameboyMenuItem;
+		private System.Windows.Forms.MenuItem colorSetGameboyColorMenuItem;
+		private System.Windows.Forms.MenuItem colorSetFilteredGameboyColorMenuItem;
 
 	}
 }
