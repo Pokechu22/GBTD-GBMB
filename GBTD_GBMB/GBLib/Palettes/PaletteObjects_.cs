@@ -32,13 +32,36 @@ namespace GB.Shared.Palettes
 			case ColorSet.GAMEBOY:
 				return color.GetNormalColor();
 			case ColorSet.GAMEBOY_COLOR:
-				return this.SGBPaletteSet[row][(int)color];
+				return this.GBCPaletteSet[row][(int)color];
 			case ColorSet.SUPER_GAMEBOY:
 				return this.SGBPaletteSet[row][(int)color];
 			case ColorSet.GAMEBOY_COLOR_FILTERED:
 				return this.GBCPaletteSet[row][(int)color].FilterWithGBC();
+			default:
+				throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 			}
-			throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
+		}
+
+		/// <summary>
+		/// Gets the PaletteSet relevant to the specified color.
+		/// </summary>
+		/// <param name="set"></param>
+		/// <returns>The set, or null if the set isn't correct for this use.</returns>
+		public PaletteSet_ GetPaletteSet(ColorSet set) {
+			switch (set) {
+			case ColorSet.GAMEBOY_POCKET:
+				return null;
+			case ColorSet.GAMEBOY:
+				return null;
+			case ColorSet.GAMEBOY_COLOR:
+				return GBCPaletteSet;
+			case ColorSet.SUPER_GAMEBOY:
+				return SGBPaletteSet;
+			case ColorSet.GAMEBOY_COLOR_FILTERED:
+				return GBCPaletteSet;
+			default:
+				throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
+			}
 		}
 	}
 
