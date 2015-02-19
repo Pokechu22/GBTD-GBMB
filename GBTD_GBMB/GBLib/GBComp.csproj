@@ -80,6 +80,7 @@
     <Compile Include="Controls\Spinner.Designer.cs">
       <DependentUpon>Spinner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Palettes\ColorSet.cs" />
     <Compile Include="Palettes\PaletteObjects_.cs" />
     <Compile Include="Tiles\GBColor.cs" />
     <Compile Include="Tiles\GBCompression.cs" />
