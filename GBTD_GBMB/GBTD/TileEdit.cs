@@ -182,12 +182,12 @@ namespace GB.GBTD
 		}
 
 		private void palettesMenuItem_Click(object sender, EventArgs e) {
-			ChoosePalette d = new ChoosePalette(paletteChooser.Set/*.Clone() as Palette_Set*/);
+			/*ChoosePalette d = new ChoosePalette(paletteChooser.Set/*.Clone() as Palette_Set*//*);
 			d.ShowDialog();
 			if (d.DialogResult == DialogResult.OK) {
 				paletteChooser.Set = d.Set;
 				tileList1.PaletteSet = d.Set;
-			}
+			}*/
 		}
 
 		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {

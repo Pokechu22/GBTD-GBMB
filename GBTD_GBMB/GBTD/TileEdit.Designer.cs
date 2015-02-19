@@ -576,7 +576,7 @@
 			// setBookmarkMenuItem
 			// 
 			this.setBookmarkMenuItem.Index = 12;
-			this.setBookmarkMenuItem.Text = "&Set bookmark";
+			this.setBookmarkMenuItem.Text = "&ActiveSet bookmark";
 			// 
 			// gotoBookmarkMenuItem
 			// 

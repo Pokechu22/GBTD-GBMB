@@ -18,13 +18,19 @@ namespace GB.Shared.Palettes
 			//initClipboardChangeCheck();
 		}
 
-		public ChoosePalette(PaletteSet set) : this() {
-			this.Set = set;
+		public ChoosePalette(PaletteData data, ColorSet set) : this() {
+			this.Palette = data;
 		}
 
+		private PaletteSet set;
 		public PaletteSet Set {
-			get { return gbPaletteSetSelector1.Set; }
-			set { gbPaletteSetSelector1.Set = value; }
+			get { return set; }
+			set { set = value; /*TODO Update appearence*/ }
+		}
+
+		public PaletteData Palette {
+			get { return gbPaletteSetSelector1.PaletteData; }
+			set { gbPaletteSetSelector1.PaletteData = value; }
 		}
 
 		private void colorPicker1_OnChange(object sender, EventArgs e) {
@@ -38,11 +44,6 @@ namespace GB.Shared.Palettes
 			if (colorPicker1.Enabled) {
 				colorPicker1.FirstColor = gbPaletteSetSelector1.SelectedColor;
 			}
-		}
-
-		private void filterCheckBox_CheckedChanged(object sender, EventArgs e) {
-			colorPicker1.GBCFilter = filterCheckBox.Checked;
-			gbPaletteSetSelector1.GBCFilter = filterCheckBox.Checked;
 		}
 
 		private void initClipboardChangeCheck() {

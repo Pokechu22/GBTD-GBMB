@@ -134,7 +134,7 @@ namespace GB.Shared.Tiles
 					newEntry.TileData = tileDatas.Tiles[vScrollBar1.Value + i];
 					newEntry.Enabled = true;
 				}
-				newEntry.Selected = (newEntry.Number == selectedEntry); //Set selected if selected.
+				newEntry.Selected = (newEntry.Number == selectedEntry); //ActiveSet selected if selected.
 
 				newEntry.Click += new EventHandler(this.OnEntryClicked);
 				//TODO colors.
@@ -182,7 +182,7 @@ namespace GB.Shared.Tiles
 					entry.TileData = tileDatas.Tiles[scrolledIndex + i];
 					entry.Enabled = true;
 				}
-				entry.Selected = (entry.Number == selectedEntry); //Set selected if selected.
+				entry.Selected = (entry.Number == selectedEntry); //ActiveSet selected if selected.
 			}
 			this.ResumeLayout();
 		}
@@ -223,7 +223,7 @@ namespace GB.Shared.Tiles
 					entry.TileData = tileDatas.Tiles[scrolledIndex + i];
 					entry.Enabled = true;
 				}
-				entry.Selected = (entry.Number == selectedEntry); //Set selected if selected.
+				entry.Selected = (entry.Number == selectedEntry); //ActiveSet selected if selected.
 			}
 		}
 
@@ -242,7 +242,7 @@ namespace GB.Shared.Tiles
 		/// </summary>
 		private void OnSelectedEntryChanged() {
 			foreach (TileListEntryControl e in entriesPanel.Controls) {
-				e.Selected = (e.Number == selectedEntry); //Set selected if selected.
+				e.Selected = (e.Number == selectedEntry); //ActiveSet selected if selected.
 			}
 
 			if (SelectedEntryChanged != null) {
