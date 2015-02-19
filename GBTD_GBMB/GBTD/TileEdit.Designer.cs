@@ -525,7 +525,7 @@
 			this.colorSetGameboyPocketMenuItem.Checked = true;
 			this.colorSetGameboyPocketMenuItem.Index = 0;
 			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
-			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY_POCKET;
+			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
 			this.colorSetGameboyPocketMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
@@ -533,7 +533,7 @@
 			// 
 			this.colorSetGameboyMenuItem.Index = 1;
 			this.colorSetGameboyMenuItem.RadioCheck = true;
-			this.colorSetGameboyMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY;
+			this.colorSetGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY;
 			this.colorSetGameboyMenuItem.Text = "&Gameboy";
 			this.colorSetGameboyMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
@@ -541,7 +541,7 @@
 			// 
 			this.colorSetSuperGameboyMenuItem.Index = 2;
 			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
-			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.GBRFile.ColorSet.SUPER_GAMEBOY;
+			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.SUPER_GAMEBOY;
 			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
 			this.colorSetSuperGameboyMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
@@ -549,7 +549,7 @@
 			// 
 			this.colorSetGameboyColorMenuItem.Index = 3;
 			this.colorSetGameboyColorMenuItem.RadioCheck = true;
-			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY_COLOR;
+			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
 			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
 			this.colorSetGameboyColorMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
@@ -557,7 +557,7 @@
 			// 
 			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
 			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
-			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.GBRFile.ColorSet.GAMEBOY_COLOR_FILTERED;
+			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR_FILTERED;
 			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
 			this.colorSetFilteredGameboyColorMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
