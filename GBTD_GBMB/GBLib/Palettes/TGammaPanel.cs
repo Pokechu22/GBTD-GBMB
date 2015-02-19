@@ -106,7 +106,7 @@ namespace GB.Shared.Palettes
 		/// begin
 		///   FClrSelector := c;
 		///   if FGBCFilter then
-		///     FViewWindow.Color := TranslateToGBCColor( FClrSelector )
+		///     FViewWindow.Color := FilterWithGBC( FClrSelector )
 		///   else
 		///     FViewWindow.Color := FClrSelector;
 		/// end;
@@ -115,7 +115,7 @@ namespace GB.Shared.Palettes
 		private void SetViewColor(Color c) {
 			FClrSelector = c;
 			if (FGBCFilter) {
-				FViewWindow.BackColor = ColorFiltration.TranslateToGBCColor(FClrSelector);
+				FViewWindow.BackColor = ColorFiltration.FilterWithGBC(FClrSelector);
 			} else {
 				FViewWindow.BackColor = FClrSelector;
 			}
@@ -158,8 +158,8 @@ namespace GB.Shared.Palettes
 		/// begin
 		///   if FGBCFilter then
 		///   begin
-		///     FFirst.Brush.Color := TranslateToGBCColor(c);
-		///     FFirst.Pen.Color   := TranslateToGBCColor(c);
+		///     FFirst.Brush.Color := FilterWithGBC(c);
+		///     FFirst.Pen.Color   := FilterWithGBC(c);
 		///   end
 		///   else
 		///   begin
@@ -171,7 +171,7 @@ namespace GB.Shared.Palettes
 		/// <param name="c"></param>
 		private void SetFirstControls(Color c) {
 			switch (FGBCFilter) {
-			case true: FFirst.BackColor = ColorFiltration.TranslateToGBCColor(c); break;
+			case true: FFirst.BackColor = ColorFiltration.FilterWithGBC(c); break;
 			case false: FFirst.BackColor = c; break;
 			}
 			FFirst.Refresh();

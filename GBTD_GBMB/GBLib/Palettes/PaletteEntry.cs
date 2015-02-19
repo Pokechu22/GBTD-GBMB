@@ -97,7 +97,7 @@ namespace GB.Shared.Palettes
 					throw new ArgumentNullException();
 				}
 				this.color = value;
-				this.BackColor = (UseGBCFilter ? ColorFiltration.TranslateToGBCColor(value) : value);
+				this.BackColor = (UseGBCFilter ? ColorFiltration.FilterWithGBC(value) : value);
 				OnColorChange();
 			}
 		}
@@ -138,7 +138,7 @@ namespace GB.Shared.Palettes
 				e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.None;
 
 				PaletteEntryRenderer c = (PaletteEntryRenderer)sender;
-				c.BackColor = (UseGBCFilter ? ColorFiltration.TranslateToGBCColor(c.color) : c.color);
+				c.BackColor = (UseGBCFilter ? ColorFiltration.FilterWithGBC(c.color) : c.color);
 				
 				//Draw the main border.
 				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, c.Width, c.Height),

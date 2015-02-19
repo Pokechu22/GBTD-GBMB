@@ -18,7 +18,7 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="color"></param>
 		/// <returns></returns>
-		public static Color TranslateToGBCColor(this Color color) {
+		public static Color FilterWithGBC(this Color color) {
 			byte[] intensity = new byte[0x20] {
 				0x00,0x10,0x20,0x30,0x40,0x50,0x5e,0x6c,0x7a,0x88,0x94,0xa0,0xae,0xb7,0xbf,0xc6,
 				0xce,0xd3,0xd9,0xdf,0xe3,0xe7,0xeb,0xef,0xf3,0xf6,0xf9,0xfb,0xfd,0xfe,0xff,0xff
@@ -58,7 +58,7 @@ namespace GB.Shared.Palettes
 		/// TODO: Move nicer place.
 		/// </summary>
 		/// <returns></returns>
-		public static Color GetSelectedColor(this Color c) {
+		public static Color FilterAsSelected(this Color c) {
 			int r, b, g;
 
 			r = (c.R / 4) * 2;
@@ -80,10 +80,10 @@ namespace GB.Shared.Palettes
 		/// <param name="this"></param>
 		/// <returns></returns>
 		public static Palette FilterWithGBC(this Palette @this) {
-			@this.entry0.color = TranslateToGBCColor(@this.entry0.color);
-			@this.entry1.color = TranslateToGBCColor(@this.entry1.color);
-			@this.entry2.color = TranslateToGBCColor(@this.entry2.color);
-			@this.entry3.color = TranslateToGBCColor(@this.entry3.color);
+			@this.entry0.color = FilterWithGBC(@this.entry0.color);
+			@this.entry1.color = FilterWithGBC(@this.entry1.color);
+			@this.entry2.color = FilterWithGBC(@this.entry2.color);
+			@this.entry3.color = FilterWithGBC(@this.entry3.color);
 			return @this;
 		}
 		/// <summary>
@@ -92,10 +92,10 @@ namespace GB.Shared.Palettes
 		/// <param name="this"></param>
 		/// <returns></returns>
 		public static Palette FilterAsSelected(this Palette @this) {
-			@this.entry0.color = GetSelectedColor(@this.entry0.color);
-			@this.entry1.color = GetSelectedColor(@this.entry1.color);
-			@this.entry2.color = GetSelectedColor(@this.entry2.color);
-			@this.entry3.color = GetSelectedColor(@this.entry3.color);
+			@this.entry0.color = FilterAsSelected(@this.entry0.color);
+			@this.entry1.color = FilterAsSelected(@this.entry1.color);
+			@this.entry2.color = FilterAsSelected(@this.entry2.color);
+			@this.entry3.color = FilterAsSelected(@this.entry3.color);
 			return @this;
 		}
 		#endregion
