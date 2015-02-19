@@ -25,20 +25,20 @@ namespace GB.Shared.Palettes
 		/// <param name="row"></param>
 		/// <param name="color"></param>
 		/// <returns></returns>
-		public Color GetColor(int set, UInt16 row, GBColor color) {
+		public Color GetColor(ColorSet set, UInt16 row, GBColor color) {
 			switch (set) {
-			case 0: //ColorSet.GAMEBOY_POCKET
-			case 1: //ColorSet.GAMEBOY
+			case ColorSet.GAMEBOY_POCKET:
+			case ColorSet.GAMEBOY:
 				//TODO
 				return Color.White;
-			case 2: //ColorSet.GAMEBOY_COLOR
+			case ColorSet.GAMEBOY_COLOR:
 				return this.SGBPaletteSet[row][(int)color];
-			case 3: //ColorSet.SUPER_GAMEBOY
+			case ColorSet.SUPER_GAMEBOY:
 				return this.SGBPaletteSet[row][(int)color];
-			case 4: //ColorSet.GAMEBOY_COLOR_FILTERED
+			case ColorSet.GAMEBOY_COLOR_FILTERED:
 				return this.GBCPaletteSet[row][(int)color].FilterWithGBC();
 			}
-			throw new InvalidEnumArgumentException("set is not valid");
+			throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 		}
 	}
 
