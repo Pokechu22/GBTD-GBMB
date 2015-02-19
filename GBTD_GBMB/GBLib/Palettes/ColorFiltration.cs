@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using GB.Shared.Tiles;
+using System.ComponentModel;
 
 namespace GB.Shared.Palettes
 {
@@ -71,6 +73,36 @@ namespace GB.Shared.Palettes
 			if (b > 0xff) { b = 0xff; }
 
 			return Color.FromArgb(r, g, b);
+		}
+
+		/// <summary>
+		/// Gets the color that GBTD uses when in Pocket GB color mode - true grayscale.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static Color GetPocketColor(this GBColor @this) {
+			switch (@this) {
+			case GBColor.BLACK: return Color.FromArgb(0, 0, 0);
+			case GBColor.DARK_GRAY: return Color.FromArgb(128, 128, 128);
+			case GBColor.LIGHT_GRAY: return Color.FromArgb(192, 192, 192);
+			case GBColor.WHITE: return Color.FromArgb(255, 255, 255);
+			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(GBColor));
+			}
+		}
+
+		/// <summary>
+		/// Gets the color that GBTD uses when in Pocket GB color mode - in "greenscale".
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static Color GetNormalColor(this GBColor @this) {
+			switch (@this) {
+			case GBColor.BLACK: return Color.FromArgb(7, 57, 46);
+			case GBColor.DARK_GRAY: return Color.FromArgb(32, 177, 49);
+			case GBColor.LIGHT_GRAY: return Color.FromArgb(57, 185, 66);
+			case GBColor.WHITE: return Color.FromArgb(224, 239, 41);
+			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(GBColor));
+			}
 		}
 
 		#region Extension methods used with Palette
