@@ -18,7 +18,7 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="color"></param>
 		/// <returns></returns>
-		public static Color TranslateToGBCColor(Color color) {
+		public static Color TranslateToGBCColor(this Color color) {
 			byte[] intensity = new byte[0x20] {
 				0x00,0x10,0x20,0x30,0x40,0x50,0x5e,0x6c,0x7a,0x88,0x94,0xa0,0xae,0xb7,0xbf,0xc6,
 				0xce,0xd3,0xd9,0xdf,0xe3,0xe7,0xeb,0xef,0xf3,0xf6,0xf9,0xfb,0xfd,0xfe,0xff,0xff
@@ -58,7 +58,7 @@ namespace GB.Shared.Palettes
 		/// TODO: Move nicer place.
 		/// </summary>
 		/// <returns></returns>
-		public static Color GetSelectedColor(Color c) {
+		public static Color GetSelectedColor(this Color c) {
 			int r, b, g;
 
 			r = (c.R / 4) * 2;
