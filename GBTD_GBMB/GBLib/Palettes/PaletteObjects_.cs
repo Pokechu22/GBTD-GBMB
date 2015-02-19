@@ -28,9 +28,9 @@ namespace GB.Shared.Palettes
 		public Color GetColor(ColorSet set, UInt16 row, GBColor color) {
 			switch (set) {
 			case ColorSet.GAMEBOY_POCKET:
+				return color.GetPocketColor();
 			case ColorSet.GAMEBOY:
-				//TODO
-				return Color.White;
+				return color.GetNormalColor();
 			case ColorSet.GAMEBOY_COLOR:
 				return this.SGBPaletteSet[row][(int)color];
 			case ColorSet.SUPER_GAMEBOY:
