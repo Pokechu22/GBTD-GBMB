@@ -33,6 +33,7 @@ namespace GB.Shared.Palettes
 			set { 
 				gbPaletteSetSelector1.SelectedSet = value;
 				this.colorPicker1.GBCFilter = value.IsFiltered();
+				this.groupBox1.Text = ColorSet.GetDisplayName() + " palettes";
 			}
 		}
 

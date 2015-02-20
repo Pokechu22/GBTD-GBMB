@@ -30,5 +30,16 @@ namespace GB.Shared.Palettes
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
 			}
 		}
+
+		public static String GetDisplayName(this ColorSet @this) {
+			switch (@this) {
+			case ColorSet.GAMEBOY_POCKET: return "Gameboy Pocket";
+			case ColorSet.GAMEBOY: return "Gameboy";
+			case ColorSet.GAMEBOY_COLOR: return "Gameboy Color";
+			case ColorSet.SUPER_GAMEBOY: return "Super Gameboy";
+			case ColorSet.GAMEBOY_COLOR_FILTERED: return "Gameboy Color";
+			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
+			}
+		}
 	}
 }
