@@ -26,7 +26,7 @@ namespace GB.Shared.Palettes
 			case ColorSet.GAMEBOY: return false;
 			case ColorSet.GAMEBOY_COLOR: return false;
 			case ColorSet.SUPER_GAMEBOY: return false;
-			case ColorSet.GAMEBOY_COLOR_FILTERED: return false;
+			case ColorSet.GAMEBOY_COLOR_FILTERED: return true;
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
 			}
 		}
