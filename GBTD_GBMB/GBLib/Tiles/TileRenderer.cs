@@ -29,6 +29,8 @@ namespace GB.Shared.Tiles
 
 		private int pixelScale = 1;
 
+		private bool selected;
+
 		private ColorSet colorSet;
 		#endregion
 
@@ -151,6 +153,12 @@ namespace GB.Shared.Tiles
 				pixelScale = value;
 				OnResize(new EventArgs());
 			}
+		}
+
+		[Category("Dispaly"), Description("Whether or not to render as if selected.")]
+		public bool Selected {
+			get { return selected; }
+			set { selected = value; this.Invalidate(); }
 		}
 		#endregion
 
@@ -293,7 +301,15 @@ namespace GB.Shared.Tiles
 			float width = (w / this.tileData.Width);
 			float height = (h / this.tileData.Height);
 
-			Color c = tileData.paletteData.GetColor(ColorSet, (UInt16)PaletteID, color);
+			Color c;
+			if (Enabled) {
+				c = tileData.paletteData.GetColor(ColorSet, (UInt16)PaletteID, color);
+				if (Selected) {
+					c = c.FilterAsSelected();
+				}
+			} else {
+				c = SystemColors.Control;
+			}
 
 			using (Brush brush = new SolidBrush(c)) {
 				g.FillRectangle(brush, x1, y1, width, height);
