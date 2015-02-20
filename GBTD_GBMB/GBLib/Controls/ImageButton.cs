@@ -145,7 +145,7 @@ namespace GB.Shared.Controls
 		}
 
 		/// <summary>
-		/// Creates a monochrome version of a bitmap - All non-transparent pixels are set to a single color.
+		/// Creates a monochrome version of a bitmap - All non-transparent pixels are paletteData to a single color.
 		/// This method is NOT efficiant whatsoever, but it's good enough with 16x16 pixels.
 		/// This only exists because the full DrawImageDisabled code is private.
 		/// </summary>

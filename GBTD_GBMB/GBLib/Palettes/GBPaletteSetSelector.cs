@@ -29,6 +29,10 @@ namespace GB.Shared.Palettes
 			protected override int X_OFFSET { get { return 20; } }
 			protected override int Y_OFFSET { get { return 0; } }
 
+			protected override ColorSet ColorSet {
+				get { return selector.SelectedSet; }
+			}
+
 			public PaletteSetEntry(GBPaletteSetSelector selector, int x, int y)
 				: base(x, y) {
 				this.selector = selector;
@@ -43,15 +47,6 @@ namespace GB.Shared.Palettes
 				return (selector.SelectedX == this.x && selector.SelectedY == this.y);
 			}
 
-			protected override bool UseGBCFilter {
-				get {
-					return selector.selectedSet.IsFiltered();
-				}
-				set {
-					//Do nothing.
-				}
-			}
-
 			protected override Color GetDefaultColor() {
 				return ((GBColor)this.x).GetPocketColor();
 			}
@@ -64,7 +59,7 @@ namespace GB.Shared.Palettes
 		private Label[] labels = null;
 
 		/// <summary>
-		/// The set that is actively in use.
+		/// The paletteData that is actively in use.
 		/// This can only be used internally because changes aren't imideately reflected.
 		/// </summary>
 		private PaletteSet_ ActiveSet {
@@ -114,7 +109,7 @@ namespace GB.Shared.Palettes
 		}
 		
 		/// <summary>
-		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to set to null.
+		/// The color of the currently selected cell.  If none are selected, it is illegal to try and access it; it is also illegal to paletteData to null.
 		/// </summary>
 		[Description("The currently-selected color."), Category("Data"), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public Color SelectedColor {
@@ -126,7 +121,7 @@ namespace GB.Shared.Palettes
 			}
 			set {
 				if (selectedX == -1 || selectedY == -1) {
-					throw new InvalidOperationException("Cannot set the selected color when there is no selection!");
+					throw new InvalidOperationException("Cannot paletteData the selected color when there is no selection!");
 				}
 				if (value == null) {
 					throw new ArgumentNullException();
@@ -142,6 +137,15 @@ namespace GB.Shared.Palettes
 		public PaletteData PaletteData {
 			get { freshenToSet(); return paletteData; }
 			set { paletteData = value; freshenFromSet(); }
+		}
+
+		/// <summary>
+		/// The color paletteData used for this.
+		/// </summary>
+		[Description("The color paletteData used for this."), Category("Data")]
+		public ColorSet SelectedSet {
+			get { return selectedSet; }
+			set { selectedSet = value; this.freshenFromSet(); }
 		}
 		#endregion
 

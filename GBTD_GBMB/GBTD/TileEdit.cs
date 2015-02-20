@@ -20,7 +20,7 @@ namespace GB.GBTD
 			get {
 				return Array.ConvertAll(tileList1.Tiles, item => item.tile);
 			}
-			/*set {
+			/*paletteData {
 				tileList1.Tiles = (TileData[]) value.Clone();
 			}*/
 			//TODO
@@ -92,7 +92,7 @@ namespace GB.GBTD
 
 			updatingFromTileList = true;
 			this.mainTileEdit.TileData = tileList1.TileDatas.Tiles[tile];
-			this.paletteChooser.SelectedRow = tileList1.TileDatas.Tiles[tile].paletteID;
+			this.paletteChooser.SelectedRow = tileList1.TileDatas.Tiles[tile].GetRow(ColorSet);
 			updatingFromTileList = false;
 		}
 
@@ -154,8 +154,8 @@ namespace GB.GBTD
 		private void mainTileEdit_TileChanged(object sender, EventArgs e) {
 			TileData data = new TileData();
 			data.tile = mainTileEdit.Tile;
-			data.set = this.paletteChooser.Set;
-			data.paletteID = this.paletteChooser.SelectedRow;
+			data.paletteData = this.paletteChooser.PaletteData;
+			data.SetRow(ColorSet, (UInt16)this.paletteChooser.SelectedRow);
 
 			if (!updatingFromTileList) {
 				this.tileList1[tileList1.SelectedEntry] = data;
@@ -169,8 +169,8 @@ namespace GB.GBTD
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
 			TileData data = new TileData();
 			data.tile = mainTileEdit.Tile;
-			data.set = this.paletteChooser.Set;
-			data.paletteID = this.paletteChooser.SelectedRow;
+			data.paletteData = this.paletteChooser.PaletteData;
+			data.SetRow(ColorSet, (UInt16)this.paletteChooser.SelectedRow);
 
 			if (!updatingFromTileList) {
 				this.tileList1[tileList1.SelectedEntry] = data;
@@ -182,10 +182,10 @@ namespace GB.GBTD
 		}
 
 		private void palettesMenuItem_Click(object sender, EventArgs e) {
-			/*ChoosePalette d = new ChoosePalette(paletteChooser.Set/*.Clone() as Palette_Set*//*);
+			/*ChoosePalette d = new ChoosePalette(null, this.ColorSet);
 			d.ShowDialog();
 			if (d.DialogResult == DialogResult.OK) {
-				paletteChooser.Set = d.Set;
+				paletteChooser.PaletteData = d.Palette;
 				tileList1.PaletteSet = d.Set;
 			}*/
 		}
@@ -193,7 +193,7 @@ namespace GB.GBTD
 		private void paletteChooser_SelectedPaletteChanged(object sender, EventArgs e) {
 			if (updatingFromTileList) { return; }
 
-			mainTileEdit.PaletteSet = paletteChooser.Set;
+			mainTileEdit.PaletteData = paletteChooser.PaletteData;
 			mainTileEdit.PaletteID = paletteChooser.SelectedRow;
 		}
 
@@ -361,7 +361,7 @@ namespace GB.GBTD
 		}
 
 		/// <summary>
-		/// Called when one of the menu items for changing the color set is clicked.
+		/// Called when one of the menu items for changing the color paletteData is clicked.
 		/// </summary>
 		private void colorSetMenuItems_Click(object sender, EventArgs e) {
 			if (sender is MenuItem) {

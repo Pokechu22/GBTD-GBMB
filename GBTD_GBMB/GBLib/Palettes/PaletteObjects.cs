@@ -153,7 +153,7 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
-		/// The default Palette set to use.
+		/// The default Palette paletteData to use.
 		/// </summary>
 		public static PaletteSet DefaultPaletteSet {
 			get {
@@ -351,7 +351,7 @@ namespace GB.Shared.Palettes
 		private static readonly char[] SetSplitChars = { '\r', '\n' };
 
 		/// <summary>
-		/// Serializes a palette set to a string.
+		/// Serializes a palette paletteData to a string.
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
@@ -366,13 +366,13 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
-		/// Deserializes a palette set from a string.
+		/// Deserializes a palette paletteData from a string.
 		/// </summary>
 		/// <param name="this"></param>
 		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <param name="startingIndex">The first line of the string to use.  Most of the time will be left at 0.</param>
-		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
+		/// <param name="thisStartingIndex">The first row of the paletteData to modify.</param>
 		/// <returns>True if sucessful, false if could not be parsed.</returns>
 		/// <exception cref="ArgumentException">when format is invalid.</exception>
 		public static bool TryStringToPaletteSet(this PaletteSet @this, ref PaletteSet toChange, string value, int startingIndex = 0, int thisStartingIndex = 0) {
@@ -403,13 +403,13 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
-		/// Deserializes a palette set from a string.  Throws an excpetion if invalid input is used.
+		/// Deserializes a palette paletteData from a string.  Throws an excpetion if invalid input is used.
 		/// </summary>
 		/// <param name="this"></param>
 		/// <param name="toChange">Parameter to change, since C# doesn't have <code>ref this</code> parameters.  Pass it the same as @this.</param>
 		/// <param name="value"></param>
 		/// <param name="startingIndex">The first line of the string to use.  Most of the time will be left at 0.</param>
-		/// <param name="thisStartingIndex">The first row of the set to modify.</param>
+		/// <param name="thisStartingIndex">The first row of the paletteData to modify.</param>
 		/// <exception cref="ArgumentException">when format is invalid.</exception>
 		public static void StringToPaletteSet(this PaletteSet @this, ref PaletteSet toChange, string value, int startingIndex = 0, int thisStartingIndex = 0) {
 			if (thisStartingIndex < 0) { throw new ArgumentOutOfRangeException("thisStartingIndex"); }

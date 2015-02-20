@@ -14,13 +14,14 @@ namespace GB.Shared.Tiles
 		public UInt16 Height { get; private set; }
 
 		/// <summary>
-		/// The palette set shared between all tile datas.
+		/// The palette paletteData shared between all tile datas.
 		/// </summary>
-		private PaletteSet sharedPallete = PaletteSet.DefaultPaletteSet;
+		private PaletteData sharedPallete = new PaletteData();
+		private ColorSet sharedColorSet;
 
 		/// <summary>
-		/// The number of tiles represented.  Can be set.
-		/// If set, resises the tile list using <see cref="Array.Resize"/>.
+		/// The number of tiles represented.  Can be paletteData.
+		/// If paletteData, resises the tile list using <see cref="Array.Resize"/>.
 		/// </summary>
 		public int Length {
 			get { return tiles.Length; }
@@ -32,12 +33,12 @@ namespace GB.Shared.Tiles
 			set { if (value == null) { throw new ArgumentNullException(); } tiles = value; }
 		}
 
-		public PaletteSet Palette {
+		public PaletteData Palette {
 			get { return sharedPallete; }
 			set {
 				sharedPallete = value;
 				for (int i = 0; i < tiles.Length; i++) {
-					tiles[i].set = sharedPallete;
+					tiles[i].paletteData = sharedPallete;
 				}
 			}
 		}
@@ -52,7 +53,7 @@ namespace GB.Shared.Tiles
 
 			tiles = new TileData[length];
 			for (int i = 0; i < length; i++) {
-				tiles[i] = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile(Width, Height) };
+				tiles[i] = new TileData { GBC_Palette = 0, SGB_Palette = 0, paletteData = new PaletteData(), tile = new Tile(Width, Height) };
 			}
 		}
 	}

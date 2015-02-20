@@ -21,6 +21,8 @@ namespace GB.Shared.Tiles
 
 		private int number = 0;
 
+		private ColorSet colorSet;
+
 		[Category("Data"), Description("The tileData's number.")]
 		public int Number {
 			get { return number; }
@@ -33,6 +35,12 @@ namespace GB.Shared.Tiles
 		public TileData TileData {
 			get { return tileData; }
 			set { tileData = value; SetupApearence(); }
+		}
+
+		[Category("Data"), Description("The ColorSet used.")]
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set { colorSet = value; }
 		}
 
 		private bool selected;
@@ -52,14 +60,14 @@ namespace GB.Shared.Tiles
 			if (Enabled) {
 				if (Selected) {
 					tileRenderer1.Tile = this.tileData.tile;
-					tileRenderer1.Palette = this.tileData.Palette.FilterAsSelected();
+					tileRenderer1.Palette = this.tileData.GetPalette(ColorSet).FilterAsSelected();
 				} else {
 					tileRenderer1.Tile = this.tileData.tile;
-					tileRenderer1.Palette = this.tileData.Palette;
+					tileRenderer1.Palette = this.tileData.GetPalette(ColorSet);
 				}
 			} else {
 				tileRenderer1.Tile = this.tileData.tile;
-				tileRenderer1.Palette = Palette.DisabledPalette;
+				tileRenderer1.Palette = new Palette_(); //TODO
 			}
 			this.Invalidate(true);
 		}

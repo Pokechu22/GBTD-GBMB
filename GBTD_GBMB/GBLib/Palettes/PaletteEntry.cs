@@ -77,6 +77,13 @@ namespace GB.Shared.Palettes
 			}
 		}
 
+		/// <summary>
+		/// The ColorSet in use.
+		/// </summary>
+		protected abstract ColorSet ColorSet {
+			get;
+		}
+
 		private StringFormat format = new StringFormat();
 		/// <summary>
 		/// Text formating used.
@@ -97,7 +104,7 @@ namespace GB.Shared.Palettes
 					throw new ArgumentNullException();
 				}
 				this.color = value;
-				this.BackColor = (UseGBCFilter ? ColorFiltration.FilterWithGBC(value) : value);
+				this.BackColor = (ColorSet.IsFiltered() ? ColorFiltration.FilterWithGBC(value) : value);
 				OnColorChange();
 			}
 		}
@@ -138,7 +145,7 @@ namespace GB.Shared.Palettes
 				e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.None;
 
 				PaletteEntryRenderer c = (PaletteEntryRenderer)sender;
-				c.BackColor = (UseGBCFilter ? ColorFiltration.FilterWithGBC(c.color) : c.color);
+				c.BackColor = (ColorSet.IsFiltered() ? ColorFiltration.FilterWithGBC(c.color) : c.color);
 				
 				//Draw the main border.
 				ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, c.Width, c.Height),
@@ -199,14 +206,6 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <returns></returns>
 		protected abstract bool IsSelected();
-
-		/// <summary>
-		/// Checks whether or not the GBC filter is used.
-		/// </summary>
-		protected abstract bool UseGBCFilter {
-			get;
-			set;
-		}
 
 		/// <summary>
 		/// Gets the default color used here.

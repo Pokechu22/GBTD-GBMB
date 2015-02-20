@@ -111,24 +111,26 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
-		public static Palette FilterWithGBC(this Palette @this) {
-			@this.entry0.color = FilterWithGBC(@this.entry0.color);
-			@this.entry1.color = FilterWithGBC(@this.entry1.color);
-			@this.entry2.color = FilterWithGBC(@this.entry2.color);
-			@this.entry3.color = FilterWithGBC(@this.entry3.color);
-			return @this;
+		public static Palette_ FilterWithGBC(this Palette_ @this) {
+			Palette_ pal = new Palette_();
+			pal.Color0 = FilterWithGBC(@this.Color0);
+			pal.Color1 = FilterWithGBC(@this.Color1);
+			pal.Color2 = FilterWithGBC(@this.Color2);
+			pal.Color3 = FilterWithGBC(@this.Color3);
+			return pal;
 		}
 		/// <summary>
 		/// Applies the selection filter to a Palette.
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
-		public static Palette FilterAsSelected(this Palette @this) {
-			@this.entry0.color = FilterAsSelected(@this.entry0.color);
-			@this.entry1.color = FilterAsSelected(@this.entry1.color);
-			@this.entry2.color = FilterAsSelected(@this.entry2.color);
-			@this.entry3.color = FilterAsSelected(@this.entry3.color);
-			return @this;
+		public static Palette_ FilterAsSelected(this Palette_ @this) {
+			Palette_ pal = new Palette_();
+			pal.Color0 = FilterAsSelected(@this.Color0);
+			pal.Color1 = FilterAsSelected(@this.Color1);
+			pal.Color2 = FilterAsSelected(@this.Color2);
+			pal.Color3 = FilterAsSelected(@this.Color3);
+			return pal;
 		}
 		#endregion
 	}

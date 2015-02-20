@@ -77,7 +77,7 @@ namespace GB.Shared.GBRFile
 
 		#region Since GBTD 1.0
 		/// <summary>
-		/// The currently selected color set.
+		/// The currently selected color paletteData.
 		/// <para>0:  Pocket</para>
 		/// <para>1:  GameBoy</para>
 		/// <para>2:  GBC</para>
@@ -216,7 +216,7 @@ namespace GB.Shared.GBRFile
 			splitSettings.Nodes.Add("Split Order: " + SplitOrder + " (" + (byte)SplitOrder + ")");
 			returned.Nodes.Add(splitSettings);
 
-			returned.Nodes.Add("Color set: " + ColorSet + " (" + (byte)ColorSet + ")");
+			returned.Nodes.Add("Color paletteData: " + ColorSet + " (" + (byte)ColorSet + ")");
 
 			TreeNode bookmarks = new TreeNode("Bookmarks");
 			bookmarks.Nodes.Add("1: " + Bookmark1);

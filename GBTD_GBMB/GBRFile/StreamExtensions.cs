@@ -317,7 +317,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="length">The maximum expected length.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
 		/// <param name="ended">
-		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// A reference to a boolean that is paletteData to true if the end is reached and otherwise left alone.
 		/// <para>Use it to keep track of the end.
 		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
 		/// </param>
@@ -343,7 +343,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
 		/// <param name="ended">
-		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// A reference to a boolean that is paletteData to true if the end is reached and otherwise left alone.
 		/// <para>Use it to keep track of the end.
 		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
 		/// </param>
@@ -369,7 +369,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
 		/// <param name="ended">
-		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// A reference to a boolean that is paletteData to true if the end is reached and otherwise left alone.
 		/// <para>Use it to keep track of the end.
 		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
 		/// </param>
@@ -395,7 +395,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="stream">The stream to read from.</param>
 		/// <param name="def">The default value to return if at the end of the stream.</param>
 		/// <param name="ended">
-		/// A reference to a boolean that is set to true if the end is reached and otherwise left alone.
+		/// A reference to a boolean that is paletteData to true if the end is reached and otherwise left alone.
 		/// <para>Use it to keep track of the end.
 		/// If it's already true it won't be reset.  Use it to check if the object needs to be re-written due to reaching the end.</para>
 		/// </param>

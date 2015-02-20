@@ -105,7 +105,7 @@ namespace GB.Shared.Tiles
 
 		private void PixelEditableTileRenderer_PixelClicked(object sender, PixelClickEventArgs e) {
 			GBColor color;
-			//Try to set the color to the dictionary value; if it fails use black.
+			//Try to paletteData the color to the dictionary value; if it fails use black.
 			if (e.mouseButton.HasFlag(MouseButtons.XButton2)) {
 				color = xButton2MouseColor;
 			} else if (e.mouseButton.HasFlag(MouseButtons.XButton1)) {

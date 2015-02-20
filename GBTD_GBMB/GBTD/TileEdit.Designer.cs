@@ -518,7 +518,7 @@
             this.colorSetSuperGameboyMenuItem,
             this.colorSetGameboyColorMenuItem,
             this.colorSetFilteredGameboyColorMenuItem});
-			this.colorSetMenuItem.Text = "C&olor set";
+			this.colorSetMenuItem.Text = "C&olor paletteData";
 			// 
 			// colorSetGameboyPocketMenuItem
 			// 
@@ -756,7 +756,6 @@
 			this.paletteChooser.SelectedRow = 0;
 			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
 			this.paletteChooser.TabIndex = 2;
-			this.paletteChooser.UseGBCFilter = false;
 			this.paletteChooser.SelectedPaletteChanged += new System.EventHandler(this.paletteChooser_SelectedPaletteChanged);
 			this.paletteChooser.MouseButtonColorChanged += new System.EventHandler(this.gbtdgbcPaletteChooser1_MouseButtonColorChanged);
 			// 

@@ -26,6 +26,8 @@ namespace GB.Shared.Tiles
 
 		private TileDataList tileDatas = new TileDataList(16, 8, 8);
 
+		private ColorSet colorSet;
+
 		/// <summary>
 		/// All of the tiles and their palettes.
 		/// </summary>
@@ -37,6 +39,15 @@ namespace GB.Shared.Tiles
 		}
 
 		/// <summary>
+		/// The colorset used.
+		/// </summary>
+		[Category("Data"), Description("The used colorset.")]
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set { colorSet = value; onTilesChanged(); }
+		}
+
+		/// <summary>
 		/// The total number of tiles in total.
 		/// </summary>
 		[Category("Data"), Description("The number of tiles in total.")]
@@ -45,7 +56,7 @@ namespace GB.Shared.Tiles
 			set { tileDatas.Length = value; OnNumberOfEntriesChanged(); }
 		}
 
-		public PaletteSet PaletteSet {
+		public PaletteData PaletteSet {
 			get { return tileDatas.Palette; }
 			set { tileDatas.Palette = value; onTilesChanged(); }
 		}
@@ -223,6 +234,9 @@ namespace GB.Shared.Tiles
 					entry.TileData = tileDatas.Tiles[scrolledIndex + i];
 					entry.Enabled = true;
 				}
+
+				entry.ColorSet = colorSet;
+
 				entry.Selected = (entry.Number == selectedEntry); //ActiveSet selected if selected.
 			}
 		}

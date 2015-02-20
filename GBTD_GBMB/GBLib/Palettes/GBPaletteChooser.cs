@@ -28,12 +28,12 @@ namespace GB.Shared.Palettes
 			private readonly GBPaletteChooser sender;
 
 			public readonly int newIndex;
-			public readonly Palette newItem;
+			public readonly Palette_ newItem;
 
 			public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
 				this.sender = sender;
 				this.newIndex = newIndex;
-				PaletteSet set = sender.set;
+				PaletteSet_ set = sender.Palette;
 				this.newItem = set[newIndex];
 			}
 		}
@@ -43,7 +43,7 @@ namespace GB.Shared.Palettes
 			private readonly GBPaletteChooser sender;
 
 			public readonly int paletteIndex;
-			public readonly Palette palette;
+			public readonly Palette_ palette;
 
 			public readonly int clickedEntry;
 			public readonly Color clickedEntryColor;
@@ -54,7 +54,7 @@ namespace GB.Shared.Palettes
 				this.sender = sender;
 
 				this.paletteIndex = paletteIndex;
-				PaletteSet set = sender.set;
+				PaletteSet_ set = sender.Palette;
 				this.palette = set[paletteIndex];
 
 				this.clickedEntry = clickedEntry;
@@ -76,6 +76,10 @@ namespace GB.Shared.Palettes
 				get {
 					return toOverlay.Location.Y + 1;
 				}
+			}
+
+			protected override ColorSet ColorSet {
+				get { return chooser.ColorSet; }
 			}
 
 			protected override System.Windows.Forms.MouseButtons SelectionButtons {
@@ -106,15 +110,6 @@ namespace GB.Shared.Palettes
 				return this.x == chooser.HighlightedEntryIndex;
 			}
 
-			protected override bool UseGBCFilter {
-				get {
-					return chooser.UseGBCFilter;
-				}
-				set {
-					chooser.UseGBCFilter = value;
-				}
-			}
-
 			protected override Color GetDefaultColor() {
 				return Color.Black;
 			}
@@ -133,6 +128,10 @@ namespace GB.Shared.Palettes
 				this.InitLayout();
 			}
 
+			protected override ColorSet ColorSet {
+				get { return ColorSet.GAMEBOY_COLOR; }
+			}
+
 			protected override void SetSelected() {
 				//Do nothing
 			}
@@ -141,28 +140,9 @@ namespace GB.Shared.Palettes
 				return false;
 			}
 
-			protected override bool UseGBCFilter {
-				get {
-					return false;
-				}
-				set {
-					throw new NotImplementedException();
-				}
-			}
-
 			protected override Color GetDefaultColor() {
 				return Color.Black;
 			}
-		}
-
-		private bool useGBCFilter;
-		/// <summary>
-		/// Controls whether or not to render with the GBC Filter.
-		/// </summary>
-		[Category("Behavior"), Description("Controls whether or not to render with the GBC Filter.")]
-		public bool UseGBCFilter {
-			get { return useGBCFilter; }
-			set { useGBCFilter = value; this.Invalidate(true); }
 		}
 
 		private int highlightedEntryIndex = -1;
@@ -181,8 +161,8 @@ namespace GB.Shared.Palettes
 		public int SelectedRowIndex {
 			get { return dropDown.SelectedIndex; }
 			set {
-				if (value < 0 || value >= set.NumberOfRows) {
-					throw new ArgumentOutOfRangeException("value", "Must be between 0 and " + (set.NumberOfRows-1) + "; got " + value + ".");
+				if (value < 0 || value >= Palette.Size) {
+					throw new ArgumentOutOfRangeException("value", "Must be between 0 and " + (Palette.Size - 1) + "; got " + value + ".");
 				}
 				dropDown.SelectedIndex = value;
 			}
@@ -191,18 +171,18 @@ namespace GB.Shared.Palettes
 		/// <summary>
 		/// The row currently selected.
 		/// </summary>
-		public Palette SelectedRow {
+		public Palette_ SelectedRow {
 			get {
-				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
+				if (SelectedRowIndex < 0 || SelectedRowIndex >= Palette.Size) {
 					SelectedRowIndex = 0;
 				}
-				return set[SelectedRowIndex];
+				return Palette[SelectedRowIndex];
 			}
 			set {
-				if (SelectedRowIndex < 0 || SelectedRowIndex >= set.NumberOfRows) {
+				if (SelectedRowIndex < 0 || SelectedRowIndex >= Palette.Size) {
 					SelectedRowIndex = 0;
 				}
-				set.Rows[SelectedRowIndex] = value;
+				Palette[SelectedRowIndex] = value;
 				reloadFromSet();
 			}
 		}
@@ -237,11 +217,22 @@ namespace GB.Shared.Palettes
 
 		private PaletteChooserEntry entry0, entry1, entry2, entry3;
 
-		private PaletteSet set = PaletteSet.DefaultPaletteSet;
+		private ColorSet colorSet;
 
-		public PaletteSet Set {
-			get { return set; }
-			set { set = value; reloadFromSet(); OnSelectedPaletteChanged(); }
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set { colorSet = value; reloadFromSet(); }
+		}
+
+		private PaletteSet_ Palette {
+			get { return this.paletteData.GetPaletteSet(colorSet); }
+		}
+
+		private PaletteData paletteData = new PaletteData();
+
+		public PaletteData PaletteData {
+			get { return paletteData; }
+			set { paletteData = value; reloadFromSet(); OnSelectedPaletteChanged(); }
 		}
 
 		#region Events
@@ -283,10 +274,10 @@ namespace GB.Shared.Palettes
 		}
 
 		private void dropDown_DrawItem(object sender, DrawItemEventArgs e) {
-			if (e.Index >= 0 && e.Index < set.NumberOfRows) {
-				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(set[e.Index]), e.Bounds);
+			if (e.Index >= 0 && e.Index < Palette.Size) {
+				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(Palette[e.Index]), e.Bounds);
 			} else {
-				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(set[0]), e.Bounds);
+				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(Palette[0]), e.Bounds);
 				((ComboBox)(sender)).SelectedIndex = 0;
 			}
 		}
@@ -299,7 +290,7 @@ namespace GB.Shared.Palettes
 		private void dropDown_SelectedIndexChanged(object sender, EventArgs e) {
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette item = set[Convert.ToInt32((String)box.Text)];
+			Palette_ item = Palette[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -311,7 +302,7 @@ namespace GB.Shared.Palettes
 		private void dropDown_SelectionChangeCommitted(object sender, EventArgs e) {
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette item = set[Convert.ToInt32((String)box.Text)];
+			Palette_ item = Palette[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -325,7 +316,7 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="row"></param>
 		/// <returns></returns>
-		protected virtual Image DrawRowToBitmap(Palette row) {
+		protected virtual Image DrawRowToBitmap(Palette_ row) {
 			Bitmap returned = null;
 
 			for (int i = 0; i < 4; i++) {
@@ -346,23 +337,23 @@ namespace GB.Shared.Palettes
 		/// Reloads the contents of this from the PaletteSet.
 		/// </summary>
 		protected virtual void reloadFromSet() {
-			if (this.dropDown.SelectedIndex < 0 || this.dropDown.SelectedIndex >= set.NumberOfRows) {
+			if (this.dropDown.SelectedIndex < 0 || this.dropDown.SelectedIndex >= Palette.Size) {
 				this.dropDown.SelectedIndex = 0;
 			}
-			this.entry0.Color = Set[this.dropDown.SelectedIndex][0];
-			this.entry1.Color = Set[this.dropDown.SelectedIndex][1];
-			this.entry2.Color = Set[this.dropDown.SelectedIndex][2];
-			this.entry3.Color = Set[this.dropDown.SelectedIndex][3];
+			this.entry0.Color = Palette[this.dropDown.SelectedIndex][0];
+			this.entry1.Color = Palette[this.dropDown.SelectedIndex][1];
+			this.entry2.Color = Palette[this.dropDown.SelectedIndex][2];
+			this.entry3.Color = Palette[this.dropDown.SelectedIndex][3];
 
 			this.Invalidate(true);
 		}
 
 		private void spinner_Down(object sender, EventArgs e) {
-			SelectedRowIndex = (SelectedRowIndex + 1) % set.NumberOfRows;
+			SelectedRowIndex = (SelectedRowIndex + 1) % Palette.Size;
 		}
 
 		private void spinner_Up(object sender, EventArgs e) {
-			SelectedRowIndex = Math.Abs((SelectedRowIndex - 1) % set.NumberOfRows);
+			SelectedRowIndex = Math.Abs((SelectedRowIndex - 1) % Palette.Size);
 		}
 
 		private void spinnerBorder_Paint(object sender, PaintEventArgs e) {

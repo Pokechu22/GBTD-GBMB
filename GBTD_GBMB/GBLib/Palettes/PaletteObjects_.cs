@@ -19,9 +19,9 @@ namespace GB.Shared.Palettes
 		public readonly PaletteSet_ GBCPaletteSet;
 
 		/// <summary>
-		/// Gets the color that would be used in the specified set and applies filtration as needed.
+		/// Gets the color that would be used in the specified paletteData and applies filtration as needed.
 		/// </summary>
-		/// <param name="set">This should be an enum, unfrotunately.</param>
+		/// <param name="paletteData">This should be an enum, unfrotunately.</param>
 		/// <param name="row"></param>
 		/// <param name="color"></param>
 		/// <returns></returns>
@@ -38,21 +38,21 @@ namespace GB.Shared.Palettes
 			case ColorSet.GAMEBOY_COLOR_FILTERED:
 				return this.GBCPaletteSet[row][(int)color].FilterWithGBC();
 			default:
-				throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
+				throw new InvalidEnumArgumentException("paletteData", (int)set, typeof(ColorSet));
 			}
 		}
 
 		/// <summary>
 		/// Gets the PaletteSet relevant to the specified color.
 		/// </summary>
-		/// <param name="set"></param>
-		/// <returns>The set, or null if the set isn't correct for this use.</returns>
+		/// <param name="paletteData"></param>
+		/// <returns>The paletteData, or null if the paletteData isn't correct for this use.</returns>
 		public PaletteSet_ GetPaletteSet(ColorSet set) {
 			switch (set) {
 			case ColorSet.GAMEBOY_POCKET:
-				return null;
+				return new PaletteSet_(1);
 			case ColorSet.GAMEBOY:
-				return null;
+				return new PaletteSet_(1);
 			case ColorSet.GAMEBOY_COLOR:
 				return GBCPaletteSet;
 			case ColorSet.SUPER_GAMEBOY:
@@ -60,7 +60,7 @@ namespace GB.Shared.Palettes
 			case ColorSet.GAMEBOY_COLOR_FILTERED:
 				return GBCPaletteSet;
 			default:
-				throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
+				throw new InvalidEnumArgumentException("paletteData", (int)set, typeof(ColorSet));
 			}
 		}
 	}

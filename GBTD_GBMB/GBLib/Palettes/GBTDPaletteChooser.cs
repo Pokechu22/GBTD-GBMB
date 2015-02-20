@@ -54,6 +54,12 @@ namespace GB.Shared.Palettes
 					set { index = value; this.Text = value.ToString(); this.Invalidate(true); }
 				}
 
+				protected override ColorSet ColorSet {
+					get {
+						return chooser.ColorSet;
+					}
+				}
+
 				public GBTDPaletteChooserMouseEntryPaletteEntry(MouseButtons buttons, GBTDPaletteChooser chooser)
 					: base(0, 0) {
 					this.chooser = chooser;
@@ -65,16 +71,6 @@ namespace GB.Shared.Palettes
 
 				protected override bool IsSelected() {
 					return false; //N/A
-				}
-
-				protected override bool UseGBCFilter {
-					get {
-						return chooser.UseGBCFilter;
-					}
-					set {
-						chooser.UseGBCFilter = value;
-						this.Invalidate(true);
-					}
 				}
 
 				protected override Color GetDefaultColor() {
@@ -103,8 +99,8 @@ namespace GB.Shared.Palettes
 			private GBTDPaletteChooserMouseEntryPaletteEntry entry;
 			private MouseButtons buttons;
 
-			private Palette item = default(Palette);
-			public Palette Item {
+			private Palette_ item = new Palette_();
+			public Palette_ Item {
 				get { return item; }
 				set { item = value; OnValueChange(); }
 			}
@@ -171,7 +167,7 @@ namespace GB.Shared.Palettes
 
 				this.entry = new GBTDPaletteChooserMouseEntryPaletteEntry(buttons, chooser);
 
-				this.Item = chooser.Set[0];
+				this.Item = chooser.PaletteData.GetPaletteSet(chooser.ColorSet)[0];
 
 				this.Controls.Add(label);
 				this.Controls.Add(entry);
@@ -188,19 +184,11 @@ namespace GB.Shared.Palettes
 			}
 		}
 
-		private bool useGBCFilter = false;
-
-		[Category("Display"), Description("Use the GBC filter?")]
-		public bool UseGBCFilter {
-			get { return useGBCFilter; }
-			set { useGBCFilter = value; this.Invalidate(true); }
-		}
-
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		[Category("Data"), Description("The used set.")]
-		public PaletteSet Set {
-			get { return this.gbPaletteChooser1.Set; }
-			set { this.gbPaletteChooser1.Set = value; this.Invalidate(true); }
+		[Category("Data"), Description("The used paletteData.")]
+		public PaletteData PaletteData {
+			get { return this.gbPaletteChooser1.PaletteData; }
+			set { this.gbPaletteChooser1.PaletteData = value; this.Invalidate(true); }
 		}
 
 		[Category("Data"), Description("The row currently used.")]
@@ -225,6 +213,12 @@ namespace GB.Shared.Palettes
 			get {
 				return new Size(191, 26);
 			}
+		}
+
+		[Category("Data"), Description("The active color paletteData.")]
+		public ColorSet ColorSet {
+			get { return gbPaletteChooser1.ColorSet; }
+			set { gbPaletteChooser1.ColorSet = value; this.Invalidate(); }
 		}
 
 		private MouseButtons displayedButtons = System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right;

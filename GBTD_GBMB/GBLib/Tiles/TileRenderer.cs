@@ -14,7 +14,7 @@ namespace GB.Shared.Tiles
 	public partial class TileRenderer : UserControl
 	{
 		#region Private members
-		private TileData tileData = new TileData { paletteID = 0, set = PaletteSet.DefaultPaletteSet, tile = new Tile(8, 8) };
+		private TileData tileData = new TileData { GBC_Palette = 0, SGB_Palette = 0, paletteData = new PaletteData(), tile = new Tile(8, 8) };
 
 		private byte clickedX = 0, clickedY = 0;
 		private MouseButtons buttons = MouseButtons.None;
@@ -26,6 +26,8 @@ namespace GB.Shared.Tiles
 		private Border3DSide borderSides = Border3DSide.All;
 
 		private int pixelScale = 1;
+
+		private ColorSet colorSet;
 		#endregion
 
 		#region Public properties
@@ -34,26 +36,32 @@ namespace GB.Shared.Tiles
 			set { tileData = value; OnResize(new EventArgs()); OnTileChange(); OnPalatteChange(); }
 		}
 
+		[Category("Data"), Description("The ColorSet used by this tile.")]
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set { colorSet = value; OnPalatteChange(); }
+		}
+
 		[Category("Data"), Description("The palette used by this tile.")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public Palette Palette {
+		public Palette_ Palette {
 			get {
-				return tileData.Palette;
+				return tileData.GetPalette(ColorSet);
 			}
 			set {
-				tileData.Palette = value;
+				tileData.SetPalette(ColorSet, value);
 				OnPalatteChange();
 			}
 		}
 
-		[Category("Data"), Description("The entire palette set.  It is not recomended that this be modified.")]
+		[Category("Data"), Description("The entire palette paletteData.")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public PaletteSet PaletteSet {
+		public PaletteData PaletteData {
 			get {
-				return tileData.set;
+				return tileData.paletteData;
 			}
 			set {
-				tileData.set = value;
+				tileData.paletteData = value;
 				OnPalatteChange();
 			}
 		}
@@ -62,74 +70,14 @@ namespace GB.Shared.Tiles
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public int PaletteID {
 			get {
-				return tileData.paletteID;
+				return tileData.GetRow(ColorSet);
 			}
 			set {
-				tileData.paletteID = value;
+				tileData.SetRow(ColorSet, (UInt16)value);
 				OnPalatteChange();
 			}
 		}
-
-		/// <summary>
-		/// The whitemost color.
-		/// </summary>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		[Browsable(false), ReadOnly(true)]
-		public Color WhiteColor {
-			get {
-				return tileData.Palette.EntryWhite;
-			}
-			set {
-				tileData.setEntryColor(0, value);
-				OnPalatteChange();
-			}
-		}
-
-		/// <summary>
-		/// The light-gray color.
-		/// </summary>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		[Browsable(false), ReadOnly(true)]
-		public Color LightGrayColor {
-			get {
-				return tileData.Palette.EntryWhite;
-			}
-			set {
-				tileData.setEntryColor(1, value);
-				OnPalatteChange();
-			}
-		}
-
-		/// <summary>
-		/// The dark-gray color.
-		/// </summary>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		[Browsable(false), ReadOnly(true)]
-		public Color DarkGrayColor {
-			get {
-				return tileData.Palette.EntryLightGray;
-			}
-			set {
-				tileData.setEntryColor(2, value);
-				OnPalatteChange();
-			}
-		}
-
-		/// <summary>
-		/// The black color.
-		/// </summary>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		[Browsable(false), ReadOnly(true)]
-		public Color BlackColor {
-			get {
-				return tileData.Palette.EntryBlack;
-			}
-			set {
-				tileData.setEntryColor(3, value);
-				OnPalatteChange();
-			}
-		}
-
+		
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public Tile Tile {
 			get {
@@ -334,7 +282,7 @@ namespace GB.Shared.Tiles
 			float width = (w / this.tileData.Width);
 			float height = (h / this.tileData.Height);
 
-			Color c = tileData.Palette[color].DisplayColor;
+			Color c = tileData.paletteData.GetColor(ColorSet, (UInt16)PaletteID, color);
 
 			using (Brush brush = new SolidBrush(c)) {
 				g.FillRectangle(brush, x1, y1, width, height);

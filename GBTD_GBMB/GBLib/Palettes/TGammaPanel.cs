@@ -70,7 +70,7 @@ namespace GB.Shared.Palettes
 		private bool Freezed = false;
 		#endregion
 
-		/// Methods that set/get various fields.  Most are private.
+		/// Methods that paletteData/get various fields.  Most are private.
 		#region Private setter methods
 		/// <summary>
 		/// Sets the FFirstColor to that value.
