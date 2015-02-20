@@ -26,7 +26,7 @@ namespace GB.Shared.Tiles
 		[Category("Data"), Description("The tileData's number.")]
 		public int Number {
 			get { return number; }
-			set { number = value; SetupApearence(); }
+			set { number = value; this.Invalidate(); }
 		}
 
 		private TileData tileData = new TileData();
@@ -34,47 +34,29 @@ namespace GB.Shared.Tiles
 		[ReadOnly(true), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileData TileData {
 			get { return tileData; }
-			set { tileData = value; SetupApearence(); }
+			set { tileData = value; tileRenderer1.TileData = value; this.Invalidate(); }
 		}
 
 		[Category("Data"), Description("The ColorSet used.")]
 		public ColorSet ColorSet {
 			get { return colorSet; }
-			set { colorSet = value; }
+			set { colorSet = value; tileRenderer1.ColorSet = value; this.Invalidate(); }
 		}
 
 		private bool selected;
 		[Category("Data"), Description("Whether or not this has been selected.")]
 		public bool Selected {
 			get { return selected; }
-			set { selected = value; SetupApearence(); }
+			set { selected = value; tileRenderer1.Selected = value; this.Invalidate(); }
 		}
 
 		public TileListEntryControl() {
 			InitializeComponent();
 		}
 
-		
-
-		protected virtual void SetupApearence() {
-			if (Enabled) {
-				if (Selected) {
-					tileRenderer1.Tile = this.tileData.tile;
-					tileRenderer1.Palette = this.tileData.GetPalette(ColorSet).FilterAsSelected();
-				} else {
-					tileRenderer1.Tile = this.tileData.tile;
-					tileRenderer1.Palette = this.tileData.GetPalette(ColorSet);
-				}
-			} else {
-				tileRenderer1.Tile = this.tileData.tile;
-				tileRenderer1.Palette = new Palette_(); //TODO
-			}
-			this.Invalidate(true);
-		}
-
 		protected override void OnEnabledChanged(EventArgs e) {
 			base.OnEnabledChanged(e);
-			SetupApearence();
+			this.Invalidate();
 		}
 
 		private void textDisplay_Paint(object sender, PaintEventArgs e) {
