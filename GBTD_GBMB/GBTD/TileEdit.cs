@@ -156,31 +156,21 @@ namespace GB.GBTD
 		}
 
 		private void mainTileEdit_TileChanged(object sender, EventArgs e) {
-			TileData data = new TileData();
-			data.tile = mainTileEdit.Tile;
-			data.paletteData = this.paletteChooser.PaletteData;
-			data.SetRow(ColorSet, (UInt16)this.paletteChooser.SelectedRow);
-
 			if (!updatingFromTileList) {
-				this.tileList1[tileList1.SelectedEntry] = data;
+				this.tileList1[tileList1.SelectedEntry] = mainTileEdit.TileData;
 			}
 
-			this.previewRenderer1.TileData = data;
+			this.previewRenderer1.TileData = mainTileEdit.TileData;
 
 			mainTileEdit.Refresh();
 		}
 
 		private void mainTileEdit_PalatteChanged(object sender, EventArgs e) {
-			TileData data = new TileData();
-			data.tile = mainTileEdit.Tile;
-			data.paletteData = this.paletteChooser.PaletteData;
-			data.SetRow(ColorSet, (UInt16)this.paletteChooser.SelectedRow);
-
 			if (!updatingFromTileList) {
-				this.tileList1[tileList1.SelectedEntry] = data;
+				this.tileList1[tileList1.SelectedEntry] = mainTileEdit.TileData;
 			}
 
-			this.previewRenderer1.TileData = data;
+			this.previewRenderer1.TileData = mainTileEdit.TileData;
 
 			mainTileEdit.Refresh();
 		}
