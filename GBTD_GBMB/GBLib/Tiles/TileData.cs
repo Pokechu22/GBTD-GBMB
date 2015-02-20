@@ -22,7 +22,7 @@ namespace GB.Shared.Tiles
 		/// <summary>
 		/// Gets the Palette used with the given ColorSet.
 		/// </summary>
-		/// <param name="set"></param>
+		/// <param name="paletteData"></param>
 		/// <returns></returns>
 		public Palette_ GetPalette(ColorSet set) {
 			switch (set) {
@@ -38,7 +38,7 @@ namespace GB.Shared.Tiles
 		/// <summary>
 		/// Sets the Palette used with the given ColorSet.
 		/// </summary>
-		/// <param name="set"></param>
+		/// <param name="paletteData"></param>
 		/// <returns></returns>
 		public void SetPalette(ColorSet set, Palette_ value) {
 			switch (set) {
@@ -54,7 +54,7 @@ namespace GB.Shared.Tiles
 		/// <summary>
 		/// Gets the current paletteid with the given ColorSet.  If there is no palette row for the specified ColorSet, 0 is returned.
 		/// </summary>
-		/// <param name="set"></param>
+		/// <param name="paletteData"></param>
 		/// <returns></returns>
 		public int GetRow(ColorSet set) {
 			switch (set) {
@@ -70,7 +70,7 @@ namespace GB.Shared.Tiles
 		/// <summary>
 		/// Sets the current paletteid for the given ColorSet.  If there is no palette row for the specified ColorSet, nothing is done.
 		/// </summary>
-		/// <param name="set"></param>
+		/// <param name="paletteData"></param>
 		/// <returns></returns>
 		public void SetRow(ColorSet set, UInt16 value) {
 			switch (set) {

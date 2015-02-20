@@ -20,17 +20,20 @@ namespace GB.Shared.Palettes
 
 		public ChoosePalette(PaletteData data, ColorSet set) : this() {
 			this.Palette = data;
-		}
-
-		private PaletteSet set;
-		public PaletteSet Set {
-			get { return set; }
-			set { set = value; /*TODO Update appearence*/ }
+			this.ColorSet = set;
 		}
 
 		public PaletteData Palette {
 			get { return gbPaletteSetSelector1.PaletteData; }
 			set { gbPaletteSetSelector1.PaletteData = value; }
+		}
+
+		public ColorSet ColorSet {
+			get { return gbPaletteSetSelector1.SelectedSet; }
+			set { 
+				gbPaletteSetSelector1.SelectedSet = value;
+				this.colorPicker1.GBCFilter = value.IsFiltered();
+			}
 		}
 
 		private void colorPicker1_OnChange(object sender, EventArgs e) {
@@ -63,22 +66,22 @@ namespace GB.Shared.Palettes
 		}
 
 		private void pasteButton_Click(object sender, EventArgs e) {
-			if (!Clipboard.ContainsText()) { return; }
+			/*if (!Clipboard.ContainsText()) { return; }
 			if (this.gbPaletteSetSelector1.SelectedY < 0) { return; }
 
-			PaletteSet set = this.Set;
+			PaletteSet set = this.PaletteData;
 			set.StringToPaletteSet(ref set, Clipboard.GetText(), 0, this.gbPaletteSetSelector1.SelectedY);
-			this.Set = set;
+			this.PaletteData = set;*/
 		}
 
 		private void copyButton_Click(object sender, EventArgs e) {
-			if (this.gbPaletteSetSelector1.SelectedY < 0) { return; }
+			/*if (this.gbPaletteSetSelector1.SelectedY < 0) { return; }
 
-			Clipboard.SetText(this.Set[this.gbPaletteSetSelector1.SelectedY].PaletteToString());
+			Clipboard.SetText(this.PaletteData[this.gbPaletteSetSelector1.SelectedY].PaletteToString());*/
 		}
 
 		private void copyAllButton_Click(object sender, EventArgs e) {
-			Clipboard.SetText(this.Set.PaletteSetToString());
+			//Clipboard.SetText(this.PaletteData.PaletteSetToString());
 		}
 	}
 }

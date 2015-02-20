@@ -63,7 +63,7 @@ namespace GB.Shared.Palettes
 		/// This can only be used internally because changes aren't imideately reflected.
 		/// </summary>
 		private PaletteSet_ ActiveSet {
-			get { return PaletteData.GetPaletteSet(this.selectedSet); }
+			get { return paletteData.GetPaletteSet(this.selectedSet); }
 		}
 
 		#region Property clones
@@ -145,7 +145,7 @@ namespace GB.Shared.Palettes
 		[Description("The color paletteData used for this."), Category("Data")]
 		public ColorSet SelectedSet {
 			get { return selectedSet; }
-			set { selectedSet = value; this.freshenFromSet(); }
+			set { selectedSet = value; addControls(); this.freshenFromSet(); }
 		}
 		#endregion
 
@@ -169,6 +169,12 @@ namespace GB.Shared.Palettes
 		}
 		
 		private void addControls() {
+			//Remove any existing controls.
+			foreach (Control c in this.Controls) {
+				c.Dispose();
+			}
+			this.Controls.Clear();
+			
 			//Entries
 			entries = new PaletteSetEntry[4, ActiveSet.Size];
 			for (int y = 0; y < ActiveSet.Size; y++) {
