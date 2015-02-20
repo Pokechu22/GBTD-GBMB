@@ -17,7 +17,6 @@ namespace GB.Shared.Tiles
 		/// The palette paletteData shared between all tile datas.
 		/// </summary>
 		private PaletteData sharedPallete = new PaletteData();
-		private ColorSet sharedColorSet;
 
 		/// <summary>
 		/// The number of tiles represented.  Can be paletteData.
