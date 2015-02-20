@@ -277,8 +277,8 @@ namespace GB.Shared.Palettes
 			if (e.Index >= 0 && e.Index < Palette.Size) {
 				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(Palette[e.Index]), e.Bounds);
 			} else {
-				e.Graphics.DrawImageUnscaled(DrawRowToBitmap(Palette[0]), e.Bounds);
-				((ComboBox)(sender)).SelectedIndex = 0;
+				//e.Graphics.DrawImageUnscaled(DrawRowToBitmap(Palette[0]), e.Bounds);
+				//((ComboBox)(sender)).SelectedIndex = 0;
 			}
 		}
 
@@ -337,6 +337,8 @@ namespace GB.Shared.Palettes
 		/// Reloads the contents of this from the PaletteSet.
 		/// </summary>
 		protected virtual void reloadFromSet() {
+			this.dropDown.MaxDropDownItems = Palette.Size;
+
 			if (this.dropDown.SelectedIndex < 0 || this.dropDown.SelectedIndex >= Palette.Size) {
 				this.dropDown.SelectedIndex = 0;
 			}

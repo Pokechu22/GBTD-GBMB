@@ -48,6 +48,9 @@ namespace GB.GBTD
 			set {
 				//TODO actually use this value.
 				colorSet = value;
+				paletteChooser.ColorSet = value;
+				mainTileEdit.ColorSet = value;
+				tileList1.ColorSet = value;
 
 				MenuItem[] items = new MenuItem[] {
 					colorSetGameboyMenuItem,
