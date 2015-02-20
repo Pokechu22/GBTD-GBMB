@@ -11,8 +11,10 @@ using GB.Shared.Palettes;
 
 namespace GB.Shared.Tiles
 {
-	public partial class TileRenderer : UserControl
+	public class TileRenderer : Control
 	{
+		protected override Size DefaultSize { get { return new Size(8, 8); } }
+
 		#region Private members
 		private TileData tileData = new TileData { GBC_Palette = 0, SGB_Palette = 0, paletteData = new PaletteData(), tile = new Tile(8, 8) };
 
@@ -33,13 +35,13 @@ namespace GB.Shared.Tiles
 		#region Public properties
 		public TileData TileData {
 			get { return tileData; }
-			set { tileData = value; OnResize(new EventArgs()); OnTileChange(); OnPalatteChange(); }
+			set { tileData = value; OnResize(new EventArgs()); OnTileChange(new EventArgs()); OnPalatteChange(new EventArgs()); }
 		}
 
 		[Category("Data"), Description("The ColorSet used by this tile.")]
 		public ColorSet ColorSet {
 			get { return colorSet; }
-			set { colorSet = value; OnPalatteChange(); }
+			set { colorSet = value; OnPalatteChange(new EventArgs()); }
 		}
 
 		[Category("Data"), Description("The palette used by this tile.")]
@@ -50,7 +52,7 @@ namespace GB.Shared.Tiles
 			}
 			set {
 				tileData.SetPalette(ColorSet, value);
-				OnPalatteChange();
+				OnPalatteChange(new EventArgs());
 			}
 		}
 
@@ -62,7 +64,7 @@ namespace GB.Shared.Tiles
 			}
 			set {
 				tileData.paletteData = value;
-				OnPalatteChange();
+				OnPalatteChange(new EventArgs());
 			}
 		}
 
@@ -74,7 +76,7 @@ namespace GB.Shared.Tiles
 			}
 			set {
 				tileData.SetRow(ColorSet, (UInt16)value);
-				OnPalatteChange();
+				OnPalatteChange(new EventArgs());
 			}
 		}
 		
@@ -86,7 +88,7 @@ namespace GB.Shared.Tiles
 			set {
 				this.tileData.tile = value;
 				OnResize(new EventArgs());
-				OnTileChange();
+				OnTileChange(new EventArgs());
 			}
 		}
 
@@ -170,30 +172,37 @@ namespace GB.Shared.Tiles
 		/// Use this over OnClick.
 		/// </summary>
 		[Category("Action"), Description("Fires when a pixel in the tileData is clicked.  Use this over OnClick.")]
-		public event PixelClickedEvent PixelClicked;
+		public event PixelClickedEventHandler PixelClicked;
 
-		protected void OnPalatteChange() {
+		protected virtual void OnPalatteChange(EventArgs e) {
 			if (PalatteChanged != null) {
-				PalatteChanged(this, new EventArgs());
+				PalatteChanged(this, e);
 			}
 			this.Invalidate(true);
 		}
 
-		protected void OnTileChange() {
+		protected virtual void OnTileChange(EventArgs e) {
 			if (TileChanged != null) {
-				TileChanged(this, new EventArgs());
+				TileChanged(this, e);
+			}
+			this.Invalidate(true);
+		}
+
+		protected virtual void OnPixelClicked(PixelClickEventArgs e) {
+			if (PixelClicked != null) {
+				PixelClicked(this, e);
 			}
 			this.Invalidate(true);
 		}
 		#endregion
 
 		public TileRenderer() {
-			InitializeComponent();
 			SetStyle(ControlStyles.FixedHeight, true);
 			SetStyle(ControlStyles.FixedWidth, true);
+			this.DoubleBuffered = true;
 		}
 
-		private void TileRenderer_Paint(object sender, PaintEventArgs e) {
+		protected override void OnPaint(PaintEventArgs e) {
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
 
 			for (byte x = 0; x < this.tileData.Width; x++) {
@@ -251,6 +260,8 @@ namespace GB.Shared.Tiles
 					}
 				}
 			}
+
+			base.OnPaint(e);
 		}
 
 		/// <summary>
@@ -289,26 +300,36 @@ namespace GB.Shared.Tiles
 			}
 		}
 
+		/// <summary>If already resizing, we don't want to start a second resize.</summary>
+		private volatile bool resizing = false;
 		/// <summary>
 		/// Ensure that it is divisible evenly by 8.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void TileRenderer_Resize(object sender, EventArgs e) {
-			this.Resize -= new EventHandler(TileRenderer_Resize);
+		protected override void OnResize(EventArgs e) {
+			base.OnResize(e);
+			
+			if (!resizing) {
+				resizing = true;
 
-			this.Width = this.pixelScale * this.tileData.Width;
-			this.Height = this.pixelScale * this.tileData.Height;
+				Size newSize = new Size();
 
-			if (this.border) {
-				if (this.borderSides.HasFlag(Border3DSide.Right)) {
-					this.Width++;
+				newSize.Width = this.pixelScale * this.tileData.Width;
+				newSize.Height = this.pixelScale * this.tileData.Height;
+
+				if (this.border) {
+					if (this.borderSides.HasFlag(Border3DSide.Right)) {
+						newSize.Width++;
+					}
+					if (this.borderSides.HasFlag(Border3DSide.Bottom)) {
+						newSize.Height++;
+					}
 				}
-				if (this.borderSides.HasFlag(Border3DSide.Bottom)) {
-					this.Height++;
-				}
+
+				this.Size = newSize;
+				resizing = false;
 			}
-			this.Resize += new EventHandler(TileRenderer_Resize);
 		}
 
 		protected internal byte getClickedPixelX(int clickedX) {
@@ -333,12 +354,25 @@ namespace GB.Shared.Tiles
 			return returned;
 		}
 
+		protected override void OnMouseMove(MouseEventArgs e) {
+			base.OnMouseMove(e);
+			OnMouseDoSomething(e);
+		}
+		protected override void OnMouseDown(MouseEventArgs e) {
+			base.OnMouseDown(e);
+			OnMouseDoSomething(e);
+		}
+		protected override void OnMouseUp(MouseEventArgs e) {
+			base.OnMouseUp(e);
+			OnMouseDoSomething(e);
+		}
+
 		/// <summary>
 		/// Called when something about the mouse is changed: Mouse buttons or position.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void TileRenderer_MouseChanged(object sender, MouseEventArgs e) {
+		private void OnMouseDoSomething(MouseEventArgs e) {
 			byte x = 0, y = 0;
 			MouseButtons buttons;
 			try {
@@ -355,11 +389,7 @@ namespace GB.Shared.Tiles
 				this.buttons = buttons;
 
 				if (e.Button != MouseButtons.None) {
-					if (PixelClicked != null) {
-						PixelClicked(this, new PixelClickEventArgs(x, y, buttons));
-					}
-
-					this.Invalidate(true);
+					OnPixelClicked(new PixelClickEventArgs(x, y, buttons));
 				}
 			}
 		}
@@ -403,6 +433,6 @@ namespace GB.Shared.Tiles
 		}
 	}
 
-	public delegate void PixelClickedEvent(object sender, PixelClickEventArgs e);
+	public delegate void PixelClickedEventHandler(object sender, PixelClickEventArgs e);
 }
 

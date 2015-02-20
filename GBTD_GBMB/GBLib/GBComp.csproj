@@ -85,10 +85,7 @@
     <Compile Include="Tiles\GBColor.cs" />
     <Compile Include="Tiles\GBCompression.cs" />
     <Compile Include="Tiles\EditableTileRenderer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Tiles\EditableTileRenderer.Designer.cs">
-      <DependentUpon>EditableTileRenderer.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Palettes\GBPaletteChooser.cs">
       <SubType>UserControl</SubType>
@@ -140,10 +137,7 @@
     </Compile>
     <Compile Include="Tiles\TileParser.cs" />
     <Compile Include="Tiles\TileRenderer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Tiles\TileRenderer.Designer.cs">
-      <DependentUpon>TileRenderer.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tiles\TileTransformations.cs" />
     <Compile Include="Tiles\VRAMTileParser.cs" />
@@ -157,9 +151,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Spinner.resx">
       <DependentUpon>Spinner.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tiles\EditableTileRenderer.resx">
-      <DependentUpon>EditableTileRenderer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Palettes\GBPaletteChooser.resx">
       <DependentUpon>GBPaletteChooser.cs</DependentUpon>
@@ -179,9 +170,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tiles\TileListEntryControl.resx">
       <DependentUpon>TileListEntryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tiles\TileRenderer.resx">
-      <DependentUpon>TileRenderer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

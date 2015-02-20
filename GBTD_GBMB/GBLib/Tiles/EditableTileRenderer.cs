@@ -100,10 +100,10 @@ namespace GB.Shared.Tiles
 
 
 		public EditableTileRenderer() {
-			InitializeComponent();
+			
 		}
 
-		private void PixelEditableTileRenderer_PixelClicked(object sender, PixelClickEventArgs e) {
+		protected override void OnPixelClicked(PixelClickEventArgs e) {
 			GBColor color;
 			//Try to paletteData the color to the dictionary value; if it fails use black.
 			if (e.mouseButton.HasFlag(MouseButtons.XButton2)) {
@@ -121,6 +121,8 @@ namespace GB.Shared.Tiles
 			}
 
 			Tile = editor.EditTile(Tile, e.x, e.y, color);
+
+			base.OnPixelClicked(e);
 		}
 	}
 }
