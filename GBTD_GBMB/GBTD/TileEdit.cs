@@ -51,6 +51,7 @@ namespace GB.GBTD
 				paletteChooser.ColorSet = value;
 				mainTileEdit.ColorSet = value;
 				tileList1.ColorSet = value;
+				previewRenderer1.ColorSet = value;
 
 				MenuItem[] items = new MenuItem[] {
 					colorSetGameboyMenuItem,

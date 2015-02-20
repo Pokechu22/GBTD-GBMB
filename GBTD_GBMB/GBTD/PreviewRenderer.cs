@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GB.Shared.Tiles;
+using GB.Shared.Palettes;
 
 namespace GB.GBTD
 {
@@ -18,6 +19,19 @@ namespace GB.GBTD
 		public TileData TileData {
 			get { return tileData; }
 			set { tileData = value; OnTileDataChanged(); }
+		}
+
+		private ColorSet colorSet;
+		[Category("Display"), Description("The color set used.")]
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set {
+				colorSet = value;
+				foreach (TileRenderer t in this.renderers) {
+					t.ColorSet = value;
+				}
+				miniPreviewRenderer.ColorSet = value;
+			}
 		}
 
 		private bool simple = false;
