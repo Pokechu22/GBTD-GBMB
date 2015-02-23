@@ -87,6 +87,42 @@ namespace GB.Shared.GBRFile
 
 		public List<GBRObject> Objects;
 
+		/// <summary>
+		/// Gets the Object with the specified objectID, ignoring objects that have been deleted.
+		/// </summary>
+		/// <param name="ObjectID"></param>
+		/// <returns>The specified object, or <c>null</c> if none exist.</returns>
+		public GBRObject GetObjectWithID(UInt16 ID) {
+			foreach (GBRObject obj in this.Objects) {
+				if (obj is GBRObjectDeleted) {
+					continue;
+				}
+				if (obj.Header.UniqueID == ID) {
+					return obj;
+				}
+			}
+			return null;
+		}
+		/// <summary>
+		/// Gets the Object with the specified objectID and of the specified type, ignoring objects that have been deleted.
+		/// </summary>
+		/// <param name="ObjectID"></param>
+		/// <typeparam name="TObjectType">The type of object to search for.</typeparam>
+		/// <returns>The specified object, or <c>null</c> if none exist.</returns>
+		public TObjectType GetObjectWithID<TObjectType>(UInt16 ID) where TObjectType : GBRObject {
+			foreach (GBRObject obj in this.Objects) {
+				if (obj is GBRObjectDeleted) {
+					continue;
+				}
+				if (obj is TObjectType) {
+					if (obj.Header.UniqueID == ID) {
+						return obj as TObjectType;
+					}
+				}
+			}
+			return null;
+		}
+
 		public GBRFile() {
 			this.Header = new GBRFileHeader();
 		}
