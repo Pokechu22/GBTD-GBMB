@@ -47,6 +47,7 @@
     <Compile Include="GBRObjectPalettes.cs" />
     <Compile Include="GBRObjectProducerInfo.cs" />
     <Compile Include="GBRObjectTileData.cs" />
+    <Compile Include="GBRObjectTileExport.cs" />
     <Compile Include="GBRObjectTileImport.cs" />
     <Compile Include="GBRObjectTilePalette.cs" />
     <Compile Include="GBRObjectTileSettings.cs" />

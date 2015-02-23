@@ -143,15 +143,64 @@ namespace GB.Shared.GBRFile
 		}
 
 		protected override void LoadFromStream(Stream s) {
-			throw new NotImplementedException();
+			this.CorrespondingID = s.ReadWord();
+			this.FileName = s.ReadString(128);
+			this.FileType = (ExportFileType)s.ReadByte();
+			this.SectionName = s.ReadString(20);
+			this.LabelName = s.ReadString(20);
+			this.Bank = s.ReadByteEx();
+			this.StoreTilesInArray = s.ReadBool();
+			this.Format = (ExportFormat)s.ReadByte();
+			this.CounterType = (ExportCounterType)s.ReadByte();
+			this.FromTile = s.ReadWord();
+			this.ToTile = s.ReadWord();
+			this.UseCompression = (ExportCompressionMode)s.ReadByte();
+			this.IncludeColors = s.ReadBool();
+			this.SGBPalMode = (ExportPaletteMode)s.ReadByte();
+			this.GBCPalMode = (ExportPaletteMode)s.ReadByte();
+			this.MakeMetaTiles = s.ReadBool();
+			this.MetaTileOffset = s.ReadLong();
+			this.MetaCounterFormat = (ExportCounterType)s.ReadByte();
+			this.Split = s.ReadBool();
+			this.BlockSize = s.ReadLong();
+			this.SelectedTab = s.ReadByteEx();
 		}
 
 		public override string GetTypeName() {
-			throw new NotImplementedException();
+			return "Tile export settings";
 		}
 
 		public override TreeNode ToTreeNode() {
-			throw new NotImplementedException();
+			TreeNode root = CreateRootTreeNode();
+
+			root.Nodes.Add("CorrespondingID", "CorrespondingID: " + CorrespondingID);
+			TreeNode fileName = new TreeNode("File name");
+			fileName.Nodes.Add(FileName);
+			root.Nodes.Add(fileName);
+			root.Nodes.Add("FileType", "FileType: " + FileType);
+			TreeNode sectionName = new TreeNode("Section name");
+			sectionName.Nodes.Add(SectionName);
+			root.Nodes.Add(sectionName);
+			TreeNode labelName = new TreeNode("Label name");
+			labelName.Nodes.Add(LabelName);
+			root.Nodes.Add(labelName);
+			root.Nodes.Add("Bank", "Bank: " + Bank);
+			root.Nodes.Add("TilesArray", "StoreTilesInArray: " + StoreTilesInArray);
+			root.Nodes.Add("Format", "Format: " + Format);
+			root.Nodes.Add("Counter", "Counter: " + CounterType);
+			root.Nodes.Add("FromTile", "FromTile: " + FromTile);
+			root.Nodes.Add("ToTile", "ToTile: " + ToTile);
+			root.Nodes.Add("UseCompression", "UseCompression: " + UseCompression);
+			root.Nodes.Add("IncludeColors", "IncludeColors: " + IncludeColors);
+			root.Nodes.Add("SGBPalettes", "SGB Palette Mode: " + SGBPalMode);
+			root.Nodes.Add("GBCPalettes", "GBC Palette Mode: " + GBCPalMode);
+			root.Nodes.Add("MakeMetaTiles", "MakeMetaTiles: " + MakeMetaTiles);
+			root.Nodes.Add("MetaTileOffset", "MetaTileOffset: " + MetaTileOffset);
+			root.Nodes.Add("MetaCounterFormat", "Meta Tile Counter Format: " + MetaCounterFormat);
+			root.Nodes.Add("Split", "Split: " + Split);
+			root.Nodes.Add("BlockSize", "BlockSize: " + BlockSize);
+			root.Nodes.Add("SelectedTab", "SelectedTab: " + SelectedTab);
+			return root;
 		}
 	}
 
