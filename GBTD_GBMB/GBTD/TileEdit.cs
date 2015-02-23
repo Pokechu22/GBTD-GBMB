@@ -53,6 +53,8 @@ namespace GB.GBTD
 				tileList1.ColorSet = value;
 				previewRenderer1.ColorSet = value;
 
+				palettesMenuItem.Enabled = value.SupportsPaletteCustomization();
+
 				MenuItem[] items = new MenuItem[] {
 					colorSetGameboyMenuItem,
 					colorSetGameboyPocketMenuItem,
@@ -74,6 +76,8 @@ namespace GB.GBTD
 			initClipboardChangeCheck();
 
 			previewRenderer1.TileData = mainTileEdit.TileData;
+
+			this.ColorSet = ColorSet.GAMEBOY_POCKET;
 		}
 
 		protected override void OnLoad(EventArgs e) {

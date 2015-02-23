@@ -20,6 +20,11 @@ namespace GB.Shared.Palettes
 
 	public static class ColorSetExtensions
 	{
+		/// <summary>
+		/// Is this color set filtered by GBC color filtration?
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
 		public static bool IsFiltered(this ColorSet @this) {
 			switch (@this) {
 			case ColorSet.GAMEBOY_POCKET: return false;
@@ -30,7 +35,12 @@ namespace GB.Shared.Palettes
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
 			}
 		}
-
+		
+		/// <summary>
+		/// Gets the display name of this colorset.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
 		public static String GetDisplayName(this ColorSet @this) {
 			switch (@this) {
 			case ColorSet.GAMEBOY_POCKET: return "Gameboy Pocket";
@@ -38,6 +48,22 @@ namespace GB.Shared.Palettes
 			case ColorSet.GAMEBOY_COLOR: return "Gameboy Color";
 			case ColorSet.SUPER_GAMEBOY: return "Super Gameboy";
 			case ColorSet.GAMEBOY_COLOR_FILTERED: return "Gameboy Color";
+			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
+			}
+		}
+
+		/// <summary>
+		/// Whether or not this ColorSet has a Palette.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static bool SupportsPaletteCustomization(this ColorSet @this) {
+			switch (@this) {
+			case ColorSet.GAMEBOY_POCKET: return false;
+			case ColorSet.GAMEBOY: return false;
+			case ColorSet.GAMEBOY_COLOR: return true;
+			case ColorSet.SUPER_GAMEBOY: return true;
+			case ColorSet.GAMEBOY_COLOR_FILTERED: return true;
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
 			}
 		}
