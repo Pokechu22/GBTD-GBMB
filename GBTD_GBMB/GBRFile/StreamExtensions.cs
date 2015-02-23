@@ -184,6 +184,25 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
+		/// Reads a byte from the specified stream, throwing an exception if at the end of the stream.
+		/// </summary>
+		/// <returns></returns>
+		internal static byte ReadByteEx(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[1];
+			int read = stream.Read(bytes, 0, 1);
+
+			if (read != 1) {
+				throw new EndOfStreamException();
+			}
+
+			return (bytes[0]);
+		}
+
+		/// <summary>
 		/// Reads the object Header from specified stream.
 		/// </summary>
 		/// <param name="stream">The stream to write to.</param>
