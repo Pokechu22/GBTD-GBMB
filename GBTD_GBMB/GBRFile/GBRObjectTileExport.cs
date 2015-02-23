@@ -119,7 +119,27 @@ namespace GB.Shared.GBRFile
 		public byte SelectedTab { get; set; }
 
 		protected override void SaveToStream(Stream s) {
-			throw new NotImplementedException();
+			s.WriteWord(CorrespondingID);
+			s.WriteString(FileName, 128);
+			s.WriteByte((byte)FileType);
+			s.WriteString(SectionName, 20);
+			s.WriteString(LabelName, 20);
+			s.WriteByte(Bank);
+			s.WriteBool(StoreTilesInArray);
+			s.WriteByte((byte)Format);
+			s.WriteByte((byte)CounterType);
+			s.WriteWord(FromTile);
+			s.WriteWord(ToTile);
+			s.WriteByte((byte)UseCompression);
+			s.WriteBool(IncludeColors);
+			s.WriteByte((byte)SGBPalMode);
+			s.WriteByte((byte)GBCPalMode);
+			s.WriteBool(MakeMetaTiles);
+			s.WriteLong(MetaTileOffset);
+			s.WriteByte((byte)MetaCounterFormat);
+			s.WriteBool(Split);
+			s.WriteLong(BlockSize);
+			s.WriteByte(SelectedTab);
 		}
 
 		protected override void LoadFromStream(Stream s) {
