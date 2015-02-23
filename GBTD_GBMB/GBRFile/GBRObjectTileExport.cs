@@ -114,6 +114,7 @@ namespace GB.Shared.GBRFile
 		public UInt32 BlockSize { get; set; }
 		/// <summary>
 		/// The currently selected tab.
+		/// A value of 0 is "Standard", 1 is "Advanced".
 		/// </summary>
 		/// <remarks>Since: GBTD 1.8</remarks>
 		public byte SelectedTab { get; set; }
@@ -155,15 +156,15 @@ namespace GB.Shared.GBRFile
 			this.FromTile = s.ReadWord();
 			this.ToTile = s.ReadWord();
 			this.UseCompression = (ExportCompressionMode)s.ReadByte();
-			this.IncludeColors = s.ReadBool();
-			this.SGBPalMode = (ExportPaletteMode)s.ReadByte();
-			this.GBCPalMode = (ExportPaletteMode)s.ReadByte();
-			this.MakeMetaTiles = s.ReadBool();
-			this.MetaTileOffset = s.ReadLong();
-			this.MetaCounterFormat = (ExportCounterType)s.ReadByte();
-			this.Split = s.ReadBool();
-			this.BlockSize = s.ReadLong();
-			this.SelectedTab = s.ReadByteEx();
+			this.IncludeColors = s.ReadBool(false);
+			this.SGBPalMode = (ExportPaletteMode)s.ReadByte((byte)ExportPaletteMode.None);
+			this.GBCPalMode = (ExportPaletteMode)s.ReadByte((byte)ExportPaletteMode.None);
+			this.MakeMetaTiles = s.ReadBool(false);
+			this.MetaTileOffset = s.ReadLong(0);
+			this.MetaCounterFormat = (ExportCounterType)s.ReadByte((byte)ExportPaletteMode.None);
+			this.Split = s.ReadBool(false);
+			this.BlockSize = s.ReadLong(0);
+			this.SelectedTab = s.ReadByte(0);
 		}
 
 		public override string GetTypeName() {
