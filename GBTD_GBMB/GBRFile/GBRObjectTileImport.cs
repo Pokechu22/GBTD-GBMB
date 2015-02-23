@@ -26,7 +26,7 @@ namespace GB.Shared.GBRFile
 		/// The type of the file.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public FileType FileType { get; set; }
+		public ImportFileType FileType { get; set; }
 		/// <summary>
 		/// The first tile from a GBE file to import.
 		/// </summary>
@@ -46,7 +46,7 @@ namespace GB.Shared.GBRFile
 		/// The color conversion behavior.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public ColorConversion ColorConversion { get; set; }
+		public ImportColorConversion ColorConversion { get; set; }
 		/// <summary>
 		/// The first byte in the binary file.
 		/// </summary>
@@ -56,7 +56,7 @@ namespace GB.Shared.GBRFile
 		/// The format of the binary file type.
 		/// </summary>
 		/// <remarks>Since: GBTD 1.5</remarks>
-		public BinaryFileFormat BinaryFileFormat { get; set; }
+		public ImportBinaryFileFormat BinaryFileFormat { get; set; }
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteWord(CorrespondingID);
@@ -73,13 +73,13 @@ namespace GB.Shared.GBRFile
 		protected override void LoadFromStream(Stream s) {
 			this.CorrespondingID = s.ReadWord();
 			this.FileName = s.ReadString(128);
-			this.FileType = (FileType)s.ReadByteEx();
+			this.FileType = (ImportFileType)s.ReadByteEx();
 			this.FromTile = s.ReadWord();
 			this.ToTile = s.ReadWord();
 			this.TileCount = s.ReadWord();
-			this.ColorConversion = (ColorConversion)s.ReadByteEx();
+			this.ColorConversion = (ImportColorConversion)s.ReadByteEx();
 			this.FirstByte = s.ReadLong(0);
-			this.BinaryFileFormat = (BinaryFileFormat)s.ReadByte((byte)BinaryFileFormat.BytePerPixel);
+			this.BinaryFileFormat = (ImportBinaryFileFormat)s.ReadByte((byte)ImportBinaryFileFormat.BytePerPixel);
 		}
 
 		public override string GetTypeName() {
@@ -108,7 +108,7 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// Valid values for FileType.
 	/// </summary>
-	public enum FileType : byte
+	public enum ImportFileType : byte
 	{
 		GBEFile = 0,
 		Binary8x8 = 1
@@ -117,7 +117,7 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// Valid values for ColorConversion.
 	/// </summary>
-	public enum ColorConversion : byte
+	public enum ImportColorConversion : byte
 	{
 		ByColors = 0,
 		ByIndex = 1
@@ -126,7 +126,7 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// Valid values for FileType.
 	/// </summary>
-	public enum BinaryFileFormat : byte
+	public enum ImportBinaryFileFormat : byte
 	{
 		BytePerPixel = 0,
 		TwoBitsPerPixel = 1,
