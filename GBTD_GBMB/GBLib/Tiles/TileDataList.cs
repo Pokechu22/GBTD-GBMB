@@ -16,7 +16,7 @@ namespace GB.Shared.Tiles
 		/// <summary>
 		/// The palette paletteData shared between all tile datas.
 		/// </summary>
-		private PaletteData sharedPallete = new PaletteData();
+		private PaletteData sharedPalette = new PaletteData();
 
 		/// <summary>
 		/// The number of tiles represented.  Can be paletteData.
@@ -33,11 +33,11 @@ namespace GB.Shared.Tiles
 		}
 
 		public PaletteData Palette {
-			get { return sharedPallete; }
+			get { return sharedPalette; }
 			set {
-				sharedPallete = value;
+				sharedPalette = value;
 				for (int i = 0; i < tiles.Length; i++) {
-					tiles[i].paletteData = sharedPallete;
+					tiles[i].paletteData = sharedPalette;
 				}
 			}
 		}
