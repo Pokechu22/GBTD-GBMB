@@ -53,10 +53,8 @@ namespace GB.Shared.GBRFile
 
 		/// <summary>
 		/// The actual tile data payload.
-		/// 
-		/// TODO: A simple GBColor[] isn't a good way of making this.
 		/// </summary>
-		public GBColor[] data;
+		public Tile[] tiles;
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteString(name, 30);
@@ -70,8 +68,13 @@ namespace GB.Shared.GBRFile
 			s.WriteByte((byte)Color2Mapping);
 			s.WriteByte((byte)Color3Mapping);
 
-			for (int i = 0; i < data.Length; i++) {
-				s.WriteByte((byte)data[i]);
+			for (int i = 0; i < tiles.Length; i++) {
+				Tile tile = tiles[i];
+				for (int y = 0; y < Height; y++) {
+					for (int x = 0; x < Width; x++) {
+						s.WriteByte((byte)tile[x, y]);
+					}
+				}
 			}
 		}
 
@@ -87,10 +90,20 @@ namespace GB.Shared.GBRFile
 			Color2Mapping = (GBColor)s.ReadByte();
 			Color3Mapping = (GBColor)s.ReadByte();
 
-			data = new GBColor[Width * Height * Count];
+			tiles = new Tile[Count];
 
-			for (int i = 0; i < data.Length; i++) {
-				data[i] = (GBColor)s.ReadByte();
+			for (int i = 0; i < tiles.Length; i++) {
+				Tile tile = new Tile(Width, Height);
+				for (int y = 0; y < Height; y++) {
+					for (int x = 0; x < Width; x++) {
+						int read = s.ReadByte();
+
+						if (read < 0) { throw new EndOfStreamException(); }
+
+						tile[x, y] = (GBColor)read;
+					}
+				}
+				tiles[i] = tile;
 			}
 		}
 
@@ -133,9 +146,9 @@ namespace GB.Shared.GBRFile
 					StringBuilder chard = new StringBuilder();
 
 					for (int x = 0; x < Width; x++) {
-						named.Append(data[(i * step) + (y * Width) + x]).Append(' ');
-						numbered.Append((byte)data[(i * step) + (y * Width) + x]).Append(' ');
-						switch (data[(i * step) + (y * Width) + x]) {
+						named.Append(tiles[i][x, y]).Append(' ');
+						numbered.Append(tiles[i][x, y]).Append(' ');
+						switch (tiles[i][x, y]) {
 						case GBColor.BLACK: chard.Append(BLACK).Append(' '); break;
 						case GBColor.DARK_GRAY: chard.Append(DARK_GRAY).Append(' '); break;
 						case GBColor.LIGHT_GRAY: chard.Append(LIGHT_GRAY).Append(' '); break;
