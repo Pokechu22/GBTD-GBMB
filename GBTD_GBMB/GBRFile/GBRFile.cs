@@ -123,6 +123,18 @@ namespace GB.Shared.GBRFile
 			return null;
 		}
 
+		/// <summary>
+		/// Gets all of the objects that are of the specified type.
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <returns></returns>
+		public List<TObjectType> GetObjectsOfType<TObjectType>() where TObjectType : GBRObject {
+			//Woot, Linq!
+			return new List<TObjectType>(Objects
+				.Where(o => o is TObjectType)
+				.Select(o => o as TObjectType));
+		}
+
 		public GBRFile() {
 			this.Header = new GBRFileHeader();
 		}
