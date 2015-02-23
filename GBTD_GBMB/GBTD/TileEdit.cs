@@ -16,15 +16,8 @@ namespace GB.GBTD
 {
 	public partial class TileEdit : Form
 	{
-		public Tile[] Tiles {
-			get {
-				return Array.ConvertAll(tileList1.Tiles, item => item.tile);
-			}
-			/*paletteData {
-				tileList1.Tiles = (TileData[]) value.Clone();
-			}*/
-			//TODO
-		}
+		private string filePath;
+		private GBRFile GBRFile;
 
 		private int selectedTileNumber = 0;
 
@@ -368,6 +361,64 @@ namespace GB.GBTD
 					this.ColorSet = (ColorSet)i.Tag;
 				}
 			}
+		}
+
+		private void openButton_Click(object sender, EventArgs e) {
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.DefaultExt = "gbr";
+			dialog.Filter = "GBR Files|*.gbr|All files|*.*";
+			dialog.SupportMultiDottedExtensions = true;
+			DialogResult result = dialog.ShowDialog();
+			if (result != System.Windows.Forms.DialogResult.OK) {
+				return;
+			}
+			filePath = dialog.FileName;
+			using (System.IO.Stream s = dialog.OpenFile()) {
+				GBRFile = new GBRFile(s);
+			}
+			//TODO: Move load file logic?  Mabye also move open file logic?
+			GBRObjectTileSettings TileSettings;
+			{
+				var temp = GBRFile.GetObjectsOfType<GBRObjectTileSettings>();
+				if (temp.Count != 1) {
+					MessageBox.Show("Invalid number of GBRObjectTileSettings: " + temp.Count, "Failed to read GBR file", 
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				TileSettings = temp[0];
+			}
+
+			this.paletteChooser.LeftMouseColor = TileSettings.LeftColor;
+			this.paletteChooser.RightMouseColor = TileSettings.RightColor;
+			this.paletteChooser.MiddleMouseColor = TileSettings.MiddleMouseColor;
+			this.paletteChooser.X1MouseColor = TileSettings.X1MouseColor;
+			this.paletteChooser.X2MouseColor = TileSettings.X2MouseColor;
+
+			this.toolList.AutoUpdate = TileSettings.AutoUpdate;
+			this.simpleModeMenuItem.Checked = this.previewRenderer1.Simple = TileSettings.SimpleMode;
+			this.mainTileEdit.NibbleMarkers = TileSettings.ShowNibbleMarkers;
+			this.mainTileEdit.Grid = TileSettings.ShowGrid;
+
+			this.ColorSet = TileSettings.ColorSet;
+			//TODO: TileSettings.ReferedID
+
+			//TODO
+			//TileSettings.Bookmark1;
+			//TileSettings.Bookmark2;
+			//TileSettings.Bookmark3;
+			//TODO
+			//TileSettings.SplitHeight;
+			//TileSettings.SplitWidth;
+			//TileSettings.SplitOrder;
+			this.ColorSet = TileSettings.ColorSet;
+		}
+
+		private void saveButton_Click(object sender, EventArgs e) {
+			//TODO
+		}
+
+		private void saveAsButton_Click(object sender, EventArgs e) {
+			//TODO
 		}
 	}
 }
