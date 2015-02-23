@@ -147,7 +147,7 @@ namespace GB.Shared.GBRFile
 			RegisterExportable(0x01, typeof(GBRObjectProducerInfo));
 			RegisterExportable(0x02, typeof(GBRObjectTileData));
 			RegisterExportable(0x03, typeof(GBRObjectTileSettings));
-
+			RegisterExportable(0x04, typeof(GBRObjectTileExport));
 			RegisterExportable(0x05, typeof(GBRObjectTileImport));
 			RegisterExportable(0x0D, typeof(GBRObjectPalettes));
 			RegisterExportable(0x0E, typeof(GBRObjectTilePalette));
