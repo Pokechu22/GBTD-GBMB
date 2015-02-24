@@ -190,6 +190,6 @@ namespace GB.Shared.GBRFile
 		protected ReferentialGBRObject(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		protected ReferentialGBRObject(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
-		UInt16 ReferedObjectID { get; set; }
+		public abstract UInt16 ReferedObjectID { get; set; }
 	}
 }
