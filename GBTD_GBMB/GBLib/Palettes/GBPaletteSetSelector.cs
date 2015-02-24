@@ -140,9 +140,9 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
-		/// The color paletteData used for this.
+		/// The color set used for this.
 		/// </summary>
-		[Description("The color paletteData used for this."), Category("Data")]
+		[Description("The color set used for this."), Category("Data")]
 		public ColorSet SelectedSet {
 			get { return selectedSet; }
 			set { selectedSet = value; addControls(); this.freshenFromSet(); }

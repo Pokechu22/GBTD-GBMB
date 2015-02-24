@@ -352,7 +352,7 @@ namespace GB.GBTD
 		}
 
 		/// <summary>
-		/// Called when one of the menu items for changing the color paletteData is clicked.
+		/// Called when one of the menu items for changing the color set is clicked.
 		/// </summary>
 		private void colorSetMenuItems_Click(object sender, EventArgs e) {
 			if (sender is MenuItem) {

@@ -215,7 +215,7 @@ namespace GB.Shared.Palettes
 			}
 		}
 
-		[Category("Data"), Description("The active color paletteData.")]
+		[Category("Data"), Description("The active color set.")]
 		public ColorSet ColorSet {
 			get { return gbPaletteChooser1.ColorSet; }
 			set { gbPaletteChooser1.ColorSet = value; this.Invalidate(); }

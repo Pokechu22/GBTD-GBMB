@@ -522,7 +522,7 @@
             this.colorSetSuperGameboyMenuItem,
             this.colorSetGameboyColorMenuItem,
             this.colorSetFilteredGameboyColorMenuItem});
-			this.colorSetMenuItem.Text = "C&olor paletteData";
+			this.colorSetMenuItem.Text = "C&olor set";
 			// 
 			// colorSetGameboyPocketMenuItem
 			// 
@@ -580,7 +580,7 @@
 			// setBookmarkMenuItem
 			// 
 			this.setBookmarkMenuItem.Index = 12;
-			this.setBookmarkMenuItem.Text = "&ActiveSet bookmark";
+			this.setBookmarkMenuItem.Text = "&Set bookmark";
 			// 
 			// gotoBookmarkMenuItem
 			// 
