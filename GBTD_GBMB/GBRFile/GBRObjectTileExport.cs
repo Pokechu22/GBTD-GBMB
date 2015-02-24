@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace GB.Shared.GBRFile
 {
-	class GBRObjectTileExport : GBRObject
+	public class GBRObjectTileExport : GBRObject
 	{
 		public GBRObjectTileExport(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileExport(GBRObjectHeader header, Stream stream) : base(header, stream) { }
