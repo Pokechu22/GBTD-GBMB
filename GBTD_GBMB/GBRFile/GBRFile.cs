@@ -135,6 +135,41 @@ namespace GB.Shared.GBRFile
 				.Select(o => o as TObjectType));
 		}
 
+		/// <summary>
+		/// Gets the object that is refered to by the specified object.
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public GBRObject GetReferedObject(ReferentialGBRObject obj) {
+			return Objects
+				.First(o => o.Header.UniqueID == obj.ReferedObjectID);
+		}
+
+		/// <summary>
+		/// Gets all objects that refer to the specified object.
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public List<ReferentialGBRObject> GetReferingObjects(GBRObject obj) {
+			return new List<ReferentialGBRObject>(Objects
+				.Where(o => o is ReferentialGBRObject)
+				.Select(o => o as ReferentialGBRObject)
+				.Where(o => o.ReferedObjectID == obj.Header.UniqueID));
+		}
+
+		/// <summary>
+		/// Gets all objects of the specified type that refer to the specified object.
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public List<TObjectType> GetReferingObjects<TObjectType>(GBRObject obj) where TObjectType : ReferentialGBRObject {
+			return new List<TObjectType>(Objects
+				.Where(o => o is TObjectType)
+				.Select(o => o as TObjectType)
+				.Where(o => o.ReferedObjectID == obj.Header.UniqueID));
+		}
+
 		public GBRFile() {
 			this.Header = new GBRFileHeader();
 		}
