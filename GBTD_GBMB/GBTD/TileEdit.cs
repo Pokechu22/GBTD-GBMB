@@ -452,6 +452,20 @@ namespace GB.GBTD
 				tileDatas[i].tile = tiles.tiles[i];
 			}
 			tileList1.Tiles = tileDatas;
+			
+			//Load the palettes.
+			GBRObjectPalettes palettes;
+			{
+				var temp = GBRFile.GetObjectsOfType<GBRObjectPalettes>();
+				if (temp.Count != 1) {
+					MessageBox.Show("Invalid number of GBRObjectPalettes: " + temp.Count, "Failed to read GBR file",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				palettes = temp[0];
+			}
+			
+			this.paletteChooser.PaletteData = this.tileList1.PaletteSet = new PaletteData(palettes.SGBPalettes, palettes.GBCPalettes);
 		}
 
 		private void saveButton_Click(object sender, EventArgs e) {
