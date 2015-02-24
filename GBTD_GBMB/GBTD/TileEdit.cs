@@ -255,7 +255,19 @@ namespace GB.GBTD
 		}
 
 		private void exportToMenuItem_Click(object sender, EventArgs e) {
-			ExportDialog dialog = new ExportDialog();
+			GBRObjectTileExport settings;
+			{
+				//TODO: If GBRFile is null...
+				var matches = this.GBRFile.GetObjectsOfType<GBRObjectTileExport>();
+				if (matches.Count != 1) {
+					MessageBox.Show("Invalid number of GBRObjectTileExport: " + matches.Count,
+						"Failed to read GBR file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				settings = matches[0];
+			}
+
+			ExportDialog dialog = new ExportDialog(settings);
 			dialog.ShowDialog();
 			//TODO
 		}
