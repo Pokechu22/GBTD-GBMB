@@ -466,6 +466,25 @@ namespace GB.GBTD
 			}
 			
 			this.paletteChooser.PaletteData = this.tileList1.PaletteSet = new PaletteData(palettes.SGBPalettes, palettes.GBCPalettes);
+
+			//Palette mappings.
+			GBRObjectTilePalette tilePalette;
+			{
+				var temp = GBRFile.GetObjectsOfType<GBRObjectTilePalette>();
+				if (temp.Count != 1) {
+					MessageBox.Show("Invalid number of GBRObjectTilePalette: " + temp.Count, "Failed to read GBR file",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				tilePalette = temp[0];
+			}
+
+			tileDatas = (TileData[])tileList1.TileDatas.Tiles.Clone();
+			for (int i = 0; i < tileDatas.Length; i++) {
+				tileDatas[i].GBC_Palette = (UInt16)tilePalette.GBCPalettes[i];
+				tileDatas[i].SGB_Palette = (UInt16)tilePalette.SGBPalettes[i];
+			}
+			tileList1.Tiles = tileDatas;
 		}
 
 		private void saveButton_Click(object sender, EventArgs e) {
