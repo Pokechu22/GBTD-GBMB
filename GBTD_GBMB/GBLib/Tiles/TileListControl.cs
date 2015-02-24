@@ -35,7 +35,7 @@ namespace GB.Shared.Tiles
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileDataList TileDatas {
 			get { return tileDatas; }
-			set { if (value == null) { throw new ArgumentNullException("value"); } tileDatas = value; OnNumberOfEntriesChanged(); }
+			set { if (value == null) { throw new ArgumentNullException("value"); } tileDatas = value; OnNumberOfEntriesChanged(); onTilesChanged(); }
 		}
 
 		/// <summary>
@@ -78,6 +78,7 @@ namespace GB.Shared.Tiles
 				}
 				tileDatas.Tiles = value;
 				onTilesChanged();
+				OnNumberOfEntriesChanged();
 			}
 		}
 
