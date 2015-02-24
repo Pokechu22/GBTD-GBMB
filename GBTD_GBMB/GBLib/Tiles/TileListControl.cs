@@ -228,6 +228,7 @@ namespace GB.Shared.Tiles
 			for (int i = 0; i < numberOfVisibleEntries; i++) {
 				TileListEntryControl entry = entriesPanel.Controls.Find("Entry" + i, false)[0] as TileListEntryControl;
 
+				entry.Number = scrolledIndex + i;
 				if (scrolledIndex + i >= tileDatas.Length) {
 					entry.TileData = new TileData();
 					entry.Enabled = false;

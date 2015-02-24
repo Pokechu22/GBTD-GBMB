@@ -26,7 +26,7 @@ namespace GB.Shared.Tiles
 		[Category("Data"), Description("The tileData's number.")]
 		public int Number {
 			get { return number; }
-			set { number = value; this.Invalidate(); }
+			set { number = value; this.Invalidate(true); }
 		}
 
 		private TileData tileData = new TileData();
@@ -34,7 +34,7 @@ namespace GB.Shared.Tiles
 		[ReadOnly(true), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileData TileData {
 			get { return tileData; }
-			set { tileData = value; tileRenderer1.TileData = value; this.Invalidate(); }
+			set { tileData = value; tileRenderer1.TileData = value; this.Invalidate(true); }
 		}
 
 		[Category("Data"), Description("The ColorSet used.")]
