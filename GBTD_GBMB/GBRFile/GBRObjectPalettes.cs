@@ -35,20 +35,20 @@ namespace GB.Shared.GBRFile
 			s.WriteWord(GBCPalettes.Size);
 			for (int i = 0; i < GBCPalettes.Size; i++) {
 				for (int x = 0; x < 4; x++) {
-					s.WriteByte(GBCPalettes[i][x].A);
 					s.WriteByte(GBCPalettes[i][x].R);
-					s.WriteByte(GBCPalettes[i][x].B);
 					s.WriteByte(GBCPalettes[i][x].G);
+					s.WriteByte(GBCPalettes[i][x].B);
+					s.WriteByte(GBCPalettes[i][x].A);
 				}
 			}
 			
 			s.WriteWord(SGBPalettes.Size);
 			for (int i = 0; i < SGBPalettes.Size; i++) {
 				for (int x = 0; x < 4; x++) {
-					s.WriteByte(SGBPalettes[i][x].A);
 					s.WriteByte(SGBPalettes[i][x].R);
-					s.WriteByte(SGBPalettes[i][x].B);
 					s.WriteByte(SGBPalettes[i][x].G);
+					s.WriteByte(SGBPalettes[i][x].B);
+					s.WriteByte(SGBPalettes[i][x].A);
 				}
 			}
 		}
@@ -66,7 +66,7 @@ namespace GB.Shared.GBRFile
 						throw new EndOfStreamException();
 					}
 
-					GBCPalettes[i][x] = Color.FromArgb(bytes[0], bytes[1], bytes[2], bytes[3]);
+					GBCPalettes[i][x] = Color.FromArgb(255, bytes[0], bytes[1], bytes[2]);
 				}
 			}
 
@@ -80,7 +80,7 @@ namespace GB.Shared.GBRFile
 						throw new EndOfStreamException();
 					}
 
-					SGBPalettes[i][x] = Color.FromArgb(bytes[0], bytes[1], bytes[2], bytes[3]);
+					SGBPalettes[i][x] = Color.FromArgb(255, bytes[0], bytes[1], bytes[2]);
 				}
 			}
 		}
