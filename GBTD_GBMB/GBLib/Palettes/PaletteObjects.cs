@@ -10,6 +10,22 @@ namespace GB.Shared.Palettes
 {
 	public class PaletteData
 	{
+		/// <summary>
+		/// Creates a new PaletteData with the specified appearence.
+		/// </summary>
+		/// <param name="SGBPaletteSet"></param>
+		/// <param name="GBCPaletteSet"></param>
+		public PaletteData(PaletteSet SGBPaletteSet, PaletteSet GBCPaletteSet) {
+			if (SGBPaletteSet == null) { throw new ArgumentNullException("SGBPaletteSet"); }
+			if (GBCPaletteSet == null) { throw new ArgumentNullException("GBCPaletteSet"); }
+
+			this.SGBPaletteSet = SGBPaletteSet;
+			this.GBCPaletteSet = GBCPaletteSet;
+		}
+
+		/// <summary>
+		/// Creates a paletteset wtih
+		/// </summary>
 		public PaletteData() {
 			this.SGBPaletteSet = new PaletteSet(4);
 			this.GBCPaletteSet = new PaletteSet(8);
