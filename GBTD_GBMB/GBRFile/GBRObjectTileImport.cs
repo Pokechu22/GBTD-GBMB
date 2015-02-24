@@ -31,12 +31,12 @@ namespace GB.Shared.GBRFile
 		/// The first tile from a GBE file to import.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public UInt16 FromTile { get; set; }
+		public UInt16 FirstImportFileTile { get; set; }
 		/// <summary>
-		/// The final tile from a GBE file to import.
+		/// The first tile to put that tile into in the current app.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public UInt16 ToTile { get; set; }
+		public UInt16 FirstProgramTile { get; set; }
 		/// <summary>
 		/// The number of tiles to import.
 		/// </summary>
@@ -62,8 +62,8 @@ namespace GB.Shared.GBRFile
 			s.WriteWord(CorrespondingID);
 			s.WriteString(FileName, 128);
 			s.WriteByte((byte)FileType);
-			s.WriteWord(FromTile);
-			s.WriteWord(ToTile);
+			s.WriteWord(FirstImportFileTile);
+			s.WriteWord(FirstProgramTile);
 			s.WriteWord(TileCount);
 			s.WriteByte((byte)ColorConversion);
 			s.WriteLong(FirstByte);
@@ -74,8 +74,8 @@ namespace GB.Shared.GBRFile
 			this.CorrespondingID = s.ReadWord();
 			this.FileName = s.ReadString(128);
 			this.FileType = (ImportFileType)s.ReadByteEx();
-			this.FromTile = s.ReadWord();
-			this.ToTile = s.ReadWord();
+			this.FirstImportFileTile = s.ReadWord();
+			this.FirstProgramTile = s.ReadWord();
 			this.TileCount = s.ReadWord();
 			this.ColorConversion = (ImportColorConversion)s.ReadByteEx();
 			this.FirstByte = s.ReadLong(0);
@@ -94,8 +94,8 @@ namespace GB.Shared.GBRFile
 			fileName.Nodes.Add(FileName);
 			node.Nodes.Add(fileName);
 			node.Nodes.Add("FileType", "FileType: " + FileType);
-			node.Nodes.Add("FromTile", "FromTile: " + FromTile);
-			node.Nodes.Add("ToTile", "ToTile: " + ToTile);
+			node.Nodes.Add("FirstImportFileTile", "FirstImportFileTile: " + FirstImportFileTile);
+			node.Nodes.Add("FirstProgramTile", "FirstProgramTile: " + FirstProgramTile);
 			node.Nodes.Add("TileCount", "TileCount: " + TileCount);
 			node.Nodes.Add("ColorConversion", "ColorConversion: " + ColorConversion);
 			node.Nodes.Add("FirstByte", "FirstByte: " + FirstByte);
