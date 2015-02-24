@@ -10,7 +10,7 @@ using GB.Shared.Tiles;
 
 namespace GB.Shared.GBRFile
 {
-	public class GBRObjectPalettes : GBRObject, IReferentialGBRObject
+	public class GBRObjectPalettes : ReferentialGBRObject
 	{
 		public GBRObjectPalettes(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectPalettes(GBRObjectHeader header, Stream stream) : base(header, stream) { }
