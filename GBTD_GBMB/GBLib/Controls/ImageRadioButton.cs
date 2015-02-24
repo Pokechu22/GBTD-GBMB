@@ -22,7 +22,7 @@ namespace GB.Shared.Controls
 			get { return mouseInside; }
 			set {
 				mouseInside = value;
-				this.Invalidate();
+				this.Invalidate(true);
 			}
 		}
 		private bool mouseDown = false;
@@ -30,14 +30,14 @@ namespace GB.Shared.Controls
 			get { return mouseDown; }
 			set {
 				mouseDown = value;
-				this.Invalidate();
+				this.Invalidate(true);
 			}
 		}
 		private bool @checked = false;
 		[Category("Data"), Description("Whether or not this is checked.")]
 		public bool Checked {
 			get { return @checked; }
-			set { @checked = value; OnCheckedChanged(new EventArgs()); this.Invalidate(); }
+			set { @checked = value; OnCheckedChanged(new EventArgs()); this.Invalidate(true); }
 		}
 		private bool autoCheck = true;
 		[Category("Behavior"), Description("Whether or not to automatically uncheck others radiobuttons.")]
@@ -88,12 +88,12 @@ namespace GB.Shared.Controls
 		[Category("Appearance"), Description("The image to use when not hovered over.")]
 		public Image NonhoveredImage {
 			get { return nonhoveredImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; this.Invalidate(); }
+			set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; this.Invalidate(true); }
 		}
 		[Category("Appearance"), Description("The image to use when hovered over.")]
 		public Image HoveredImage {
 			get { return hoveredImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(); }
+			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(true); }
 		}
 
 		[DefaultValue("")]

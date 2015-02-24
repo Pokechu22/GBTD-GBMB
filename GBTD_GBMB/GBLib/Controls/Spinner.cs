@@ -88,7 +88,7 @@ namespace GB.Shared.Controls
 
 			timer.Start();
 
-			this.Invalidate(); //Redraw buttons
+			this.Invalidate(true); //Redraw buttons
 		}
 
 		private void EndButtonPress() {
@@ -96,7 +96,7 @@ namespace GB.Shared.Controls
 			this.Capture = false;
 			StopTimer();
 
-			this.Invalidate(); //Redraw buttons
+			this.Invalidate(true); //Redraw buttons
 		}
 
 		/// <summary>
@@ -145,10 +145,10 @@ namespace GB.Shared.Controls
 
 			if (upperButtonBounds.Contains(e.Location)) {
 				hovered = SpinnerButton.DOWN;
-				Invalidate();
+				Invalidate(true);
 			} else if (lowerButtonBounds.Contains(e.Location)) {
 				hovered = SpinnerButton.UP;
-				Invalidate();
+				Invalidate(true);
 			}*/
 
 			base.OnMouseMove(e);
@@ -157,7 +157,7 @@ namespace GB.Shared.Controls
 		protected override void OnMouseLeave(EventArgs e) {
 			//hovered = null;
 
-			this.Invalidate();
+			this.Invalidate(true);
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {

@@ -34,13 +34,13 @@ namespace GB.Shared.Controls
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		public override string Text {
 			get { return text; }
-			set { this.text = value; this.OnTextChanged(new EventArgs()); this.Invalidate(); }
+			set { this.text = value; this.OnTextChanged(new EventArgs()); this.Invalidate(true); }
 		}
 
 		protected override void OnTextChanged(EventArgs e) {
 			cleanLabel1.Text = this.Text;
 			base.OnTextChanged(e);
-			this.Invalidate();
+			this.Invalidate(true);
 		}
 
 		public GroupBox() {
@@ -58,7 +58,7 @@ namespace GB.Shared.Controls
 			base.OnSizeChanged(e);
 			border1.Size = border2.Size = new Size(this.Width - 1, this.Height - 6);
 			border3.Size = new Size(this.Width - 3, this.Height - 8);
-			this.Invalidate();
+			this.Invalidate(true);
 		}
 	}
 }

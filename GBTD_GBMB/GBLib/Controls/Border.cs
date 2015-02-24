@@ -34,7 +34,7 @@ namespace GB.Shared.Controls
 				} else {
 					leftBorder = rightBorder = topBorder = bottomBorder = null;
 				}
-				Invalidate();
+				Invalidate(true);
 			}
 			get {
 				if (leftBorder == rightBorder &&
@@ -49,22 +49,22 @@ namespace GB.Shared.Controls
 		[Category("Display"), Description("Controls the left border.")]
 		public Border3DStyle? LeftBorder {
 			get { return leftBorder; }
-			set { leftBorder = value; Invalidate(); }
+			set { leftBorder = value; Invalidate(true); }
 		}
 		[Category("Display"), Description("Controls the right border.")]
 		public Border3DStyle? RightBorder {
 			get { return rightBorder; }
-			set { rightBorder = value; Invalidate(); }
+			set { rightBorder = value; Invalidate(true); }
 		}
 		[Category("Display"), Description("Controls the top border.")]
 		public Border3DStyle? TopBorder {
 			get { return topBorder; }
-			set { topBorder = value; Invalidate(); }
+			set { topBorder = value; Invalidate(true); }
 		}
 		[Category("Display"), Description("Controls the bottom border.")]
 		public Border3DStyle? BottomBorder {
 			get { return bottomBorder; }
-			set { bottomBorder = value; Invalidate(); }
+			set { bottomBorder = value; Invalidate(true); }
 		}
 
 		[Category("Display"), Description("Controls the order in which the sides are painted.")]

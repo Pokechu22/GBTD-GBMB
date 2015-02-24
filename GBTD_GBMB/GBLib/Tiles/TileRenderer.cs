@@ -158,7 +158,7 @@ namespace GB.Shared.Tiles
 		[Category("Dispaly"), Description("Whether or not to render as if selected.")]
 		public bool Selected {
 			get { return selected; }
-			set { selected = value; this.Invalidate(); }
+			set { selected = value; this.Invalidate(true); }
 		}
 		#endregion
 

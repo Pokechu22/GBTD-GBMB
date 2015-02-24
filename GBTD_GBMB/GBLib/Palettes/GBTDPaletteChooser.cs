@@ -218,7 +218,7 @@ namespace GB.Shared.Palettes
 		[Category("Data"), Description("The active color set.")]
 		public ColorSet ColorSet {
 			get { return gbPaletteChooser1.ColorSet; }
-			set { gbPaletteChooser1.ColorSet = value; this.Invalidate(); }
+			set { gbPaletteChooser1.ColorSet = value; this.Invalidate(true); }
 		}
 
 		private MouseButtons displayedButtons = System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right;

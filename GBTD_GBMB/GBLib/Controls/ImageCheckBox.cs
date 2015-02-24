@@ -22,7 +22,7 @@ namespace GB.Shared.Controls
 			get { return mouseInside; }
 			set {
 				mouseInside = value;
-				this.Invalidate();
+				this.Invalidate(true);
 			}
 		}
 		private bool mouseDown = false;
@@ -30,7 +30,7 @@ namespace GB.Shared.Controls
 			get { return mouseDown; }
 			set {
 				mouseDown = value;
-				this.Invalidate();
+				this.Invalidate(true);
 			}
 		}
 		private bool @checked;
@@ -48,18 +48,18 @@ namespace GB.Shared.Controls
 				CheckedChanged(this, e);
 			}
 
-			this.Invalidate();
+			this.Invalidate(true);
 		}
 
 		[Category("Appearance"), Description("The image to use when not hovered over.")]
 		public Image NonhoveredImage {
 			get { return nonhoveredImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; this.Invalidate(); }
+			set { if (value == null) { value = new Bitmap(16, 16); } nonhoveredImage = value; this.Invalidate(true); }
 		}
 		[Category("Appearance"), Description("The image to use when hovered over.")]
 		public Image HoveredImage {
 			get { return hoveredImage; }
-			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(); }
+			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(true); }
 		}
 
 		[DefaultValue("")]

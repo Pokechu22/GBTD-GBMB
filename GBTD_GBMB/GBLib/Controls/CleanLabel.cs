@@ -42,43 +42,43 @@ namespace GB.Shared.Controls
 		[Category("Format"), Description("The StringFormat used to render.")]
 		public StringFormat Format {
 			get { return format; }
-			set { if (value == null) { throw new ArgumentNullException("value"); } format = value; this.Invalidate(); }
+			set { if (value == null) { throw new ArgumentNullException("value"); } format = value; this.Invalidate(true); }
 		}
 
 		[Category("Format"), Description("The TextRenderingHint used to render.")]
 		[DefaultValue(TextRenderingHint.SingleBitPerPixelGridFit)]
 		public TextRenderingHint RenderingHint {
 			get { return renderingHint; }
-			set { renderingHint = value; this.Invalidate(); }
+			set { renderingHint = value; this.Invalidate(true); }
 		}
 		[Category("Format"), Description("The SmoothingMode used to render.")]
 		[DefaultValue(SmoothingMode.None)]
 		public SmoothingMode SmoothingMode {
 			get { return smoothingMode; }
-			set { smoothingMode = value; this.Invalidate(); }
+			set { smoothingMode = value; this.Invalidate(true); }
 		}
 		[Category("Format"), Description("The InterpolationMode used to render.")]
 		[DefaultValue(InterpolationMode.NearestNeighbor)]
 		public InterpolationMode InterpolationMode {
 			get { return interpolationMode; }
-			set { interpolationMode = value; this.Invalidate(); }
+			set { interpolationMode = value; this.Invalidate(true); }
 		}
 		[Category("Format"), Description("The PixelOffsetMode used to render.")]
 		[DefaultValue(PixelOffsetMode.None)]
 		public PixelOffsetMode PixelOffsetMode {
 			get { return pixelOffsetMode; }
-			set { pixelOffsetMode = value; this.Invalidate(); }
+			set { pixelOffsetMode = value; this.Invalidate(true); }
 		}
 
 		[Category("Appearance"), Description("The color that should be used when this is disabled.")]
 		public Color DisabledForeColor {
 			get { return disabledForeColor; }
-			set { disabledForeColor = value; this.Invalidate(); }
+			set { disabledForeColor = value; this.Invalidate(true); }
 		}
 		[Category("Appearance"), Description("The color that should be used when this is disabled.")]
 		public Color DisabledBackColor {
 			get { return disabledBackColor; }
-			set { disabledBackColor = value; this.Invalidate(); }
+			set { disabledBackColor = value; this.Invalidate(true); }
 		}
 		
 		public CleanLabel() {
@@ -89,7 +89,7 @@ namespace GB.Shared.Controls
 
 		protected override void OnEnabledChanged(EventArgs e) {
 			base.OnEnabledChanged(e);
-			this.Invalidate();
+			this.Invalidate(true);
 		}
 
 		protected override void OnTextChanged(EventArgs e) {

@@ -40,14 +40,14 @@ namespace GB.Shared.Tiles
 		[Category("Data"), Description("The ColorSet used.")]
 		public ColorSet ColorSet {
 			get { return colorSet; }
-			set { colorSet = value; tileRenderer1.ColorSet = value; this.Invalidate(); }
+			set { colorSet = value; tileRenderer1.ColorSet = value; this.Invalidate(true); }
 		}
 
 		private bool selected;
 		[Category("Data"), Description("Whether or not this has been selected.")]
 		public bool Selected {
 			get { return selected; }
-			set { selected = value; tileRenderer1.Selected = value; this.Invalidate(); }
+			set { selected = value; tileRenderer1.Selected = value; this.Invalidate(true); }
 		}
 
 		public TileListEntryControl() {
@@ -56,7 +56,7 @@ namespace GB.Shared.Tiles
 
 		protected override void OnEnabledChanged(EventArgs e) {
 			base.OnEnabledChanged(e);
-			this.Invalidate();
+			this.Invalidate(true);
 		}
 
 		private void textDisplay_Paint(object sender, PaintEventArgs e) {
