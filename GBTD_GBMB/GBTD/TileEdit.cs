@@ -433,6 +433,25 @@ namespace GB.GBTD
 			//TileSettings.SplitWidth;
 			//TileSettings.SplitOrder;
 			this.ColorSet = TileSettings.ColorSet;
+
+			//Load the tiles.
+			GBRObjectTileData tiles;
+			{
+				var temp = GBRFile.GetObjectsOfType<GBRObjectTileData>();
+				if (temp.Count != 1) {
+					MessageBox.Show("Invalid number of GBRObjectTileData: " + temp.Count, "Failed to read GBR file",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				tiles = temp[0];
+			}
+
+			tileList1.TileDatas.Length = tiles.Count;
+			TileData[] tileDatas = (TileData[])tileList1.TileDatas.Tiles.Clone();
+			for (int i = 0; i < tiles.Count; i++) {
+				tileDatas[i].tile = tiles.tiles[i];
+			}
+			tileList1.Tiles = tileDatas;
 		}
 
 		private void saveButton_Click(object sender, EventArgs e) {
