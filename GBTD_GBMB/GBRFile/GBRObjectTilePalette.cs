@@ -10,25 +10,24 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// Represents the palette *mappings* for a group of tiles.
 	/// </summary>
-	public class GBRObjectTilePalette : GBRObject
+	public class GBRObjectTilePalette : GBRObject, IReferentialGBRObject
 	{
 		public GBRObjectTilePalette(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTilePalette(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		/// <summary>
 		/// The ObjectID of the object that is refered to by this object (Usually a TileData).
-		/// <para>TODO: Give direct access to that object (but it would need a reference to the total file for that...)</para>
 		/// </summary>
-		public UInt16 ReferedObjectID;
+		public UInt16 ReferedObjectID { get; set; }
 
 		/// <summary>
 		/// The Gameboy Color Palette Mapping.
 		/// </summary>
-		public UInt32[] GBCPalettes;
+		public UInt32[] GBCPalettes { get; set; }
 		/// <summary>
 		/// The Super Gameboy Palette Mapping.
 		/// </summary>
-		public UInt32[] SGBPalettes;
+		public UInt32[] SGBPalettes { get; set; }
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteWord(ReferedObjectID);

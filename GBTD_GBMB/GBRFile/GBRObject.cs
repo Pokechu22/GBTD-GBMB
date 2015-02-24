@@ -181,4 +181,9 @@ namespace GB.Shared.GBRFile
 			return new GBRObjectHeader(this.ObjectID, this.UniqueID, newSize);
 		}
 	}
+
+	public interface IReferentialGBRObject
+	{
+		UInt16 ReferedObjectID { get; set; }
+	}
 }

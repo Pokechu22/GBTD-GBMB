@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace GB.Shared.GBRFile
 {
-	public class GBRObjectTileExport : GBRObject
+	public class GBRObjectTileExport : GBRObject, IReferentialGBRObject
 	{
 		public GBRObjectTileExport(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileExport(GBRObjectHeader header, Stream stream) : base(header, stream) { }
@@ -16,7 +16,7 @@ namespace GB.Shared.GBRFile
 		/// The coresponding object ID.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public UInt16 CorrespondingID { get; set; }
+		public UInt16 ReferedObjectID { get; set; }
 		/// <summary>
 		/// The name of the file to export to.
 		/// </summary>
@@ -120,7 +120,7 @@ namespace GB.Shared.GBRFile
 		public byte SelectedTab { get; set; }
 
 		protected override void SaveToStream(Stream s) {
-			s.WriteWord(CorrespondingID);
+			s.WriteWord(ReferedObjectID);
 			s.WriteString(FileName, 128);
 			s.WriteByte((byte)FileType);
 			s.WriteString(SectionName, 20);
@@ -144,7 +144,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		protected override void LoadFromStream(Stream s) {
-			this.CorrespondingID = s.ReadWord();
+			this.ReferedObjectID = s.ReadWord();
 			this.FileName = s.ReadString(128);
 			this.FileType = (ExportFileType)s.ReadByte();
 			this.SectionName = s.ReadString(20);
@@ -174,7 +174,7 @@ namespace GB.Shared.GBRFile
 		public override TreeNode ToTreeNode() {
 			TreeNode root = CreateRootTreeNode();
 
-			root.Nodes.Add("CorrespondingID", "CorrespondingID: " + CorrespondingID);
+			root.Nodes.Add("ReferedObjectID", "ReferedObjectID: " + ReferedObjectID);
 			TreeNode fileName = new TreeNode("File name");
 			fileName.Nodes.Add(FileName);
 			root.Nodes.Add(fileName);

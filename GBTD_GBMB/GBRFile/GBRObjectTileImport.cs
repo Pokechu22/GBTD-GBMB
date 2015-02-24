@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace GB.Shared.GBRFile
 {
-	public class GBRObjectTileImport : GBRObject
+	public class GBRObjectTileImport : GBRObject, IReferentialGBRObject
 	{
 		public GBRObjectTileImport(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileImport(GBRObjectHeader header, Stream stream) : base(header, stream) { }
@@ -16,7 +16,7 @@ namespace GB.Shared.GBRFile
 		/// The coresponding object ID.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public UInt16 CorrespondingID { get; set; }
+		public UInt16 ReferedObjectID { get; set; }
 		/// <summary>
 		/// The name of the file to export to.
 		/// </summary>
@@ -59,7 +59,7 @@ namespace GB.Shared.GBRFile
 		public ImportBinaryFileFormat BinaryFileFormat { get; set; }
 
 		protected override void SaveToStream(Stream s) {
-			s.WriteWord(CorrespondingID);
+			s.WriteWord(ReferedObjectID);
 			s.WriteString(FileName, 128);
 			s.WriteByte((byte)FileType);
 			s.WriteWord(FirstImportFileTile);
@@ -71,7 +71,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		protected override void LoadFromStream(Stream s) {
-			this.CorrespondingID = s.ReadWord();
+			this.ReferedObjectID = s.ReadWord();
 			this.FileName = s.ReadString(128);
 			this.FileType = (ImportFileType)s.ReadByteEx();
 			this.FirstImportFileTile = s.ReadWord();
@@ -89,7 +89,7 @@ namespace GB.Shared.GBRFile
 		public override TreeNode ToTreeNode() {
 			TreeNode node = CreateRootTreeNode();
 
-			node.Nodes.Add("CorrespondingID", "CorrespondingID: " + CorrespondingID);
+			node.Nodes.Add("ReferedObjectID", "ReferedObjectID: " + ReferedObjectID);
 			TreeNode fileName = new TreeNode("FileName");
 			fileName.Nodes.Add(FileName);
 			node.Nodes.Add(fileName);
