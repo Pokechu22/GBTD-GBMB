@@ -261,9 +261,19 @@ namespace GB.GBTD
 		}
 
 		private void importFromMenuItem_Click(object sender, EventArgs e) {
-			ImportDialog dialog = new ImportDialog();
+			GBRObjectTileImport settings;
+			{
+				//TODO: If GBRFile is null...
+				var matches = this.GBRFile.GetObjectsOfType<GBRObjectTileImport>();
+				if (matches.Count != 1) {
+					MessageBox.Show("Invalid number of GBRObjectTileImport: " + matches.Count,
+						"Failed to read GBR file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				settings = matches[0];
+			}
+			ImportDialog dialog = new ImportDialog(settings);
 			dialog.ShowDialog();
-			//TODO
 		}
 
 		private void tileCountMenuItem_Click(object sender, EventArgs e) {
