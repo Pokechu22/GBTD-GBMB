@@ -93,15 +93,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="ObjectID"></param>
 		/// <returns>The specified object, or <c>null</c> if none exist.</returns>
 		public GBRObject GetObjectWithID(UInt16 ID) {
-			foreach (GBRObject obj in this.Objects) {
-				if (obj is GBRObjectDeleted) {
-					continue;
-				}
-				if (obj.Header.UniqueID == ID) {
-					return obj;
-				}
-			}
-			return null;
+			return Objects.Where(o => o.Header.UniqueID == ID).FirstOrDefault();
 		}
 		/// <summary>
 		/// Gets the Object with the specified objectID and of the specified type, ignoring objects that have been deleted.
@@ -110,17 +102,10 @@ namespace GB.Shared.GBRFile
 		/// <typeparam name="TObjectType">The type of object to search for.</typeparam>
 		/// <returns>The specified object, or <c>null</c> if none exist.</returns>
 		public TObjectType GetObjectWithID<TObjectType>(UInt16 ID) where TObjectType : GBRObject {
-			foreach (GBRObject obj in this.Objects) {
-				if (obj is GBRObjectDeleted) {
-					continue;
-				}
-				if (obj is TObjectType) {
-					if (obj.Header.UniqueID == ID) {
-						return obj as TObjectType;
-					}
-				}
-			}
-			return null;
+			return Objects
+				.OfType<TObjectType>()
+				.Where(o => o.Header.UniqueID == ID)
+				.FirstOrDefault();
 		}
 
 		/// <summary>
@@ -129,10 +114,7 @@ namespace GB.Shared.GBRFile
 		/// <typeparam name="TObjectType"></typeparam>
 		/// <returns></returns>
 		public List<TObjectType> GetObjectsOfType<TObjectType>() where TObjectType : GBRObject {
-			//Woot, Linq!
-			return new List<TObjectType>(Objects
-				.Where(o => o is TObjectType)
-				.Select(o => o as TObjectType));
+			return new List<TObjectType>(Objects.OfType<TObjectType>());
 		}
 
 		/// <summary>
@@ -141,8 +123,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="obj"></param>
 		/// <returns></returns>
 		public GBRObject GetReferedObject(ReferentialGBRObject obj) {
-			return Objects
-				.First(o => o.Header.UniqueID == obj.ReferedObjectID);
+			return Objects.First(o => o.Header.UniqueID == obj.ReferedObjectID);
 		}
 
 		/// <summary>
