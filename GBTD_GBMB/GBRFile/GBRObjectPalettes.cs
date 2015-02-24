@@ -23,11 +23,11 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The Gameboy Color palettes.
 		/// </summary>
-		public PaletteSet_ GBCPalettes { get; set; }
+		public PaletteSet GBCPalettes { get; set; }
 		/// <summary>
 		/// The Super Gameboy palettes.
 		/// </summary>
-		public PaletteSet_ SGBPalettes { get; set; }
+		public PaletteSet SGBPalettes { get; set; }
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteWord(CorrespondingID);
@@ -56,7 +56,7 @@ namespace GB.Shared.GBRFile
 		protected override void LoadFromStream(Stream s) {
 			this.CorrespondingID = s.ReadWord();
 			
-			this.GBCPalettes = new PaletteSet_(s.ReadWord());
+			this.GBCPalettes = new PaletteSet(s.ReadWord());
 			for (int i = 0; i < GBCPalettes.Size; i++) {
 				for (int x = 0; x < 4; x++) {
 					byte[] bytes = new byte[4];
@@ -70,7 +70,7 @@ namespace GB.Shared.GBRFile
 				}
 			}
 
-			this.SGBPalettes = new PaletteSet_(s.ReadWord());
+			this.SGBPalettes = new PaletteSet(s.ReadWord());
 			for (int i = 0; i < SGBPalettes.Size; i++) {
 				for (int x = 0; x < 4; x++) {
 					byte[] bytes = new byte[4];

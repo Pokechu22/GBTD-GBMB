@@ -111,8 +111,8 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
-		public static Palette_ FilterWithGBC(this Palette_ @this) {
-			Palette_ pal = new Palette_();
+		public static Palette FilterWithGBC(this Palette @this) {
+			Palette pal = new Palette();
 			pal.Color0 = FilterWithGBC(@this.Color0);
 			pal.Color1 = FilterWithGBC(@this.Color1);
 			pal.Color2 = FilterWithGBC(@this.Color2);
@@ -124,8 +124,8 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="this"></param>
 		/// <returns></returns>
-		public static Palette_ FilterAsSelected(this Palette_ @this) {
-			Palette_ pal = new Palette_();
+		public static Palette FilterAsSelected(this Palette @this) {
+			Palette pal = new Palette();
 			pal.Color0 = FilterAsSelected(@this.Color0);
 			pal.Color1 = FilterAsSelected(@this.Color1);
 			pal.Color2 = FilterAsSelected(@this.Color2);

@@ -24,10 +24,10 @@ namespace GB.Shared.Tiles
 		/// </summary>
 		/// <param name="paletteData"></param>
 		/// <returns></returns>
-		public Palette_ GetPalette(ColorSet set) {
+		public Palette GetPalette(ColorSet set) {
 			switch (set) {
-			case ColorSet.GAMEBOY: return new Palette_();
-			case ColorSet.GAMEBOY_POCKET: return new Palette_();
+			case ColorSet.GAMEBOY: return new Palette();
+			case ColorSet.GAMEBOY_POCKET: return new Palette();
 			case ColorSet.GAMEBOY_COLOR: return paletteData.GBCPaletteSet[GBC_Palette];
 			case ColorSet.SUPER_GAMEBOY: return paletteData.GBCPaletteSet[SGB_Palette];
 			case ColorSet.GAMEBOY_COLOR_FILTERED: return paletteData.GBCPaletteSet[GBC_Palette];
@@ -40,7 +40,7 @@ namespace GB.Shared.Tiles
 		/// </summary>
 		/// <param name="paletteData"></param>
 		/// <returns></returns>
-		public void SetPalette(ColorSet set, Palette_ value) {
+		public void SetPalette(ColorSet set, Palette value) {
 			switch (set) {
 			case ColorSet.GAMEBOY: return;
 			case ColorSet.GAMEBOY_POCKET: return;

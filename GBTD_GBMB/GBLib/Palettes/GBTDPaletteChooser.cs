@@ -99,8 +99,8 @@ namespace GB.Shared.Palettes
 			private GBTDPaletteChooserMouseEntryPaletteEntry entry;
 			private MouseButtons buttons;
 
-			private Palette_ item = new Palette_();
-			public Palette_ Item {
+			private Palette item = new Palette();
+			public Palette Item {
 				get { return item; }
 				set { item = value; OnValueChange(); }
 			}

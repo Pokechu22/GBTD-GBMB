@@ -62,7 +62,7 @@ namespace GB.Shared.Palettes
 		/// The paletteData that is actively in use.
 		/// This can only be used internally because changes aren't imideately reflected.
 		/// </summary>
-		private PaletteSet_ ActiveSet {
+		private PaletteSet ActiveSet {
 			get { return paletteData.GetPaletteSet(this.selectedSet); }
 		}
 

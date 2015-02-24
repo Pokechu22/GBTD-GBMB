@@ -48,7 +48,7 @@ namespace GB.Shared.Tiles
 
 		[Category("Data"), Description("The palette used by this tile.")]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public Palette_ Palette {
+		public Palette Palette {
 			get {
 				return tileData.GetPalette(ColorSet);
 			}

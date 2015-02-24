@@ -11,12 +11,12 @@ namespace GB.Shared.Palettes
 	public class PaletteData
 	{
 		public PaletteData() {
-			this.SGBPaletteSet = new PaletteSet_(4);
-			this.GBCPaletteSet = new PaletteSet_(8);
+			this.SGBPaletteSet = new PaletteSet(4);
+			this.GBCPaletteSet = new PaletteSet(8);
 		}
 
-		public readonly PaletteSet_ SGBPaletteSet;
-		public readonly PaletteSet_ GBCPaletteSet;
+		public readonly PaletteSet SGBPaletteSet;
+		public readonly PaletteSet GBCPaletteSet;
 
 		/// <summary>
 		/// Gets the color that would be used in the specified paletteData and applies filtration as needed.
@@ -47,12 +47,12 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="paletteData"></param>
 		/// <returns>The paletteData, or null if the paletteData isn't correct for this use.</returns>
-		public PaletteSet_ GetPaletteSet(ColorSet set) {
+		public PaletteSet GetPaletteSet(ColorSet set) {
 			switch (set) {
 			case ColorSet.GAMEBOY_POCKET:
-				return new PaletteSet_(1);
+				return new PaletteSet(1);
 			case ColorSet.GAMEBOY:
-				return new PaletteSet_(1);
+				return new PaletteSet(1);
 			case ColorSet.GAMEBOY_COLOR:
 				return GBCPaletteSet;
 			case ColorSet.SUPER_GAMEBOY:
@@ -65,24 +65,27 @@ namespace GB.Shared.Palettes
 		}
 	}
 
-	public class PaletteSet_
+	/// <summary>
+	/// Represents a series of Palettes.
+	/// </summary>
+	public class PaletteSet
 	{
 		/// <summary>
-		/// Creates a paletteset of the specified size.
+		/// Creates a PaletteSet of the specified size.
 		/// </summary>
 		/// <param name="size"></param>
-		public PaletteSet_(UInt16 size) {
-			this.palettes = new Palette_[size];
+		public PaletteSet(UInt16 size) {
+			this.palettes = new Palette[size];
 			for (int i = 0; i < size; i++) {
-				palettes[i] = new Palette_();
+				palettes[i] = new Palette();
 			}
 		}
 
-		private Palette_[] palettes;
+		private Palette[] palettes;
 
 		public UInt16 Size { get { return (UInt16)palettes.Length; } }
 
-		public Palette_ this[int index] {
+		public Palette this[int index] {
 			get {
 				return palettes[index];
 			}
@@ -92,9 +95,12 @@ namespace GB.Shared.Palettes
 		}
 	}
 
-	public class Palette_
+	/// <summary>
+	/// Represents a single 4-color palette.
+	/// </summary>
+	public class Palette
 	{
-		public Palette_() {
+		public Palette() {
 			this.Color0 = Color.White;
 			this.Color1 = Color.LightGray;
 			this.Color2 = Color.Gray;

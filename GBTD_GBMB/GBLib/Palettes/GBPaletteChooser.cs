@@ -28,12 +28,12 @@ namespace GB.Shared.Palettes
 			private readonly GBPaletteChooser sender;
 
 			public readonly int newIndex;
-			public readonly Palette_ newItem;
+			public readonly Palette newItem;
 
 			public SelectedPaletteChangeEventArgs(GBPaletteChooser sender, int newIndex) {
 				this.sender = sender;
 				this.newIndex = newIndex;
-				PaletteSet_ set = sender.Palette;
+				PaletteSet set = sender.Palette;
 				this.newItem = set[newIndex];
 			}
 		}
@@ -43,7 +43,7 @@ namespace GB.Shared.Palettes
 			private readonly GBPaletteChooser sender;
 
 			public readonly int paletteIndex;
-			public readonly Palette_ palette;
+			public readonly Palette palette;
 
 			public readonly int clickedEntry;
 			public readonly Color clickedEntryColor;
@@ -54,7 +54,7 @@ namespace GB.Shared.Palettes
 				this.sender = sender;
 
 				this.paletteIndex = paletteIndex;
-				PaletteSet_ set = sender.Palette;
+				PaletteSet set = sender.Palette;
 				this.palette = set[paletteIndex];
 
 				this.clickedEntry = clickedEntry;
@@ -171,7 +171,7 @@ namespace GB.Shared.Palettes
 		/// <summary>
 		/// The row currently selected.
 		/// </summary>
-		public Palette_ SelectedRow {
+		public Palette SelectedRow {
 			get {
 				if (SelectedRowIndex < 0 || SelectedRowIndex >= Palette.Size) {
 					SelectedRowIndex = 0;
@@ -224,7 +224,7 @@ namespace GB.Shared.Palettes
 			set { colorSet = value; reloadFromSet(); }
 		}
 
-		private PaletteSet_ Palette {
+		private PaletteSet Palette {
 			get { return this.paletteData.GetPaletteSet(colorSet); }
 		}
 
@@ -290,7 +290,7 @@ namespace GB.Shared.Palettes
 		private void dropDown_SelectedIndexChanged(object sender, EventArgs e) {
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette_ item = Palette[Convert.ToInt32((String)box.Text)];
+			Palette item = Palette[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -302,7 +302,7 @@ namespace GB.Shared.Palettes
 		private void dropDown_SelectionChangeCommitted(object sender, EventArgs e) {
 			//Update the other icons.
 			ComboBox box = (ComboBox)sender;
-			Palette_ item = Palette[Convert.ToInt32((String)box.Text)];
+			Palette item = Palette[Convert.ToInt32((String)box.Text)];
 			entry0.Color = item[0];
 			entry1.Color = item[1];
 			entry2.Color = item[2];
@@ -316,7 +316,7 @@ namespace GB.Shared.Palettes
 		/// </summary>
 		/// <param name="row"></param>
 		/// <returns></returns>
-		protected virtual Image DrawRowToBitmap(Palette_ row) {
+		protected virtual Image DrawRowToBitmap(Palette row) {
 			Bitmap returned = null;
 
 			for (int i = 0; i < 4; i++) {
