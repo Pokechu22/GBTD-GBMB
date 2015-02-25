@@ -42,28 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Border.cs">
+    <Compile Include="Controls\Basic\Border.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\GroupBox.cs">
+    <Compile Include="Controls\Basic\GroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\GroupBox.Designer.cs">
+    <Compile Include="Controls\Basic\GroupBox.Designer.cs">
       <DependentUpon>GroupBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CleanLabel.cs">
+    <Compile Include="Controls\Basic\CleanLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\ImageButton.cs">
+    <Compile Include="Controls\Basic\ImageButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\ImageCheckBox.cs">
+    <Compile Include="Controls\Basic\ImageCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\ImageRadioButton.cs">
+    <Compile Include="Controls\Basic\ImageRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\NumericTextBox.cs">
+    <Compile Include="Controls\Basic\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="NativeMethods.cs" />
@@ -74,10 +74,10 @@
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Palettes\ColorFiltration.cs" />
-    <Compile Include="Controls\Spinner.cs">
+    <Compile Include="Controls\Basic\Spinner.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Spinner.Designer.cs">
+    <Compile Include="Controls\Basic\Spinner.Designer.cs">
       <DependentUpon>Spinner.cs</DependentUpon>
     </Compile>
     <Compile Include="Palettes\ColorSet.cs" />
@@ -116,30 +116,30 @@
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Tiles\TileData.cs" />
     <Compile Include="Tiles\TileDataList.cs" />
-    <Compile Include="Controls\TileListControl.cs">
+    <Compile Include="Controls\Tiles\TileListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TileListControl.Designer.cs">
+    <Compile Include="Controls\Tiles\TileListControl.Designer.cs">
       <DependentUpon>TileListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TileListEntryControl.cs">
+    <Compile Include="Controls\Tiles\TileListEntryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TileListEntryControl.Designer.cs">
+    <Compile Include="Controls\Tiles\TileListEntryControl.Designer.cs">
       <DependentUpon>TileListEntryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TileRenderer.cs">
+    <Compile Include="Controls\Tiles\TileRenderer.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\GroupBox.resx">
+    <EmbeddedResource Include="Controls\Basic\GroupBox.resx">
       <DependentUpon>GroupBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Palettes\ChoosePaletteDialog.resx">
       <DependentUpon>ChoosePaletteDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Spinner.resx">
+    <EmbeddedResource Include="Controls\Basic\Spinner.resx">
       <DependentUpon>Spinner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Palettes\GBPaletteChooser.resx">
@@ -155,10 +155,10 @@
     <EmbeddedResource Include="Palettes\TGammaPanel.resx">
       <DependentUpon>TGammaPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TileListControl.resx">
+    <EmbeddedResource Include="Controls\Tiles\TileListControl.resx">
       <DependentUpon>TileListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TileListEntryControl.resx">
+    <EmbeddedResource Include="Controls\Tiles\TileListEntryControl.resx">
       <DependentUpon>TileListEntryControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
