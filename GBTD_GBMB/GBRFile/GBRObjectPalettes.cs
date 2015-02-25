@@ -18,7 +18,7 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The corresponding ID of the TileData.
 		/// </summary>
-		public UInt16 ReferedObjectID { get; set; }
+		public override UInt16 ReferedObjectID { get; set; }
 
 		/// <summary>
 		/// The Gameboy Color palettes.

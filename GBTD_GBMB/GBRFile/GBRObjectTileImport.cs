@@ -16,7 +16,7 @@ namespace GB.Shared.GBRFile
 		/// The coresponding object ID.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public UInt16 ReferedObjectID { get; set; }
+		public override UInt16 ReferedObjectID { get; set; }
 		/// <summary>
 		/// The name of the file to export to.
 		/// </summary>

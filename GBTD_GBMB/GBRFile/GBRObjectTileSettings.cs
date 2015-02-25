@@ -24,7 +24,7 @@ namespace GB.Shared.GBRFile
 		/// The UUID of the object that is refered to by these settings; usually a <see cref="GBRObjectTileData"/>.
 		/// </summary>
 		/// <remarks>Since: Included always.</remarks>
-		public UInt16 ReferedObjectID { get; set; }
+		public override UInt16 ReferedObjectID { get; set; }
 		
 		/// <summary>
 		/// Whether or not simple mode is used.
