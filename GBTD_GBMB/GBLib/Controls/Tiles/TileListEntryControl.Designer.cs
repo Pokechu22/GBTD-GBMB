@@ -25,23 +25,22 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Windows.Forms.Panel background;
+			this.background = new System.Windows.Forms.Panel();
 			this.textDisplay = new System.Windows.Forms.Panel();
 			this.tileRenderer1 = new GB.Shared.Controls.TileRenderer();
-			background = new System.Windows.Forms.Panel();
-			background.SuspendLayout();
+			this.background.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// background
 			// 
-			background.Controls.Add(this.textDisplay);
-			background.Controls.Add(this.tileRenderer1);
-			background.Dock = System.Windows.Forms.DockStyle.Fill;
-			background.Location = new System.Drawing.Point(0, 0);
-			background.Name = "background";
-			background.Size = new System.Drawing.Size(38, 17);
-			background.TabIndex = 2;
-			background.Click += new System.EventHandler(this.subcontrol_Click);
+			this.background.Controls.Add(this.textDisplay);
+			this.background.Controls.Add(this.tileRenderer1);
+			this.background.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.background.Location = new System.Drawing.Point(0, 0);
+			this.background.Name = "background";
+			this.background.Size = new System.Drawing.Size(38, 17);
+			this.background.TabIndex = 2;
+			this.background.Click += new System.EventHandler(this.subcontrol_Click);
 			// 
 			// textDisplay
 			// 
@@ -61,23 +60,27 @@
             | System.Windows.Forms.Border3DSide.Right) 
             | System.Windows.Forms.Border3DSide.Bottom) 
             | System.Windows.Forms.Border3DSide.Middle)));
+			this.tileRenderer1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.tileRenderer1.Grid = false;
 			this.tileRenderer1.Location = new System.Drawing.Point(22, 0);
 			this.tileRenderer1.Margin = new System.Windows.Forms.Padding(0);
 			this.tileRenderer1.Name = "tileRenderer1";
+			this.tileRenderer1.NibbleMarkers = false;
+			this.tileRenderer1.PixelScale = 2;
+			this.tileRenderer1.Selected = false;
 			this.tileRenderer1.Size = new System.Drawing.Size(16, 16);
 			this.tileRenderer1.TabIndex = 3;
 			this.tileRenderer1.Click += new System.EventHandler(this.subcontrol_Click);
 			// 
-			// TileListEntry
+			// TileListEntryControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.Controls.Add(background);
-			this.Name = "TileListEntry";
+			this.Controls.Add(this.background);
+			this.Name = "TileListEntryControl";
 			this.Size = new System.Drawing.Size(38, 17);
-			background.ResumeLayout(false);
+			this.background.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -86,6 +89,7 @@
 
 		private TileRenderer tileRenderer1;
 		private System.Windows.Forms.Panel textDisplay;
+		private System.Windows.Forms.Panel background;
 
 
 

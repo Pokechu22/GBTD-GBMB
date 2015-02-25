@@ -14,10 +14,6 @@ namespace GB.Shared.Controls
 {
 	partial class TileListEntryControl : UserControl
 	{
-		//The three default sizings.
-		protected override Size DefaultMaximumSize { get { return new Size(38, 17); } }
-		protected override Size DefaultMinimumSize { get { return new Size(38, 17); } }
-		protected override Size DefaultSize { get { return new Size(38, 17); } }
 		protected override Padding DefaultMargin { get { return new Padding(0, 0, 0, 0); } }
 
 		private int number = 0;
@@ -35,7 +31,9 @@ namespace GB.Shared.Controls
 		[ReadOnly(true), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public TileData TileData {
 			get { return tileData; }
-			set { tileData = value; tileRenderer1.TileData = value; this.Invalidate(true); }
+			set {
+				tileData = value; tileRenderer1.TileData = value; OnTileChanged(); this.Invalidate(true);
+			}
 		}
 
 		[Category("Data"), Description("The ColorSet used.")]
@@ -51,6 +49,11 @@ namespace GB.Shared.Controls
 			set { selected = value; tileRenderer1.Selected = value; this.Invalidate(true); }
 		}
 
+		public void OnTileChanged() {
+			this.textDisplay.Height = tileRenderer1.Height;
+			this.background.Size = this.Size = new Size(tileRenderer1.Bounds.Right, tileRenderer1.Bounds.Bottom + 1);
+		}
+		
 		public TileListEntryControl() {
 			InitializeComponent();
 		}
