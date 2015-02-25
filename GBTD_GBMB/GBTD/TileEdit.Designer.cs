@@ -38,7 +38,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
 			GB.Shared.Palettes.PaletteData paletteData5 = new GB.Shared.Palettes.PaletteData();
-			GB.Shared.Tiles.PixelTileEditor pixelTileEditor5 = new GB.Shared.Tiles.PixelTileEditor();
+			GB.GBTD.PixelTileEditor pixelTileEditor5 = new GB.GBTD.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -106,10 +106,10 @@
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
-			this.tileList1 = new GB.Shared.Tiles.TileListControl();
+			this.tileList1 = new GB.Shared.Controls.TileListControl();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
-			this.mainTileEdit = new GB.Shared.Tiles.EditableTileRenderer();
+			this.mainTileEdit = new GB.GBTD.EditableTileRenderer();
 			this.toolList = new GB.GBTD.ToolList();
 			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			menuItem6 = new System.Windows.Forms.MenuItem();
@@ -777,7 +777,7 @@
             | System.Windows.Forms.Border3DSide.Middle)));
 			this.mainTileEdit.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.mainTileEdit.Editor = pixelTileEditor5;
-			this.mainTileEdit.EditorTypeID = GB.Shared.Tiles.TileEditorID.PixelEdit;
+			this.mainTileEdit.EditorTypeID = GB.GBTD.TileEditorID.PixelEdit;
 			this.mainTileEdit.Grid = false;
 			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
 			this.mainTileEdit.Location = new System.Drawing.Point(33, 4);
@@ -800,7 +800,7 @@
 			this.toolList.AutoUpdate = false;
 			this.toolList.Location = new System.Drawing.Point(4, 4);
 			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.Shared.Tiles.TileEditorID.PixelEdit;
+			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 0;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
@@ -854,8 +854,8 @@
 		private GB.Shared.Controls.Border tileEditBorder;
 		private ToolList toolList;
 		private Shared.Palettes.GBTDPaletteChooser paletteChooser;
-		private Shared.Tiles.EditableTileRenderer mainTileEdit;
-		private Shared.Tiles.TileListControl tileList1;
+		private GBTD.EditableTileRenderer mainTileEdit;
+		private Shared.Controls.TileListControl tileList1;
 		private PreviewRenderer previewRenderer1;
 		private System.Windows.Forms.MenuItem fileMenuItem;
 		private System.Windows.Forms.MenuItem editMenuItem;

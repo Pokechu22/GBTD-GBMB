@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GB.Shared.Tiles
+using GB.Shared.Tiles;
+
+namespace GB.GBTD
 {
 	/// <summary>
 	/// Contains IDs of different TileEditors.

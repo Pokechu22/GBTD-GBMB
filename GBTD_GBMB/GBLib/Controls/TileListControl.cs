@@ -8,7 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using GB.Shared.Palettes;
 
-namespace GB.Shared.Tiles
+using GB.Shared.Tiles;
+
+namespace GB.Shared.Controls
 {
 	public partial class TileListControl : UserControl
 	{

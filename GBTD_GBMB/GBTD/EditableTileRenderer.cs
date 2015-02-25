@@ -6,10 +6,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Controls;
+using GB.Shared.Tiles;
 
-namespace GB.Shared.Tiles
+namespace GB.GBTD
 {
-	public partial class EditableTileRenderer : TileRenderer
+	public class EditableTileRenderer : TileRenderer
 	{
 		#region Private fields
 		private GBColor leftMouseColor = GBColor.BLACK;

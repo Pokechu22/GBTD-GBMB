@@ -1,4 +1,4 @@
-﻿namespace GB.Shared.Tiles
+﻿namespace GB.Shared.Controls
 {
 	partial class TileListEntryControl
 	{
@@ -27,7 +27,7 @@
 		private void InitializeComponent() {
 			System.Windows.Forms.Panel background;
 			this.textDisplay = new System.Windows.Forms.Panel();
-			this.tileRenderer1 = new GB.Shared.Tiles.TileRenderer();
+			this.tileRenderer1 = new GB.Shared.Controls.TileRenderer();
 			background = new System.Windows.Forms.Panel();
 			background.SuspendLayout();
 			this.SuspendLayout();

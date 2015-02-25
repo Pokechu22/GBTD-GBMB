@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GB.Shared.Tiles;
 using GB.Shared.Palettes;
+using GB.Shared.Controls;
 
 namespace GB.GBTD
 {

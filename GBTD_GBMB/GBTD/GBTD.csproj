@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditableTileRenderer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TileEditor.cs" />
+    <Compile Include="TileEditorProvider.cs" />
+    <Compile Include="TileTransformations.cs" />
     <Compile Include="Dialogs\ExportDialog.cs">
       <SubType>Form</SubType>
     </Compile>

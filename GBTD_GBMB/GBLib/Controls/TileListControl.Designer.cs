@@ -1,4 +1,4 @@
-﻿namespace GB.Shared.Tiles
+﻿namespace GB.Shared.Controls
 {
 	partial class TileListControl
 	{
