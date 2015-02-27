@@ -5,7 +5,8 @@ using System.Text;
 
 namespace GBMFile
 {
-	class Class1
+	internal static class StreamExtensions
 	{
+
 	}
 }
