@@ -6,6 +6,17 @@ using System.IO;
 
 namespace GBMFile
 {
+	/// <summary>
+	/// Provides a general set of functions that handle writing things to streams in compliance with the GBM format definitions.
+	/// 
+	/// <para>For reference: </para>
+	/// 
+	/// <para>Word -> 16-bit hi-endian.</para>
+	/// <para>Unsigned long -> 32-bit hi-endian.</para>
+	/// <para>Integer -> 32-bit hi-endian, unsigned.</para>
+	/// <para>String (xx) -> C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).
+	/// This is padded with 0s if the end has not been reached..</para>
+	/// </summary>
 	internal static class StreamExtensions
 	{
 		#region Byte-handling methods
@@ -55,6 +66,22 @@ namespace GBMFile
 
 			stream.WriteByte(value);
 		}
+		#endregion
+
+		#region Word-handling methods
+		//TODO
+		#endregion
+
+		#region Unsigned Long-handling methods
+		//TODO
+		#endregion
+
+		#region Integer-handling methods
+		//TODO
+		#endregion
+
+		#region String-handling methods
+		//TODO
 		#endregion
 	}
 }
