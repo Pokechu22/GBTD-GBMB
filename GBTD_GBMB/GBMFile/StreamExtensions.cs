@@ -81,7 +81,104 @@ namespace GBMFile
 		#endregion
 
 		#region String-handling methods
-		//TODO
+		/// <summary>
+		/// Reads a string to the specified stream, in the expected format, throwing an exception if the end of the stream is reached.
+		/// <para>Per the doc: 
+		/// String (xx)	C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).</para>
+		/// <para>This method will read until a null terminator or the end of the length, IE it will not return any <c>\0</c>'s in the string.</para>
+		/// <para>This method also uses ANSI for encoding.</para>
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="length">The maximum expected length.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read from.</exception>
+		/// <exception cref="EndOfStreamException">When the end of the stream has been reached.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When length is negative.</exception>
+		internal static String ReadString(this Stream stream, int length) {
+			//A length of 0 is legal (though pointless).
+			if (length < 0) {
+				throw new ArgumentOutOfRangeException("length", length, "Length must not be negative!");
+			}
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[length];
+			int read = stream.Read(bytes, 0, length);
+
+			if (read != length) {
+				throw new EndOfStreamException();
+			}
+
+			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
+		}
+
+		/// <summary>
+		/// Reads a string to the specified stream, in the expected format, returning a default value if the stream has ended.
+		/// <para>Per the doc: 
+		/// String (xx)	C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).</para>
+		/// <para>This method will read until a null terminator or the end of the length, IE it will not return any <c>\0</c>'s in the string.</para>
+		/// <para>This method also uses ANSI for encoding.</para>
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="length">The maximum expected length.</param>
+		/// <param name="def">The default value to return.  Can be <c>null</c>.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read from.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When length is negative.</exception>
+		internal static String ReadString(this Stream stream, int length, string def) {
+			//A length of 0 is legal (though pointless).
+			if (length < 0) {
+				throw new ArgumentOutOfRangeException("length", length, "Length must not be negative!");
+			}
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[length];
+			int read = stream.Read(bytes, 0, length);
+
+			if (read != length) {
+				return def;
+			}
+
+			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
+		}
+		/// <summary>
+		/// Writes a string to the specified stream, in the expected format.
+		/// Reads a string to the specified stream, in the expected format, returning a default value if the stream has ended.
+		/// <para>Per the doc: 
+		/// String (xx)	C-style string; ie. ends with hex 00, with a maximum length of xx (including end-marker).</para>
+		/// <para>This method truncates the string if necessary.</para>
+		/// <para>This method also uses ANSI for encoding.</para>
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="s">The string to write.</param>
+		/// <param name="length">The maximum allowed length.  Will be padded up to if needed.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When length is negative.</exception>
+		/// <exception cref="ArgumentNullException">When s is null.</exception>
+		internal static void WriteString(this Stream stream, String s, uint length) {
+			if (s == null) {
+				throw new ArgumentNullException("s");
+			}
+			if (length < 0) {
+				throw new ArgumentOutOfRangeException("length", length, "Length must not be negative!");
+			}
+			if (!stream.CanWrite) {
+				throw new NotSupportedException("Stream cannot be written to.");
+			}
+			byte[] bytes = Encoding.ASCII.GetBytes(s);
+
+			//Go until the end -1, so that if a terminator is needed it shall be added.
+			for (int i = 0; i < length - 1; i++) {
+				if (i < bytes.Length) {
+					stream.WriteByte(bytes[i]);
+				} else {
+					stream.WriteByte(0x00);
+				}
+			}
+			//Force a terminator.
+			stream.WriteByte(0x00);
+		}
 		#endregion
 	}
 }
