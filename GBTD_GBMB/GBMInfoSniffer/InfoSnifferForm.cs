@@ -9,10 +9,14 @@ using System.Windows.Forms;
 
 namespace GBMInfoSniffer
 {
-	public partial class Form1 : Form
+	public partial class InfoSnifferForm : Form
 	{
-		public Form1() {
+		public InfoSnifferForm() {
 			InitializeComponent();
+		}
+
+		private void openButton_Click(object sender, EventArgs e) {
+			//TODO
 		}
 	}
 }
