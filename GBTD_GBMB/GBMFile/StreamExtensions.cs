@@ -192,7 +192,64 @@ namespace GBMFile
 		#endregion
 
 		#region Integer-handling methods
-		//TODO
+		/// <summary>
+		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream, throwing an exception if at the end of the stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read.</exception>
+		/// <exception cref="EndOfStreamException">When the end of the stream has been reached.</exception>
+		internal static UInt32 ReadInteger(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[4];
+			int read = stream.Read(bytes, 0, 4);
+
+			if (read != 4) {
+				throw new EndOfStreamException();
+			}
+
+			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream, returning the default if at end of stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read.</exception>
+		internal static UInt32 ReadInteger(this Stream stream, UInt32 def) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[4];
+			int read = stream.Read(bytes, 0, 4);
+
+			if (read != 4) {
+				return def;
+			}
+
+			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Writes a 32-bit (4 byte) unsigned number, hi-endian, to the specified stream.
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="n">The number to write.</param>
+		/// </summary>
+		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
+		internal static void WriteInteger(this Stream stream, UInt32 n) {
+			if (!stream.CanWrite) {
+				throw new NotSupportedException("Stream cannot be written to.");
+			}
+
+			stream.WriteByte((byte)((n >> 0) & 0xFF));
+			stream.WriteByte((byte)((n >> 8) & 0xFF));
+			stream.WriteByte((byte)((n >> 16) & 0xFF));
+			stream.WriteByte((byte)((n >> 24) & 0xFF));
+		}
 		#endregion
 
 		#region String-handling methods
