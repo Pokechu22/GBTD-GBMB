@@ -352,5 +352,66 @@ namespace GBMFile
 			stream.WriteByte(0x00);
 		}
 		#endregion
+
+		#region GBMObjectHeader-handling methods
+		/// <summary>
+		/// Reads a <see cref="GBMObjectHeader"/> from the stream, throwing an exception if at the end.
+		/// </summary>
+		/// <param name="stream">The stream to read from</param>
+		/// <exception cref="EndOfStreamException">When at the end of the stream</exception>
+		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
+		internal static GBMObjectHeader ReadGBMObjectHeader(this Stream stream) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
+
+			String marker = stream.ReadString(6);
+			UInt16 objectType = stream.ReadWord();
+			UInt16 objectId = stream.ReadWord();
+			UInt16 masterId = stream.ReadWord();
+			UInt32 crc = stream.ReadUnsignedLong();
+			UInt32 size = stream.ReadUnsignedLong();
+			
+			return new GBMObjectHeader(marker, objectType, objectId, masterId, crc, size);
+		}
+
+		/// <summary>
+		/// Reads a <see cref="GBMObjectHeader"/> from the stream, returning default if at the end.
+		/// </summary>
+		/// <param name="stream">The stream to read from</param>
+		/// <param name="def">The default value to return.</param>
+		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
+		internal static GBMObjectHeader ReadGBMObjectHeader(this Stream stream, GBMObjectHeader def) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
+
+			try {
+				String marker = stream.ReadString(6);
+				UInt16 objectType = stream.ReadWord();
+				UInt16 objectId = stream.ReadWord();
+				UInt16 masterId = stream.ReadWord();
+				UInt32 crc = stream.ReadUnsignedLong();
+				UInt32 size = stream.ReadUnsignedLong();
+
+				return new GBMObjectHeader(marker, objectType, objectId, masterId, crc, size);
+			} catch (EndOfStreamException) {
+				return def;
+			}
+		}
+
+		/// <summary>
+		/// Writes a <see cref="GBMObjectHeader"/> to the stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="value">The GBMObjectHeader to write.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
+		internal static void WriteGBMObjectHeader(this Stream stream, GBMObjectHeader value) {
+			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
+
+			stream.WriteString(value.Marker, 6);
+			stream.WriteWord(value.ObjectType);
+			stream.WriteWord(value.ObjectID);
+			stream.WriteWord(value.MasterID);
+			stream.WriteUnsignedLong(value.CRC);
+			stream.WriteUnsignedLong(value.Size);
+		}
+		#endregion
 	}
 }
