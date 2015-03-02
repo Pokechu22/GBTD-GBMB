@@ -49,6 +49,7 @@ namespace GBMFile
 		/// </summary>
 		public readonly UInt32 Size;
 
+#pragma warning disable 618 //Disables obsolete warnings - http://stackoverflow.com/q/968293/3991344
 		public GBMObjectHeader(UInt16 ObjectType, UInt16 ObjectID, UInt16 MasterID, UInt32 Size) {
 			this.Marker = "HPJMTL";
 			this.ObjectType = ObjectType;
@@ -71,5 +72,7 @@ namespace GBMFile
 			this.CRC = CRC;
 			this.Size = Size;
 		}
+#pragma warning restore 618
+
 	}
 }
