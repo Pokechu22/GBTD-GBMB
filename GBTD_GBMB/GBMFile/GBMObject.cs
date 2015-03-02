@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GBMFile
 {
@@ -11,6 +12,144 @@ namespace GBMFile
 	/// </summary>
 	public abstract class GBMObject
 	{
+		/// <summary>
+		/// The data loaded when origionally deserialized.
+		/// </summary>
+		private byte[] loadedData;
+
+		/// <summary>
+		/// Any aditional data that was not read, which is added to the end.
+		/// </summary>
+		private byte[] extraData;
+
+		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
+
+		/// <summary>
+		/// The Header of this object.
+		/// </summary>
+		public GBMObjectHeader Header { get; protected set; }
+
+		protected GBMObject(UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream) {
+			this.Header = new GBMObjectHeader(TypeID, UniqueID, MasterID, Size);
+			LoadObject(stream);
+		}
+
+		protected GBMObject(GBMObjectHeader header, Stream stream) {
+			this.Header = header;
+			LoadObject(stream);
+		}
+
+		private void LoadObject(Stream s) {
+			byte[] data = new byte[Header.Size];
+			int read = s.Read(data, 0, (int)Header.Size);
+
+			if (read != Header.Size) {
+				throw new EndOfStreamException();
+			}
+
+			loadedData = data;
+
+			using (MemoryStream ns = new MemoryStream(data, false)) {
+				LoadFromStream(ns);
+
+				if (ns.Position != ns.Length) {
+					extraData = new byte[ns.Length - ns.Position];
+					ns.Read(extraData, 0, (int)(ns.Length - ns.Position));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Saves this object to the specified stream.
+		/// </summary>
+		/// <param name="s"></param>
+		public void SaveObject(Stream s) {
+			if (loadedData == null) {
+				s.WriteGBMObjectHeader(this.Header);
+				this.SaveToStream(s);
+			} else {
+				using (MemoryStream ns = new MemoryStream(loadedData, true)) {
+					ns.Position = 0;
+					this.SaveToStream(ns);
+
+					this.Header = this.Header.Resize((UInt32)ns.Length);
+					s.WriteGBMObjectHeader(this.Header);
+					s.Write(ns.ToArray(), 0, (int)this.Header.Size);
+				}
+			}
+		}
+
+		protected abstract void SaveToStream(Stream s);
+		protected abstract void LoadFromStream(Stream s);
+
+		/// <summary>
+		/// Reads an object and its Header and returns said object.
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		public static GBMObject ReadObject(Stream s) {
+			GBMObjectHeader h = s.ReadGBMObjectHeader();
+
+			GBMObject obj;
+			if (mapping.ContainsKey(h.ObjectID)) {
+				//Use reflection to create an instance of the specified object.
+				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
+				obj = (GBMObject)ctor.Invoke(new Object[] { h, s });
+			} else {
+				obj = null;
+				//obj = new GBMObjectUnknownData(h, s); //TODO
+			}
+
+			return obj;
+		}
+
+		/// <summary>
+		/// Gets the name of the object type, which should be constant for all instances.
+		/// </summary>
+		/// <returns></returns>
+		public abstract string GetTypeName();
+
+		/// <summary>
+		/// Converts to a treenode, for debug purposes.
+		/// </summary>
+		/// <returns></returns>
+		public abstract TreeNode ToTreeNode();
+
+		/// <summary>
+		/// Adds the extradata to the treenode, if present.
+		/// </summary>
+		/// <param name="node"></param>
+		protected void AddExtraDataToTreeNode(TreeNode node) {
+			if (extraData != null) {
+				TreeNode extraNode = new TreeNode("Extra unknown data (" + extraData.Length + " bytes)");
+				extraNode.Nodes.Add(string.Join(" ", extraData.Select(x => x.ToString()).ToArray()));
+
+				node.Nodes.Add(extraNode);
+			}
+		}
+
+		public static void RegisterExportable(UInt16 ID, Type type) {
+			if (mapping.ContainsKey(ID)) {
+				throw new InvalidOperationException("Already registered mapping for ID " + ID);
+			}
+			if (type == null) {
+				throw new ArgumentNullException("type");
+			}
+			
+			mapping.Add(ID, type);
+		}
+
+		static GBMObject() {
+			//TODO
+			//RegisterExportable(0xFF, typeof(GBRObjectDeleted));
+			//RegisterExportable(0x01, typeof(GBRObjectProducerInfo));
+			//RegisterExportable(0x02, typeof(GBRObjectTileData));
+			//RegisterExportable(0x03, typeof(GBRObjectTileSettings));
+			//RegisterExportable(0x04, typeof(GBRObjectTileExport));
+			//RegisterExportable(0x05, typeof(GBRObjectTileImport));
+			//RegisterExportable(0x0D, typeof(GBRObjectPalettes));
+			//RegisterExportable(0x0E, typeof(GBRObjectTilePalette));
+		}
 	}
 
 	public struct GBMObjectHeader
