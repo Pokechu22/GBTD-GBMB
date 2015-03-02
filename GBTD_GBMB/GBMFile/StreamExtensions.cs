@@ -69,7 +69,62 @@ namespace GBMFile
 		#endregion
 
 		#region Word-handling methods
-		//TODO
+		/// <summary>
+		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream, throwing an exception if at the end.
+		/// <param name="stream">The stream to read from.</param>
+		/// </summary>
+		/// <exception cref="NotSupportedException">When the stream cannot be read from.</exception>
+		/// <exception cref="EndOfStreamException">When the end of the stream has been reached.</exception>
+		internal static UInt16 ReadWord(this Stream stream) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[2];
+			int read = stream.Read(bytes, 0, 2);
+
+			if (read != 2) {
+				throw new EndOfStreamException();
+			}
+
+			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream, returning the default value if at the end.
+		/// </summary>
+		/// <param name="stream">The stream to read from.</param>
+		/// <param name="def">The default value to return if at the end of the stream.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read from.</exception>
+		internal static UInt16 ReadWord(this Stream stream, UInt16 def) {
+			if (!stream.CanRead) {
+				throw new NotSupportedException("Stream cannot be read from.");
+			}
+
+			byte[] bytes = new byte[2];
+			int read = stream.Read(bytes, 0, 2);
+
+			if (read != 2) {
+				return def;
+			}
+
+			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
+		}
+
+		/// <summary>
+		/// Writes a 16-bit (2 byte) unsigned number, hi-endian, to the specified stream.
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="n">The number to write.</param>
+		/// </summary>
+		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
+		internal static void WriteWord(this Stream stream, UInt16 n) {
+			if (!stream.CanWrite) {
+				throw new NotSupportedException("Stream cannot be written to.");
+			}
+
+			stream.WriteByte((byte)((n >> 0) & 0xFF));
+			stream.WriteByte((byte)((n >> 8) & 0xFF));
+		}
 		#endregion
 
 		#region Unsigned Long-handling methods
