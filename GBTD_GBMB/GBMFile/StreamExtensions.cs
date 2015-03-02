@@ -372,7 +372,7 @@ namespace GBMFile
 			UInt32 crc = stream.ReadUnsignedLong();
 			UInt32 size = stream.ReadUnsignedLong();
 			
-			return new GBMObjectHeader(marker, objectType, objectId, masterId, crc, size);
+			return new GBMObjectHeader(marker, objectType, objectId, masterId != 0 ? masterId : (UInt16?) null, crc, size);
 		}
 
 		/// <summary>
@@ -392,7 +392,7 @@ namespace GBMFile
 				UInt32 crc = stream.ReadUnsignedLong();
 				UInt32 size = stream.ReadUnsignedLong();
 
-				return new GBMObjectHeader(marker, objectType, objectId, masterId, crc, size);
+				return new GBMObjectHeader(marker, objectType, objectId, masterId != 0 ? masterId : (UInt16?) null, crc, size);
 			} catch (EndOfStreamException) {
 				return def;
 			}
@@ -410,7 +410,7 @@ namespace GBMFile
 			stream.WriteString(value.Marker, 6);
 			stream.WriteWord(value.ObjectType);
 			stream.WriteWord(value.ObjectID);
-			stream.WriteWord(value.MasterID);
+			stream.WriteWord(value.MasterID.HasValue ? value.MasterID.Value : (UInt16)0);
 			stream.WriteUnsignedLong(value.CRC);
 			stream.WriteUnsignedLong(value.Size);
 		}
