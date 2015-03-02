@@ -116,16 +116,35 @@ namespace GBMFile
 		public abstract TreeNode ToTreeNode();
 
 		/// <summary>
-		/// Adds the extradata to the treenode, if present.
+		/// Creates a treenode for the root level, which has the proper name.
 		/// </summary>
-		/// <param name="node"></param>
-		protected void AddExtraDataToTreeNode(TreeNode node) {
+		/// <returns></returns>
+		protected TreeNode CreateRootTreeNode() {
+			TreeNode root = new TreeNode(GetTypeName() + " - #" + this.Header.ObjectID.ToString("X4"));
+
+#pragma warning disable 618 //Disables obsolete warnings - http://stackoverflow.com/q/968293/3991344
+			
+			TreeNode header = new TreeNode("Header");
+			
+			header.Nodes.Add("Marker", "Marker: " + this.Header.Marker);
+			header.Nodes.Add("Type", "Type: " + GetTypeName() + " (" + this.Header.ObjectType + ")");
+			header.Nodes.Add("ObjectID", "ObjectID: " + this.Header.ObjectID.ToString("X4"));
+			header.Nodes.Add("MasterID", "MasterID: " + (this.Header.MasterID.HasValue ? this.Header.MasterID.Value.ToString("X4") : "None"));
+			header.Nodes.Add("CRC", "CRC: " + this.Header.CRC.ToString("X8"));
+			header.Nodes.Add("Size", "Size: " + this.Header.Size);
+
+			root.Nodes.Add(header);
+
+#pragma warning restore 618
+
 			if (extraData != null) {
 				TreeNode extraNode = new TreeNode("Extra unknown data (" + extraData.Length + " bytes)");
 				extraNode.Nodes.Add(string.Join(" ", extraData.Select(x => x.ToString()).ToArray()));
 
-				node.Nodes.Add(extraNode);
+				root.Nodes.Add(extraNode);
 			}
+
+			return root;
 		}
 
 		public static void RegisterExportable(UInt16 ID, Type type) {
