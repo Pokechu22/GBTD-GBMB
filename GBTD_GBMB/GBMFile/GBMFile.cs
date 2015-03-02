@@ -6,7 +6,7 @@ using System.IO;
 
 namespace GBMFile
 {
-	class GBMFile
+	public class GBMFile
 	{
 		public class GBMFileHeader
 		{
