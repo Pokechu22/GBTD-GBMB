@@ -18,7 +18,7 @@ namespace GBMFile
 		/// The marker text - should ALWAYS be "HPJMTL".
 		/// </summary>
 		[Obsolete("Currently not yet used.")]
-		public readonly String Marker = "HPJTML";
+		public readonly String Marker;
 
 		/// <summary>
 		/// The typeid of this object, which should remain constant.
@@ -42,7 +42,7 @@ namespace GBMFile
 		/// If 0, it has not yet been calculated.
 		/// </summary>
 		[Obsolete("Currently not yet used - will always be 0.")]
-		public readonly UInt32 CRC = 0x00000000U;
+		public readonly UInt32 CRC;
 
 		/// <summary>
 		/// The size that this object was deserialized with.
@@ -50,14 +50,26 @@ namespace GBMFile
 		public readonly UInt32 Size;
 
 		public GBMObjectHeader(UInt16 ObjectType, UInt16 ObjectID, UInt16 MasterID, UInt32 Size) {
+			this.Marker = "HPJMTL";
 			this.ObjectType = ObjectType;
 			this.ObjectID = ObjectID;
 			this.MasterID = MasterID;
+			this.CRC = 0x00000000U;
 			this.Size = Size;
 		}
 
 		public GBMObjectHeader Resize(UInt32 newSize) {
-			return new GBMObjectHeader(this.ObjectType, this.ObjectID, this.MasterID, newSize);
+			return new GBMObjectHeader(this.Marker, this.ObjectType, this.ObjectID, this.MasterID, this.CRC, newSize);
+		}
+
+		[Obsolete("Sets unused values; you probably want the other one.")]
+		public GBMObjectHeader(String Marker, UInt16 ObjectType, UInt16 ObjectID, UInt16 MasterID, UInt32 CRC, UInt32 Size) {
+			this.Marker = Marker;
+			this.ObjectType = ObjectType;
+			this.ObjectID = ObjectID;
+			this.MasterID = MasterID;
+			this.CRC = CRC;
+			this.Size = Size;
 		}
 	}
 }
