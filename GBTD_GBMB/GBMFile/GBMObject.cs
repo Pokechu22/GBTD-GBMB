@@ -126,7 +126,7 @@ namespace GBMFile
 			TreeNode header = new TreeNode("Header");
 			
 			header.Nodes.Add("Marker", "Marker: " + this.Header.Marker);
-			header.Nodes.Add("Type", "Type: " + GetTypeName() + " (" + this.Header.ObjectType + ")");
+			header.Nodes.Add("Type", "Type: " + GetTypeName() + " (" + this.Header.ObjectType.ToString("X4") + ")");
 			header.Nodes.Add("ObjectID", "ObjectID: " + this.Header.ObjectID.ToString("X4"));
 			header.Nodes.Add("MasterID", "MasterID: " + (this.Header.MasterID.HasValue ? this.Header.MasterID.Value.ToString("X4") : "None"));
 			header.Nodes.Add("CRC", "CRC: " + this.Header.CRC.ToString("X8"));
