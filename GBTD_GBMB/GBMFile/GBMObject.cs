@@ -29,7 +29,7 @@ namespace GBMFile
 		/// </summary>
 		public GBMObjectHeader Header { get; protected set; }
 
-		protected GBMObject(UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream) {
+		protected GBMObject(UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream) {
 			this.Header = new GBMObjectHeader(TypeID, UniqueID, MasterID, Size);
 			LoadObject(stream);
 		}
