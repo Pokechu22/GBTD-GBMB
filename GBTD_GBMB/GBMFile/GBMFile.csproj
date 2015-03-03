@@ -8,7 +8,7 @@
     <ProjectGuid>{FEF19A2A-1751-4DCB-8750-532CD7DA7901}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GBMFile</RootNamespace>
+    <RootNamespace>GB.Shared.GBMFile</RootNamespace>
     <AssemblyName>GBMFile</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

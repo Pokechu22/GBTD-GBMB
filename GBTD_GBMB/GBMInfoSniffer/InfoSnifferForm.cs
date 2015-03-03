@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using GBMFile;
+using GB.Shared.GBMFile;
 
 namespace GBMInfoSniffer
 {
@@ -30,7 +30,7 @@ namespace GBMInfoSniffer
 		public void LoadTreeFromStream(Stream stream) {
 			treeView1.Nodes.Clear();
 
-			GBMFile.GBMFile file = new GBMFile.GBMFile(stream);
+			GB.Shared.GBMFile.GBMFile file = new GB.Shared.GBMFile.GBMFile(stream);
 			foreach (GBMObject obj in file.Objects) {
 				treeView1.Nodes.Add(obj.ToTreeNode());
 			}

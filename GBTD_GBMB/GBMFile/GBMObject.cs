@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 
-namespace GBMFile
+namespace GB.Shared.GBMFile
 {
 	/// <summary>
 	/// Any object that can be saved to a GBRFile.

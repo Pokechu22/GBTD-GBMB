@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace GBMFile
+namespace GB.Shared.GBMFile
 {
 	/// <summary>
 	/// Provides a general set of functions that handle writing things to streams in compliance with the GBM format definitions.
