@@ -82,5 +82,28 @@ namespace GBMFile
 				return VersionCode == DEFAULT_VER;
 			}
 		}
+
+		public readonly GBMFileHeader Header;
+
+		public List<GBMObject> Objects;
+
+		public GBMFile() {
+			this.Header = new GBMFileHeader();
+		}
+
+		public GBMFile(Stream stream) {
+			this.Header = new GBMFileHeader(stream);
+
+			//TODO validation here.
+			Objects = new List<GBMObject>();
+
+			while (true) {
+				try {
+					Objects.Add(GBMObject.ReadObject(stream));
+				} catch (EndOfStreamException) {
+					break;
+				}
+			}
+		}
 	}
 }
