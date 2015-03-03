@@ -160,7 +160,7 @@ namespace GBMFile
 		static GBMObject() {
 			//TODO
 			RegisterExportable(0xFFFF, typeof(GBMObjectDeleted));
-			//RegisterExportable(0x01, typeof(GBRObjectProducerInfo));
+			RegisterExportable(0x01, typeof(GBMObjectProducerInfo));
 			//RegisterExportable(0x02, typeof(GBRObjectTileData));
 			//RegisterExportable(0x03, typeof(GBRObjectTileSettings));
 			//RegisterExportable(0x04, typeof(GBRObjectTileExport));
