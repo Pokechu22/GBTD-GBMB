@@ -96,8 +96,7 @@ namespace GBMFile
 				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
 				obj = (GBMObject)ctor.Invoke(new Object[] { h, s });
 			} else {
-				obj = null;
-				//obj = new GBMObjectUnknownData(h, s); //TODO
+				obj = new GBMObjectUnknownData(h, s);
 			}
 
 			return obj;
@@ -160,7 +159,7 @@ namespace GBMFile
 
 		static GBMObject() {
 			//TODO
-			//RegisterExportable(0xFF, typeof(GBRObjectDeleted));
+			RegisterExportable(0xFFFF, typeof(GBMObjectDeleted));
 			//RegisterExportable(0x01, typeof(GBRObjectProducerInfo));
 			//RegisterExportable(0x02, typeof(GBRObjectTileData));
 			//RegisterExportable(0x03, typeof(GBRObjectTileSettings));

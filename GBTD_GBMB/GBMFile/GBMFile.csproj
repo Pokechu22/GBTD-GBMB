@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="GBMFile.cs" />
     <Compile Include="GBMObject.cs" />
+    <Compile Include="GBMObjectDeleted.cs" />
+    <Compile Include="GBMObjectUnknownData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamExtensions.cs" />
   </ItemGroup>
