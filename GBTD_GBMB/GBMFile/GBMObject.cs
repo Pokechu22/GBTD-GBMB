@@ -91,9 +91,9 @@ namespace GBMFile
 			GBMObjectHeader h = s.ReadGBMObjectHeader();
 
 			GBMObject obj;
-			if (mapping.ContainsKey(h.ObjectID)) {
+			if (mapping.ContainsKey(h.ObjectType)) {
 				//Use reflection to create an instance of the specified object.
-				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
+				var ctor = mapping[h.ObjectType].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
 				obj = (GBMObject)ctor.Invoke(new Object[] { h, s });
 			} else {
 				obj = new GBMObjectUnknownData(h, s);
