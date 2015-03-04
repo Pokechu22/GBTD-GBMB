@@ -53,23 +53,24 @@ namespace GB.Shared.GBMFile
 				byte b1 = s.ReadByteEx();
 				byte b2 = s.ReadByteEx();
 
-				long l = (b2 << 0) | (b1 << 8) | (b0 << 16);
+				ulong l = (ulong)((b2 << 0) | (b1 << 8) | (b0 << 16));
 
-				this.tileNumber = (UInt16)BitRange(l, 0, 10);
-				this.GBCPalette = (byte)BitRange(l, 10, 5);
-				this.unused1 = BitRange(l, 15, 1) != 0;
-				this.sgbPalette = (byte)BitRange(l, 16, 3);
-				this.unused2 = (byte)BitRange(l, 19, 3);
-				this.flippedHorizontally = BitRange(l, 22, 1) != 0;
-				this.flippedVertically = BitRange(l, 23, 1) != 0;
+				this.tileNumber = (UInt16)GetBitRange(l, 0, 10);
+				this.GBCPalette = (byte)GetBitRange(l, 10, 5);
+				this.unused1 = GetBitRange(l, 15, 1) != 0;
+				this.sgbPalette = (byte)GetBitRange(l, 16, 3);
+				this.unused2 = (byte)GetBitRange(l, 19, 3);
+				this.flippedHorizontally = GetBitRange(l, 22, 1) != 0;
+				this.flippedVertically = GetBitRange(l, 23, 1) != 0;
 			}
 
 			/// <summary>
-			/// Gets the range of bits specified, shifted right at the start.
-			/// TODO better doc for this method.
+			/// Gets the sequence of bits specified from the given long.
+			/// It starts at start and reads length bits.  
+			/// <para>The value is shifted so that the bit at start is the first bit of the returned value.</para>
 			/// </summary>
-			private long BitRange(long l, ushort start, ushort length) {
-				long mask = 0;
+			private ulong GetBitRange(ulong l, ushort start, ushort length) {
+				ulong mask = 0;
 				for (ushort i = start; i < start + length; i++) {
 					mask |= (1U << i);
 				}
@@ -77,8 +78,24 @@ namespace GB.Shared.GBMFile
 				return (l & mask) >> start;
 			}
 
-			public GBMObjectMapTileDataRecord(Stream s) {
+			/// <summary>
+			/// Sets a sequence of bits specified in the given long.
+			/// </summary>
+			/// <param name="l">THe long to modify</param>
+			/// <param name="bits">The value to write.</param>
+			/// <param name="start">The first value in the given long to write (bits always starts at 0)</param>
+			/// <param name="length">The length to write from bits.</param>
+			private void SetBitRange(ref ulong l, ulong bits, ushort start, ushort length) {
+				ulong mask = 0;
+				for (ushort i = 0; i < length; i++) {
+					mask |= (1U << i);
+				}
 
+				l |= (bits & mask) << start;
+			}
+
+			public GBMObjectMapTileDataRecord(Stream s) {
+				
 			}
 		}
 		//TODO: Everything.
