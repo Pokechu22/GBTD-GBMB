@@ -149,23 +149,41 @@ namespace GB.Shared.GBMFile
 				//TODO: Can we be 100% sure that this will ACTUALLY happen, and the file won't grow indefinitely?
 			}
 
-			var enumerator = dict.GetEnumerator();
-			while (new Random().Next() != 0) {
-				var entry = enumerator.Current;
-				//TODO: Verify that we don't go into an infinite loop with masters.
-				stream.Seek(entry.Value.Position, SeekOrigin.Begin);
-				GBMObject obj = GBMObject.ReadObject(entry.Value.Header, stream);
-				ReadObjects.Add(obj);
-				Objects.Add(obj.Header.ObjectID, obj);
-			} while (enumerator.MoveNext());
+			foreach (GBMObjectReference reference in dict.Values) {
+				ReadObjectAndMaster(stream, reference, dict);
+			}
 		}
 
-		private void ReadObjectAndMaster(GBMObjectReference reference) {
-			if (reference.Header.MasterID.HasValue) {
-				
-			} else {
+		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references) {
+			//If there is a master object that may need to be loaded.
+			if (toRead.Header.MasterID.HasValue) {
+				UInt16 masterID = toRead.Header.MasterID.Value;
 
+				if (!references.ContainsKey(masterID)) {
+					//TODO: Throwing simply an exception might not make sense here.  Select a better type.
+					throw new Exception("The master object " + masterID.ToString("X4") + " for object " + toRead.Header.ObjectID.ToString("X4") + " could not be found.  (Corrupt / invalid GBM file?)");
+				}
+
+				//If the specified object hasn't yet been loaded, load it (and any of its masters).
+				if (!this.Objects.ContainsKey(masterID)) {
+					ReadObjectAndMaster(stream, references[masterID], references);
+				}
 			}
+
+			//OK, now that the master has been loaded if needed, load the object itself.
+
+			//If the object has already been loaded, something weird is happening, because there should ONLY be one object with a specific ID.
+			if (Objects.ContainsKey(toRead.Header.ObjectID)) {
+				//TODO: Better type of excpetion
+				//TODO: Include string version of the objects?
+				throw new Exception("Object id " + toRead.Header.ObjectID.ToString("X4") + " has already been registered.  (Corrupt / invalid GBM file?)");
+			}
+
+			stream.Seek(toRead.Position, SeekOrigin.Begin);
+			GBMObject obj = GBMObject.ReadObject(toRead.Header, stream);
+
+			ReadObjects.Add(obj);
+			Objects.Add(obj.Header.ObjectID, obj);
 		}
 	}
 }
