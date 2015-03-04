@@ -95,7 +95,23 @@ namespace GB.Shared.GBMFile
 			}
 
 			public GBMObjectMapTileDataRecord(Stream s) {
-				
+				ulong l = 0U;
+
+				SetBitRange(ref l, tileNumber, 0, 10);
+				SetBitRange(ref l, gbcPalette, 10, 5);
+				SetBitRange(ref l, unused1 ? 1U : 0U, 15, 1);
+				SetBitRange(ref l, sgbPalette, 16, 3);
+				SetBitRange(ref l, unused2, 19, 3);
+				SetBitRange(ref l, flippedHorizontally ? 1U : 0U, 22, 1);
+				SetBitRange(ref l, flippedVertically ? 1U : 0U, 23, 1);
+
+				byte b2 = (byte)((l >> 0) & 0xFF);
+				byte b1 = (byte)((l >> 8) & 0xFF);
+				byte b0 = (byte)((l >> 16) & 0xFF);
+
+				s.WriteByteEx(b0);
+				s.WriteByteEx(b1);
+				s.WriteByteEx(b2);
 			}
 		}
 		//TODO: Everything.
