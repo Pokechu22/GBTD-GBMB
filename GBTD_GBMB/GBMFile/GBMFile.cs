@@ -83,16 +83,16 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
-		public readonly GBMFileHeader Header;
+		public readonly GBMFileHeader FileHeader;
 
 		public List<GBMObject> Objects;
 
 		public GBMFile() {
-			this.Header = new GBMFileHeader();
+			this.FileHeader = new GBMFileHeader();
 		}
 
 		public GBMFile(Stream stream) {
-			this.Header = new GBMFileHeader(stream);
+			this.FileHeader = new GBMFileHeader(stream);
 
 			//TODO validation here.
 			Objects = new List<GBMObject>();
