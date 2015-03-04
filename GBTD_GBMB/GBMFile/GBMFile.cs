@@ -8,6 +8,24 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMFile
 	{
+		/// <summary>
+		/// Contains the location and header of an object that may not yet have been deserialized.
+		/// </summary>
+		private struct GBMObjectReference
+		{
+			public GBMObjectReference(GBMObjectHeader Header, long Position) {
+				this.Header = Header;
+				this.Position = Position;
+			}
+
+			public readonly GBMObjectHeader Header;
+			public readonly long Position;
+
+			public override string ToString() {
+				return "Header: " + Header + "; Position: " + Position;
+			}
+		}
+
 		public class GBMFileHeader
 		{
 			//The default data.  Encoded like this because ASCII.
@@ -85,24 +103,68 @@ namespace GB.Shared.GBMFile
 
 		public readonly GBMFileHeader FileHeader;
 
-		public List<GBMObject> Objects;
+		/// <summary>
+		/// All objects that were read, in order, including deleted ones.
+		/// Please don't use this for actual data.
+		/// </summary>
+		[Obsolete]
+		public List<GBMObject> ReadObjects;
+		/// <summary>
+		/// All actual objects, arranged by their ID.
+		/// </summary>
+		public Dictionary<UInt16, GBMObject> Objects;
 
 		public GBMFile() {
 			this.FileHeader = new GBMFileHeader();
 		}
 
 		public GBMFile(Stream stream) {
+			if (!stream.CanSeek) {
+				throw new NotSupportedException("Stream does not support seeking; that is required for this functionality");
+			}
+
 			this.FileHeader = new GBMFileHeader(stream);
 
 			//TODO validation here.
-			Objects = new List<GBMObject>();
+			ReadObjects = new List<GBMObject>();
+			Objects = new Dictionary<UInt16, GBMObject>();
 
-			while (true) {
-				try {
-					Objects.Add(GBMObject.ReadObject(stream));
-				} catch (EndOfStreamException) {
-					break;
+			Dictionary<UInt16, GBMObjectReference> dict = new Dictionary<UInt16, GBMObjectReference>();
+			try {
+				while (true) {
+					GBMObjectHeader header = stream.ReadGBMObjectHeader();
+
+					if (header.ObjectType == 0xFFFF) { //TODO: Make it clearer that this is deleted with a constant.
+						ReadObjects.Add(GBMObject.ReadObject(header, stream)); //Add the read object, but do nothing else with it.
+
+					} else {
+						GBMObjectReference r = new GBMObjectReference(header, stream.Position);
+						dict.Add(header.ObjectID, r);
+						//Advance the stream by the specified ammount.
+						stream.Seek(header.Size, SeekOrigin.Current);
+					}
 				}
+			} catch (EndOfStreamException) {
+				//End of the stream; we want to go back and read all of the objects now.
+				//TODO: Can we be 100% sure that this will ACTUALLY happen, and the file won't grow indefinitely?
+			}
+
+			var enumerator = dict.GetEnumerator();
+			while (new Random().Next() != 0) {
+				var entry = enumerator.Current;
+				//TODO: Verify that we don't go into an infinite loop with masters.
+				stream.Seek(entry.Value.Position, SeekOrigin.Begin);
+				GBMObject obj = GBMObject.ReadObject(entry.Value.Header, stream);
+				ReadObjects.Add(obj);
+				Objects.Add(obj.Header.ObjectID, obj);
+			} while (enumerator.MoveNext());
+		}
+
+		private void ReadObjectAndMaster(GBMObjectReference reference) {
+			if (reference.Header.MasterID.HasValue) {
+				
+			} else {
+
 			}
 		}
 	}

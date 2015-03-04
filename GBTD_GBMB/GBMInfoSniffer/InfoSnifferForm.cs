@@ -31,7 +31,7 @@ namespace GBMInfoSniffer
 			treeView1.Nodes.Clear();
 
 			GB.Shared.GBMFile.GBMFile file = new GB.Shared.GBMFile.GBMFile(stream);
-			foreach (GBMObject obj in file.Objects) {
+			foreach (GBMObject obj in file.ReadObjects) {
 				treeView1.Nodes.Add(obj.ToTreeNode());
 			}
 		}

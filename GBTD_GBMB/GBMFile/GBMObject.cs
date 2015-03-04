@@ -23,7 +23,7 @@ namespace GB.Shared.GBMFile
 		private byte[] extraData;
 
 		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
-
+		
 		/// <summary>
 		/// The Header of this object.
 		/// </summary>
@@ -87,16 +87,15 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
-		public static GBMObject ReadObject(Stream s) {
-			GBMObjectHeader h = s.ReadGBMObjectHeader();
+		public static GBMObject ReadObject(GBMObjectHeader header, Stream s) {
 
 			GBMObject obj;
-			if (mapping.ContainsKey(h.ObjectType)) {
+			if (mapping.ContainsKey(header.ObjectType)) {
 				//Use reflection to create an instance of the specified object.
-				var ctor = mapping[h.ObjectType].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
-				obj = (GBMObject)ctor.Invoke(new Object[] { h, s });
+				var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
+				obj = (GBMObject)ctor.Invoke(new Object[] { header, s });
 			} else {
-				obj = new GBMObjectUnknownData(h, s);
+				obj = new GBMObjectUnknownData(header, s);
 			}
 
 			return obj;
