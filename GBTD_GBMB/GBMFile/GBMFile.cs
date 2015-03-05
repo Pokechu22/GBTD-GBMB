@@ -205,7 +205,8 @@ namespace GB.Shared.GBMFile
 		/// <param name="readOffsets">A list of all objects that have been read - used to avoid re-reading objects.</param>
 		/// <param name="currentDepth">The current depth in master objects.
 		/// DO NOT SPECIFY IF YOU ARE CALLING THIS METHOD NORMALLY.  It is only of use when recursing through the masters.</param>
-		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references,
+		/// <returns>The object read, but also adds it to the array.  You probably won't use this unless you're recursing.</returns>
+		private GBMObject ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references,
 				List<long> readOffsets, int currentDepth = MAXIMUM_MASTER_DEPTH) {
 			toRead.Header.Validate(toRead.Position);
 
@@ -213,6 +214,10 @@ namespace GB.Shared.GBMFile
 				//TODO Better text and exception type.
 				throw new Exception("Master object depth too high - over " + MAXIMUM_MASTER_DEPTH + " objects (is there an infinite loop?)");
 			}
+
+			//The master object, if there is one.
+			//Set later on if it is needed.
+			GBMObject master = null;
 
 			//If there is a master object that may need to be loaded.
 			if (toRead.Header.MasterID.HasValue) {
@@ -225,7 +230,9 @@ namespace GB.Shared.GBMFile
 
 				//If the specified object hasn't yet been loaded, load it (and any of its masters).
 				if (!this.Objects.ContainsKey(masterID)) {
-					ReadObjectAndMaster(stream, references[masterID], references, readOffsets, currentDepth - 1);
+					master = ReadObjectAndMaster(stream, references[masterID], references, readOffsets, currentDepth - 1);
+				} else {
+					master = this.Objects[masterID];
 				}
 			}
 
@@ -233,7 +240,7 @@ namespace GB.Shared.GBMFile
 
 			//If the object at that offset has already been read, abort.
 			if (readOffsets.Contains(toRead.Position)) {
-				return;
+				return Objects[toRead.Header.ObjectID];
 			}
 			//If an object with that ID has already been loaded, but it is not the same object, throw an exception.
 			if (Objects.ContainsKey(toRead.Header.ObjectID)) {
@@ -243,12 +250,14 @@ namespace GB.Shared.GBMFile
 			}
 
 			stream.Seek(toRead.Position, SeekOrigin.Begin);
-			GBMObject obj = GBMObject.ReadObject(null /* TODO */, toRead.Header, stream);
+			GBMObject obj = GBMObject.ReadObject(master, toRead.Header, stream);
 
 			Objects.Add(obj.Header.ObjectID, obj);
 
 			//Mark the given offset as read.
 			readOffsets.Add(toRead.Position);
+
+			return obj;
 		}
 	}
 }

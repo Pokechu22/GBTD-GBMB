@@ -54,7 +54,7 @@ namespace GB.Shared.GBMFile
 				set { flippedVertically = value; }
 			}
 
-			public void SaveToStream(Stream s) {
+			public GBMObjectMapTileDataRecord(Stream s) {
 				byte b0 = s.ReadByteEx();
 				byte b1 = s.ReadByteEx();
 				byte b2 = s.ReadByteEx();
@@ -62,12 +62,32 @@ namespace GB.Shared.GBMFile
 				ulong l = (ulong)((b2 << 0) | (b1 << 8) | (b0 << 16));
 
 				this.tileNumber = (UInt16)GetBitRange(l, 0, 10);
-				this.GBCPalette = (byte)GetBitRange(l, 10, 5);
+				this.gbcPalette = (byte)GetBitRange(l, 10, 5);
 				this.unused1 = GetBitRange(l, 15, 1) != 0;
 				this.sgbPalette = (byte)GetBitRange(l, 16, 3);
 				this.unused2 = (byte)GetBitRange(l, 19, 3);
 				this.flippedHorizontally = GetBitRange(l, 22, 1) != 0;
 				this.flippedVertically = GetBitRange(l, 23, 1) != 0;
+			}
+
+			public void SaveToStream(Stream s) {
+				ulong l = 0U;
+
+				SetBitRange(ref l, tileNumber, 0, 10);
+				SetBitRange(ref l, gbcPalette, 10, 5);
+				SetBitRange(ref l, unused1 ? 1U : 0U, 15, 1);
+				SetBitRange(ref l, sgbPalette, 16, 3);
+				SetBitRange(ref l, unused2, 19, 3);
+				SetBitRange(ref l, flippedHorizontally ? 1U : 0U, 22, 1);
+				SetBitRange(ref l, flippedVertically ? 1U : 0U, 23, 1);
+
+				byte b2 = (byte)((l >> 0) & 0xFF);
+				byte b1 = (byte)((l >> 8) & 0xFF);
+				byte b0 = (byte)((l >> 16) & 0xFF);
+
+				s.WriteByteEx(b0);
+				s.WriteByteEx(b1);
+				s.WriteByteEx(b2);
 			}
 
 			/// <summary>
@@ -100,42 +120,39 @@ namespace GB.Shared.GBMFile
 				l |= (bits & mask) << start;
 			}
 
-			public GBMObjectMapTileDataRecord(Stream s) {
-				ulong l = 0U;
+			public TreeNode ToTreeNode(string name) {
+				TreeNode node = new TreeNode(name);
 
-				SetBitRange(ref l, tileNumber, 0, 10);
-				SetBitRange(ref l, gbcPalette, 10, 5);
-				SetBitRange(ref l, unused1 ? 1U : 0U, 15, 1);
-				SetBitRange(ref l, sgbPalette, 16, 3);
-				SetBitRange(ref l, unused2, 19, 3);
-				SetBitRange(ref l, flippedHorizontally ? 1U : 0U, 22, 1);
-				SetBitRange(ref l, flippedVertically ? 1U : 0U, 23, 1);
+				node.Nodes.Add("TileNumber", "TimeNumber: " + this.TileNumber);
+				node.Nodes.Add("GBCPalette", "GBCPalette: " + this.GBCPalette);
+				node.Nodes.Add("Unused1", "Unused1: " + unused1);
+				node.Nodes.Add("SGBPalette", "SGBPalette: " + this.SGBPalette);
+				node.Nodes.Add("Unused1", "Unused1: " + unused1);
+				node.Nodes.Add("FlippedHorizontally", "FlippedHorizontally: " + this.FlippedHorizontally);
+				node.Nodes.Add("FlippedVertically", "FlippedVertically: " + this.FlippedVertically);
 
-				byte b2 = (byte)((l >> 0) & 0xFF);
-				byte b1 = (byte)((l >> 8) & 0xFF);
-				byte b0 = (byte)((l >> 16) & 0xFF);
-
-				s.WriteByteEx(b0);
-				s.WriteByteEx(b1);
-				s.WriteByteEx(b2);
+				return node;
 			}
 		}
-		//TODO: Everything.
 
 		public GBMObjectMapTileDataRecord[,] Tiles { get; set; }
 
 		protected override void SaveToStream(Stream s) {
-			
+			for (int x = 0; x < Master.Width; x++) {
+				for (int y = 0; y < Master.Height; y++) {
+					Tiles[x, y].SaveToStream(s);
+				}
+			}
 		}
 
 		protected override void LoadFromStream(Stream s) {
-			/*Tiles = new GBMObjectMapTileDataRecord[Master.Width, Master.Height];
+			Tiles = new GBMObjectMapTileDataRecord[Master.Width, Master.Height];
 
 			for (int x = 0; x < Master.Width; x++) {
 				for (int y = 0; y < Master.Height; y++) {
 					Tiles[x, y] = new GBMObjectMapTileDataRecord(s);
 				}
-			}*/
+			}
 		}
 
 		public override string GetTypeName() {
@@ -145,7 +162,15 @@ namespace GB.Shared.GBMFile
 		public override TreeNode ToTreeNode() {
 			TreeNode node = CreateRootTreeNode();
 
-			
+			TreeNode tiles = new TreeNode("Tiles");
+			for (int y = 0; y < Master.Height; y++) {
+				TreeNode row = new TreeNode("Row " + y);
+				for (int x = 0; x < Master.Width; x++) {
+					row.Nodes.Add(Tiles[x, y].ToTreeNode("Tile " + x + ", " + y));
+				}
+				tiles.Nodes.Add(row);
+			}
+			node.Nodes.Add(tiles);
 
 			return node;
 		}

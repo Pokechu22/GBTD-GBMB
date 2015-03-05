@@ -107,13 +107,13 @@ namespace GB.Shared.GBMFile
 				//Use reflection to create an instance of the specified object.
 				var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { masterType, typeof(GBMObjectHeader), typeof(Stream) });
 				if (ctor == null) {
-					throw new Exception(String.Format("Failed to find a constructor for {0} taking arguments {1}, {2}, {3}.", 
+					throw new Exception(String.Format("Failed to find a constructor for {0} taking arguments {1}, {2}, and {3}.", 
 						mapping[header.ObjectType], masterType, typeof(GBMObjectHeader), typeof(Stream)));
 				}
 
 				obj = (GBMObject)ctor.Invoke(new Object[] { master, header, s });
 			} else {
-				obj = new GBMObjectUnknownData(null, header, s);
+				obj = new GBMObjectUnknownData(master, header, s);
 			}
 
 			return obj;
