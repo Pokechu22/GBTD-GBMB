@@ -104,12 +104,6 @@ namespace GB.Shared.GBMFile
 		public readonly GBMFileHeader FileHeader;
 
 		/// <summary>
-		/// All objects that were read, in order, including deleted ones.
-		/// Please don't use this for actual data.
-		/// </summary>
-		[Obsolete]
-		public List<GBMObject> ReadObjects;
-		/// <summary>
 		/// All actual objects, arranged by their ID.
 		/// </summary>
 		public Dictionary<UInt16, GBMObject> Objects;
@@ -123,10 +117,11 @@ namespace GB.Shared.GBMFile
 				throw new NotSupportedException("Stream does not support seeking; that is required for this functionality");
 			}
 
-			this.FileHeader = new GBMFileHeader(stream);
+			const UInt16 DELETED_OBJECT_TYPE = 0xFFFF;
 
+			this.FileHeader = new GBMFileHeader(stream);
 			//TODO validation here.
-			ReadObjects = new List<GBMObject>();
+			
 			Objects = new Dictionary<UInt16, GBMObject>();
 
 			Dictionary<UInt16, GBMObjectReference> dict = new Dictionary<UInt16, GBMObjectReference>();
@@ -134,15 +129,13 @@ namespace GB.Shared.GBMFile
 				while (true) {
 					GBMObjectHeader header = stream.ReadGBMObjectHeader();
 
-					if (header.ObjectType == 0xFFFF) { //TODO: Make it clearer that this is deleted with a constant.
-						ReadObjects.Add(GBMObject.ReadObject(header, stream)); //Add the read object, but do nothing else with it.
-
-					} else {
+					if (header.ObjectType != DELETED_OBJECT_TYPE) {
 						GBMObjectReference r = new GBMObjectReference(header, stream.Position);
 						dict.Add(header.ObjectID, r);
-						//Advance the stream by the specified ammount.
-						stream.Seek(header.Size, SeekOrigin.Current);
 					}
+
+					//Advance the stream by the specified amount.
+					stream.Seek(header.Size, SeekOrigin.Current);
 				}
 			} catch (EndOfStreamException) {
 				//End of the stream; we want to go back and read all of the objects now.
@@ -182,7 +175,6 @@ namespace GB.Shared.GBMFile
 			stream.Seek(toRead.Position, SeekOrigin.Begin);
 			GBMObject obj = GBMObject.ReadObject(toRead.Header, stream);
 
-			ReadObjects.Add(obj);
 			Objects.Add(obj.Header.ObjectID, obj);
 		}
 	}
