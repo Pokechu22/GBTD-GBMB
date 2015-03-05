@@ -85,7 +85,7 @@ namespace GB.Shared.GBMFile
 			root.Nodes.Add("PropCount", "PropCount: " + PropCount);
 			root.Nodes.Add("TileFile", "TileFile: " + TileFile);
 			root.Nodes.Add("TileCount", "TileCount: " + TileCount);
-			root.Nodes.Add("PropCount", "PropCount: " + PropCount);
+			root.Nodes.Add("PropColorCount", "PropColorCount: " + PropColorCount);
 
 			return root;
 		}
