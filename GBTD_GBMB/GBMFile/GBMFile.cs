@@ -148,9 +148,19 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
-		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references, 
-				List<long> readOffsets) {
+		/// <summary>
+		/// The maximum depth for master objects before it is treated as an infinite loop.
+		/// </summary>
+		const int MAXIMUM_MASTER_DEPTH = 20;
+
+		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references,
+				List<long> readOffsets, int currentDepth = MAXIMUM_MASTER_DEPTH) {
 			toRead.Header.Validate(toRead.Position);
+
+			if (currentDepth <= 0) {
+				//TODO Better text and exception type.
+				throw new Exception("Master object depth too high - over " + MAXIMUM_MASTER_DEPTH + " objects (is there an infinite loop?)");
+			}
 
 			//If there is a master object that may need to be loaded.
 			if (toRead.Header.MasterID.HasValue) {
@@ -163,7 +173,7 @@ namespace GB.Shared.GBMFile
 
 				//If the specified object hasn't yet been loaded, load it (and any of its masters).
 				if (!this.Objects.ContainsKey(masterID)) {
-					ReadObjectAndMaster(stream, references[masterID], references, readOffsets);
+					ReadObjectAndMaster(stream, references[masterID], references, readOffsets, currentDepth - 1);
 				}
 			}
 
