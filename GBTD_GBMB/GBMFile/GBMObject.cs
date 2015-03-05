@@ -192,7 +192,7 @@ namespace GB.Shared.GBMFile
 			protected set { base.Master = value; }
 		}
 
-		protected MasteredGBMObject(TMaster Master, UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream)
+		protected MasteredGBMObject(TMaster Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
 				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
 		protected MasteredGBMObject(TMaster Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 	}

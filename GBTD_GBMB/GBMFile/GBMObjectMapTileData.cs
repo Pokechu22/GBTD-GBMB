@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace GB.Shared.GBMFile
 {
-	public class GBMObjectMapTileData : GBMObjectMap
+	public class GBMObjectMapTileData : MasteredGBMObject<GBMObjectMap>
 	{
-		public GBMObjectMapTileData(GBMObject Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
+		public GBMObjectMapTileData(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
 				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
 
-		public GBMObjectMapTileData(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
+		public GBMObjectMapTileData(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		public class GBMObjectMapTileDataRecord
 		{
