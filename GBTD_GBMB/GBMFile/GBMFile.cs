@@ -26,6 +26,9 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
+		/// <summary>
+		/// Contains the header for a GBM file.
+		/// </summary>
 		public class GBMFileHeader
 		{
 			//The default data.  Encoded like this because ASCII.
@@ -40,6 +43,9 @@ namespace GB.Shared.GBMFile
 
 			public byte VersionCode { get; private set; }
 
+			/// <summary>
+			/// Creates a GBMFileHeader with the default values.
+			/// </summary>
 			public GBMFileHeader() {
 				//Default value.
 				MagicMarker1 = DEFAULT_MM1;
@@ -49,6 +55,13 @@ namespace GB.Shared.GBMFile
 				VersionCode = DEFAULT_VER;
 			}
 
+			/// <summary>
+			/// Creates a GBMFileHeader with the specified data.
+			/// </summary>
+			/// <param name="mm1">The first letter of the magic marker.</param>
+			/// <param name="mm2">The second letter of the magic marker.</param>
+			/// <param name="mm3">The third letter of the magic marker.</param>
+			/// <param name="version">The file version. </param>
 			public GBMFileHeader(byte mm1, byte mm2, byte mm3, byte version) {
 				MagicMarker1 = mm1;
 				MagicMarker2 = mm2;
@@ -57,11 +70,22 @@ namespace GB.Shared.GBMFile
 				VersionCode = version;
 			}
 
+			/// <summary>
+			/// Creates a GBMFileHeader from the given stream.
+			/// </summary>
+			/// <param name="s">The stream to load from.</param>
 			public GBMFileHeader(Stream s) {
 				LoadFromStream(s);
 			}
 
+			/// <summary>
+			/// Saves the header to the given stream.
+			/// </summary>
 			public void SaveToStream(Stream s) {
+				if (!s.CanWrite) {
+					throw new NotSupportedException("Cannot write to stream");
+				}
+
 				s.WriteByte(MagicMarker1);
 				s.WriteByte(MagicMarker2);
 				s.WriteByte(MagicMarker3);
@@ -69,7 +93,14 @@ namespace GB.Shared.GBMFile
 				s.WriteByte(VersionCode);
 			}
 
+			/// <summary>
+			/// Loads the header from the given stream.
+			/// </summary>
 			public void LoadFromStream(Stream s) {
+				if (!s.CanRead) {
+					throw new NotSupportedException("Cannot read from stream");
+				}
+
 				byte[] bytes = new byte[4];
 				s.Read(bytes, 0, 4);
 
@@ -101,17 +132,28 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
+		/// <summary>
+		/// The header of the file.
+		/// </summary>
 		public readonly GBMFileHeader FileHeader;
 
 		/// <summary>
 		/// All actual objects, arranged by their ID.
 		/// </summary>
 		public Dictionary<UInt16, GBMObject> Objects;
-
+		
+		/// <summary>
+		/// Creates an empty GBMFile.
+		/// </summary>
 		public GBMFile() {
 			this.FileHeader = new GBMFileHeader();
+			this.Objects = new Dictionary<ushort, GBMObject>();
 		}
 
+		/// <summary>
+		/// Creates a GBMFile from the specified stream's contents.
+		/// </summary>
+		/// <param name="stream">The stream to read from.</param>
 		public GBMFile(Stream stream) {
 			if (!stream.CanSeek) {
 				throw new NotSupportedException("Stream does not support seeking; that is required for this functionality");
@@ -153,6 +195,16 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		const int MAXIMUM_MASTER_DEPTH = 20;
 
+		/// <summary>
+		/// Reads a single object, and its master objects if there are any.
+		/// <para>The master objects are read before the object itself, so that all needed objects are loaded.</para>
+		/// </summary>
+		/// <param name="stream">The stream to read from.</param>
+		/// <param name="toRead">The object that should be read at this moment.</param>
+		/// <param name="references">A collection of all existing objects.</param>
+		/// <param name="readOffsets">A list of all objects that have been read - used to avoid re-reading objects.</param>
+		/// <param name="currentDepth">The current depth in master objects.
+		/// DO NOT SPECIFY IF YOU ARE CALLING THIS METHOD NORMALLY.  It is only of use when recursing through the masters.</param>
 		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references,
 				List<long> readOffsets, int currentDepth = MAXIMUM_MASTER_DEPTH) {
 			toRead.Header.Validate(toRead.Position);
