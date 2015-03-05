@@ -135,11 +135,14 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
+		/// <summary>
+		/// Tiles, ordered by x, y.
+		/// </summary>
 		public GBMObjectMapTileDataRecord[,] Tiles { get; set; }
 
 		protected override void SaveToStream(Stream s) {
-			for (int x = 0; x < Master.Width; x++) {
-				for (int y = 0; y < Master.Height; y++) {
+			for (int y = 0; y < Master.Height; y++) {
+				for (int x = 0; x < Master.Width; x++) {
 					Tiles[x, y].SaveToStream(s);
 				}
 			}
@@ -148,8 +151,8 @@ namespace GB.Shared.GBMFile
 		protected override void LoadFromStream(Stream s) {
 			Tiles = new GBMObjectMapTileDataRecord[Master.Width, Master.Height];
 
-			for (int x = 0; x < Master.Width; x++) {
-				for (int y = 0; y < Master.Height; y++) {
+			for (int y = 0; y < Master.Height; y++) {
+				for (int x = 0; x < Master.Width; x++) {
 					Tiles[x, y] = new GBMObjectMapTileDataRecord(s);
 				}
 			}
