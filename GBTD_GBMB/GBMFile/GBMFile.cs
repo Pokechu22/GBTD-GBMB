@@ -142,12 +142,14 @@ namespace GB.Shared.GBMFile
 				//TODO: Can we be 100% sure that this will ACTUALLY happen, and the file won't grow indefinitely?
 			}
 
+			List<long> readOffsets = new List<long>();
 			foreach (GBMObjectReference reference in dict.Values) {
-				ReadObjectAndMaster(stream, reference, dict);
+				ReadObjectAndMaster(stream, reference, dict, readOffsets);
 			}
 		}
 
-		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references) {
+		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references, 
+				List<long> readOffsets) {
 			toRead.Header.Validate(toRead.Position);
 
 			//If there is a master object that may need to be loaded.
@@ -161,13 +163,17 @@ namespace GB.Shared.GBMFile
 
 				//If the specified object hasn't yet been loaded, load it (and any of its masters).
 				if (!this.Objects.ContainsKey(masterID)) {
-					ReadObjectAndMaster(stream, references[masterID], references);
+					ReadObjectAndMaster(stream, references[masterID], references, readOffsets);
 				}
 			}
 
 			//OK, now that the master has been loaded if needed, load the object itself.
 
-			//If the object has already been loaded, something weird is happening, because there should ONLY be one object with a specific ID.
+			//If the object at that offset has already been read, abort.
+			if (readOffsets.Contains(toRead.Position)) {
+				return;
+			}
+			//If an object with that ID has already been loaded, but it is not the same object, throw an exception.
 			if (Objects.ContainsKey(toRead.Header.ObjectID)) {
 				//TODO: Better type of excpetion
 				//TODO: Include string version of the objects?
@@ -178,6 +184,9 @@ namespace GB.Shared.GBMFile
 			GBMObject obj = GBMObject.ReadObject(toRead.Header, stream);
 
 			Objects.Add(obj.Header.ObjectID, obj);
+
+			//Mark the given offset as read.
+			readOffsets.Add(toRead.Position);
 		}
 	}
 }
