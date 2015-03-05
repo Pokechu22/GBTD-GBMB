@@ -91,14 +91,9 @@ namespace GB.Shared.GBMFile
 
 			GBMObject obj;
 			if (mapping.ContainsKey(header.ObjectType)) {
-				if (mapping[header.ObjectType].IsSubclassOf(typeof(MasteredGBMObject))) {
-					var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { typeof(GBMObject), typeof(GBMObjectHeader), typeof(Stream) });
-					obj = (GBMObject)ctor.Invoke(new Object[] { header, s });
-				} else {
-					//Use reflection to create an instance of the specified object.
-					var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
-					obj = (GBMObject)ctor.Invoke(new Object[] { header, s });
-				}
+				//Use reflection to create an instance of the specified object.
+				var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
+				obj = (GBMObject)ctor.Invoke(new Object[] { header, s });
 			} else {
 				obj = new GBMObjectUnknownData(header, s);
 			}
@@ -166,52 +161,10 @@ namespace GB.Shared.GBMFile
 			RegisterExportable(0xFFFF, typeof(GBMObjectDeleted));
 			RegisterExportable(0x01, typeof(GBMObjectProducerInfo));
 			RegisterExportable(0x02, typeof(GBMObjectMap));
+			RegisterExportable(0x03, typeof(GBMObjectMapTileData));
 		}
 	}
 	
-	/// <summary>
-	/// Marker interface for any object that is intended to have a master.
-	/// Don't use it directly for most cases, as it isn't recomended.
-	/// </summary>
-	public interface MasteredGBMObject
-	{
-		GBMObject Master { get; }
-	}
-
-	/// <summary>
-	/// Marker interface for any object that is intended to have a master of the specific type.
-	/// 
-	/// <para>Implementations MUST have the constructor still take the base GBMObject, as that is needed for serialization.</para>
-	/// </summary>
-	/// <typeparam name="TMaster">The type that the master is.</typeparam>
-	public abstract class MasteredGBMObject<TMaster> : GBMObject, MasteredGBMObject
-		where TMaster : GBMObject
-	{
-		protected MasteredGBMObject(GBMObject master, UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream)
-				: base(TypeID, UniqueID, MasterID, Size, stream) {
-			if (!(master is TMaster)) {
-				throw new Exception("Master is not of the expected type: Wanted " + typeof(TMaster) + ", but got " + master.GetType() + ".");
-			}
-			this.Master = (TMaster)master;
-		}
-
-		protected MasteredGBMObject(GBMObject master, GBMObjectHeader header, Stream stream) : base(header, stream) {
-			if (!(master is TMaster)) {
-				throw new Exception("Master is not of the expected type: Wanted " + typeof(TMaster) + ", but got " + master.GetType() + ".");
-			}
-			this.Master = (TMaster)master;
-		}
-
-		GBMObject MasteredGBMObject.Master {
-			get { return this.Master; }
-		}
-
-		public TMaster Master {
-			get;
-			private set;
-		}
-	}
-
 	public struct GBMObjectHeader
 	{
 		/// <summary>

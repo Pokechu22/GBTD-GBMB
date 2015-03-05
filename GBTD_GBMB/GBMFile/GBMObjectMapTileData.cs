@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GB.Shared.GBMFile
 {
-	public class GBMObjectMapTileData
+	public class GBMObjectMapTileData : GBMObjectMap
 	{
+		public GBMObjectMapTileData(UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream)
+				: base(TypeID, UniqueID, MasterID, Size, stream) { }
+
+		public GBMObjectMapTileData(GBMObjectHeader header, Stream stream) : base(header, stream) { }
+
 		public class GBMObjectMapTileDataRecord
 		{
 			private UInt16 tileNumber;
@@ -115,5 +121,33 @@ namespace GB.Shared.GBMFile
 			}
 		}
 		//TODO: Everything.
+
+		public GBMObjectMapTileDataRecord[,] Tiles { get; set; }
+
+		protected override void SaveToStream(Stream s) {
+			
+		}
+
+		protected override void LoadFromStream(Stream s) {
+			/*Tiles = new GBMObjectMapTileDataRecord[Master.Width, Master.Height];
+
+			for (int x = 0; x < Master.Width; x++) {
+				for (int y = 0; y < Master.Height; y++) {
+					Tiles[x, y] = new GBMObjectMapTileDataRecord(s);
+				}
+			}*/
+		}
+
+		public override string GetTypeName() {
+			return "Map tile data";
+		}
+
+		public override TreeNode ToTreeNode() {
+			TreeNode node = CreateRootTreeNode();
+
+			
+
+			return node;
+		}
 	}
 }
