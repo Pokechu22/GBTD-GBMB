@@ -169,7 +169,6 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// The marker text - should ALWAYS be "HPJMTL".
 		/// </summary>
-		[Obsolete("Currently not yet used.")]
 		public readonly String Marker;
 
 		/// <summary>
@@ -225,6 +224,28 @@ namespace GB.Shared.GBMFile
 			this.Size = Size;
 		}
 #pragma warning restore 618
-
+		
+		/// <summary>
+		/// Validates the marker text (and mabye the CRC later).
+		/// If all goes well, this method does nothing.  Otherwise, an exception is thrown.
+		/// </summary>
+		/// <param name="index">Optional value that provides the location in the file of this object, if available.  Otherwise, <c>null</c>.</param>
+		/// <exception cref="Exception">Thrown when the marker is invalid.</exception>
+		public void Validate(long? index = null) {
+			if (this.Marker != "HPJMTL") {
+				String wantedHex = String.Join(" ", Encoding.ASCII.GetBytes("HPJMTL").Select(b => b.ToString("X2")));
+				String markerHex = String.Join(" ", Encoding.ASCII.GetBytes(Marker).Select(b => b.ToString("X2")));
+				
+				//TODO better exception type.
+				if (index.HasValue) {
+					throw new Exception(String.Format(
+						"Marker text for object #{0:X4} of type {1:X4} is not valid - should be \"HPJMTL\" ({2}) but was actualy {3} ({4}).", 
+							ObjectID, ObjectType, wantedHex, Marker, markerHex));
+				} else {
+					throw new Exception(String.Format(
+						"Marker text for object #{0:X4} of type {1:X4} at offset {2:X16} is not valid - should be \"HPJMTL\" ({3}) but was actualy {4} ({5}).", ObjectID, ObjectType, index.Value, wantedHex, Marker, markerHex));
+				}
+			}
+		}
 	}
 }
