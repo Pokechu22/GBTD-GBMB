@@ -15,9 +15,9 @@ namespace GB.Shared.GBMFile
 	{
 		private byte[] data;
 
-		public GBMObjectDeleted(UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream)
-			: base(TypeID, UniqueID, MasterID, Size, stream) { }
-		public GBMObjectDeleted(GBMObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBMObjectDeleted(GBMObject Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
+			: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+		public GBMObjectDeleted(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		protected override void SaveToStream(Stream s) {
 			s.Write(data, 0, (int)Header.Size);

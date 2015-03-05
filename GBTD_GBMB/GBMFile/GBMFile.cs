@@ -243,7 +243,7 @@ namespace GB.Shared.GBMFile
 			}
 
 			stream.Seek(toRead.Position, SeekOrigin.Begin);
-			GBMObject obj = GBMObject.ReadObject(toRead.Header, stream);
+			GBMObject obj = GBMObject.ReadObject(null /* TODO */, toRead.Header, stream);
 
 			Objects.Add(obj.Header.ObjectID, obj);
 

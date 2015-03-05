@@ -29,12 +29,21 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public GBMObjectHeader Header { get; protected set; }
 
-		protected GBMObject(UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream) {
+		/// <summary>
+		/// The master object, or null if there is none.
+		/// </summary>
+		public GBMObject Master { get; protected set; }
+
+		protected GBMObject(GBMObject Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream) {
+			this.Master = Master;
+			
 			this.Header = new GBMObjectHeader(TypeID, UniqueID, MasterID, Size);
 			LoadObject(stream);
 		}
 
-		protected GBMObject(GBMObjectHeader header, Stream stream) {
+		protected GBMObject(GBMObject Master, GBMObjectHeader header, Stream stream) {
+			this.Master = Master;
+
 			this.Header = header;
 			LoadObject(stream);
 		}
@@ -85,17 +94,21 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// Reads an object and its Header and returns said object.
 		/// </summary>
-		/// <param name="s"></param>
+		/// <param name="master">The master object or null if there is no master.</param>
+		/// <param name="header">The header of the object.</param>
+		/// <param name="s">The stream to read from.</param>
 		/// <returns></returns>
-		public static GBMObject ReadObject(GBMObjectHeader header, Stream s) {
+		public static GBMObject ReadObject(GBMObject master, GBMObjectHeader header, Stream s) {
 
 			GBMObject obj;
 			if (mapping.ContainsKey(header.ObjectType)) {
+				Type masterType = (master != null ? master.GetType() : typeof(GBMObject));
+
 				//Use reflection to create an instance of the specified object.
-				var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { typeof(GBMObjectHeader), typeof(Stream) });
-				obj = (GBMObject)ctor.Invoke(new Object[] { header, s });
+				var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { masterType, typeof(GBMObjectHeader), typeof(Stream) });
+				obj = (GBMObject)ctor.Invoke(new Object[] { master, header, s });
 			} else {
-				obj = new GBMObjectUnknownData(header, s);
+				obj = new GBMObjectUnknownData(null, header, s);
 			}
 
 			return obj;
@@ -163,6 +176,25 @@ namespace GB.Shared.GBMFile
 			RegisterExportable(0x02, typeof(GBMObjectMap));
 			RegisterExportable(0x03, typeof(GBMObjectMapTileData));
 		}
+	}
+
+	/// <summary>
+	/// Any object that makes explicit use of the Master should use this class.
+	/// </summary>
+	/// <typeparam name="TMaster"></typeparam>
+	public abstract class MasteredGBMObject<TMaster> : GBMObject where TMaster : GBMObject
+	{
+		/// <summary>
+		/// The Master object.
+		/// </summary>
+		public new TMaster Master {
+			get { return (TMaster)base.Master; }
+			protected set { base.Master = value; }
+		}
+
+		protected MasteredGBMObject(TMaster Master, UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream)
+				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+		protected MasteredGBMObject(TMaster Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 	}
 	
 	public struct GBMObjectHeader

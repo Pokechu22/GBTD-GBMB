@@ -12,9 +12,9 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectProducerInfo : GBMObject
 	{
-		public GBMObjectProducerInfo(UInt16 TypeID, UInt16 UniqueID, UInt16 MasterID, UInt32 Size, Stream stream)
-			: base(TypeID, UniqueID, MasterID, Size, stream) { }
-		public GBMObjectProducerInfo(GBMObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBMObjectProducerInfo(GBMObject Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
+			: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+		public GBMObjectProducerInfo(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 		
 		/// <summary>
 		/// The name of the producing app.
