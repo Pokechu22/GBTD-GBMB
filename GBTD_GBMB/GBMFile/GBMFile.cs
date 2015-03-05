@@ -148,7 +148,7 @@ namespace GB.Shared.GBMFile
 		}
 
 		private void ReadObjectAndMaster(Stream stream, GBMObjectReference toRead, Dictionary<UInt16, GBMObjectReference> references) {
-			toRead.Header.Validate();
+			toRead.Header.Validate(toRead.Position);
 
 			//If there is a master object that may need to be loaded.
 			if (toRead.Header.MasterID.HasValue) {
