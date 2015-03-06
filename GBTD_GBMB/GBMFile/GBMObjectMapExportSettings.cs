@@ -79,7 +79,7 @@ namespace GB.Shared.GBMFile
 
 
 		protected override void LoadFromStream(Stream s) {
-			this.FileName = s.ReadString(256);
+			this.FileName = s.ReadString(255);
 			this.FileType = s.ReadByteEx();
 			this.SectionName = s.ReadString(40);
 			this.LabelName = s.ReadString(40);
@@ -96,7 +96,7 @@ namespace GB.Shared.GBMFile
 		}
 
 		protected override void SaveToStream(Stream s) {
-			s.WriteString(FileName, 256);
+			s.WriteString(FileName, 255);
 			s.WriteByteEx(FileType);
 			s.WriteString(SectionName, 40);
 			s.WriteString(LabelName, 40);
