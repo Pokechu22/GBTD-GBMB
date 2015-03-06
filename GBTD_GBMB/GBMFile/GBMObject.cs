@@ -88,8 +88,8 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
-		protected abstract void SaveToStream(Stream s);
 		protected abstract void LoadFromStream(Stream s);
+		protected abstract void SaveToStream(Stream s);
 
 		/// <summary>
 		/// Reads an object and its Header and returns said object.
@@ -181,6 +181,7 @@ namespace GB.Shared.GBMFile
 			RegisterExportable(0x02, typeof(GBMObjectMap));
 			RegisterExportable(0x03, typeof(GBMObjectMapTileData));
 			RegisterExportable(0x04, typeof(GBMObjectMapProperties));
+			RegisterExportable(0x05, typeof(GBMObjectMapPropertyData));
 		}
 	}
 

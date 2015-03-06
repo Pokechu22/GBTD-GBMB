@@ -46,6 +46,7 @@
     <Compile Include="GBMObject.cs" />
     <Compile Include="GBMObjectDeleted.cs" />
     <Compile Include="GBMObjectMapProperties.cs" />
+    <Compile Include="GBMObjectMapPropertyData.cs" />
     <Compile Include="GBMObjectMapTileData.cs" />
     <Compile Include="GBMObjectProducerInfo.cs" />
     <Compile Include="GBMObjectUnknownData.cs" />
