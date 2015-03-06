@@ -180,6 +180,7 @@ namespace GB.Shared.GBMFile
 			RegisterExportable(0x01, typeof(GBMObjectProducerInfo));
 			RegisterExportable(0x02, typeof(GBMObjectMap));
 			RegisterExportable(0x03, typeof(GBMObjectMapTileData));
+			RegisterExportable(0x04, typeof(GBMObjectMapProperties));
 		}
 	}
 
