@@ -20,15 +20,15 @@ namespace GB.Shared.GBMFile
 		public class GBMObjectMapPropertiesRecord
 		{
 			/// <summary>
-			/// The type of the property, currently only 0x00000000.
-			/// This value is currently ignored durring deserialization, because there's only one type.
+			/// The type of the property.
+			/// This value does not appear to be used.
 			/// </summary>
 			public UInt32 Type { get; set; }
 			/// <summary>
-			/// The size of the property, currently only 2.
-			/// This value is currently ignored durring deserialization, because there's only one type.
+			/// The maximum value for the property.
+			/// The docs name this "Size", but that seems like a misnomer.
 			/// </summary>
-			public UInt32 Size { get; set; }
+			public UInt32 MaxValue { get; set; }
 			/// <summary>
 			/// The name of the property.
 			/// </summary>
@@ -36,21 +36,13 @@ namespace GB.Shared.GBMFile
 
 			public GBMObjectMapPropertiesRecord(Stream s) {
 				this.Type = s.ReadInteger();
-				this.Size = s.ReadInteger();
+				this.MaxValue = s.ReadInteger();
 				this.Name = s.ReadString(32);
-
-				//Validation that this is of a recognised type and size.
-				if (Type != 0x00000000) {
-					throw new Exception("Unrecognized map property type: " + Type.ToString("X8"));
-				}
-				if (Size != 2) {
-					throw new Exception("Unrecognized property size: " + Type + " (of type " + Type.ToString("X8") + ")");
-				}
 			}
 
 			public void SaveToStream(Stream s) {
 				s.WriteInteger(Type);
-				s.WriteInteger(Size);
+				s.WriteInteger(MaxValue);
 				s.WriteString(Name, 32);
 			}
 
@@ -58,7 +50,7 @@ namespace GB.Shared.GBMFile
 				TreeNode node = new TreeNode(name);
 
 				node.Nodes.Add("Type", "Type: " + Type.ToString("X8"));
-				node.Nodes.Add("Size", "Size: " + Size);
+				node.Nodes.Add("MaxValue", "MaxValue: " + MaxValue);
 				node.Nodes.Add("Name", "Name: " + Name);
 
 				return node;
