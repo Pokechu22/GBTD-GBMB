@@ -175,7 +175,6 @@ namespace GB.Shared.GBMFile
 		}
 
 		static GBMObject() {
-			//TODO
 			RegisterExportable(0xFFFF, typeof(GBMObjectDeleted));
 			RegisterExportable(0x01, typeof(GBMObjectProducerInfo));
 			RegisterExportable(0x02, typeof(GBMObjectMap));
@@ -186,6 +185,7 @@ namespace GB.Shared.GBMFile
 			RegisterExportable(0x07, typeof(GBMObjectMapSettings));
 			RegisterExportable(0x08, typeof(GBMObjectMapPropertyColors));
 			RegisterExportable(0x09, typeof(GBMObjectMapExportSettings));
+			RegisterExportable(0x0A, typeof(GBMObjectMapExportProperties));
 		}
 	}
 
