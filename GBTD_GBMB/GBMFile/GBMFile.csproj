@@ -51,6 +51,11 @@
       <AutoGen>False</AutoGen>
       <DependentUpon>GBMObjectMapProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="GBMObjectMapPropertyColors.cs" />
+    <Compile Include="GBMObjectMapPropertyColorsRecord.cs">
+      <AutoGen>False</AutoGen>
+      <DependentUpon>GBMObjectMapPropertyColors.cs</DependentUpon>
+    </Compile>
     <Compile Include="GBMObjectMapPropertyData.cs" />
     <Compile Include="GBMObjectMapTileData.cs" />
     <Compile Include="GBMObjectMapTileDataRecord.cs">
