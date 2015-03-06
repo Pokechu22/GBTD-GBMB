@@ -24,9 +24,9 @@ namespace GB.Shared.GBMFile
 		protected override void LoadFromStream(Stream s) {
 			Data = new UInt16[Master.Width, Master.Height, Master.PropCount];
 
-			for (int y = 0; y < Master.Height; y++) {
-				for (int x = 0; x < Master.Width; x++) {
-					for (int prop = 0; prop < Master.PropCount; prop++) {
+			for (int prop = 0; prop < Master.PropCount; prop++) {
+				for (int y = 0; y < Master.Height; y++) {
+					for (int x = 0; x < Master.Width; x++) {
 						Data[x, y, prop] = s.ReadWord();
 					}
 				}
@@ -34,9 +34,9 @@ namespace GB.Shared.GBMFile
 		}
 
 		protected override void SaveToStream(Stream s) {
-			for (int y = 0; y < Master.Height; y++) {
-				for (int x = 0; x < Master.Width; x++) {
-					for (int prop = 0; prop < Master.PropCount; prop++) {
+			for (int prop = 0; prop < Master.PropCount; prop++) {
+				for (int y = 0; y < Master.Height; y++) {
+					for (int x = 0; x < Master.Width; x++) {
 						s.WriteWord(Data[x, y, prop]);
 					}
 				}
