@@ -59,7 +59,7 @@ namespace GB.Shared.GBMFile
 			s.WriteInteger(PropCount);
 			s.WriteString(TileFile, 256);
 			s.WriteInteger(TileCount);
-			s.WriteInteger(PropCount);
+			s.WriteInteger(PropColorCount);
 		}
 
 		protected override void LoadFromStream(Stream s) {
@@ -69,7 +69,7 @@ namespace GB.Shared.GBMFile
 			PropCount = s.ReadInteger();
 			TileFile = s.ReadString(256);
 			TileCount = s.ReadInteger();
-			PropCount = s.ReadInteger();
+			PropColorCount = s.ReadInteger();
 		}
 
 		public override string GetTypeName() {
