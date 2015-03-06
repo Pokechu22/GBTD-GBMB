@@ -57,6 +57,7 @@
       <DependentUpon>GBMObjectMapPropertyColors.cs</DependentUpon>
     </Compile>
     <Compile Include="GBMObjectMapPropertyData.cs" />
+    <Compile Include="GBMObjectMapSettings.cs" />
     <Compile Include="GBMObjectMapTileData.cs" />
     <Compile Include="GBMObjectMapTileDataRecord.cs">
       <AutoGen>False</AutoGen>
