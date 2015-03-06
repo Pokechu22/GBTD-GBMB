@@ -252,6 +252,44 @@ namespace GB.Shared.GBMFile
 		}
 		#endregion
 
+		#region Boolean-handling methods
+		/// <summary>
+		/// Reads a boolean from the stream, throwing an exception if at the end.
+		/// </summary>
+		/// <param name="stream">The stream to read from</param>
+		/// <exception cref="EndOfStreamException">When at the end of the stream</exception>
+		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
+		internal static bool ReadBoolean(this Stream stream) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
+
+			return stream.ReadByteEx() != 0;
+		}
+
+		/// <summary>
+		/// Reads a boolean from the stream, returning default if at the end.
+		/// </summary>
+		/// <param name="stream">The stream to read from</param>
+		/// <param name="def">The default value to return.</param>
+		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
+		internal static bool ReadBoolean(this Stream stream, bool def) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
+
+			return stream.ReadByteEx((byte)(def ? 1 : 0)) != 0;
+		}
+
+		/// <summary>
+		/// Writes a boolean to the stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="value">The bool to write.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
+		internal static void WriteBoolean(this Stream stream, bool value) {
+			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
+
+			stream.WriteByteEx((byte)(value ? 1 : 0));
+		}
+		#endregion
+
 		#region String-handling methods
 		/// <summary>
 		/// Reads a string to the specified stream, in the expected format, throwing an exception if the end of the stream is reached.
