@@ -46,6 +46,7 @@
     <Compile Include="GBMObject.cs" />
     <Compile Include="GBMObjectDefaultTilePropertyValues.cs" />
     <Compile Include="GBMObjectDeleted.cs" />
+    <Compile Include="GBMObjectMapExportSettings.cs" />
     <Compile Include="GBMObjectMapProperties.cs" />
     <Compile Include="GBMObjectMapPropertiesRecord.cs">
       <AutoGen>False</AutoGen>
