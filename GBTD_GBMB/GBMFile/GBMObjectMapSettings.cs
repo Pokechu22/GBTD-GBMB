@@ -80,6 +80,11 @@ namespace GB.Shared.GBMFile
 		/// The height of block fill.
 		/// </summary>
 		public UInt32 BlockFillHeight { get; set; }
+		/// <summary>
+		/// Whether or not autoupdate is enabled.
+		/// </summary>
+		/// <remarks>This is not in the origional specs but is still created.</remarks>
+		public bool AutoUpdate { get; set; }
 
 		protected override void LoadFromStream(Stream s) {
 			this.FormWidth = s.ReadInteger();
@@ -97,6 +102,7 @@ namespace GB.Shared.GBMFile
 			this.BlockFillPattern = s.ReadInteger();
 			this.BlockFillWidth = s.ReadInteger();
 			this.BlockFillHeight = s.ReadInteger();
+			this.AutoUpdate = s.ReadBoolean(false);
 		}
 
 		protected override void SaveToStream(Stream s) {
@@ -115,6 +121,7 @@ namespace GB.Shared.GBMFile
 			s.WriteInteger(BlockFillPattern);
 			s.WriteInteger(BlockFillWidth);
 			s.WriteInteger(BlockFillHeight);
+			s.WriteBoolean(AutoUpdate);
 		}
 
 		public override string GetTypeName() {
@@ -143,6 +150,8 @@ namespace GB.Shared.GBMFile
 			node.Nodes.Add("BlockFillPattern", "BlockFillPattern: " + BlockFillPattern);
 			node.Nodes.Add("BlockFillWidth", "BlockFillWidth: " + BlockFillWidth);
 			node.Nodes.Add("BlockFillHeight", "BlockFillHeight: " + BlockFillHeight);
+
+			node.Nodes.Add("AutoUpdate", "AutoUpdate: " + AutoUpdate);
 
 			return node;
 		}
