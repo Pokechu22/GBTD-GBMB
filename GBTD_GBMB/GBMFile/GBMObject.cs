@@ -182,6 +182,7 @@ namespace GB.Shared.GBMFile
 			RegisterExportable(0x03, typeof(GBMObjectMapTileData));
 			RegisterExportable(0x04, typeof(GBMObjectMapProperties));
 			RegisterExportable(0x05, typeof(GBMObjectMapPropertyData));
+			RegisterExportable(0x06, typeof(GBMObjectDefaultTilePropertyValues));
 		}
 	}
 

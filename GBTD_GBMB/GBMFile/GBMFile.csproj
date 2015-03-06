@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="GBMFile.cs" />
     <Compile Include="GBMObject.cs" />
+    <Compile Include="GBMObjectDefaultTilePropertyValues.cs" />
     <Compile Include="GBMObjectDeleted.cs" />
     <Compile Include="GBMObjectMapProperties.cs" />
     <Compile Include="GBMObjectMapPropertiesRecord.cs">
