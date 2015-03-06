@@ -14,20 +14,42 @@ namespace GB.Shared.GBMFile
 
 		public GBMObjectMapPropertyColors(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
+		/// <summary>
+		/// The available colors in regular GBMB.
+		/// </summary>
+		public const int RED = 0, GREEN = 1;
+
+		/// <summary>
+		/// The individual colors.
+		/// </summary>
+		public GBMObjectMapPropertyColorsRecord[] Data { get; set; }
+
 		protected override void LoadFromStream(Stream s) {
-			throw new NotImplementedException();
+			Data = new GBMObjectMapPropertyColorsRecord[Master.PropColorCount];
+
+			for (int i = 0; i < Data.Length; i++) {
+				Data[i] = new GBMObjectMapPropertyColorsRecord(s);
+			}
 		}
 
 		protected override void SaveToStream(Stream s) {
-			throw new NotImplementedException();
+			for (int i = 0; i < Data.Length; i++) {
+				Data[i].SaveToStream(s);
+			}
 		}
 
 		public override string GetTypeName() {
-			throw new NotImplementedException();
+			return "Map property colors";
 		}
 
 		public override TreeNode ToTreeNode() {
-			throw new NotImplementedException();
+			TreeNode root = CreateRootTreeNode();
+
+			for (int i = 0; i < Data.Length; i++) {
+				root.Nodes.Add(Data[i].ToTreeNode("Color " + i));
+			}
+
+			return root;
 		}
 	}
 }
