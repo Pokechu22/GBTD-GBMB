@@ -130,6 +130,27 @@ namespace GB.Shared.GBMFile
 			public bool IsSupportedVersion() {
 				return VersionCode == DEFAULT_VER;
 			}
+
+			/// <summary>
+			/// Validates that this is a valid, supported file -- i.e. the magic markers are correct and the version is supported.
+			/// <para>This method does nothing if it is a valid file, and throws an exception if invalid.</para>
+			/// </summary>
+			/// <exception cref="Exception">When the file is invalid.</exception>
+			public void Validate() {
+				if (MagicMarker1 != DEFAULT_MM1) {
+					throw new Exception("GBM file magic marker 1 is invalid - got " + MagicMarker1 + ", expected " + DEFAULT_MM1 + ".");
+				}
+				if (MagicMarker2 != DEFAULT_MM2) {
+					throw new Exception("GBM file magic marker 2 is invalid - got " + MagicMarker2 + ", expected " + DEFAULT_MM2 + ".");
+				}
+				if (MagicMarker3 != DEFAULT_MM3) {
+					throw new Exception("GBM file magic marker 3 is invalid - got " + MagicMarker3 + ", expected " + DEFAULT_MM3 + ".");
+				}
+				if (VersionCode != DEFAULT_VER) {
+					throw new Exception("GBM file version is invalid - got " + VersionCode + ", expected " + DEFAULT_VER + ".\n" +
+						"(Did you accidently load a GBR file?)");
+				}
+			}
 		}
 
 		/// <summary>
@@ -162,7 +183,7 @@ namespace GB.Shared.GBMFile
 			const UInt16 DELETED_OBJECT_TYPE = 0xFFFF;
 
 			this.FileHeader = new GBMFileHeader(stream);
-			//TODO validation here.
+			this.FileHeader.Validate();
 			
 			Objects = new Dictionary<UInt16, GBMObject>();
 
