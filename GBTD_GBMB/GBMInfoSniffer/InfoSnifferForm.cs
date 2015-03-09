@@ -30,9 +30,17 @@ namespace GBMInfoSniffer
 		public void LoadTreeFromStream(Stream stream) {
 			treeView1.Nodes.Clear();
 
-			GB.Shared.GBMFile.GBMFile file = new GB.Shared.GBMFile.GBMFile(stream);
-			foreach (GBMObject obj in file.Objects.Values) {
-				treeView1.Nodes.Add(obj.ToTreeNode());
+			try {
+				GB.Shared.GBMFile.GBMFile file = new GB.Shared.GBMFile.GBMFile(stream);
+				foreach (GBMObject obj in file.Objects.Values) {
+					treeView1.Nodes.Add(obj.ToTreeNode());
+				}
+			} catch (Exception e) {
+				MessageBox.Show("An exception occured while loading the GBM file: " + e.ToString() + "\n\nThe application will now crash.",
+					"An exception occured - The application will now crash.",
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error);
+				throw;
 			}
 		}
 	}
