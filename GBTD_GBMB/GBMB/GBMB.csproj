@@ -89,6 +89,10 @@
       <Project>{FEF19A2A-1751-4DCB-8750-532CD7DA7901}</Project>
       <Name>GBMFile</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GBRFile\GBRFile.csproj">
+      <Project>{6885E633-8BA9-41EC-816D-3E95279007FF}</Project>
+      <Name>GBRFile</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
