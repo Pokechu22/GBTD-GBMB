@@ -172,6 +172,15 @@ namespace GB.Shared.GBMFile
 		}
 
 		/// <summary>
+		/// Gets the first object of the specified type.
+		/// </summary>
+		/// <typeparam name="TObject"></typeparam>
+		/// <returns></returns>
+		public TObject GetObjectOfType<TObject>() where TObject : GBMObject {
+			return this.Objects.Values.OfType<TObject>().ToList()[0];
+		}
+
+		/// <summary>
 		/// Creates a GBMFile from the specified stream's contents.
 		/// </summary>
 		/// <param name="stream">The stream to read from.</param>
