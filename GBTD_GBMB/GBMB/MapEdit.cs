@@ -23,17 +23,23 @@ namespace GB.GBMB
 
 		private void button1_Click(object sender, EventArgs e) {
 			OpenFileDialog d = new OpenFileDialog();
-			
+			d.Filter = "GBM files|*.gbm|All files|*.*";
+
 			var result = d.ShowDialog();
 			if (result != DialogResult.OK) {
 				return;
 			}
 
 			Environment.CurrentDirectory = Path.GetDirectoryName(d.FileName);
-			gbmFile = new GBMFile(d.OpenFile());
+			using (var stream = d.OpenFile()) {
+				gbmFile = new GBMFile(stream);
+			}
 
 			GBMObjectMap map = gbmFile.GetObjectOfType<GBMObjectMap>();
-			gbrFile = new GBRFile(File.OpenRead(map.TileFile));
+
+			using (var stream = File.OpenRead(map.TileFile)) {
+				gbrFile = new GBRFile(stream);
+			}
 
 			this.mapControl1.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			this.mapControl1.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();

@@ -66,7 +66,7 @@
 			// 
 			// openFileDialog
 			// 
-			this.openFileDialog.DefaultExt = "gbr";
+			this.openFileDialog.DefaultExt = "gbm";
 			this.openFileDialog.FileName = "FileName";
 			this.openFileDialog.Filter = "GBM files|*.gbm|All files|*.*";
 			this.openFileDialog.SupportMultiDottedExtensions = true;
