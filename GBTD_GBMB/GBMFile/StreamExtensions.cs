@@ -319,7 +319,13 @@ namespace GB.Shared.GBMFile
 				throw new EndOfStreamException();
 			}
 
-			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
+			//Null termination.
+			String str = Encoding.ASCII.GetString(bytes);
+			if (str.Contains('\0')) {
+				return str.Remove(str.IndexOf('\0'));
+			} else {
+				return str;
+			}
 		}
 
 		/// <summary>
@@ -350,7 +356,13 @@ namespace GB.Shared.GBMFile
 				return def;
 			}
 
-			return Encoding.ASCII.GetString(bytes).TrimEnd('\0');
+			//Null termination.
+			String str = Encoding.ASCII.GetString(bytes);
+			if (str.Contains('\0')) {
+				return str.Remove(str.IndexOf('\0'));
+			} else {
+				return str;
+			}
 		}
 		/// <summary>
 		/// Writes a string to the specified stream, in the expected format.
