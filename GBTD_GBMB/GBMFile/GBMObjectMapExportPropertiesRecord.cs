@@ -15,20 +15,26 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// The property used.
 		/// 
-		/// TODO: I have no idea what values would be here.  Enum... mabye?
+		/// The value is based off of the position in the dropdown.
+		/// 
+		/// Internally, the file writes this as a UInt32.  But it only processes the first byte, and the rest is garbage data.  Irritating.
 		/// </summary>
-		public UInt32 Property { get; set; }
+		public byte Property { get; set; }
 		/// <summary>
 		/// The size of the property, in bits(?)
 		/// </summary>
 		public UInt32 Size { get; set; }
 
 		public GBMObjectMapExportPropertiesRecord(Stream s) {
-			this.Property = s.ReadInteger();
+			//Intentional - this is a byte stored as an integer.  Yes, I have no idea how that happened.  But it's garbage data beyond the byte.
+			//Formats are weird.
+			this.Property = (byte)(s.ReadInteger() & 0xff);
 			this.Size = s.ReadInteger();
 		}
 
 		public void SaveToStream(Stream s) {
+			//Intentional - this is a byte stored as an integer.  Yes, I have no idea how that happened.  But it's garbage data beyond the byte.
+			//Formats are weird.
 			s.WriteInteger(Property);
 			s.WriteInteger(Size);
 		}
