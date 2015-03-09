@@ -136,6 +136,10 @@
       <Project>{144B0760-8612-4695-BE59-3547CE449BCA}</Project>
       <Name>GBComp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GBMFile\GBMFile.csproj">
+      <Project>{FEF19A2A-1751-4DCB-8750-532CD7DA7901}</Project>
+      <Name>GBMFile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GBRFile\GBRFile.csproj">
       <Project>{6885E633-8BA9-41EC-816D-3E95279007FF}</Project>
       <Name>GBRFile</Name>
