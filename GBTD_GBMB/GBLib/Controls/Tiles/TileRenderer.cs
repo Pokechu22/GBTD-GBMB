@@ -161,6 +161,16 @@ namespace GB.Shared.Controls
 			get { return selected; }
 			set { selected = value; this.Invalidate(true); }
 		}
+
+		[DefaultValue(true)]
+		public new bool DoubleBuffered {
+			get {
+				return base.DoubleBuffered;
+			}
+			set {
+				base.DoubleBuffered = value;
+			}
+		}
 		#endregion
 
 		#region Events
