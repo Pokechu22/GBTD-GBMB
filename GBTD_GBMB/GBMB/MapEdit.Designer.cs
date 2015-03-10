@@ -42,6 +42,7 @@
 			// 
 			// mapControl1
 			// 
+			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(200, 208, 212);
 			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.mapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mapControl1.Location = new System.Drawing.Point(0, 0);
