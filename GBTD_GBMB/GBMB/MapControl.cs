@@ -44,6 +44,8 @@ namespace GB.GBMB
 		}
 
 		public MapControl() {
+			DoubleBuffered = true;
+
 			Zoom = 2f;
 			PaletteData = new PaletteData();
 		}
