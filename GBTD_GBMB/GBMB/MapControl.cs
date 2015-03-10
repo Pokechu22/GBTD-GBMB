@@ -46,7 +46,7 @@ namespace GB.GBMB
 		public MapControl() {
 			DoubleBuffered = true;
 
-			Zoom = 2f;
+			Zoom = 4f;
 			PaletteData = new PaletteData();
 		}
 
@@ -56,6 +56,7 @@ namespace GB.GBMB
 
 		protected override void OnPaint(PaintEventArgs e) {
 			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+			e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half; //Fixes lines in the middle issue.
 
 			if (map != null && tileset != null) {
 				for (int y = 0; y < map.Master.Height; y++) {
@@ -70,11 +71,11 @@ namespace GB.GBMB
 
 		private void DrawTile(Graphics g, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
 			Tile t = tileset.tiles[tile.TileNumber];
-			RectangleF rect = new Rectangle(
-				(int)(tileX * Zoom * t.Width),
-				(int)(tileY * Zoom * t.Height),
-				(int)(Zoom * t.Width),
-				(int)(Zoom * t.Height));
+			RectangleF rect = new RectangleF(
+				tileX * t.Width * Zoom,
+				tileY * t.Height * Zoom,
+				t.Width * Zoom,
+				t.Height * Zoom);
 
 			using (Bitmap bmp = MakeTileBitmap(t, Color.White, Color.LightGray, Color.DarkGray, Color.Black)) {
 				g.DrawImage(bmp, rect);
@@ -105,7 +106,7 @@ namespace GB.GBMB
 													PixelFormat.Format32bppArgb);
 
 			for (int y = 0; y < height; y++) {
-				IntPtr outputScan = (IntPtr)((long)outputData.Scan0 + y * outputData.Stride);
+				IntPtr outputScan = (IntPtr)((long)outputData.Scan0 + (y * outputData.Stride));
 				for (int x = 0; x < width; x++) {
 					switch (tile[x, y]) {
 					case GBColor.WHITE: Marshal.WriteInt32(outputScan, x * 4, whiteARGB); break;
