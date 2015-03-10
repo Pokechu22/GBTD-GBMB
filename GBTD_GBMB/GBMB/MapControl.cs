@@ -8,6 +8,8 @@ using GB.Shared.Palettes;
 using GB.Shared.GBMFile;
 using GB.Shared.Controls;
 using GB.Shared.GBRFile;
+using System.Drawing;
+using GB.Shared.Tiles;
 
 namespace GB.GBMB
 {
@@ -17,8 +19,8 @@ namespace GB.GBMB
 		/// The zoom used.  TODO: Enum?
 		/// </summary>
 		[Category("Map display"), Description("The zoom to use for the map.")]
-		[DefaultValue(2)]
-		public UInt16 Zoom { get; set; }
+		[DefaultValue(2f)]
+		public float Zoom { get; set; }
 
 		[Category("Map data"), Description("The color set to use for the map.")]
 		public ColorSet ColorSet { get; set; }
@@ -40,49 +42,47 @@ namespace GB.GBMB
 		}
 
 		public MapControl() {
-			Zoom = 4;
+			DoubleBuffered = true;
+
+			Zoom = 2f;
 			PaletteData = new PaletteData();
 		}
 
-		/// <summary>
-		/// Call when the entirety of the map has been changed.
-		/// </summary>
 		protected void OnMapChanged() {
-			this.Controls.Clear();
+			this.Invalidate(true);
+		}
 
-			if (map == null || tileset == null) {
-				return;
-			}
-
-			this.SuspendLayout();
-
-			int yPos = 0;
-			for (int y = 0; y < map.Master.Height; y++) {
-				int yDelta = 0;
-				int xPos = 0;
-
-				for (int x = 0; x < map.Master.Width; x++) {
-					TileRenderer renderer = new TileRenderer();
-					renderer.PaletteData = new PaletteData();
-
-					renderer.Tile = tileset.tiles[map.Tiles[x, y].TileNumber];
-					renderer.Name = "x" + x + "y" + y;
-					renderer.PixelScale = Zoom;
-
-					renderer.Border = false;
-
-					renderer.Location = new System.Drawing.Point(xPos, yPos);
-
-					this.Controls.Add(renderer);
-
-					xPos += renderer.Width;
-					yDelta = renderer.Height;
+		protected override void OnPaint(PaintEventArgs e) {
+			if (map != null && tileset != null) {
+				for (int y = 0; y < map.Master.Height; y++) {
+					for (int x = 0; x < map.Master.Width; x++) {
+						DrawTile(e.Graphics, map.Tiles[x, y], x, y);
+					}
 				}
-
-				yPos += yDelta;
 			}
 
-			this.ResumeLayout();
+			base.OnPaint(e);
+		}
+
+		private void DrawTile(Graphics g, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
+			Tile t = tileset.tiles[tile.TileNumber];
+
+			for (int y = 0; y < t.Height; y++) {
+				for (int x = 0; x < t.Width; x++) {
+					DrawPixel((tileX * t.Width) + x, (tileY * t.Height) + y, PaletteData.GetColor(this.ColorSet, 0, t[x, y]), g);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Draws a pixel.
+		/// </summary>
+		/// <param name="x">The x-position of the pixel in all pixels.</param>
+		/// <param name="y">The y-position of the pixel in all pixels.</param>
+		private void DrawPixel(int x, int y, Color color, Graphics g) {
+			using (Brush brush = new SolidBrush(color)) {
+				g.FillRectangle(brush, x * Zoom, y * Zoom, Zoom, Zoom);
+			}
 		}
 	}
 }
