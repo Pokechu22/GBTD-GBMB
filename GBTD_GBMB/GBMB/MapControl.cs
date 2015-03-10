@@ -105,7 +105,10 @@ namespace GB.GBMB
 			Rectangle TextRect = new Rectangle(INITIAL_BOX_X + 2, INITIAL_BOX_Y + 2, BOX_WIDTH - 4, BOX_HEIGHT - 4);
 
 			//The topleft empty label.
-			ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.Raised);
+			ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
+			ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
+			ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Left | Border3DSide.Top);
+			ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
 
 			e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
 
@@ -122,7 +125,10 @@ namespace GB.GBMB
 				InnerBorderRect.X = XPos + 1;
 				TextRect.X = XPos + 2;
 
-				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.Raised);
+				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
+				ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
 
 				e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
 				e.Graphics.DrawString(RowNumber.ToString(), this.Font, SystemBrushes.ControlText, TextRect, centered);
@@ -130,8 +136,8 @@ namespace GB.GBMB
 
 			//All of the labels on the side.
 			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(TILE_HEIGHT * Zoom));
-			InnerBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y + 1, BOX_WIDTH - 2, (int)(TILE_HEIGHT * Zoom) - 2);
-			TextRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y + 2, BOX_WIDTH - 4, (int)(TILE_HEIGHT * Zoom) - 4);
+			InnerBorderRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 2, (int)(TILE_HEIGHT * Zoom) - 2);
+			TextRect = new Rectangle(INITIAL_BOX_X + 2, AFTER_BOX_Y + 2, BOX_WIDTH - 4, (int)(TILE_HEIGHT * Zoom) - 4);
 
 			for (int YPos = AFTER_BOX_Y, ColNumber = 0;
 					YPos < this.Width;
@@ -141,8 +147,12 @@ namespace GB.GBMB
 				InnerBorderRect.Y = YPos + 1;
 				TextRect.Y = YPos + 2;
 
+				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
+				ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Left | Border3DSide.Top);
+				ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
+
 				e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
-				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.Raised);
 				e.Graphics.DrawString(ColNumber.ToString(), this.Font, SystemBrushes.ControlText, TextRect, centered);
 			}
 
