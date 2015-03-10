@@ -52,7 +52,6 @@
 			this.mapControl1.TabIndex = 0;
 			this.mapControl1.Text = "mapControl1";
 			this.mapControl1.TileSet = null;
-			this.mapControl1.Zoom = ((ushort)(2));
 			// 
 			// MapEdit
 			// 

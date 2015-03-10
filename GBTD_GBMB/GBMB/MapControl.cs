@@ -10,6 +10,8 @@ using GB.Shared.Controls;
 using GB.Shared.GBRFile;
 using System.Drawing;
 using GB.Shared.Tiles;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace GB.GBMB
 {
@@ -42,8 +44,6 @@ namespace GB.GBMB
 		}
 
 		public MapControl() {
-			DoubleBuffered = true;
-
 			Zoom = 2f;
 			PaletteData = new PaletteData();
 		}
@@ -53,6 +53,8 @@ namespace GB.GBMB
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
+			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
 			if (map != null && tileset != null) {
 				for (int y = 0; y < map.Master.Height; y++) {
 					for (int x = 0; x < map.Master.Width; x++) {
@@ -66,23 +68,54 @@ namespace GB.GBMB
 
 		private void DrawTile(Graphics g, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
 			Tile t = tileset.tiles[tile.TileNumber];
+			RectangleF rect = new Rectangle(
+				(int)(tileX * Zoom * t.Width),
+				(int)(tileY * Zoom * t.Height),
+				(int)(Zoom * t.Width),
+				(int)(Zoom * t.Height));
 
-			for (int y = 0; y < t.Height; y++) {
-				for (int x = 0; x < t.Width; x++) {
-					DrawPixel((tileX * t.Width) + x, (tileY * t.Height) + y, PaletteData.GetColor(this.ColorSet, 0, t[x, y]), g);
-				}
+			using (Bitmap bmp = MakeTileBitmap(t, Color.White, Color.LightGray, Color.DarkGray, Color.Black)) {
+				g.DrawImage(bmp, rect);
 			}
 		}
 
 		/// <summary>
-		/// Draws a pixel.
+		/// Fast creation of a bitmap for tiles, using marshaling and stuff.
 		/// </summary>
-		/// <param name="x">The x-position of the pixel in all pixels.</param>
-		/// <param name="y">The y-position of the pixel in all pixels.</param>
-		private void DrawPixel(int x, int y, Color color, Graphics g) {
-			using (Brush brush = new SolidBrush(color)) {
-				g.FillRectangle(brush, x * Zoom, y * Zoom, Zoom, Zoom);
+		/// <param name="tile"></param>
+		/// <param name="white"></param>
+		/// <param name="lightGray"></param>
+		/// <param name="darkGray"></param>
+		/// <param name="black"></param>
+		/// <returns></returns>
+		private Bitmap MakeTileBitmap(Tile tile, Color white, Color lightGray, Color darkGray, Color black) {
+			Bitmap output = new Bitmap(tile.Width, tile.Height);
+			int width = tile.Width;
+			int height = tile.Height;
+
+			int whiteARGB = white.ToArgb();
+			int lightGrayARGB = lightGray.ToArgb();
+			int darkGrayARGB = darkGray.ToArgb();
+			int blackARGB = black.ToArgb();
+
+			BitmapData outputData = output.LockBits(new Rectangle(0, 0, width, height),
+													ImageLockMode.WriteOnly,
+													PixelFormat.Format32bppArgb);
+
+			for (int y = 0; y < height; y++) {
+				IntPtr outputScan = (IntPtr)((long)outputData.Scan0 + y * outputData.Stride);
+				for (int x = 0; x < width; x++) {
+					switch (tile[x, y]) {
+					case GBColor.WHITE: Marshal.WriteInt32(outputScan, x * 4, whiteARGB); break;
+					case GBColor.DARK_GRAY: Marshal.WriteInt32(outputScan, x * 4, lightGrayARGB); break;
+					case GBColor.LIGHT_GRAY: Marshal.WriteInt32(outputScan, x * 4, darkGrayARGB); break;
+					case GBColor.BLACK: Marshal.WriteInt32(outputScan, x * 4, blackARGB); break;
+					}
+				}
 			}
+			output.UnlockBits(outputData);
+
+			return output;
 		}
 	}
 }
