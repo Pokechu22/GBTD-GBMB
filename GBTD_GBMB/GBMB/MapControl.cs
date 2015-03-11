@@ -290,13 +290,15 @@ namespace GB.GBMB
 			BitmapData outputData = output.LockBits(new Rectangle(0, 0, width, height),
 													ImageLockMode.WriteOnly,
 													PixelFormat.Format32bppArgb);
-			
+
+			bool canFlip = ColorSet.SupportsTileFlipping();
+
 			for (int y = 0; y < height; y++) {
 				IntPtr outputScan = (IntPtr)((long)outputData.Scan0 + (y * outputData.Stride));
 				for (int x = 0; x < width; x++) {
 					int usedARGB = 0;
 
-					switch (tile[record.FlippedHorizontally ? 7 - x : x, record.FlippedVertically ? 7 - y : y]) {
+					switch (tile[(record.FlippedHorizontally && canFlip) ? 7 - x : x, (record.FlippedVertically && canFlip) ? 7 - y : y]) {
 					case GBColor.WHITE: usedARGB = whiteARGB; break;
 					case GBColor.LIGHT_GRAY: usedARGB = lightGrayARGB; break;
 					case GBColor.DARK_GRAY: usedARGB = darkGrayARGB; break;
