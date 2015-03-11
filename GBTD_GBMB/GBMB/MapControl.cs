@@ -231,11 +231,14 @@ namespace GB.GBMB
 		}
 
 		private void DrawGrid(PaintEventArgs e) {
-			for (int XPos = AFTER_BOX_X; XPos < this.Width; XPos += (int)(TILE_WIDTH * zoom)) {
-				e.Graphics.DrawLine(Pens.Black, XPos, AFTER_BOX_Y, XPos, this.Height);
+			int endOfTilesX = (int)(TILE_WIDTH * zoom * map.Master.Width) + AFTER_BOX_X;
+			int endOfTilesY = (int)(TILE_HEIGHT * zoom * map.Master.Height) + AFTER_BOX_Y;
+
+			for (int XPos = AFTER_BOX_X; XPos <= endOfTilesX; XPos += (int)(TILE_WIDTH * zoom)) {
+				e.Graphics.DrawLine(Pens.Black, XPos, AFTER_BOX_Y, XPos, endOfTilesY);
 			}
-			for (int YPos = AFTER_BOX_Y; YPos < this.Height; YPos += (int)(TILE_HEIGHT * zoom)) {
-				e.Graphics.DrawLine(Pens.Black, AFTER_BOX_X, YPos, this.Width, YPos);
+			for (int YPos = AFTER_BOX_Y; YPos <= endOfTilesY; YPos += (int)(TILE_HEIGHT * zoom)) {
+				e.Graphics.DrawLine(Pens.Black, AFTER_BOX_X, YPos, endOfTilesX, YPos);
 			}
 		}
 
