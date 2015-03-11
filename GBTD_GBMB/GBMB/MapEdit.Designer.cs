@@ -42,18 +42,19 @@
 			// 
 			// mapControl1
 			// 
-			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(200, 208, 212);
+			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
 			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.mapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mapControl1.Location = new System.Drawing.Point(0, 0);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
 			this.mapControl1.PaletteData = paletteData1;
+			this.mapControl1.ShowDoubleMarkers = false;
+			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(292, 273);
 			this.mapControl1.TabIndex = 0;
 			this.mapControl1.Text = "mapControl1";
 			this.mapControl1.TileSet = null;
-			this.mapControl1.Zoom = 4F;
 			// 
 			// MapEdit
 			// 

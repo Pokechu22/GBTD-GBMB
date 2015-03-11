@@ -17,12 +17,30 @@ namespace GB.GBMB
 {
 	public class MapControl : Control
 	{
+		private float zoom;
+		private bool showGrid;
+		private bool showDoubleMarkers;
+
 		/// <summary>
-		/// The zoom used.  TODO: Enum?
+		/// The scale factor used for zooming.
 		/// </summary>
-		[Category("Map display"), Description("The zoom to use for the map.")]
+		[Category("Map display"), Description("The scale factor used for the map.")]
 		[DefaultValue(2f)]
-		public float Zoom { get; set; }
+		public float Zoom {
+			get { return zoom; }
+			set { zoom = value; this.Invalidate(); }
+		}
+
+		[Category("Map display"), Description("Whether or not a per-tile grid is shown.")]
+		public bool ShowGrid {
+			get { return showGrid; }
+			set { showGrid = value; this.Invalidate(true); }
+		}
+		[Category("Map display"), Description("Whether or not dots are displayed every 2 tiles.")]
+		public bool ShowDoubleMarkers {
+			get { return showDoubleMarkers; }
+			set { showDoubleMarkers = value; this.Invalidate(true); }
+		}
 
 		[Category("Map data"), Description("The color set to use for the map.")]
 		public ColorSet ColorSet { get; set; }
@@ -91,8 +109,21 @@ namespace GB.GBMB
 						DrawTile(e.Graphics, map.Tiles[x, y], x, y);
 					}
 				}
+
+				if (showGrid) {
+					DrawGrid(e);
+				}
+				if (showDoubleMarkers) {
+					DrawDoubleMarkers(e); //TODO
+				}
 			}
 
+			DrawNumberLabels(e);
+
+			base.OnPaint(e);
+		}
+
+		private void DrawNumberLabels(PaintEventArgs e) {
 			StringFormat centered = new StringFormat();
 			centered.Alignment = StringAlignment.Center;
 			centered.LineAlignment = StringAlignment.Center;
@@ -155,8 +186,19 @@ namespace GB.GBMB
 				e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
 				e.Graphics.DrawString(ColNumber.ToString(), this.Font, SystemBrushes.ControlText, TextRect, centered);
 			}
+		}
 
-			base.OnPaint(e);
+		private void DrawGrid(PaintEventArgs e) {
+			for (int XPos = AFTER_BOX_X; XPos < this.Width; XPos += (int)(TILE_WIDTH * zoom)) {
+				e.Graphics.DrawLine(Pens.Black, XPos, AFTER_BOX_Y, XPos, this.Height);
+			}
+			for (int YPos = AFTER_BOX_Y; YPos < this.Height; YPos += (int)(TILE_HEIGHT * zoom)) {
+				e.Graphics.DrawLine(Pens.Black, AFTER_BOX_X, YPos, this.Width, YPos);
+			}
+		}
+
+		private void DrawDoubleMarkers(PaintEventArgs e) {
+			//TODO
 		}
 
 		private void DrawTile(Graphics g, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
