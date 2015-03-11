@@ -26,16 +26,35 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			System.Windows.Forms.MenuItem seperatorMenuItem1;
+			System.Windows.Forms.MenuItem seperatorMenuItem2;
+			System.Windows.Forms.MenuItem seperatorMenuItem3;
+			System.Windows.Forms.MenuItem seperatorMenuItem4;
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem2 = new System.Windows.Forms.MenuItem();
 			this.menuItem3 = new System.Windows.Forms.MenuItem();
 			this.menuItem4 = new System.Windows.Forms.MenuItem();
 			this.menuItem5 = new System.Windows.Forms.MenuItem();
 			this.mapControl1 = new GB.GBMB.MapControl();
+			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.menuItem6 = new System.Windows.Forms.MenuItem();
+			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem9 = new System.Windows.Forms.MenuItem();
+			this.menuItem10 = new System.Windows.Forms.MenuItem();
+			this.menuItem12 = new System.Windows.Forms.MenuItem();
+			this.menuItem13 = new System.Windows.Forms.MenuItem();
+			this.menuItem14 = new System.Windows.Forms.MenuItem();
+			this.menuItem16 = new System.Windows.Forms.MenuItem();
+			this.menuItem17 = new System.Windows.Forms.MenuItem();
+			this.menuItem19 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -69,16 +88,31 @@
 			// mainMenu
 			// 
 			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
+            this.fileMenuItem,
             this.menuItem2,
             this.menuItem3,
             this.menuItem4,
             this.menuItem5});
 			// 
-			// menuItem1
+			// fileMenuItem
 			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "File";
+			this.fileMenuItem.Index = 0;
+			this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem1,
+            this.menuItem6,
+            this.menuItem7,
+            seperatorMenuItem1,
+            this.menuItem9,
+            seperatorMenuItem2,
+            this.menuItem12,
+            this.menuItem13,
+            this.menuItem14,
+            seperatorMenuItem3,
+            this.menuItem16,
+            this.menuItem17,
+            seperatorMenuItem4,
+            this.menuItem19});
+			this.fileMenuItem.Text = "File";
 			// 
 			// menuItem2
 			// 
@@ -108,7 +142,7 @@
 			this.mapControl1.Location = new System.Drawing.Point(1, 1);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData2;
+			this.mapControl1.PaletteData = paletteData1;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(290, 271);
@@ -116,6 +150,84 @@
 			this.mapControl1.Text = "mapControl1";
 			this.mapControl1.TileSet = null;
 			this.mapControl1.Zoom = 4F;
+			// 
+			// menuItem1
+			// 
+			this.menuItem1.Index = 0;
+			this.menuItem1.Text = "Open...";
+			// 
+			// menuItem6
+			// 
+			this.menuItem6.Index = 1;
+			this.menuItem6.Text = "Save";
+			// 
+			// menuItem7
+			// 
+			this.menuItem7.Index = 2;
+			this.menuItem7.Text = "Save as...";
+			// 
+			// seperatorMenuItem1
+			// 
+			seperatorMenuItem1.Index = 3;
+			seperatorMenuItem1.Text = "-";
+			// 
+			// menuItem9
+			// 
+			this.menuItem9.Enabled = false;
+			this.menuItem9.Index = 4;
+			this.menuItem9.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem10});
+			this.menuItem9.Text = "Reopen";
+			// 
+			// menuItem10
+			// 
+			this.menuItem10.Index = 0;
+			this.menuItem10.Text = "NYI";
+			// 
+			// seperatorMenuItem2
+			// 
+			seperatorMenuItem2.Index = 5;
+			seperatorMenuItem2.Text = "-";
+			// 
+			// menuItem12
+			// 
+			this.menuItem12.Index = 6;
+			this.menuItem12.Text = "Map properties...";
+			// 
+			// menuItem13
+			// 
+			this.menuItem13.Index = 7;
+			this.menuItem13.Text = "Location properties...";
+			// 
+			// menuItem14
+			// 
+			this.menuItem14.Index = 8;
+			this.menuItem14.Text = "Default location properties...";
+			// 
+			// seperatorMenuItem3
+			// 
+			seperatorMenuItem3.Index = 9;
+			seperatorMenuItem3.Text = "-";
+			// 
+			// menuItem16
+			// 
+			this.menuItem16.Index = 10;
+			this.menuItem16.Text = "Export";
+			// 
+			// menuItem17
+			// 
+			this.menuItem17.Index = 11;
+			this.menuItem17.Text = "Export to...";
+			// 
+			// seperatorMenuItem4
+			// 
+			seperatorMenuItem4.Index = 12;
+			seperatorMenuItem4.Text = "-";
+			// 
+			// menuItem19
+			// 
+			this.menuItem19.Index = 13;
+			this.menuItem19.Text = "Exit";
 			// 
 			// MapEdit
 			// 
@@ -137,11 +249,22 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.MainMenu mainMenu;
 		private Shared.Controls.Border mapEditBorder;
-		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem fileMenuItem;
 		private System.Windows.Forms.MenuItem menuItem2;
 		private System.Windows.Forms.MenuItem menuItem3;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem menuItem6;
+		private System.Windows.Forms.MenuItem menuItem7;
+		private System.Windows.Forms.MenuItem menuItem9;
+		private System.Windows.Forms.MenuItem menuItem10;
+		private System.Windows.Forms.MenuItem menuItem12;
+		private System.Windows.Forms.MenuItem menuItem13;
+		private System.Windows.Forms.MenuItem menuItem14;
+		private System.Windows.Forms.MenuItem menuItem16;
+		private System.Windows.Forms.MenuItem menuItem17;
+		private System.Windows.Forms.MenuItem menuItem19;
 	}
 }
 
