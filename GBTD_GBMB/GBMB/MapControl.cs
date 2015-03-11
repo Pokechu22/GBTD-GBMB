@@ -86,6 +86,8 @@ namespace GB.GBMB
 		public MapControl() {
 			DoubleBuffered = true;
 
+			SetStyle(ControlStyles.ResizeRedraw, true);
+
 			Zoom = 4f;
 			PaletteData = new PaletteData();
 		}
@@ -156,6 +158,22 @@ namespace GB.GBMB
 				InnerBorderRect.X = XPos + 1;
 				TextRect.X = XPos + 2;
 
+				if (map == null || tileset == null || RowNumber >= map.Master.Width) {
+					//Reached end of numbering; create one large box for the remainder.
+					OuterBorderRect.Width = this.Width - OuterBorderRect.X;
+					InnerBorderRect.Width = this.Width - OuterBorderRect.X - 2;
+					TextRect.Width = this.Width - OuterBorderRect.X - 4;
+
+					ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
+					ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
+					ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Left | Border3DSide.Top);
+					ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
+
+					e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
+
+					break;
+				}
+
 				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
 				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
 				ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Left | Border3DSide.Top);
@@ -177,6 +195,22 @@ namespace GB.GBMB
 				OuterBorderRect.Y = YPos;
 				InnerBorderRect.Y = YPos + 1;
 				TextRect.Y = YPos + 2;
+
+				if (map == null || tileset == null || ColNumber >= map.Master.Height) {
+					//Reached end of numbering; create one large box for the remainder.
+					OuterBorderRect.Height = this.Height - OuterBorderRect.Y;
+					InnerBorderRect.Height = this.Height - OuterBorderRect.Y - 2;
+					TextRect.Height = this.Height - OuterBorderRect.Y - 4;
+
+					ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
+					ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
+					ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Left | Border3DSide.Top);
+					ControlPaint.DrawBorder3D(e.Graphics, InnerBorderRect, Border3DStyle.RaisedInner, Border3DSide.Right | Border3DSide.Bottom);
+
+					e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
+
+					break;
+				}
 
 				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedInner, Border3DSide.Left | Border3DSide.Top);
 				ControlPaint.DrawBorder3D(e.Graphics, OuterBorderRect, Border3DStyle.RaisedOuter, Border3DSide.Right | Border3DSide.Bottom);
