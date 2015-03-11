@@ -33,16 +33,20 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
 			System.Windows.Forms.MenuItem seperatorMenuItem8;
+			System.Windows.Forms.MenuItem seperatorMenuItem9;
+			System.Windows.Forms.MenuItem seperatorMenuItem10;
+			System.Windows.Forms.MenuItem seperatorMenuItem11;
+			System.Windows.Forms.MenuItem seperatorMenuItem12;
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.designMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
+			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem5 = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveMenuItem = new System.Windows.Forms.MenuItem();
@@ -69,6 +73,35 @@
 			this.deleteColumnMenuItem = new System.Windows.Forms.MenuItem();
 			this.clearMapMenuItem = new System.Windows.Forms.MenuItem();
 			this.blockFillMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoomMenuItem = new System.Windows.Forms.MenuItem();
+			this.infoPanelMenuItem = new System.Windows.Forms.MenuItem();
+			this.gridMenuItem = new System.Windows.Forms.MenuItem();
+			this.doubleMarkersMenuItem = new System.Windows.Forms.MenuItem();
+			this.propertyColorsMenuItem = new System.Windows.Forms.MenuItem();
+			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark3MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark3MenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.menuItem26 = new System.Windows.Forms.MenuItem();
+			this.menuItem27 = new System.Windows.Forms.MenuItem();
+			this.menuItem28 = new System.Windows.Forms.MenuItem();
+			this.menuItem29 = new System.Windows.Forms.MenuItem();
+			this.menuItem30 = new System.Windows.Forms.MenuItem();
+			this.clearBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmark3MenuItem = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -78,6 +111,10 @@
 			seperatorMenuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem7 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem8 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem9 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem10 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -114,7 +151,7 @@
             this.fileMenuItem,
             this.editMenuItem,
             this.designMenuItem,
-            this.menuItem4,
+            this.viewMenuItem,
             this.menuItem5});
 			// 
 			// fileMenuItem
@@ -167,10 +204,25 @@
             this.blockFillMenuItem});
 			this.designMenuItem.Text = "&Design";
 			// 
-			// menuItem4
+			// viewMenuItem
 			// 
-			this.menuItem4.Index = 3;
-			this.menuItem4.Text = "View";
+			this.viewMenuItem.Index = 3;
+			this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.zoomMenuItem,
+            seperatorMenuItem9,
+            this.infoPanelMenuItem,
+            this.gridMenuItem,
+            this.doubleMarkersMenuItem,
+            this.propertyColorsMenuItem,
+            seperatorMenuItem10,
+            this.autoUpdateMenuItem,
+            seperatorMenuItem11,
+            this.colorSetMenuItem,
+            seperatorMenuItem12,
+            this.setBookmarkMenuItem,
+            this.gotoBookmarkMenuItem,
+            this.clearBookmarkMenuItem});
+			this.viewMenuItem.Text = "Vie&w";
 			// 
 			// menuItem5
 			// 
@@ -306,7 +358,7 @@
 			this.mapControl1.Location = new System.Drawing.Point(1, 1);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData2;
+			this.mapControl1.PaletteData = paletteData1;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(290, 271);
@@ -377,6 +429,209 @@
 			this.blockFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlB;
 			this.blockFillMenuItem.Text = "&Block fill";
 			// 
+			// zoomMenuItem
+			// 
+			this.zoomMenuItem.Index = 0;
+			this.zoomMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.zoom25PercentMenuItem,
+            this.zoom50PercentMenuItem,
+            this.zoom100PercentMenuItem,
+            this.zoom150PercentMenuItem,
+            this.zoom200PercentMenuItem});
+			this.zoomMenuItem.Text = "&Zoom";
+			// 
+			// seperatorMenuItem9
+			// 
+			seperatorMenuItem9.Index = 1;
+			seperatorMenuItem9.Text = "-";
+			// 
+			// infoPanelMenuItem
+			// 
+			this.infoPanelMenuItem.Index = 2;
+			this.infoPanelMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
+			this.infoPanelMenuItem.Text = "&Info panel";
+			// 
+			// gridMenuItem
+			// 
+			this.gridMenuItem.Index = 3;
+			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
+			this.gridMenuItem.Text = "&Grid";
+			// 
+			// doubleMarkersMenuItem
+			// 
+			this.doubleMarkersMenuItem.Index = 4;
+			this.doubleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
+			this.doubleMarkersMenuItem.Text = "&Double markers";
+			// 
+			// propertyColorsMenuItem
+			// 
+			this.propertyColorsMenuItem.Index = 5;
+			this.propertyColorsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
+			this.propertyColorsMenuItem.Text = "Propert&y colors";
+			// 
+			// seperatorMenuItem10
+			// 
+			seperatorMenuItem10.Index = 6;
+			seperatorMenuItem10.Text = "-";
+			// 
+			// autoUpdateMenuItem
+			// 
+			this.autoUpdateMenuItem.Index = 7;
+			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
+			this.autoUpdateMenuItem.Text = "Auto &update";
+			// 
+			// seperatorMenuItem11
+			// 
+			seperatorMenuItem11.Index = 8;
+			seperatorMenuItem11.Text = "-";
+			// 
+			// colorSetMenuItem
+			// 
+			this.colorSetMenuItem.Index = 9;
+			this.colorSetMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem26,
+            this.menuItem27,
+            this.menuItem28,
+            this.menuItem29,
+            this.menuItem30});
+			this.colorSetMenuItem.Text = "C&olor set";
+			// 
+			// seperatorMenuItem12
+			// 
+			seperatorMenuItem12.Index = 10;
+			seperatorMenuItem12.Text = "-";
+			// 
+			// setBookmarkMenuItem
+			// 
+			this.setBookmarkMenuItem.Index = 11;
+			this.setBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.setBookmark1MenuItem,
+            this.setBookmark2MenuItem,
+            this.setBookmark3MenuItem});
+			this.setBookmarkMenuItem.Text = "&Set bookmark";
+			// 
+			// gotoBookmarkMenuItem
+			// 
+			this.gotoBookmarkMenuItem.Index = 12;
+			this.gotoBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.gotoBookmark1MenuItem,
+            this.gotoBookmark2MenuItem,
+            this.gotoBookmark3MenuItem});
+			this.gotoBookmarkMenuItem.Text = "Goto &bookmark";
+			// 
+			// setBookmark1MenuItem
+			// 
+			this.setBookmark1MenuItem.Index = 0;
+			this.setBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl1;
+			this.setBookmark1MenuItem.Text = "&1";
+			// 
+			// setBookmark2MenuItem
+			// 
+			this.setBookmark2MenuItem.Index = 1;
+			this.setBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl2;
+			this.setBookmark2MenuItem.Text = "&2";
+			// 
+			// setBookmark3MenuItem
+			// 
+			this.setBookmark3MenuItem.Index = 2;
+			this.setBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl3;
+			this.setBookmark3MenuItem.Text = "&3";
+			// 
+			// gotoBookmark1MenuItem
+			// 
+			this.gotoBookmark1MenuItem.Index = 0;
+			this.gotoBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt1;
+			this.gotoBookmark1MenuItem.Text = "&1";
+			// 
+			// gotoBookmark2MenuItem
+			// 
+			this.gotoBookmark2MenuItem.Index = 1;
+			this.gotoBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt2;
+			this.gotoBookmark2MenuItem.Text = "&2";
+			// 
+			// gotoBookmark3MenuItem
+			// 
+			this.gotoBookmark3MenuItem.Index = 2;
+			this.gotoBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt3;
+			this.gotoBookmark3MenuItem.Text = "&3";
+			// 
+			// zoom25PercentMenuItem
+			// 
+			this.zoom25PercentMenuItem.Index = 0;
+			this.zoom25PercentMenuItem.Text = "25&%";
+			// 
+			// zoom50PercentMenuItem
+			// 
+			this.zoom50PercentMenuItem.Index = 1;
+			this.zoom50PercentMenuItem.Text = "&50%";
+			// 
+			// zoom100PercentMenuItem
+			// 
+			this.zoom100PercentMenuItem.Index = 2;
+			this.zoom100PercentMenuItem.Text = "&100%";
+			// 
+			// zoom150PercentMenuItem
+			// 
+			this.zoom150PercentMenuItem.Index = 3;
+			this.zoom150PercentMenuItem.Text = "15&0%";
+			// 
+			// zoom200PercentMenuItem
+			// 
+			this.zoom200PercentMenuItem.Index = 4;
+			this.zoom200PercentMenuItem.Text = "&200%";
+			// 
+			// menuItem26
+			// 
+			this.menuItem26.Index = 0;
+			this.menuItem26.Text = "Gameboy &Pocket";
+			// 
+			// menuItem27
+			// 
+			this.menuItem27.Index = 1;
+			this.menuItem27.Text = "&Gameboy";
+			// 
+			// menuItem28
+			// 
+			this.menuItem28.Index = 2;
+			this.menuItem28.Text = "&Super Gameboy";
+			// 
+			// menuItem29
+			// 
+			this.menuItem29.Index = 3;
+			this.menuItem29.Text = "Gameboy &Color";
+			// 
+			// menuItem30
+			// 
+			this.menuItem30.Index = 4;
+			this.menuItem30.Text = "Gameboy Color (&Filtered)";
+			// 
+			// clearBookmarkMenuItem
+			// 
+			this.clearBookmarkMenuItem.Index = 13;
+			this.clearBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.clearBookmark1MenuItem,
+            this.clearBookmark2MenuItem,
+            this.clearBookmark3MenuItem});
+			this.clearBookmarkMenuItem.Text = "&Clear bookmark";
+			// 
+			// clearBookmark1MenuItem
+			// 
+			this.clearBookmark1MenuItem.Index = 0;
+			this.clearBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift1;
+			this.clearBookmark1MenuItem.Text = "&1";
+			// 
+			// clearBookmark2MenuItem
+			// 
+			this.clearBookmark2MenuItem.Index = 1;
+			this.clearBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift2;
+			this.clearBookmark2MenuItem.Text = "&2";
+			// 
+			// clearBookmark3MenuItem
+			// 
+			this.clearBookmark3MenuItem.Index = 2;
+			this.clearBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift3;
+			this.clearBookmark3MenuItem.Text = "&3";
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,7 +655,7 @@
 		private System.Windows.Forms.MenuItem fileMenuItem;
 		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem designMenuItem;
-		private System.Windows.Forms.MenuItem menuItem4;
+		private System.Windows.Forms.MenuItem viewMenuItem;
 		private System.Windows.Forms.MenuItem menuItem5;
 		private System.Windows.Forms.MenuItem openMenuItem;
 		private System.Windows.Forms.MenuItem saveMenuItem;
@@ -426,6 +681,35 @@
 		private System.Windows.Forms.MenuItem deleteColumnMenuItem;
 		private System.Windows.Forms.MenuItem clearMapMenuItem;
 		private System.Windows.Forms.MenuItem blockFillMenuItem;
+		private System.Windows.Forms.MenuItem zoomMenuItem;
+		private System.Windows.Forms.MenuItem zoom25PercentMenuItem;
+		private System.Windows.Forms.MenuItem zoom50PercentMenuItem;
+		private System.Windows.Forms.MenuItem zoom100PercentMenuItem;
+		private System.Windows.Forms.MenuItem zoom150PercentMenuItem;
+		private System.Windows.Forms.MenuItem zoom200PercentMenuItem;
+		private System.Windows.Forms.MenuItem infoPanelMenuItem;
+		private System.Windows.Forms.MenuItem gridMenuItem;
+		private System.Windows.Forms.MenuItem doubleMarkersMenuItem;
+		private System.Windows.Forms.MenuItem propertyColorsMenuItem;
+		private System.Windows.Forms.MenuItem autoUpdateMenuItem;
+		private System.Windows.Forms.MenuItem colorSetMenuItem;
+		private System.Windows.Forms.MenuItem menuItem26;
+		private System.Windows.Forms.MenuItem menuItem27;
+		private System.Windows.Forms.MenuItem menuItem28;
+		private System.Windows.Forms.MenuItem menuItem29;
+		private System.Windows.Forms.MenuItem menuItem30;
+		private System.Windows.Forms.MenuItem setBookmarkMenuItem;
+		private System.Windows.Forms.MenuItem setBookmark1MenuItem;
+		private System.Windows.Forms.MenuItem setBookmark2MenuItem;
+		private System.Windows.Forms.MenuItem setBookmark3MenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmarkMenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmark1MenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmark2MenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmark3MenuItem;
+		private System.Windows.Forms.MenuItem clearBookmarkMenuItem;
+		private System.Windows.Forms.MenuItem clearBookmark1MenuItem;
+		private System.Windows.Forms.MenuItem clearBookmark2MenuItem;
+		private System.Windows.Forms.MenuItem clearBookmark3MenuItem;
 	}
 }
 
