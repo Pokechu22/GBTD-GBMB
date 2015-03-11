@@ -33,21 +33,18 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
-			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
 			System.Windows.Forms.MenuItem seperatorMenuItem7;
 			System.Windows.Forms.MenuItem seperatorMenuItem8;
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem11;
 			System.Windows.Forms.MenuItem seperatorMenuItem12;
+			System.Windows.Forms.MenuItem seperatorMenuItem13;
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
-			this.editMenuItem = new System.Windows.Forms.MenuItem();
-			this.designMenuItem = new System.Windows.Forms.MenuItem();
-			this.viewMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem5 = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
@@ -58,12 +55,13 @@
 			this.exportMenuItem = new System.Windows.Forms.MenuItem();
 			this.exportToMenuItem = new System.Windows.Forms.MenuItem();
 			this.exitMenuItem = new System.Windows.Forms.MenuItem();
+			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.undoMenuItem = new System.Windows.Forms.MenuItem();
 			this.cutMenuItem = new System.Windows.Forms.MenuItem();
 			this.copyMenuItem = new System.Windows.Forms.MenuItem();
 			this.pasteMenuItem = new System.Windows.Forms.MenuItem();
 			this.copyAsBitmapMenuItem = new System.Windows.Forms.MenuItem();
-			this.mapControl1 = new GB.GBMB.MapControl();
+			this.designMenuItem = new System.Windows.Forms.MenuItem();
 			this.penMenuItem = new System.Windows.Forms.MenuItem();
 			this.floodFillMenuItem = new System.Windows.Forms.MenuItem();
 			this.dropperMenuItem = new System.Windows.Forms.MenuItem();
@@ -73,35 +71,41 @@
 			this.deleteColumnMenuItem = new System.Windows.Forms.MenuItem();
 			this.clearMapMenuItem = new System.Windows.Forms.MenuItem();
 			this.blockFillMenuItem = new System.Windows.Forms.MenuItem();
+			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.zoomMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			this.infoPanelMenuItem = new System.Windows.Forms.MenuItem();
 			this.gridMenuItem = new System.Windows.Forms.MenuItem();
 			this.doubleMarkersMenuItem = new System.Windows.Forms.MenuItem();
 			this.propertyColorsMenuItem = new System.Windows.Forms.MenuItem();
 			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
 			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
-			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
-			this.gotoBookmarkMenuItem = new System.Windows.Forms.MenuItem();
-			this.setBookmark1MenuItem = new System.Windows.Forms.MenuItem();
-			this.setBookmark2MenuItem = new System.Windows.Forms.MenuItem();
-			this.setBookmark3MenuItem = new System.Windows.Forms.MenuItem();
-			this.gotoBookmark1MenuItem = new System.Windows.Forms.MenuItem();
-			this.gotoBookmark2MenuItem = new System.Windows.Forms.MenuItem();
-			this.gotoBookmark3MenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem26 = new System.Windows.Forms.MenuItem();
 			this.menuItem27 = new System.Windows.Forms.MenuItem();
 			this.menuItem28 = new System.Windows.Forms.MenuItem();
 			this.menuItem29 = new System.Windows.Forms.MenuItem();
 			this.menuItem30 = new System.Windows.Forms.MenuItem();
+			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark3MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark3MenuItem = new System.Windows.Forms.MenuItem();
 			this.clearBookmarkMenuItem = new System.Windows.Forms.MenuItem();
 			this.clearBookmark1MenuItem = new System.Windows.Forms.MenuItem();
 			this.clearBookmark2MenuItem = new System.Windows.Forms.MenuItem();
 			this.clearBookmark3MenuItem = new System.Windows.Forms.MenuItem();
+			this.helpMenuItem = new System.Windows.Forms.MenuItem();
+			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
+			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
+			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
+			this.mapControl1 = new GB.GBMB.MapControl();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -115,7 +119,78 @@
 			seperatorMenuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem13 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
+			// 
+			// seperatorMenuItem1
+			// 
+			seperatorMenuItem1.Index = 3;
+			seperatorMenuItem1.Text = "-";
+			// 
+			// menuItem10
+			// 
+			menuItem10.Index = 0;
+			menuItem10.Text = "NYI";
+			// 
+			// seperatorMenuItem2
+			// 
+			seperatorMenuItem2.Index = 5;
+			seperatorMenuItem2.Text = "-";
+			// 
+			// seperatorMenuItem3
+			// 
+			seperatorMenuItem3.Index = 9;
+			seperatorMenuItem3.Text = "-";
+			// 
+			// seperatorMenuItem4
+			// 
+			seperatorMenuItem4.Index = 12;
+			seperatorMenuItem4.Text = "-";
+			// 
+			// seperatorMenuItem5
+			// 
+			seperatorMenuItem5.Index = 1;
+			seperatorMenuItem5.Text = "-";
+			// 
+			// seperatorMenuItem6
+			// 
+			seperatorMenuItem6.Index = 5;
+			seperatorMenuItem6.Text = "-";
+			// 
+			// seperatorMenuItem7
+			// 
+			seperatorMenuItem7.Index = 3;
+			seperatorMenuItem7.Text = "-";
+			// 
+			// seperatorMenuItem8
+			// 
+			seperatorMenuItem8.Index = 8;
+			seperatorMenuItem8.Text = "-";
+			// 
+			// seperatorMenuItem9
+			// 
+			seperatorMenuItem9.Index = 1;
+			seperatorMenuItem9.Text = "-";
+			// 
+			// seperatorMenuItem10
+			// 
+			seperatorMenuItem10.Index = 6;
+			seperatorMenuItem10.Text = "-";
+			// 
+			// seperatorMenuItem11
+			// 
+			seperatorMenuItem11.Index = 8;
+			seperatorMenuItem11.Text = "-";
+			// 
+			// seperatorMenuItem12
+			// 
+			seperatorMenuItem12.Index = 10;
+			seperatorMenuItem12.Text = "-";
+			// 
+			// seperatorMenuItem13
+			// 
+			seperatorMenuItem13.Index = 2;
+			seperatorMenuItem13.Text = "-";
 			// 
 			// button1
 			// 
@@ -140,7 +215,7 @@
 			this.mapEditBorder.Location = new System.Drawing.Point(0, 0);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(292, 233);
+			this.mapEditBorder.Size = new System.Drawing.Size(292, 273);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -152,7 +227,7 @@
             this.editMenuItem,
             this.designMenuItem,
             this.viewMenuItem,
-            this.menuItem5});
+            this.helpMenuItem});
 			// 
 			// fileMenuItem
 			// 
@@ -174,61 +249,6 @@
             this.exitMenuItem});
 			this.fileMenuItem.Text = "&File";
 			// 
-			// editMenuItem
-			// 
-			this.editMenuItem.Index = 1;
-			this.editMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.undoMenuItem,
-            seperatorMenuItem5,
-            this.cutMenuItem,
-            this.copyMenuItem,
-            this.pasteMenuItem,
-            seperatorMenuItem6,
-            this.copyAsBitmapMenuItem});
-			this.editMenuItem.Text = "&Edit";
-			// 
-			// designMenuItem
-			// 
-			this.designMenuItem.Index = 2;
-			this.designMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.penMenuItem,
-            this.floodFillMenuItem,
-            this.dropperMenuItem,
-            seperatorMenuItem7,
-            this.insertRowMenuItem,
-            this.insertColumnMenuItem,
-            this.deleteRowMenuItem,
-            this.deleteColumnMenuItem,
-            seperatorMenuItem8,
-            this.clearMapMenuItem,
-            this.blockFillMenuItem});
-			this.designMenuItem.Text = "&Design";
-			// 
-			// viewMenuItem
-			// 
-			this.viewMenuItem.Index = 3;
-			this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.zoomMenuItem,
-            seperatorMenuItem9,
-            this.infoPanelMenuItem,
-            this.gridMenuItem,
-            this.doubleMarkersMenuItem,
-            this.propertyColorsMenuItem,
-            seperatorMenuItem10,
-            this.autoUpdateMenuItem,
-            seperatorMenuItem11,
-            this.colorSetMenuItem,
-            seperatorMenuItem12,
-            this.setBookmarkMenuItem,
-            this.gotoBookmarkMenuItem,
-            this.clearBookmarkMenuItem});
-			this.viewMenuItem.Text = "Vie&w";
-			// 
-			// menuItem5
-			// 
-			this.menuItem5.Index = 4;
-			this.menuItem5.Text = "Help";
-			// 
 			// openMenuItem
 			// 
 			this.openMenuItem.Index = 0;
@@ -246,11 +266,6 @@
 			this.saveAsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
 			this.saveAsMenuItem.Text = "Save &as...";
 			// 
-			// seperatorMenuItem1
-			// 
-			seperatorMenuItem1.Index = 3;
-			seperatorMenuItem1.Text = "-";
-			// 
 			// reopenMenuItem
 			// 
 			this.reopenMenuItem.Enabled = false;
@@ -258,16 +273,6 @@
 			this.reopenMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             menuItem10});
 			this.reopenMenuItem.Text = "&Reopen";
-			// 
-			// menuItem10
-			// 
-			menuItem10.Index = 0;
-			menuItem10.Text = "NYI";
-			// 
-			// seperatorMenuItem2
-			// 
-			seperatorMenuItem2.Index = 5;
-			seperatorMenuItem2.Text = "-";
 			// 
 			// mapPropertiesMenuItem
 			// 
@@ -284,11 +289,6 @@
 			this.defaultLocationPropertiesMenuItem.Index = 8;
 			this.defaultLocationPropertiesMenuItem.Text = "&Default location properties...";
 			// 
-			// seperatorMenuItem3
-			// 
-			seperatorMenuItem3.Index = 9;
-			seperatorMenuItem3.Text = "-";
-			// 
 			// exportMenuItem
 			// 
 			this.exportMenuItem.Index = 10;
@@ -300,26 +300,29 @@
 			this.exportToMenuItem.Index = 11;
 			this.exportToMenuItem.Text = "Ex&port to...";
 			// 
-			// seperatorMenuItem4
-			// 
-			seperatorMenuItem4.Index = 12;
-			seperatorMenuItem4.Text = "-";
-			// 
 			// exitMenuItem
 			// 
 			this.exitMenuItem.Index = 13;
 			this.exitMenuItem.Text = "E&xit";
+			// 
+			// editMenuItem
+			// 
+			this.editMenuItem.Index = 1;
+			this.editMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.undoMenuItem,
+            seperatorMenuItem5,
+            this.cutMenuItem,
+            this.copyMenuItem,
+            this.pasteMenuItem,
+            seperatorMenuItem6,
+            this.copyAsBitmapMenuItem});
+			this.editMenuItem.Text = "&Edit";
 			// 
 			// undoMenuItem
 			// 
 			this.undoMenuItem.Index = 0;
 			this.undoMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
 			this.undoMenuItem.Text = "&Undo";
-			// 
-			// seperatorMenuItem5
-			// 
-			seperatorMenuItem5.Index = 1;
-			seperatorMenuItem5.Text = "-";
 			// 
 			// cutMenuItem
 			// 
@@ -339,33 +342,28 @@
 			this.pasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
 			this.pasteMenuItem.Text = "&Paste";
 			// 
-			// seperatorMenuItem6
-			// 
-			seperatorMenuItem6.Index = 5;
-			seperatorMenuItem6.Text = "-";
-			// 
 			// copyAsBitmapMenuItem
 			// 
 			this.copyAsBitmapMenuItem.Index = 6;
 			this.copyAsBitmapMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
 			this.copyAsBitmapMenuItem.Text = "Copy as bit&map";
 			// 
-			// mapControl1
+			// designMenuItem
 			// 
-			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
-			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl1.DefaultPalette = null;
-			this.mapControl1.Location = new System.Drawing.Point(1, 1);
-			this.mapControl1.Map = null;
-			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData1;
-			this.mapControl1.ShowDoubleMarkers = false;
-			this.mapControl1.ShowGrid = true;
-			this.mapControl1.Size = new System.Drawing.Size(290, 271);
-			this.mapControl1.TabIndex = 0;
-			this.mapControl1.Text = "mapControl1";
-			this.mapControl1.TileSet = null;
-			this.mapControl1.Zoom = 4F;
+			this.designMenuItem.Index = 2;
+			this.designMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.penMenuItem,
+            this.floodFillMenuItem,
+            this.dropperMenuItem,
+            seperatorMenuItem7,
+            this.insertRowMenuItem,
+            this.insertColumnMenuItem,
+            this.deleteRowMenuItem,
+            this.deleteColumnMenuItem,
+            seperatorMenuItem8,
+            this.clearMapMenuItem,
+            this.blockFillMenuItem});
+			this.designMenuItem.Text = "&Design";
 			// 
 			// penMenuItem
 			// 
@@ -388,11 +386,6 @@
 			this.dropperMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
 			this.dropperMenuItem.Text = "D&ropper";
 			// 
-			// seperatorMenuItem7
-			// 
-			seperatorMenuItem7.Index = 3;
-			seperatorMenuItem7.Text = "-";
-			// 
 			// insertRowMenuItem
 			// 
 			this.insertRowMenuItem.Index = 4;
@@ -413,11 +406,6 @@
 			this.deleteColumnMenuItem.Index = 7;
 			this.deleteColumnMenuItem.Text = "D&elete column";
 			// 
-			// seperatorMenuItem8
-			// 
-			seperatorMenuItem8.Index = 8;
-			seperatorMenuItem8.Text = "-";
-			// 
 			// clearMapMenuItem
 			// 
 			this.clearMapMenuItem.Index = 9;
@@ -429,6 +417,26 @@
 			this.blockFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlB;
 			this.blockFillMenuItem.Text = "&Block fill";
 			// 
+			// viewMenuItem
+			// 
+			this.viewMenuItem.Index = 3;
+			this.viewMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.zoomMenuItem,
+            seperatorMenuItem9,
+            this.infoPanelMenuItem,
+            this.gridMenuItem,
+            this.doubleMarkersMenuItem,
+            this.propertyColorsMenuItem,
+            seperatorMenuItem10,
+            this.autoUpdateMenuItem,
+            seperatorMenuItem11,
+            this.colorSetMenuItem,
+            seperatorMenuItem12,
+            this.setBookmarkMenuItem,
+            this.gotoBookmarkMenuItem,
+            this.clearBookmarkMenuItem});
+			this.viewMenuItem.Text = "Vie&w";
+			// 
 			// zoomMenuItem
 			// 
 			this.zoomMenuItem.Index = 0;
@@ -439,121 +447,6 @@
             this.zoom150PercentMenuItem,
             this.zoom200PercentMenuItem});
 			this.zoomMenuItem.Text = "&Zoom";
-			// 
-			// seperatorMenuItem9
-			// 
-			seperatorMenuItem9.Index = 1;
-			seperatorMenuItem9.Text = "-";
-			// 
-			// infoPanelMenuItem
-			// 
-			this.infoPanelMenuItem.Index = 2;
-			this.infoPanelMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
-			this.infoPanelMenuItem.Text = "&Info panel";
-			// 
-			// gridMenuItem
-			// 
-			this.gridMenuItem.Index = 3;
-			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
-			this.gridMenuItem.Text = "&Grid";
-			// 
-			// doubleMarkersMenuItem
-			// 
-			this.doubleMarkersMenuItem.Index = 4;
-			this.doubleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
-			this.doubleMarkersMenuItem.Text = "&Double markers";
-			// 
-			// propertyColorsMenuItem
-			// 
-			this.propertyColorsMenuItem.Index = 5;
-			this.propertyColorsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
-			this.propertyColorsMenuItem.Text = "Propert&y colors";
-			// 
-			// seperatorMenuItem10
-			// 
-			seperatorMenuItem10.Index = 6;
-			seperatorMenuItem10.Text = "-";
-			// 
-			// autoUpdateMenuItem
-			// 
-			this.autoUpdateMenuItem.Index = 7;
-			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
-			this.autoUpdateMenuItem.Text = "Auto &update";
-			// 
-			// seperatorMenuItem11
-			// 
-			seperatorMenuItem11.Index = 8;
-			seperatorMenuItem11.Text = "-";
-			// 
-			// colorSetMenuItem
-			// 
-			this.colorSetMenuItem.Index = 9;
-			this.colorSetMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem26,
-            this.menuItem27,
-            this.menuItem28,
-            this.menuItem29,
-            this.menuItem30});
-			this.colorSetMenuItem.Text = "C&olor set";
-			// 
-			// seperatorMenuItem12
-			// 
-			seperatorMenuItem12.Index = 10;
-			seperatorMenuItem12.Text = "-";
-			// 
-			// setBookmarkMenuItem
-			// 
-			this.setBookmarkMenuItem.Index = 11;
-			this.setBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.setBookmark1MenuItem,
-            this.setBookmark2MenuItem,
-            this.setBookmark3MenuItem});
-			this.setBookmarkMenuItem.Text = "&Set bookmark";
-			// 
-			// gotoBookmarkMenuItem
-			// 
-			this.gotoBookmarkMenuItem.Index = 12;
-			this.gotoBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.gotoBookmark1MenuItem,
-            this.gotoBookmark2MenuItem,
-            this.gotoBookmark3MenuItem});
-			this.gotoBookmarkMenuItem.Text = "Goto &bookmark";
-			// 
-			// setBookmark1MenuItem
-			// 
-			this.setBookmark1MenuItem.Index = 0;
-			this.setBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl1;
-			this.setBookmark1MenuItem.Text = "&1";
-			// 
-			// setBookmark2MenuItem
-			// 
-			this.setBookmark2MenuItem.Index = 1;
-			this.setBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl2;
-			this.setBookmark2MenuItem.Text = "&2";
-			// 
-			// setBookmark3MenuItem
-			// 
-			this.setBookmark3MenuItem.Index = 2;
-			this.setBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl3;
-			this.setBookmark3MenuItem.Text = "&3";
-			// 
-			// gotoBookmark1MenuItem
-			// 
-			this.gotoBookmark1MenuItem.Index = 0;
-			this.gotoBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt1;
-			this.gotoBookmark1MenuItem.Text = "&1";
-			// 
-			// gotoBookmark2MenuItem
-			// 
-			this.gotoBookmark2MenuItem.Index = 1;
-			this.gotoBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt2;
-			this.gotoBookmark2MenuItem.Text = "&2";
-			// 
-			// gotoBookmark3MenuItem
-			// 
-			this.gotoBookmark3MenuItem.Index = 2;
-			this.gotoBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt3;
-			this.gotoBookmark3MenuItem.Text = "&3";
 			// 
 			// zoom25PercentMenuItem
 			// 
@@ -580,6 +473,47 @@
 			this.zoom200PercentMenuItem.Index = 4;
 			this.zoom200PercentMenuItem.Text = "&200%";
 			// 
+			// infoPanelMenuItem
+			// 
+			this.infoPanelMenuItem.Index = 2;
+			this.infoPanelMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
+			this.infoPanelMenuItem.Text = "&Info panel";
+			// 
+			// gridMenuItem
+			// 
+			this.gridMenuItem.Index = 3;
+			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
+			this.gridMenuItem.Text = "&Grid";
+			// 
+			// doubleMarkersMenuItem
+			// 
+			this.doubleMarkersMenuItem.Index = 4;
+			this.doubleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
+			this.doubleMarkersMenuItem.Text = "&Double markers";
+			// 
+			// propertyColorsMenuItem
+			// 
+			this.propertyColorsMenuItem.Index = 5;
+			this.propertyColorsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
+			this.propertyColorsMenuItem.Text = "Propert&y colors";
+			// 
+			// autoUpdateMenuItem
+			// 
+			this.autoUpdateMenuItem.Index = 7;
+			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
+			this.autoUpdateMenuItem.Text = "Auto &update";
+			// 
+			// colorSetMenuItem
+			// 
+			this.colorSetMenuItem.Index = 9;
+			this.colorSetMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem26,
+            this.menuItem27,
+            this.menuItem28,
+            this.menuItem29,
+            this.menuItem30});
+			this.colorSetMenuItem.Text = "C&olor set";
+			// 
 			// menuItem26
 			// 
 			this.menuItem26.Index = 0;
@@ -604,6 +538,60 @@
 			// 
 			this.menuItem30.Index = 4;
 			this.menuItem30.Text = "Gameboy Color (&Filtered)";
+			// 
+			// setBookmarkMenuItem
+			// 
+			this.setBookmarkMenuItem.Index = 11;
+			this.setBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.setBookmark1MenuItem,
+            this.setBookmark2MenuItem,
+            this.setBookmark3MenuItem});
+			this.setBookmarkMenuItem.Text = "&Set bookmark";
+			// 
+			// setBookmark1MenuItem
+			// 
+			this.setBookmark1MenuItem.Index = 0;
+			this.setBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl1;
+			this.setBookmark1MenuItem.Text = "&1";
+			// 
+			// setBookmark2MenuItem
+			// 
+			this.setBookmark2MenuItem.Index = 1;
+			this.setBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl2;
+			this.setBookmark2MenuItem.Text = "&2";
+			// 
+			// setBookmark3MenuItem
+			// 
+			this.setBookmark3MenuItem.Index = 2;
+			this.setBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl3;
+			this.setBookmark3MenuItem.Text = "&3";
+			// 
+			// gotoBookmarkMenuItem
+			// 
+			this.gotoBookmarkMenuItem.Index = 12;
+			this.gotoBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.gotoBookmark1MenuItem,
+            this.gotoBookmark2MenuItem,
+            this.gotoBookmark3MenuItem});
+			this.gotoBookmarkMenuItem.Text = "Goto &bookmark";
+			// 
+			// gotoBookmark1MenuItem
+			// 
+			this.gotoBookmark1MenuItem.Index = 0;
+			this.gotoBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt1;
+			this.gotoBookmark1MenuItem.Text = "&1";
+			// 
+			// gotoBookmark2MenuItem
+			// 
+			this.gotoBookmark2MenuItem.Index = 1;
+			this.gotoBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt2;
+			this.gotoBookmark2MenuItem.Text = "&2";
+			// 
+			// gotoBookmark3MenuItem
+			// 
+			this.gotoBookmark3MenuItem.Index = 2;
+			this.gotoBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt3;
+			this.gotoBookmark3MenuItem.Text = "&3";
 			// 
 			// clearBookmarkMenuItem
 			// 
@@ -632,11 +620,53 @@
 			this.clearBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift3;
 			this.clearBookmark3MenuItem.Text = "&3";
 			// 
+			// helpMenuItem
+			// 
+			this.helpMenuItem.Index = 4;
+			this.helpMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.helpTopicsMenuItem,
+            this.helpIndexMenuItem,
+            seperatorMenuItem13,
+            this.aboutMenuItem});
+			this.helpMenuItem.Text = "Hel&p";
+			// 
+			// helpTopicsMenuItem
+			// 
+			this.helpTopicsMenuItem.Index = 0;
+			this.helpTopicsMenuItem.Text = "&Help topics";
+			// 
+			// helpIndexMenuItem
+			// 
+			this.helpIndexMenuItem.Index = 1;
+			this.helpIndexMenuItem.Text = "Help &index";
+			// 
+			// aboutMenuItem
+			// 
+			this.aboutMenuItem.Index = 3;
+			this.aboutMenuItem.Text = "&About...";
+			// 
+			// mapControl1
+			// 
+			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
+			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.mapControl1.DefaultPalette = null;
+			this.mapControl1.Location = new System.Drawing.Point(1, 1);
+			this.mapControl1.Map = null;
+			this.mapControl1.Name = "mapControl1";
+			this.mapControl1.PaletteData = paletteData1;
+			this.mapControl1.ShowDoubleMarkers = false;
+			this.mapControl1.ShowGrid = true;
+			this.mapControl1.Size = new System.Drawing.Size(290, 271);
+			this.mapControl1.TabIndex = 0;
+			this.mapControl1.Text = "mapControl1";
+			this.mapControl1.TileSet = null;
+			this.mapControl1.Zoom = 4F;
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 233);
+			this.ClientSize = new System.Drawing.Size(292, 273);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.mapControl1);
 			this.Controls.Add(this.mapEditBorder);
@@ -656,7 +686,7 @@
 		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem designMenuItem;
 		private System.Windows.Forms.MenuItem viewMenuItem;
-		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem helpMenuItem;
 		private System.Windows.Forms.MenuItem openMenuItem;
 		private System.Windows.Forms.MenuItem saveMenuItem;
 		private System.Windows.Forms.MenuItem saveAsMenuItem;
@@ -710,6 +740,9 @@
 		private System.Windows.Forms.MenuItem clearBookmark1MenuItem;
 		private System.Windows.Forms.MenuItem clearBookmark2MenuItem;
 		private System.Windows.Forms.MenuItem clearBookmark3MenuItem;
+		private System.Windows.Forms.MenuItem helpTopicsMenuItem;
+		private System.Windows.Forms.MenuItem helpIndexMenuItem;
+		private System.Windows.Forms.MenuItem aboutMenuItem;
 	}
 }
 
