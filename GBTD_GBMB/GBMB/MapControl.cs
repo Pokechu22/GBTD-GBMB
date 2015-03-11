@@ -106,7 +106,7 @@ namespace GB.GBMB
 			} else {
 				for (int y = 0; y < map.Master.Height; y++) {
 					for (int x = 0; x < map.Master.Width; x++) {
-						DrawTile(e.Graphics, map.Tiles[x, y], x, y);
+						DrawTile(e, map.Tiles[x, y], x, y);
 					}
 				}
 
@@ -201,7 +201,7 @@ namespace GB.GBMB
 			//TODO
 		}
 
-		private void DrawTile(Graphics g, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
+		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
 			Tile t = tileset.tiles[tile.TileNumber];
 			RectangleF rect = new RectangleF(
 				(tileX * t.Width * Zoom) + AFTER_BOX_X,
@@ -209,8 +209,12 @@ namespace GB.GBMB
 				t.Width * Zoom,
 				t.Height * Zoom);
 
+			if (!rect.IntersectsWith(e.ClipRectangle)) {
+				return;
+			}
+
 			using (Bitmap bmp = MakeTileBitmap(t, Color.White, Color.LightGray, Color.DarkGray, Color.Black)) {
-				g.DrawImage(bmp, rect);
+				e.Graphics.DrawImage(bmp, rect);
 			}
 		}
 
