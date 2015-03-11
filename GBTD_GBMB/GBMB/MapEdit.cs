@@ -50,6 +50,16 @@ namespace GB.GBMB
 			this.mapControl1.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 		}
 
+		/// <summary>
+		/// Sets up the MainMenu after the form loads.
+		/// We use MainMenu because it renders right, even though it is extremely old.
+		/// </summary>
+		/// <param name="e"></param>
+		protected override void OnLoad(EventArgs e) {
+			base.OnLoad(e);
+			this.Menu = mainMenu;
+		}
+
 		private void mapEditBorder_Resize(object sender, EventArgs e) {
 			//Keep mapControl within mapEditBorder.
 			mapControl1.SetBounds(mapEditBorder.Location.X + 1, mapEditBorder.Location.Y + 1, mapEditBorder.Width - 2, mapEditBorder.Height - 2);
