@@ -31,15 +31,15 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
+			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.designMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem4 = new System.Windows.Forms.MenuItem();
 			this.menuItem5 = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -52,12 +52,23 @@
 			this.exportMenuItem = new System.Windows.Forms.MenuItem();
 			this.exportToMenuItem = new System.Windows.Forms.MenuItem();
 			this.exitMenuItem = new System.Windows.Forms.MenuItem();
-			this.mapControl1 = new GB.GBMB.MapControl();
 			this.undoMenuItem = new System.Windows.Forms.MenuItem();
 			this.cutMenuItem = new System.Windows.Forms.MenuItem();
 			this.copyMenuItem = new System.Windows.Forms.MenuItem();
 			this.pasteMenuItem = new System.Windows.Forms.MenuItem();
 			this.copyAsBitmapMenuItem = new System.Windows.Forms.MenuItem();
+			this.mapControl1 = new GB.GBMB.MapControl();
+			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.menuItem2 = new System.Windows.Forms.MenuItem();
+			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.menuItem6 = new System.Windows.Forms.MenuItem();
+			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem8 = new System.Windows.Forms.MenuItem();
+			this.menuItem9 = new System.Windows.Forms.MenuItem();
+			this.menuItem11 = new System.Windows.Forms.MenuItem();
+			this.menuItem12 = new System.Windows.Forms.MenuItem();
+			this.menuItem13 = new System.Windows.Forms.MenuItem();
+			this.menuItem14 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -90,7 +101,7 @@
 			this.mapEditBorder.Location = new System.Drawing.Point(0, 0);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(292, 253);
+			this.mapEditBorder.Size = new System.Drawing.Size(292, 233);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -100,7 +111,7 @@
 			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.fileMenuItem,
             this.editMenuItem,
-            this.menuItem3,
+            this.designMenuItem,
             this.menuItem4,
             this.menuItem5});
 			// 
@@ -137,10 +148,22 @@
             this.copyAsBitmapMenuItem});
 			this.editMenuItem.Text = "&Edit";
 			// 
-			// menuItem3
+			// designMenuItem
 			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "Design";
+			this.designMenuItem.Index = 2;
+			this.designMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem1,
+            this.menuItem2,
+            this.menuItem3,
+            this.menuItem6,
+            this.menuItem7,
+            this.menuItem8,
+            this.menuItem9,
+            this.menuItem11,
+            this.menuItem12,
+            this.menuItem13,
+            this.menuItem14});
+			this.designMenuItem.Text = "&Design";
 			// 
 			// menuItem4
 			// 
@@ -233,23 +256,6 @@
 			this.exitMenuItem.Index = 13;
 			this.exitMenuItem.Text = "E&xit";
 			// 
-			// mapControl1
-			// 
-			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
-			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl1.DefaultPalette = null;
-			this.mapControl1.Location = new System.Drawing.Point(1, 1);
-			this.mapControl1.Map = null;
-			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData2;
-			this.mapControl1.ShowDoubleMarkers = false;
-			this.mapControl1.ShowGrid = true;
-			this.mapControl1.Size = new System.Drawing.Size(290, 271);
-			this.mapControl1.TabIndex = 0;
-			this.mapControl1.Text = "mapControl1";
-			this.mapControl1.TileSet = null;
-			this.mapControl1.Zoom = 4F;
-			// 
 			// undoMenuItem
 			// 
 			this.undoMenuItem.Index = 0;
@@ -290,11 +296,83 @@
 			this.copyAsBitmapMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
 			this.copyAsBitmapMenuItem.Text = "Copy as bit&map";
 			// 
+			// mapControl1
+			// 
+			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
+			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.mapControl1.DefaultPalette = null;
+			this.mapControl1.Location = new System.Drawing.Point(1, 1);
+			this.mapControl1.Map = null;
+			this.mapControl1.Name = "mapControl1";
+			this.mapControl1.PaletteData = paletteData2;
+			this.mapControl1.ShowDoubleMarkers = false;
+			this.mapControl1.ShowGrid = true;
+			this.mapControl1.Size = new System.Drawing.Size(290, 271);
+			this.mapControl1.TabIndex = 0;
+			this.mapControl1.Text = "mapControl1";
+			this.mapControl1.TileSet = null;
+			this.mapControl1.Zoom = 4F;
+			// 
+			// menuItem1
+			// 
+			this.menuItem1.Index = 0;
+			this.menuItem1.Text = "&Pen";
+			// 
+			// menuItem2
+			// 
+			this.menuItem2.Index = 1;
+			this.menuItem2.Text = "&Flood fill";
+			// 
+			// menuItem3
+			// 
+			this.menuItem3.Index = 2;
+			this.menuItem3.Text = "D&ropper";
+			// 
+			// menuItem6
+			// 
+			this.menuItem6.Index = 3;
+			this.menuItem6.Text = "-";
+			// 
+			// menuItem7
+			// 
+			this.menuItem7.Index = 4;
+			this.menuItem7.Text = "&Insert row";
+			// 
+			// menuItem8
+			// 
+			this.menuItem8.Index = 5;
+			this.menuItem8.Text = "I&nsert column";
+			// 
+			// menuItem9
+			// 
+			this.menuItem9.Index = 6;
+			this.menuItem9.Text = "&Delete row";
+			// 
+			// menuItem11
+			// 
+			this.menuItem11.Index = 7;
+			this.menuItem11.Text = "D&elete column";
+			// 
+			// menuItem12
+			// 
+			this.menuItem12.Index = 8;
+			this.menuItem12.Text = "-";
+			// 
+			// menuItem13
+			// 
+			this.menuItem13.Index = 9;
+			this.menuItem13.Text = "&Clear map";
+			// 
+			// menuItem14
+			// 
+			this.menuItem14.Index = 10;
+			this.menuItem14.Text = "&Block fill";
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 253);
+			this.ClientSize = new System.Drawing.Size(292, 233);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.mapControl1);
 			this.Controls.Add(this.mapEditBorder);
@@ -312,7 +390,7 @@
 		private Shared.Controls.Border mapEditBorder;
 		private System.Windows.Forms.MenuItem fileMenuItem;
 		private System.Windows.Forms.MenuItem editMenuItem;
-		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Windows.Forms.MenuItem designMenuItem;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem menuItem5;
 		private System.Windows.Forms.MenuItem openMenuItem;
@@ -330,6 +408,17 @@
 		private System.Windows.Forms.MenuItem copyMenuItem;
 		private System.Windows.Forms.MenuItem pasteMenuItem;
 		private System.Windows.Forms.MenuItem copyAsBitmapMenuItem;
+		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem menuItem2;
+		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Windows.Forms.MenuItem menuItem6;
+		private System.Windows.Forms.MenuItem menuItem7;
+		private System.Windows.Forms.MenuItem menuItem8;
+		private System.Windows.Forms.MenuItem menuItem9;
+		private System.Windows.Forms.MenuItem menuItem11;
+		private System.Windows.Forms.MenuItem menuItem12;
+		private System.Windows.Forms.MenuItem menuItem13;
+		private System.Windows.Forms.MenuItem menuItem14;
 	}
 }
 
