@@ -182,19 +182,19 @@ namespace GB.Shared.Palettes
 		public Color this[GBColor color] {
 			get {
 				switch (color) {
-				case GBColor.BLACK: return Color0;
+				case GBColor.WHITE: return Color0;
 				case GBColor.DARK_GRAY: return Color1;
 				case GBColor.LIGHT_GRAY: return Color2;
-				case GBColor.WHITE: return Color3;
+				case GBColor.BLACK: return Color3;
 				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}
 			}
 			set {
 				switch (color) {
-				case GBColor.BLACK: Color0 = value; break;
+				case GBColor.WHITE: Color0 = value; break;
 				case GBColor.DARK_GRAY: Color1 = value; break;
 				case GBColor.LIGHT_GRAY: Color2 = value; break;
-				case GBColor.WHITE: Color3 = value; break;
+				case GBColor.BLACK: Color3 = value; break;
 				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}
 			}
