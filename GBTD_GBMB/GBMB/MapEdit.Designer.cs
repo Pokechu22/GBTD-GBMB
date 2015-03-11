@@ -34,6 +34,8 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
 			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			System.Windows.Forms.MenuItem seperatorMenuItem7;
+			System.Windows.Forms.MenuItem seperatorMenuItem8;
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
@@ -58,17 +60,15 @@
 			this.pasteMenuItem = new System.Windows.Forms.MenuItem();
 			this.copyAsBitmapMenuItem = new System.Windows.Forms.MenuItem();
 			this.mapControl1 = new GB.GBMB.MapControl();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
-			this.menuItem6 = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItem8 = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItem11 = new System.Windows.Forms.MenuItem();
-			this.menuItem12 = new System.Windows.Forms.MenuItem();
-			this.menuItem13 = new System.Windows.Forms.MenuItem();
-			this.menuItem14 = new System.Windows.Forms.MenuItem();
+			this.penMenuItem = new System.Windows.Forms.MenuItem();
+			this.floodFillMenuItem = new System.Windows.Forms.MenuItem();
+			this.dropperMenuItem = new System.Windows.Forms.MenuItem();
+			this.insertRowMenuItem = new System.Windows.Forms.MenuItem();
+			this.insertColumnMenuItem = new System.Windows.Forms.MenuItem();
+			this.deleteRowMenuItem = new System.Windows.Forms.MenuItem();
+			this.deleteColumnMenuItem = new System.Windows.Forms.MenuItem();
+			this.clearMapMenuItem = new System.Windows.Forms.MenuItem();
+			this.blockFillMenuItem = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -76,6 +76,8 @@
 			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem5 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem6 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem7 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem8 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -152,17 +154,17 @@
 			// 
 			this.designMenuItem.Index = 2;
 			this.designMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem6,
-            this.menuItem7,
-            this.menuItem8,
-            this.menuItem9,
-            this.menuItem11,
-            this.menuItem12,
-            this.menuItem13,
-            this.menuItem14});
+            this.penMenuItem,
+            this.floodFillMenuItem,
+            this.dropperMenuItem,
+            seperatorMenuItem7,
+            this.insertRowMenuItem,
+            this.insertColumnMenuItem,
+            this.deleteRowMenuItem,
+            this.deleteColumnMenuItem,
+            seperatorMenuItem8,
+            this.clearMapMenuItem,
+            this.blockFillMenuItem});
 			this.designMenuItem.Text = "&Design";
 			// 
 			// menuItem4
@@ -313,60 +315,67 @@
 			this.mapControl1.TileSet = null;
 			this.mapControl1.Zoom = 4F;
 			// 
-			// menuItem1
+			// penMenuItem
 			// 
-			this.menuItem1.Index = 0;
-			this.menuItem1.Text = "&Pen";
+			this.penMenuItem.Index = 0;
+			this.penMenuItem.RadioCheck = true;
+			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+			this.penMenuItem.Text = "&Pen";
 			// 
-			// menuItem2
+			// floodFillMenuItem
 			// 
-			this.menuItem2.Index = 1;
-			this.menuItem2.Text = "&Flood fill";
+			this.floodFillMenuItem.Index = 1;
+			this.floodFillMenuItem.RadioCheck = true;
+			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+			this.floodFillMenuItem.Text = "&Flood fill";
 			// 
-			// menuItem3
+			// dropperMenuItem
 			// 
-			this.menuItem3.Index = 2;
-			this.menuItem3.Text = "D&ropper";
+			this.dropperMenuItem.Index = 2;
+			this.dropperMenuItem.RadioCheck = true;
+			this.dropperMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			this.dropperMenuItem.Text = "D&ropper";
 			// 
-			// menuItem6
+			// seperatorMenuItem7
 			// 
-			this.menuItem6.Index = 3;
-			this.menuItem6.Text = "-";
+			seperatorMenuItem7.Index = 3;
+			seperatorMenuItem7.Text = "-";
 			// 
-			// menuItem7
+			// insertRowMenuItem
 			// 
-			this.menuItem7.Index = 4;
-			this.menuItem7.Text = "&Insert row";
+			this.insertRowMenuItem.Index = 4;
+			this.insertRowMenuItem.Text = "&Insert row";
 			// 
-			// menuItem8
+			// insertColumnMenuItem
 			// 
-			this.menuItem8.Index = 5;
-			this.menuItem8.Text = "I&nsert column";
+			this.insertColumnMenuItem.Index = 5;
+			this.insertColumnMenuItem.Text = "I&nsert column";
 			// 
-			// menuItem9
+			// deleteRowMenuItem
 			// 
-			this.menuItem9.Index = 6;
-			this.menuItem9.Text = "&Delete row";
+			this.deleteRowMenuItem.Index = 6;
+			this.deleteRowMenuItem.Text = "&Delete row";
 			// 
-			// menuItem11
+			// deleteColumnMenuItem
 			// 
-			this.menuItem11.Index = 7;
-			this.menuItem11.Text = "D&elete column";
+			this.deleteColumnMenuItem.Index = 7;
+			this.deleteColumnMenuItem.Text = "D&elete column";
 			// 
-			// menuItem12
+			// seperatorMenuItem8
 			// 
-			this.menuItem12.Index = 8;
-			this.menuItem12.Text = "-";
+			seperatorMenuItem8.Index = 8;
+			seperatorMenuItem8.Text = "-";
 			// 
-			// menuItem13
+			// clearMapMenuItem
 			// 
-			this.menuItem13.Index = 9;
-			this.menuItem13.Text = "&Clear map";
+			this.clearMapMenuItem.Index = 9;
+			this.clearMapMenuItem.Text = "&Clear map";
 			// 
-			// menuItem14
+			// blockFillMenuItem
 			// 
-			this.menuItem14.Index = 10;
-			this.menuItem14.Text = "&Block fill";
+			this.blockFillMenuItem.Index = 10;
+			this.blockFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlB;
+			this.blockFillMenuItem.Text = "&Block fill";
 			// 
 			// MapEdit
 			// 
@@ -408,17 +417,15 @@
 		private System.Windows.Forms.MenuItem copyMenuItem;
 		private System.Windows.Forms.MenuItem pasteMenuItem;
 		private System.Windows.Forms.MenuItem copyAsBitmapMenuItem;
-		private System.Windows.Forms.MenuItem menuItem1;
-		private System.Windows.Forms.MenuItem menuItem2;
-		private System.Windows.Forms.MenuItem menuItem3;
-		private System.Windows.Forms.MenuItem menuItem6;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem8;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItem11;
-		private System.Windows.Forms.MenuItem menuItem12;
-		private System.Windows.Forms.MenuItem menuItem13;
-		private System.Windows.Forms.MenuItem menuItem14;
+		private System.Windows.Forms.MenuItem penMenuItem;
+		private System.Windows.Forms.MenuItem floodFillMenuItem;
+		private System.Windows.Forms.MenuItem dropperMenuItem;
+		private System.Windows.Forms.MenuItem insertRowMenuItem;
+		private System.Windows.Forms.MenuItem insertColumnMenuItem;
+		private System.Windows.Forms.MenuItem deleteRowMenuItem;
+		private System.Windows.Forms.MenuItem deleteColumnMenuItem;
+		private System.Windows.Forms.MenuItem clearMapMenuItem;
+		private System.Windows.Forms.MenuItem blockFillMenuItem;
 	}
 }
 
