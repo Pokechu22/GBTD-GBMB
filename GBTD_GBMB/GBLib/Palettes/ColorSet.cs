@@ -67,5 +67,21 @@ namespace GB.Shared.Palettes
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
 			}
 		}
+
+		/// <summary>
+		/// Whether or not this ColorSet supports tile flipping.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static bool SupportsTileFlipping(this ColorSet @this) {
+			switch (@this) {
+			case ColorSet.GAMEBOY_POCKET: return false;
+			case ColorSet.GAMEBOY: return false;
+			case ColorSet.GAMEBOY_COLOR: return true;
+			case ColorSet.SUPER_GAMEBOY: return false;
+			case ColorSet.GAMEBOY_COLOR_FILTERED: return true;
+			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
+			}
+		}
 	}
 }
