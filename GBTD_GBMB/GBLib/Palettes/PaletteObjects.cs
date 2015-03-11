@@ -109,6 +109,15 @@ namespace GB.Shared.Palettes
 				palettes[index] = value;
 			}
 		}
+
+		public Palette this[uint index] {
+			get {
+				return palettes[index];
+			}
+			set {
+				palettes[index] = value;
+			}
+		}
 	}
 
 	/// <summary>
@@ -129,6 +138,27 @@ namespace GB.Shared.Palettes
 		public Color Color3 { get; set; }
 
 		public Color this[int index] {
+			get {
+				switch (index) {
+				case 0: return Color0;
+				case 1: return Color1;
+				case 2: return Color2;
+				case 3: return Color3;
+				default: throw new ArgumentOutOfRangeException("index", "Index must be between 0 and 3 (inclusive)!");
+				}
+			}
+			set {
+				switch (index) {
+				case 0: Color0 = value; break;
+				case 1: Color1 = value; break;
+				case 2: Color2 = value; break;
+				case 3: Color3 = value; break;
+				default: throw new ArgumentOutOfRangeException("index", "Index must be between 0 and 3 (inclusive)!");
+				}
+			}
+		}
+
+		public Color this[uint index] {
 			get {
 				switch (index) {
 				case 0: return Color0;
