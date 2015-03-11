@@ -31,7 +31,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData5 = new GB.Shared.Palettes.PaletteData();
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
@@ -113,7 +113,7 @@
             this.exportToMenuItem,
             seperatorMenuItem4,
             this.exitMenuItem});
-			this.fileMenuItem.Text = "File";
+			this.fileMenuItem.Text = "&File";
 			// 
 			// menuItem2
 			// 
@@ -138,17 +138,19 @@
 			// openMenuItem
 			// 
 			this.openMenuItem.Index = 0;
-			this.openMenuItem.Text = "Open...";
+			this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
+			this.openMenuItem.Text = "&Open...";
 			// 
 			// saveMenuItem
 			// 
 			this.saveMenuItem.Index = 1;
-			this.saveMenuItem.Text = "Save";
+			this.saveMenuItem.Text = "&Save";
 			// 
 			// saveAsMenuItem
 			// 
 			this.saveAsMenuItem.Index = 2;
-			this.saveAsMenuItem.Text = "Save as...";
+			this.saveAsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
+			this.saveAsMenuItem.Text = "Save &as...";
 			// 
 			// seperatorMenuItem1
 			// 
@@ -161,7 +163,7 @@
 			this.reopenMenuItem.Index = 4;
 			this.reopenMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             menuItem10});
-			this.reopenMenuItem.Text = "Reopen";
+			this.reopenMenuItem.Text = "&Reopen";
 			// 
 			// menuItem10
 			// 
@@ -176,17 +178,17 @@
 			// mapPropertiesMenuItem
 			// 
 			this.mapPropertiesMenuItem.Index = 6;
-			this.mapPropertiesMenuItem.Text = "Map properties...";
+			this.mapPropertiesMenuItem.Text = "&Map properties...";
 			// 
 			// locationPropertiesMenuItem
 			// 
 			this.locationPropertiesMenuItem.Index = 7;
-			this.locationPropertiesMenuItem.Text = "Location properties...";
+			this.locationPropertiesMenuItem.Text = "&Location properties...";
 			// 
 			// defaultLocationPropertiesMenuItem
 			// 
 			this.defaultLocationPropertiesMenuItem.Index = 8;
-			this.defaultLocationPropertiesMenuItem.Text = "Default location properties...";
+			this.defaultLocationPropertiesMenuItem.Text = "&Default location properties...";
 			// 
 			// seperatorMenuItem3
 			// 
@@ -196,12 +198,13 @@
 			// exportMenuItem
 			// 
 			this.exportMenuItem.Index = 10;
-			this.exportMenuItem.Text = "Export";
+			this.exportMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
+			this.exportMenuItem.Text = "&Export";
 			// 
 			// exportToMenuItem
 			// 
 			this.exportToMenuItem.Index = 11;
-			this.exportToMenuItem.Text = "Export to...";
+			this.exportToMenuItem.Text = "Ex&port to...";
 			// 
 			// seperatorMenuItem4
 			// 
@@ -211,7 +214,7 @@
 			// exitMenuItem
 			// 
 			this.exitMenuItem.Index = 13;
-			this.exitMenuItem.Text = "Exit";
+			this.exitMenuItem.Text = "E&xit";
 			// 
 			// mapControl1
 			// 
@@ -221,7 +224,7 @@
 			this.mapControl1.Location = new System.Drawing.Point(1, 1);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData2;
+			this.mapControl1.PaletteData = paletteData5;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(290, 271);
