@@ -262,7 +262,12 @@ namespace GB.GBMB
 				return;
 			}
 
-			using (Bitmap bmp = MakeTileBitmap(record, t, Color.White, Color.LightGray, Color.DarkGray, Color.Black)) {
+			Color white = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.WHITE);
+			Color lightGray = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.LIGHT_GRAY);
+			Color darkGray = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.DARK_GRAY);
+			Color black = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.BLACK);
+
+			using (Bitmap bmp = MakeTileBitmap(record, t, white, lightGray, darkGray, black)) {
 				e.Graphics.DrawImage(bmp, rect);
 			}
 		}

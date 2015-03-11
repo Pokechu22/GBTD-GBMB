@@ -43,6 +43,8 @@ namespace GB.GBMB
 
 			this.mapControl1.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			this.mapControl1.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
+			this.mapControl1.PaletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 		}
 	}
 }
