@@ -19,6 +19,8 @@ namespace GB.GBMB
 
 		public MapEdit() {
 			InitializeComponent();
+
+			mapEditBorder_Resize(mapEditBorder, new EventArgs());
 		}
 
 		private void button1_Click(object sender, EventArgs e) {
@@ -46,6 +48,11 @@ namespace GB.GBMB
 			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
 			this.mapControl1.PaletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 			this.mapControl1.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+		}
+
+		private void mapEditBorder_Resize(object sender, EventArgs e) {
+			//Keep mapControl within mapEditBorder.
+			mapControl1.SetBounds(mapEditBorder.Location.X + 1, mapEditBorder.Location.Y + 1, mapEditBorder.Width - 2, mapEditBorder.Height - 2);
 		}
 	}
 }

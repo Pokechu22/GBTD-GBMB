@@ -79,7 +79,7 @@ namespace GB.GBMB
 		/// <summary>
 		/// Innitial positions of the labels.
 		/// </summary>
-		private const int INITIAL_BOX_X = 1, INITIAL_BOX_Y = 1;
+		private const int INITIAL_BOX_X = 0, INITIAL_BOX_Y = 0;
 		/// <summary>
 		/// The position after the box.
 		/// </summary>
@@ -137,10 +137,7 @@ namespace GB.GBMB
 			StringFormat centered = new StringFormat();
 			centered.Alignment = StringAlignment.Center;
 			centered.LineAlignment = StringAlignment.Center;
-
-			ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, 
-				Border3DSide.Top | Border3DSide.Left);
-
+			
 			Rectangle OuterBorderRect = new Rectangle(INITIAL_BOX_X, INITIAL_BOX_Y, BOX_WIDTH, BOX_HEIGHT);
 			Rectangle InnerBorderRect = new Rectangle(INITIAL_BOX_X + 1, INITIAL_BOX_Y + 1, BOX_WIDTH - 2, BOX_HEIGHT - 2);
 			Rectangle TextRect = new Rectangle(INITIAL_BOX_X + 2, INITIAL_BOX_Y + 2, BOX_WIDTH - 4, BOX_HEIGHT - 4);
