@@ -90,6 +90,8 @@ namespace GB.GBMB
 
 			Zoom = 4f;
 			PaletteData = new PaletteData();
+
+			ColorSet = Shared.Palettes.ColorSet.GAMEBOY_COLOR;
 		}
 
 		protected void OnMapChanged() {
@@ -248,8 +250,8 @@ namespace GB.GBMB
 			}
 		}
 
-		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
-			Tile t = tileset.tiles[tile.TileNumber];
+		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord record, int tileX, int tileY) {
+			Tile t = tileset.tiles[record.TileNumber];
 			RectangleF rect = new RectangleF(
 				(tileX * t.Width * Zoom) + AFTER_BOX_X,
 				(tileY * t.Height * Zoom) + AFTER_BOX_Y,
@@ -260,7 +262,7 @@ namespace GB.GBMB
 				return;
 			}
 
-			using (Bitmap bmp = MakeTileBitmap(t, Color.White, Color.LightGray, Color.DarkGray, Color.Black)) {
+			using (Bitmap bmp = MakeTileBitmap(record, t, Color.White, Color.LightGray, Color.DarkGray, Color.Black)) {
 				e.Graphics.DrawImage(bmp, rect);
 			}
 		}
@@ -268,13 +270,14 @@ namespace GB.GBMB
 		/// <summary>
 		/// Fast creation of a bitmap for tiles, using marshaling and stuff.
 		/// </summary>
+		/// <param name="record"></param>
 		/// <param name="tile"></param>
 		/// <param name="white"></param>
 		/// <param name="lightGray"></param>
 		/// <param name="darkGray"></param>
 		/// <param name="black"></param>
 		/// <returns></returns>
-		private Bitmap MakeTileBitmap(Tile tile, Color white, Color lightGray, Color darkGray, Color black) {
+		private Bitmap MakeTileBitmap(GBMObjectMapTileDataRecord record, Tile tile, Color white, Color lightGray, Color darkGray, Color black) {
 			Bitmap output = new Bitmap(tile.Width, tile.Height);
 			int width = tile.Width;
 			int height = tile.Height;
@@ -287,20 +290,24 @@ namespace GB.GBMB
 			BitmapData outputData = output.LockBits(new Rectangle(0, 0, width, height),
 													ImageLockMode.WriteOnly,
 													PixelFormat.Format32bppArgb);
-
+			
 			for (int y = 0; y < height; y++) {
 				IntPtr outputScan = (IntPtr)((long)outputData.Scan0 + (y * outputData.Stride));
 				for (int x = 0; x < width; x++) {
-					switch (tile[x, y]) {
-					case GBColor.WHITE: Marshal.WriteInt32(outputScan, x * 4, whiteARGB); break;
-					case GBColor.DARK_GRAY: Marshal.WriteInt32(outputScan, x * 4, lightGrayARGB); break;
-					case GBColor.LIGHT_GRAY: Marshal.WriteInt32(outputScan, x * 4, darkGrayARGB); break;
-					case GBColor.BLACK: Marshal.WriteInt32(outputScan, x * 4, blackARGB); break;
+					int usedARGB = 0;
+
+					switch (tile[record.FlippedHorizontally ? 7 - x : x, record.FlippedVertically ? 7 - y : y]) {
+					case GBColor.WHITE: usedARGB = whiteARGB; break;
+					case GBColor.LIGHT_GRAY: usedARGB = lightGrayARGB; break;
+					case GBColor.DARK_GRAY: usedARGB = darkGrayARGB; break;
+					case GBColor.BLACK: usedARGB = blackARGB; break;
 					}
+
+					Marshal.WriteInt32(outputScan, x * 4, usedARGB);
 				}
 			}
 			output.UnlockBits(outputData);
-
+			
 			return output;
 		}
 	}
