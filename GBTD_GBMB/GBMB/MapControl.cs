@@ -49,6 +49,7 @@ namespace GB.GBMB
 
 		private GBRObjectTileData tileset;
 		private GBMObjectMapTileData map;
+		private GBRObjectTilePalette defaultPal;
 
 		[Category("Map data"), Description("The map to use.")]
 		public GBMObjectMapTileData Map {
@@ -59,6 +60,11 @@ namespace GB.GBMB
 		public GBRObjectTileData TileSet {
 			get { return tileset; }
 			set { tileset = value; OnMapChanged(); }
+		}
+		[Category("Map data"), Description("The default palette to use.")]
+		public GBRObjectTilePalette DefaultPalette {
+			get { return defaultPal; }
+			set { defaultPal = value; OnMapChanged(); }
 		}
 
 		/// <summary>
@@ -262,12 +268,11 @@ namespace GB.GBMB
 				return;
 			}
 
-			Color white = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.WHITE);
-			Color lightGray = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.LIGHT_GRAY);
-			Color darkGray = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.DARK_GRAY);
-			Color black = PaletteData.GetColor(ColorSet.GAMEBOY_COLOR, record.GBCPalette != null ? record.GBCPalette.Value : (byte)0, GBColor.BLACK);
-
-			using (Bitmap bmp = MakeTileBitmap(record, t, white, lightGray, darkGray, black)) {
+			using (Bitmap bmp = MakeTileBitmap(record, t,
+					GetColor(ColorSet, record, GBColor.WHITE),
+					GetColor(ColorSet, record, GBColor.LIGHT_GRAY),
+					GetColor(ColorSet, record, GBColor.DARK_GRAY),
+					GetColor(ColorSet, record, GBColor.BLACK))) {
 				e.Graphics.DrawImage(bmp, rect);
 			}
 		}
@@ -316,6 +321,53 @@ namespace GB.GBMB
 			output.UnlockBits(outputData);
 			
 			return output;
+		}
+
+		/// <summary>
+		/// Gets the color used under the specified conditions (thouhg it isn't yet filtered)
+		/// </summary>
+		/// <param name="set"></param>
+		/// <param name="record"></param>
+		/// <param name="color"></param>
+		/// <returns></returns>
+		private Color GetColor(ColorSet set, GBMObjectMapTileDataRecord record, GBColor color) {
+			switch (set) {
+			case ColorSet.GAMEBOY_COLOR:
+				if (record.GBCPalette.HasValue) {
+					return PaletteData.GBCPaletteSet[record.GBCPalette.Value][color];
+				} else {
+					if (defaultPal != null) {
+						return PaletteData.GBCPaletteSet[defaultPal.GBCPalettes[record.TileNumber]][color];
+					} else {
+						return PaletteData.GBCPaletteSet[0][color];
+					}
+				}
+			case ColorSet.GAMEBOY_COLOR_FILTERED:
+				if (record.GBCPalette.HasValue) {
+					return PaletteData.GBCPaletteSet[record.GBCPalette.Value][color].FilterWithGBC();
+				} else {
+					if (defaultPal != null) {
+						return PaletteData.GBCPaletteSet[defaultPal.GBCPalettes[record.TileNumber]][color].FilterWithGBC();
+					} else {
+						return PaletteData.GBCPaletteSet[0][color].FilterWithGBC();
+					}
+				}
+			case ColorSet.SUPER_GAMEBOY:
+				if (record.SGBPalette.HasValue) {
+					return PaletteData.SGBPaletteSet[record.SGBPalette.Value][color];
+				} else {
+					if (defaultPal != null) {
+						return PaletteData.SGBPaletteSet[defaultPal.SGBPalettes[record.TileNumber]][color];
+					} else {
+						return PaletteData.SGBPaletteSet[0][color];
+					}
+				}
+			case ColorSet.GAMEBOY:
+				return color.GetNormalColor();
+			case ColorSet.GAMEBOY_POCKET:
+				return color.GetPocketColor();
+			default: throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
+			}
 		}
 	}
 }
