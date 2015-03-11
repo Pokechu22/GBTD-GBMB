@@ -23,7 +23,7 @@ namespace GB.GBMB
 			mapEditBorder_Resize(mapEditBorder, new EventArgs());
 		}
 
-		private void button1_Click(object sender, EventArgs e) {
+		private void openMenuItem_Click(object sender, EventArgs e) {
 			OpenFileDialog d = new OpenFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
@@ -32,8 +32,12 @@ namespace GB.GBMB
 				return;
 			}
 
-			Environment.CurrentDirectory = Path.GetDirectoryName(d.FileName);
-			using (var stream = d.OpenFile()) {
+			LoadFile(d.FileName);
+		}
+
+		public void LoadFile(String path) {
+			Environment.CurrentDirectory = Path.GetDirectoryName(path);
+			using (var stream = File.OpenRead(path)) {
 				gbmFile = new GBMFile(stream);
 			}
 

@@ -41,7 +41,6 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem12;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
 			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
-			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
@@ -192,16 +191,6 @@
 			seperatorMenuItem13.Index = 2;
 			seperatorMenuItem13.Text = "-";
 			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(173, 31);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
 			// mapEditBorder
 			// 
 			this.mapEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
@@ -254,6 +243,7 @@
 			this.openMenuItem.Index = 0;
 			this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
 			this.openMenuItem.Text = "&Open...";
+			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
 			// 
 			// saveMenuItem
 			// 
@@ -667,7 +657,6 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
-			this.Controls.Add(this.button1);
 			this.Controls.Add(this.mapControl1);
 			this.Controls.Add(this.mapEditBorder);
 			this.Name = "MapEdit";
@@ -679,7 +668,6 @@
 		#endregion
 
 		private MapControl mapControl1;
-		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.MainMenu mainMenu;
 		private Shared.Controls.Border mapEditBorder;
 		private System.Windows.Forms.MenuItem fileMenuItem;
