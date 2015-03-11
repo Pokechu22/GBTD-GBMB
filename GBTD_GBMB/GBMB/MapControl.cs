@@ -232,7 +232,20 @@ namespace GB.GBMB
 		}
 
 		private void DrawDoubleMarkers(PaintEventArgs e) {
-			//TODO
+			if (map == null || tileset == null) {
+				return;
+			}
+
+			//TODO make this work off of scrolled position.
+			for (int tileY = 2; tileY < map.Master.Height; tileY += 2) {
+				for (int tileX = 2; tileX < map.Master.Width; tileX += 2) {
+					int centX = (int)(tileX * TILE_WIDTH * Zoom) + AFTER_BOX_X - 1;
+					int centY = (int)(tileY * TILE_HEIGHT * Zoom) + AFTER_BOX_Y - 1;
+
+					e.Graphics.FillRectangle(Brushes.Red, centX - 1, centY, 3, 1);
+					e.Graphics.FillRectangle(Brushes.Red, centX, centY - 1, 1, 3);
+				}
+			}
 		}
 
 		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord tile, int tileX, int tileY) {
