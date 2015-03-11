@@ -31,12 +31,14 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
-			GB.Shared.Palettes.PaletteData paletteData5 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			System.Windows.Forms.MenuItem seperatorMenuItem5;
+			System.Windows.Forms.MenuItem seperatorMenuItem6;
 			this.button1 = new System.Windows.Forms.Button();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem2 = new System.Windows.Forms.MenuItem();
+			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.menuItem3 = new System.Windows.Forms.MenuItem();
 			this.menuItem4 = new System.Windows.Forms.MenuItem();
 			this.menuItem5 = new System.Windows.Forms.MenuItem();
@@ -51,11 +53,18 @@
 			this.exportToMenuItem = new System.Windows.Forms.MenuItem();
 			this.exitMenuItem = new System.Windows.Forms.MenuItem();
 			this.mapControl1 = new GB.GBMB.MapControl();
+			this.undoMenuItem = new System.Windows.Forms.MenuItem();
+			this.cutMenuItem = new System.Windows.Forms.MenuItem();
+			this.copyMenuItem = new System.Windows.Forms.MenuItem();
+			this.pasteMenuItem = new System.Windows.Forms.MenuItem();
+			this.copyAsBitmapMenuItem = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem5 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem6 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -81,7 +90,7 @@
 			this.mapEditBorder.Location = new System.Drawing.Point(0, 0);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(292, 273);
+			this.mapEditBorder.Size = new System.Drawing.Size(292, 253);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -90,7 +99,7 @@
 			// 
 			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.fileMenuItem,
-            this.menuItem2,
+            this.editMenuItem,
             this.menuItem3,
             this.menuItem4,
             this.menuItem5});
@@ -115,10 +124,18 @@
             this.exitMenuItem});
 			this.fileMenuItem.Text = "&File";
 			// 
-			// menuItem2
+			// editMenuItem
 			// 
-			this.menuItem2.Index = 1;
-			this.menuItem2.Text = "Edit";
+			this.editMenuItem.Index = 1;
+			this.editMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.undoMenuItem,
+            seperatorMenuItem5,
+            this.cutMenuItem,
+            this.copyMenuItem,
+            this.pasteMenuItem,
+            seperatorMenuItem6,
+            this.copyAsBitmapMenuItem});
+			this.editMenuItem.Text = "&Edit";
 			// 
 			// menuItem3
 			// 
@@ -224,7 +241,7 @@
 			this.mapControl1.Location = new System.Drawing.Point(1, 1);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData5;
+			this.mapControl1.PaletteData = paletteData2;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(290, 271);
@@ -233,11 +250,51 @@
 			this.mapControl1.TileSet = null;
 			this.mapControl1.Zoom = 4F;
 			// 
+			// undoMenuItem
+			// 
+			this.undoMenuItem.Index = 0;
+			this.undoMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+			this.undoMenuItem.Text = "&Undo";
+			// 
+			// seperatorMenuItem5
+			// 
+			seperatorMenuItem5.Index = 1;
+			seperatorMenuItem5.Text = "-";
+			// 
+			// cutMenuItem
+			// 
+			this.cutMenuItem.Index = 2;
+			this.cutMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
+			this.cutMenuItem.Text = "Cu&t";
+			// 
+			// copyMenuItem
+			// 
+			this.copyMenuItem.Index = 3;
+			this.copyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+			this.copyMenuItem.Text = "&Copy";
+			// 
+			// pasteMenuItem
+			// 
+			this.pasteMenuItem.Index = 4;
+			this.pasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+			this.pasteMenuItem.Text = "&Paste";
+			// 
+			// seperatorMenuItem6
+			// 
+			seperatorMenuItem6.Index = 5;
+			seperatorMenuItem6.Text = "-";
+			// 
+			// copyAsBitmapMenuItem
+			// 
+			this.copyAsBitmapMenuItem.Index = 6;
+			this.copyAsBitmapMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
+			this.copyAsBitmapMenuItem.Text = "Copy as bit&map";
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.ClientSize = new System.Drawing.Size(292, 253);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.mapControl1);
 			this.Controls.Add(this.mapEditBorder);
@@ -254,7 +311,7 @@
 		private System.Windows.Forms.MainMenu mainMenu;
 		private Shared.Controls.Border mapEditBorder;
 		private System.Windows.Forms.MenuItem fileMenuItem;
-		private System.Windows.Forms.MenuItem menuItem2;
+		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem menuItem3;
 		private System.Windows.Forms.MenuItem menuItem4;
 		private System.Windows.Forms.MenuItem menuItem5;
@@ -268,6 +325,11 @@
 		private System.Windows.Forms.MenuItem exportMenuItem;
 		private System.Windows.Forms.MenuItem exportToMenuItem;
 		private System.Windows.Forms.MenuItem exitMenuItem;
+		private System.Windows.Forms.MenuItem undoMenuItem;
+		private System.Windows.Forms.MenuItem cutMenuItem;
+		private System.Windows.Forms.MenuItem copyMenuItem;
+		private System.Windows.Forms.MenuItem pasteMenuItem;
+		private System.Windows.Forms.MenuItem copyAsBitmapMenuItem;
 	}
 }
 
