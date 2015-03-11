@@ -194,7 +194,7 @@ namespace GB.GBMB
 			TextRect = new Rectangle(INITIAL_BOX_X + 2, AFTER_BOX_Y + 2, BOX_WIDTH - 4, (int)(TILE_HEIGHT * Zoom) - 4);
 
 			for (int YPos = AFTER_BOX_Y, ColNumber = 0;
-					YPos < this.Width;
+					YPos < this.Height;
 					YPos += (int)(TILE_WIDTH * Zoom), ColNumber++) {
 
 				OuterBorderRect.Y = YPos;
