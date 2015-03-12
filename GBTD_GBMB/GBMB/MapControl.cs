@@ -67,16 +67,27 @@ namespace GB.GBMB
 			set { defaultPal = value; OnMapChanged(); }
 		}
 
-		private Rectangle selection;
-		/// <summary>
-		/// The selected area.
-		/// 
-		/// TODO: Is a System.Drawing.Rectangle right here?  It's convinient for the "Contains" method, though.
-		/// </summary>
-		[Category("Map data"), Description("The current selection, in tiles.")]
-		public Rectangle Selection {
-			get { return selection; }
-			set { selection = value; OnSelectionChanged(); }
+		private int selectionX1, selectionY1, selectionX2, selectionY2;
+
+		[Category("Map data"), Description("The first x cooridinate of the selection.")]
+		public int SelectionX1 {
+			get { return selectionX1; }
+			set { selectionX1 = value; OnSelectionChanged(); }
+		}
+		[Category("Map data"), Description("The first y cooridinate of the selection.")]
+		public int SelectionY1 {
+			get { return selectionY1; }
+			set { selectionY1 = value; OnSelectionChanged(); }
+		}
+		[Category("Map data"), Description("The second x cooridinate of the selection.")]
+		public int SelectionX2 {
+			get { return selectionX2; }
+			set { selectionX2 = value; OnSelectionChanged(); }
+		}
+		[Category("Map data"), Description("The second y cooridinate of the selection.")]
+		public int SelectionY2 {
+			get { return selectionY2; }
+			set { selectionY2 = value; OnSelectionChanged(); }
 		}
 
 		/// <summary>
@@ -121,10 +132,8 @@ namespace GB.GBMB
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e) {
-			selection.X = MouseToTileX(e.X);
-			selection.Y = MouseToTileY(e.Y);
-			selection.Width = 1;
-			selection.Height = 1;
+			selectionX1 = selectionX2 = MouseToTileX(e.X);
+			selectionY1 = selectionY2 = MouseToTileY(e.Y);
 
 			OnSelectionChanged();
 
@@ -133,12 +142,8 @@ namespace GB.GBMB
 
 		protected override void OnMouseMove(MouseEventArgs e) {
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
-				Rectangle oldRect = new Rectangle(selection.Location, selection.Size);
-
-				int newX = MouseToTileX(e.X);
-				int newY = MouseToTileY(e.Y);
-				selection.Width = newX - selection.X + 1;
-				selection.Height = newY - selection.Y + 1;
+				selectionX2 = MouseToTileX(e.X);
+				selectionY2 = MouseToTileY(e.Y);
 
 				OnSelectionChanged();
 			}
@@ -398,8 +403,10 @@ namespace GB.GBMB
 		private Color GetApropriatelyFilteredColor(GBMObjectMapTileDataRecord record, GBColor color, int tileX, int tileY) {
 			Color returned = GetColor(ColorSet, record, color);
 
-			if (selection.Contains(tileX, tileY)) {
-				returned = returned.FilterAsSelected();
+			if (selectionX1 < selectionX2 ? (selectionX1 <= tileX && tileX <= selectionX2) : (selectionX2 <= tileX && tileX <= selectionX1)) {
+				if (selectionY1 < selectionY2 ? (selectionY1 <= tileY && tileY <= selectionY2) : (selectionY2 <= tileY && tileY <= selectionY1)) {
+					returned = returned.FilterAsSelected();
+				}
 			}
 
 			return returned;

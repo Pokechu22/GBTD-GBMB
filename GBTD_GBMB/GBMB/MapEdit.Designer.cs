@@ -644,7 +644,10 @@
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
 			this.mapControl1.PaletteData = paletteData1;
-			this.mapControl1.Selection = new System.Drawing.Rectangle(1, 2, 4, 3);
+			this.mapControl1.SelectionX1 = 1;
+			this.mapControl1.SelectionX2 = 2;
+			this.mapControl1.SelectionY1 = 4;
+			this.mapControl1.SelectionY2 = 3;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(290, 271);
