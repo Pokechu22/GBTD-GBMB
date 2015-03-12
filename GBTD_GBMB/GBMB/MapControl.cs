@@ -67,6 +67,18 @@ namespace GB.GBMB
 			set { defaultPal = value; OnMapChanged(); }
 		}
 
+		private Rectangle selection;
+		/// <summary>
+		/// The selected area.
+		/// 
+		/// TODO: Is a System.Drawing.Rectangle right here?  It's convinient for the "Contains" method, though.
+		/// </summary>
+		[Category("Map data"), Description("The current selection, in tiles.")]
+		public Rectangle Selection {
+			get { return selection; }
+			set { selection = value; OnMapChanged(); }
+		}
+
 		/// <summary>
 		/// Tile sizes.  THis currently isn't dynamic and the app just won't be happy if something else is given.
 		/// </summary>
@@ -269,10 +281,10 @@ namespace GB.GBMB
 			}
 
 			using (Bitmap bmp = MakeTileBitmap(record, t,
-					GetColor(ColorSet, record, GBColor.WHITE),
-					GetColor(ColorSet, record, GBColor.LIGHT_GRAY),
-					GetColor(ColorSet, record, GBColor.DARK_GRAY),
-					GetColor(ColorSet, record, GBColor.BLACK))) {
+					GetApropriatelyFilteredColor(record, GBColor.WHITE, tileX, tileY),
+					GetApropriatelyFilteredColor(record, GBColor.LIGHT_GRAY, tileX, tileY),
+					GetApropriatelyFilteredColor(record, GBColor.DARK_GRAY, tileX, tileY),
+					GetApropriatelyFilteredColor(record, GBColor.BLACK, tileX, tileY))) {
 				e.Graphics.DrawImage(bmp, rect);
 			}
 		}
@@ -321,6 +333,24 @@ namespace GB.GBMB
 			output.UnlockBits(outputData);
 			
 			return output;
+		}
+
+		/// <summary>
+		/// Gets the color that has been filered for the specified location (e.g. with selection)
+		/// </summary>
+		/// <param name="record">The tile at that location</param>
+		/// <param name="color">The color to get</param>
+		/// <param name="tileX">The x-position of the tile</param>
+		/// <param name="tileY">The y-position of the tile</param>
+		/// <returns></returns>
+		private Color GetApropriatelyFilteredColor(GBMObjectMapTileDataRecord record, GBColor color, int tileX, int tileY) {
+			Color returned = GetColor(ColorSet, record, color);
+
+			if (selection.Contains(tileX, tileY)) {
+				returned = returned.FilterAsSelected();
+			}
+
+			return returned;
 		}
 
 		/// <summary>
