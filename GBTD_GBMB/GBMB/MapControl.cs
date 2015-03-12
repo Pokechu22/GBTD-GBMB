@@ -76,7 +76,7 @@ namespace GB.GBMB
 		[Category("Map data"), Description("The current selection, in tiles.")]
 		public Rectangle Selection {
 			get { return selection; }
-			set { selection = value; OnMapChanged(); }
+			set { selection = value; OnSelectionChanged(); }
 		}
 
 		/// <summary>
@@ -114,6 +114,47 @@ namespace GB.GBMB
 
 		protected void OnMapChanged() {
 			this.Invalidate(true);
+		}
+
+		protected void OnSelectionChanged() {
+			this.Invalidate(true);
+		}
+
+		protected override void OnMouseDown(MouseEventArgs e) {
+			selection.X = MouseToTileX(e.X);
+			selection.Y = MouseToTileY(e.Y);
+			selection.Width = 1;
+			selection.Height = 1;
+
+			OnSelectionChanged();
+
+			base.OnMouseDown(e);
+		}
+
+		protected override void OnMouseMove(MouseEventArgs e) {
+			base.OnMouseMove(e);
+		}
+
+		/// <summary>
+		/// Converts a mouse click position to a tile position.
+		/// </summary>
+		private int MouseToTileX(int mouseX) {
+			int value = (mouseX - AFTER_BOX_X) / (int)(TILE_WIDTH * Zoom);
+
+			if (value < 0) { return 0; }
+			if (value >= map.Master.Width) { return (int)(map.Master.Width - 1); }
+			return value;
+		}
+
+		/// <summary>
+		/// Converts a mouse click position to a tile position.
+		/// </summary>
+		private int MouseToTileY(int mouseY) {
+			int value = (mouseY - AFTER_BOX_Y) / (int)(TILE_HEIGHT * Zoom);
+
+			if (value < 0) { return 0; }
+			if (value >= map.Master.Height) { return (int)(map.Master.Height - 1); }
+			return value;
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
