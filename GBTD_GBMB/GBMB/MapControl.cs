@@ -70,21 +70,25 @@ namespace GB.GBMB
 		private int selectionX1, selectionY1, selectionX2, selectionY2;
 
 		[Category("Map data"), Description("The first x cooridinate of the selection.")]
+		[DefaultValue(0)]
 		public int SelectionX1 {
 			get { return selectionX1; }
 			set { selectionX1 = value; OnSelectionChanged(); }
 		}
 		[Category("Map data"), Description("The first y cooridinate of the selection.")]
+		[DefaultValue(0)]
 		public int SelectionY1 {
 			get { return selectionY1; }
 			set { selectionY1 = value; OnSelectionChanged(); }
 		}
 		[Category("Map data"), Description("The second x cooridinate of the selection.")]
+		[DefaultValue(0)]
 		public int SelectionX2 {
 			get { return selectionX2; }
 			set { selectionX2 = value; OnSelectionChanged(); }
 		}
 		[Category("Map data"), Description("The second y cooridinate of the selection.")]
+		[DefaultValue(0)]
 		public int SelectionY2 {
 			get { return selectionY2; }
 			set { selectionY2 = value; OnSelectionChanged(); }
