@@ -18,5 +18,13 @@ namespace GBAutoUpdateSniffer
 		private void auListener1_Click(object sender, EventArgs e) {
 
 		}
+
+		protected override void WndProc(ref Message m) {
+			base.WndProc(ref m);
+
+			if (m.Msg > 0x4000) {
+				Console.WriteLine(m);
+			}
+		}
 	}
 }
