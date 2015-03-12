@@ -5,7 +5,11 @@ using System.Text;
 
 namespace GB.Shared.AutoUpdate
 {
-	public class Class1
+	/// <summary>
+	/// Listens to AutoUpdate messages to one specific file.
+	/// </summary>
+	public class AUData
 	{
+
 	}
 }

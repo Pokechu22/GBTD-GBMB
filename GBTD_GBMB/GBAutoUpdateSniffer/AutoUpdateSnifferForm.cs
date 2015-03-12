@@ -9,10 +9,14 @@ using System.Windows.Forms;
 
 namespace GBAutoUpdateSniffer
 {
-	public partial class Form1 : Form
+	public partial class AutoUpdateSnifferForm : Form
 	{
-		public Form1() {
+		public AutoUpdateSnifferForm() {
 			InitializeComponent();
+		}
+
+		private void auListener1_Click(object sender, EventArgs e) {
+
 		}
 	}
 }
