@@ -132,6 +132,17 @@ namespace GB.GBMB
 		}
 
 		protected override void OnMouseMove(MouseEventArgs e) {
+			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
+				Rectangle oldRect = new Rectangle(selection.Location, selection.Size);
+
+				int newX = MouseToTileX(e.X);
+				int newY = MouseToTileY(e.Y);
+				selection.Width = newX - selection.X + 1;
+				selection.Height = newY - selection.Y + 1;
+
+				OnSelectionChanged();
+			}
+
 			base.OnMouseMove(e);
 		}
 
