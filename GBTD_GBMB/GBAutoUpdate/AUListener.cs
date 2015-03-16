@@ -127,23 +127,23 @@ Changes can be different pixels, or changes in the selected palette entries for 
 		[Description(@"Called when a total refresh is necessary.
 The TILEMSGTOTAL (0x8000) message (or an unrecognised one) was sent.
 A full and total refresh of all parts of the tileset should take place. This can be seen as a combination of all other messages.")]
-		public event EventHandler OnTotalRefreshNeeded;
+		public event MessageEventHandler OnTotalRefreshNeeded;
 		[Description(@"The graphics and palettes for all tiles should be refreshed, but nothing else.
 The TILEMSGLIST (0x8001) message was sent.
 All tiles should be refreshed, but only the actual pixels and palette entries. Note that this is also called when the actual tile count has changed.")]
-		public event EventHandler OnTileRefreshNeeded;
+		public event MessageEventHandler OnTileRefreshNeeded;
 		[Description(@"The size of the tiles (height and width) has been changed.
 The TILEMSGDIM (0x8002) message was sent.
 The dimensions of the tiles (“Tile size..”) have changed.")]
-		public event EventHandler OnTileSizeChanged;
+		public event MessageEventHandler OnTileSizeChanged;
 		[Description(@"The DMG palette has changed.
 The TILEMSGPAL (0x8003) message was sent.
 The Gameboy palette has changed (ie: the values used by IO-ports $47-$49, not the color palettes).")]
-		public event EventHandler OnGBPaletteChanged;
+		public event MessageEventHandler OnGBPaletteChanged;
 		[Description(@"One of the color palettes has changed.
 The TILEMSGCOLSETS (0x8004) message was sent.
 Either the GBC or SGB palette colors have changed.")]
-		public event EventHandler OnColorPaletteChanged;
+		public event MessageEventHandler OnColorPaletteChanged;
 	}
 
 	/// <summary>
@@ -162,8 +162,10 @@ Either the GBC or SGB palette colors have changed.")]
 	public class TileChangedEventArgs
 	{
 		public readonly UInt16 TileID;
-		public TileChangedEventArgs(UInt16 TileID) {
+		public readonly Message Message;
+		public TileChangedEventArgs(UInt16 TileID, Message message) {
 			this.TileID = TileID;
+			this.Message = message;
 		}
 	}
 }
