@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.AutoUpdate;
 
 namespace GBAutoUpdateSniffer
 {
@@ -15,8 +16,8 @@ namespace GBAutoUpdateSniffer
 			InitializeComponent();
 		}
 
-		private void auListener1_OnMessage(ref Message m) {
-			Console.WriteLine(m);
+		private void auListener1_OnMessage(object sender, MessageEventArgs args) {
+			Console.WriteLine(args.Message);
 		}
 	}
 }

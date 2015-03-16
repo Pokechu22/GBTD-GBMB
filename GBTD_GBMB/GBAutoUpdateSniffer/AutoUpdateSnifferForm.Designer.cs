@@ -30,7 +30,7 @@
 			// 
 			// auListener1
 			// 
-			this.auListener1.OnMessage += new GB.Shared.AutoUpdate.AUListener.MessageEventHandler(this.auListener1_OnMessage);
+			this.auListener1.OnAutoUpdateMessage += new GB.Shared.AutoUpdate.AUListener.MessageEventHandler(this.auListener1_OnMessage);
 			// 
 			// AutoUpdateSnifferForm
 			// 

@@ -14,7 +14,11 @@ namespace GB.Shared.AutoUpdate
 	/// </summary>
 	public class AUListener : Component
 	{
-		public delegate void MessageEventHandler(ref Message m);
+		public delegate void MessageEventHandler(object sender, MessageEventArgs args);
+		public delegate void TileChangedEventHandler(object sender, TileChangedEventArgs args);
+
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+		static extern uint RegisterWindowMessage(string lpString);
 
 		/// <summary>
 		/// Provides a hidden window so that I can use WndProc.
@@ -58,34 +62,77 @@ namespace GB.Shared.AutoUpdate
 			}
 			protected override void WndProc(ref Message m) {
 				base.WndProc(ref m);
-				if (OnMessage != null) { OnMessage(ref m); }
+				if (OnMessage != null) { OnMessage(this, new MessageEventArgs(m)); }
 			}
 		}
 
-		public readonly uint autoUpdateMessage;
+		/// <summary>
+		/// The marker that is prepended to all messages.
+		/// </summary>
+		private const string MARKER = "GBHMTILE";
 
-		MessageListener listener;
+		/// <summary>
+		/// The ID used by the AutoUpdate message.
+		/// </summary>
+		public uint AutoUpdateMessageID { get; protected set; }
+		/// <summary>
+		/// The name of the AutoUpdate message.
+		/// </summary>
+		public string AutoUpdateMessageName { get; protected set; }
+
+		private string fileName;
+		/// <summary>
+		/// The name of the file to watch.
+		/// </summary>
+		[Category("Data"), Description("The name of the file to watch.")]
+		public string FileName {
+			get {
+				return fileName;
+			}
+			set {
+				if (fileName == value) { return; } //Don't bother updating it if it is the same.
+				fileName = value;
+
+				AutoUpdateMessageName = MARKER + fileName.ToUpperInvariant();
+				AutoUpdateMessageID = RegisterWindowMessage(AutoUpdateMessageName);
+			}
+		}
 
 		public AUListener() {
-			autoUpdateMessage = RegisterWindowMessage(@"GBHMTILEC:\Pokechu22\TestMap.gbr".ToUpperInvariant());
-			Console.WriteLine(autoUpdateMessage.ToString("x"));
-
 			MessageListener.Start();
 			MessageListener.OnMessage += new MessageEventHandler(onListenerMessage);
 		}
 
-		void onListenerMessage(ref Message m) {
-			//if (m.Msg == autoUpdateMessage) {
-			if (m.Msg >= 0x4000) {
-				if (OnMessage != null) {
-					OnMessage(ref m);
+		void onListenerMessage(object sender, MessageEventArgs args) {
+			if (args.Message.Msg == AutoUpdateMessageID) {
+				if (OnAutoUpdateMessage != null) {
+					OnAutoUpdateMessage(this, args);
 				}
 			}
 		}
 
-		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-		static extern uint RegisterWindowMessage(string lpString);
+		public event MessageEventHandler OnAutoUpdateMessage;
+		public event TileChangedEventHandler OnTileChanged;
+	}
 
-		public event MessageEventHandler OnMessage;
+	/// <summary>
+	/// Simple eventargs for when there is a message sent.
+	/// </summary>
+	public class MessageEventArgs
+	{
+		public readonly Message Message;
+		public MessageEventArgs(Message message) {
+			this.Message = message;
+		}
+	}
+	/// <summary>
+	/// Simple eventargs for when a tile is changed.
+	/// </summary>
+	public class TileChangedEventArgs
+	{
+		public readonly UInt16 TileID;
+		public TileChangedEventArgs(UInt16 TileID) {
+			this.TileID = TileID;
+		}
 	}
 }
