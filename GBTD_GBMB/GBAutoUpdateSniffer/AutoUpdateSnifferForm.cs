@@ -39,7 +39,15 @@ namespace GBAutoUpdateSniffer
 		}
 
 		private void auListener_OnAutoUpdateMessage(object sender, MessageEventArgs args) {
-			listBoxMessages.Items.Insert(listBoxMessages.Items.Count, new AUEventInfo(args, AUEventType.Single_tile));
+			try {
+				//Because this might come from a seperate thread, invoke the change on the current thread.
+				//http://stackoverflow.com/a/142069/3991344
+				listBoxMessages.Invoke(new MethodInvoker(delegate {
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Single_tile));
+				}));
+			} catch (Exception e) {
+				MessageBox.Show(e.ToString(), "An exception occured while adding an item to the list.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
