@@ -38,10 +38,6 @@ namespace GBAutoUpdateSniffer
 			}
 		}
 
-		private void auListener_OnAutoUpdateMessage(object sender, MessageEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Single_tile));
-		}
-
 		/// <summary>
 		/// Adds a messege to the list of messages.
 		/// </summary>
@@ -53,6 +49,30 @@ namespace GBAutoUpdateSniffer
 			} catch (Exception e) {
 				MessageBox.Show(e.ToString(), "An exception occured while adding an item to the list.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void auListener_OnColorPaletteChanged(object sender, MessageEventArgs args) {
+			addMessageToList(new AUEventInfo(args, AUEventType.Color_set_change));
+		}
+
+		private void auListener_OnGBPaletteChanged(object sender, MessageEventArgs args) {
+			addMessageToList(new AUEventInfo(args, AUEventType.Tile_palette));
+		}
+
+		private void auListener_OnTileChanged(object sender, TileChangedEventArgs args) {
+			addMessageToList(new AUEventInfo(args, AUEventType.Single_tile));
+		}
+
+		private void auListener_OnTileRefreshNeeded(object sender, MessageEventArgs args) {
+			addMessageToList(new AUEventInfo(args, AUEventType.Tile_refresh));
+		}
+
+		private void auListener_OnTileSizeChanged(object sender, MessageEventArgs args) {
+			addMessageToList(new AUEventInfo(args, AUEventType.Tile_size));
+		}
+
+		private void auListener_OnTotalRefreshNeeded(object sender, MessageEventArgs args) {
+			addMessageToList(new AUEventInfo(args, AUEventType.Total_refresh));
 		}
 	}
 }
