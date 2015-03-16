@@ -28,6 +28,7 @@ namespace GBAutoUpdateSniffer
 			listBoxMessages.Items.Clear();
 
 			labelMessageHex.Text = auListener.AutoUpdateMessageID.ToString("X4");
+			labelMessageName.Text = auListener.AutoUpdateMessageName;
 		}
 
 		private void listBoxMessages_SelectedIndexChanged(object sender, EventArgs e) {
