@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
-using System.Threading;
 
 namespace GB.Shared.AutoUpdate
 {
@@ -14,57 +13,8 @@ namespace GB.Shared.AutoUpdate
 	/// </summary>
 	public class AUListener : Component
 	{
-		public delegate void MessageEventHandler(object sender, MessageEventArgs args);
-		public delegate void TileChangedEventHandler(object sender, TileChangedEventArgs args);
-
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
 		static extern uint RegisterWindowMessage(string lpString);
-
-		/// <summary>
-		/// Provides a hidden window so that I can use WndProc.
-		/// 
-		/// http://stackoverflow.com/a/2061741/3991344
-		/// TODO: Can I use NativeWindow instead?
-		/// </summary>
-		private class MessageListener : Form
-		{
-			public static event MessageEventHandler OnMessage;
-			private static MessageListener instance;
-
-			public static void Start() {
-				if (instance != null) {
-					return; //Multiple instances may occur.  Not sure of how to handle yet.
-					//throw new InvalidOperationException("Notifier aleady started");
-				}
-				Thread t = new Thread(runForm);
-				t.SetApartmentState(ApartmentState.STA);
-				t.IsBackground = true;
-				t.Start();
-			}
-			public static void Stop() {
-				if (instance == null) { throw new InvalidOperationException("Notifier not yet started"); }
-				OnMessage = null;
-				instance.Invoke(new MethodInvoker(instance.endForm));
-			}
-			private static void runForm() {
-				Application.Run(new MessageListener());
-			}
-
-			private void endForm() {
-				this.Close();
-			}
-			protected override void SetVisibleCore(bool value) {
-				// Prevent window getting visible
-				if (instance == null) CreateHandle();
-				instance = this;
-				value = false;
-				base.SetVisibleCore(value);
-			}
-			protected override void WndProc(ref Message m) {
-				base.WndProc(ref m);
-				if (OnMessage != null) { OnMessage(this, new MessageEventArgs(m)); }
-			}
-		}
 
 		/// <summary>
 		/// The marker that is prepended to all messages.
@@ -187,6 +137,7 @@ Either the GBC or SGB palette colors have changed.")]
 		public event MessageEventHandler OnColorPaletteChanged;
 	}
 
+	public delegate void MessageEventHandler(object sender, MessageEventArgs args);
 	/// <summary>
 	/// Simple eventargs for when there is a message sent.
 	/// </summary>
@@ -197,6 +148,7 @@ Either the GBC or SGB palette colors have changed.")]
 			this.Message = message;
 		}
 	}
+	public delegate void TileChangedEventHandler(object sender, TileChangedEventArgs args);
 	/// <summary>
 	/// Simple eventargs for when a tile is changed.
 	/// </summary>
