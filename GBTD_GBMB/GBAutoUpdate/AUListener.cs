@@ -149,7 +149,7 @@ Either the GBC or SGB palette colors have changed.")]
 	/// <summary>
 	/// Simple eventargs for when there is a message sent.
 	/// </summary>
-	public class MessageEventArgs
+	public class MessageEventArgs : EventArgs
 	{
 		public readonly Message Message;
 		public MessageEventArgs(Message message) {
@@ -159,13 +159,12 @@ Either the GBC or SGB palette colors have changed.")]
 	/// <summary>
 	/// Simple eventargs for when a tile is changed.
 	/// </summary>
-	public class TileChangedEventArgs
+	public class TileChangedEventArgs : MessageEventArgs
 	{
 		public readonly UInt16 TileID;
-		public readonly Message Message;
-		public TileChangedEventArgs(UInt16 TileID, Message message) {
+		public TileChangedEventArgs(UInt16 TileID, Message message)
+			: base(message) {
 			this.TileID = TileID;
-			this.Message = message;
 		}
 	}
 }
