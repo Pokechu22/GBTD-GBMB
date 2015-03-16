@@ -25,7 +25,6 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.auListener = new GB.Shared.AutoUpdate.AUListener();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageFileData = new System.Windows.Forms.TabPage();
 			this.tabPageMessages = new System.Windows.Forms.TabPage();
@@ -40,6 +39,7 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.listBoxMessages = new System.Windows.Forms.ListBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
+			this.auListener = new GB.Shared.AutoUpdate.AUListener();
 			this.tabControl.SuspendLayout();
 			this.tabPageFileData.SuspendLayout();
 			this.tabPageMessages.SuspendLayout();
@@ -51,11 +51,6 @@
 			this.messageSplitContainer.SuspendLayout();
 			this.groupBoxMessageInfo.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// auListener
-			// 
-			this.auListener.FileName = null;
-			this.auListener.OnAutoUpdateMessage += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnAutoUpdateMessage);
 			// 
 			// tabControl
 			// 
@@ -198,6 +193,7 @@
 			// textBoxMessageInfo
 			// 
 			this.textBoxMessageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxMessageInfo.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxMessageInfo.Location = new System.Drawing.Point(3, 16);
 			this.textBoxMessageInfo.Multiline = true;
 			this.textBoxMessageInfo.Name = "textBoxMessageInfo";
@@ -205,7 +201,11 @@
 			this.textBoxMessageInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textBoxMessageInfo.Size = new System.Drawing.Size(272, 126);
 			this.textBoxMessageInfo.TabIndex = 0;
-			this.textBoxMessageInfo.WordWrap = false;
+			// 
+			// auListener
+			// 
+			this.auListener.FileName = null;
+			this.auListener.OnAutoUpdateMessage += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnAutoUpdateMessage);
 			// 
 			// AutoUpdateSnifferForm
 			// 

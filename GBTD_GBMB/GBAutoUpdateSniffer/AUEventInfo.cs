@@ -53,8 +53,12 @@ namespace GBAutoUpdateSniffer
 				result.AppendLine(time.ToString());
 				result.AppendLine();
 				result.AppendLine("Raw message: " + this.Args.Message);
+				result.AppendLine();
 				result.AppendLine("Of type " + Type.ToString().Replace('_', ' '));
-				result.AppendLine("Tile number: " + TileNumber);
+
+				if (TileNumber.HasValue) {
+					result.AppendLine("Tile number: " + TileNumber);
+				}
 			}
 
 			return result.ToString();
