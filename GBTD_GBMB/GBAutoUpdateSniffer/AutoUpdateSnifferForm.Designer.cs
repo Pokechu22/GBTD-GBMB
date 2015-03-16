@@ -36,10 +36,20 @@
 			this.groupBoxMessageHex = new System.Windows.Forms.GroupBox();
 			this.labelMessageHex = new System.Windows.Forms.Label();
 			this.tabPageMemoryMappedFile = new System.Windows.Forms.TabPage();
+			this.messageSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
+			this.listBoxMessages = new System.Windows.Forms.ListBox();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.tabControl.SuspendLayout();
 			this.tabPageFileData.SuspendLayout();
+			this.tabPageMessages.SuspendLayout();
 			this.groupBoxFileName.SuspendLayout();
 			this.groupBoxMessageHex.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.messageSplitContainer)).BeginInit();
+			this.messageSplitContainer.Panel1.SuspendLayout();
+			this.messageSplitContainer.Panel2.SuspendLayout();
+			this.messageSplitContainer.SuspendLayout();
+			this.groupBoxMessageInfo.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// auListener
@@ -73,6 +83,7 @@
 			// 
 			// tabPageMessages
 			// 
+			this.tabPageMessages.Controls.Add(this.messageSplitContainer);
 			this.tabPageMessages.Location = new System.Drawing.Point(4, 22);
 			this.tabPageMessages.Name = "tabPageMessages";
 			this.tabPageMessages.Padding = new System.Windows.Forms.Padding(3);
@@ -142,6 +153,56 @@
 			this.tabPageMemoryMappedFile.Text = "Memory Mapped File";
 			this.tabPageMemoryMappedFile.UseVisualStyleBackColor = true;
 			// 
+			// messageSplitContainer
+			// 
+			this.messageSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.messageSplitContainer.Location = new System.Drawing.Point(3, 3);
+			this.messageSplitContainer.Name = "messageSplitContainer";
+			this.messageSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// messageSplitContainer.Panel1
+			// 
+			this.messageSplitContainer.Panel1.Controls.Add(this.listBoxMessages);
+			// 
+			// messageSplitContainer.Panel2
+			// 
+			this.messageSplitContainer.Panel2.Controls.Add(this.groupBoxMessageInfo);
+			this.messageSplitContainer.Size = new System.Drawing.Size(278, 241);
+			this.messageSplitContainer.SplitterDistance = 92;
+			this.messageSplitContainer.TabIndex = 0;
+			// 
+			// groupBoxMessageInfo
+			// 
+			this.groupBoxMessageInfo.Controls.Add(this.textBox1);
+			this.groupBoxMessageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBoxMessageInfo.Location = new System.Drawing.Point(0, 0);
+			this.groupBoxMessageInfo.Name = "groupBoxMessageInfo";
+			this.groupBoxMessageInfo.Size = new System.Drawing.Size(278, 145);
+			this.groupBoxMessageInfo.TabIndex = 0;
+			this.groupBoxMessageInfo.TabStop = false;
+			this.groupBoxMessageInfo.Text = "Message info";
+			// 
+			// listBoxMessages
+			// 
+			this.listBoxMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBoxMessages.FormattingEnabled = true;
+			this.listBoxMessages.Location = new System.Drawing.Point(0, 0);
+			this.listBoxMessages.Name = "listBoxMessages";
+			this.listBoxMessages.ScrollAlwaysVisible = true;
+			this.listBoxMessages.Size = new System.Drawing.Size(278, 92);
+			this.listBoxMessages.TabIndex = 0;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBox1.Location = new System.Drawing.Point(3, 16);
+			this.textBox1.Multiline = true;
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBox1.Size = new System.Drawing.Size(272, 126);
+			this.textBox1.TabIndex = 0;
+			// 
 			// AutoUpdateSnifferForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,10 +213,17 @@
 			this.Text = "Form1";
 			this.tabControl.ResumeLayout(false);
 			this.tabPageFileData.ResumeLayout(false);
+			this.tabPageMessages.ResumeLayout(false);
 			this.groupBoxFileName.ResumeLayout(false);
 			this.groupBoxFileName.PerformLayout();
 			this.groupBoxMessageHex.ResumeLayout(false);
 			this.groupBoxMessageHex.PerformLayout();
+			this.messageSplitContainer.Panel1.ResumeLayout(false);
+			this.messageSplitContainer.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.messageSplitContainer)).EndInit();
+			this.messageSplitContainer.ResumeLayout(false);
+			this.groupBoxMessageInfo.ResumeLayout(false);
+			this.groupBoxMessageInfo.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -173,6 +241,10 @@
 		private System.Windows.Forms.GroupBox groupBoxMessageHex;
 		private System.Windows.Forms.Label labelMessageHex;
 		private System.Windows.Forms.TabPage tabPageMemoryMappedFile;
+		private System.Windows.Forms.SplitContainer messageSplitContainer;
+		private System.Windows.Forms.ListBox listBoxMessages;
+		private System.Windows.Forms.GroupBox groupBoxMessageInfo;
+		private System.Windows.Forms.TextBox textBox1;
 	}
 }
 
