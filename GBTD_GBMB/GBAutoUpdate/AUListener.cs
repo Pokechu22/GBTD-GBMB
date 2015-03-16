@@ -71,6 +71,13 @@ namespace GB.Shared.AutoUpdate
 		/// </summary>
 		private const string MARKER = "GBHMTILE";
 
+		//Tile message hexes.
+		private const UInt16 TILEMSGTOTAL = 0x8000;
+		private const UInt16 TILEMSGLIST = 0x8001;
+		private const UInt16 TILEMSGDIM = 0x8002;
+		private const UInt16 TILEMSGPAL = 0x8003;
+		private const UInt16 TILEMSGCOLSETS = 0x8004;
+
 		/// <summary>
 		/// The ID used by the AutoUpdate message.
 		/// </summary>
@@ -108,8 +115,42 @@ namespace GB.Shared.AutoUpdate
 				UInt16 WParam = (UInt16)args.Message.WParam;
 				if ((WParam & 0x8000U) != 0) {
 					//A special message type has occured.
+					switch (WParam) {
+					case TILEMSGTOTAL:
+						if (OnTotalRefreshNeeded != null) {
+							OnTotalRefreshNeeded(this, args);
+						}
+						break;
+					case TILEMSGLIST:
+						if (OnTileRefreshNeeded != null) {
+							OnTileRefreshNeeded(this, args);
+						}
+						break;
+					case TILEMSGDIM:
+						if (OnTileSizeChanged != null) {
+							OnTileSizeChanged(this, args);
+						}
+						break;
+					case TILEMSGPAL:
+						if (OnGBPaletteChanged != null) {
+							OnGBPaletteChanged(this, args);
+						}
+						break;
+					case TILEMSGCOLSETS:
+						if (OnColorPaletteChanged != null) {
+							OnColorPaletteChanged(this, args);
+						}
+						break;
+					default:
+						if (OnTotalRefreshNeeded != null) {
+							OnTotalRefreshNeeded(this, args);
+						}
+						break;
+					}
 				} else {
-
+					if (OnTileChanged != null) {
+						OnTileChanged(this, new TileChangedEventArgs(WParam, args.Message));
+					}
 				}
 
 				//Finally, send the full change message.
