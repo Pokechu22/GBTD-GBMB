@@ -24,9 +24,14 @@ namespace GB.Shared.AutoUpdate
 				//throw new InvalidOperationException("Notifier aleady started");
 			}
 			Thread t = new Thread(runForm);
+			Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
 			t.SetApartmentState(ApartmentState.STA);
 			t.IsBackground = true;
 			t.Start();
+		}
+
+		static void Application_ThreadException(object sender, ThreadExceptionEventArgs e) {
+			MessageBox.Show("Thread Exception!  " + e.ToString() + " " + e.Exception.ToString());
 		}
 		public static void Stop() {
 			if (instance == null) { throw new InvalidOperationException("Notifier not yet started"); }

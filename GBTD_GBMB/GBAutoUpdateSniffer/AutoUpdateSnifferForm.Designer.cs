@@ -39,7 +39,7 @@
 			this.messageSplitContainer = new System.Windows.Forms.SplitContainer();
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.listBoxMessages = new System.Windows.Forms.ListBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.tabControl.SuspendLayout();
 			this.tabPageFileData.SuspendLayout();
 			this.tabPageMessages.SuspendLayout();
@@ -55,6 +55,7 @@
 			// auListener
 			// 
 			this.auListener.FileName = null;
+			this.auListener.OnAutoUpdateMessage += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnAutoUpdateMessage);
 			// 
 			// tabControl
 			// 
@@ -173,7 +174,7 @@
 			// 
 			// groupBoxMessageInfo
 			// 
-			this.groupBoxMessageInfo.Controls.Add(this.textBox1);
+			this.groupBoxMessageInfo.Controls.Add(this.textBoxMessageInfo);
 			this.groupBoxMessageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBoxMessageInfo.Location = new System.Drawing.Point(0, 0);
 			this.groupBoxMessageInfo.Name = "groupBoxMessageInfo";
@@ -185,23 +186,26 @@
 			// listBoxMessages
 			// 
 			this.listBoxMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBoxMessages.FormatString = "S";
 			this.listBoxMessages.FormattingEnabled = true;
 			this.listBoxMessages.Location = new System.Drawing.Point(0, 0);
 			this.listBoxMessages.Name = "listBoxMessages";
 			this.listBoxMessages.ScrollAlwaysVisible = true;
 			this.listBoxMessages.Size = new System.Drawing.Size(278, 92);
 			this.listBoxMessages.TabIndex = 0;
+			this.listBoxMessages.SelectedIndexChanged += new System.EventHandler(this.listBoxMessages_SelectedIndexChanged);
 			// 
-			// textBox1
+			// textBoxMessageInfo
 			// 
-			this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBox1.Location = new System.Drawing.Point(3, 16);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox1.Size = new System.Drawing.Size(272, 126);
-			this.textBox1.TabIndex = 0;
+			this.textBoxMessageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxMessageInfo.Location = new System.Drawing.Point(3, 16);
+			this.textBoxMessageInfo.Multiline = true;
+			this.textBoxMessageInfo.Name = "textBoxMessageInfo";
+			this.textBoxMessageInfo.ReadOnly = true;
+			this.textBoxMessageInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxMessageInfo.Size = new System.Drawing.Size(272, 126);
+			this.textBoxMessageInfo.TabIndex = 0;
+			this.textBoxMessageInfo.WordWrap = false;
 			// 
 			// AutoUpdateSnifferForm
 			// 
@@ -244,7 +248,7 @@
 		private System.Windows.Forms.SplitContainer messageSplitContainer;
 		private System.Windows.Forms.ListBox listBoxMessages;
 		private System.Windows.Forms.GroupBox groupBoxMessageInfo;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBoxMessageInfo;
 	}
 }
 
