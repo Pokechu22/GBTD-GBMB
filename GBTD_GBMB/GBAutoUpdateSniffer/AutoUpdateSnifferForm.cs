@@ -16,8 +16,16 @@ namespace GBAutoUpdateSniffer
 			InitializeComponent();
 		}
 
-		private void auListener1_OnMessage(object sender, MessageEventArgs args) {
-			Console.WriteLine(args.Message);
+		private void openButton_Click(object sender, EventArgs e) {
+			var result = openFileDialog.ShowDialog();
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			fileNameLabel.Text = openFileDialog.FileName;
+			auListener.FileName = openFileDialog.FileName;
+
+			labelMessageHex.Text = auListener.AutoUpdateMessageID.ToString("X4");
 		}
 	}
 }
