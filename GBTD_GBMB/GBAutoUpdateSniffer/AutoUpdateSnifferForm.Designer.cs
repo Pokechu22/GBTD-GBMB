@@ -69,8 +69,8 @@
 			// 
 			// tabPageFileData
 			// 
-			this.tabPageFileData.Controls.Add(this.groupBoxMessageName);
 			this.tabPageFileData.Controls.Add(this.groupBoxMessageHex);
+			this.tabPageFileData.Controls.Add(this.groupBoxMessageName);
 			this.tabPageFileData.Controls.Add(this.groupBoxFileName);
 			this.tabPageFileData.Controls.Add(this.openButton);
 			this.tabPageFileData.Location = new System.Drawing.Point(4, 22);
@@ -84,9 +84,10 @@
 			// groupBoxMessageHex
 			// 
 			this.groupBoxMessageHex.Controls.Add(this.labelMessageHex);
-			this.groupBoxMessageHex.Location = new System.Drawing.Point(8, 96);
+			this.groupBoxMessageHex.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxMessageHex.Location = new System.Drawing.Point(3, 81);
 			this.groupBoxMessageHex.Name = "groupBoxMessageHex";
-			this.groupBoxMessageHex.Size = new System.Drawing.Size(268, 39);
+			this.groupBoxMessageHex.Size = new System.Drawing.Size(278, 39);
 			this.groupBoxMessageHex.TabIndex = 2;
 			this.groupBoxMessageHex.TabStop = false;
 			this.groupBoxMessageHex.Text = "Message Hex ID";
@@ -103,10 +104,11 @@
 			// groupBoxFileName
 			// 
 			this.groupBoxFileName.Controls.Add(this.fileNameLabel);
-			this.groupBoxFileName.Location = new System.Drawing.Point(8, 6);
+			this.groupBoxFileName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxFileName.Location = new System.Drawing.Point(3, 3);
 			this.groupBoxFileName.Name = "groupBoxFileName";
-			this.groupBoxFileName.Size = new System.Drawing.Size(268, 39);
-			this.groupBoxFileName.TabIndex = 1;
+			this.groupBoxFileName.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxFileName.TabIndex = 0;
 			this.groupBoxFileName.TabStop = false;
 			this.groupBoxFileName.Text = "File name";
 			// 
@@ -121,10 +123,11 @@
 			// 
 			// openButton
 			// 
+			this.openButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.openButton.Location = new System.Drawing.Point(201, 216);
 			this.openButton.Name = "openButton";
 			this.openButton.Size = new System.Drawing.Size(75, 23);
-			this.openButton.TabIndex = 0;
+			this.openButton.TabIndex = 3;
 			this.openButton.Text = "Open";
 			this.openButton.UseVisualStyleBackColor = true;
 			this.openButton.Click += new System.EventHandler(this.openButton_Click);
@@ -219,10 +222,11 @@
 			// groupBoxMessageName
 			// 
 			this.groupBoxMessageName.Controls.Add(this.labelMessageName);
-			this.groupBoxMessageName.Location = new System.Drawing.Point(8, 51);
+			this.groupBoxMessageName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxMessageName.Location = new System.Drawing.Point(3, 42);
 			this.groupBoxMessageName.Name = "groupBoxMessageName";
-			this.groupBoxMessageName.Size = new System.Drawing.Size(268, 39);
-			this.groupBoxMessageName.TabIndex = 3;
+			this.groupBoxMessageName.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxMessageName.TabIndex = 1;
 			this.groupBoxMessageName.TabStop = false;
 			this.groupBoxMessageName.Text = "Message name";
 			// 
