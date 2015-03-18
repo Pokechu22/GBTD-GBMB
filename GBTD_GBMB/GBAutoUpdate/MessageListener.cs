@@ -16,6 +16,9 @@ namespace GB.Shared.AutoUpdate
 	class MessageListener : Form
 	{
 		public static event MessageEventHandler OnMessage;
+
+		public static IntPtr MessageListenerHandle { get; private set; }
+
 		private static MessageListener instance;
 
 		public static void Start() {
@@ -40,11 +43,14 @@ namespace GB.Shared.AutoUpdate
 
 		private void endForm() {
 			this.Close();
+			MessageListenerHandle = IntPtr.Zero;
 		}
 		protected override void SetVisibleCore(bool value) {
 			// Prevent window getting visible
 			if (instance == null) CreateHandle();
 			instance = this;
+			MessageListenerHandle = this.Handle;
+
 			value = false;
 			base.SetVisibleCore(value);
 		}

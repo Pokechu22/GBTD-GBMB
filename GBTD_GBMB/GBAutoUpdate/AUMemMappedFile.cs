@@ -10,7 +10,8 @@ using System.Drawing;
 namespace GB.Shared.AutoUpdate
 {
 	/// <summary>
-	/// Provides access to the data contained in a MemoryMappedFile.
+	/// Provides access to the shared data contained in the MemoryMappedFile.
+	/// TODO: Have the AUListener send its messages on changes.
 	/// </summary>
 	public class AUMemMappedFile : IDisposable
 	{
@@ -62,6 +63,8 @@ namespace GB.Shared.AutoUpdate
 					}
 
 					stream.Write(data, 0, 8 * 8);
+
+					file.listener.SendTileChangeMessage(tile);
 				}
 			}
 		}
@@ -127,6 +130,7 @@ namespace GB.Shared.AutoUpdate
 
 			internal MMFGBColorSet(AUMemMappedFile file, int usedIndex) {
 				this.file = file;
+				this.USED_INDEX = usedIndex;
 			}
 
 			public Color this[int row, int pal] {
@@ -186,10 +190,14 @@ namespace GB.Shared.AutoUpdate
 		//The size of the memory block, in total.
 		private const int MEM_BLOCK_SIZE = 50964;
 
+		private string fileName;
+		private AUListener listener;
 		private MemoryMappedFile file;
 		private MemoryMappedViewStream stream;
 
-		public AUMemMappedFile(String fileName) {
+		public AUMemMappedFile(String fileName, AUListener listener) {
+			this.fileName = fileName;
+			
 			//The hidden step.
 			fileName = fileName.ToUpperInvariant().Replace('\\', '@');
 
@@ -207,6 +215,8 @@ namespace GB.Shared.AutoUpdate
 
 			Tiles = new MMFTileList(this);
 			PalMaps = new MMFPalMapList(this);
+
+			this.listener = listener;
 		}
 
 		~AUMemMappedFile() {
@@ -214,12 +224,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void Dispose() {
-			try {
-				file.Dispose();
-				stream.Dispose();
-			} finally {
-
-			}
+			file.Dispose();
+			stream.Dispose();
 		}
 
 		/// <summary>

@@ -29,6 +29,8 @@
 			this.tabPageFileData = new System.Windows.Forms.TabPage();
 			this.groupBoxMessageHex = new System.Windows.Forms.GroupBox();
 			this.labelMessageHex = new System.Windows.Forms.Label();
+			this.groupBoxMessageName = new System.Windows.Forms.GroupBox();
+			this.labelMessageName = new System.Windows.Forms.Label();
 			this.groupBoxFileName = new System.Windows.Forms.GroupBox();
 			this.fileNameLabel = new System.Windows.Forms.Label();
 			this.openButton = new System.Windows.Forms.Button();
@@ -40,11 +42,10 @@
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.auListener = new GB.Shared.AutoUpdate.AUListener();
-			this.groupBoxMessageName = new System.Windows.Forms.GroupBox();
-			this.labelMessageName = new System.Windows.Forms.Label();
 			this.tabControl.SuspendLayout();
 			this.tabPageFileData.SuspendLayout();
 			this.groupBoxMessageHex.SuspendLayout();
+			this.groupBoxMessageName.SuspendLayout();
 			this.groupBoxFileName.SuspendLayout();
 			this.tabPageMessages.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.messageSplitContainer)).BeginInit();
@@ -52,7 +53,6 @@
 			this.messageSplitContainer.Panel2.SuspendLayout();
 			this.messageSplitContainer.SuspendLayout();
 			this.groupBoxMessageInfo.SuspendLayout();
-			this.groupBoxMessageName.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -100,6 +100,26 @@
 			this.labelMessageHex.Size = new System.Drawing.Size(126, 13);
 			this.labelMessageHex.TabIndex = 3;
 			this.labelMessageHex.Text = "[Message hex goes here]";
+			// 
+			// groupBoxMessageName
+			// 
+			this.groupBoxMessageName.Controls.Add(this.labelMessageName);
+			this.groupBoxMessageName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxMessageName.Location = new System.Drawing.Point(3, 42);
+			this.groupBoxMessageName.Name = "groupBoxMessageName";
+			this.groupBoxMessageName.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxMessageName.TabIndex = 1;
+			this.groupBoxMessageName.TabStop = false;
+			this.groupBoxMessageName.Text = "Message name";
+			// 
+			// labelMessageName
+			// 
+			this.labelMessageName.AutoSize = true;
+			this.labelMessageName.Location = new System.Drawing.Point(6, 16);
+			this.labelMessageName.Name = "labelMessageName";
+			this.labelMessageName.Size = new System.Drawing.Size(135, 13);
+			this.labelMessageName.TabIndex = 0;
+			this.labelMessageName.Text = "[Message name goes here]";
 			// 
 			// groupBoxFileName
 			// 
@@ -208,9 +228,6 @@
 			// openFileDialog
 			// 
 			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
-			// 
-			// auListener
-			// 
 			this.auListener.FileName = null;
 			this.auListener.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auListener_OnTileChanged);
 			this.auListener.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTotalRefreshNeeded);
@@ -218,26 +235,6 @@
 			this.auListener.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTileSizeChanged);
 			this.auListener.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnGBPaletteChanged);
 			this.auListener.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnColorPaletteChanged);
-			// 
-			// groupBoxMessageName
-			// 
-			this.groupBoxMessageName.Controls.Add(this.labelMessageName);
-			this.groupBoxMessageName.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBoxMessageName.Location = new System.Drawing.Point(3, 42);
-			this.groupBoxMessageName.Name = "groupBoxMessageName";
-			this.groupBoxMessageName.Size = new System.Drawing.Size(278, 39);
-			this.groupBoxMessageName.TabIndex = 1;
-			this.groupBoxMessageName.TabStop = false;
-			this.groupBoxMessageName.Text = "Message name";
-			// 
-			// labelMessageName
-			// 
-			this.labelMessageName.AutoSize = true;
-			this.labelMessageName.Location = new System.Drawing.Point(6, 16);
-			this.labelMessageName.Name = "labelMessageName";
-			this.labelMessageName.Size = new System.Drawing.Size(135, 13);
-			this.labelMessageName.TabIndex = 0;
-			this.labelMessageName.Text = "[Message name goes here]";
 			// 
 			// AutoUpdateSnifferForm
 			// 
@@ -251,6 +248,8 @@
 			this.tabPageFileData.ResumeLayout(false);
 			this.groupBoxMessageHex.ResumeLayout(false);
 			this.groupBoxMessageHex.PerformLayout();
+			this.groupBoxMessageName.ResumeLayout(false);
+			this.groupBoxMessageName.PerformLayout();
 			this.groupBoxFileName.ResumeLayout(false);
 			this.groupBoxFileName.PerformLayout();
 			this.tabPageMessages.ResumeLayout(false);
@@ -260,8 +259,6 @@
 			this.messageSplitContainer.ResumeLayout(false);
 			this.groupBoxMessageInfo.ResumeLayout(false);
 			this.groupBoxMessageInfo.PerformLayout();
-			this.groupBoxMessageName.ResumeLayout(false);
-			this.groupBoxMessageName.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

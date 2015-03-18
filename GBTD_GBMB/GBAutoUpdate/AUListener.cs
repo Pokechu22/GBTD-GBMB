@@ -13,8 +13,21 @@ namespace GB.Shared.AutoUpdate
 	/// </summary>
 	public class AUListener : Component
 	{
+		/// <summary>
+		/// http://pinvoke.net/default.aspx/user32/RegisterWindowMessage.html
+		/// </summary>
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
 		static extern uint RegisterWindowMessage(string lpString);
+		/// <summary>
+		/// http://pinvoke.net/default.aspx/user32/SendMessage.html
+		/// </summary>
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+		static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+
+		/// <summary>
+		/// http://pinvoke.net/default.aspx/Constants/HWND.html
+		/// </summary>
+		private static readonly IntPtr HWND_BROADCAST = new IntPtr(0xffff);
 
 		/// <summary>
 		/// The marker that is prepended to all messages.
@@ -62,6 +75,8 @@ namespace GB.Shared.AutoUpdate
 
 		void onListenerMessage(object sender, MessageEventArgs args) {
 			if (args.Message.Msg == AutoUpdateMessageID) {
+				if (args.Message.LParam == MessageListener.MessageListenerHandle) { return; } //To avoid an infinite loop.
+
 				UInt16 WParam = (UInt16)args.Message.WParam;
 				if ((WParam & 0x8000U) != 0) {
 					//A special message type has occured.
@@ -108,6 +123,20 @@ namespace GB.Shared.AutoUpdate
 					OnAutoUpdateMessage(this, args);
 				}
 			}
+		}
+
+		public void SendTileChangeMessage(UInt16 tile) {
+			tile &= 0x7FFF; //If someone is trying to send an invalid tile change message, too bad.
+			
+			SendMessage(
+				hWnd: HWND_BROADCAST,
+				Msg: AutoUpdateMessageID,
+				wParam: new IntPtr(tile),
+				lParam: MessageListener.MessageListenerHandle);
+		}
+
+		public void SendTileChange() {
+
 		}
 
 		[Description("Raw event for accessing the raw message used")]

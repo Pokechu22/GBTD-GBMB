@@ -16,6 +16,8 @@ namespace GBAutoUpdateSniffer
 			InitializeComponent();
 		}
 
+		private AUMemMappedFile mmf;
+
 		private void openButton_Click(object sender, EventArgs e) {
 			var result = openFileDialog.ShowDialog();
 			if (result != DialogResult.OK) {
@@ -29,6 +31,12 @@ namespace GBAutoUpdateSniffer
 
 			labelMessageHex.Text = auListener.AutoUpdateMessageID.ToString("X4");
 			labelMessageName.Text = auListener.AutoUpdateMessageName;
+
+			this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener);
+
+			byte[,] bytes = mmf.Tiles[0];
+			bytes[0, 0] = 3;
+			mmf.Tiles[0] = bytes;
 		}
 
 		private void listBoxMessages_SelectedIndexChanged(object sender, EventArgs e) {
