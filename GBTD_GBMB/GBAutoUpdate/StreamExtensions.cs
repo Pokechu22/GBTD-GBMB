@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Drawing;
 
 namespace GB.Shared.AutoUpdate
 {
@@ -294,6 +295,52 @@ namespace GB.Shared.AutoUpdate
 			}
 			//Force a terminator.
 			stream.WriteByte(0x00);
+		}
+		#endregion
+
+		#region Color-handling methods
+		/// <summary>
+		/// Reads a color in the windows format from the specified stream, throwing an exception if at the end of the stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read.</exception>
+		/// <exception cref="EndOfStreamException">When the end of the stream has been reached.</exception>
+		internal static Color ReadColor(this Stream stream) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read from!"); }
+
+			byte[] bytes = stream.ReadBytesEx(4);
+			
+			//Intentionally ignoring the byte in index 0, as it is alpha and unused by GBTD.
+			return Color.FromArgb(bytes[1], bytes[2], bytes[3]);
+		}
+
+		/// <summary>
+		/// Reads a color in the windows format from the specified stream, returning the default if at the end of the stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="def">The default value.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be read.</exception>
+		internal static Color ReadColor(this Stream stream, Color def) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read from!"); }
+
+			byte[] bytes = stream.ReadBytesEx(4, 0, (byte)def.R, (byte)def.G, (byte)def.B);
+
+			//Intentionally ignoring the byte in index 0, as it is alpha and unused by GBTD.
+			return Color.FromArgb(bytes[1], bytes[2], bytes[3]);
+		}
+
+		/// <summary>
+		/// Writes a color in the windows format to the specified stream.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be written.</exception>
+		internal static void WriteColor(this Stream stream, Color color) {
+			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
+
+			stream.WriteByteEx(0xFF); //Ignored alpha value.
+			stream.WriteByteEx((byte)color.R);
+			stream.WriteByteEx((byte)color.G);
+			stream.WriteByteEx((byte)color.B);
 		}
 		#endregion
 	}

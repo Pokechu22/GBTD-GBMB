@@ -133,14 +133,14 @@ namespace GB.Shared.AutoUpdate
 				get {
 					var stream = file.stream;
 					stream.Position = USED_INDEX + (row * NUM_OF_ENTRIES * SIZE_OF_COLOR) + (pal * SIZE_OF_COLOR);
-
-					return ReadColor(stream);
+					
+					return stream.ReadColor();
 				}
 				set {
 					var stream = file.stream;
 					stream.Position = USED_INDEX + (row * NUM_OF_ENTRIES * SIZE_OF_COLOR) + (pal * SIZE_OF_COLOR);
 
-					WriteColor(stream, value);
+					stream.WriteColor(value);
 				}
 			}
 
@@ -152,7 +152,7 @@ namespace GB.Shared.AutoUpdate
 					Color[] colors = new Color[NUM_OF_ENTRIES];
 
 					for (int i = 0; i < colors.Length; i++) {
-						colors[i] = ReadColor(stream);
+						colors[i] = stream.ReadColor();
 					}
 
 					return colors;
@@ -166,29 +166,9 @@ namespace GB.Shared.AutoUpdate
 					}
 
 					for (int i = 0; i < value.Length; i++) {
-						WriteColor(stream, value[i]);
+						stream.WriteColor(value[i]);
 					}
 				}
-			}
-
-			private Color ReadColor(Stream s) {
-				byte[] bytes = new byte[4];
-				int read = s.Read(bytes, 0, 4);
-				
-				if (read != 4) {
-					throw new EndOfStreamException();
-				}
-
-				//Intentionally ignoring the byte in index 0, as it is alpha and unused by GBTD.
-
-				return Color.FromArgb(bytes[1], bytes[2], bytes[3]);
-			}
-
-			private void WriteColor(Stream s, Color color) {
-				s.WriteByteEx(0xFF); //Ignored alpha value.
-				s.WriteByteEx((byte)color.R);
-				s.WriteByteEx((byte)color.G);
-				s.WriteByteEx((byte)color.B);
 			}
 		}
 		#endregion
