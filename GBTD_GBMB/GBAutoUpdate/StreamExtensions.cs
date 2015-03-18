@@ -19,6 +19,61 @@ namespace GB.Shared.AutoUpdate
 	/// </summary>
 	internal static class StreamExtensions
 	{
+		#region Byte array-handling methods
+		/// <summary>
+		/// Reads an array of bytes from the stream, throwing an exception if at the end.
+		/// <para>The differece between this and <see cref="Stream.Read"/> is that this will always read the wanted amount.</para>
+		/// </summary>
+		/// <param name="stream">The stream to read from</param>
+		/// <param name="count">The number of bytes to read.</param>
+		/// <exception cref="EndOfStreamException">When the stream does not have the wanted number of bytes.</exception>
+		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When count is negative.</exception>
+		internal static byte[] ReadBytesEx(this Stream stream, int count) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
+			if (count < 0) { throw new ArgumentOutOfRangeException("count", count, "Count must be positive!"); }
+
+			byte[] bytes = new byte[count];
+			int read = stream.Read(bytes, 0, count);
+
+			if (read != count) { throw new EndOfStreamException(); }
+
+			return bytes;
+		}
+
+		/// <summary>
+		/// Reads an array of bytes from the stream, returning default if at the end.
+		/// </summary>
+		/// <param name="stream">The stream to read from</param>
+		/// <param name="def">The default value to return.</param>
+		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When count is negative.</exception>
+		internal static byte[] ReadBytesEx(this Stream stream, int count, params byte[] def) {
+			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
+			if (count < 0) { throw new ArgumentOutOfRangeException("count", count, "Count must be positive!"); }
+
+			byte[] bytes = new byte[count];
+			int read = stream.Read(bytes, 0, count);
+
+			if (read != count) { return def; }
+
+			return bytes;
+		}
+
+		/// <summary>
+		/// Writes an array of bytes to the stream.
+		/// <para>Yes, this is somewhat redundant, but it seems like a good idea to include it for consistency.</para>
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="value">The bytes to write.</param>
+		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
+		internal static void WriteBytesEx(this Stream stream, params byte[] value) {
+			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
+
+			stream.Write(value, 0, value.Length);
+		}
+		#endregion
+
 		#region Byte-handling methods
 		/// <summary>
 		/// Reads a single byte from the stream, throwing an exception if at the end.
@@ -65,129 +120,6 @@ namespace GB.Shared.AutoUpdate
 			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
 
 			stream.WriteByte(value);
-		}
-		#endregion
-
-		#region Word-handling methods
-		/// <summary>
-		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream, throwing an exception if at the end.
-		/// <param name="stream">The stream to read from.</param>
-		/// </summary>
-		/// <exception cref="NotSupportedException">When the stream cannot be read from.</exception>
-		/// <exception cref="EndOfStreamException">When the end of the stream has been reached.</exception>
-		internal static UInt16 ReadWord(this Stream stream) {
-			if (!stream.CanRead) {
-				throw new NotSupportedException("Stream cannot be read from.");
-			}
-
-			byte[] bytes = new byte[2];
-			int read = stream.Read(bytes, 0, 2);
-
-			if (read != 2) {
-				throw new EndOfStreamException();
-			}
-
-			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
-		}
-
-		/// <summary>
-		/// Reads a 16-bit (2 byte) unsigned number, hi-endian, from the specified stream, returning the default value if at the end.
-		/// </summary>
-		/// <param name="stream">The stream to read from.</param>
-		/// <param name="def">The default value to return if at the end of the stream.</param>
-		/// <exception cref="NotSupportedException">When the stream cannot be read from.</exception>
-		internal static UInt16 ReadWord(this Stream stream, UInt16 def) {
-			if (!stream.CanRead) {
-				throw new NotSupportedException("Stream cannot be read from.");
-			}
-
-			byte[] bytes = new byte[2];
-			int read = stream.Read(bytes, 0, 2);
-
-			if (read != 2) {
-				return def;
-			}
-
-			return (UInt16)((bytes[1] << 8) | (bytes[0] << 0));
-		}
-
-		/// <summary>
-		/// Writes a 16-bit (2 byte) unsigned number, hi-endian, to the specified stream.
-		/// <param name="stream">The stream to write to.</param>
-		/// <param name="n">The number to write.</param>
-		/// </summary>
-		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
-		internal static void WriteWord(this Stream stream, UInt16 n) {
-			if (!stream.CanWrite) {
-				throw new NotSupportedException("Stream cannot be written to.");
-			}
-
-			stream.WriteByte((byte)((n >> 0) & 0xFF));
-			stream.WriteByte((byte)((n >> 8) & 0xFF));
-		}
-		#endregion
-
-		#region Unsigned Long-handling methods
-		/// <summary>
-		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream, throwing an exception if at the end of the stream.
-		/// <para>Despite the fact that this method name says that it uses ULongs, the actual type is UInt32.  Just the way the spec works.</para>
-		/// </summary>
-		/// <param name="stream">The stream to write to.</param>
-		/// <exception cref="NotSupportedException">When the stream cannot be read.</exception>
-		/// <exception cref="EndOfStreamException">When the end of the stream has been reached.</exception>
-		internal static UInt32 ReadUnsignedLong(this Stream stream) {
-			if (!stream.CanRead) {
-				throw new NotSupportedException("Stream cannot be read from.");
-			}
-
-			byte[] bytes = new byte[4];
-			int read = stream.Read(bytes, 0, 4);
-
-			if (read != 4) {
-				throw new EndOfStreamException();
-			}
-
-			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
-		}
-
-		/// <summary>
-		/// Reads a 32-bit (4 byte) unsigned number, hi-endian, from the specified stream, returning the default if at end of stream.
-		/// <para>Despite the fact that this method name says that it uses ULongs, the actual type is UInt32.  Just the way the spec works.</para>
-		/// </summary>
-		/// <param name="stream">The stream to write to.</param>
-		/// <param name="def">The default value to return if at the end of the stream.</param>
-		/// <exception cref="NotSupportedException">When the stream cannot be read.</exception>
-		internal static UInt32 ReadUnsignedLong(this Stream stream, UInt32 def) {
-			if (!stream.CanRead) {
-				throw new NotSupportedException("Stream cannot be read from.");
-			}
-
-			byte[] bytes = new byte[4];
-			int read = stream.Read(bytes, 0, 4);
-
-			if (read != 4) {
-				return def;
-			}
-
-			return (UInt32)((bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | (bytes[0] << 0));
-		}
-
-		/// <summary>
-		/// Writes a 32-bit (4 byte) unsigned number, hi-endian, to the specified stream.
-		/// <para>Despite the fact that this method name says that it uses ULongs, the actual type is UInt32.  Just the way the spec works.</para>
-		/// <param name="stream">The stream to write to.</param>
-		/// <param name="n">The number to write.</param>
-		/// </summary>
-		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
-		internal static void WriteUnsignedLong(this Stream stream, UInt32 n) {
-			if (!stream.CanWrite) {
-				throw new NotSupportedException("Stream cannot be written to.");
-			}
-
-			stream.WriteByte((byte)((n >> 0) & 0xFF));
-			stream.WriteByte((byte)((n >> 8) & 0xFF));
-			stream.WriteByte((byte)((n >> 16) & 0xFF));
-			stream.WriteByte((byte)((n >> 24) & 0xFF));
 		}
 		#endregion
 
@@ -249,44 +181,6 @@ namespace GB.Shared.AutoUpdate
 			stream.WriteByte((byte)((n >> 8) & 0xFF));
 			stream.WriteByte((byte)((n >> 16) & 0xFF));
 			stream.WriteByte((byte)((n >> 24) & 0xFF));
-		}
-		#endregion
-
-		#region Boolean-handling methods
-		/// <summary>
-		/// Reads a boolean from the stream, throwing an exception if at the end.
-		/// </summary>
-		/// <param name="stream">The stream to read from</param>
-		/// <exception cref="EndOfStreamException">When at the end of the stream</exception>
-		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
-		internal static bool ReadBoolean(this Stream stream) {
-			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
-
-			return stream.ReadByteEx() != 0;
-		}
-
-		/// <summary>
-		/// Reads a boolean from the stream, returning default if at the end.
-		/// </summary>
-		/// <param name="stream">The stream to read from</param>
-		/// <param name="def">The default value to return.</param>
-		/// <exception cref="NotSupportedException">When the stream does not support reading.</exception>
-		internal static bool ReadBoolean(this Stream stream, bool def) {
-			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
-
-			return stream.ReadByteEx((byte)(def ? 1 : 0)) != 0;
-		}
-
-		/// <summary>
-		/// Writes a boolean to the stream.
-		/// </summary>
-		/// <param name="stream">The stream to write to.</param>
-		/// <param name="value">The bool to write.</param>
-		/// <exception cref="NotSupportedException">When the stream cannot be written to.</exception>
-		internal static void WriteBoolean(this Stream stream, bool value) {
-			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
-
-			stream.WriteByteEx((byte)(value ? 1 : 0));
 		}
 		#endregion
 
