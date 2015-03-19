@@ -14,6 +14,11 @@ namespace GBAutoUpdateSniffer
 	{
 		public AutoUpdateSnifferForm() {
 			InitializeComponent();
+
+			//While the "Enabled" property claims to be useless for TabPage, it *does* disable the inner controls, which is useful.
+			//It doesn't appear in intelisense, but it does work.
+			tabPageMemoryMappedFile.Enabled = false;
+			tabPageMessages.Enabled = false;
 		}
 
 		private AUMemMappedFile mmf;
@@ -33,6 +38,11 @@ namespace GBAutoUpdateSniffer
 			labelMessageName.Text = auListener.AutoUpdateMessageName;
 
 			this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener);
+
+			//While the "Enabled" property claims to be useless for TabPage, it *does* disable the inner controls, which is useful.
+			//It doesn't appear in intelisense, but it does work.
+			tabPageMemoryMappedFile.Enabled = true;
+			tabPageMessages.Enabled = true;
 		}
 
 		private void listBoxMessages_SelectedIndexChanged(object sender, EventArgs e) {
