@@ -218,7 +218,16 @@ namespace GB.Shared.Controls
 		public TileRenderer() {
 			SetStyle(ControlStyles.FixedHeight, true);
 			SetStyle(ControlStyles.FixedWidth, true);
+
 			this.DoubleBuffered = true;
+
+			//Required for it to update when not focused.  http://stackoverflow.com/a/2326001/3991344
+			SetStyle(
+				ControlStyles.AllPaintingInWmPaint |
+				ControlStyles.UserPaint |
+				ControlStyles.OptimizedDoubleBuffer |
+				ControlStyles.ResizeRedraw,
+				true);
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {

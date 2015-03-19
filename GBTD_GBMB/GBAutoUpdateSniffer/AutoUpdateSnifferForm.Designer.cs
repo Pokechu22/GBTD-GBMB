@@ -40,11 +40,24 @@
 			System.Windows.Forms.GroupBox mmfTileCountGroupBox;
 			System.Windows.Forms.GroupBox mmfFileNameGroupBox;
 			System.Windows.Forms.TableLayoutPanel mmfTileInfoTableLayoutPanel;
-			System.Windows.Forms.GroupBox mmfSelectTileGroupBox;
 			System.Windows.Forms.GroupBox mmfGroupBoxTile;
 			System.Windows.Forms.TableLayoutPanel mmfTilePalettesTileLayoutPanel;
 			System.Windows.Forms.GroupBox mmfGBCPaletteGroupBox;
 			System.Windows.Forms.GroupBox mmfSGBPaletteGroupBox;
+			System.Windows.Forms.GroupBox mmfSelectTileGroupBox;
+			this.mmfIDTextBox = new System.Windows.Forms.TextBox();
+			this.mmfColor0MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfColor1MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfColor2MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfColor3MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfTileWidthTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfTileHeightTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfTileCountTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfFileNameTextBox = new System.Windows.Forms.TextBox();
+			this.mmfTileRenderer = new GB.Shared.Controls.TileRenderer();
+			this.mmfGBCPaletteTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfSGBPaletteTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfTileNumberTextBox = new System.Windows.Forms.NumericUpDown();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageFileData = new System.Windows.Forms.TabPage();
 			this.groupBoxMessageHex = new System.Windows.Forms.GroupBox();
@@ -55,25 +68,12 @@
 			this.fileNameLabel = new System.Windows.Forms.Label();
 			this.openButton = new System.Windows.Forms.Button();
 			this.tabPageMemoryMappedFile = new System.Windows.Forms.TabPage();
-			this.mmfIDTextBox = new System.Windows.Forms.TextBox();
-			this.mmfColor0MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfColor1MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfColor2MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfColor3MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfTileWidthTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfTileHeightTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfTileCountTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfFileNameTextBox = new System.Windows.Forms.TextBox();
 			this.tabPageMessages = new System.Windows.Forms.TabPage();
 			this.messageSplitContainer = new System.Windows.Forms.SplitContainer();
 			this.listBoxMessages = new System.Windows.Forms.ListBox();
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.mmfTileNumberTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfGBCPaletteTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfSGBPaletteTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfTileRenderer = new GBAutoUpdateSniffer.EditableTileRenderer();
 			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
 			mmfIDAndColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfMagicMarkerGroupBox = new System.Windows.Forms.GroupBox();
@@ -90,17 +90,11 @@
 			mmfTileCountGroupBox = new System.Windows.Forms.GroupBox();
 			mmfFileNameGroupBox = new System.Windows.Forms.GroupBox();
 			mmfTileInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			mmfSelectTileGroupBox = new System.Windows.Forms.GroupBox();
 			mmfGroupBoxTile = new System.Windows.Forms.GroupBox();
 			mmfTilePalettesTileLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfGBCPaletteGroupBox = new System.Windows.Forms.GroupBox();
 			mmfSGBPaletteGroupBox = new System.Windows.Forms.GroupBox();
-			this.tabControl.SuspendLayout();
-			this.tabPageFileData.SuspendLayout();
-			this.groupBoxMessageHex.SuspendLayout();
-			this.groupBoxMessageName.SuspendLayout();
-			this.groupBoxFileName.SuspendLayout();
-			this.tabPageMemoryMappedFile.SuspendLayout();
+			mmfSelectTileGroupBox = new System.Windows.Forms.GroupBox();
 			mmfIDAndColorMappingTableLayoutPanel.SuspendLayout();
 			mmfMagicMarkerGroupBox.SuspendLayout();
 			mmfColorMappingGroupBox.SuspendLayout();
@@ -122,134 +116,28 @@
 			mmfTileCountGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.mmfTileCountTextBox)).BeginInit();
 			mmfFileNameGroupBox.SuspendLayout();
+			mmfTileInfoTableLayoutPanel.SuspendLayout();
+			mmfGroupBoxTile.SuspendLayout();
+			mmfTilePalettesTileLayoutPanel.SuspendLayout();
+			mmfGBCPaletteGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfGBCPaletteTextBox)).BeginInit();
+			mmfSGBPaletteGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfSGBPaletteTextBox)).BeginInit();
+			mmfSelectTileGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileNumberTextBox)).BeginInit();
+			this.tabControl.SuspendLayout();
+			this.tabPageFileData.SuspendLayout();
+			this.groupBoxMessageHex.SuspendLayout();
+			this.groupBoxMessageName.SuspendLayout();
+			this.groupBoxFileName.SuspendLayout();
+			this.tabPageMemoryMappedFile.SuspendLayout();
 			this.tabPageMessages.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.messageSplitContainer)).BeginInit();
 			this.messageSplitContainer.Panel1.SuspendLayout();
 			this.messageSplitContainer.Panel2.SuspendLayout();
 			this.messageSplitContainer.SuspendLayout();
 			this.groupBoxMessageInfo.SuspendLayout();
-			mmfTileInfoTableLayoutPanel.SuspendLayout();
-			mmfSelectTileGroupBox.SuspendLayout();
-			mmfGroupBoxTile.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mmfTileNumberTextBox)).BeginInit();
-			mmfTilePalettesTileLayoutPanel.SuspendLayout();
-			mmfGBCPaletteGroupBox.SuspendLayout();
-			mmfSGBPaletteGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mmfGBCPaletteTextBox)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.mmfSGBPaletteTextBox)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// tabControl
-			// 
-			this.tabControl.Controls.Add(this.tabPageFileData);
-			this.tabControl.Controls.Add(this.tabPageMemoryMappedFile);
-			this.tabControl.Controls.Add(this.tabPageMessages);
-			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl.Location = new System.Drawing.Point(0, 0);
-			this.tabControl.Name = "tabControl";
-			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(292, 289);
-			this.tabControl.TabIndex = 0;
-			// 
-			// tabPageFileData
-			// 
-			this.tabPageFileData.Controls.Add(this.groupBoxMessageHex);
-			this.tabPageFileData.Controls.Add(this.groupBoxMessageName);
-			this.tabPageFileData.Controls.Add(this.groupBoxFileName);
-			this.tabPageFileData.Controls.Add(this.openButton);
-			this.tabPageFileData.Location = new System.Drawing.Point(4, 22);
-			this.tabPageFileData.Name = "tabPageFileData";
-			this.tabPageFileData.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageFileData.Size = new System.Drawing.Size(284, 263);
-			this.tabPageFileData.TabIndex = 0;
-			this.tabPageFileData.Text = "File data";
-			this.tabPageFileData.UseVisualStyleBackColor = true;
-			// 
-			// groupBoxMessageHex
-			// 
-			this.groupBoxMessageHex.Controls.Add(this.labelMessageHex);
-			this.groupBoxMessageHex.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBoxMessageHex.Location = new System.Drawing.Point(3, 81);
-			this.groupBoxMessageHex.Name = "groupBoxMessageHex";
-			this.groupBoxMessageHex.Size = new System.Drawing.Size(278, 39);
-			this.groupBoxMessageHex.TabIndex = 2;
-			this.groupBoxMessageHex.TabStop = false;
-			this.groupBoxMessageHex.Text = "Message Hex ID";
-			// 
-			// labelMessageHex
-			// 
-			this.labelMessageHex.AutoSize = true;
-			this.labelMessageHex.Location = new System.Drawing.Point(6, 16);
-			this.labelMessageHex.Name = "labelMessageHex";
-			this.labelMessageHex.Size = new System.Drawing.Size(126, 13);
-			this.labelMessageHex.TabIndex = 3;
-			this.labelMessageHex.Text = "[Message hex goes here]";
-			// 
-			// groupBoxMessageName
-			// 
-			this.groupBoxMessageName.Controls.Add(this.labelMessageName);
-			this.groupBoxMessageName.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBoxMessageName.Location = new System.Drawing.Point(3, 42);
-			this.groupBoxMessageName.Name = "groupBoxMessageName";
-			this.groupBoxMessageName.Size = new System.Drawing.Size(278, 39);
-			this.groupBoxMessageName.TabIndex = 1;
-			this.groupBoxMessageName.TabStop = false;
-			this.groupBoxMessageName.Text = "Message name";
-			// 
-			// labelMessageName
-			// 
-			this.labelMessageName.AutoSize = true;
-			this.labelMessageName.Location = new System.Drawing.Point(6, 16);
-			this.labelMessageName.Name = "labelMessageName";
-			this.labelMessageName.Size = new System.Drawing.Size(135, 13);
-			this.labelMessageName.TabIndex = 0;
-			this.labelMessageName.Text = "[Message name goes here]";
-			// 
-			// groupBoxFileName
-			// 
-			this.groupBoxFileName.Controls.Add(this.fileNameLabel);
-			this.groupBoxFileName.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBoxFileName.Location = new System.Drawing.Point(3, 3);
-			this.groupBoxFileName.Name = "groupBoxFileName";
-			this.groupBoxFileName.Size = new System.Drawing.Size(278, 39);
-			this.groupBoxFileName.TabIndex = 0;
-			this.groupBoxFileName.TabStop = false;
-			this.groupBoxFileName.Text = "File name";
-			// 
-			// fileNameLabel
-			// 
-			this.fileNameLabel.AutoSize = true;
-			this.fileNameLabel.Location = new System.Drawing.Point(6, 16);
-			this.fileNameLabel.Name = "fileNameLabel";
-			this.fileNameLabel.Size = new System.Drawing.Size(108, 13);
-			this.fileNameLabel.TabIndex = 0;
-			this.fileNameLabel.Text = "[File name goes here]";
-			// 
-			// openButton
-			// 
-			this.openButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.openButton.Location = new System.Drawing.Point(201, 232);
-			this.openButton.Name = "openButton";
-			this.openButton.Size = new System.Drawing.Size(75, 23);
-			this.openButton.TabIndex = 3;
-			this.openButton.Text = "Open";
-			this.openButton.UseVisualStyleBackColor = true;
-			this.openButton.Click += new System.EventHandler(this.openButton_Click);
-			// 
-			// tabPageMemoryMappedFile
-			// 
-			this.tabPageMemoryMappedFile.AutoScroll = true;
-			this.tabPageMemoryMappedFile.AutoScrollMinSize = new System.Drawing.Size(250, 0);
-			this.tabPageMemoryMappedFile.Controls.Add(mmfTileInfoTableLayoutPanel);
-			this.tabPageMemoryMappedFile.Controls.Add(mmfIDAndColorMappingTableLayoutPanel);
-			this.tabPageMemoryMappedFile.Controls.Add(mmfSimpleTileInfoGroupBox);
-			this.tabPageMemoryMappedFile.Controls.Add(mmfFileNameGroupBox);
-			this.tabPageMemoryMappedFile.Location = new System.Drawing.Point(4, 22);
-			this.tabPageMemoryMappedFile.Name = "tabPageMemoryMappedFile";
-			this.tabPageMemoryMappedFile.Size = new System.Drawing.Size(284, 263);
-			this.tabPageMemoryMappedFile.TabIndex = 2;
-			this.tabPageMemoryMappedFile.Text = "Memory Mapped File";
-			this.tabPageMemoryMappedFile.UseVisualStyleBackColor = true;
 			// 
 			// mmfIDAndColorMappingTableLayoutPanel
 			// 
@@ -505,6 +393,243 @@
 			this.mmfFileNameTextBox.Size = new System.Drawing.Size(278, 20);
 			this.mmfFileNameTextBox.TabIndex = 0;
 			// 
+			// mmfTileInfoTableLayoutPanel
+			// 
+			mmfTileInfoTableLayoutPanel.ColumnCount = 2;
+			mmfTileInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+			mmfTileInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			mmfTileInfoTableLayoutPanel.Controls.Add(mmfGroupBoxTile, 1, 0);
+			mmfTileInfoTableLayoutPanel.Controls.Add(mmfSelectTileGroupBox, 0, 0);
+			mmfTileInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
+			mmfTileInfoTableLayoutPanel.Location = new System.Drawing.Point(0, 173);
+			mmfTileInfoTableLayoutPanel.Name = "mmfTileInfoTableLayoutPanel";
+			mmfTileInfoTableLayoutPanel.RowCount = 1;
+			mmfTileInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			mmfTileInfoTableLayoutPanel.Size = new System.Drawing.Size(284, 90);
+			mmfTileInfoTableLayoutPanel.TabIndex = 3;
+			// 
+			// mmfGroupBoxTile
+			// 
+			mmfGroupBoxTile.Controls.Add(mmfTilePalettesTileLayoutPanel);
+			mmfGroupBoxTile.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfGroupBoxTile.Location = new System.Drawing.Point(59, 0);
+			mmfGroupBoxTile.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfGroupBoxTile.Name = "mmfGroupBoxTile";
+			mmfGroupBoxTile.Size = new System.Drawing.Size(222, 87);
+			mmfGroupBoxTile.TabIndex = 4;
+			mmfGroupBoxTile.TabStop = false;
+			mmfGroupBoxTile.Text = "Tile";
+			// 
+			// mmfTilePalettesTileLayoutPanel
+			// 
+			mmfTilePalettesTileLayoutPanel.ColumnCount = 3;
+			mmfTilePalettesTileLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+			mmfTilePalettesTileLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			mmfTilePalettesTileLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			mmfTilePalettesTileLayoutPanel.Controls.Add(this.mmfTileRenderer, 0, 0);
+			mmfTilePalettesTileLayoutPanel.Controls.Add(mmfGBCPaletteGroupBox, 1, 0);
+			mmfTilePalettesTileLayoutPanel.Controls.Add(mmfSGBPaletteGroupBox, 2, 0);
+			mmfTilePalettesTileLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfTilePalettesTileLayoutPanel.Location = new System.Drawing.Point(3, 16);
+			mmfTilePalettesTileLayoutPanel.Name = "mmfTilePalettesTileLayoutPanel";
+			mmfTilePalettesTileLayoutPanel.RowCount = 1;
+			mmfTilePalettesTileLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			mmfTilePalettesTileLayoutPanel.Size = new System.Drawing.Size(216, 68);
+			mmfTilePalettesTileLayoutPanel.TabIndex = 1;
+			// 
+			// mmfTileRenderer
+			// 
+			this.mmfTileRenderer.Border = true;
+			this.mmfTileRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.mmfTileRenderer.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.mmfTileRenderer.Grid = false;
+			this.mmfTileRenderer.Location = new System.Drawing.Point(0, 0);
+			this.mmfTileRenderer.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
+			this.mmfTileRenderer.Name = "mmfTileRenderer";
+			this.mmfTileRenderer.NibbleMarkers = false;
+			this.mmfTileRenderer.PixelScale = 8;
+			this.mmfTileRenderer.Selected = false;
+			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
+			this.mmfTileRenderer.TabIndex = 1;
+			this.mmfTileRenderer.Text = "editableTileRenderer1";
+			this.mmfTileRenderer.PixelClicked += new GB.Shared.Controls.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
+			// 
+			// mmfGBCPaletteGroupBox
+			// 
+			mmfGBCPaletteGroupBox.Controls.Add(this.mmfGBCPaletteTextBox);
+			mmfGBCPaletteGroupBox.Location = new System.Drawing.Point(68, 3);
+			mmfGBCPaletteGroupBox.Name = "mmfGBCPaletteGroupBox";
+			mmfGBCPaletteGroupBox.Size = new System.Drawing.Size(69, 62);
+			mmfGBCPaletteGroupBox.TabIndex = 2;
+			mmfGBCPaletteGroupBox.TabStop = false;
+			mmfGBCPaletteGroupBox.Text = "GBC";
+			// 
+			// mmfGBCPaletteTextBox
+			// 
+			this.mmfGBCPaletteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.mmfGBCPaletteTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfGBCPaletteTextBox.Name = "mmfGBCPaletteTextBox";
+			this.mmfGBCPaletteTextBox.Size = new System.Drawing.Size(63, 20);
+			this.mmfGBCPaletteTextBox.TabIndex = 0;
+			// 
+			// mmfSGBPaletteGroupBox
+			// 
+			mmfSGBPaletteGroupBox.Controls.Add(this.mmfSGBPaletteTextBox);
+			mmfSGBPaletteGroupBox.Location = new System.Drawing.Point(143, 3);
+			mmfSGBPaletteGroupBox.Name = "mmfSGBPaletteGroupBox";
+			mmfSGBPaletteGroupBox.Size = new System.Drawing.Size(70, 62);
+			mmfSGBPaletteGroupBox.TabIndex = 3;
+			mmfSGBPaletteGroupBox.TabStop = false;
+			mmfSGBPaletteGroupBox.Text = "SGB";
+			// 
+			// mmfSGBPaletteTextBox
+			// 
+			this.mmfSGBPaletteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.mmfSGBPaletteTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfSGBPaletteTextBox.Name = "mmfSGBPaletteTextBox";
+			this.mmfSGBPaletteTextBox.Size = new System.Drawing.Size(64, 20);
+			this.mmfSGBPaletteTextBox.TabIndex = 0;
+			// 
+			// mmfSelectTileGroupBox
+			// 
+			mmfSelectTileGroupBox.Controls.Add(this.mmfTileNumberTextBox);
+			mmfSelectTileGroupBox.Location = new System.Drawing.Point(3, 0);
+			mmfSelectTileGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfSelectTileGroupBox.Name = "mmfSelectTileGroupBox";
+			mmfSelectTileGroupBox.Size = new System.Drawing.Size(50, 87);
+			mmfSelectTileGroupBox.TabIndex = 0;
+			mmfSelectTileGroupBox.TabStop = false;
+			mmfSelectTileGroupBox.Text = "Tile #";
+			// 
+			// mmfTileNumberTextBox
+			// 
+			this.mmfTileNumberTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.mmfTileNumberTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileNumberTextBox.Maximum = new decimal(new int[] {
+            785,
+            0,
+            0,
+            0});
+			this.mmfTileNumberTextBox.Name = "mmfTileNumberTextBox";
+			this.mmfTileNumberTextBox.Size = new System.Drawing.Size(44, 20);
+			this.mmfTileNumberTextBox.TabIndex = 0;
+			this.mmfTileNumberTextBox.ValueChanged += new System.EventHandler(this.mmfTileNumberTextBox_ValueChanged);
+			// 
+			// tabControl
+			// 
+			this.tabControl.Controls.Add(this.tabPageFileData);
+			this.tabControl.Controls.Add(this.tabPageMemoryMappedFile);
+			this.tabControl.Controls.Add(this.tabPageMessages);
+			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl.Location = new System.Drawing.Point(0, 0);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(292, 289);
+			this.tabControl.TabIndex = 0;
+			// 
+			// tabPageFileData
+			// 
+			this.tabPageFileData.Controls.Add(this.groupBoxMessageHex);
+			this.tabPageFileData.Controls.Add(this.groupBoxMessageName);
+			this.tabPageFileData.Controls.Add(this.groupBoxFileName);
+			this.tabPageFileData.Controls.Add(this.openButton);
+			this.tabPageFileData.Location = new System.Drawing.Point(4, 22);
+			this.tabPageFileData.Name = "tabPageFileData";
+			this.tabPageFileData.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageFileData.Size = new System.Drawing.Size(284, 263);
+			this.tabPageFileData.TabIndex = 0;
+			this.tabPageFileData.Text = "File data";
+			this.tabPageFileData.UseVisualStyleBackColor = true;
+			// 
+			// groupBoxMessageHex
+			// 
+			this.groupBoxMessageHex.Controls.Add(this.labelMessageHex);
+			this.groupBoxMessageHex.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxMessageHex.Location = new System.Drawing.Point(3, 81);
+			this.groupBoxMessageHex.Name = "groupBoxMessageHex";
+			this.groupBoxMessageHex.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxMessageHex.TabIndex = 2;
+			this.groupBoxMessageHex.TabStop = false;
+			this.groupBoxMessageHex.Text = "Message Hex ID";
+			// 
+			// labelMessageHex
+			// 
+			this.labelMessageHex.AutoSize = true;
+			this.labelMessageHex.Location = new System.Drawing.Point(6, 16);
+			this.labelMessageHex.Name = "labelMessageHex";
+			this.labelMessageHex.Size = new System.Drawing.Size(126, 13);
+			this.labelMessageHex.TabIndex = 3;
+			this.labelMessageHex.Text = "[Message hex goes here]";
+			// 
+			// groupBoxMessageName
+			// 
+			this.groupBoxMessageName.Controls.Add(this.labelMessageName);
+			this.groupBoxMessageName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxMessageName.Location = new System.Drawing.Point(3, 42);
+			this.groupBoxMessageName.Name = "groupBoxMessageName";
+			this.groupBoxMessageName.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxMessageName.TabIndex = 1;
+			this.groupBoxMessageName.TabStop = false;
+			this.groupBoxMessageName.Text = "Message name";
+			// 
+			// labelMessageName
+			// 
+			this.labelMessageName.AutoSize = true;
+			this.labelMessageName.Location = new System.Drawing.Point(6, 16);
+			this.labelMessageName.Name = "labelMessageName";
+			this.labelMessageName.Size = new System.Drawing.Size(135, 13);
+			this.labelMessageName.TabIndex = 0;
+			this.labelMessageName.Text = "[Message name goes here]";
+			// 
+			// groupBoxFileName
+			// 
+			this.groupBoxFileName.Controls.Add(this.fileNameLabel);
+			this.groupBoxFileName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxFileName.Location = new System.Drawing.Point(3, 3);
+			this.groupBoxFileName.Name = "groupBoxFileName";
+			this.groupBoxFileName.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxFileName.TabIndex = 0;
+			this.groupBoxFileName.TabStop = false;
+			this.groupBoxFileName.Text = "File name";
+			// 
+			// fileNameLabel
+			// 
+			this.fileNameLabel.AutoSize = true;
+			this.fileNameLabel.Location = new System.Drawing.Point(6, 16);
+			this.fileNameLabel.Name = "fileNameLabel";
+			this.fileNameLabel.Size = new System.Drawing.Size(108, 13);
+			this.fileNameLabel.TabIndex = 0;
+			this.fileNameLabel.Text = "[File name goes here]";
+			// 
+			// openButton
+			// 
+			this.openButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.openButton.Location = new System.Drawing.Point(201, 232);
+			this.openButton.Name = "openButton";
+			this.openButton.Size = new System.Drawing.Size(75, 23);
+			this.openButton.TabIndex = 3;
+			this.openButton.Text = "Open";
+			this.openButton.UseVisualStyleBackColor = true;
+			this.openButton.Click += new System.EventHandler(this.openButton_Click);
+			// 
+			// tabPageMemoryMappedFile
+			// 
+			this.tabPageMemoryMappedFile.AutoScroll = true;
+			this.tabPageMemoryMappedFile.AutoScrollMinSize = new System.Drawing.Size(250, 0);
+			this.tabPageMemoryMappedFile.Controls.Add(mmfTileInfoTableLayoutPanel);
+			this.tabPageMemoryMappedFile.Controls.Add(mmfIDAndColorMappingTableLayoutPanel);
+			this.tabPageMemoryMappedFile.Controls.Add(mmfSimpleTileInfoGroupBox);
+			this.tabPageMemoryMappedFile.Controls.Add(mmfFileNameGroupBox);
+			this.tabPageMemoryMappedFile.Location = new System.Drawing.Point(4, 22);
+			this.tabPageMemoryMappedFile.Name = "tabPageMemoryMappedFile";
+			this.tabPageMemoryMappedFile.Size = new System.Drawing.Size(284, 263);
+			this.tabPageMemoryMappedFile.TabIndex = 2;
+			this.tabPageMemoryMappedFile.Text = "Memory Mapped File";
+			this.tabPageMemoryMappedFile.UseVisualStyleBackColor = true;
+			// 
 			// tabPageMessages
 			// 
 			this.tabPageMessages.Controls.Add(this.messageSplitContainer);
@@ -573,130 +698,6 @@
 			// 
 			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
 			// 
-			// mmfTileInfoTableLayoutPanel
-			// 
-			mmfTileInfoTableLayoutPanel.ColumnCount = 2;
-			mmfTileInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-			mmfTileInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			mmfTileInfoTableLayoutPanel.Controls.Add(mmfGroupBoxTile, 1, 0);
-			mmfTileInfoTableLayoutPanel.Controls.Add(mmfSelectTileGroupBox, 0, 0);
-			mmfTileInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
-			mmfTileInfoTableLayoutPanel.Location = new System.Drawing.Point(0, 173);
-			mmfTileInfoTableLayoutPanel.Name = "mmfTileInfoTableLayoutPanel";
-			mmfTileInfoTableLayoutPanel.RowCount = 1;
-			mmfTileInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			mmfTileInfoTableLayoutPanel.Size = new System.Drawing.Size(284, 90);
-			mmfTileInfoTableLayoutPanel.TabIndex = 3;
-			// 
-			// mmfSelectTileGroupBox
-			// 
-			mmfSelectTileGroupBox.Controls.Add(this.mmfTileNumberTextBox);
-			mmfSelectTileGroupBox.Location = new System.Drawing.Point(3, 0);
-			mmfSelectTileGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfSelectTileGroupBox.Name = "mmfSelectTileGroupBox";
-			mmfSelectTileGroupBox.Size = new System.Drawing.Size(50, 87);
-			mmfSelectTileGroupBox.TabIndex = 0;
-			mmfSelectTileGroupBox.TabStop = false;
-			mmfSelectTileGroupBox.Text = "Tile #";
-			// 
-			// mmfGroupBoxTile
-			// 
-			mmfGroupBoxTile.Controls.Add(mmfTilePalettesTileLayoutPanel);
-			mmfGroupBoxTile.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfGroupBoxTile.Location = new System.Drawing.Point(59, 0);
-			mmfGroupBoxTile.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfGroupBoxTile.Name = "mmfGroupBoxTile";
-			mmfGroupBoxTile.Size = new System.Drawing.Size(222, 87);
-			mmfGroupBoxTile.TabIndex = 4;
-			mmfGroupBoxTile.TabStop = false;
-			mmfGroupBoxTile.Text = "Tile";
-			// 
-			// mmfTileNumberTextBox
-			// 
-			this.mmfTileNumberTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-			this.mmfTileNumberTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfTileNumberTextBox.Maximum = new decimal(new int[] {
-            785,
-            0,
-            0,
-            0});
-			this.mmfTileNumberTextBox.Name = "mmfTileNumberTextBox";
-			this.mmfTileNumberTextBox.Size = new System.Drawing.Size(44, 20);
-			this.mmfTileNumberTextBox.TabIndex = 0;
-			this.mmfTileNumberTextBox.ValueChanged += new System.EventHandler(this.mmfTileNumberTextBox_ValueChanged);
-			// 
-			// mmfTilePalettesTileLayoutPanel
-			// 
-			mmfTilePalettesTileLayoutPanel.ColumnCount = 3;
-			mmfTilePalettesTileLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-			mmfTilePalettesTileLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			mmfTilePalettesTileLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			mmfTilePalettesTileLayoutPanel.Controls.Add(this.mmfTileRenderer, 0, 0);
-			mmfTilePalettesTileLayoutPanel.Controls.Add(mmfGBCPaletteGroupBox, 1, 0);
-			mmfTilePalettesTileLayoutPanel.Controls.Add(mmfSGBPaletteGroupBox, 2, 0);
-			mmfTilePalettesTileLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfTilePalettesTileLayoutPanel.Location = new System.Drawing.Point(3, 16);
-			mmfTilePalettesTileLayoutPanel.Name = "mmfTilePalettesTileLayoutPanel";
-			mmfTilePalettesTileLayoutPanel.RowCount = 1;
-			mmfTilePalettesTileLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			mmfTilePalettesTileLayoutPanel.Size = new System.Drawing.Size(216, 68);
-			mmfTilePalettesTileLayoutPanel.TabIndex = 1;
-			// 
-			// mmfGBCPaletteGroupBox
-			// 
-			mmfGBCPaletteGroupBox.Controls.Add(this.mmfGBCPaletteTextBox);
-			mmfGBCPaletteGroupBox.Location = new System.Drawing.Point(68, 3);
-			mmfGBCPaletteGroupBox.Name = "mmfGBCPaletteGroupBox";
-			mmfGBCPaletteGroupBox.Size = new System.Drawing.Size(69, 62);
-			mmfGBCPaletteGroupBox.TabIndex = 2;
-			mmfGBCPaletteGroupBox.TabStop = false;
-			mmfGBCPaletteGroupBox.Text = "GBC";
-			// 
-			// mmfSGBPaletteGroupBox
-			// 
-			mmfSGBPaletteGroupBox.Controls.Add(this.mmfSGBPaletteTextBox);
-			mmfSGBPaletteGroupBox.Location = new System.Drawing.Point(143, 3);
-			mmfSGBPaletteGroupBox.Name = "mmfSGBPaletteGroupBox";
-			mmfSGBPaletteGroupBox.Size = new System.Drawing.Size(70, 62);
-			mmfSGBPaletteGroupBox.TabIndex = 3;
-			mmfSGBPaletteGroupBox.TabStop = false;
-			mmfSGBPaletteGroupBox.Text = "SGB";
-			// 
-			// mmfGBCPaletteTextBox
-			// 
-			this.mmfGBCPaletteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-			this.mmfGBCPaletteTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfGBCPaletteTextBox.Name = "mmfGBCPaletteTextBox";
-			this.mmfGBCPaletteTextBox.Size = new System.Drawing.Size(63, 20);
-			this.mmfGBCPaletteTextBox.TabIndex = 0;
-			// 
-			// mmfSGBPaletteTextBox
-			// 
-			this.mmfSGBPaletteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-			this.mmfSGBPaletteTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfSGBPaletteTextBox.Name = "mmfSGBPaletteTextBox";
-			this.mmfSGBPaletteTextBox.Size = new System.Drawing.Size(64, 20);
-			this.mmfSGBPaletteTextBox.TabIndex = 0;
-			// 
-			// mmfTileRenderer
-			// 
-			this.mmfTileRenderer.Border = true;
-			this.mmfTileRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.mmfTileRenderer.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.mmfTileRenderer.Grid = false;
-			this.mmfTileRenderer.Location = new System.Drawing.Point(0, 0);
-			this.mmfTileRenderer.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-			this.mmfTileRenderer.Name = "mmfTileRenderer";
-			this.mmfTileRenderer.NibbleMarkers = false;
-			this.mmfTileRenderer.PixelScale = 8;
-			this.mmfTileRenderer.Selected = false;
-			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
-			this.mmfTileRenderer.TabIndex = 1;
-			this.mmfTileRenderer.Text = "editableTileRenderer1";
-			// 
 			// auListener
 			// 
 			this.auListener.FileName = null;
@@ -715,15 +716,6 @@
 			this.Controls.Add(this.tabControl);
 			this.Name = "AutoUpdateSnifferForm";
 			this.Text = "Form1";
-			this.tabControl.ResumeLayout(false);
-			this.tabPageFileData.ResumeLayout(false);
-			this.groupBoxMessageHex.ResumeLayout(false);
-			this.groupBoxMessageHex.PerformLayout();
-			this.groupBoxMessageName.ResumeLayout(false);
-			this.groupBoxMessageName.PerformLayout();
-			this.groupBoxFileName.ResumeLayout(false);
-			this.groupBoxFileName.PerformLayout();
-			this.tabPageMemoryMappedFile.ResumeLayout(false);
 			mmfIDAndColorMappingTableLayoutPanel.ResumeLayout(false);
 			mmfMagicMarkerGroupBox.ResumeLayout(false);
 			mmfMagicMarkerGroupBox.PerformLayout();
@@ -747,6 +739,24 @@
 			((System.ComponentModel.ISupportInitialize)(this.mmfTileCountTextBox)).EndInit();
 			mmfFileNameGroupBox.ResumeLayout(false);
 			mmfFileNameGroupBox.PerformLayout();
+			mmfTileInfoTableLayoutPanel.ResumeLayout(false);
+			mmfGroupBoxTile.ResumeLayout(false);
+			mmfTilePalettesTileLayoutPanel.ResumeLayout(false);
+			mmfGBCPaletteGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfGBCPaletteTextBox)).EndInit();
+			mmfSGBPaletteGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfSGBPaletteTextBox)).EndInit();
+			mmfSelectTileGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileNumberTextBox)).EndInit();
+			this.tabControl.ResumeLayout(false);
+			this.tabPageFileData.ResumeLayout(false);
+			this.groupBoxMessageHex.ResumeLayout(false);
+			this.groupBoxMessageHex.PerformLayout();
+			this.groupBoxMessageName.ResumeLayout(false);
+			this.groupBoxMessageName.PerformLayout();
+			this.groupBoxFileName.ResumeLayout(false);
+			this.groupBoxFileName.PerformLayout();
+			this.tabPageMemoryMappedFile.ResumeLayout(false);
 			this.tabPageMessages.ResumeLayout(false);
 			this.messageSplitContainer.Panel1.ResumeLayout(false);
 			this.messageSplitContainer.Panel2.ResumeLayout(false);
@@ -754,15 +764,6 @@
 			this.messageSplitContainer.ResumeLayout(false);
 			this.groupBoxMessageInfo.ResumeLayout(false);
 			this.groupBoxMessageInfo.PerformLayout();
-			mmfTileInfoTableLayoutPanel.ResumeLayout(false);
-			mmfSelectTileGroupBox.ResumeLayout(false);
-			mmfGroupBoxTile.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.mmfTileNumberTextBox)).EndInit();
-			mmfTilePalettesTileLayoutPanel.ResumeLayout(false);
-			mmfGBCPaletteGroupBox.ResumeLayout(false);
-			mmfSGBPaletteGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.mmfGBCPaletteTextBox)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.mmfSGBPaletteTextBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -796,7 +797,7 @@
 		private System.Windows.Forms.NumericUpDown mmfTileHeightTextBox;
 		private System.Windows.Forms.NumericUpDown mmfTileCountTextBox;
 		private System.Windows.Forms.NumericUpDown mmfTileNumberTextBox;
-		private EditableTileRenderer mmfTileRenderer;
+		private GB.Shared.Controls.TileRenderer mmfTileRenderer;
 		private System.Windows.Forms.NumericUpDown mmfGBCPaletteTextBox;
 		private System.Windows.Forms.NumericUpDown mmfSGBPaletteTextBox;
 	}

@@ -57,9 +57,6 @@
     <Compile Include="AutoUpdateSnifferForm.Designer.cs">
       <DependentUpon>AutoUpdateSnifferForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditableTileRenderer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AutoUpdateSnifferForm.resx">

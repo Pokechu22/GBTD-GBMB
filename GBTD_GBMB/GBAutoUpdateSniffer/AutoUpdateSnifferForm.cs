@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GB.Shared.AutoUpdate;
+using GB.Shared.Tiles;
 
 namespace GBAutoUpdateSniffer
 {
@@ -117,6 +118,41 @@ namespace GBAutoUpdateSniffer
 			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
 			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+		}
+
+		private void mmfTileRenderer_PixelClicked(object sender, GB.Shared.Controls.PixelClickEventArgs e) {
+			//Ignore out of range clicks.
+			if (e.x < 0 || e.x >= mmfTileRenderer.Tile.Width || e.y < 0 || e.y >= mmfTileRenderer.Tile.Height) { return; }
+
+			Tile t = mmfTileRenderer.Tile;
+			GBColor oldColor = t[e.x, e.y];
+
+			GBColor newColor;
+
+
+			if (e.mouseButton == System.Windows.Forms.MouseButtons.Left) {
+				switch (oldColor) {
+				case GBColor.BLACK: newColor = GBColor.DARK_GRAY; break;
+				case GBColor.DARK_GRAY: newColor = GBColor.LIGHT_GRAY; break;
+				case GBColor.LIGHT_GRAY: newColor = GBColor.WHITE; break;
+				case GBColor.WHITE: newColor = GBColor.BLACK; break;
+				default: return; //This *SHOULD NEVER* happen.
+				}
+			} else if (e.mouseButton == System.Windows.Forms.MouseButtons.Right) {
+				switch (oldColor) {
+				case GBColor.BLACK: newColor = GBColor.WHITE; break;
+				case GBColor.DARK_GRAY: newColor = GBColor.BLACK; break;
+				case GBColor.LIGHT_GRAY: newColor = GBColor.DARK_GRAY; break;
+				case GBColor.WHITE: newColor = GBColor.LIGHT_GRAY; break;
+				default: return; //This *SHOULD NEVER* happen.
+				}
+			} else {
+				return;
+			}
+
+			t[e.x, e.y] = newColor;
+
+			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value] = t;
 		}
 	}
 }
