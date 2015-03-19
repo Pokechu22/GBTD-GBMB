@@ -43,6 +43,14 @@ namespace GBAutoUpdateSniffer
 			//It doesn't appear in intelisense, but it does work.
 			tabPageMemoryMappedFile.Enabled = true;
 			tabPageMessages.Enabled = true;
+
+			mmfFileNameTextBox.Text = mmf.MMFName;
+
+			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+
+			mmfIDTextBox.Text = mmf.ID;
 		}
 
 		private void listBoxMessages_SelectedIndexChanged(object sender, EventArgs e) {
@@ -88,6 +96,12 @@ namespace GBAutoUpdateSniffer
 
 		private void auListener_OnTotalRefreshNeeded(object sender, MessageEventArgs args) {
 			addMessageToList(new AUEventInfo(args, AUEventType.Total_refresh));
+		}
+
+		private void mmfTileNumberTextBox_ValueChanged(object sender, EventArgs e) {
+			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
 		}
 	}
 }

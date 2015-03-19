@@ -195,6 +195,7 @@ namespace GB.Shared.AutoUpdate
 		private const int MEM_BLOCK_SIZE = 50964;
 
 		private string fileName;
+		private string mmfName;
 		private AUMessenger messenger;
 		private MemoryMappedFile file;
 		private MemoryMappedViewStream stream;
@@ -203,10 +204,10 @@ namespace GB.Shared.AutoUpdate
 			this.fileName = fileName;
 			
 			//The hidden step.
-			fileName = fileName.ToUpperInvariant().Replace('\\', '@');
+			mmfName = fileName.ToUpperInvariant().Replace('\\', '@');
 
 			try {
-				this.file = MemoryMappedFile.OpenExisting(fileName, MemoryMappedFileRights.ReadWrite);
+				this.file = MemoryMappedFile.OpenExisting(mmfName, MemoryMappedFileRights.ReadWrite);
 			} catch (FileNotFoundException) {
 				//TODO initialize the defaults.
 				//this.file = MemoryMappedFile.CreateNew(fileName, MEM_BLOCK_SIZE, MemoryMappedFileAccess.ReadWrite);
@@ -233,6 +234,21 @@ namespace GB.Shared.AutoUpdate
 		public void Dispose() {
 			file.Dispose();
 			stream.Dispose();
+		}
+
+		/// <summary>
+		/// The name the MMF was origionally created with.
+		/// </summary>
+		[Description("The name the MMF was origionally created with.")]
+		public string FileName {
+			get { return fileName; }
+		}
+		/// <summary>
+		/// The name the MMF actually uses.
+		/// </summary>
+		[Description("The name the MMF actually uses.")]
+		public string MMFName {
+			get { return mmfName; }
 		}
 
 		/// <summary>

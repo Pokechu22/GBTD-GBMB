@@ -70,11 +70,11 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
 			this.mmfTileNumberTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfGBCPaletteTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfSGBPaletteTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfTileRenderer = new GBAutoUpdateSniffer.EditableTileRenderer();
+			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
 			mmfIDAndColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfMagicMarkerGroupBox = new System.Windows.Forms.GroupBox();
 			mmfColorMappingGroupBox = new System.Windows.Forms.GroupBox();
@@ -573,16 +573,6 @@
 			// 
 			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
 			// 
-			// auListener
-			// 
-			this.auListener.FileName = null;
-			this.auListener.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auListener_OnTileChanged);
-			this.auListener.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTotalRefreshNeeded);
-			this.auListener.OnTileRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTileRefreshNeeded);
-			this.auListener.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTileSizeChanged);
-			this.auListener.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnGBPaletteChanged);
-			this.auListener.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnColorPaletteChanged);
-			// 
 			// mmfTileInfoTableLayoutPanel
 			// 
 			mmfTileInfoTableLayoutPanel.ColumnCount = 2;
@@ -633,6 +623,7 @@
 			this.mmfTileNumberTextBox.Name = "mmfTileNumberTextBox";
 			this.mmfTileNumberTextBox.Size = new System.Drawing.Size(44, 20);
 			this.mmfTileNumberTextBox.TabIndex = 0;
+			this.mmfTileNumberTextBox.ValueChanged += new System.EventHandler(this.mmfTileNumberTextBox_ValueChanged);
 			// 
 			// mmfTilePalettesTileLayoutPanel
 			// 
@@ -705,6 +696,16 @@
 			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
 			this.mmfTileRenderer.TabIndex = 1;
 			this.mmfTileRenderer.Text = "editableTileRenderer1";
+			// 
+			// auListener
+			// 
+			this.auListener.FileName = null;
+			this.auListener.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auListener_OnTileChanged);
+			this.auListener.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTotalRefreshNeeded);
+			this.auListener.OnTileRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTileRefreshNeeded);
+			this.auListener.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTileSizeChanged);
+			this.auListener.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnGBPaletteChanged);
+			this.auListener.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnColorPaletteChanged);
 			// 
 			// AutoUpdateSnifferForm
 			// 
