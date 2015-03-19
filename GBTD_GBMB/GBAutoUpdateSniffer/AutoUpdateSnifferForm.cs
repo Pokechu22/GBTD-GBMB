@@ -84,10 +84,21 @@ namespace GBAutoUpdateSniffer
 
 		private void auListener_OnTileChanged(object sender, TileChangedEventArgs args) {
 			addMessageToList(new AUEventInfo(args, AUEventType.Single_tile));
+
+			//Update only if the right tile.
+			if (args.TileID == mmfTileNumberTextBox.Value) {
+				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+				mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+				mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+			}
 		}
 
 		private void auListener_OnTileRefreshNeeded(object sender, MessageEventArgs args) {
 			addMessageToList(new AUEventInfo(args, AUEventType.Tile_refresh));
+
+			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
 		}
 
 		private void auListener_OnTileSizeChanged(object sender, MessageEventArgs args) {
@@ -96,6 +107,10 @@ namespace GBAutoUpdateSniffer
 
 		private void auListener_OnTotalRefreshNeeded(object sender, MessageEventArgs args) {
 			addMessageToList(new AUEventInfo(args, AUEventType.Total_refresh));
+
+			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
 		}
 
 		private void mmfTileNumberTextBox_ValueChanged(object sender, EventArgs e) {

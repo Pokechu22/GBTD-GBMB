@@ -17,7 +17,13 @@ namespace GBAutoUpdateSniffer
 	public class EditableTileRenderer : TileRenderer
 	{
 		public EditableTileRenderer() {
-			
+			//Required for it to update when not focused.  http://stackoverflow.com/a/2326001/3991344
+			SetStyle(
+				ControlStyles.AllPaintingInWmPaint |
+				ControlStyles.UserPaint |
+				ControlStyles.OptimizedDoubleBuffer |
+				ControlStyles.ResizeRedraw,
+				true);
 		}
 
 		protected override void OnPixelClicked(PixelClickEventArgs e) {
