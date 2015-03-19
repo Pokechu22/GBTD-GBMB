@@ -6,6 +6,7 @@ using System.IO.MemoryMappedFiles;
 using System.IO;
 using System.ComponentModel;
 using System.Drawing;
+using GB.Shared.Tiles;
 
 namespace GB.Shared.AutoUpdate
 {
@@ -21,48 +22,50 @@ namespace GB.Shared.AutoUpdate
 		/// </summary>
 		public class MMFTileList
 		{
+			private const int TILE_WIDTH = 8, TILE_HEIGHT = 8;
+
 			private readonly AUMemMappedFile file;
 			internal MMFTileList(AUMemMappedFile file) {
 				this.file = file;
 			}
 
-			public byte[,] this[UInt16 tile] {
+			public Tile this[UInt16 tile] {
 				get {
 					var stream = file.stream;
-					stream.Position = TILES_INDEX + (tile * 8 * 8);
+					stream.Position = TILES_INDEX + (tile * TILE_WIDTH * TILE_HEIGHT);
 
-					byte[] data = new byte[8 * 8];
-					var read = stream.Read(data, 0, 8 * 8);
-					if (read != 8 * 8) {
+					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
+					var read = stream.Read(data, 0, TILE_WIDTH * TILE_HEIGHT);
+					if (read != TILE_WIDTH * TILE_HEIGHT) {
 						throw new EndOfStreamException();
 					}
 
-					byte[,] result = new byte[8, 8];
+					GBColor[,] pixels = new GBColor[TILE_WIDTH, TILE_HEIGHT];
 
-					for (int y = 0; y < 8; y++) {
-						for (int x = 0; x < 8; x++) {
-							result[x, y] = data[x + (y * 8) + (tile * 8 * 8)];
+					for (int y = 0; y < TILE_HEIGHT; y++) {
+						for (int x = 0; x < TILE_WIDTH; x++) {
+							pixels[x, y] = (GBColor)data[x + (y * TILE_WIDTH) + (tile * TILE_WIDTH * TILE_HEIGHT)];
 						}
 					}
 
-					return result;
+					return new Tile(pixels);
 				}
 				set {
 					var stream = file.stream;
-					stream.Position = TILES_INDEX + (tile * 8 * 8);
+					stream.Position = TILES_INDEX + (tile * TILE_WIDTH * TILE_HEIGHT);
 
-					byte[] data = new byte[8 * 8];
+					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
 
-					if (value.GetLength(0) != 8) { throw new ArgumentOutOfRangeException("value", "0th length is invalid (must be 8)"); }
-					if (value.GetLength(1) != 8) { throw new ArgumentOutOfRangeException("value", "1th length is invalid (must be 8)"); }
+					if (value.Width != TILE_WIDTH) { throw new ArgumentException("Tile width MUST be " + TILE_WIDTH + ".", "value"); }
+					if (value.Height != TILE_HEIGHT) { throw new ArgumentException("Tile height MUST be " + TILE_HEIGHT + ".", "value"); }
 
-					for (int y = 0; y < 8; y++) {
-						for (int x = 0; x < 8; x++) {
-							data[x + (y * 8)] = value[x, y];
+					for (int y = 0; y < TILE_HEIGHT; y++) {
+						for (int x = 0; x < TILE_WIDTH; x++) {
+							data[x + (y * TILE_WIDTH)] = (byte)value[x, y];
 						}
 					}
 
-					stream.Write(data, 0, 8 * 8);
+					stream.Write(data, 0, TILE_WIDTH * TILE_HEIGHT);
 
 					file.messenger.SendTileChangeMessage(tile);
 				}

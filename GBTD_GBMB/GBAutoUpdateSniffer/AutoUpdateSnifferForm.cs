@@ -33,10 +33,6 @@ namespace GBAutoUpdateSniffer
 			labelMessageName.Text = auListener.AutoUpdateMessageName;
 
 			this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener);
-
-			byte[,] bytes = mmf.Tiles[0];
-			bytes[0, 0] = 3;
-			mmf.Tiles[0] = bytes;
 		}
 
 		private void listBoxMessages_SelectedIndexChanged(object sender, EventArgs e) {
