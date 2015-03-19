@@ -174,7 +174,8 @@ namespace GB.Shared.AutoUpdate
 					for (int i = 0; i < value.Length; i++) {
 						stream.WriteColor(value[i]);
 					}
-					//TODO message.
+
+					file.messenger.SendColorSetsMessage();
 				}
 			}
 		}
@@ -218,6 +219,9 @@ namespace GB.Shared.AutoUpdate
 
 			Tiles = new MMFTileList(this);
 			PalMaps = new MMFPalMapList(this);
+
+			GBCPalettes = new MMFGBColorSet(this, GBCCOLSET_INDEX);
+			SGBPalettes = new MMFGBColorSet(this, SGBCOLSET_INDEX);
 
 			this.messenger = listener;
 		}
@@ -316,7 +320,8 @@ namespace GB.Shared.AutoUpdate
 				messenger.SendTilePalettesMessage();
 			}
 		}
-		
-		//TODO: GBCPalettes and SGBPalettes.
+
+		public MMFGBColorSet GBCPalettes { get; private set; }
+		public MMFGBColorSet SGBPalettes { get; private set; }
 	}
 }
