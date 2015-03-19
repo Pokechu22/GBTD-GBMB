@@ -64,7 +64,7 @@ namespace GB.Shared.AutoUpdate
 
 					stream.Write(data, 0, 8 * 8);
 
-					file.listener.SendTileChangeMessage(tile);
+					file.messenger.SendTileChangeMessage(tile);
 				}
 			}
 		}
@@ -106,6 +106,8 @@ namespace GB.Shared.AutoUpdate
 
 					stream.WriteByte(value.GBC);
 					stream.WriteByte(value.SGB);
+
+					file.messenger.SendTileChangeMessage(tile);
 				}
 			}
 		}
@@ -172,6 +174,7 @@ namespace GB.Shared.AutoUpdate
 					for (int i = 0; i < value.Length; i++) {
 						stream.WriteColor(value[i]);
 					}
+					//TODO message.
 				}
 			}
 		}
@@ -191,7 +194,7 @@ namespace GB.Shared.AutoUpdate
 		private const int MEM_BLOCK_SIZE = 50964;
 
 		private string fileName;
-		private AUMessenger listener;
+		private AUMessenger messenger;
 		private MemoryMappedFile file;
 		private MemoryMappedViewStream stream;
 
@@ -216,7 +219,7 @@ namespace GB.Shared.AutoUpdate
 			Tiles = new MMFTileList(this);
 			PalMaps = new MMFPalMapList(this);
 
-			this.listener = listener;
+			this.messenger = listener;
 		}
 
 		~AUMemMappedFile() {
@@ -253,6 +256,8 @@ namespace GB.Shared.AutoUpdate
 			set {
 				stream.Position = TILECOUNT_INDEX;
 				stream.WriteInteger(value);
+
+				messenger.SendTileListRefreshMessage();
 			}
 		}
 
@@ -264,6 +269,8 @@ namespace GB.Shared.AutoUpdate
 			set {
 				stream.Position = TILEWIDTH_INDEX;
 				stream.WriteInteger(value);
+
+				messenger.SendTileDimensionsMessage();
 			}
 		}
 
@@ -275,6 +282,8 @@ namespace GB.Shared.AutoUpdate
 			set {
 				stream.Position = TILEHEIGHT_INDEX;
 				stream.WriteInteger(value);
+
+				messenger.SendTileDimensionsMessage();
 			}
 		}
 
@@ -303,6 +312,8 @@ namespace GB.Shared.AutoUpdate
 				}
 
 				stream.Write(value, 0, 4);
+
+				messenger.SendTilePalettesMessage();
 			}
 		}
 		

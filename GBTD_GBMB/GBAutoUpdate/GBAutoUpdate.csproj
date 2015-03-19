@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AUListener.cs">
+    <Compile Include="AUMessenger.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="AUMemMappedFile.cs" />
