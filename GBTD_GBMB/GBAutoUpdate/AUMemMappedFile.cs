@@ -45,7 +45,7 @@ namespace GB.Shared.AutoUpdate
 
 					for (int y = 0; y < TILE_HEIGHT; y++) {
 						for (int x = 0; x < TILE_WIDTH; x++) {
-							pixels[x, y] = (GBColor)data[x + (y * TILE_WIDTH) + (tile * TILE_WIDTH * TILE_HEIGHT)];
+							pixels[x, y] = (GBColor)data[x + (y * TILE_WIDTH)];
 						}
 					}
 
