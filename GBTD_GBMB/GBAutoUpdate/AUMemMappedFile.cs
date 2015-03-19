@@ -45,7 +45,7 @@ namespace GB.Shared.AutoUpdate
 
 					for (int y = 0; y < TILE_HEIGHT; y++) {
 						for (int x = 0; x < TILE_WIDTH; x++) {
-							pixels[x, y] = (GBColor)data[x + (y * TILE_WIDTH)];
+							pixels[x, y] = ByteToGBColor(data[x + (y * TILE_WIDTH)]);
 						}
 					}
 
@@ -62,13 +62,33 @@ namespace GB.Shared.AutoUpdate
 
 					for (int y = 0; y < TILE_HEIGHT; y++) {
 						for (int x = 0; x < TILE_WIDTH; x++) {
-							data[x + (y * TILE_WIDTH)] = (byte)value[x, y];
+							data[x + (y * TILE_WIDTH)] = GBColorToByte(value[x, y]);
 						}
 					}
 
 					stream.Write(data, 0, TILE_WIDTH * TILE_HEIGHT);
 
 					file.messenger.SendTileChangeMessage(tile);
+				}
+			}
+
+			private GBColor ByteToGBColor(byte b) {
+				switch (b) {
+				case 0: return GBColor.WHITE;
+				case 1: return GBColor.LIGHT_GRAY;
+				case 2: return GBColor.DARK_GRAY;
+				case 3: return GBColor.BLACK;
+				default: return (GBColor)b; //Will be invalid, but we shouldn't mess with it.
+				}
+			}
+
+			private byte GBColorToByte(GBColor c) {
+				switch (c) {
+				case GBColor.WHITE: return 0;
+				case GBColor.LIGHT_GRAY: return 1;
+				case GBColor.DARK_GRAY: return 2;
+				case GBColor.BLACK: return 3;
+				default: return (byte)c;
 				}
 			}
 		}
