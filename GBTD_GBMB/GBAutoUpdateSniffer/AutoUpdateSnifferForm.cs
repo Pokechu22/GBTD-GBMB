@@ -154,5 +154,18 @@ namespace GBAutoUpdateSniffer
 
 			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value] = t;
 		}
+
+		private void mmfColorMappingTextBox_ValueChanged(object sender, EventArgs e) {
+			NumericUpDown upDown = sender as NumericUpDown;
+			if (upDown != null) {
+				switch ((byte)upDown.Value) {
+				case 0: upDown.BackColor = Color.White; upDown.ForeColor = Color.Black; return;
+				case 1: upDown.BackColor = Color.LightGray; upDown.ForeColor = Color.Black; return;
+				case 2: upDown.BackColor = Color.Gray; upDown.ForeColor = Color.White; return;
+				case 3: upDown.BackColor = Color.Black; upDown.ForeColor = Color.White; return;
+				default: upDown.BackColor = Color.Lime; upDown.ForeColor = Color.Black; return;
+				}
+			}
+		}
 	}
 }
