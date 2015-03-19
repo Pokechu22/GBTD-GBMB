@@ -191,11 +191,11 @@ namespace GB.Shared.AutoUpdate
 		private const int MEM_BLOCK_SIZE = 50964;
 
 		private string fileName;
-		private AUListener listener;
+		private AUMessenger listener;
 		private MemoryMappedFile file;
 		private MemoryMappedViewStream stream;
 
-		public AUMemMappedFile(String fileName, AUListener listener) {
+		public AUMemMappedFile(String fileName, AUMessenger listener) {
 			this.fileName = fileName;
 			
 			//The hidden step.

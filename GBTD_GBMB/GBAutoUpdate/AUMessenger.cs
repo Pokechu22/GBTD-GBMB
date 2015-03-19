@@ -11,7 +11,7 @@ namespace GB.Shared.AutoUpdate
 	/// <summary>
 	/// Listens to AutoUpdate changes using the windows message API.
 	/// </summary>
-	public class AUListener : Component
+	public class AUMessenger : Component
 	{
 		/// <summary>
 		/// http://pinvoke.net/default.aspx/user32/RegisterWindowMessage.html
@@ -68,7 +68,7 @@ namespace GB.Shared.AutoUpdate
 			}
 		}
 
-		public AUListener() {
+		public AUMessenger() {
 			MessageListener.Start();
 			MessageListener.OnMessage += new MessageEventHandler(onListenerMessage);
 		}

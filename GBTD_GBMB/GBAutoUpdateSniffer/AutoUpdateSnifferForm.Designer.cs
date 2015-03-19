@@ -41,7 +41,7 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.auListener = new GB.Shared.AutoUpdate.AUListener();
+			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
 			this.tabControl.SuspendLayout();
 			this.tabPageFileData.SuspendLayout();
 			this.groupBoxMessageHex.SuspendLayout();
@@ -265,7 +265,7 @@
 
 		#endregion
 
-		private GB.Shared.AutoUpdate.AUListener auListener;
+		private GB.Shared.AutoUpdate.AUMessenger auListener;
 		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.TabPage tabPageFileData;
 		private System.Windows.Forms.TabPage tabPageMessages;
