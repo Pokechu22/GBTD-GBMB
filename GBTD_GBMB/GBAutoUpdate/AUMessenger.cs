@@ -73,6 +73,13 @@ namespace GB.Shared.AutoUpdate
 			MessageListener.OnMessage += new MessageEventHandler(onListenerMessage);
 		}
 
+		protected override void Dispose(bool disposing) {
+			if (disposing) {
+				MessageListener.OnMessage -= new MessageEventHandler(onListenerMessage);
+			}
+			base.Dispose(disposing);
+		}
+
 		void onListenerMessage(object sender, MessageEventArgs args) {
 			if (args.Message.Msg == AutoUpdateMessageID) {
 				if (args.Message.LParam == MessageListener.MessageListenerHandle) { return; } //To avoid an infinite loop.
@@ -135,8 +142,44 @@ namespace GB.Shared.AutoUpdate
 				lParam: MessageListener.MessageListenerHandle);
 		}
 
-		public void SendTileChange() {
+		public void SendTotalRefreshMessage() {
+			SendMessage(
+				hWnd: HWND_BROADCAST,
+				Msg: AutoUpdateMessageID,
+				wParam: new IntPtr(TILEMSGTOTAL),
+				lParam: MessageListener.MessageListenerHandle);
+		}
 
+		public void SendTileListRefreshMessage() {
+			SendMessage(
+				hWnd: HWND_BROADCAST,
+				Msg: AutoUpdateMessageID,
+				wParam: new IntPtr(TILEMSGLIST),
+				lParam: MessageListener.MessageListenerHandle);
+		}
+
+		public void SendTileDimensionsMessage() {
+			SendMessage(
+				hWnd: HWND_BROADCAST,
+				Msg: AutoUpdateMessageID,
+				wParam: new IntPtr(TILEMSGDIM),
+				lParam: MessageListener.MessageListenerHandle);
+		}
+
+		public void SendTilePalettesMessage() {
+			SendMessage(
+				hWnd: HWND_BROADCAST,
+				Msg: AutoUpdateMessageID,
+				wParam: new IntPtr(TILEMSGPAL),
+				lParam: MessageListener.MessageListenerHandle);
+		}
+
+		public void SendColorSetsMessage() {
+			SendMessage(
+				hWnd: HWND_BROADCAST,
+				Msg: AutoUpdateMessageID,
+				wParam: new IntPtr(TILEMSGCOLSETS),
+				lParam: MessageListener.MessageListenerHandle);
 		}
 
 		[Description("Raw event for accessing the raw message used")]
