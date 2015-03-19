@@ -87,6 +87,16 @@ namespace GB.Shared.Palettes
 	public class PaletteSet
 	{
 		/// <summary>
+		/// Creates a paletteset with the specified palettes.
+		/// </summary>
+		/// <param name="palettes">The palettes to use.</param>
+		public PaletteSet(params Palette[] palettes) {
+			if (palettes == null) { throw new ArgumentNullException("palettes"); }
+
+			this.palettes = (Palette[])palettes.Clone();
+		}
+
+		/// <summary>
 		/// Creates a PaletteSet of the specified size.
 		/// </summary>
 		/// <param name="size"></param>
@@ -125,6 +135,19 @@ namespace GB.Shared.Palettes
 	/// </summary>
 	public class Palette
 	{
+		/// <summary>
+		/// Creates a palette with the specified colors.
+		/// </summary>
+		public Palette(Color Color0, Color Color1, Color Color2, Color Color3) {
+			this.Color0 = Color0;
+			this.Color1 = Color1;
+			this.Color2 = Color2;
+			this.Color3 = Color3;
+		}
+
+		/// <summary>
+		/// Created a palette with the default colors.
+		/// </summary>
 		public Palette() {
 			this.Color0 = Color.White;
 			this.Color1 = Color.LightGray;
