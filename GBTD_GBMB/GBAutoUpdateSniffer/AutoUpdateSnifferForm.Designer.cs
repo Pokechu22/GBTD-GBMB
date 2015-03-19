@@ -41,18 +41,35 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.mmfSimpleTileInfoGroupBox = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.mmfTileCountGroupBox = new System.Windows.Forms.GroupBox();
+			this.mmfTileWidthGroupBox = new System.Windows.Forms.GroupBox();
+			this.mmfTileHeightGroupBox = new System.Windows.Forms.GroupBox();
 			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
+			this.mmfTileCountTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfTileWidthTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfTileHeightTextBox = new System.Windows.Forms.NumericUpDown();
 			this.tabControl.SuspendLayout();
 			this.tabPageFileData.SuspendLayout();
 			this.groupBoxMessageHex.SuspendLayout();
 			this.groupBoxMessageName.SuspendLayout();
 			this.groupBoxFileName.SuspendLayout();
+			this.tabPageMemoryMappedFile.SuspendLayout();
 			this.tabPageMessages.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.messageSplitContainer)).BeginInit();
 			this.messageSplitContainer.Panel1.SuspendLayout();
 			this.messageSplitContainer.Panel2.SuspendLayout();
 			this.messageSplitContainer.SuspendLayout();
 			this.groupBoxMessageInfo.SuspendLayout();
+			this.mmfSimpleTileInfoGroupBox.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
+			this.mmfTileCountGroupBox.SuspendLayout();
+			this.mmfTileWidthGroupBox.SuspendLayout();
+			this.mmfTileHeightGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileCountTextBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileWidthTextBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileHeightTextBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -154,6 +171,7 @@
 			// 
 			// tabPageMemoryMappedFile
 			// 
+			this.tabPageMemoryMappedFile.Controls.Add(this.mmfSimpleTileInfoGroupBox);
 			this.tabPageMemoryMappedFile.Location = new System.Drawing.Point(4, 22);
 			this.tabPageMemoryMappedFile.Name = "tabPageMemoryMappedFile";
 			this.tabPageMemoryMappedFile.Size = new System.Drawing.Size(284, 247);
@@ -228,6 +246,73 @@
 			// openFileDialog
 			// 
 			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
+			// 
+			// mmfSimpleTileInfoGroupBox
+			// 
+			this.mmfSimpleTileInfoGroupBox.Controls.Add(this.tableLayoutPanel1);
+			this.mmfSimpleTileInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.mmfSimpleTileInfoGroupBox.Location = new System.Drawing.Point(0, 0);
+			this.mmfSimpleTileInfoGroupBox.Name = "mmfSimpleTileInfoGroupBox";
+			this.mmfSimpleTileInfoGroupBox.Size = new System.Drawing.Size(284, 64);
+			this.mmfSimpleTileInfoGroupBox.TabIndex = 0;
+			this.mmfSimpleTileInfoGroupBox.TabStop = false;
+			this.mmfSimpleTileInfoGroupBox.Text = "Simple Tile Info";
+			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.ColumnCount = 3;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.Controls.Add(this.mmfTileWidthGroupBox, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.mmfTileHeightGroupBox, 2, 0);
+			this.tableLayoutPanel1.Controls.Add(this.mmfTileCountGroupBox, 0, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(278, 45);
+			this.tableLayoutPanel1.TabIndex = 0;
+			// 
+			// mmfTileCountGroupBox
+			// 
+			this.mmfTileCountGroupBox.Controls.Add(this.mmfTileCountTextBox);
+			this.mmfTileCountGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfTileCountGroupBox.Location = new System.Drawing.Point(3, 0);
+			this.mmfTileCountGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			this.mmfTileCountGroupBox.Name = "mmfTileCountGroupBox";
+			this.mmfTileCountGroupBox.Size = new System.Drawing.Size(86, 42);
+			this.mmfTileCountGroupBox.TabIndex = 0;
+			this.mmfTileCountGroupBox.TabStop = false;
+			this.mmfTileCountGroupBox.Text = "Tile count";
+			// 
+			// mmfTileWidthGroupBox
+			// 
+			this.mmfTileWidthGroupBox.Controls.Add(this.mmfTileWidthTextBox);
+			this.mmfTileWidthGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfTileWidthGroupBox.Location = new System.Drawing.Point(95, 0);
+			this.mmfTileWidthGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			this.mmfTileWidthGroupBox.Name = "mmfTileWidthGroupBox";
+			this.mmfTileWidthGroupBox.Size = new System.Drawing.Size(86, 42);
+			this.mmfTileWidthGroupBox.TabIndex = 1;
+			this.mmfTileWidthGroupBox.TabStop = false;
+			this.mmfTileWidthGroupBox.Text = "Tile width";
+			// 
+			// mmfTileHeightGroupBox
+			// 
+			this.mmfTileHeightGroupBox.Controls.Add(this.mmfTileHeightTextBox);
+			this.mmfTileHeightGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfTileHeightGroupBox.Location = new System.Drawing.Point(187, 0);
+			this.mmfTileHeightGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			this.mmfTileHeightGroupBox.Name = "mmfTileHeightGroupBox";
+			this.mmfTileHeightGroupBox.Size = new System.Drawing.Size(88, 42);
+			this.mmfTileHeightGroupBox.TabIndex = 2;
+			this.mmfTileHeightGroupBox.TabStop = false;
+			this.mmfTileHeightGroupBox.Text = "Tile height";
+			// 
+			// auListener
+			// 
 			this.auListener.FileName = null;
 			this.auListener.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auListener_OnTileChanged);
 			this.auListener.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTotalRefreshNeeded);
@@ -235,6 +320,30 @@
 			this.auListener.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTileSizeChanged);
 			this.auListener.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnGBPaletteChanged);
 			this.auListener.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnColorPaletteChanged);
+			// 
+			// mmfTileCountTextBox
+			// 
+			this.mmfTileCountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfTileCountTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileCountTextBox.Name = "mmfTileCountTextBox";
+			this.mmfTileCountTextBox.Size = new System.Drawing.Size(80, 20);
+			this.mmfTileCountTextBox.TabIndex = 0;
+			// 
+			// mmfTileWidthTextBox
+			// 
+			this.mmfTileWidthTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfTileWidthTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileWidthTextBox.Name = "mmfTileWidthTextBox";
+			this.mmfTileWidthTextBox.Size = new System.Drawing.Size(80, 20);
+			this.mmfTileWidthTextBox.TabIndex = 0;
+			// 
+			// mmfTileHeightTextBox
+			// 
+			this.mmfTileHeightTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfTileHeightTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileHeightTextBox.Name = "mmfTileHeightTextBox";
+			this.mmfTileHeightTextBox.Size = new System.Drawing.Size(82, 20);
+			this.mmfTileHeightTextBox.TabIndex = 0;
 			// 
 			// AutoUpdateSnifferForm
 			// 
@@ -252,6 +361,7 @@
 			this.groupBoxMessageName.PerformLayout();
 			this.groupBoxFileName.ResumeLayout(false);
 			this.groupBoxFileName.PerformLayout();
+			this.tabPageMemoryMappedFile.ResumeLayout(false);
 			this.tabPageMessages.ResumeLayout(false);
 			this.messageSplitContainer.Panel1.ResumeLayout(false);
 			this.messageSplitContainer.Panel2.ResumeLayout(false);
@@ -259,6 +369,14 @@
 			this.messageSplitContainer.ResumeLayout(false);
 			this.groupBoxMessageInfo.ResumeLayout(false);
 			this.groupBoxMessageInfo.PerformLayout();
+			this.mmfSimpleTileInfoGroupBox.ResumeLayout(false);
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.mmfTileCountGroupBox.ResumeLayout(false);
+			this.mmfTileWidthGroupBox.ResumeLayout(false);
+			this.mmfTileHeightGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileCountTextBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileWidthTextBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mmfTileHeightTextBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -282,6 +400,14 @@
 		private System.Windows.Forms.TextBox textBoxMessageInfo;
 		private System.Windows.Forms.GroupBox groupBoxMessageName;
 		private System.Windows.Forms.Label labelMessageName;
+		private System.Windows.Forms.GroupBox mmfSimpleTileInfoGroupBox;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.GroupBox mmfTileWidthGroupBox;
+		private System.Windows.Forms.GroupBox mmfTileHeightGroupBox;
+		private System.Windows.Forms.GroupBox mmfTileCountGroupBox;
+		private System.Windows.Forms.NumericUpDown mmfTileWidthTextBox;
+		private System.Windows.Forms.NumericUpDown mmfTileHeightTextBox;
+		private System.Windows.Forms.NumericUpDown mmfTileCountTextBox;
 	}
 }
 
