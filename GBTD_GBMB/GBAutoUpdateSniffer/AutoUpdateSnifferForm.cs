@@ -81,6 +81,11 @@ namespace GBAutoUpdateSniffer
 
 		private void auListener_OnGBPaletteChanged(object sender, MessageEventArgs args) {
 			addMessageToList(new AUEventInfo(args, AUEventType.Tile_palette));
+
+			mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
+			mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
+			mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
+			mmfColor3MappingTextBox.Value = mmf.GBPalettes.Color3;
 		}
 
 		private void auListener_OnTileChanged(object sender, TileChangedEventArgs args) {
@@ -112,6 +117,11 @@ namespace GBAutoUpdateSniffer
 			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
 			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+
+			mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
+			mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
+			mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
+			mmfColor3MappingTextBox.Value = mmf.GBPalettes.Color3;
 		}
 
 		private void mmfTileNumberTextBox_ValueChanged(object sender, EventArgs e) {
@@ -158,13 +168,20 @@ namespace GBAutoUpdateSniffer
 		private void mmfColorMappingTextBox_ValueChanged(object sender, EventArgs e) {
 			NumericUpDown upDown = sender as NumericUpDown;
 			if (upDown != null) {
-				switch ((byte)upDown.Value) {
-				case 0: upDown.BackColor = Color.White; upDown.ForeColor = Color.Black; return;
-				case 1: upDown.BackColor = Color.LightGray; upDown.ForeColor = Color.Black; return;
-				case 2: upDown.BackColor = Color.Gray; upDown.ForeColor = Color.White; return;
-				case 3: upDown.BackColor = Color.Black; upDown.ForeColor = Color.White; return;
-				default: upDown.BackColor = Color.Lime; upDown.ForeColor = Color.Black; return;
+				if (!(upDown.Tag is int)) {
+					throw new InvalidOperationException(string.Format("Sender's tag is not an int - sender is {0}, of type {1}, with a tag of type {2} and value {3}", upDown, upDown.GetType(), upDown.Tag, upDown.Tag.GetType()));
 				}
+				int color = (int)upDown.Tag;
+
+				switch ((byte)upDown.Value) {
+				case 0: upDown.BackColor = Color.White; upDown.ForeColor = Color.Black; break;
+				case 1: upDown.BackColor = Color.LightGray; upDown.ForeColor = Color.Black; break;
+				case 2: upDown.BackColor = Color.Gray; upDown.ForeColor = Color.White; break;
+				case 3: upDown.BackColor = Color.Black; upDown.ForeColor = Color.White; break;
+				default: upDown.BackColor = Color.Lime; upDown.ForeColor = Color.Black; break;
+				}
+
+				mmf.GBPalettes[(byte)color] = (byte)upDown.Value;
 			}
 		}
 	}

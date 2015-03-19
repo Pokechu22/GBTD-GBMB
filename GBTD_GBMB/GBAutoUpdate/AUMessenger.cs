@@ -166,7 +166,7 @@ namespace GB.Shared.AutoUpdate
 				lParam: MessageListener.MessageListenerHandle);
 		}
 
-		public void SendTilePalettesMessage() {
+		public void SendColorMappingsMessage() {
 			SendMessage(
 				hWnd: HWND_BROADCAST,
 				Msg: AutoUpdateMessageID,

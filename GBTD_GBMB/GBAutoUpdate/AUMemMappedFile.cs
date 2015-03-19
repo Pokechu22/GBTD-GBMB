@@ -131,7 +131,6 @@ namespace GB.Shared.AutoUpdate
 				this.file = file;
 			}
 
-
 			public byte Color0 {
 				get {
 					Stream stream = file.stream;
@@ -144,6 +143,8 @@ namespace GB.Shared.AutoUpdate
 					stream.Position = GBPAL_INDEX + 0;
 
 					stream.WriteByteEx(value);
+
+					file.messenger.SendColorMappingsMessage();
 				}
 			}
 
@@ -159,6 +160,8 @@ namespace GB.Shared.AutoUpdate
 					stream.Position = GBPAL_INDEX + 1;
 
 					stream.WriteByteEx(value);
+
+					file.messenger.SendColorMappingsMessage();
 				}
 			}
 
@@ -174,6 +177,8 @@ namespace GB.Shared.AutoUpdate
 					stream.Position = GBPAL_INDEX + 2;
 
 					stream.WriteByteEx(value);
+
+					file.messenger.SendColorMappingsMessage();
 				}
 			}
 
@@ -189,6 +194,8 @@ namespace GB.Shared.AutoUpdate
 					stream.Position = GBPAL_INDEX + 3;
 
 					stream.WriteByteEx(value);
+
+					file.messenger.SendColorMappingsMessage();
 				}
 			}
 
@@ -224,6 +231,8 @@ namespace GB.Shared.AutoUpdate
 					stream.Position = GBPAL_INDEX + b;
 
 					stream.WriteByteEx(value);
+
+					file.messenger.SendColorMappingsMessage();
 				}
 			}
 
@@ -239,6 +248,8 @@ namespace GB.Shared.AutoUpdate
 					stream.Position = GBPAL_INDEX + GBColorToByte(color);
 
 					stream.WriteByteEx(GBColorToByte(value));
+
+					file.messenger.SendColorMappingsMessage();
 				}
 			}
 		}

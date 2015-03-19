@@ -29,6 +29,14 @@
 			System.Windows.Forms.GroupBox mmfMagicMarkerGroupBox;
 			System.Windows.Forms.GroupBox mmfColorMappingGroupBox;
 			System.Windows.Forms.TableLayoutPanel mmfColorMappingTableLayoutPanel;
+			System.Windows.Forms.Panel mmfColor0MappingPanel;
+			System.Windows.Forms.GroupBox mmfColor0MappingGroupBox;
+			System.Windows.Forms.Panel mmfColor1MappingPanel;
+			System.Windows.Forms.GroupBox mmfColor1MappingGroupBox;
+			System.Windows.Forms.Panel mmfColor2MappingPanel;
+			System.Windows.Forms.GroupBox mmfColor2MappingGroupBox;
+			System.Windows.Forms.Panel mmfColor3MappingPanel;
+			System.Windows.Forms.GroupBox mmfColor3MappingGroupBox;
 			System.Windows.Forms.GroupBox mmfSimpleTileInfoGroupBox;
 			System.Windows.Forms.TableLayoutPanel mmfSimpleInfoTableLayoutPanel;
 			System.Windows.Forms.GroupBox mmfTileWidthGroupBox;
@@ -41,19 +49,16 @@
 			System.Windows.Forms.GroupBox mmfGBCPaletteGroupBox;
 			System.Windows.Forms.GroupBox mmfSGBPaletteGroupBox;
 			System.Windows.Forms.GroupBox mmfSelectTileGroupBox;
-			System.Windows.Forms.Panel mmfColor0MappingPanel;
-			System.Windows.Forms.GroupBox mmfColor0MappingGroupBox;
-			System.Windows.Forms.Panel mmfColor1MappingPanel;
-			System.Windows.Forms.GroupBox mmfColor1MappingGroupBox;
-			System.Windows.Forms.Panel mmfColor2MappingPanel;
-			System.Windows.Forms.GroupBox mmfColor2MappingGroupBox;
-			System.Windows.Forms.Panel mmfColor3MappingPanel;
-			System.Windows.Forms.GroupBox mmfColor3MappingGroupBox;
 			this.mmfIDTextBox = new System.Windows.Forms.TextBox();
+			this.mmfColor0MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfColor1MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfColor2MappingTextBox = new System.Windows.Forms.NumericUpDown();
+			this.mmfColor3MappingTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfTileWidthTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfTileHeightTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfTileCountTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfFileNameTextBox = new System.Windows.Forms.TextBox();
+			this.mmfTileRenderer = new GB.Shared.Controls.TileRenderer();
 			this.mmfGBCPaletteTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfSGBPaletteTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfTileNumberTextBox = new System.Windows.Forms.NumericUpDown();
@@ -73,16 +78,19 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.mmfTileRenderer = new GB.Shared.Controls.TileRenderer();
-			this.mmfColor0MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfColor1MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfColor2MappingTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfColor3MappingTextBox = new System.Windows.Forms.NumericUpDown();
 			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
 			mmfIDAndColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfMagicMarkerGroupBox = new System.Windows.Forms.GroupBox();
 			mmfColorMappingGroupBox = new System.Windows.Forms.GroupBox();
 			mmfColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			mmfColor0MappingPanel = new System.Windows.Forms.Panel();
+			mmfColor0MappingGroupBox = new System.Windows.Forms.GroupBox();
+			mmfColor1MappingPanel = new System.Windows.Forms.Panel();
+			mmfColor1MappingGroupBox = new System.Windows.Forms.GroupBox();
+			mmfColor2MappingPanel = new System.Windows.Forms.Panel();
+			mmfColor2MappingGroupBox = new System.Windows.Forms.GroupBox();
+			mmfColor3MappingPanel = new System.Windows.Forms.Panel();
+			mmfColor3MappingGroupBox = new System.Windows.Forms.GroupBox();
 			mmfSimpleTileInfoGroupBox = new System.Windows.Forms.GroupBox();
 			mmfSimpleInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfTileWidthGroupBox = new System.Windows.Forms.GroupBox();
@@ -95,18 +103,22 @@
 			mmfGBCPaletteGroupBox = new System.Windows.Forms.GroupBox();
 			mmfSGBPaletteGroupBox = new System.Windows.Forms.GroupBox();
 			mmfSelectTileGroupBox = new System.Windows.Forms.GroupBox();
-			mmfColor0MappingPanel = new System.Windows.Forms.Panel();
-			mmfColor0MappingGroupBox = new System.Windows.Forms.GroupBox();
-			mmfColor1MappingPanel = new System.Windows.Forms.Panel();
-			mmfColor1MappingGroupBox = new System.Windows.Forms.GroupBox();
-			mmfColor2MappingPanel = new System.Windows.Forms.Panel();
-			mmfColor2MappingGroupBox = new System.Windows.Forms.GroupBox();
-			mmfColor3MappingPanel = new System.Windows.Forms.Panel();
-			mmfColor3MappingGroupBox = new System.Windows.Forms.GroupBox();
 			mmfIDAndColorMappingTableLayoutPanel.SuspendLayout();
 			mmfMagicMarkerGroupBox.SuspendLayout();
 			mmfColorMappingGroupBox.SuspendLayout();
 			mmfColorMappingTableLayoutPanel.SuspendLayout();
+			mmfColor0MappingPanel.SuspendLayout();
+			mmfColor0MappingGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor0MappingTextBox)).BeginInit();
+			mmfColor1MappingPanel.SuspendLayout();
+			mmfColor1MappingGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor1MappingTextBox)).BeginInit();
+			mmfColor2MappingPanel.SuspendLayout();
+			mmfColor2MappingGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor2MappingTextBox)).BeginInit();
+			mmfColor3MappingPanel.SuspendLayout();
+			mmfColor3MappingGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor3MappingTextBox)).BeginInit();
 			mmfSimpleTileInfoGroupBox.SuspendLayout();
 			mmfSimpleInfoTableLayoutPanel.SuspendLayout();
 			mmfTileWidthGroupBox.SuspendLayout();
@@ -137,18 +149,6 @@
 			this.messageSplitContainer.Panel2.SuspendLayout();
 			this.messageSplitContainer.SuspendLayout();
 			this.groupBoxMessageInfo.SuspendLayout();
-			mmfColor0MappingPanel.SuspendLayout();
-			mmfColor0MappingGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor0MappingTextBox)).BeginInit();
-			mmfColor1MappingPanel.SuspendLayout();
-			mmfColor1MappingGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor1MappingTextBox)).BeginInit();
-			mmfColor2MappingPanel.SuspendLayout();
-			mmfColor2MappingGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor2MappingTextBox)).BeginInit();
-			mmfColor3MappingPanel.SuspendLayout();
-			mmfColor3MappingGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor3MappingTextBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mmfIDAndColorMappingTableLayoutPanel
@@ -216,6 +216,181 @@
 			mmfColorMappingTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			mmfColorMappingTableLayoutPanel.Size = new System.Drawing.Size(216, 45);
 			mmfColorMappingTableLayoutPanel.TabIndex = 0;
+			// 
+			// mmfColor0MappingPanel
+			// 
+			mmfColor0MappingPanel.BackColor = System.Drawing.Color.White;
+			mmfColor0MappingPanel.Controls.Add(mmfColor0MappingGroupBox);
+			mmfColor0MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor0MappingPanel.ForeColor = System.Drawing.Color.Black;
+			mmfColor0MappingPanel.Location = new System.Drawing.Point(0, 0);
+			mmfColor0MappingPanel.Margin = new System.Windows.Forms.Padding(0);
+			mmfColor0MappingPanel.Name = "mmfColor0MappingPanel";
+			mmfColor0MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor0MappingPanel.Size = new System.Drawing.Size(54, 45);
+			mmfColor0MappingPanel.TabIndex = 4;
+			// 
+			// mmfColor0MappingGroupBox
+			// 
+			mmfColor0MappingGroupBox.Controls.Add(this.mmfColor0MappingTextBox);
+			mmfColor0MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor0MappingGroupBox.Location = new System.Drawing.Point(3, 0);
+			mmfColor0MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor0MappingGroupBox.Name = "mmfColor0MappingGroupBox";
+			mmfColor0MappingGroupBox.Size = new System.Drawing.Size(48, 42);
+			mmfColor0MappingGroupBox.TabIndex = 1;
+			mmfColor0MappingGroupBox.TabStop = false;
+			mmfColor0MappingGroupBox.Text = "0";
+			// 
+			// mmfColor0MappingTextBox
+			// 
+			this.mmfColor0MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor0MappingTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfColor0MappingTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.mmfColor0MappingTextBox.Name = "mmfColor0MappingTextBox";
+			this.mmfColor0MappingTextBox.Size = new System.Drawing.Size(42, 20);
+			this.mmfColor0MappingTextBox.TabIndex = 0;
+			this.mmfColor0MappingTextBox.Tag = 0;
+			this.mmfColor0MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
+			// 
+			// mmfColor1MappingPanel
+			// 
+			mmfColor1MappingPanel.BackColor = System.Drawing.Color.LightGray;
+			mmfColor1MappingPanel.Controls.Add(mmfColor1MappingGroupBox);
+			mmfColor1MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor1MappingPanel.ForeColor = System.Drawing.Color.Black;
+			mmfColor1MappingPanel.Location = new System.Drawing.Point(54, 0);
+			mmfColor1MappingPanel.Margin = new System.Windows.Forms.Padding(0);
+			mmfColor1MappingPanel.Name = "mmfColor1MappingPanel";
+			mmfColor1MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor1MappingPanel.Size = new System.Drawing.Size(54, 45);
+			mmfColor1MappingPanel.TabIndex = 5;
+			// 
+			// mmfColor1MappingGroupBox
+			// 
+			mmfColor1MappingGroupBox.Controls.Add(this.mmfColor1MappingTextBox);
+			mmfColor1MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor1MappingGroupBox.Location = new System.Drawing.Point(3, 0);
+			mmfColor1MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor1MappingGroupBox.Name = "mmfColor1MappingGroupBox";
+			mmfColor1MappingGroupBox.Size = new System.Drawing.Size(48, 42);
+			mmfColor1MappingGroupBox.TabIndex = 2;
+			mmfColor1MappingGroupBox.TabStop = false;
+			mmfColor1MappingGroupBox.Text = "1";
+			// 
+			// mmfColor1MappingTextBox
+			// 
+			this.mmfColor1MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor1MappingTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfColor1MappingTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.mmfColor1MappingTextBox.Name = "mmfColor1MappingTextBox";
+			this.mmfColor1MappingTextBox.Size = new System.Drawing.Size(42, 20);
+			this.mmfColor1MappingTextBox.TabIndex = 1;
+			this.mmfColor1MappingTextBox.Tag = 1;
+			this.mmfColor1MappingTextBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.mmfColor1MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
+			// 
+			// mmfColor2MappingPanel
+			// 
+			mmfColor2MappingPanel.BackColor = System.Drawing.Color.DarkGray;
+			mmfColor2MappingPanel.Controls.Add(mmfColor2MappingGroupBox);
+			mmfColor2MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor2MappingPanel.ForeColor = System.Drawing.Color.White;
+			mmfColor2MappingPanel.Location = new System.Drawing.Point(108, 0);
+			mmfColor2MappingPanel.Margin = new System.Windows.Forms.Padding(0);
+			mmfColor2MappingPanel.Name = "mmfColor2MappingPanel";
+			mmfColor2MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor2MappingPanel.Size = new System.Drawing.Size(54, 45);
+			mmfColor2MappingPanel.TabIndex = 6;
+			// 
+			// mmfColor2MappingGroupBox
+			// 
+			mmfColor2MappingGroupBox.Controls.Add(this.mmfColor2MappingTextBox);
+			mmfColor2MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor2MappingGroupBox.Location = new System.Drawing.Point(3, 0);
+			mmfColor2MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor2MappingGroupBox.Name = "mmfColor2MappingGroupBox";
+			mmfColor2MappingGroupBox.Size = new System.Drawing.Size(48, 42);
+			mmfColor2MappingGroupBox.TabIndex = 3;
+			mmfColor2MappingGroupBox.TabStop = false;
+			mmfColor2MappingGroupBox.Text = "2";
+			// 
+			// mmfColor2MappingTextBox
+			// 
+			this.mmfColor2MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor2MappingTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfColor2MappingTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.mmfColor2MappingTextBox.Name = "mmfColor2MappingTextBox";
+			this.mmfColor2MappingTextBox.Size = new System.Drawing.Size(42, 20);
+			this.mmfColor2MappingTextBox.TabIndex = 1;
+			this.mmfColor2MappingTextBox.Tag = 2;
+			this.mmfColor2MappingTextBox.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+			this.mmfColor2MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
+			// 
+			// mmfColor3MappingPanel
+			// 
+			mmfColor3MappingPanel.BackColor = System.Drawing.Color.Black;
+			mmfColor3MappingPanel.Controls.Add(mmfColor3MappingGroupBox);
+			mmfColor3MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor3MappingPanel.ForeColor = System.Drawing.Color.White;
+			mmfColor3MappingPanel.Location = new System.Drawing.Point(162, 0);
+			mmfColor3MappingPanel.Margin = new System.Windows.Forms.Padding(0);
+			mmfColor3MappingPanel.Name = "mmfColor3MappingPanel";
+			mmfColor3MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor3MappingPanel.Size = new System.Drawing.Size(54, 45);
+			mmfColor3MappingPanel.TabIndex = 7;
+			// 
+			// mmfColor3MappingGroupBox
+			// 
+			mmfColor3MappingGroupBox.Controls.Add(this.mmfColor3MappingTextBox);
+			mmfColor3MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			mmfColor3MappingGroupBox.Location = new System.Drawing.Point(3, 0);
+			mmfColor3MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			mmfColor3MappingGroupBox.Name = "mmfColor3MappingGroupBox";
+			mmfColor3MappingGroupBox.Size = new System.Drawing.Size(48, 42);
+			mmfColor3MappingGroupBox.TabIndex = 4;
+			mmfColor3MappingGroupBox.TabStop = false;
+			mmfColor3MappingGroupBox.Text = "3";
+			// 
+			// mmfColor3MappingTextBox
+			// 
+			this.mmfColor3MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor3MappingTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfColor3MappingTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+			this.mmfColor3MappingTextBox.Name = "mmfColor3MappingTextBox";
+			this.mmfColor3MappingTextBox.Size = new System.Drawing.Size(42, 20);
+			this.mmfColor3MappingTextBox.TabIndex = 1;
+			this.mmfColor3MappingTextBox.Tag = 3;
+			this.mmfColor3MappingTextBox.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+			this.mmfColor3MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
 			// 
 			// mmfSimpleTileInfoGroupBox
 			// 
@@ -368,6 +543,26 @@
 			mmfTilePalettesTileLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			mmfTilePalettesTileLayoutPanel.Size = new System.Drawing.Size(216, 68);
 			mmfTilePalettesTileLayoutPanel.TabIndex = 1;
+			// 
+			// mmfTileRenderer
+			// 
+			this.mmfTileRenderer.Border = true;
+			this.mmfTileRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
+            | System.Windows.Forms.Border3DSide.Right) 
+            | System.Windows.Forms.Border3DSide.Bottom) 
+            | System.Windows.Forms.Border3DSide.Middle)));
+			this.mmfTileRenderer.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.mmfTileRenderer.Grid = false;
+			this.mmfTileRenderer.Location = new System.Drawing.Point(0, 0);
+			this.mmfTileRenderer.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
+			this.mmfTileRenderer.Name = "mmfTileRenderer";
+			this.mmfTileRenderer.NibbleMarkers = false;
+			this.mmfTileRenderer.PixelScale = 8;
+			this.mmfTileRenderer.Selected = false;
+			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
+			this.mmfTileRenderer.TabIndex = 1;
+			this.mmfTileRenderer.Text = "editableTileRenderer1";
+			this.mmfTileRenderer.PixelClicked += new GB.Shared.Controls.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
 			// 
 			// mmfGBCPaletteGroupBox
 			// 
@@ -610,197 +805,6 @@
 			// 
 			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
 			// 
-			// mmfTileRenderer
-			// 
-			this.mmfTileRenderer.Border = true;
-			this.mmfTileRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.mmfTileRenderer.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.mmfTileRenderer.Grid = false;
-			this.mmfTileRenderer.Location = new System.Drawing.Point(0, 0);
-			this.mmfTileRenderer.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-			this.mmfTileRenderer.Name = "mmfTileRenderer";
-			this.mmfTileRenderer.NibbleMarkers = false;
-			this.mmfTileRenderer.PixelScale = 8;
-			this.mmfTileRenderer.Selected = false;
-			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
-			this.mmfTileRenderer.TabIndex = 1;
-			this.mmfTileRenderer.Text = "editableTileRenderer1";
-			this.mmfTileRenderer.PixelClicked += new GB.Shared.Controls.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
-			// 
-			// mmfColor0MappingPanel
-			// 
-			mmfColor0MappingPanel.BackColor = System.Drawing.Color.White;
-			mmfColor0MappingPanel.Controls.Add(mmfColor0MappingGroupBox);
-			mmfColor0MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor0MappingPanel.ForeColor = System.Drawing.Color.Black;
-			mmfColor0MappingPanel.Location = new System.Drawing.Point(0, 0);
-			mmfColor0MappingPanel.Margin = new System.Windows.Forms.Padding(0);
-			mmfColor0MappingPanel.Name = "mmfColor0MappingPanel";
-			mmfColor0MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor0MappingPanel.Size = new System.Drawing.Size(54, 45);
-			mmfColor0MappingPanel.TabIndex = 4;
-			// 
-			// mmfColor0MappingGroupBox
-			// 
-			mmfColor0MappingGroupBox.Controls.Add(this.mmfColor0MappingTextBox);
-			mmfColor0MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor0MappingGroupBox.Location = new System.Drawing.Point(3, 0);
-			mmfColor0MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor0MappingGroupBox.Name = "mmfColor0MappingGroupBox";
-			mmfColor0MappingGroupBox.Size = new System.Drawing.Size(48, 42);
-			mmfColor0MappingGroupBox.TabIndex = 1;
-			mmfColor0MappingGroupBox.TabStop = false;
-			mmfColor0MappingGroupBox.Text = "0";
-			// 
-			// mmfColor0MappingTextBox
-			// 
-			this.mmfColor0MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mmfColor0MappingTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfColor0MappingTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.mmfColor0MappingTextBox.Name = "mmfColor0MappingTextBox";
-			this.mmfColor0MappingTextBox.Size = new System.Drawing.Size(42, 20);
-			this.mmfColor0MappingTextBox.TabIndex = 0;
-			this.mmfColor0MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
-			// 
-			// mmfColor1MappingPanel
-			// 
-			mmfColor1MappingPanel.BackColor = System.Drawing.Color.LightGray;
-			mmfColor1MappingPanel.Controls.Add(mmfColor1MappingGroupBox);
-			mmfColor1MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor1MappingPanel.ForeColor = System.Drawing.Color.Black;
-			mmfColor1MappingPanel.Location = new System.Drawing.Point(54, 0);
-			mmfColor1MappingPanel.Margin = new System.Windows.Forms.Padding(0);
-			mmfColor1MappingPanel.Name = "mmfColor1MappingPanel";
-			mmfColor1MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor1MappingPanel.Size = new System.Drawing.Size(54, 45);
-			mmfColor1MappingPanel.TabIndex = 5;
-			// 
-			// mmfColor1MappingGroupBox
-			// 
-			mmfColor1MappingGroupBox.Controls.Add(this.mmfColor1MappingTextBox);
-			mmfColor1MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor1MappingGroupBox.Location = new System.Drawing.Point(3, 0);
-			mmfColor1MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor1MappingGroupBox.Name = "mmfColor1MappingGroupBox";
-			mmfColor1MappingGroupBox.Size = new System.Drawing.Size(48, 42);
-			mmfColor1MappingGroupBox.TabIndex = 2;
-			mmfColor1MappingGroupBox.TabStop = false;
-			mmfColor1MappingGroupBox.Text = "1";
-			// 
-			// mmfColor1MappingTextBox
-			// 
-			this.mmfColor1MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mmfColor1MappingTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfColor1MappingTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.mmfColor1MappingTextBox.Name = "mmfColor1MappingTextBox";
-			this.mmfColor1MappingTextBox.Size = new System.Drawing.Size(42, 20);
-			this.mmfColor1MappingTextBox.TabIndex = 1;
-			this.mmfColor1MappingTextBox.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.mmfColor1MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
-			// 
-			// mmfColor2MappingPanel
-			// 
-			mmfColor2MappingPanel.BackColor = System.Drawing.Color.DarkGray;
-			mmfColor2MappingPanel.Controls.Add(mmfColor2MappingGroupBox);
-			mmfColor2MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor2MappingPanel.ForeColor = System.Drawing.Color.White;
-			mmfColor2MappingPanel.Location = new System.Drawing.Point(108, 0);
-			mmfColor2MappingPanel.Margin = new System.Windows.Forms.Padding(0);
-			mmfColor2MappingPanel.Name = "mmfColor2MappingPanel";
-			mmfColor2MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor2MappingPanel.Size = new System.Drawing.Size(54, 45);
-			mmfColor2MappingPanel.TabIndex = 6;
-			// 
-			// mmfColor2MappingGroupBox
-			// 
-			mmfColor2MappingGroupBox.Controls.Add(this.mmfColor2MappingTextBox);
-			mmfColor2MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor2MappingGroupBox.Location = new System.Drawing.Point(3, 0);
-			mmfColor2MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor2MappingGroupBox.Name = "mmfColor2MappingGroupBox";
-			mmfColor2MappingGroupBox.Size = new System.Drawing.Size(48, 42);
-			mmfColor2MappingGroupBox.TabIndex = 3;
-			mmfColor2MappingGroupBox.TabStop = false;
-			mmfColor2MappingGroupBox.Text = "2";
-			// 
-			// mmfColor2MappingTextBox
-			// 
-			this.mmfColor2MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mmfColor2MappingTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfColor2MappingTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.mmfColor2MappingTextBox.Name = "mmfColor2MappingTextBox";
-			this.mmfColor2MappingTextBox.Size = new System.Drawing.Size(42, 20);
-			this.mmfColor2MappingTextBox.TabIndex = 1;
-			this.mmfColor2MappingTextBox.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-			this.mmfColor2MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
-			// 
-			// mmfColor3MappingPanel
-			// 
-			mmfColor3MappingPanel.BackColor = System.Drawing.Color.Black;
-			mmfColor3MappingPanel.Controls.Add(mmfColor3MappingGroupBox);
-			mmfColor3MappingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor3MappingPanel.ForeColor = System.Drawing.Color.White;
-			mmfColor3MappingPanel.Location = new System.Drawing.Point(162, 0);
-			mmfColor3MappingPanel.Margin = new System.Windows.Forms.Padding(0);
-			mmfColor3MappingPanel.Name = "mmfColor3MappingPanel";
-			mmfColor3MappingPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor3MappingPanel.Size = new System.Drawing.Size(54, 45);
-			mmfColor3MappingPanel.TabIndex = 7;
-			// 
-			// mmfColor3MappingGroupBox
-			// 
-			mmfColor3MappingGroupBox.Controls.Add(this.mmfColor3MappingTextBox);
-			mmfColor3MappingGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			mmfColor3MappingGroupBox.Location = new System.Drawing.Point(3, 0);
-			mmfColor3MappingGroupBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-			mmfColor3MappingGroupBox.Name = "mmfColor3MappingGroupBox";
-			mmfColor3MappingGroupBox.Size = new System.Drawing.Size(48, 42);
-			mmfColor3MappingGroupBox.TabIndex = 4;
-			mmfColor3MappingGroupBox.TabStop = false;
-			mmfColor3MappingGroupBox.Text = "3";
-			// 
-			// mmfColor3MappingTextBox
-			// 
-			this.mmfColor3MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mmfColor3MappingTextBox.Location = new System.Drawing.Point(3, 16);
-			this.mmfColor3MappingTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-			this.mmfColor3MappingTextBox.Name = "mmfColor3MappingTextBox";
-			this.mmfColor3MappingTextBox.Size = new System.Drawing.Size(42, 20);
-			this.mmfColor3MappingTextBox.TabIndex = 1;
-			this.mmfColor3MappingTextBox.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-			this.mmfColor3MappingTextBox.ValueChanged += new System.EventHandler(this.mmfColorMappingTextBox_ValueChanged);
-			// 
 			// auListener
 			// 
 			this.auListener.FileName = null;
@@ -818,12 +822,24 @@
 			this.ClientSize = new System.Drawing.Size(292, 289);
 			this.Controls.Add(this.tabControl);
 			this.Name = "AutoUpdateSnifferForm";
-			this.Text = "Form1";
+			this.Text = "GBTD Auto Update Sniffer";
 			mmfIDAndColorMappingTableLayoutPanel.ResumeLayout(false);
 			mmfMagicMarkerGroupBox.ResumeLayout(false);
 			mmfMagicMarkerGroupBox.PerformLayout();
 			mmfColorMappingGroupBox.ResumeLayout(false);
 			mmfColorMappingTableLayoutPanel.ResumeLayout(false);
+			mmfColor0MappingPanel.ResumeLayout(false);
+			mmfColor0MappingGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor0MappingTextBox)).EndInit();
+			mmfColor1MappingPanel.ResumeLayout(false);
+			mmfColor1MappingGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor1MappingTextBox)).EndInit();
+			mmfColor2MappingPanel.ResumeLayout(false);
+			mmfColor2MappingGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor2MappingTextBox)).EndInit();
+			mmfColor3MappingPanel.ResumeLayout(false);
+			mmfColor3MappingGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mmfColor3MappingTextBox)).EndInit();
 			mmfSimpleTileInfoGroupBox.ResumeLayout(false);
 			mmfSimpleInfoTableLayoutPanel.ResumeLayout(false);
 			mmfTileWidthGroupBox.ResumeLayout(false);
@@ -859,18 +875,6 @@
 			this.messageSplitContainer.ResumeLayout(false);
 			this.groupBoxMessageInfo.ResumeLayout(false);
 			this.groupBoxMessageInfo.PerformLayout();
-			mmfColor0MappingPanel.ResumeLayout(false);
-			mmfColor0MappingGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor0MappingTextBox)).EndInit();
-			mmfColor1MappingPanel.ResumeLayout(false);
-			mmfColor1MappingGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor1MappingTextBox)).EndInit();
-			mmfColor2MappingPanel.ResumeLayout(false);
-			mmfColor2MappingGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor2MappingTextBox)).EndInit();
-			mmfColor3MappingPanel.ResumeLayout(false);
-			mmfColor3MappingGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.mmfColor3MappingTextBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
