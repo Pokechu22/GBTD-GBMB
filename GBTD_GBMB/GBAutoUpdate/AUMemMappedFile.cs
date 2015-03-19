@@ -19,7 +19,7 @@ namespace GB.Shared.AutoUpdate
 	{
 		#region Inner classes (for named indexers)
 		/// <summary>
-		/// List of tiles.  TODO: Use tile instead of byte array.
+		/// List of tiles.
 		/// </summary>
 		public class MMFTileList
 		{
@@ -71,28 +71,11 @@ namespace GB.Shared.AutoUpdate
 					file.messenger.SendTileChangeMessage(tile);
 				}
 			}
-
-			private GBColor ByteToGBColor(byte b) {
-				switch (b) {
-				case 0: return GBColor.WHITE;
-				case 1: return GBColor.LIGHT_GRAY;
-				case 2: return GBColor.DARK_GRAY;
-				case 3: return GBColor.BLACK;
-				default: return (GBColor)b; //Will be invalid, but we shouldn't mess with it.
-				}
-			}
-
-			private byte GBColorToByte(GBColor c) {
-				switch (c) {
-				case GBColor.WHITE: return 0;
-				case GBColor.LIGHT_GRAY: return 1;
-				case GBColor.DARK_GRAY: return 2;
-				case GBColor.BLACK: return 3;
-				default: return (byte)c;
-				}
-			}
 		}
 
+		/// <summary>
+		/// Contains a list of all the tiles color mappings.
+		/// </summary>
 		public class MMFPalMapList
 		{
 			public struct PalMapEntry {
@@ -132,6 +115,130 @@ namespace GB.Shared.AutoUpdate
 					stream.WriteByte(value.SGB);
 
 					file.messenger.SendTileChangeMessage(tile);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Contains the DMG color mapping.
+		/// 
+		/// Provides options for GBColors and bytes.
+		/// </summary>
+		public class MMFColorMapping
+		{
+			private readonly AUMemMappedFile file;
+			internal MMFColorMapping(AUMemMappedFile file) {
+				this.file = file;
+			}
+
+
+			public byte Color0 {
+				get {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 0;
+
+					return stream.ReadByteEx();
+				}
+				set {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 0;
+
+					stream.WriteByteEx(value);
+				}
+			}
+
+			public byte Color1 {
+				get {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 1;
+
+					return stream.ReadByteEx();
+				}
+				set {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 1;
+
+					stream.WriteByteEx(value);
+				}
+			}
+
+			public byte Color2 {
+				get {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 2;
+
+					return stream.ReadByteEx();
+				}
+				set {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 2;
+
+					stream.WriteByteEx(value);
+				}
+			}
+
+			public byte Color3 {
+				get {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 3;
+
+					return stream.ReadByteEx();
+				}
+				set {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + 3;
+
+					stream.WriteByteEx(value);
+				}
+			}
+
+			public GBColor GBColor0 {
+				get { return ByteToGBColor(Color0); }
+				set { Color0 = GBColorToByte(value); }
+			}
+
+			public GBColor GBColor1 {
+				get { return ByteToGBColor(Color1); }
+				set { Color1 = GBColorToByte(value); }
+			}
+
+			public GBColor GBColor2 {
+				get { return ByteToGBColor(Color2); }
+				set { Color2 = GBColorToByte(value); }
+			}
+
+			public GBColor GBColor3 {
+				get { return ByteToGBColor(Color3); }
+				set { Color3 = GBColorToByte(value); }
+			}
+
+			public byte this[byte b] {
+				get {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + b;
+
+					return stream.ReadByteEx();
+				}
+				set {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + b;
+
+					stream.WriteByteEx(value);
+				}
+			}
+
+			public GBColor this[GBColor color] {
+				get {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + GBColorToByte(color);
+
+					return ByteToGBColor(stream.ReadByteEx());
+				}
+				set {
+					Stream stream = file.stream;
+					stream.Position = GBPAL_INDEX + GBColorToByte(color);
+
+					stream.WriteByteEx(GBColorToByte(value));
 				}
 			}
 		}
@@ -208,7 +315,7 @@ namespace GB.Shared.AutoUpdate
 		private const int TILECOUNT_INDEX = 50692, TILECOUNT_SIZE = 4;
 		private const int TILEWIDTH_INDEX = 50696, TILEWIDTH_SIZE = 4;
 		private const int TILEHEIGHT_INDEX = 50700, TILEHEIGHT_SIZE = 4;
-		private const int GBPAL_INDEX = 50704, GBPAL_SIZE = 50704;
+		private const int GBPAL_INDEX = 50704, GBPAL_SIZE = 4;
 		private const int GBCCOLSET_INDEX = 50708, GBCCOLSET_SIZE = 8 * 4 * 4;
 		private const int SGBCOLSET_INDEX = 50836, SGBCOLSET_SIZE = 8 * 4 * 4;
 		//The size of the memory block, in total.
@@ -241,6 +348,8 @@ namespace GB.Shared.AutoUpdate
 			Tiles = new MMFTileList(this);
 			PalMaps = new MMFPalMapList(this);
 
+			GBPalettes = new MMFColorMapping(this);
+
 			GBCPalettes = new MMFGBColorSet(this, GBCCOLSET_INDEX);
 			SGBPalettes = new MMFGBColorSet(this, SGBCOLSET_INDEX);
 
@@ -254,6 +363,26 @@ namespace GB.Shared.AutoUpdate
 		public void Dispose() {
 			file.Dispose();
 			stream.Dispose();
+		}
+
+		private static GBColor ByteToGBColor(byte b) {
+			switch (b) {
+			case 0: return GBColor.WHITE;
+			case 1: return GBColor.LIGHT_GRAY;
+			case 2: return GBColor.DARK_GRAY;
+			case 3: return GBColor.BLACK;
+			default: return (GBColor)b; //Will be invalid, but we shouldn't mess with it.
+			}
+		}
+
+		private static byte GBColorToByte(GBColor c) {
+			switch (c) {
+			case GBColor.WHITE: return 0;
+			case GBColor.LIGHT_GRAY: return 1;
+			case GBColor.DARK_GRAY: return 2;
+			case GBColor.BLACK: return 3;
+			default: return (byte)c;
+			}
 		}
 
 		/// <summary>
@@ -328,34 +457,9 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		/// <summary>
-		/// The DMG palettes.  
-		/// TODO make this a struct, and use GBColor.
+		/// The DMG palettes.
 		/// </summary>
-		public byte[] GBPalettes {
-			get {
-				stream.Position = GBPAL_INDEX;
-
-				byte[] bytes = new byte[4];
-				int read = stream.Read(bytes, 0, 4);
-
-				if (read != 4) {
-					throw new EndOfStreamException();
-				}
-
-				return bytes;
-			}
-			set {
-				stream.Position = GBPAL_INDEX;
-
-				if (value.Length != 4) {
-					throw new ArgumentException("Value must be of length 4", "value");
-				}
-
-				stream.Write(value, 0, 4);
-
-				messenger.SendTilePalettesMessage();
-			}
-		}
+		public MMFColorMapping GBPalettes { get; private set; }
 
 		public MMFGBColorSet GBCPalettes { get; private set; }
 		public MMFGBColorSet SGBPalettes { get; private set; }
