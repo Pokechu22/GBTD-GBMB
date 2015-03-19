@@ -146,6 +146,20 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
+		/// Creates a palette with the specified colors.
+		/// </summary>
+		/// <param name="Colors">An array, of length 4, containin each color.</param>
+		public Palette(Color[] Colors) {
+			if (Colors == null) { throw new ArgumentNullException("Colors"); }
+			if (Colors.Length != 4) { throw new ArgumentException("Colors MUST have a length of 4 (got " + Colors.Length + ")", "Colors"); }
+
+			this.Color0 = Colors[0];
+			this.Color1 = Colors[1];
+			this.Color2 = Colors[2];
+			this.Color3 = Colors[3];
+		}
+
+		/// <summary>
 		/// Created a palette with the default colors.
 		/// </summary>
 		public Palette() {
