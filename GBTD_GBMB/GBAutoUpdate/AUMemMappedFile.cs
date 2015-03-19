@@ -7,6 +7,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Drawing;
 using GB.Shared.Tiles;
+using GB.Shared.Palettes;
 
 namespace GB.Shared.AutoUpdate
 {
@@ -153,31 +154,27 @@ namespace GB.Shared.AutoUpdate
 				}
 			}
 
-			public Color[] this[int row] {
+			public Palette this[int row] {
 				get {
 					var stream = file.stream;
 					stream.Position = USED_INDEX + (row * NUM_OF_ENTRIES * SIZE_OF_COLOR);
-
+					
 					Color[] colors = new Color[NUM_OF_ENTRIES];
 
 					for (int i = 0; i < colors.Length; i++) {
 						colors[i] = stream.ReadColor();
 					}
-
-					return colors;
+					
+					return new Palette(colors);
 				}
 				set {
 					var stream = file.stream;
 					stream.Position = USED_INDEX + (row * NUM_OF_ENTRIES * SIZE_OF_COLOR);
 
-					if (value.Length != NUM_OF_ENTRIES) {
-						throw new ArgumentException("Number of provided entries is incorrect - should be exactly " + NUM_OF_ENTRIES + ".", "value");
-					}
-
-					for (int i = 0; i < value.Length; i++) {
+					for (int i = 0; i < NUM_OF_ENTRIES; i++) {
 						stream.WriteColor(value[i]);
 					}
-
+					
 					file.messenger.SendColorSetsMessage();
 				}
 			}
