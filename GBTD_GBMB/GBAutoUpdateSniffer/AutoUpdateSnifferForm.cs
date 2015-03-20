@@ -48,6 +48,8 @@ namespace GBAutoUpdateSniffer
 			mmfFileNameTextBox.Text = mmf.MMFName;
 			labelMMFName.Text = mmf.MMFName;
 
+			mmfTileCountTextBox.Value = mmf.TileCount;
+
 			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
 			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
@@ -131,6 +133,8 @@ namespace GBAutoUpdateSniffer
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_refresh));
 
+					mmfTileCountTextBox.Value = mmf.TileCount;
+
 					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
 					mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
@@ -166,6 +170,8 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Total_refresh));
+
+					mmfTileCountTextBox.Value = mmf.TileCount;
 
 					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
@@ -273,6 +279,12 @@ namespace GBAutoUpdateSniffer
 				var temp = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value];
 				temp.SGB = (byte)mmfSGBPaletteTextBox.Value;
 				mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value] = temp;
+			}
+		}
+
+		private void mmfTileCountTextBox_ValueChanged(object sender, EventArgs e) {
+			if (!updating) {
+				mmf.TileCount = (UInt32)mmfTileCountTextBox.Value;
 			}
 		}
 	}

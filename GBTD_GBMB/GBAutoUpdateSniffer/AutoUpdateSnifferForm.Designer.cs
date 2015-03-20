@@ -488,9 +488,15 @@
 			// 
 			this.mmfTileCountTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mmfTileCountTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileCountTextBox.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
 			this.mmfTileCountTextBox.Name = "mmfTileCountTextBox";
 			this.mmfTileCountTextBox.Size = new System.Drawing.Size(80, 20);
 			this.mmfTileCountTextBox.TabIndex = 0;
+			this.mmfTileCountTextBox.ValueChanged += new System.EventHandler(this.mmfTileCountTextBox_ValueChanged);
 			// 
 			// mmfFileNameGroupBox
 			// 
