@@ -154,6 +154,8 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_size));
+
+					mmfTileCountTextBox.Value = mmf.TileCount;
 				}));
 			} catch (Exception ex) {
 				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
