@@ -186,6 +186,7 @@
 			this.mmfIDTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mmfIDTextBox.Location = new System.Drawing.Point(3, 16);
 			this.mmfIDTextBox.Name = "mmfIDTextBox";
+			this.mmfIDTextBox.ReadOnly = true;
 			this.mmfIDTextBox.Size = new System.Drawing.Size(44, 20);
 			this.mmfIDTextBox.TabIndex = 0;
 			// 

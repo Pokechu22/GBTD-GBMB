@@ -249,9 +249,6 @@ namespace GBAutoUpdateSniffer
 					default: upDown.BackColor = Color.Lime; upDown.ForeColor = Color.Black; break;
 					}
 
-					Console.WriteLine(color + " " + upDown.Value);
-					upDown.ResetText();
-
 					if (!updating) {
 						mmf.GBPalettes[(byte)color] = (byte)upDown.Value;
 					}
