@@ -261,5 +261,22 @@ namespace GBAutoUpdateSniffer
 				throw;
 			}
 		}
+
+		private void mmfGBCPaletteTextBox_ValueChanged(object sender, EventArgs e) {
+			if (!updating) {
+				//TODO remove the need to do this stuff with temp by adding moar indexers.
+				var temp = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value];
+				temp.GBC = (byte)mmfGBCPaletteTextBox.Value;
+				mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value] = temp;
+			}
+		}
+
+		private void mmfSGBPaletteTextBox_ValueChanged(object sender, EventArgs e) {
+			if (!updating) {
+				var temp = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value];
+				temp.SGB = (byte)mmfSGBPaletteTextBox.Value;
+				mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value] = temp;
+			}
+		}
 	}
 }

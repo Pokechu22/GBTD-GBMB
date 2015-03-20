@@ -597,6 +597,7 @@
 			this.mmfGBCPaletteTextBox.Name = "mmfGBCPaletteTextBox";
 			this.mmfGBCPaletteTextBox.Size = new System.Drawing.Size(63, 20);
 			this.mmfGBCPaletteTextBox.TabIndex = 0;
+			this.mmfGBCPaletteTextBox.ValueChanged += new System.EventHandler(this.mmfGBCPaletteTextBox_ValueChanged);
 			// 
 			// mmfSGBPaletteGroupBox
 			// 
@@ -620,6 +621,7 @@
 			this.mmfSGBPaletteTextBox.Name = "mmfSGBPaletteTextBox";
 			this.mmfSGBPaletteTextBox.Size = new System.Drawing.Size(64, 20);
 			this.mmfSGBPaletteTextBox.TabIndex = 0;
+			this.mmfSGBPaletteTextBox.ValueChanged += new System.EventHandler(this.mmfSGBPaletteTextBox_ValueChanged);
 			// 
 			// mmfSelectTileGroupBox
 			// 
