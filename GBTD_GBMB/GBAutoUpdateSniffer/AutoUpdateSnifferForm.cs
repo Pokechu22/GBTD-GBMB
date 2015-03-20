@@ -49,6 +49,8 @@ namespace GBAutoUpdateSniffer
 			labelMMFName.Text = mmf.MMFName;
 
 			mmfTileCountTextBox.Value = mmf.TileCount;
+			mmfTileWidthTextBox.Value = mmf.TileWidth;
+			mmfTileHeightTextBox.Value = mmf.TileHeight;
 
 			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
@@ -156,6 +158,8 @@ namespace GBAutoUpdateSniffer
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_size));
 
 					mmfTileCountTextBox.Value = mmf.TileCount;
+					mmfTileWidthTextBox.Value = mmf.TileWidth;
+					mmfTileHeightTextBox.Value = mmf.TileHeight;
 				}));
 			} catch (Exception ex) {
 				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -174,6 +178,8 @@ namespace GBAutoUpdateSniffer
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Total_refresh));
 
 					mmfTileCountTextBox.Value = mmf.TileCount;
+					mmfTileWidthTextBox.Value = mmf.TileWidth;
+					mmfTileHeightTextBox.Value = mmf.TileHeight;
 
 					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
@@ -287,6 +293,18 @@ namespace GBAutoUpdateSniffer
 		private void mmfTileCountTextBox_ValueChanged(object sender, EventArgs e) {
 			if (!updating) {
 				mmf.TileCount = (UInt32)mmfTileCountTextBox.Value;
+			}
+		}
+
+		private void mmfTileWidthTextBox_ValueChanged(object sender, EventArgs e) {
+			if (!updating) {
+				mmf.TileWidth = (UInt32)mmfTileWidthTextBox.Value;
+			}
+		}
+
+		private void mmfTileHeightTextBox_ValueChanged(object sender, EventArgs e) {
+			if (!updating) {
+				mmf.TileHeight = (UInt32)mmfTileHeightTextBox.Value;
 			}
 		}
 	}

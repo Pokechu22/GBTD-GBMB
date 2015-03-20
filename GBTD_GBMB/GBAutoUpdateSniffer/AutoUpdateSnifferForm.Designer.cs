@@ -448,9 +448,15 @@
 			// 
 			this.mmfTileWidthTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mmfTileWidthTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileWidthTextBox.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
 			this.mmfTileWidthTextBox.Name = "mmfTileWidthTextBox";
 			this.mmfTileWidthTextBox.Size = new System.Drawing.Size(80, 20);
 			this.mmfTileWidthTextBox.TabIndex = 0;
+			this.mmfTileWidthTextBox.ValueChanged += new System.EventHandler(this.mmfTileWidthTextBox_ValueChanged);
 			// 
 			// mmfTileHeightGroupBox
 			// 
@@ -468,9 +474,15 @@
 			// 
 			this.mmfTileHeightTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mmfTileHeightTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfTileHeightTextBox.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
 			this.mmfTileHeightTextBox.Name = "mmfTileHeightTextBox";
 			this.mmfTileHeightTextBox.Size = new System.Drawing.Size(82, 20);
 			this.mmfTileHeightTextBox.TabIndex = 0;
+			this.mmfTileHeightTextBox.ValueChanged += new System.EventHandler(this.mmfTileHeightTextBox_ValueChanged);
 			// 
 			// mmfTileCountGroupBox
 			// 
@@ -646,7 +658,7 @@
 			this.mmfTileNumberTextBox.Dock = System.Windows.Forms.DockStyle.Top;
 			this.mmfTileNumberTextBox.Location = new System.Drawing.Point(3, 16);
 			this.mmfTileNumberTextBox.Maximum = new decimal(new int[] {
-            785,
+            -1,
             0,
             0,
             0});
