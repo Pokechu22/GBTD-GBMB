@@ -244,7 +244,9 @@
 			// 
 			// mmfColor0MappingTextBox
 			// 
+			this.mmfColor0MappingTextBox.BackColor = System.Drawing.Color.White;
 			this.mmfColor0MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor0MappingTextBox.ForeColor = System.Drawing.Color.Black;
 			this.mmfColor0MappingTextBox.Location = new System.Drawing.Point(3, 16);
 			this.mmfColor0MappingTextBox.Maximum = new decimal(new int[] {
             255,
@@ -284,7 +286,9 @@
 			// 
 			// mmfColor1MappingTextBox
 			// 
+			this.mmfColor1MappingTextBox.BackColor = System.Drawing.Color.LightGray;
 			this.mmfColor1MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor1MappingTextBox.ForeColor = System.Drawing.Color.Black;
 			this.mmfColor1MappingTextBox.Location = new System.Drawing.Point(3, 16);
 			this.mmfColor1MappingTextBox.Maximum = new decimal(new int[] {
             255,
@@ -329,7 +333,9 @@
 			// 
 			// mmfColor2MappingTextBox
 			// 
+			this.mmfColor2MappingTextBox.BackColor = System.Drawing.Color.DarkGray;
 			this.mmfColor2MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor2MappingTextBox.ForeColor = System.Drawing.Color.White;
 			this.mmfColor2MappingTextBox.Location = new System.Drawing.Point(3, 16);
 			this.mmfColor2MappingTextBox.Maximum = new decimal(new int[] {
             255,
@@ -374,7 +380,9 @@
 			// 
 			// mmfColor3MappingTextBox
 			// 
+			this.mmfColor3MappingTextBox.BackColor = System.Drawing.Color.Black;
 			this.mmfColor3MappingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfColor3MappingTextBox.ForeColor = System.Drawing.Color.White;
 			this.mmfColor3MappingTextBox.Location = new System.Drawing.Point(3, 16);
 			this.mmfColor3MappingTextBox.Maximum = new decimal(new int[] {
             255,
