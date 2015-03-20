@@ -79,6 +79,8 @@
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
+			this.groupBoxMMFName = new System.Windows.Forms.GroupBox();
+			this.labelMMFName = new System.Windows.Forms.Label();
 			mmfIDAndColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfMagicMarkerGroupBox = new System.Windows.Forms.GroupBox();
 			mmfColorMappingGroupBox = new System.Windows.Forms.GroupBox();
@@ -149,6 +151,7 @@
 			this.messageSplitContainer.Panel2.SuspendLayout();
 			this.messageSplitContainer.SuspendLayout();
 			this.groupBoxMessageInfo.SuspendLayout();
+			this.groupBoxMMFName.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mmfIDAndColorMappingTableLayoutPanel
@@ -586,6 +589,11 @@
 			// 
 			this.mmfGBCPaletteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
 			this.mmfGBCPaletteTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfGBCPaletteTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
 			this.mmfGBCPaletteTextBox.Name = "mmfGBCPaletteTextBox";
 			this.mmfGBCPaletteTextBox.Size = new System.Drawing.Size(63, 20);
 			this.mmfGBCPaletteTextBox.TabIndex = 0;
@@ -604,6 +612,11 @@
 			// 
 			this.mmfSGBPaletteTextBox.Dock = System.Windows.Forms.DockStyle.Top;
 			this.mmfSGBPaletteTextBox.Location = new System.Drawing.Point(3, 16);
+			this.mmfSGBPaletteTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
 			this.mmfSGBPaletteTextBox.Name = "mmfSGBPaletteTextBox";
 			this.mmfSGBPaletteTextBox.Size = new System.Drawing.Size(64, 20);
 			this.mmfSGBPaletteTextBox.TabIndex = 0;
@@ -647,6 +660,7 @@
 			// 
 			// tabPageFileData
 			// 
+			this.tabPageFileData.Controls.Add(this.groupBoxMMFName);
 			this.tabPageFileData.Controls.Add(this.groupBoxMessageHex);
 			this.tabPageFileData.Controls.Add(this.groupBoxMessageName);
 			this.tabPageFileData.Controls.Add(this.groupBoxFileName);
@@ -823,6 +837,26 @@
 			this.auListener.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnGBPaletteChanged);
 			this.auListener.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnColorPaletteChanged);
 			// 
+			// groupBoxMMFName
+			// 
+			this.groupBoxMMFName.Controls.Add(this.labelMMFName);
+			this.groupBoxMMFName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBoxMMFName.Location = new System.Drawing.Point(3, 120);
+			this.groupBoxMMFName.Name = "groupBoxMMFName";
+			this.groupBoxMMFName.Size = new System.Drawing.Size(278, 39);
+			this.groupBoxMMFName.TabIndex = 4;
+			this.groupBoxMMFName.TabStop = false;
+			this.groupBoxMMFName.Text = "Memory Mapped File Name";
+			// 
+			// labelMMFName
+			// 
+			this.labelMMFName.AutoSize = true;
+			this.labelMMFName.Location = new System.Drawing.Point(6, 16);
+			this.labelMMFName.Name = "labelMMFName";
+			this.labelMMFName.Size = new System.Drawing.Size(186, 13);
+			this.labelMMFName.TabIndex = 0;
+			this.labelMMFName.Text = "[Memory mapped file name goes here]";
+			// 
 			// AutoUpdateSnifferForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -883,6 +917,8 @@
 			this.messageSplitContainer.ResumeLayout(false);
 			this.groupBoxMessageInfo.ResumeLayout(false);
 			this.groupBoxMessageInfo.PerformLayout();
+			this.groupBoxMMFName.ResumeLayout(false);
+			this.groupBoxMMFName.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -919,6 +955,8 @@
 		private System.Windows.Forms.NumericUpDown mmfColor1MappingTextBox;
 		private System.Windows.Forms.NumericUpDown mmfColor2MappingTextBox;
 		private System.Windows.Forms.NumericUpDown mmfColor3MappingTextBox;
+		private System.Windows.Forms.GroupBox groupBoxMMFName;
+		private System.Windows.Forms.Label labelMMFName;
 	}
 }
 

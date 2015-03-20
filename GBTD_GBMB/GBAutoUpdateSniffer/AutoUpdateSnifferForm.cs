@@ -46,6 +46,7 @@ namespace GBAutoUpdateSniffer
 			tabPageMessages.Enabled = true;
 
 			mmfFileNameTextBox.Text = mmf.MMFName;
+			labelMMFName.Text = mmf.MMFName;
 
 			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
