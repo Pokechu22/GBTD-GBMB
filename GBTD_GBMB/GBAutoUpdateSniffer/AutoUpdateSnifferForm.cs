@@ -62,66 +62,129 @@ namespace GBAutoUpdateSniffer
 			}
 		}
 
-		/// <summary>
-		/// Adds a messege to the list of messages.
-		/// </summary>
-		private void addMessageToList(AUEventInfo info) {
+		private void auListener_OnColorPaletteChanged(object sender, MessageEventArgs args) {
 			try {
-				//Because this might come from a seperate thread, invoke the change on the right thread.
-				//http://stackoverflow.com/a/142069/3991344
-				listBoxMessages.Invoke(new MethodInvoker(delegate { listBoxMessages.Items.Add(info); }));
-			} catch (Exception e) {
-				MessageBox.Show(e.ToString(), "An exception occured while adding an item to the list.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				updating = true;
+
+				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Color_set_change));
+
+				Invoke(new MethodInvoker(delegate
+				{
+
+				}));
+			} catch (Exception ex) {
+				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw;
+			} finally {
+				updating = false;
 			}
 		}
 
-		private void auListener_OnColorPaletteChanged(object sender, MessageEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Color_set_change));
-		}
-
 		private void auListener_OnGBPaletteChanged(object sender, MessageEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Tile_palette));
+			try {
+				updating = true;
 
-			mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
-			mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
-			mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
-			mmfColor3MappingTextBox.Value = mmf.GBPalettes.Color3;
+				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_palette));
+
+				Invoke(new MethodInvoker(delegate
+				{
+					mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
+					mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
+					mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
+					mmfColor3MappingTextBox.Value = mmf.GBPalettes.Color3;
+				}));
+			} catch (Exception ex) {
+				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw;
+			} finally {
+				updating = false;
+			}
 		}
 
 		private void auListener_OnTileChanged(object sender, TileChangedEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Single_tile));
+			try {
+				updating = true;
 
-			//Update only if the right tile.
-			if (args.TileID == mmfTileNumberTextBox.Value) {
-				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
-				mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
-				mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Single_tile));
+
+				Invoke(new MethodInvoker(delegate
+				{
+					//Update only if the right tile.
+					if (args.TileID == mmfTileNumberTextBox.Value) {
+						mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+						mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+						mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+					}
+				}));
+			} catch (Exception ex) {
+				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw;
+			} finally {
+				updating = false;
 			}
 		}
 
 		private void auListener_OnTileRefreshNeeded(object sender, MessageEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Tile_refresh));
+			try {
+				updating = true;
 
-			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
-			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
-			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_refresh));
+
+				Invoke(new MethodInvoker(delegate
+				{
+					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+					mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+				}));
+			} catch (Exception ex) {
+				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw;
+			} finally {
+				updating = false;
+			}
 		}
 
 		private void auListener_OnTileSizeChanged(object sender, MessageEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Tile_size));
+			try {
+				updating = true;
+
+				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_size));
+
+				Invoke(new MethodInvoker(delegate
+				{
+
+				}));
+			} catch (Exception ex) {
+				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw;
+			} finally {
+				updating = false;
+			}
 		}
 
 		private void auListener_OnTotalRefreshNeeded(object sender, MessageEventArgs args) {
-			addMessageToList(new AUEventInfo(args, AUEventType.Total_refresh));
+			try {
+				updating = true;
 
-			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
-			mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
-			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Total_refresh));
 
-			mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
-			mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
-			mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
-			mmfColor3MappingTextBox.Value = mmf.GBPalettes.Color3;
+				Invoke(new MethodInvoker(delegate
+				{
+					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+					mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
+
+					mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
+					mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
+					mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
+					mmfColor3MappingTextBox.Value = mmf.GBPalettes.Color3;
+				}));
+			} catch (Exception ex) {
+				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw;
+			} finally {
+				updating = false;
+			}
 		}
 
 		private void mmfTileNumberTextBox_ValueChanged(object sender, EventArgs e) {
@@ -162,26 +225,43 @@ namespace GBAutoUpdateSniffer
 
 			t[e.x, e.y] = newColor;
 
-			mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value] = t;
+			if (!updating) {
+				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value] = t;
+			}
 		}
 
+		/// <summary>
+		/// When updating, we don't want to set any values again.
+		/// </summary>
+		private volatile bool updating = false;
+
 		private void mmfColorMappingTextBox_ValueChanged(object sender, EventArgs e) {
-			NumericUpDown upDown = sender as NumericUpDown;
-			if (upDown != null) {
-				if (!(upDown.Tag is int)) {
-					throw new InvalidOperationException(string.Format("Sender's tag is not an int - sender is {0}, of type {1}, with a tag of type {2} and value {3}", upDown, upDown.GetType(), upDown.Tag, upDown.Tag.GetType()));
-				}
-				int color = (int)upDown.Tag;
+			try {
+				NumericUpDown upDown = sender as NumericUpDown;
+				if (upDown != null) {
+					if (!(upDown.Tag is int)) {
+						throw new InvalidOperationException(string.Format("Sender's tag is not an int - sender is {0}, of type {1}, with a tag of type {2} and value {3}", upDown, upDown.GetType(), upDown.Tag, upDown.Tag.GetType()));
+					}
+					int color = (int)upDown.Tag;
 
-				switch ((byte)upDown.Value) {
-				case 0: upDown.BackColor = Color.White; upDown.ForeColor = Color.Black; break;
-				case 1: upDown.BackColor = Color.LightGray; upDown.ForeColor = Color.Black; break;
-				case 2: upDown.BackColor = Color.Gray; upDown.ForeColor = Color.White; break;
-				case 3: upDown.BackColor = Color.Black; upDown.ForeColor = Color.White; break;
-				default: upDown.BackColor = Color.Lime; upDown.ForeColor = Color.Black; break;
-				}
+					switch ((byte)upDown.Value) {
+					case 0: upDown.BackColor = Color.White; upDown.ForeColor = Color.Black; break;
+					case 1: upDown.BackColor = Color.LightGray; upDown.ForeColor = Color.Black; break;
+					case 2: upDown.BackColor = Color.Gray; upDown.ForeColor = Color.White; break;
+					case 3: upDown.BackColor = Color.Black; upDown.ForeColor = Color.White; break;
+					default: upDown.BackColor = Color.Lime; upDown.ForeColor = Color.Black; break;
+					}
 
-				mmf.GBPalettes[(byte)color] = (byte)upDown.Value;
+					Console.WriteLine(color + " " + upDown.Value);
+					upDown.ResetText();
+
+					if (!updating) {
+						mmf.GBPalettes[(byte)color] = (byte)upDown.Value;
+					}
+				}
+			} catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+				throw;
 			}
 		}
 	}
