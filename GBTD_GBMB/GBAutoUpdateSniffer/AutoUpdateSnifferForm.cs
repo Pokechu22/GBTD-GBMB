@@ -66,11 +66,9 @@ namespace GBAutoUpdateSniffer
 			try {
 				updating = true;
 
-				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Color_set_change));
-
 				Invoke(new MethodInvoker(delegate
 				{
-
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Color_set_change));
 				}));
 			} catch (Exception ex) {
 				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,10 +82,10 @@ namespace GBAutoUpdateSniffer
 			try {
 				updating = true;
 
-				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_palette));
-
 				Invoke(new MethodInvoker(delegate
 				{
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_palette));
+
 					mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
 					mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
 					mmfColor2MappingTextBox.Value = mmf.GBPalettes.Color2;
@@ -105,10 +103,10 @@ namespace GBAutoUpdateSniffer
 			try {
 				updating = true;
 
-				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Single_tile));
-
 				Invoke(new MethodInvoker(delegate
 				{
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Single_tile));
+
 					//Update only if the right tile.
 					if (args.TileID == mmfTileNumberTextBox.Value) {
 						mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
@@ -128,10 +126,10 @@ namespace GBAutoUpdateSniffer
 			try {
 				updating = true;
 
-				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_refresh));
-
 				Invoke(new MethodInvoker(delegate
 				{
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_refresh));
+
 					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
 					mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
@@ -148,11 +146,9 @@ namespace GBAutoUpdateSniffer
 			try {
 				updating = true;
 
-				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_size));
-
 				Invoke(new MethodInvoker(delegate
 				{
-
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_size));
 				}));
 			} catch (Exception ex) {
 				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,10 +162,10 @@ namespace GBAutoUpdateSniffer
 			try {
 				updating = true;
 
-				listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Total_refresh));
-
 				Invoke(new MethodInvoker(delegate
 				{
+					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Total_refresh));
+
 					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
 					mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
