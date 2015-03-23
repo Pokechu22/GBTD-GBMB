@@ -37,7 +37,7 @@ namespace GB.GBMB
 
 			LoadFile(d.FileName);
 			auMessenger.FileName = tileFileName;
-			mmf = new AUMemMappedFile(tileFileName, auMessenger);
+			mmf = new AUMemMappedFile(tileFileName, auMessenger, gbrFile);
 
 			mapControl1.Enabled = true;
 		}

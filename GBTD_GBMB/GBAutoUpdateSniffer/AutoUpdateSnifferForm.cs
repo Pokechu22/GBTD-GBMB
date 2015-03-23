@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GB.Shared.AutoUpdate;
 using GB.Shared.Tiles;
+using GB.Shared.GBRFile;
 
 namespace GBAutoUpdateSniffer
 {
@@ -43,7 +44,9 @@ namespace GBAutoUpdateSniffer
 			labelMessageHex.Text = auListener.AutoUpdateMessageID.ToString("X4");
 			labelMessageName.Text = auListener.AutoUpdateMessageName;
 
-			this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener);
+			using (var stream = openFileDialog.OpenFile()) {
+				this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener, new GBRFile(stream));
+			}
 
 			//While the "Enabled" property claims to be useless for TabPage, it *does* disable the inner controls, which is useful.
 			//It doesn't appear in intelisense, but it does work.
