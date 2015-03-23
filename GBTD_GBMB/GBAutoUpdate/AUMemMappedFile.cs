@@ -80,9 +80,10 @@ namespace GB.Shared.AutoUpdate
 			/// </summary>
 			public Tile[] GetTilesArray() {
 				var stream = file.stream;
-				stream.Position = TILES_INDEX;
 
 				Tile[] returned = new Tile[file.TileCount];
+
+				stream.Position = TILES_INDEX;
 
 				for (int tileNum = 0; tileNum < returned.Length; tileNum++) {
 					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
