@@ -128,6 +128,30 @@
   <ItemGroup>
     <None Include="Resources\Pen_selected.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddCol_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddCol_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddRow_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddRow_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemoveCol_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemoveCol_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemoveRow_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemoveRow_selected.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

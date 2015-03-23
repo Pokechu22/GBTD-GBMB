@@ -63,6 +63,46 @@ namespace GB.GBMB.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AddCol_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("AddCol_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddCol_selected {
+            get {
+                object obj = ResourceManager.GetObject("AddCol_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddRow_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("AddRow_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddRow_selected {
+            get {
+                object obj = ResourceManager.GetObject("AddRow_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dropper_nonselected {
             get {
                 object obj = ResourceManager.GetObject("Dropper_nonselected", resourceCulture);
@@ -116,6 +156,46 @@ namespace GB.GBMB.Properties {
         internal static System.Drawing.Bitmap Pen_selected {
             get {
                 object obj = ResourceManager.GetObject("Pen_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveCol_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("RemoveCol_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveCol_selected {
+            get {
+                object obj = ResourceManager.GetObject("RemoveCol_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveRow_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("RemoveRow_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveRow_selected {
+            get {
+                object obj = ResourceManager.GetObject("RemoveRow_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

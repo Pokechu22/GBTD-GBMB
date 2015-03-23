@@ -109,6 +109,7 @@
 			this.border2 = new GB.Shared.Controls.Border();
 			this.border3 = new GB.Shared.Controls.Border();
 			this.mapControl1 = new GB.GBMB.MapControl();
+			this.toolList1 = new GB.GBMB.ToolList();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -711,11 +712,19 @@
 			this.mapControl1.TileSet = null;
 			this.mapControl1.Zoom = 4F;
 			// 
+			// toolList1
+			// 
+			this.toolList1.Location = new System.Drawing.Point(10, 64);
+			this.toolList1.Name = "toolList1";
+			this.toolList1.Size = new System.Drawing.Size(26, 174);
+			this.toolList1.TabIndex = 6;
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.Controls.Add(this.toolList1);
 			this.Controls.Add(this.border3);
 			this.Controls.Add(this.border2);
 			this.Controls.Add(this.border1);
@@ -797,6 +806,7 @@
 		private Shared.Controls.Border border1;
 		private Shared.Controls.Border border2;
 		private Shared.Controls.Border border3;
+		private ToolList toolList1;
 	}
 }
 
