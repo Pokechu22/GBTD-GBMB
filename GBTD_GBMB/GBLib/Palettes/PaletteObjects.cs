@@ -48,11 +48,11 @@ namespace GB.Shared.Palettes
 			case ColorSet.GAMEBOY:
 				return color.GetNormalColor();
 			case ColorSet.GAMEBOY_COLOR:
-				return this.GBCPaletteSet[row][(int)color];
+				return this.GBCPaletteSet[row][color];
 			case ColorSet.SUPER_GAMEBOY:
-				return this.SGBPaletteSet[row][(int)color];
+				return this.SGBPaletteSet[row][color];
 			case ColorSet.GAMEBOY_COLOR_FILTERED:
-				return this.GBCPaletteSet[row][(int)color].FilterWithGBC();
+				return this.GBCPaletteSet[row][color].FilterWithGBC();
 			default:
 				throw new InvalidEnumArgumentException("paletteData", (int)set, typeof(ColorSet));
 			}
@@ -220,8 +220,8 @@ namespace GB.Shared.Palettes
 			get {
 				switch (color) {
 				case GBColor.WHITE: return Color0;
-				case GBColor.DARK_GRAY: return Color1;
-				case GBColor.LIGHT_GRAY: return Color2;
+				case GBColor.LIGHT_GRAY: return Color1;
+				case GBColor.DARK_GRAY: return Color2;
 				case GBColor.BLACK: return Color3;
 				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}
@@ -229,8 +229,8 @@ namespace GB.Shared.Palettes
 			set {
 				switch (color) {
 				case GBColor.WHITE: Color0 = value; break;
-				case GBColor.DARK_GRAY: Color1 = value; break;
-				case GBColor.LIGHT_GRAY: Color2 = value; break;
+				case GBColor.LIGHT_GRAY: Color1 = value; break;
+				case GBColor.DARK_GRAY: Color2 = value; break;
 				case GBColor.BLACK: Color3 = value; break;
 				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}

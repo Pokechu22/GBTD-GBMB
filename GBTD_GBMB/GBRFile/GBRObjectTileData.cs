@@ -72,7 +72,7 @@ namespace GB.Shared.GBRFile
 				Tile tile = tiles[i];
 				for (int y = 0; y < Height; y++) {
 					for (int x = 0; x < Width; x++) {
-						s.WriteByte((byte)tile[x, y]);
+						s.WriteByte(GBColorToByte(tile[x, y]));
 					}
 				}
 			}
@@ -100,10 +100,30 @@ namespace GB.Shared.GBRFile
 
 						if (read < 0) { throw new EndOfStreamException(); }
 
-						tile[x, y] = (GBColor)read;
+						tile[x, y] = ByteToGBColor((byte)read);
 					}
 				}
 				tiles[i] = tile;
+			}
+		}
+
+		private static GBColor ByteToGBColor(byte b) {
+			switch (b) {
+			case 0: return GBColor.WHITE;
+			case 1: return GBColor.LIGHT_GRAY;
+			case 2: return GBColor.DARK_GRAY;
+			case 3: return GBColor.BLACK;
+			default: return (GBColor)b; //Will be invalid, but we shouldn't mess with it.
+			}
+		}
+
+		private static byte GBColorToByte(GBColor c) {
+			switch (c) {
+			case GBColor.WHITE: return 0;
+			case GBColor.LIGHT_GRAY: return 1;
+			case GBColor.DARK_GRAY: return 2;
+			case GBColor.BLACK: return 3;
+			default: return (byte)c;
 			}
 		}
 
