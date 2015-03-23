@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToolList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToolList.Designer.cs">
+      <DependentUpon>ToolList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MapEdit.resx">
       <DependentUpon>MapEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +79,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ToolList.resx">
+      <DependentUpon>ToolList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +109,24 @@
       <Project>{6885E633-8BA9-41EC-816D-3E95279007FF}</Project>
       <Name>GBRFile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dropper_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dropper_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flood_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flood_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pen_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pen_selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
