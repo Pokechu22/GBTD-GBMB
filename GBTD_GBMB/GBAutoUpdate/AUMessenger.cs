@@ -68,6 +68,25 @@ namespace GB.Shared.AutoUpdate
 			}
 		}
 
+		/// <summary>
+		/// Whether or not message sending should be blocked.
+		/// </summary>
+		private bool supressSendingMessages = false;
+
+		/// <summary>
+		/// Begins temporarilly blocking all attemtpts to send messages.  
+		/// </summary>
+		public void SupressSendingMessages() {
+			supressSendingMessages = true;
+		}
+		/// <summary>
+		/// Resumes sending messages that were previously blocked.  Note that when this is called, a message will be sent that refreshes everything.
+		/// </summary>
+		public void ResumeSendingMessages() {
+			supressSendingMessages = false;
+			SendTotalRefreshMessage();
+		}
+
 		public AUMessenger() {
 			MessageListener.Start();
 			MessageListener.OnMessage += new MessageEventHandler(onListenerMessage);
@@ -133,6 +152,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTileChangeMessage(UInt16 tile) {
+			if (supressSendingMessages) { return; }
+
 			tile &= 0x7FFF; //If someone is trying to send an invalid tile change message, too bad.
 			
 			SendMessage(
@@ -143,6 +164,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTotalRefreshMessage() {
+			if (supressSendingMessages) { return; }
+
 			SendMessage(
 				hWnd: HWND_BROADCAST,
 				Msg: AutoUpdateMessageID,
@@ -151,6 +174,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTileListRefreshMessage() {
+			if (supressSendingMessages) { return; }
+
 			SendMessage(
 				hWnd: HWND_BROADCAST,
 				Msg: AutoUpdateMessageID,
@@ -159,6 +184,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTileDimensionsMessage() {
+			if (supressSendingMessages) { return; }
+
 			SendMessage(
 				hWnd: HWND_BROADCAST,
 				Msg: AutoUpdateMessageID,
@@ -167,6 +194,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendColorMappingsMessage() {
+			if (supressSendingMessages) { return; }
+
 			SendMessage(
 				hWnd: HWND_BROADCAST,
 				Msg: AutoUpdateMessageID,
@@ -175,6 +204,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendColorSetsMessage() {
+			if (supressSendingMessages) { return; }
+
 			SendMessage(
 				hWnd: HWND_BROADCAST,
 				Msg: AutoUpdateMessageID,

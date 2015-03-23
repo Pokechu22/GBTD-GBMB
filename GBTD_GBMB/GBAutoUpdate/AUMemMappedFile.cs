@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Drawing;
 using GB.Shared.Tiles;
 using GB.Shared.Palettes;
+using GB.Shared.GBRFile;
 
 namespace GB.Shared.AutoUpdate
 {
@@ -370,7 +371,14 @@ namespace GB.Shared.AutoUpdate
 		private MemoryMappedFile file;
 		private MemoryMappedViewStream stream;
 
-		public AUMemMappedFile(String fileName, AUMessenger listener) {
+		/// <summary>
+		/// Creates a memory mapped file.
+		/// </summary>
+		/// <param name="fileName"></param>
+		/// <param name="listener"></param>
+		/// <param name="loadedFile">The data from a GBRFile to use if the file does not exist (or <paramref name="overwrite"/> is set to <c>true</c>).  If <c>null</c>, it will not be used (and an exception will be thrown if there is currently no MMF)</param>
+		/// <param name="overwrite">Whether or not to overwrite existing data in the MMF.  If true, loadedFile must NOT be null.</param>
+		public AUMemMappedFile(String fileName, AUMessenger listener, GBRFile.GBRFile loadedFile = null, bool overwrite = false) {
 			this.fileName = fileName;
 			
 			//The hidden step.
@@ -378,12 +386,20 @@ namespace GB.Shared.AutoUpdate
 
 			try {
 				this.file = MemoryMappedFile.OpenExisting(mmfName, MemoryMappedFileRights.ReadWrite);
-			} catch (FileNotFoundException) {
-				//TODO initialize the defaults.
-				//this.file = MemoryMappedFile.CreateNew(fileName, MEM_BLOCK_SIZE, MemoryMappedFileAccess.ReadWrite);
-				//TODO send the message for everything to update.
+			} catch (FileNotFoundException ex) {
+				if (loadedFile == null) {
+					throw new Exception(
+						"MemmoryMappedFile " + mmfName + " does not exist and loadedFile was not supplied / is null; MMF cannot be created.", ex);
+				}
 
-				throw; //TODO We don't want to set the default right now.
+				this.file = MemoryMappedFile.CreateNew(mmfName, MEM_BLOCK_SIZE, MemoryMappedFileAccess.ReadWrite);
+
+				//Force loading from the file.
+				overwrite = true;
+			}
+
+			if (overwrite && (loadedFile == null)) {
+				throw new Exception("Cannot overwrite MemmoryMappedFile contents when loadedFile is null!");
 			}
 
 			this.stream = file.CreateViewStream();
@@ -397,6 +413,42 @@ namespace GB.Shared.AutoUpdate
 			SGBPalettes = new MMFGBColorSet(this, SGBCOLSET_INDEX);
 
 			this.messenger = listener;
+
+			if (overwrite) {
+				messenger.SupressSendingMessages();
+
+				ID = "TU01";
+
+				var tiles = loadedFile.GetObjectsOfType<GBRObjectTileData>().First();
+				var pals = loadedFile.GetObjectsOfType<GBRObjectPalettes>().First();
+				var palMaps = loadedFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+
+				TileCount = tiles.Count;
+				TileWidth = tiles.Width;
+				TileHeight = tiles.Height;
+
+				GBPalettes.GBColor0 = tiles.Color0Mapping;
+				GBPalettes.GBColor1 = tiles.Color1Mapping;
+				GBPalettes.GBColor2 = tiles.Color2Mapping;
+				GBPalettes.GBColor3 = tiles.Color3Mapping;
+
+				for (UInt16 i = 0; i < tiles.Count; i++) {
+					Tiles[i] = tiles.tiles[i];
+				}
+
+				for (UInt16 i = 0; i < pals.GBCPalettes.Size; i++) {
+					GBCPalettes[i] = pals.GBCPalettes[i];
+				}
+				for (UInt16 i = 0; i < pals.SGBPalettes.Size; i++) {
+					SGBPalettes[i] = pals.SGBPalettes[i];
+				}
+
+				for (UInt16 i = 0; i < tiles.Count; i++) {
+					PalMaps[i] = new MMFPalMapList.PalMapEntry((byte)palMaps.GBCPalettes[i], (byte)palMaps.SGBPalettes[i]);
+				}
+
+				messenger.ResumeSendingMessages();
+			}
 		}
 
 		~AUMemMappedFile() {

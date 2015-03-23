@@ -22,6 +22,11 @@ namespace GBAutoUpdateSniffer
 			tabPageMessages.Enabled = false;
 		}
 
+		protected override void OnClosed(EventArgs e) {
+			mmf.Dispose();
+			base.OnClosed(e);
+		}
+
 		private AUMemMappedFile mmf;
 
 		private void openButton_Click(object sender, EventArgs e) {
