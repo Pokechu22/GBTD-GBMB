@@ -698,6 +698,7 @@
 			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
 			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
 			this.mapControl1.DefaultPalette = null;
+			this.mapControl1.Enabled = false;
 			this.mapControl1.Location = new System.Drawing.Point(61, 82);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";

@@ -38,6 +38,8 @@ namespace GB.GBMB
 			LoadFile(d.FileName);
 			auMessenger.FileName = tileFileName;
 			mmf = new AUMemMappedFile(tileFileName, auMessenger);
+
+			mapControl1.Enabled = true;
 		}
 
 		public void LoadFile(String mapPath) {
