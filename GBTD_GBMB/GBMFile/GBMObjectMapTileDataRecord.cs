@@ -60,6 +60,20 @@ namespace GB.Shared.GBMFile
 			set { flippedVertically = value; }
 		}
 
+		/// <summary>
+		/// Creates a GBMObjectMapTileDataRecord with the default values.
+		/// </summary>
+		public GBMObjectMapTileDataRecord() {
+			tileNumber = 0;
+			unused1 = false;
+			unused2 = 0;
+			flippedHorizontally = false;
+			flippedVertically = false;
+
+			gbcPalette = null;
+			sgbPalette = null;
+		}
+
 		public GBMObjectMapTileDataRecord(Stream s) {
 			byte b0 = s.ReadByteEx();
 			byte b1 = s.ReadByteEx();

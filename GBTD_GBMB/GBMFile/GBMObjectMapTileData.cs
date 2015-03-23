@@ -19,6 +19,27 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public GBMObjectMapTileDataRecord[,] Tiles { get; set; }
 
+		public void Resize(UInt32 newWidth, UInt32 newHeight) {
+			//Force the size to be nonzero.
+			if (newHeight == 0) { newHeight = 1; }
+			if (newWidth == 0) { newWidth = 1; }
+
+			GBMObjectMapTileDataRecord[,] newTiles = new GBMObjectMapTileDataRecord[newWidth, newHeight];
+
+			for (uint y = 0; y < newHeight; y++) {
+				for (uint x = 0; x < newWidth; x++) {
+					if (x >= Master.Width || y >= Master.Height) { //If the value would be out of bounds in the origional tiles array.
+						newTiles[x, y] = new GBMObjectMapTileDataRecord();
+					} else {
+						newTiles[x, y] = Tiles[x, y];
+					}
+				}
+			}
+
+			Master.Width = newWidth;
+			Master.Height = newHeight;
+		}
+
 		protected override void SaveToStream(Stream s) {
 			for (int y = 0; y < Master.Height; y++) {
 				for (int x = 0; x < Master.Width; x++) {
