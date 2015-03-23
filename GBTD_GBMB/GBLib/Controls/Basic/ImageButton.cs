@@ -47,7 +47,9 @@ namespace GB.Shared.Controls
 			get { return hoveredImage; }
 			set { if (value == null) { value = new Bitmap(16, 16); } hoveredImage = value; this.Invalidate(true); }
 		}
-		
+
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		[Description("Irrelivant for this control.")]
 		[DefaultValue("")]
 		public override string Text {
 			get { return base.Text; }

@@ -26,7 +26,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			GB.Shared.Controls.Border border;
-			this.borderInner = new GB.Shared.Controls.Border();
 			this.autoUpdateCheckBox = new GB.Shared.Controls.ImageCheckBox();
 			this.removeColButton = new GB.Shared.Controls.ImageButton();
 			this.removeRowButton = new GB.Shared.Controls.ImageButton();
@@ -35,8 +34,85 @@
 			this.dropperRadioButton = new GB.Shared.Controls.ImageRadioButton();
 			this.floodRadioButton = new GB.Shared.Controls.ImageRadioButton();
 			this.penRadioButton = new GB.Shared.Controls.ImageRadioButton();
+			this.borderInner = new GB.Shared.Controls.Border();
 			border = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
+			// 
+			// autoUpdateCheckBox
+			// 
+			this.autoUpdateCheckBox.Checked = false;
+			this.autoUpdateCheckBox.HoveredImage = global::GB.GBMB.Properties.Resources.AutoUpdate_selected;
+			this.autoUpdateCheckBox.Location = new System.Drawing.Point(2, 155);
+			this.autoUpdateCheckBox.Name = "autoUpdateCheckBox";
+			this.autoUpdateCheckBox.NonhoveredImage = global::GB.GBMB.Properties.Resources.AutoUpdate_nonselected;
+			this.autoUpdateCheckBox.Size = new System.Drawing.Size(22, 17);
+			this.autoUpdateCheckBox.TabIndex = 9;
+			// 
+			// removeColButton
+			// 
+			this.removeColButton.HoveredImage = global::GB.GBMB.Properties.Resources.RemoveCol_selected;
+			this.removeColButton.Location = new System.Drawing.Point(3, 132);
+			this.removeColButton.Name = "removeColButton";
+			this.removeColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.RemoveCol_nonselected;
+			this.removeColButton.Size = new System.Drawing.Size(20, 20);
+			this.removeColButton.TabIndex = 8;
+			// 
+			// removeRowButton
+			// 
+			this.removeRowButton.HoveredImage = global::GB.GBMB.Properties.Resources.RemoveRow_selected;
+			this.removeRowButton.Location = new System.Drawing.Point(3, 112);
+			this.removeRowButton.Name = "removeRowButton";
+			this.removeRowButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.RemoveRow_nonselected;
+			this.removeRowButton.Size = new System.Drawing.Size(20, 20);
+			this.removeRowButton.TabIndex = 7;
+			// 
+			// addColButton
+			// 
+			this.addColButton.HoveredImage = global::GB.GBMB.Properties.Resources.AddCol_selected;
+			this.addColButton.Location = new System.Drawing.Point(3, 92);
+			this.addColButton.Name = "addColButton";
+			this.addColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddCol_nonselected;
+			this.addColButton.Size = new System.Drawing.Size(20, 20);
+			this.addColButton.TabIndex = 6;
+			// 
+			// addRowButton
+			// 
+			this.addRowButton.HoveredImage = global::GB.GBMB.Properties.Resources.AddRow_selected;
+			this.addRowButton.Location = new System.Drawing.Point(3, 72);
+			this.addRowButton.Name = "addRowButton";
+			this.addRowButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddRow_nonselected;
+			this.addRowButton.Size = new System.Drawing.Size(20, 20);
+			this.addRowButton.TabIndex = 5;
+			// 
+			// dropperRadioButton
+			// 
+			this.dropperRadioButton.Checked = false;
+			this.dropperRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Dropper_selected;
+			this.dropperRadioButton.Location = new System.Drawing.Point(2, 46);
+			this.dropperRadioButton.Name = "dropperRadioButton";
+			this.dropperRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Dropper_nonselected;
+			this.dropperRadioButton.Size = new System.Drawing.Size(22, 22);
+			this.dropperRadioButton.TabIndex = 4;
+			// 
+			// floodRadioButton
+			// 
+			this.floodRadioButton.Checked = false;
+			this.floodRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Flood_selected;
+			this.floodRadioButton.Location = new System.Drawing.Point(2, 24);
+			this.floodRadioButton.Name = "floodRadioButton";
+			this.floodRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Flood_nonselected;
+			this.floodRadioButton.Size = new System.Drawing.Size(22, 22);
+			this.floodRadioButton.TabIndex = 3;
+			// 
+			// penRadioButton
+			// 
+			this.penRadioButton.Checked = false;
+			this.penRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Pen_selected;
+			this.penRadioButton.Location = new System.Drawing.Point(2, 2);
+			this.penRadioButton.Name = "penRadioButton";
+			this.penRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Pen_nonselected;
+			this.penRadioButton.Size = new System.Drawing.Size(22, 22);
+			this.penRadioButton.TabIndex = 2;
 			// 
 			// borderInner
 			// 
@@ -73,90 +149,6 @@
 			border.TabIndex = 0;
 			border.Text = "border1";
 			border.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			// 
-			// autoUpdateCheckBox
-			// 
-			this.autoUpdateCheckBox.Checked = false;
-			this.autoUpdateCheckBox.HoveredImage = global::GB.GBMB.Properties.Resources.AutoUpdate_selected;
-			this.autoUpdateCheckBox.Location = new System.Drawing.Point(2, 155);
-			this.autoUpdateCheckBox.Name = "autoUpdateCheckBox";
-			this.autoUpdateCheckBox.NonhoveredImage = global::GB.GBMB.Properties.Resources.AutoUpdate_nonselected;
-			this.autoUpdateCheckBox.Size = new System.Drawing.Size(22, 17);
-			this.autoUpdateCheckBox.TabIndex = 9;
-			this.autoUpdateCheckBox.Text = "autoUpdateCheckBox";
-			// 
-			// removeColButton
-			// 
-			this.removeColButton.HoveredImage = global::GB.GBMB.Properties.Resources.RemoveCol_selected;
-			this.removeColButton.Location = new System.Drawing.Point(3, 132);
-			this.removeColButton.Name = "removeColButton";
-			this.removeColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.RemoveCol_nonselected;
-			this.removeColButton.Size = new System.Drawing.Size(20, 20);
-			this.removeColButton.TabIndex = 8;
-			this.removeColButton.Text = "removeColButton";
-			// 
-			// removeRowButton
-			// 
-			this.removeRowButton.HoveredImage = global::GB.GBMB.Properties.Resources.RemoveRow_selected;
-			this.removeRowButton.Location = new System.Drawing.Point(3, 112);
-			this.removeRowButton.Name = "removeRowButton";
-			this.removeRowButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.RemoveRow_nonselected;
-			this.removeRowButton.Size = new System.Drawing.Size(20, 20);
-			this.removeRowButton.TabIndex = 7;
-			this.removeRowButton.Text = "removeRowButton";
-			// 
-			// addColButton
-			// 
-			this.addColButton.HoveredImage = global::GB.GBMB.Properties.Resources.AddCol_selected;
-			this.addColButton.Location = new System.Drawing.Point(3, 92);
-			this.addColButton.Name = "addColButton";
-			this.addColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddCol_nonselected;
-			this.addColButton.Size = new System.Drawing.Size(20, 20);
-			this.addColButton.TabIndex = 6;
-			this.addColButton.Text = "addColButton";
-			// 
-			// addRowButton
-			// 
-			this.addRowButton.HoveredImage = global::GB.GBMB.Properties.Resources.AddRow_selected;
-			this.addRowButton.Location = new System.Drawing.Point(3, 72);
-			this.addRowButton.Name = "addRowButton";
-			this.addRowButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddRow_nonselected;
-			this.addRowButton.Size = new System.Drawing.Size(20, 20);
-			this.addRowButton.TabIndex = 5;
-			this.addRowButton.Text = "addRowButton";
-			// 
-			// dropperRadioButton
-			// 
-			this.dropperRadioButton.Checked = false;
-			this.dropperRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Dropper_selected;
-			this.dropperRadioButton.Location = new System.Drawing.Point(2, 46);
-			this.dropperRadioButton.Name = "dropperRadioButton";
-			this.dropperRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Dropper_nonselected;
-			this.dropperRadioButton.Size = new System.Drawing.Size(22, 22);
-			this.dropperRadioButton.TabIndex = 4;
-			this.dropperRadioButton.Text = "dropperRadioButton";
-			// 
-			// floodRadioButton
-			// 
-			this.floodRadioButton.Checked = false;
-			this.floodRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Flood_selected;
-			this.floodRadioButton.Location = new System.Drawing.Point(2, 24);
-			this.floodRadioButton.Name = "floodRadioButton";
-			this.floodRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Flood_nonselected;
-			this.floodRadioButton.Size = new System.Drawing.Size(22, 22);
-			this.floodRadioButton.TabIndex = 3;
-			this.floodRadioButton.Text = "floodRadioButton";
-			// 
-			// penRadioButton
-			// 
-			this.penRadioButton.Checked = false;
-			this.penRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Pen_selected;
-			this.penRadioButton.Location = new System.Drawing.Point(2, 2);
-			this.penRadioButton.Name = "penRadioButton";
-			this.penRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Pen_nonselected;
-			this.penRadioButton.Size = new System.Drawing.Size(22, 22);
-			this.penRadioButton.TabIndex = 2;
-			this.penRadioButton.Text = "penRadioButton";
 			// 
 			// ToolList
 			// 
