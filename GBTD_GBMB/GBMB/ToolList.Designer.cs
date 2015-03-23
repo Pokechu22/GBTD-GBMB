@@ -30,9 +30,9 @@
 			this.removeRowButton = new GB.Shared.Controls.ImageButton();
 			this.addColButton = new GB.Shared.Controls.ImageButton();
 			this.addRowButton = new GB.Shared.Controls.ImageButton();
-			this.imageRadioButton3 = new GB.Shared.Controls.ImageRadioButton();
-			this.imageRadioButton2 = new GB.Shared.Controls.ImageRadioButton();
-			this.imageRadioButton1 = new GB.Shared.Controls.ImageRadioButton();
+			this.dropperRadioButton = new GB.Shared.Controls.ImageRadioButton();
+			this.floodRadioButton = new GB.Shared.Controls.ImageRadioButton();
+			this.penRadioButton = new GB.Shared.Controls.ImageRadioButton();
 			this.borderInner = new GB.Shared.Controls.Border();
 			border = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
@@ -77,38 +77,38 @@
 			this.addRowButton.TabIndex = 5;
 			this.addRowButton.Text = "addRowButton";
 			// 
-			// imageRadioButton3
+			// dropperRadioButton
 			// 
-			this.imageRadioButton3.Checked = false;
-			this.imageRadioButton3.HoveredImage = global::GB.GBMB.Properties.Resources.Dropper_selected;
-			this.imageRadioButton3.Location = new System.Drawing.Point(2, 46);
-			this.imageRadioButton3.Name = "imageRadioButton3";
-			this.imageRadioButton3.NonhoveredImage = global::GB.GBMB.Properties.Resources.Dropper_nonselected;
-			this.imageRadioButton3.Size = new System.Drawing.Size(22, 22);
-			this.imageRadioButton3.TabIndex = 4;
-			this.imageRadioButton3.Text = "imageRadioButton3";
+			this.dropperRadioButton.Checked = false;
+			this.dropperRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Dropper_selected;
+			this.dropperRadioButton.Location = new System.Drawing.Point(2, 46);
+			this.dropperRadioButton.Name = "dropperRadioButton";
+			this.dropperRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Dropper_nonselected;
+			this.dropperRadioButton.Size = new System.Drawing.Size(22, 22);
+			this.dropperRadioButton.TabIndex = 4;
+			this.dropperRadioButton.Text = "dropperRadioButton";
 			// 
-			// imageRadioButton2
+			// floodRadioButton
 			// 
-			this.imageRadioButton2.Checked = false;
-			this.imageRadioButton2.HoveredImage = global::GB.GBMB.Properties.Resources.Flood_selected;
-			this.imageRadioButton2.Location = new System.Drawing.Point(2, 24);
-			this.imageRadioButton2.Name = "imageRadioButton2";
-			this.imageRadioButton2.NonhoveredImage = global::GB.GBMB.Properties.Resources.Flood_nonselected;
-			this.imageRadioButton2.Size = new System.Drawing.Size(22, 22);
-			this.imageRadioButton2.TabIndex = 3;
-			this.imageRadioButton2.Text = "imageRadioButton2";
+			this.floodRadioButton.Checked = false;
+			this.floodRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Flood_selected;
+			this.floodRadioButton.Location = new System.Drawing.Point(2, 24);
+			this.floodRadioButton.Name = "floodRadioButton";
+			this.floodRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Flood_nonselected;
+			this.floodRadioButton.Size = new System.Drawing.Size(22, 22);
+			this.floodRadioButton.TabIndex = 3;
+			this.floodRadioButton.Text = "floodRadioButton";
 			// 
-			// imageRadioButton1
+			// penRadioButton
 			// 
-			this.imageRadioButton1.Checked = false;
-			this.imageRadioButton1.HoveredImage = global::GB.GBMB.Properties.Resources.Pen_selected;
-			this.imageRadioButton1.Location = new System.Drawing.Point(2, 2);
-			this.imageRadioButton1.Name = "imageRadioButton1";
-			this.imageRadioButton1.NonhoveredImage = global::GB.GBMB.Properties.Resources.Pen_nonselected;
-			this.imageRadioButton1.Size = new System.Drawing.Size(22, 22);
-			this.imageRadioButton1.TabIndex = 2;
-			this.imageRadioButton1.Text = "imageRadioButton1";
+			this.penRadioButton.Checked = false;
+			this.penRadioButton.HoveredImage = global::GB.GBMB.Properties.Resources.Pen_selected;
+			this.penRadioButton.Location = new System.Drawing.Point(2, 2);
+			this.penRadioButton.Name = "penRadioButton";
+			this.penRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Pen_nonselected;
+			this.penRadioButton.Size = new System.Drawing.Size(22, 22);
+			this.penRadioButton.TabIndex = 2;
+			this.penRadioButton.Text = "penRadioButton";
 			// 
 			// borderInner
 			// 
@@ -154,9 +154,9 @@
 			this.Controls.Add(this.removeRowButton);
 			this.Controls.Add(this.addColButton);
 			this.Controls.Add(this.addRowButton);
-			this.Controls.Add(this.imageRadioButton3);
-			this.Controls.Add(this.imageRadioButton2);
-			this.Controls.Add(this.imageRadioButton1);
+			this.Controls.Add(this.dropperRadioButton);
+			this.Controls.Add(this.floodRadioButton);
+			this.Controls.Add(this.penRadioButton);
 			this.Controls.Add(this.borderInner);
 			this.Controls.Add(border);
 			this.MaximumSize = new System.Drawing.Size(26, 174);
@@ -170,9 +170,9 @@
 		#endregion
 
 		private Shared.Controls.Border borderInner;
-		private Shared.Controls.ImageRadioButton imageRadioButton1;
-		private Shared.Controls.ImageRadioButton imageRadioButton2;
-		private Shared.Controls.ImageRadioButton imageRadioButton3;
+		private Shared.Controls.ImageRadioButton penRadioButton;
+		private Shared.Controls.ImageRadioButton floodRadioButton;
+		private Shared.Controls.ImageRadioButton dropperRadioButton;
 		private Shared.Controls.ImageButton addRowButton;
 		private Shared.Controls.ImageButton addColButton;
 		private Shared.Controls.ImageButton removeRowButton;
