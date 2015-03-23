@@ -40,7 +40,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem11;
 			System.Windows.Forms.MenuItem seperatorMenuItem12;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData8 = new GB.Shared.Palettes.PaletteData();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
@@ -105,6 +105,7 @@
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
 			this.mapControl1 = new GB.GBMB.MapControl();
+			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -643,7 +644,7 @@
 			this.mapControl1.Location = new System.Drawing.Point(1, 1);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData1;
+			this.mapControl1.PaletteData = paletteData8;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(290, 271);
@@ -651,6 +652,16 @@
 			this.mapControl1.Text = "mapControl1";
 			this.mapControl1.TileSet = null;
 			this.mapControl1.Zoom = 4F;
+			// 
+			// auMessenger
+			// 
+			this.auMessenger.FileName = null;
+			this.auMessenger.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auMessenger_OnTileChanged);
+			this.auMessenger.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTotalRefreshNeeded);
+			this.auMessenger.OnTileRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileRefreshNeeded);
+			this.auMessenger.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileSizeChanged);
+			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
+			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
 			// MapEdit
 			// 
@@ -731,6 +742,7 @@
 		private System.Windows.Forms.MenuItem helpTopicsMenuItem;
 		private System.Windows.Forms.MenuItem helpIndexMenuItem;
 		private System.Windows.Forms.MenuItem aboutMenuItem;
+		private Shared.AutoUpdate.AUMessenger auMessenger;
 	}
 }
 

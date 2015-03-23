@@ -71,6 +71,38 @@ namespace GB.Shared.AutoUpdate
 					file.messenger.SendTileChangeMessage(tile);
 				}
 			}
+
+			/// <summary>
+			/// Creates a full tile array from the tiles represented by this.
+			/// 
+			/// If you only want one tile, use the indexer.
+			/// </summary>
+			public Tile[] GetTilesArray() {
+				var stream = file.stream;
+				stream.Position = TILES_INDEX;
+
+				Tile[] returned = new Tile[file.TileCount];
+
+				for (int tileNum = 0; tileNum < returned.Length; tileNum++) {
+					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
+					var read = stream.Read(data, 0, TILE_WIDTH * TILE_HEIGHT);
+					if (read != TILE_WIDTH * TILE_HEIGHT) {
+						throw new EndOfStreamException();
+					}
+
+					GBColor[,] pixels = new GBColor[TILE_WIDTH, TILE_HEIGHT];
+
+					for (int y = 0; y < TILE_HEIGHT; y++) {
+						for (int x = 0; x < TILE_WIDTH; x++) {
+							pixels[x, y] = ByteToGBColor(data[x + (y * TILE_WIDTH)]);
+						}
+					}
+
+					returned[tileNum] = new Tile(pixels);
+				}
+
+				return returned;
+			}
 		}
 
 		/// <summary>
