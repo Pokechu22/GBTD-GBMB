@@ -405,18 +405,18 @@
 			this.floodFillMenuItem.Index = 1;
 			this.floodFillMenuItem.RadioCheck = true;
 			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+			this.floodFillMenuItem.Tag = GB.GBMB.Tool.FLOOD;
 			this.floodFillMenuItem.Text = "&Flood fill";
 			this.floodFillMenuItem.Click += new System.EventHandler(this.onToolMenuItemClicked);
-			this.floodFillMenuItem.Tag = GB.GBMB.Tool.FLOOD;
 			// 
 			// dropperMenuItem
 			// 
 			this.dropperMenuItem.Index = 2;
 			this.dropperMenuItem.RadioCheck = true;
 			this.dropperMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			this.dropperMenuItem.Tag = GB.GBMB.Tool.DROPPER;
 			this.dropperMenuItem.Text = "D&ropper";
 			this.dropperMenuItem.Click += new System.EventHandler(this.onToolMenuItemClicked);
-			this.dropperMenuItem.Tag = GB.GBMB.Tool.DROPPER;
 			// 
 			// insertRowMenuItem
 			// 
@@ -446,6 +446,7 @@
 			// 
 			this.clearMapMenuItem.Index = 9;
 			this.clearMapMenuItem.Text = "&Clear map";
+			this.clearMapMenuItem.Click += new System.EventHandler(this.clearMapMenuItem_Click);
 			// 
 			// blockFillMenuItem
 			// 

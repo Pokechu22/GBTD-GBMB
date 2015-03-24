@@ -415,5 +415,21 @@ namespace GB.GBMB
 				}
 			}
 		}
+
+		private void clearMapMenuItem_Click(object sender, EventArgs e) {
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+
+			GBMObjectMapTileDataRecord[,] newTiles = new GBMObjectMapTileDataRecord[map.Master.Width, map.Master.Height];
+
+			for (int y = 0; y < map.Master.Height; y++) {
+				for (int x = 0; x < map.Master.Width; x++) {
+					newTiles[x, y] = new GBMObjectMapTileDataRecord();
+				}
+			}
+
+			map.Tiles = newTiles;
+
+			mapControl.Map = map;
+		}
 	}
 }
