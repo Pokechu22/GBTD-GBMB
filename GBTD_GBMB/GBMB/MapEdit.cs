@@ -106,7 +106,7 @@ namespace GB.GBMB
 		}
 
 		[Description("The color set to use.")]
-		public ColorSet colorSet {
+		public ColorSet ColorSet {
 			get { return mapControl.ColorSet; }
 			set {
 				MenuItem[] ColorSetControls = new MenuItem[] {
@@ -180,6 +180,8 @@ namespace GB.GBMB
 			this.ShowInfoPanel = settings.ShowInfoPanel;
 			this.ShowPropertyColors = settings.ShowPropColors;
 			this.ShowDoubleMarkers = settings.ShowDoubleMarkers;
+
+			this.ColorSet = (ColorSet)settings.ColorSet;
 		}
 
 		/// <summary>
@@ -373,7 +375,7 @@ namespace GB.GBMB
 
 			if (item != null) {
 				if (item.Tag is ColorSet) {
-					this.colorSet = (ColorSet)item.Tag;
+					this.ColorSet = (ColorSet)item.Tag;
 				}
 			}
 		}
