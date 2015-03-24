@@ -87,6 +87,13 @@ namespace GB.Shared.AutoUpdate
 			SendTotalRefreshMessage();
 		}
 
+		private bool enabled;
+		[Category("Behavior"), Description("Whether or not this is enabaled -- when disabled no events will be received nor sent.")]
+		public bool Enabled {
+			get { return enabled; }
+			set { enabled = value; }
+		}
+
 		public AUMessenger() {
 			MessageListener.Start();
 			MessageListener.OnMessage += new MessageEventHandler(onListenerMessage);
@@ -100,6 +107,8 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		void onListenerMessage(object sender, MessageEventArgs args) {
+			if (!Enabled) { return; }
+
 			if (args.Message.Msg == AutoUpdateMessageID) {
 				if (args.Message.LParam == MessageListener.MessageListenerHandle) { return; } //To avoid an infinite loop.
 
@@ -152,6 +161,7 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTileChangeMessage(UInt16 tile) {
+			if (!Enabled) { return; }
 			if (supressSendingMessages) { return; }
 
 			tile &= 0x7FFF; //If someone is trying to send an invalid tile change message, too bad.
@@ -164,6 +174,7 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTotalRefreshMessage() {
+			if (!Enabled) { return; }
 			if (supressSendingMessages) { return; }
 
 			SendMessage(
@@ -174,6 +185,7 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTileListRefreshMessage() {
+			if (!Enabled) { return; }
 			if (supressSendingMessages) { return; }
 
 			SendMessage(
@@ -184,6 +196,7 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendTileDimensionsMessage() {
+			if (!Enabled) { return; }
 			if (supressSendingMessages) { return; }
 
 			SendMessage(
@@ -194,6 +207,7 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendColorMappingsMessage() {
+			if (!Enabled) { return; }
 			if (supressSendingMessages) { return; }
 
 			SendMessage(
@@ -204,6 +218,7 @@ namespace GB.Shared.AutoUpdate
 		}
 
 		public void SendColorSetsMessage() {
+			if (!Enabled) { return; }
 			if (supressSendingMessages) { return; }
 
 			SendMessage(

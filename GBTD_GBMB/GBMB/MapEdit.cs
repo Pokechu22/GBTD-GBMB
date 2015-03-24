@@ -262,8 +262,8 @@ namespace GB.GBMB
 		}
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
-			//TODO: Not yet implemented.
 			autoUpdateMenuItem.Checked = toolList.AutoUpdate;
+			auMessenger.Enabled = toolList.AutoUpdate;
 		}
 
 		private void infoPanelMenuItem_Click(object sender, EventArgs e) {
