@@ -26,10 +26,9 @@ namespace GB.GBMB
 		/// The scale factor used for zooming.
 		/// </summary>
 		[Category("Map display"), Description("The scale factor used for the map.")]
-		[DefaultValue(2f)]
-		public float Zoom {
-			get { return zoom; }
-			set { zoom = value; this.Invalidate(); }
+		public ZoomLevel ZoomLevel {
+			get { return (ZoomLevel)(zoom * 2); }
+			set { zoom = ((int)value / 2f); this.Invalidate(); }
 		}
 
 		[Category("Map display"), Description("Whether or not a per-tile grid is shown.")]
@@ -127,7 +126,7 @@ namespace GB.GBMB
 
 			SetStyle(ControlStyles.ResizeRedraw, true);
 
-			Zoom = 4f;
+			zoom = 4f;
 			PaletteData = new PaletteData();
 
 			ColorSet = Shared.Palettes.ColorSet.GAMEBOY_COLOR;
@@ -165,7 +164,7 @@ namespace GB.GBMB
 		/// Converts a mouse click position to a tile position.
 		/// </summary>
 		private int MouseToTileX(int mouseX) {
-			int value = (mouseX - AFTER_BOX_X) / (int)(TILE_WIDTH * Zoom);
+			int value = (mouseX - AFTER_BOX_X) / (int)(TILE_WIDTH * zoom);
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Width) { return (int)(map.Master.Width - 1); }
@@ -176,7 +175,7 @@ namespace GB.GBMB
 		/// Converts a mouse click position to a tile position.
 		/// </summary>
 		private int MouseToTileY(int mouseY) {
-			int value = (mouseY - AFTER_BOX_Y) / (int)(TILE_HEIGHT * Zoom);
+			int value = (mouseY - AFTER_BOX_Y) / (int)(TILE_HEIGHT * zoom);
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Height) { return (int)(map.Master.Height - 1); }
@@ -230,13 +229,13 @@ namespace GB.GBMB
 			e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
 
 			//All of the labels on the top.
-			OuterBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TILE_WIDTH * Zoom), BOX_HEIGHT);
-			InnerBorderRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(TILE_WIDTH * Zoom) - 2, BOX_HEIGHT - 2);
-			TextRect = new Rectangle(AFTER_BOX_X + 2, INITIAL_BOX_Y + 2, (int)(TILE_WIDTH * Zoom) - 4, BOX_HEIGHT - 4);
+			OuterBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TILE_WIDTH * zoom), BOX_HEIGHT);
+			InnerBorderRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(TILE_WIDTH * zoom) - 2, BOX_HEIGHT - 2);
+			TextRect = new Rectangle(AFTER_BOX_X + 2, INITIAL_BOX_Y + 2, (int)(TILE_WIDTH * zoom) - 4, BOX_HEIGHT - 4);
 
 			for (int XPos = AFTER_BOX_X, RowNumber = 0;
 					XPos < this.Width;
-					XPos += (int)(TILE_WIDTH * Zoom), RowNumber++) {
+					XPos += (int)(TILE_WIDTH * zoom), RowNumber++) {
 
 				OuterBorderRect.X = XPos;
 				InnerBorderRect.X = XPos + 1;
@@ -268,13 +267,13 @@ namespace GB.GBMB
 			}
 
 			//All of the labels on the side.
-			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(TILE_HEIGHT * Zoom));
-			InnerBorderRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 2, (int)(TILE_HEIGHT * Zoom) - 2);
-			TextRect = new Rectangle(INITIAL_BOX_X + 2, AFTER_BOX_Y + 2, BOX_WIDTH - 4, (int)(TILE_HEIGHT * Zoom) - 4);
+			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(TILE_HEIGHT * zoom));
+			InnerBorderRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 2, (int)(TILE_HEIGHT * zoom) - 2);
+			TextRect = new Rectangle(INITIAL_BOX_X + 2, AFTER_BOX_Y + 2, BOX_WIDTH - 4, (int)(TILE_HEIGHT * zoom) - 4);
 
 			for (int YPos = AFTER_BOX_Y, ColNumber = 0;
 					YPos < this.Height;
-					YPos += (int)(TILE_WIDTH * Zoom), ColNumber++) {
+					YPos += (int)(TILE_WIDTH * zoom), ColNumber++) {
 
 				OuterBorderRect.Y = YPos;
 				InnerBorderRect.Y = YPos + 1;
@@ -326,8 +325,8 @@ namespace GB.GBMB
 			//TODO make this work off of scrolled position.
 			for (int tileY = 2; tileY < map.Master.Height; tileY += 2) {
 				for (int tileX = 2; tileX < map.Master.Width; tileX += 2) {
-					int centX = (int)(tileX * TILE_WIDTH * Zoom) + AFTER_BOX_X - 1;
-					int centY = (int)(tileY * TILE_HEIGHT * Zoom) + AFTER_BOX_Y - 1;
+					int centX = (int)(tileX * TILE_WIDTH * zoom) + AFTER_BOX_X - 1;
+					int centY = (int)(tileY * TILE_HEIGHT * zoom) + AFTER_BOX_Y - 1;
 
 					e.Graphics.FillRectangle(Brushes.Red, centX - 1, centY, 3, 1);
 					e.Graphics.FillRectangle(Brushes.Red, centX, centY - 1, 1, 3);
@@ -338,10 +337,10 @@ namespace GB.GBMB
 		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord record, int tileX, int tileY) {
 			Tile t = tileset.tiles[record.TileNumber];
 			RectangleF rect = new RectangleF(
-				(tileX * t.Width * Zoom) + AFTER_BOX_X,
-				(tileY * t.Height * Zoom) + AFTER_BOX_Y,
-				t.Width * Zoom,
-				t.Height * Zoom);
+				(tileX * t.Width * zoom) + AFTER_BOX_X,
+				(tileY * t.Height * zoom) + AFTER_BOX_Y,
+				t.Width * zoom,
+				t.Height * zoom);
 
 			if (!rect.IntersectsWith(e.ClipRectangle)) {
 				return;

@@ -43,7 +43,8 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -74,11 +75,6 @@
 			this.blockFillMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.zoomMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			this.infoPanelMenuItem = new System.Windows.Forms.MenuItem();
 			this.gridMenuItem = new System.Windows.Forms.MenuItem();
 			this.doubleMarkersMenuItem = new System.Windows.Forms.MenuItem();
@@ -106,10 +102,18 @@
 			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
-			this.toolList = new GB.GBMB.ToolList();
-			this.mapControl = new GB.GBMB.MapControl();
+			this.zoomComboBox = new System.Windows.Forms.ComboBox();
+			this.zoomLabel = new GB.Shared.Controls.CleanLabel();
+			this.zoomBorder = new GB.Shared.Controls.Border();
 			this.mapEditBorder = new GB.Shared.Controls.Border();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
+			this.toolList = new GB.GBMB.ToolList();
+			this.mapControl = new GB.GBMB.MapControl();
+			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -198,6 +202,48 @@
 			// 
 			seperatorMenuItem13.Index = 2;
 			seperatorMenuItem13.Text = "-";
+			// 
+			// topBoxSeperator1
+			// 
+			topBoxSeperator1.BottomBorder = null;
+			topBoxSeperator1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Left};
+			topBoxSeperator1.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxSeperator1.Location = new System.Drawing.Point(81, 2);
+			topBoxSeperator1.Name = "topBoxSeperator1";
+			topBoxSeperator1.RightBorder = null;
+			topBoxSeperator1.Size = new System.Drawing.Size(2, 28);
+			topBoxSeperator1.TabIndex = 5;
+			topBoxSeperator1.TopBorder = null;
+			// 
+			// topBoxBorder2
+			// 
+			topBoxBorder2.BottomBorder = null;
+			topBoxBorder2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Right};
+			topBoxBorder2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxBorder2.Location = new System.Drawing.Point(161, 2);
+			topBoxBorder2.Name = "topBoxBorder2";
+			topBoxBorder2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxBorder2.Size = new System.Drawing.Size(101, 28);
+			topBoxBorder2.TabIndex = 4;
+			topBoxBorder2.TopBorder = null;
+			// 
+			// topBoxBorder
+			// 
+			topBoxBorder.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxBorder.Dock = System.Windows.Forms.DockStyle.Top;
+			topBoxBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom};
+			topBoxBorder.LeftBorder = null;
+			topBoxBorder.Location = new System.Drawing.Point(0, 0);
+			topBoxBorder.Name = "topBoxBorder";
+			topBoxBorder.RightBorder = null;
+			topBoxBorder.Size = new System.Drawing.Size(292, 32);
+			topBoxBorder.TabIndex = 3;
+			topBoxBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
 			// mainMenu
 			// 
@@ -428,31 +474,6 @@
             this.zoom200PercentMenuItem});
 			this.zoomMenuItem.Text = "&Zoom";
 			// 
-			// zoom25PercentMenuItem
-			// 
-			this.zoom25PercentMenuItem.Index = 0;
-			this.zoom25PercentMenuItem.Text = "25&%";
-			// 
-			// zoom50PercentMenuItem
-			// 
-			this.zoom50PercentMenuItem.Index = 1;
-			this.zoom50PercentMenuItem.Text = "&50%";
-			// 
-			// zoom100PercentMenuItem
-			// 
-			this.zoom100PercentMenuItem.Index = 2;
-			this.zoom100PercentMenuItem.Text = "&100%";
-			// 
-			// zoom150PercentMenuItem
-			// 
-			this.zoom150PercentMenuItem.Index = 3;
-			this.zoom150PercentMenuItem.Text = "15&0%";
-			// 
-			// zoom200PercentMenuItem
-			// 
-			this.zoom200PercentMenuItem.Index = 4;
-			this.zoom200PercentMenuItem.Text = "&200%";
-			// 
 			// infoPanelMenuItem
 			// 
 			this.infoPanelMenuItem.Index = 2;
@@ -630,81 +651,52 @@
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
 			// 
-			// toolList
+			// zoomComboBox
 			// 
-			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(10, 64);
-			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
-			this.toolList.Size = new System.Drawing.Size(26, 174);
-			this.toolList.TabIndex = 6;
-			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
-			this.toolList.AddRowClicked += new System.EventHandler(this.toolList_AddRowClicked);
-			this.toolList.AddColumnClicked += new System.EventHandler(this.toolList_AddColumnClicked);
-			this.toolList.RemoveRowClicked += new System.EventHandler(this.toolList_RemoveRowClicked);
-			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
-			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
+			this.zoomComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.zoomComboBox.Items.AddRange(new object[] {
+            "25%",
+            "50%",
+            "100%",
+            "150%",
+            "200%"});
+			this.zoomComboBox.Location = new System.Drawing.Point(203, 5);
+			this.zoomComboBox.Name = "zoomComboBox";
+			this.zoomComboBox.Size = new System.Drawing.Size(51, 21);
+			this.zoomComboBox.TabIndex = 9;
+			this.zoomComboBox.SelectedIndexChanged += new System.EventHandler(this.zoomComboBox_SelectedIndexChanged);
 			// 
-			// topBoxSeperator1
+			// zoomLabel
 			// 
-			topBoxSeperator1.BottomBorder = null;
-			topBoxSeperator1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Left};
-			topBoxSeperator1.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			topBoxSeperator1.Location = new System.Drawing.Point(81, 2);
-			topBoxSeperator1.Name = "topBoxSeperator1";
-			topBoxSeperator1.RightBorder = null;
-			topBoxSeperator1.Size = new System.Drawing.Size(2, 28);
-			topBoxSeperator1.TabIndex = 5;
-			topBoxSeperator1.TopBorder = null;
+			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat1;
+			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
+			this.zoomLabel.Name = "zoomLabel";
+			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
+			this.zoomLabel.TabIndex = 8;
+			this.zoomLabel.TabStop = false;
+			this.zoomLabel.Text = "Zoom";
 			// 
-			// topBoxBorder2
+			// zoomBorder
 			// 
-			topBoxBorder2.BottomBorder = null;
-			topBoxBorder2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Right};
-			topBoxBorder2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			topBoxBorder2.Location = new System.Drawing.Point(161, 2);
-			topBoxBorder2.Name = "topBoxBorder2";
-			topBoxBorder2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			topBoxBorder2.Size = new System.Drawing.Size(101, 28);
-			topBoxBorder2.TabIndex = 4;
-			topBoxBorder2.TopBorder = null;
-			// 
-			// topBoxBorder
-			// 
-			topBoxBorder.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
-			topBoxBorder.Dock = System.Windows.Forms.DockStyle.Top;
-			topBoxBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+			this.zoomBorder.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.zoomBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
         System.Windows.Forms.Border3DSide.Bottom};
-			topBoxBorder.LeftBorder = null;
-			topBoxBorder.Location = new System.Drawing.Point(0, 0);
-			topBoxBorder.Name = "topBoxBorder";
-			topBoxBorder.RightBorder = null;
-			topBoxBorder.Size = new System.Drawing.Size(292, 32);
-			topBoxBorder.TabIndex = 3;
-			topBoxBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
-			// 
-			// mapControl
-			// 
-			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
-			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl.DefaultPalette = null;
-			this.mapControl.Enabled = false;
-			this.mapControl.Location = new System.Drawing.Point(61, 82);
-			this.mapControl.Map = null;
-			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData2;
-			this.mapControl.ShowDoubleMarkers = false;
-			this.mapControl.ShowGrid = true;
-			this.mapControl.ShowPropertyColors = false;
-			this.mapControl.Size = new System.Drawing.Size(184, 157);
-			this.mapControl.TabIndex = 0;
-			this.mapControl.Text = "mapControl1";
-			this.mapControl.TileSet = null;
-			this.mapControl.Zoom = 4F;
+			this.zoomBorder.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.zoomBorder.Location = new System.Drawing.Point(167, 4);
+			this.zoomBorder.Name = "zoomBorder";
+			this.zoomBorder.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.zoomBorder.Size = new System.Drawing.Size(89, 24);
+			this.zoomBorder.TabIndex = 7;
+			this.zoomBorder.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
 			// mapEditBorder
 			// 
@@ -734,11 +726,83 @@
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
+			// toolList
+			// 
+			this.toolList.AutoUpdate = false;
+			this.toolList.Location = new System.Drawing.Point(10, 64);
+			this.toolList.Name = "toolList";
+			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
+			this.toolList.Size = new System.Drawing.Size(26, 174);
+			this.toolList.TabIndex = 6;
+			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
+			this.toolList.AddRowClicked += new System.EventHandler(this.toolList_AddRowClicked);
+			this.toolList.AddColumnClicked += new System.EventHandler(this.toolList_AddColumnClicked);
+			this.toolList.RemoveRowClicked += new System.EventHandler(this.toolList_RemoveRowClicked);
+			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
+			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
+			// 
+			// mapControl
+			// 
+			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
+			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.mapControl.DefaultPalette = null;
+			this.mapControl.Enabled = false;
+			this.mapControl.Location = new System.Drawing.Point(61, 82);
+			this.mapControl.Map = null;
+			this.mapControl.Name = "mapControl";
+			this.mapControl.PaletteData = paletteData1;
+			this.mapControl.ShowDoubleMarkers = false;
+			this.mapControl.ShowGrid = true;
+			this.mapControl.ShowPropertyColors = false;
+			this.mapControl.Size = new System.Drawing.Size(184, 157);
+			this.mapControl.TabIndex = 0;
+			this.mapControl.Text = "mapControl1";
+			this.mapControl.TileSet = null;
+			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
+			// 
+			// zoom25PercentMenuItem
+			// 
+			this.zoom25PercentMenuItem.Index = 0;
+			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
+			this.zoom25PercentMenuItem.Text = "25&%";
+			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom50PercentMenuItem
+			// 
+			this.zoom50PercentMenuItem.Index = 1;
+			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
+			this.zoom50PercentMenuItem.Text = "&50%";
+			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom100PercentMenuItem
+			// 
+			this.zoom100PercentMenuItem.Index = 2;
+			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
+			this.zoom100PercentMenuItem.Text = "&100%";
+			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom150PercentMenuItem
+			// 
+			this.zoom150PercentMenuItem.Index = 3;
+			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
+			this.zoom150PercentMenuItem.Text = "15&0%";
+			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom200PercentMenuItem
+			// 
+			this.zoom200PercentMenuItem.Index = 4;
+			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
+			this.zoom200PercentMenuItem.Text = "&200%";
+			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.Controls.Add(this.zoomComboBox);
+			this.Controls.Add(this.zoomLabel);
+			this.Controls.Add(this.zoomBorder);
 			this.Controls.Add(this.toolList);
 			this.Controls.Add(topBoxSeperator1);
 			this.Controls.Add(topBoxBorder2);
@@ -819,6 +883,9 @@
 		private System.Windows.Forms.MenuItem aboutMenuItem;
 		private Shared.AutoUpdate.AUMessenger auMessenger;
 		private ToolList toolList;
+		private Shared.Controls.Border zoomBorder;
+		private Shared.Controls.CleanLabel zoomLabel;
+		private System.Windows.Forms.ComboBox zoomComboBox;
 	}
 }
 

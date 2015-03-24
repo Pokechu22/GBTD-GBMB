@@ -70,11 +70,45 @@ namespace GB.GBMB
 			}
 		}
 
+		public ZoomLevel ZoomLevel {
+			get { return mapControl.ZoomLevel; }
+			set {
+				MenuItem[] ZoomControls = new MenuItem[] {
+					zoom25PercentMenuItem,
+					zoom50PercentMenuItem,
+					zoom100PercentMenuItem,
+					zoom150PercentMenuItem,
+					zoom200PercentMenuItem
+				};
+
+				foreach (MenuItem item in ZoomControls) {
+					if (item.Tag is ZoomLevel) {
+						item.Checked = (((ZoomLevel)item.Tag) == value);
+					} else {
+						//TODO: This is an error state.
+						item.Checked = false;
+					}
+				}
+
+				switch (value) {
+				case ZoomLevel._25: zoomComboBox.SelectedIndex = 0; break;
+				case ZoomLevel._50: zoomComboBox.SelectedIndex = 1; break;
+				case ZoomLevel._100: zoomComboBox.SelectedIndex = 2; break;
+				case ZoomLevel._150: zoomComboBox.SelectedIndex = 3; break;
+				case ZoomLevel._200: zoomComboBox.SelectedIndex = 4; break;
+				default: zoomComboBox.SelectedIndex = -1; break; //Error state, again.
+				}
+
+				mapControl.ZoomLevel = value;
+			}
+		}
 
 		public MapEdit() {
 			InitializeComponent();
 
 			mapEditBorder_Resize(mapEditBorder, new EventArgs());
+
+			zoomComboBox.SelectedIndex = 4;
 		}
 
 		private void openMenuItem_Click(object sender, EventArgs e) {
@@ -284,6 +318,27 @@ namespace GB.GBMB
 
 		private void autoUpdateMenuItem_Click(object sender, EventArgs e) {
 			this.AutoUpdate ^= true;
+		}
+
+		private void zoomComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			switch (zoomComboBox.SelectedIndex) {
+			case 0: ZoomLevel = ZoomLevel._25; return;
+			case 1: ZoomLevel = ZoomLevel._50; return;
+			case 2: ZoomLevel = ZoomLevel._100; return;
+			case 3: ZoomLevel = ZoomLevel._150; return;
+			case 4: ZoomLevel = ZoomLevel._200; return;
+			default: zoomComboBox.SelectedIndex = 0; return;
+			}
+		}
+
+		private void onZoomMenuItemClicked(object sender, EventArgs e) {
+			MenuItem menuItem = sender as MenuItem;
+
+			if (menuItem != null) {
+				if (!(menuItem.Tag is ZoomLevel)) { return; }
+
+				this.ZoomLevel = (ZoomLevel)menuItem.Tag;
+			}
 		}
 	}
 }

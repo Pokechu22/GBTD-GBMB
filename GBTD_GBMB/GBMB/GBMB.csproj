@@ -66,6 +66,7 @@
     <Compile Include="ToolList.Designer.cs">
       <DependentUpon>ToolList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ZoomLevel.cs" />
     <EmbeddedResource Include="MapEdit.resx">
       <DependentUpon>MapEdit.cs</DependentUpon>
     </EmbeddedResource>
