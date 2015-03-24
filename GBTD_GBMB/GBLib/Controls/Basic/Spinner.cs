@@ -16,6 +16,11 @@ namespace GB.Shared.Controls
 	/// </summary>
 	public partial class Spinner : UserControl
 	{
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[DefaultValue("")]
+		[Description("This is not useful for this control")]
+		public override string Text { get { return base.Text; } set { base.Text = value; } }
+
 		/// <summary>
 		/// Paints a button.
 		/// </summary>

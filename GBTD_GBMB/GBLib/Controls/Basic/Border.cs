@@ -10,6 +10,11 @@ namespace GB.Shared.Controls
 {
 	public class Border : Control
 	{
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[DefaultValue("")]
+		[Description("This is not useful for this control")]
+		public override string Text { get { return base.Text; } set { base.Text = value; } }
+
 		protected override Padding DefaultMargin {
 			get { return new Padding(0, 0, 0, 0); }
 		}
