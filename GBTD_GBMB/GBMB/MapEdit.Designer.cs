@@ -836,7 +836,7 @@
 			// openButton
 			// 
 			this.openButton.HoveredImage = global::GB.GBMB.Properties.Resources.Open_selected;
-			this.openButton.Location = new System.Drawing.Point(0, 9);
+			this.openButton.Location = new System.Drawing.Point(7, 4);
 			this.openButton.Name = "openButton";
 			this.openButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Open_nonselected;
 			this.openButton.Size = new System.Drawing.Size(24, 24);
@@ -845,7 +845,7 @@
 			// saveButton
 			// 
 			this.saveButton.HoveredImage = global::GB.GBMB.Properties.Resources.Save_selected;
-			this.saveButton.Location = new System.Drawing.Point(30, 6);
+			this.saveButton.Location = new System.Drawing.Point(30, 4);
 			this.saveButton.Name = "saveButton";
 			this.saveButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Save_nonselected;
 			this.saveButton.Size = new System.Drawing.Size(24, 24);
@@ -854,7 +854,7 @@
 			// exportButton
 			// 
 			this.exportButton.HoveredImage = global::GB.GBMB.Properties.Resources.Export_selected;
-			this.exportButton.Location = new System.Drawing.Point(59, 6);
+			this.exportButton.Location = new System.Drawing.Point(53, 4);
 			this.exportButton.Name = "exportButton";
 			this.exportButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Export_nonselected;
 			this.exportButton.Size = new System.Drawing.Size(24, 24);
@@ -863,7 +863,7 @@
 			// cutButton
 			// 
 			this.cutButton.HoveredImage = global::GB.GBMB.Properties.Resources.Cut_selected;
-			this.cutButton.Location = new System.Drawing.Point(87, 0);
+			this.cutButton.Location = new System.Drawing.Point(87, 4);
 			this.cutButton.Name = "cutButton";
 			this.cutButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Cut_nonselected;
 			this.cutButton.Size = new System.Drawing.Size(24, 24);
@@ -872,7 +872,7 @@
 			// copyButton
 			// 
 			this.copyButton.HoveredImage = global::GB.GBMB.Properties.Resources.Copy_selected;
-			this.copyButton.Location = new System.Drawing.Point(117, 5);
+			this.copyButton.Location = new System.Drawing.Point(110, 4);
 			this.copyButton.Name = "copyButton";
 			this.copyButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Copy_nonselected;
 			this.copyButton.Size = new System.Drawing.Size(24, 24);
@@ -881,7 +881,7 @@
 			// pasteButton
 			// 
 			this.pasteButton.HoveredImage = global::GB.GBMB.Properties.Resources.Paste_selected;
-			this.pasteButton.Location = new System.Drawing.Point(149, 8);
+			this.pasteButton.Location = new System.Drawing.Point(133, 4);
 			this.pasteButton.Name = "pasteButton";
 			this.pasteButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Paste_nonselected;
 			this.pasteButton.Size = new System.Drawing.Size(24, 24);
@@ -890,7 +890,7 @@
 			// helpButton
 			// 
 			this.helpButton.HoveredImage = global::GB.GBMB.Properties.Resources.Help_selected;
-			this.helpButton.Location = new System.Drawing.Point(270, 9);
+			this.helpButton.Location = new System.Drawing.Point(265, 4);
 			this.helpButton.Name = "helpButton";
 			this.helpButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Help_nonselected;
 			this.helpButton.Size = new System.Drawing.Size(24, 24);
