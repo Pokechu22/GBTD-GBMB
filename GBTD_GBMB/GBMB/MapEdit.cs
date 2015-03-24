@@ -208,6 +208,9 @@ namespace GB.GBMB
 			this.ShowDoubleMarkers = settings.ShowDoubleMarkers;
 			
 			this.ColorSet = (ColorSet)settings.ColorSet;
+
+			this.Size = new Size((int)settings.FormWidth, (int)settings.FormHeight);
+			this.WindowState = (settings.FormMaximized ? FormWindowState.Maximized : FormWindowState.Normal);
 		}
 
 		/// <summary>
