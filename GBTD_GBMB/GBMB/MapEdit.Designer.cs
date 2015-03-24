@@ -40,7 +40,10 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem11;
 			System.Windows.Forms.MenuItem seperatorMenuItem12;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Palettes.PaletteData paletteData5 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Controls.Border topBoxSeperator1;
+			GB.Shared.Controls.Border topBoxBorder2;
+			GB.Shared.Controls.Border topBoxBorder;
+			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -103,13 +106,10 @@
 			this.helpTopicsMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
-			this.mapEditBorder = new GB.Shared.Controls.Border();
-			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
-			this.border1 = new GB.Shared.Controls.Border();
-			this.border2 = new GB.Shared.Controls.Border();
-			this.border3 = new GB.Shared.Controls.Border();
 			this.toolList = new GB.GBMB.ToolList();
 			this.mapControl = new GB.GBMB.MapControl();
+			this.mapEditBorder = new GB.Shared.Controls.Border();
+			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -124,6 +124,9 @@
 			seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem13 = new System.Windows.Forms.MenuItem();
+			topBoxSeperator1 = new GB.Shared.Controls.Border();
+			topBoxBorder2 = new GB.Shared.Controls.Border();
+			topBoxBorder = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
 			// 
 			// seperatorMenuItem1
@@ -627,6 +630,82 @@
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
 			// 
+			// toolList
+			// 
+			this.toolList.AutoUpdate = false;
+			this.toolList.Location = new System.Drawing.Point(10, 64);
+			this.toolList.Name = "toolList";
+			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
+			this.toolList.Size = new System.Drawing.Size(26, 174);
+			this.toolList.TabIndex = 6;
+			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
+			this.toolList.AddRowClicked += new System.EventHandler(this.toolList_AddRowClicked);
+			this.toolList.AddColumnClicked += new System.EventHandler(this.toolList_AddColumnClicked);
+			this.toolList.RemoveRowClicked += new System.EventHandler(this.toolList_RemoveRowClicked);
+			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
+			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
+			// 
+			// topBoxSeperator1
+			// 
+			topBoxSeperator1.BottomBorder = null;
+			topBoxSeperator1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Left};
+			topBoxSeperator1.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxSeperator1.Location = new System.Drawing.Point(81, 2);
+			topBoxSeperator1.Name = "topBoxSeperator1";
+			topBoxSeperator1.RightBorder = null;
+			topBoxSeperator1.Size = new System.Drawing.Size(2, 28);
+			topBoxSeperator1.TabIndex = 5;
+			topBoxSeperator1.TopBorder = null;
+			// 
+			// topBoxBorder2
+			// 
+			topBoxBorder2.BottomBorder = null;
+			topBoxBorder2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Right};
+			topBoxBorder2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxBorder2.Location = new System.Drawing.Point(161, 2);
+			topBoxBorder2.Name = "topBoxBorder2";
+			topBoxBorder2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxBorder2.Size = new System.Drawing.Size(101, 28);
+			topBoxBorder2.TabIndex = 4;
+			topBoxBorder2.TopBorder = null;
+			// 
+			// topBoxBorder
+			// 
+			topBoxBorder.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
+			topBoxBorder.Dock = System.Windows.Forms.DockStyle.Top;
+			topBoxBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Bottom};
+			topBoxBorder.LeftBorder = null;
+			topBoxBorder.Location = new System.Drawing.Point(0, 0);
+			topBoxBorder.Name = "topBoxBorder";
+			topBoxBorder.RightBorder = null;
+			topBoxBorder.Size = new System.Drawing.Size(292, 32);
+			topBoxBorder.TabIndex = 3;
+			topBoxBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
+			// 
+			// mapControl
+			// 
+			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
+			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.mapControl.DefaultPalette = null;
+			this.mapControl.Enabled = false;
+			this.mapControl.Location = new System.Drawing.Point(61, 82);
+			this.mapControl.Map = null;
+			this.mapControl.Name = "mapControl";
+			this.mapControl.PaletteData = paletteData2;
+			this.mapControl.ShowDoubleMarkers = false;
+			this.mapControl.ShowGrid = true;
+			this.mapControl.ShowPropertyColors = false;
+			this.mapControl.Size = new System.Drawing.Size(184, 157);
+			this.mapControl.TabIndex = 0;
+			this.mapControl.Text = "mapControl1";
+			this.mapControl.TileSet = null;
+			this.mapControl.Zoom = 4F;
+			// 
 			// mapEditBorder
 			// 
 			this.mapEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
@@ -646,6 +725,7 @@
 			// 
 			// auMessenger
 			// 
+			this.auMessenger.Enabled = false;
 			this.auMessenger.FileName = null;
 			this.auMessenger.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auMessenger_OnTileChanged);
 			this.auMessenger.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTotalRefreshNeeded);
@@ -654,93 +734,15 @@
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
-			// border1
-			// 
-			this.border1.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.border1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.border1.LeftBorder = null;
-			this.border1.Location = new System.Drawing.Point(0, 0);
-			this.border1.Name = "border1";
-			this.border1.RightBorder = null;
-			this.border1.Size = new System.Drawing.Size(292, 32);
-			this.border1.TabIndex = 3;
-			this.border1.Text = "border1";
-			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
-			// 
-			// border2
-			// 
-			this.border2.BottomBorder = null;
-			this.border2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Right};
-			this.border2.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border2.Location = new System.Drawing.Point(161, 2);
-			this.border2.Name = "border2";
-			this.border2.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border2.Size = new System.Drawing.Size(101, 28);
-			this.border2.TabIndex = 4;
-			this.border2.Text = "border2";
-			this.border2.TopBorder = null;
-			// 
-			// border3
-			// 
-			this.border3.BottomBorder = null;
-			this.border3.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Left};
-			this.border3.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.border3.Location = new System.Drawing.Point(81, 2);
-			this.border3.Name = "border3";
-			this.border3.RightBorder = null;
-			this.border3.Size = new System.Drawing.Size(33, 28);
-			this.border3.TabIndex = 5;
-			this.border3.Text = "border3";
-			this.border3.TopBorder = null;
-			// 
-			// toolList
-			// 
-			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(10, 64);
-			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
-			this.toolList.Size = new System.Drawing.Size(26, 174);
-			this.toolList.TabIndex = 6;
-			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
-			this.toolList.AddRowClicked += new System.EventHandler(this.toolList_AddRowClicked);
-			this.toolList.AddColumnClicked += new System.EventHandler(this.toolList_AddColumnClicked);
-			this.toolList.RemoveRowClicked += new System.EventHandler(this.toolList_RemoveRowClicked);
-			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
-			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
-			// 
-			// mapControl
-			// 
-			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
-			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl.DefaultPalette = null;
-			this.mapControl.Enabled = false;
-			this.mapControl.Location = new System.Drawing.Point(61, 82);
-			this.mapControl.Map = null;
-			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData5;
-			this.mapControl.ShowDoubleMarkers = false;
-			this.mapControl.ShowGrid = true;
-			this.mapControl.Size = new System.Drawing.Size(184, 157);
-			this.mapControl.TabIndex = 0;
-			this.mapControl.Text = "mapControl1";
-			this.mapControl.TileSet = null;
-			this.mapControl.Zoom = 4F;
-			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
 			this.Controls.Add(this.toolList);
-			this.Controls.Add(this.border3);
-			this.Controls.Add(this.border2);
-			this.Controls.Add(this.border1);
+			this.Controls.Add(topBoxSeperator1);
+			this.Controls.Add(topBoxBorder2);
+			this.Controls.Add(topBoxBorder);
 			this.Controls.Add(this.mapControl);
 			this.Controls.Add(this.mapEditBorder);
 			this.Name = "MapEdit";
@@ -816,9 +818,6 @@
 		private System.Windows.Forms.MenuItem helpIndexMenuItem;
 		private System.Windows.Forms.MenuItem aboutMenuItem;
 		private Shared.AutoUpdate.AUMessenger auMessenger;
-		private Shared.Controls.Border border1;
-		private Shared.Controls.Border border2;
-		private Shared.Controls.Border border3;
 		private ToolList toolList;
 	}
 }
