@@ -416,21 +416,25 @@
 			// 
 			this.insertRowMenuItem.Index = 4;
 			this.insertRowMenuItem.Text = "&Insert row";
+			this.insertRowMenuItem.Click += new System.EventHandler(this.addRowButtonClicked);
 			// 
 			// insertColumnMenuItem
 			// 
 			this.insertColumnMenuItem.Index = 5;
 			this.insertColumnMenuItem.Text = "I&nsert column";
+			this.insertColumnMenuItem.Click += new System.EventHandler(this.addColumnButtonClicked);
 			// 
 			// deleteRowMenuItem
 			// 
 			this.deleteRowMenuItem.Index = 6;
 			this.deleteRowMenuItem.Text = "&Delete row";
+			this.deleteRowMenuItem.Click += new System.EventHandler(this.removeRowButtonClicked);
 			// 
 			// deleteColumnMenuItem
 			// 
 			this.deleteColumnMenuItem.Index = 7;
 			this.deleteColumnMenuItem.Text = "D&elete column";
+			this.deleteColumnMenuItem.Click += new System.EventHandler(this.removeColumnButtonClicked);
 			// 
 			// clearMapMenuItem
 			// 
@@ -750,10 +754,10 @@
 			this.toolList.Size = new System.Drawing.Size(26, 174);
 			this.toolList.TabIndex = 6;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
-			this.toolList.AddRowClicked += new System.EventHandler(this.toolList_AddRowClicked);
-			this.toolList.AddColumnClicked += new System.EventHandler(this.toolList_AddColumnClicked);
-			this.toolList.RemoveRowClicked += new System.EventHandler(this.toolList_RemoveRowClicked);
-			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
+			this.toolList.AddRowClicked += new System.EventHandler(this.addRowButtonClicked);
+			this.toolList.AddColumnClicked += new System.EventHandler(this.addColumnButtonClicked);
+			this.toolList.RemoveRowClicked += new System.EventHandler(this.removeRowButtonClicked);
+			this.toolList.RemoveColumnClicked += new System.EventHandler(this.removeColumnButtonClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
 			// mapControl

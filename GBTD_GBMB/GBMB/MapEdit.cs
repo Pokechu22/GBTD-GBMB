@@ -292,28 +292,28 @@ namespace GB.GBMB
 			}));
 		}
 
-		private void toolList_AddRowClicked(object sender, EventArgs e) {
+		private void addRowButtonClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width, map.Master.Height + 1);
 
 			mapControl.Map = map;
 		}
 
-		private void toolList_AddColumnClicked(object sender, EventArgs e) {
+		private void addColumnButtonClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width + 1, map.Master.Height);
 
 			mapControl.Map = map;
 		}
 
-		private void toolList_RemoveRowClicked(object sender, EventArgs e) {
+		private void removeRowButtonClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width, map.Master.Height - 1);
 
 			mapControl.Map = map;
 		}
 
-		private void toolList_RemoveColumnClicked(object sender, EventArgs e) {
+		private void removeColumnButtonClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width - 1, map.Master.Height);
 
