@@ -38,6 +38,24 @@
 			border = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
 			// 
+			// border
+			// 
+			border.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			border.Dock = System.Windows.Forms.DockStyle.Fill;
+			border.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			border.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			border.Location = new System.Drawing.Point(0, 0);
+			border.Name = "border";
+			border.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			border.Size = new System.Drawing.Size(26, 174);
+			border.TabIndex = 0;
+			border.Text = "border1";
+			border.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			// 
 			// autoUpdateCheckBox
 			// 
 			this.autoUpdateCheckBox.Checked = false;
@@ -77,7 +95,7 @@
 			this.addColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddCol_nonselected;
 			this.addColButton.Size = new System.Drawing.Size(20, 20);
 			this.addColButton.TabIndex = 6;
-			this.addColButton.DoubleClick += new System.EventHandler(this.OnAddColumnClicked);
+			this.addColButton.Click += new System.EventHandler(this.OnAddColumnClicked);
 			// 
 			// addRowButton
 			// 
@@ -139,24 +157,6 @@
 			this.borderInner.TabIndex = 1;
 			this.borderInner.Text = "border1";
 			this.borderInner.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// border
-			// 
-			border.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			border.Dock = System.Windows.Forms.DockStyle.Fill;
-			border.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Bottom};
-			border.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			border.Location = new System.Drawing.Point(0, 0);
-			border.Name = "border";
-			border.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			border.Size = new System.Drawing.Size(26, 174);
-			border.TabIndex = 0;
-			border.Text = "border1";
-			border.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
 			// ToolList
 			// 

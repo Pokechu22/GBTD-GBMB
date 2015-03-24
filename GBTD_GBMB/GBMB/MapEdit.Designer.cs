@@ -40,7 +40,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem11;
 			System.Windows.Forms.MenuItem seperatorMenuItem12;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData7 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -109,7 +109,7 @@
 			this.border2 = new GB.Shared.Controls.Border();
 			this.border3 = new GB.Shared.Controls.Border();
 			this.mapControl1 = new GB.GBMB.MapControl();
-			this.toolList1 = new GB.GBMB.ToolList();
+			this.toolList = new GB.GBMB.ToolList();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -625,16 +625,17 @@
 			// mapEditBorder
 			// 
 			this.mapEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.mapEditBorder.Dock = System.Windows.Forms.DockStyle.Right;
 			this.mapEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Top,
         System.Windows.Forms.Border3DSide.Right,
         System.Windows.Forms.Border3DSide.Bottom,
         System.Windows.Forms.Border3DSide.Left};
 			this.mapEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Location = new System.Drawing.Point(60, 81);
+			this.mapEditBorder.Location = new System.Drawing.Point(60, 0);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(186, 159);
+			this.mapEditBorder.Size = new System.Drawing.Size(232, 273);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -660,7 +661,7 @@
 			this.border1.Location = new System.Drawing.Point(0, 0);
 			this.border1.Name = "border1";
 			this.border1.RightBorder = null;
-			this.border1.Size = new System.Drawing.Size(292, 32);
+			this.border1.Size = new System.Drawing.Size(60, 32);
 			this.border1.TabIndex = 3;
 			this.border1.Text = "border1";
 			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
@@ -703,7 +704,7 @@
 			this.mapControl1.Location = new System.Drawing.Point(61, 82);
 			this.mapControl1.Map = null;
 			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData1;
+			this.mapControl1.PaletteData = paletteData7;
 			this.mapControl1.ShowDoubleMarkers = false;
 			this.mapControl1.ShowGrid = true;
 			this.mapControl1.Size = new System.Drawing.Size(184, 157);
@@ -712,19 +713,27 @@
 			this.mapControl1.TileSet = null;
 			this.mapControl1.Zoom = 4F;
 			// 
-			// toolList1
+			// toolList
 			// 
-			this.toolList1.Location = new System.Drawing.Point(10, 64);
-			this.toolList1.Name = "toolList1";
-			this.toolList1.Size = new System.Drawing.Size(26, 174);
-			this.toolList1.TabIndex = 6;
+			this.toolList.AutoUpdate = false;
+			this.toolList.Location = new System.Drawing.Point(10, 64);
+			this.toolList.Name = "toolList";
+			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
+			this.toolList.Size = new System.Drawing.Size(26, 174);
+			this.toolList.TabIndex = 6;
+			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
+			this.toolList.AddRowClicked += new System.EventHandler(this.toolList_AddRowClicked);
+			this.toolList.AddColumnClicked += new System.EventHandler(this.toolList_AddColumnClicked);
+			this.toolList.RemoveRowClicked += new System.EventHandler(this.toolList_RemoveRowClicked);
+			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
+			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
-			this.Controls.Add(this.toolList1);
+			this.Controls.Add(this.toolList);
 			this.Controls.Add(this.border3);
 			this.Controls.Add(this.border2);
 			this.Controls.Add(this.border1);
@@ -806,7 +815,7 @@
 		private Shared.Controls.Border border1;
 		private Shared.Controls.Border border2;
 		private Shared.Controls.Border border3;
-		private ToolList toolList1;
+		private ToolList toolList;
 	}
 }
 

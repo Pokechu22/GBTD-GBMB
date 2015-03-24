@@ -36,6 +36,8 @@ namespace GB.Shared.GBMFile
 				}
 			}
 
+			Tiles = newTiles;
+
 			Master.Width = newWidth;
 			Master.Height = newHeight;
 		}

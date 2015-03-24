@@ -164,5 +164,41 @@ namespace GB.GBMB
 				this.mapControl1.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			}));
 		}
+
+		private void toolList_AddRowClicked(object sender, EventArgs e) {
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			map.Resize(map.Master.Width, map.Master.Height + 1);
+
+			mapControl1.Map = map;
+		}
+
+		private void toolList_AddColumnClicked(object sender, EventArgs e) {
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			map.Resize(map.Master.Width + 1, map.Master.Height);
+
+			mapControl1.Map = map;
+		}
+
+		private void toolList_RemoveRowClicked(object sender, EventArgs e) {
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			map.Resize(map.Master.Width, map.Master.Height - 1);
+
+			mapControl1.Map = map;
+		}
+
+		private void toolList_RemoveColumnClicked(object sender, EventArgs e) {
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			map.Resize(map.Master.Width - 1, map.Master.Height);
+
+			mapControl1.Map = map;
+		}
+
+		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
+			//TODO: Not yet implemented.
+		}
+
+		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
+			//TODO: Not yet implemented.
+		}
 	}
 }
