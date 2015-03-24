@@ -27,27 +27,47 @@ namespace GB.GBMB
 		/// </summary>
 		public bool ShowInfoPanel {
 			get { return infoPanel; }
-			set { infoPanelMenuItem.Checked = value; infoPanel = value; }
+			set {
+				infoPanelMenuItem.Checked = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowInfoPanel = value;
+				infoPanel = value;
+			}
 		}
 		[Description("Whether or not a grid is displayed.")]
 		public bool ShowGrid {
 			get { return mapControl.ShowGrid; }
-			set { gridMenuItem.Checked = value; mapControl.ShowGrid = value; }
+			set {
+				gridMenuItem.Checked = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowGrid = value;
+				mapControl.ShowGrid = value;
+			}
 		}
 		[Description("Whether or not double markers are displayed.")]
 		public bool ShowDoubleMarkers {
 			get { return mapControl.ShowDoubleMarkers; }
-			set { doubleMarkersMenuItem.Checked = value; mapControl.ShowDoubleMarkers = value; }
+			set {
+				doubleMarkersMenuItem.Checked = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowDoubleMarkers = value;
+				mapControl.ShowDoubleMarkers = value;
+			}
 		}
 		[Description("Whether or not properties are colorized.")]
 		public bool ShowPropertyColors {
 			get { return mapControl.ShowPropertyColors; }
-			set { propertyColorsMenuItem.Checked = value; mapControl.ShowPropertyColors = value; }
+			set {
+				propertyColorsMenuItem.Checked = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowPropColors = value;
+				mapControl.ShowPropertyColors = value;
+			}
 		}
 		[Description("Whether or not AutoUpdate is enabled.")]
 		public bool AutoUpdate {
 			get { return toolList.AutoUpdate; }
-			set { autoUpdateMenuItem.Checked = value; toolList.AutoUpdate = value; }
+			set {
+				autoUpdateMenuItem.Checked = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().AutoUpdate = value;
+				toolList.AutoUpdate = value;
+			}
 		}
 
 
@@ -92,6 +112,13 @@ namespace GB.GBMB
 			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
 			this.mapControl.PaletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+
+			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
+			this.AutoUpdate = settings.AutoUpdate;
+			this.ShowGrid = settings.ShowGrid;
+			this.ShowInfoPanel = settings.ShowInfoPanel;
+			this.ShowPropertyColors = settings.ShowPropColors;
+			this.ShowDoubleMarkers = settings.ShowDoubleMarkers;
 		}
 
 		/// <summary>
