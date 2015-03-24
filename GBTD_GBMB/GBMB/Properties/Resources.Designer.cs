@@ -123,6 +123,46 @@ namespace GB.GBMB.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Copy_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Copy_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Copy_selected {
+            get {
+                object obj = ResourceManager.GetObject("Copy_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Cut_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_selected {
+            get {
+                object obj = ResourceManager.GetObject("Cut_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dropper_nonselected {
             get {
                 object obj = ResourceManager.GetObject("Dropper_nonselected", resourceCulture);
@@ -143,6 +183,26 @@ namespace GB.GBMB.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Export_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Export_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Export_selected {
+            get {
+                object obj = ResourceManager.GetObject("Export_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Flood_nonselected {
             get {
                 object obj = ResourceManager.GetObject("Flood_nonselected", resourceCulture);
@@ -156,6 +216,66 @@ namespace GB.GBMB.Properties {
         internal static System.Drawing.Bitmap Flood_selected {
             get {
                 object obj = ResourceManager.GetObject("Flood_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Help_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Help_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Help_selected {
+            get {
+                object obj = ResourceManager.GetObject("Help_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Open_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Open_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Open_selected {
+            get {
+                object obj = ResourceManager.GetObject("Open_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Paste_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Paste_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Paste_selected {
+            get {
+                object obj = ResourceManager.GetObject("Paste_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +336,26 @@ namespace GB.GBMB.Properties {
         internal static System.Drawing.Bitmap RemoveRow_selected {
             get {
                 object obj = ResourceManager.GetObject("RemoveRow_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_nonselected {
+            get {
+                object obj = ResourceManager.GetObject("Save_nonselected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_selected {
+            get {
+                object obj = ResourceManager.GetObject("Save_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

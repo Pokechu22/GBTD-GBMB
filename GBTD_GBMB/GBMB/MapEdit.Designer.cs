@@ -114,6 +114,13 @@
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.toolList = new GB.GBMB.ToolList();
 			this.mapControl = new GB.GBMB.MapControl();
+			this.openButton = new GB.Shared.Controls.ImageButton();
+			this.saveButton = new GB.Shared.Controls.ImageButton();
+			this.exportButton = new GB.Shared.Controls.ImageButton();
+			this.cutButton = new GB.Shared.Controls.ImageButton();
+			this.copyButton = new GB.Shared.Controls.ImageButton();
+			this.pasteButton = new GB.Shared.Controls.ImageButton();
+			this.helpButton = new GB.Shared.Controls.ImageButton();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -826,11 +833,81 @@
 			this.mapControl.TileSet = null;
 			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
 			// 
+			// openButton
+			// 
+			this.openButton.HoveredImage = global::GB.GBMB.Properties.Resources.Open_selected;
+			this.openButton.Location = new System.Drawing.Point(0, 9);
+			this.openButton.Name = "openButton";
+			this.openButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Open_nonselected;
+			this.openButton.Size = new System.Drawing.Size(24, 24);
+			this.openButton.TabIndex = 10;
+			// 
+			// saveButton
+			// 
+			this.saveButton.HoveredImage = global::GB.GBMB.Properties.Resources.Save_selected;
+			this.saveButton.Location = new System.Drawing.Point(30, 6);
+			this.saveButton.Name = "saveButton";
+			this.saveButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Save_nonselected;
+			this.saveButton.Size = new System.Drawing.Size(24, 24);
+			this.saveButton.TabIndex = 11;
+			// 
+			// exportButton
+			// 
+			this.exportButton.HoveredImage = global::GB.GBMB.Properties.Resources.Export_selected;
+			this.exportButton.Location = new System.Drawing.Point(59, 6);
+			this.exportButton.Name = "exportButton";
+			this.exportButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Export_nonselected;
+			this.exportButton.Size = new System.Drawing.Size(24, 24);
+			this.exportButton.TabIndex = 12;
+			// 
+			// cutButton
+			// 
+			this.cutButton.HoveredImage = global::GB.GBMB.Properties.Resources.Cut_selected;
+			this.cutButton.Location = new System.Drawing.Point(87, 0);
+			this.cutButton.Name = "cutButton";
+			this.cutButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Cut_nonselected;
+			this.cutButton.Size = new System.Drawing.Size(24, 24);
+			this.cutButton.TabIndex = 13;
+			// 
+			// copyButton
+			// 
+			this.copyButton.HoveredImage = global::GB.GBMB.Properties.Resources.Copy_selected;
+			this.copyButton.Location = new System.Drawing.Point(117, 5);
+			this.copyButton.Name = "copyButton";
+			this.copyButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Copy_nonselected;
+			this.copyButton.Size = new System.Drawing.Size(24, 24);
+			this.copyButton.TabIndex = 14;
+			// 
+			// pasteButton
+			// 
+			this.pasteButton.HoveredImage = global::GB.GBMB.Properties.Resources.Paste_selected;
+			this.pasteButton.Location = new System.Drawing.Point(149, 8);
+			this.pasteButton.Name = "pasteButton";
+			this.pasteButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Paste_nonselected;
+			this.pasteButton.Size = new System.Drawing.Size(24, 24);
+			this.pasteButton.TabIndex = 15;
+			// 
+			// helpButton
+			// 
+			this.helpButton.HoveredImage = global::GB.GBMB.Properties.Resources.Help_selected;
+			this.helpButton.Location = new System.Drawing.Point(270, 9);
+			this.helpButton.Name = "helpButton";
+			this.helpButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Help_nonselected;
+			this.helpButton.Size = new System.Drawing.Size(24, 24);
+			this.helpButton.TabIndex = 16;
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 233);
+			this.Controls.Add(this.helpButton);
+			this.Controls.Add(this.pasteButton);
+			this.Controls.Add(this.copyButton);
+			this.Controls.Add(this.cutButton);
+			this.Controls.Add(this.exportButton);
+			this.Controls.Add(this.saveButton);
+			this.Controls.Add(this.openButton);
 			this.Controls.Add(this.zoomComboBox);
 			this.Controls.Add(this.zoomLabel);
 			this.Controls.Add(this.zoomBorder);
@@ -917,6 +994,13 @@
 		private Shared.Controls.Border zoomBorder;
 		private Shared.Controls.CleanLabel zoomLabel;
 		private System.Windows.Forms.ComboBox zoomComboBox;
+		private Shared.Controls.ImageButton openButton;
+		private Shared.Controls.ImageButton saveButton;
+		private Shared.Controls.ImageButton exportButton;
+		private Shared.Controls.ImageButton cutButton;
+		private Shared.Controls.ImageButton copyButton;
+		private Shared.Controls.ImageButton pasteButton;
+		private Shared.Controls.ImageButton helpButton;
 	}
 }
 

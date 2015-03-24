@@ -136,17 +136,53 @@
   <data name="AutoUpdate_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AutoUpdate_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Copy_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copy_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cut_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cut_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Dropper_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dropper_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Dropper_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dropper_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Export_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Export_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Export_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Export_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Flood_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flood_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Flood_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flood_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Help_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Help_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Open_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Open_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paste_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Paste_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paste_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Paste_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pen_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pen_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -165,5 +201,11 @@
   </data>
   <data name="RemoveRow_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RemoveRow_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -159,6 +159,48 @@
   <ItemGroup>
     <None Include="Resources\AutoUpdate_selected.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cut_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cut_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_nonselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_selected.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
