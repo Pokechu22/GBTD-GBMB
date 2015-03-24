@@ -52,12 +52,12 @@ namespace GB.Shared.Controls
 
 		public event EventHandler CheckedChanged;
 		protected virtual void OnCheckedChanged(EventArgs e) {
-			if (CheckedChanged != null) {
-				CheckedChanged(this, e);
-			}
-
 			if (this.Checked) {
 				UncheckAllOthers();
+			}
+
+			if (CheckedChanged != null) {
+				CheckedChanged(this, e);
 			}
 
 			this.Invalidate(true);

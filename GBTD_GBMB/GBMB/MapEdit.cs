@@ -130,6 +130,32 @@ namespace GB.GBMB
 			}
 		}
 
+		private Tool tool;
+		/// <summary>
+		/// The selected tool.  TODO: Put this in the map or do something with it.
+		/// </summary>
+		[Description("The currently selected tool.")]
+		public Tool SelectedTool {
+			get { return tool; }
+			set {
+				MenuItem[] ToolMenuItems = new MenuItem[] {
+					penMenuItem,
+					floodFillMenuItem,
+					dropperMenuItem
+				};
+
+				foreach (MenuItem item in ToolMenuItems) {
+					if (item.Tag is Tool) {
+						item.Checked = (((Tool)item.Tag) == value);
+					} else {
+						item.Checked = false;
+					}
+				}
+
+				tool = value;
+			}
+		}
+
 		public MapEdit() {
 			InitializeComponent();
 
@@ -180,7 +206,7 @@ namespace GB.GBMB
 			this.ShowInfoPanel = settings.ShowInfoPanel;
 			this.ShowPropertyColors = settings.ShowPropColors;
 			this.ShowDoubleMarkers = settings.ShowDoubleMarkers;
-
+			
 			this.ColorSet = (ColorSet)settings.ColorSet;
 		}
 
@@ -321,7 +347,7 @@ namespace GB.GBMB
 		}
 
 		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
-			//TODO: Not yet implemented.
+			this.SelectedTool = toolList.SelectedTool;
 		}
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
@@ -376,6 +402,16 @@ namespace GB.GBMB
 			if (item != null) {
 				if (item.Tag is ColorSet) {
 					this.ColorSet = (ColorSet)item.Tag;
+				}
+			}
+		}
+
+		private void onToolMenuItemClicked(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				if (item.Tag is Tool) {
+					toolList.SelectedTool = (Tool)item.Tag;
 				}
 			}
 		}

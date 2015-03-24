@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Controls;
 
 namespace GB.GBMB
 {
@@ -35,8 +36,12 @@ namespace GB.GBMB
 		public event EventHandler AutoUpdateChanged;
 
 		protected void OnSelectedToolChanged(object sender = null, EventArgs args = null) {
-			if (SelectedToolChanged != null) {
-				SelectedToolChanged(this, new EventArgs());
+			if (sender is ImageRadioButton) {
+				if ((sender as ImageRadioButton).Checked) {
+					if (SelectedToolChanged != null) {
+						SelectedToolChanged(this, new EventArgs());
+					}
+				}
 			}
 		}
 
@@ -85,11 +90,15 @@ namespace GB.GBMB
 				return Tool.NONE;
 			}
 			set {
-				switch (value) {
-				case Tool.PEN: penRadioButton.Checked = true; floodRadioButton.Checked = dropperRadioButton.Checked = false; break;
-				case Tool.FLOOD: floodRadioButton.Checked = true; penRadioButton.Checked = dropperRadioButton.Checked = false; break;
-				case Tool.DROPPER: dropperRadioButton.Checked = true; penRadioButton.Checked = floodRadioButton.Checked = false; break;
-				default: penRadioButton.Checked = floodRadioButton.Checked = dropperRadioButton.Checked = false; break;
+				Tool previousTool = SelectedTool;
+
+				if (previousTool != value) {
+					switch (value) {
+					case Tool.PEN: penRadioButton.Checked = true; break;
+					case Tool.FLOOD: floodRadioButton.Checked = true; break;
+					case Tool.DROPPER: dropperRadioButton.Checked = true; break;
+					default: penRadioButton.Checked = floodRadioButton.Checked = dropperRadioButton.Checked = false; break;
+					}
 				}
 
 				OnSelectedToolChanged();

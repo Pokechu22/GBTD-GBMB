@@ -75,6 +75,11 @@
 			this.blockFillMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.zoomMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			this.infoPanelMenuItem = new System.Windows.Forms.MenuItem();
 			this.gridMenuItem = new System.Windows.Forms.MenuItem();
 			this.doubleMarkersMenuItem = new System.Windows.Forms.MenuItem();
@@ -109,11 +114,6 @@
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.toolList = new GB.GBMB.ToolList();
 			this.mapControl = new GB.GBMB.MapControl();
-			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -396,7 +396,9 @@
 			this.penMenuItem.Index = 0;
 			this.penMenuItem.RadioCheck = true;
 			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+			this.penMenuItem.Tag = GB.GBMB.Tool.PEN;
 			this.penMenuItem.Text = "&Pen";
+			this.penMenuItem.Click += new System.EventHandler(this.onToolMenuItemClicked);
 			// 
 			// floodFillMenuItem
 			// 
@@ -404,6 +406,8 @@
 			this.floodFillMenuItem.RadioCheck = true;
 			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
 			this.floodFillMenuItem.Text = "&Flood fill";
+			this.floodFillMenuItem.Click += new System.EventHandler(this.onToolMenuItemClicked);
+			this.floodFillMenuItem.Tag = GB.GBMB.Tool.FLOOD;
 			// 
 			// dropperMenuItem
 			// 
@@ -411,6 +415,8 @@
 			this.dropperMenuItem.RadioCheck = true;
 			this.dropperMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
 			this.dropperMenuItem.Text = "D&ropper";
+			this.dropperMenuItem.Click += new System.EventHandler(this.onToolMenuItemClicked);
+			this.dropperMenuItem.Tag = GB.GBMB.Tool.DROPPER;
 			// 
 			// insertRowMenuItem
 			// 
@@ -477,6 +483,46 @@
             this.zoom150PercentMenuItem,
             this.zoom200PercentMenuItem});
 			this.zoomMenuItem.Text = "&Zoom";
+			// 
+			// zoom25PercentMenuItem
+			// 
+			this.zoom25PercentMenuItem.Index = 0;
+			this.zoom25PercentMenuItem.RadioCheck = true;
+			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
+			this.zoom25PercentMenuItem.Text = "25&%";
+			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom50PercentMenuItem
+			// 
+			this.zoom50PercentMenuItem.Index = 1;
+			this.zoom50PercentMenuItem.RadioCheck = true;
+			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
+			this.zoom50PercentMenuItem.Text = "&50%";
+			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom100PercentMenuItem
+			// 
+			this.zoom100PercentMenuItem.Index = 2;
+			this.zoom100PercentMenuItem.RadioCheck = true;
+			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
+			this.zoom100PercentMenuItem.Text = "&100%";
+			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom150PercentMenuItem
+			// 
+			this.zoom150PercentMenuItem.Index = 3;
+			this.zoom150PercentMenuItem.RadioCheck = true;
+			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
+			this.zoom150PercentMenuItem.Text = "15&0%";
+			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom200PercentMenuItem
+			// 
+			this.zoom200PercentMenuItem.Index = 4;
+			this.zoom200PercentMenuItem.RadioCheck = true;
+			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
+			this.zoom200PercentMenuItem.Text = "&200%";
+			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
 			// infoPanelMenuItem
 			// 
@@ -778,46 +824,6 @@
 			this.mapControl.Text = "mapControl1";
 			this.mapControl.TileSet = null;
 			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
-			// 
-			// zoom25PercentMenuItem
-			// 
-			this.zoom25PercentMenuItem.Index = 0;
-			this.zoom25PercentMenuItem.RadioCheck = true;
-			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
-			this.zoom25PercentMenuItem.Text = "25&%";
-			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom50PercentMenuItem
-			// 
-			this.zoom50PercentMenuItem.Index = 1;
-			this.zoom50PercentMenuItem.RadioCheck = true;
-			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
-			this.zoom50PercentMenuItem.Text = "&50%";
-			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom100PercentMenuItem
-			// 
-			this.zoom100PercentMenuItem.Index = 2;
-			this.zoom100PercentMenuItem.RadioCheck = true;
-			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
-			this.zoom100PercentMenuItem.Text = "&100%";
-			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom150PercentMenuItem
-			// 
-			this.zoom150PercentMenuItem.Index = 3;
-			this.zoom150PercentMenuItem.RadioCheck = true;
-			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
-			this.zoom150PercentMenuItem.Text = "15&0%";
-			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom200PercentMenuItem
-			// 
-			this.zoom200PercentMenuItem.Index = 4;
-			this.zoom200PercentMenuItem.RadioCheck = true;
-			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
-			this.zoom200PercentMenuItem.Text = "&200%";
-			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
 			// MapEdit
 			// 
