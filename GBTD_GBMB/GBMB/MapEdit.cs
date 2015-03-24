@@ -164,7 +164,7 @@ namespace GB.GBMB
 			zoomComboBox.SelectedIndex = 4;
 		}
 
-		private void openMenuItem_Click(object sender, EventArgs e) {
+		private void onOpenButtonClicked(object sender, EventArgs e) {
 			OpenFileDialog d = new OpenFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
@@ -178,6 +178,14 @@ namespace GB.GBMB
 			mmf = new AUMemMappedFile(tileFileName, auMessenger, gbrFile);
 
 			mapControl.Enabled = true;
+		}
+
+		private void onSaveButtonClicked(object sender, EventArgs e) {
+			MessageBox.Show("Saving is not yet implemented!");
+		}
+
+		private void onExportButtonClicked(object sender, EventArgs e) {
+			MessageBox.Show("Exporting is not yet implemented!");
 		}
 
 		public void LoadFile(String mapPath) {

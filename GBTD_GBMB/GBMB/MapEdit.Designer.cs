@@ -286,17 +286,18 @@
 			this.openMenuItem.Index = 0;
 			this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
 			this.openMenuItem.Text = "&Open...";
-			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
+			this.openMenuItem.Click += new System.EventHandler(this.onOpenButtonClicked);
 			// 
 			// saveMenuItem
 			// 
 			this.saveMenuItem.Index = 1;
+			this.saveMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
 			this.saveMenuItem.Text = "&Save";
+			this.saveMenuItem.Click += new System.EventHandler(this.onSaveButtonClicked);
 			// 
 			// saveAsMenuItem
 			// 
 			this.saveAsMenuItem.Index = 2;
-			this.saveAsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
 			this.saveAsMenuItem.Text = "Save &as...";
 			// 
 			// reopenMenuItem
@@ -327,6 +328,7 @@
 			this.exportMenuItem.Index = 10;
 			this.exportMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
 			this.exportMenuItem.Text = "&Export";
+			this.exportMenuItem.Click += new System.EventHandler(this.onExportButtonClicked);
 			// 
 			// exportToMenuItem
 			// 
@@ -841,6 +843,7 @@
 			this.openButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Open_nonselected;
 			this.openButton.Size = new System.Drawing.Size(24, 24);
 			this.openButton.TabIndex = 10;
+			this.openButton.Click += new System.EventHandler(this.onOpenButtonClicked);
 			// 
 			// saveButton
 			// 
@@ -850,6 +853,7 @@
 			this.saveButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Save_nonselected;
 			this.saveButton.Size = new System.Drawing.Size(24, 24);
 			this.saveButton.TabIndex = 11;
+			this.saveButton.Click += new System.EventHandler(this.onSaveButtonClicked);
 			// 
 			// exportButton
 			// 
@@ -859,6 +863,7 @@
 			this.exportButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Export_nonselected;
 			this.exportButton.Size = new System.Drawing.Size(24, 24);
 			this.exportButton.TabIndex = 12;
+			this.exportButton.Click += new System.EventHandler(this.onExportButtonClicked);
 			// 
 			// cutButton
 			// 
