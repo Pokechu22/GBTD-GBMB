@@ -10,6 +10,7 @@ using GB.Shared.GBRFile;
 using GB.Shared.GBMFile;
 using System.IO;
 using GB.Shared.AutoUpdate;
+using GB.Shared.Palettes;
 
 namespace GB.GBMB
 {
@@ -70,6 +71,7 @@ namespace GB.GBMB
 			}
 		}
 
+		[Description("The map's zoom level.")]
 		public ZoomLevel ZoomLevel {
 			get { return mapControl.ZoomLevel; }
 			set {
@@ -100,6 +102,31 @@ namespace GB.GBMB
 				}
 
 				mapControl.ZoomLevel = value;
+			}
+		}
+
+		[Description("The color set to use.")]
+		public ColorSet colorSet {
+			get { return mapControl.ColorSet; }
+			set {
+				MenuItem[] ColorSetControls = new MenuItem[] {
+					colorSetFilteredGameboyColorMenuItem,
+					colorSetGameboyMenuItem,
+					colorSetGameboyColorMenuItem,
+					colorSetSuperGameboyMenuItem,
+					colorSetFilteredGameboyColorMenuItem
+				};
+
+				foreach (MenuItem item in ColorSetControls) {
+					if (item.Tag is ColorSet) {
+						item.Checked = (((ColorSet)item.Tag) == value);
+					} else {
+						//TODO: This is an error state.
+						item.Checked = false;
+					}
+				}
+
+				mapControl.ColorSet = value;
 			}
 		}
 
@@ -338,6 +365,16 @@ namespace GB.GBMB
 				if (!(menuItem.Tag is ZoomLevel)) { return; }
 
 				this.ZoomLevel = (ZoomLevel)menuItem.Tag;
+			}
+		}
+
+		private void onColorSetMenuItemClicked(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				if (item.Tag is ColorSet) {
+					this.colorSet = (ColorSet)item.Tag;
+				}
 			}
 		}
 	}

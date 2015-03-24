@@ -75,17 +75,22 @@
 			this.blockFillMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
 			this.zoomMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
+			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			this.infoPanelMenuItem = new System.Windows.Forms.MenuItem();
 			this.gridMenuItem = new System.Windows.Forms.MenuItem();
 			this.doubleMarkersMenuItem = new System.Windows.Forms.MenuItem();
 			this.propertyColorsMenuItem = new System.Windows.Forms.MenuItem();
 			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
 			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem26 = new System.Windows.Forms.MenuItem();
-			this.menuItem27 = new System.Windows.Forms.MenuItem();
-			this.menuItem28 = new System.Windows.Forms.MenuItem();
-			this.menuItem29 = new System.Windows.Forms.MenuItem();
-			this.menuItem30 = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetSuperGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
 			this.setBookmark1MenuItem = new System.Windows.Forms.MenuItem();
 			this.setBookmark2MenuItem = new System.Windows.Forms.MenuItem();
@@ -109,11 +114,6 @@
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.toolList = new GB.GBMB.ToolList();
 			this.mapControl = new GB.GBMB.MapControl();
-			this.zoom25PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom50PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom100PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom150PercentMenuItem = new System.Windows.Forms.MenuItem();
-			this.zoom200PercentMenuItem = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -474,6 +474,41 @@
             this.zoom200PercentMenuItem});
 			this.zoomMenuItem.Text = "&Zoom";
 			// 
+			// zoom25PercentMenuItem
+			// 
+			this.zoom25PercentMenuItem.Index = 0;
+			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
+			this.zoom25PercentMenuItem.Text = "25&%";
+			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom50PercentMenuItem
+			// 
+			this.zoom50PercentMenuItem.Index = 1;
+			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
+			this.zoom50PercentMenuItem.Text = "&50%";
+			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom100PercentMenuItem
+			// 
+			this.zoom100PercentMenuItem.Index = 2;
+			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
+			this.zoom100PercentMenuItem.Text = "&100%";
+			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom150PercentMenuItem
+			// 
+			this.zoom150PercentMenuItem.Index = 3;
+			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
+			this.zoom150PercentMenuItem.Text = "15&0%";
+			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
+			// zoom200PercentMenuItem
+			// 
+			this.zoom200PercentMenuItem.Index = 4;
+			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
+			this.zoom200PercentMenuItem.Text = "&200%";
+			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
+			// 
 			// infoPanelMenuItem
 			// 
 			this.infoPanelMenuItem.Index = 2;
@@ -513,37 +548,47 @@
 			// 
 			this.colorSetMenuItem.Index = 9;
 			this.colorSetMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem26,
-            this.menuItem27,
-            this.menuItem28,
-            this.menuItem29,
-            this.menuItem30});
+            this.colorSetGameboyPocketMenuItem,
+            this.colorSetGameboyMenuItem,
+            this.colorSetSuperGameboyMenuItem,
+            this.colorSetGameboyColorMenuItem,
+            this.colorSetFilteredGameboyColorMenuItem});
 			this.colorSetMenuItem.Text = "C&olor set";
 			// 
-			// menuItem26
+			// colorSetGameboyPocketMenuItem
 			// 
-			this.menuItem26.Index = 0;
-			this.menuItem26.Text = "Gameboy &Pocket";
+			this.colorSetGameboyPocketMenuItem.Index = 0;
+			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
+			this.colorSetGameboyPocketMenuItem.Click += new System.EventHandler(this.onColorSetMenuItemClicked);
 			// 
-			// menuItem27
+			// colorSetGameboyMenuItem
 			// 
-			this.menuItem27.Index = 1;
-			this.menuItem27.Text = "&Gameboy";
+			this.colorSetGameboyMenuItem.Index = 1;
+			this.colorSetGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY;
+			this.colorSetGameboyMenuItem.Text = "&Gameboy";
+			this.colorSetGameboyMenuItem.Click += new System.EventHandler(this.onColorSetMenuItemClicked);
 			// 
-			// menuItem28
+			// colorSetSuperGameboyMenuItem
 			// 
-			this.menuItem28.Index = 2;
-			this.menuItem28.Text = "&Super Gameboy";
+			this.colorSetSuperGameboyMenuItem.Index = 2;
+			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.SUPER_GAMEBOY;
+			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
+			this.colorSetSuperGameboyMenuItem.Click += new System.EventHandler(this.onColorSetMenuItemClicked);
 			// 
-			// menuItem29
+			// colorSetGameboyColorMenuItem
 			// 
-			this.menuItem29.Index = 3;
-			this.menuItem29.Text = "Gameboy &Color";
+			this.colorSetGameboyColorMenuItem.Index = 3;
+			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
+			this.colorSetGameboyColorMenuItem.Click += new System.EventHandler(this.onColorSetMenuItemClicked);
 			// 
-			// menuItem30
+			// colorSetFilteredGameboyColorMenuItem
 			// 
-			this.menuItem30.Index = 4;
-			this.menuItem30.Text = "Gameboy Color (&Filtered)";
+			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
+			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR_FILTERED;
+			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
+			this.colorSetFilteredGameboyColorMenuItem.Click += new System.EventHandler(this.onColorSetMenuItemClicked);
 			// 
 			// setBookmarkMenuItem
 			// 
@@ -760,41 +805,6 @@
 			this.mapControl.TileSet = null;
 			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
 			// 
-			// zoom25PercentMenuItem
-			// 
-			this.zoom25PercentMenuItem.Index = 0;
-			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
-			this.zoom25PercentMenuItem.Text = "25&%";
-			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom50PercentMenuItem
-			// 
-			this.zoom50PercentMenuItem.Index = 1;
-			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
-			this.zoom50PercentMenuItem.Text = "&50%";
-			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom100PercentMenuItem
-			// 
-			this.zoom100PercentMenuItem.Index = 2;
-			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
-			this.zoom100PercentMenuItem.Text = "&100%";
-			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom150PercentMenuItem
-			// 
-			this.zoom150PercentMenuItem.Index = 3;
-			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
-			this.zoom150PercentMenuItem.Text = "15&0%";
-			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
-			// zoom200PercentMenuItem
-			// 
-			this.zoom200PercentMenuItem.Index = 4;
-			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
-			this.zoom200PercentMenuItem.Text = "&200%";
-			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
-			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -861,11 +871,11 @@
 		private System.Windows.Forms.MenuItem propertyColorsMenuItem;
 		private System.Windows.Forms.MenuItem autoUpdateMenuItem;
 		private System.Windows.Forms.MenuItem colorSetMenuItem;
-		private System.Windows.Forms.MenuItem menuItem26;
-		private System.Windows.Forms.MenuItem menuItem27;
-		private System.Windows.Forms.MenuItem menuItem28;
-		private System.Windows.Forms.MenuItem menuItem29;
-		private System.Windows.Forms.MenuItem menuItem30;
+		private System.Windows.Forms.MenuItem colorSetGameboyPocketMenuItem;
+		private System.Windows.Forms.MenuItem colorSetGameboyMenuItem;
+		private System.Windows.Forms.MenuItem colorSetSuperGameboyMenuItem;
+		private System.Windows.Forms.MenuItem colorSetGameboyColorMenuItem;
+		private System.Windows.Forms.MenuItem colorSetFilteredGameboyColorMenuItem;
 		private System.Windows.Forms.MenuItem setBookmarkMenuItem;
 		private System.Windows.Forms.MenuItem setBookmark1MenuItem;
 		private System.Windows.Forms.MenuItem setBookmark2MenuItem;

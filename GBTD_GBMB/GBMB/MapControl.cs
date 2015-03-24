@@ -46,11 +46,20 @@ namespace GB.GBMB
 			get { return showPropertyColors; }
 			set { showPropertyColors = value; this.Invalidate(true); }
 		}
-		
+
+		private ColorSet colorSet;
+		private PaletteData paletteData;
+
 		[Category("Map data"), Description("The color set to use for the map.")]
-		public ColorSet ColorSet { get; set; }
+		public ColorSet ColorSet {
+			get { return colorSet; }
+			set { colorSet = value; this.Invalidate(); }
+		}
 		[Category("Map data"), Description("The palette set to use for the map.")]
-		public PaletteData PaletteData { get; set; }
+		public PaletteData PaletteData {
+			get { return paletteData; }
+			set { paletteData = value; this.Invalidate(); }
+		}
 
 		private GBRObjectTileData tileset;
 		private GBMObjectMapTileData map;
