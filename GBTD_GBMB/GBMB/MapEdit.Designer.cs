@@ -778,6 +778,7 @@
 			// zoom25PercentMenuItem
 			// 
 			this.zoom25PercentMenuItem.Index = 0;
+			this.zoom25PercentMenuItem.RadioCheck = true;
 			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
 			this.zoom25PercentMenuItem.Text = "25&%";
 			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
@@ -785,6 +786,7 @@
 			// zoom50PercentMenuItem
 			// 
 			this.zoom50PercentMenuItem.Index = 1;
+			this.zoom50PercentMenuItem.RadioCheck = true;
 			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
 			this.zoom50PercentMenuItem.Text = "&50%";
 			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
@@ -792,6 +794,7 @@
 			// zoom100PercentMenuItem
 			// 
 			this.zoom100PercentMenuItem.Index = 2;
+			this.zoom100PercentMenuItem.RadioCheck = true;
 			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
 			this.zoom100PercentMenuItem.Text = "&100%";
 			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
@@ -799,6 +802,7 @@
 			// zoom150PercentMenuItem
 			// 
 			this.zoom150PercentMenuItem.Index = 3;
+			this.zoom150PercentMenuItem.RadioCheck = true;
 			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
 			this.zoom150PercentMenuItem.Text = "15&0%";
 			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
@@ -806,6 +810,7 @@
 			// zoom200PercentMenuItem
 			// 
 			this.zoom200PercentMenuItem.Index = 4;
+			this.zoom200PercentMenuItem.RadioCheck = true;
 			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
 			this.zoom200PercentMenuItem.Text = "&200%";
 			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
@@ -814,7 +819,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.ClientSize = new System.Drawing.Size(292, 233);
 			this.Controls.Add(this.zoomComboBox);
 			this.Controls.Add(this.zoomLabel);
 			this.Controls.Add(this.zoomBorder);
