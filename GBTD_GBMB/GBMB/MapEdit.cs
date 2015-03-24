@@ -20,9 +20,40 @@ namespace GB.GBMB
 		private AUMemMappedFile mmf;
 		private string tileFileName;
 
+		private bool infoPanel;
+
+		/// <summary>
+		/// TODO: NYI.
+		/// </summary>
+		public bool ShowInfoPanel {
+			get { return infoPanel; }
+			set { infoPanelMenuItem.Checked = value; infoPanel = value; }
+		}
+		[Description("Whether or not a grid is displayed.")]
+		public bool ShowGrid {
+			get { return mapControl.ShowGrid; }
+			set { gridMenuItem.Checked = value; mapControl.ShowGrid = value; }
+		}
+		[Description("Whether or not double markers are displayed.")]
+		public bool ShowDoubleMarkers {
+			get { return mapControl.ShowDoubleMarkers; }
+			set { doubleMarkersMenuItem.Checked = value; mapControl.ShowDoubleMarkers = value; }
+		}
+		[Description("Whether or not properties are colorized.")]
+		public bool ShowPropertyColors {
+			get { return mapControl.ShowPropertyColors; }
+			set { propertyColorsMenuItem.Checked = value; mapControl.ShowPropertyColors = value; }
+		}
+		[Description("Whether or not AutoUpdate is enabled.")]
+		public bool AutoUpdate {
+			get { return toolList.AutoUpdate; }
+			set { autoUpdateMenuItem.Checked = value; toolList.AutoUpdate = value; }
+		}
+
+
 		public MapEdit() {
 			InitializeComponent();
-			
+
 			mapEditBorder_Resize(mapEditBorder, new EventArgs());
 		}
 
@@ -39,7 +70,7 @@ namespace GB.GBMB
 			auMessenger.FileName = tileFileName;
 			mmf = new AUMemMappedFile(tileFileName, auMessenger, gbrFile);
 
-			mapControl1.Enabled = true;
+			mapControl.Enabled = true;
 		}
 
 		public void LoadFile(String mapPath) {
@@ -56,11 +87,11 @@ namespace GB.GBMB
 				gbrFile = new GBRFile(stream);
 			}
 
-			this.mapControl1.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			this.mapControl1.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			this.mapControl.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
-			this.mapControl1.PaletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
-			this.mapControl1.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			this.mapControl.PaletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
+			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 		}
 
 		/// <summary>
@@ -73,9 +104,15 @@ namespace GB.GBMB
 			this.Menu = mainMenu;
 		}
 
+		protected override void OnResize(EventArgs e) {
+			mapEditBorder.Width = this.Width - 100;
+			mapEditBorder.Height = this.Height - 100;
+			base.OnResize(e);
+		}
+
 		private void mapEditBorder_Resize(object sender, EventArgs e) {
 			//Keep mapControl within mapEditBorder.
-			mapControl1.SetBounds(mapEditBorder.Location.X + 1, mapEditBorder.Location.Y + 1, mapEditBorder.Width - 2, mapEditBorder.Height - 2);
+			mapControl.SetBounds(mapEditBorder.Location.X + 1, mapEditBorder.Location.Y + 1, mapEditBorder.Width - 2, mapEditBorder.Height - 2);
 		}
 
 		private void auMessenger_OnTileChanged(object sender, TileChangedEventArgs args) {
@@ -87,7 +124,7 @@ namespace GB.GBMB
 				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes[args.TileID] = mmf.PalMaps[args.TileID].SGB;
 
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.mapControl1.TileSet = this.mapControl1.TileSet;
+				this.mapControl.TileSet = this.mapControl.TileSet;
 			}));
 		}
 
@@ -122,8 +159,8 @@ namespace GB.GBMB
 				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().GBCPalettes = gbcPal;
 				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes = sgbPal;
 
-				this.mapControl1.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.mapControl1.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			}));
 		}
 
@@ -160,8 +197,8 @@ namespace GB.GBMB
 				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes = sgbPal;
 
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.mapControl1.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.mapControl1.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			}));
 		}
 
@@ -169,28 +206,28 @@ namespace GB.GBMB
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width, map.Master.Height + 1);
 
-			mapControl1.Map = map;
+			mapControl.Map = map;
 		}
 
 		private void toolList_AddColumnClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width + 1, map.Master.Height);
 
-			mapControl1.Map = map;
+			mapControl.Map = map;
 		}
 
 		private void toolList_RemoveRowClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width, map.Master.Height - 1);
 
-			mapControl1.Map = map;
+			mapControl.Map = map;
 		}
 
 		private void toolList_RemoveColumnClicked(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			map.Resize(map.Master.Width - 1, map.Master.Height);
 
-			mapControl1.Map = map;
+			mapControl.Map = map;
 		}
 
 		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
@@ -199,6 +236,27 @@ namespace GB.GBMB
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
 			//TODO: Not yet implemented.
+			autoUpdateMenuItem.Checked = toolList.AutoUpdate;
+		}
+
+		private void infoPanelMenuItem_Click(object sender, EventArgs e) {
+			this.ShowInfoPanel ^= true;
+		}
+
+		private void gridMenuItem_Click(object sender, EventArgs e) {
+			this.ShowGrid ^= true;
+		}
+
+		private void doubleMarkersMenuItem_Click(object sender, EventArgs e) {
+			this.ShowDoubleMarkers ^= true;
+		}
+
+		private void propertyColorsMenuItem_Click(object sender, EventArgs e) {
+			this.ShowPropertyColors ^= true;
+		}
+
+		private void autoUpdateMenuItem_Click(object sender, EventArgs e) {
+			this.AutoUpdate ^= true;
 		}
 	}
 }

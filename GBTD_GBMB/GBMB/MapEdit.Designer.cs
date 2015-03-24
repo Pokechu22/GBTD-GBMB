@@ -40,7 +40,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem11;
 			System.Windows.Forms.MenuItem seperatorMenuItem12;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Palettes.PaletteData paletteData7 = new GB.Shared.Palettes.PaletteData();
+			GB.Shared.Palettes.PaletteData paletteData5 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -108,8 +108,8 @@
 			this.border1 = new GB.Shared.Controls.Border();
 			this.border2 = new GB.Shared.Controls.Border();
 			this.border3 = new GB.Shared.Controls.Border();
-			this.mapControl1 = new GB.GBMB.MapControl();
 			this.toolList = new GB.GBMB.ToolList();
+			this.mapControl = new GB.GBMB.MapControl();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -455,30 +455,35 @@
 			this.infoPanelMenuItem.Index = 2;
 			this.infoPanelMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
 			this.infoPanelMenuItem.Text = "&Info panel";
+			this.infoPanelMenuItem.Click += new System.EventHandler(this.infoPanelMenuItem_Click);
 			// 
 			// gridMenuItem
 			// 
 			this.gridMenuItem.Index = 3;
 			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
 			this.gridMenuItem.Text = "&Grid";
+			this.gridMenuItem.Click += new System.EventHandler(this.gridMenuItem_Click);
 			// 
 			// doubleMarkersMenuItem
 			// 
 			this.doubleMarkersMenuItem.Index = 4;
 			this.doubleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlD;
 			this.doubleMarkersMenuItem.Text = "&Double markers";
+			this.doubleMarkersMenuItem.Click += new System.EventHandler(this.doubleMarkersMenuItem_Click);
 			// 
 			// propertyColorsMenuItem
 			// 
 			this.propertyColorsMenuItem.Index = 5;
 			this.propertyColorsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
 			this.propertyColorsMenuItem.Text = "Propert&y colors";
+			this.propertyColorsMenuItem.Click += new System.EventHandler(this.propertyColorsMenuItem_Click);
 			// 
 			// autoUpdateMenuItem
 			// 
 			this.autoUpdateMenuItem.Index = 7;
 			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
 			this.autoUpdateMenuItem.Text = "Auto &update";
+			this.autoUpdateMenuItem.Click += new System.EventHandler(this.autoUpdateMenuItem_Click);
 			// 
 			// colorSetMenuItem
 			// 
@@ -625,17 +630,16 @@
 			// mapEditBorder
 			// 
 			this.mapEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Dock = System.Windows.Forms.DockStyle.Right;
 			this.mapEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
         System.Windows.Forms.Border3DSide.Top,
         System.Windows.Forms.Border3DSide.Right,
         System.Windows.Forms.Border3DSide.Bottom,
         System.Windows.Forms.Border3DSide.Left};
 			this.mapEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Location = new System.Drawing.Point(60, 0);
+			this.mapEditBorder.Location = new System.Drawing.Point(60, 51);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(232, 273);
+			this.mapEditBorder.Size = new System.Drawing.Size(232, 222);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -661,7 +665,7 @@
 			this.border1.Location = new System.Drawing.Point(0, 0);
 			this.border1.Name = "border1";
 			this.border1.RightBorder = null;
-			this.border1.Size = new System.Drawing.Size(60, 32);
+			this.border1.Size = new System.Drawing.Size(292, 32);
 			this.border1.TabIndex = 3;
 			this.border1.Text = "border1";
 			this.border1.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
@@ -695,24 +699,6 @@
 			this.border3.Text = "border3";
 			this.border3.TopBorder = null;
 			// 
-			// mapControl1
-			// 
-			this.mapControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
-			this.mapControl1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl1.DefaultPalette = null;
-			this.mapControl1.Enabled = false;
-			this.mapControl1.Location = new System.Drawing.Point(61, 82);
-			this.mapControl1.Map = null;
-			this.mapControl1.Name = "mapControl1";
-			this.mapControl1.PaletteData = paletteData7;
-			this.mapControl1.ShowDoubleMarkers = false;
-			this.mapControl1.ShowGrid = true;
-			this.mapControl1.Size = new System.Drawing.Size(184, 157);
-			this.mapControl1.TabIndex = 0;
-			this.mapControl1.Text = "mapControl1";
-			this.mapControl1.TileSet = null;
-			this.mapControl1.Zoom = 4F;
-			// 
 			// toolList
 			// 
 			this.toolList.AutoUpdate = false;
@@ -728,6 +714,24 @@
 			this.toolList.RemoveColumnClicked += new System.EventHandler(this.toolList_RemoveColumnClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
+			// mapControl
+			// 
+			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
+			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.mapControl.DefaultPalette = null;
+			this.mapControl.Enabled = false;
+			this.mapControl.Location = new System.Drawing.Point(61, 82);
+			this.mapControl.Map = null;
+			this.mapControl.Name = "mapControl";
+			this.mapControl.PaletteData = paletteData5;
+			this.mapControl.ShowDoubleMarkers = false;
+			this.mapControl.ShowGrid = true;
+			this.mapControl.Size = new System.Drawing.Size(184, 157);
+			this.mapControl.TabIndex = 0;
+			this.mapControl.Text = "mapControl1";
+			this.mapControl.TileSet = null;
+			this.mapControl.Zoom = 4F;
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,7 +741,7 @@
 			this.Controls.Add(this.border3);
 			this.Controls.Add(this.border2);
 			this.Controls.Add(this.border1);
-			this.Controls.Add(this.mapControl1);
+			this.Controls.Add(this.mapControl);
 			this.Controls.Add(this.mapEditBorder);
 			this.Name = "MapEdit";
 			this.Text = "Gameboy Map Builder";
@@ -747,7 +751,7 @@
 
 		#endregion
 
-		private MapControl mapControl1;
+		private MapControl mapControl;
 		private System.Windows.Forms.MainMenu mainMenu;
 		private Shared.Controls.Border mapEditBorder;
 		private System.Windows.Forms.MenuItem fileMenuItem;

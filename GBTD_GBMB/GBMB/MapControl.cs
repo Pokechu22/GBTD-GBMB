@@ -20,6 +20,7 @@ namespace GB.GBMB
 		private float zoom;
 		private bool showGrid;
 		private bool showDoubleMarkers;
+		private bool showPropertyColors;
 
 		/// <summary>
 		/// The scale factor used for zooming.
@@ -41,7 +42,12 @@ namespace GB.GBMB
 			get { return showDoubleMarkers; }
 			set { showDoubleMarkers = value; this.Invalidate(true); }
 		}
-
+		[Category("Map display"), Description("Whether or not properties are colorized.")]
+		public bool ShowPropertyColors {
+			get { return showPropertyColors; }
+			set { showPropertyColors = value; this.Invalidate(true); }
+		}
+		
 		[Category("Map data"), Description("The color set to use for the map.")]
 		public ColorSet ColorSet { get; set; }
 		[Category("Map data"), Description("The palette set to use for the map.")]
