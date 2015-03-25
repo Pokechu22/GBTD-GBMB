@@ -22,6 +22,8 @@ namespace GB.Shared.Controls
 		public Border() {
 			this.AllBorders = Border3DStyle.Raised;
 			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
+			SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
 		private Border3DStyle? leftBorder, rightBorder, topBorder, bottomBorder;
