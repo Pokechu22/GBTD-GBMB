@@ -112,6 +112,7 @@ namespace GB.GBMB
 			base.OnResize(e);
 		}
 
+		#region Graphics stuff
 		protected override void OnPaint(PaintEventArgs e) {
 			Graphics g = e.Graphics;
 
@@ -217,7 +218,7 @@ namespace GB.GBMB
 		private Color GetApropriatelyFilteredColor(UInt16 tileNumber, GBColor color) {
 			Color returned = GetColor(ColorSet, tileNumber, color);
 
-			if (tileNumber == SelectedTile) {
+			if (this.Enabled && tileSet != null && tileNumber == SelectedTile) {
 				returned = returned.FilterAsSelected();
 			}
 
@@ -257,6 +258,21 @@ namespace GB.GBMB
 				return color.GetPocketColor();
 			default: throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 			}
+		}
+		#endregion
+
+		protected override void OnMouseClick(MouseEventArgs e) {
+			int tileClicked = (e.Y - 2) / INFO_HEIGHT; //The clicked tile number, which may not be the actual tile (scrolling).
+			if (tileClicked >= 0 && tileClicked < numberOfVisibleTiles) {
+				int scrolledPos = scrollBar.Value - numberOfVisibleTiles + 1;
+				if (scrolledPos < 0) { scrolledPos = 0; }
+
+				this.selectedTile = (UInt16)(tileClicked + scrolledPos);
+				//TODO raise an event.
+				this.Invalidate(true);
+			}
+
+			base.OnMouseClick(e);
 		}
 	}
 }
