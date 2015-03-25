@@ -20,6 +20,8 @@ namespace GB.GBMB
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public override string Text { get { return base.Text; } set { base.Text = value; } }
 
+		private int numberOfVisibleTiles = 0;
+
 		private VScrollBar scrollBar;
 
 		private ColorSet colorSet;
@@ -27,6 +29,10 @@ namespace GB.GBMB
 
 		private GBRObjectTilePalette paletteMapping;
 		private GBRObjectTileData tileSet;
+
+		private UInt16 selectedTile;
+		//Currently unused :/
+		private UInt16 bookmark1, bookmark2, bookmark3;
 
 		public ColorSet ColorSet {
 			get { return colorSet; }
@@ -42,8 +48,22 @@ namespace GB.GBMB
 		}
 		public GBRObjectTileData TileSet {
 			get { return tileSet; }
-			set { tileSet = value; this.Invalidate(true); }
+			set {
+				tileSet = value;
+
+				scrollBar.Enabled = (tileSet != null);
+				scrollBar.Maximum = (tileSet != null ? tileSet.Count : 16) - 1;
+
+				this.Invalidate(true);
+			}
 		}
+		public UInt16 SelectedTile {
+			get { return selectedTile; }
+			set { selectedTile = value; this.Invalidate(); }
+		}
+		public UInt16 Bookmark1 { get { return bookmark1; } set { bookmark1 = value; this.Invalidate(true); } }
+		public UInt16 Bookmark2 { get { return bookmark2; } set { bookmark2 = value; this.Invalidate(true); } }
+		public UInt16 Bookmark3 { get { return bookmark3; } set { bookmark3 = value; this.Invalidate(true); } }
 
 		private const int NUMBER_WIDTH = 21;
 		private const int NUMBER_HEIGHT = 16;
@@ -57,11 +77,26 @@ namespace GB.GBMB
 		public TileList() {
 			SetStyle(ControlStyles.FixedWidth, true);
 
+			this.DoubleBuffered = true;
+			SetStyle(
+				ControlStyles.AllPaintingInWmPaint |
+				ControlStyles.UserPaint |
+				ControlStyles.OptimizedDoubleBuffer |
+				ControlStyles.ResizeRedraw,
+				true);
+
 			this.scrollBar = new VScrollBar();
 			this.SuspendLayout();
 			this.scrollBar.Name = "scrollBar";
 			this.scrollBar.TabIndex = 0;
 			this.scrollBar.Dock = DockStyle.Right;
+			this.scrollBar.Enabled = false;
+			this.scrollBar.Minimum = 0;
+			this.scrollBar.Maximum = 15;
+			this.scrollBar.LargeChange = 1; //Otherwise maximum doesn't work.
+			this.scrollBar.SmallChange = 1;
+
+			this.scrollBar.ValueChanged += new EventHandler((o, a) => this.Invalidate(true));
 			this.ResumeLayout(false);
 			this.Controls.Add(scrollBar);
 
@@ -69,8 +104,11 @@ namespace GB.GBMB
 		}
 
 		protected override void OnResize(EventArgs e) {
+			this.SuspendLayout();
 			this.Width = INFO_WIDTH + scrollBar.Width + 1;
-
+			this.numberOfVisibleTiles = ((this.Height - 2) / INFO_HEIGHT);
+			this.Height = (numberOfVisibleTiles * INFO_HEIGHT) + 2;
+			this.ResumeLayout();
 			base.OnResize(e);
 		}
 
@@ -80,10 +118,19 @@ namespace GB.GBMB
 			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 			g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half; //Fixes lines in the middle issue.
 			g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-
+			
+			using (StringFormat format = new StringFormat())
 			using (Brush fore = new SolidBrush(this.BackColor), back = new SolidBrush(ControlPaint.Dark(this.BackColor))) {
+				format.FormatFlags = StringFormatFlags.NoClip;
+				format.Alignment = StringAlignment.Center;
+				format.LineAlignment = StringAlignment.Center;
 
-				for (UInt16 i = 0; i < 4; i++) {
+				int scrolledPos = scrollBar.Value - numberOfVisibleTiles + 1;
+				if (scrolledPos < 0) { scrolledPos = 0; }
+
+				for (UInt16 i = 0; i < numberOfVisibleTiles; i++) {
+					int tileNum = i + scrolledPos;
+
 					int y = 1 + (i * INFO_HEIGHT);
 
 					//Fill background.
@@ -96,24 +143,19 @@ namespace GB.GBMB
 					//The inside part.
 					g.FillRectangle(fore, 2, 1 + y, NUMBER_WIDTH - 2, NUMBER_HEIGHT - 2);
 
-					StringFormat format = new StringFormat(StringFormatFlags.NoClip);
-					format.Alignment = StringAlignment.Center;
-					format.LineAlignment = StringAlignment.Center;
+					if (this.Enabled && tileSet != null && tileNum < tileSet.Count) {
+						g.DrawString(tileNum.ToString(), new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black,
+							new RectangleF(1, -1 + y, NUMBER_WIDTH, NUMBER_HEIGHT), format);
 
-					String usedText = "";
-					//TODO check if the tile number is beyond the max.
-					//if (this.Enabled) {
-						usedText = (i/* + topNumber*/).ToString();
-					//}
-					g.DrawString(usedText, new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black,
-						new RectangleF(1, -1 + y, NUMBER_WIDTH, NUMBER_HEIGHT), format);
-
-					g.DrawImage(MakeTileBitmap(TileSet != null ? TileSet.tiles[i] : new Tile(8, 8),
-						GetApropriatelyFilteredColor(i, GBColor.WHITE),
-						GetApropriatelyFilteredColor(i, GBColor.LIGHT_GRAY),
-						GetApropriatelyFilteredColor(i, GBColor.DARK_GRAY),
-						GetApropriatelyFilteredColor(i, GBColor.BLACK)),
-						TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
+						g.DrawImage(MakeTileBitmap(TileSet.tiles[tileNum],
+								GetApropriatelyFilteredColor(i, GBColor.WHITE),
+								GetApropriatelyFilteredColor(i, GBColor.LIGHT_GRAY),
+								GetApropriatelyFilteredColor(i, GBColor.DARK_GRAY),
+								GetApropriatelyFilteredColor(i, GBColor.BLACK)),
+							TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
+					} else {
+						g.FillRectangle(fore, TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
+					}
 				}
 			}
 
@@ -175,9 +217,9 @@ namespace GB.GBMB
 		private Color GetApropriatelyFilteredColor(UInt16 tileNumber, GBColor color) {
 			Color returned = GetColor(ColorSet, tileNumber, color);
 
-			//if (selected) {
-			returned = returned.FilterAsSelected();
-			//}
+			if (tileNumber == SelectedTile) {
+				returned = returned.FilterAsSelected();
+			}
 
 			return returned;
 		}

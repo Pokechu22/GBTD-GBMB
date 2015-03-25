@@ -43,8 +43,8 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -746,11 +746,11 @@
 			// 
 			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.zoomLabel.Format = stringFormat2;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat1;
 			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
 			this.zoomLabel.Name = "zoomLabel";
 			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
@@ -826,7 +826,7 @@
 			this.mapControl.Location = new System.Drawing.Point(61, 82);
 			this.mapControl.Map = null;
 			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData2;
+			this.mapControl.PaletteData = paletteData1;
 			this.mapControl.SelectedTile = ((ushort)(0));
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
@@ -905,14 +905,17 @@
 			// 
 			// tileList
 			// 
+			this.tileList.Bookmark1 = ((ushort)(0));
+			this.tileList.Bookmark2 = ((ushort)(0));
+			this.tileList.Bookmark3 = ((ushort)(0));
 			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList.Location = new System.Drawing.Point(276, 64);
+			this.tileList.Location = new System.Drawing.Point(284, 46);
 			this.tileList.Name = "tileList";
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
-			this.tileList.Size = new System.Drawing.Size(55, 157);
+			this.tileList.SelectedTile = ((ushort)(0));
+			this.tileList.Size = new System.Drawing.Size(55, 172);
 			this.tileList.TabIndex = 17;
-			this.tileList.Text = "tileList1";
 			this.tileList.TileSet = null;
 			// 
 			// MapEdit
