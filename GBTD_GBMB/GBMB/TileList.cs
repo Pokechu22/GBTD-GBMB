@@ -261,6 +261,14 @@ namespace GB.GBMB
 		}
 		#endregion
 
+		public event EventHandler SelectedTileChanged;
+
+		protected virtual void OnSelectedTileChanged() {
+			if (SelectedTileChanged != null) {
+				SelectedTileChanged(this, new EventArgs());
+			}
+		}
+
 		protected override void OnMouseClick(MouseEventArgs e) {
 			int tileClicked = (e.Y - 2) / INFO_HEIGHT; //The clicked tile number, which may not be the actual tile (scrolling).
 			if (tileClicked >= 0 && tileClicked < numberOfVisibleTiles) {
@@ -268,8 +276,9 @@ namespace GB.GBMB
 				if (scrolledPos < 0) { scrolledPos = 0; }
 
 				this.selectedTile = (UInt16)(tileClicked + scrolledPos);
-				//TODO raise an event.
+
 				this.Invalidate(true);
+				OnSelectedTileChanged();
 			}
 
 			base.OnMouseClick(e);
