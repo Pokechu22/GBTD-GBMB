@@ -127,6 +127,7 @@ namespace GB.GBMB
 				}
 
 				mapControl.ColorSet = value;
+				tileList.ColorSet = value;
 			}
 		}
 
@@ -204,9 +205,13 @@ namespace GB.GBMB
 
 			this.mapControl.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
-			this.mapControl.PaletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			PaletteData paletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
+			this.tileList.PaletteData = paletteData;
+			this.mapControl.PaletteData = paletteData;
 
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
 			this.AutoUpdate = settings.AutoUpdate;
@@ -251,7 +256,8 @@ namespace GB.GBMB
 				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes[args.TileID] = mmf.PalMaps[args.TileID].SGB;
 
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.mapControl.TileSet = this.mapControl.TileSet;
+				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 			}));
 		}
 
@@ -288,6 +294,8 @@ namespace GB.GBMB
 
 				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 				this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			}));
 		}
 
@@ -326,6 +334,9 @@ namespace GB.GBMB
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
 				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 				this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				//TODO load the palettedata from MMF (for both map and tilelist)
 			}));
 		}
 

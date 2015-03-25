@@ -495,5 +495,11 @@ namespace GB.GBMB
 			default: throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 			}
 		}
+
+		private void InitializeComponent() {
+			this.SuspendLayout();
+			this.ResumeLayout(false);
+
+		}
 	}
 }

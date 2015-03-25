@@ -43,8 +43,8 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
-			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -121,6 +121,7 @@
 			this.copyButton = new GB.Shared.Controls.ImageButton();
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.helpButton = new GB.Shared.Controls.ImageButton();
+			this.tileList = new GB.GBMB.TileList();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -248,7 +249,7 @@
 			topBoxBorder.Location = new System.Drawing.Point(0, 0);
 			topBoxBorder.Name = "topBoxBorder";
 			topBoxBorder.RightBorder = null;
-			topBoxBorder.Size = new System.Drawing.Size(292, 32);
+			topBoxBorder.Size = new System.Drawing.Size(351, 32);
 			topBoxBorder.TabIndex = 3;
 			topBoxBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
@@ -745,11 +746,11 @@
 			// 
 			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.zoomLabel.Format = stringFormat1;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat2;
 			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
 			this.zoomLabel.Name = "zoomLabel";
 			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
@@ -782,7 +783,7 @@
         System.Windows.Forms.Border3DSide.Bottom,
         System.Windows.Forms.Border3DSide.Left};
 			this.mapEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Location = new System.Drawing.Point(60, 51);
+			this.mapEditBorder.Location = new System.Drawing.Point(39, 46);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Size = new System.Drawing.Size(232, 222);
@@ -825,7 +826,8 @@
 			this.mapControl.Location = new System.Drawing.Point(61, 82);
 			this.mapControl.Map = null;
 			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData1;
+			this.mapControl.PaletteData = paletteData2;
+			this.mapControl.SelectedTile = ((ushort)(0));
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
@@ -901,11 +903,24 @@
 			this.helpButton.Size = new System.Drawing.Size(24, 24);
 			this.helpButton.TabIndex = 16;
 			// 
+			// tileList
+			// 
+			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.tileList.Location = new System.Drawing.Point(276, 64);
+			this.tileList.Name = "tileList";
+			this.tileList.PaletteData = null;
+			this.tileList.PaletteMapping = null;
+			this.tileList.Size = new System.Drawing.Size(55, 157);
+			this.tileList.TabIndex = 17;
+			this.tileList.Text = "tileList1";
+			this.tileList.TileSet = null;
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 233);
+			this.ClientSize = new System.Drawing.Size(351, 233);
+			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
 			this.Controls.Add(this.copyButton);
@@ -1006,6 +1021,7 @@
 		private Shared.Controls.ImageButton copyButton;
 		private Shared.Controls.ImageButton pasteButton;
 		private Shared.Controls.ImageButton helpButton;
+		private TileList tileList;
 	}
 }
 
