@@ -261,6 +261,7 @@ namespace GB.GBMB
 		}
 		#endregion
 
+		[Category("Action"), Description("Fires when the selected tile is changed")]
 		public event EventHandler SelectedTileChanged;
 
 		protected virtual void OnSelectedTileChanged() {

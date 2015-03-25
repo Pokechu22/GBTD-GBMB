@@ -453,5 +453,9 @@ namespace GB.GBMB
 
 			mapControl.Map = map;
 		}
+
+		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
+			mapControl.SelectedTile = tileList.SelectedTile;
+		}
 	}
 }
