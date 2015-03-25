@@ -107,6 +107,13 @@ namespace GB.GBMB
 			get { return selectionY2; }
 			set { selectionY2 = value; OnSelectionChanged(); }
 		}
+		
+		/// <summary>
+		/// The currently selected tile.
+		/// </summary>
+		[Category("Map data"), Description("The tile that will be used on left click.")]
+		[DefaultValue(0)]
+		public UInt16 SelectedTile { get; set; }
 
 		/// <summary>
 		/// Tile sizes.  THis currently isn't dynamic and the app just won't be happy if something else is given.
@@ -150,10 +157,17 @@ namespace GB.GBMB
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e) {
-			selectionX1 = selectionX2 = MouseToTileX(e.X);
-			selectionY1 = selectionY2 = MouseToTileY(e.Y);
+			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
+				selectionX1 = selectionX2 = MouseToTileX(e.X);
+				selectionY1 = selectionY2 = MouseToTileY(e.Y);
 
-			OnSelectionChanged();
+				OnSelectionChanged();
+			}
+			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
+
+				OnMapChanged();
+			}
 
 			base.OnMouseDown(e);
 		}
@@ -164,6 +178,11 @@ namespace GB.GBMB
 				selectionY2 = MouseToTileY(e.Y);
 
 				OnSelectionChanged();
+			}
+			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
+
+				OnMapChanged();
 			}
 
 			base.OnMouseMove(e);
