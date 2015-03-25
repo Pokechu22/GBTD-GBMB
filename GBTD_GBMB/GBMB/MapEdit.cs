@@ -237,8 +237,13 @@ namespace GB.GBMB
 		}
 
 		protected override void OnResize(EventArgs e) {
-			mapEditBorder.Width = this.Width - 100;
-			mapEditBorder.Height = this.Height - 100;
+			mainTileEditBorder.Height = this.ClientSize.Height - 34;
+			mainTileEditBorder.Width = this.ClientSize.Width - 59;
+			mapEditBorder.Width = mainTileEditBorder.Width - 37;
+			mapEditBorder.Height = mainTileEditBorder.Height - 33; //TODO infopanel logic.
+
+			tileList.Height = mainTileEditBorder.Height - 22;
+
 			base.OnResize(e);
 		}
 

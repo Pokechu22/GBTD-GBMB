@@ -43,8 +43,8 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -122,6 +122,7 @@
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.helpButton = new GB.Shared.Controls.ImageButton();
 			this.tileList = new GB.GBMB.TileList();
+			this.mainTileEditBorder = new GB.Shared.Controls.Border();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -746,11 +747,11 @@
 			// 
 			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.zoomLabel.Format = stringFormat2;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat1;
 			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
 			this.zoomLabel.Name = "zoomLabel";
 			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
@@ -783,10 +784,10 @@
         System.Windows.Forms.Border3DSide.Bottom,
         System.Windows.Forms.Border3DSide.Left};
 			this.mapEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Location = new System.Drawing.Point(39, 46);
+			this.mapEditBorder.Location = new System.Drawing.Point(33, 38);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(232, 222);
+			this.mapEditBorder.Size = new System.Drawing.Size(237, 207);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -805,7 +806,7 @@
 			// toolList
 			// 
 			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(10, 64);
+			this.toolList.Location = new System.Drawing.Point(4, 38);
 			this.toolList.Name = "toolList";
 			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
 			this.toolList.Size = new System.Drawing.Size(26, 174);
@@ -823,15 +824,15 @@
 			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
 			this.mapControl.DefaultPalette = null;
 			this.mapControl.Enabled = false;
-			this.mapControl.Location = new System.Drawing.Point(61, 82);
+			this.mapControl.Location = new System.Drawing.Point(34, 39);
 			this.mapControl.Map = null;
 			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData2;
+			this.mapControl.PaletteData = paletteData1;
 			this.mapControl.SelectedTile = ((ushort)(0));
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
-			this.mapControl.Size = new System.Drawing.Size(184, 157);
+			this.mapControl.Size = new System.Drawing.Size(235, 205);
 			this.mapControl.TabIndex = 0;
 			this.mapControl.Text = "mapControl1";
 			this.mapControl.TileSet = null;
@@ -910,21 +911,37 @@
 			this.tileList.Bookmark2 = ((ushort)(0));
 			this.tileList.Bookmark3 = ((ushort)(0));
 			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList.Location = new System.Drawing.Point(284, 46);
+			this.tileList.Location = new System.Drawing.Point(296, 34);
 			this.tileList.Name = "tileList";
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
 			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(55, 172);
+			this.tileList.Size = new System.Drawing.Size(55, 206);
 			this.tileList.TabIndex = 17;
 			this.tileList.TileSet = null;
 			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
+			// 
+			// mainTileEditBorder
+			// 
+			this.mainTileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.mainTileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.mainTileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.mainTileEditBorder.Location = new System.Drawing.Point(0, 34);
+			this.mainTileEditBorder.Name = "mainTileEditBorder";
+			this.mainTileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.mainTileEditBorder.Size = new System.Drawing.Size(281, 215);
+			this.mainTileEditBorder.TabIndex = 18;
+			this.mainTileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(351, 233);
+			this.ClientSize = new System.Drawing.Size(351, 256);
 			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
@@ -942,6 +959,7 @@
 			this.Controls.Add(topBoxBorder);
 			this.Controls.Add(this.mapControl);
 			this.Controls.Add(this.mapEditBorder);
+			this.Controls.Add(this.mainTileEditBorder);
 			this.Name = "MapEdit";
 			this.Text = "Gameboy Map Builder";
 			this.ResumeLayout(false);
@@ -1027,6 +1045,7 @@
 		private Shared.Controls.ImageButton pasteButton;
 		private Shared.Controls.ImageButton helpButton;
 		private TileList tileList;
+		private Shared.Controls.Border mainTileEditBorder;
 	}
 }
 
