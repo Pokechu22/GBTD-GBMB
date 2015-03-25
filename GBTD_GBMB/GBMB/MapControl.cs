@@ -218,7 +218,22 @@ namespace GB.GBMB
 			if (map == null || tileset == null) {
 				e.Graphics.FillRectangle(SystemBrushes.ButtonFace, e.ClipRectangle);
 
-				e.Graphics.DrawString("There is no tileset selected or something.  Go fix it.", this.Font, SystemBrushes.ControlText, 40, 40);
+				using (StringFormat format = new StringFormat(StringFormatFlags.NoWrap)) {
+					//Temporarilly disable offsetting, since it messes up the letter l.
+					e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default;
+
+					format.Alignment = StringAlignment.Center;
+					format.LineAlignment = StringAlignment.Near;
+					
+					//Intentionally multi-line string with a starting newline.
+					e.Graphics.DrawString(@"
+No tileset selected.
+Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.ControlText, 
+						new RectangleF(AFTER_BOX_X, AFTER_BOX_Y, this.Width - AFTER_BOX_X, this.Height - AFTER_BOX_Y), format);
+
+					//And re-enable it.
+					e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
+				}
 			} else {
 				for (int y = 0; y < map.Master.Height; y++) {
 					for (int x = 0; x < map.Master.Width; x++) {
@@ -234,7 +249,10 @@ namespace GB.GBMB
 				}
 			}
 
+			//Again, text doesn't like the half offset.
+			e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default;
 			DrawNumberLabels(e);
+			e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
 
 			base.OnPaint(e);
 		}
