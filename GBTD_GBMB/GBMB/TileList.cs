@@ -130,7 +130,7 @@ namespace GB.GBMB
 				if (scrolledPos < 0) { scrolledPos = 0; }
 
 				for (UInt16 i = 0; i < numberOfVisibleTiles; i++) {
-					int tileNum = i + scrolledPos;
+					UInt16 tileNum = (UInt16)(i + scrolledPos);
 
 					int y = 1 + (i * INFO_HEIGHT);
 
@@ -149,10 +149,10 @@ namespace GB.GBMB
 							new RectangleF(1, -1 + y, NUMBER_WIDTH, NUMBER_HEIGHT), format);
 
 						g.DrawImage(MakeTileBitmap(TileSet.tiles[tileNum],
-								GetApropriatelyFilteredColor(i, GBColor.WHITE),
-								GetApropriatelyFilteredColor(i, GBColor.LIGHT_GRAY),
-								GetApropriatelyFilteredColor(i, GBColor.DARK_GRAY),
-								GetApropriatelyFilteredColor(i, GBColor.BLACK)),
+								GetApropriatelyFilteredColor(tileNum, GBColor.WHITE),
+								GetApropriatelyFilteredColor(tileNum, GBColor.LIGHT_GRAY),
+								GetApropriatelyFilteredColor(tileNum, GBColor.DARK_GRAY),
+								GetApropriatelyFilteredColor(tileNum, GBColor.BLACK)),
 							TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
 					} else {
 						g.FillRectangle(fore, TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
