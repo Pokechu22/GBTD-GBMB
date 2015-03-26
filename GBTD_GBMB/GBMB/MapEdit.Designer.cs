@@ -911,12 +911,12 @@
 			this.tileList.Bookmark2 = ((ushort)(0));
 			this.tileList.Bookmark3 = ((ushort)(0));
 			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList.Location = new System.Drawing.Point(296, 34);
+			this.tileList.Location = new System.Drawing.Point(295, 34);
 			this.tileList.Name = "tileList";
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
 			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(55, 206);
+			this.tileList.Size = new System.Drawing.Size(56, 206);
 			this.tileList.TabIndex = 17;
 			this.tileList.TileSet = null;
 			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
