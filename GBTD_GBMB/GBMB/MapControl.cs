@@ -17,6 +17,10 @@ namespace GB.GBMB
 {
 	public class MapControl : Control
 	{
+		[Description("This property is not meaningful for this control.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public override string Text { get { return base.Text; } set { base.Text = value; } }
+
 		private float zoom;
 		private bool showGrid;
 		private bool showDoubleMarkers;
@@ -107,7 +111,119 @@ namespace GB.GBMB
 			get { return selectionY2; }
 			set { selectionY2 = value; OnSelectionChanged(); }
 		}
-		
+
+		/// <summary>
+		/// Whether or not the entire set of tiles in the selection are vertically flipped or not.
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public CheckState SelectionVerticalFlip {
+			get {
+				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+				int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+				int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+				int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+				//Whether or not we have found cases where it is or is not checked.
+				bool foundYes = false, foundNo = false;
+
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+						if (map.Tiles[x, y].FlippedVertically) {
+							foundYes = true;
+						} else {
+							foundNo = true;
+						}
+					}
+				}
+
+				if (foundYes && foundNo) {
+					return CheckState.Indeterminate;
+				}
+				if (foundYes) {
+					return CheckState.Checked;
+				}
+				if (foundNo) {
+					return CheckState.Unchecked;
+				}
+				throw new Exception("There is no selection?  No tiles were found...");
+			}
+			set {
+				//Ignore values being set to indeterminite.
+				if (value == CheckState.Indeterminate) { return; }
+
+				bool check = (value == CheckState.Checked);
+
+				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+				int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+				int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+				int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+						map.Tiles[x, y].FlippedVertically = check;
+					}
+				}
+
+				OnMapChanged();
+			}
+		}
+
+		/// <summary>
+		/// Whether or not the entire set of tiles in the selection are horizontally flipped or not.
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public CheckState SelectionHorizontalFlip {
+			get {
+				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+				int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+				int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+				int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+				//Whether or not we have found cases where it is or is not checked.
+				bool foundYes = false, foundNo = false;
+
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+						if (map.Tiles[x, y].FlippedHorizontally) {
+							foundYes = true;
+						} else {
+							foundNo = true;
+						}
+					}
+				}
+
+				if (foundYes && foundNo) {
+					return CheckState.Indeterminate;
+				}
+				if (foundYes) {
+					return CheckState.Checked;
+				}
+				if (foundNo) {
+					return CheckState.Unchecked;
+				}
+				throw new Exception("There is no selection?  No tiles were found...");
+			}
+			set {
+				//Ignore values being set to indeterminite.
+				if (value == CheckState.Indeterminate) { return; }
+
+				bool check = (value == CheckState.Checked);
+
+				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+				int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+				int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+				int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+						map.Tiles[x, y].FlippedHorizontally = check;
+					}
+				}
+
+				OnMapChanged();
+			}
+		}
+
 		/// <summary>
 		/// The currently selected tile.
 		/// </summary>
@@ -148,20 +264,44 @@ namespace GB.GBMB
 			ColorSet = Shared.Palettes.ColorSet.GAMEBOY_COLOR;
 		}
 
+		[Description("Fires when the map's tiles have changed.")]
+		public event EventHandler MapChanged;
+		[Description("Fires when the selection has changed.")]
+		public event EventHandler SelectionChanged;
+
 		protected void OnMapChanged() {
 			this.Invalidate(true);
+
+			if (MapChanged != null) {
+				MapChanged(this, new EventArgs());
+			}
 		}
 
 		protected void OnSelectionChanged() {
 			this.Invalidate(true);
+
+			if (SelectionChanged != null) {
+				SelectionChanged(this, new EventArgs());
+			}
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e) {
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
-				selectionX1 = selectionX2 = MouseToTileX(e.X);
-				selectionY1 = selectionY2 = MouseToTileY(e.Y);
+				int newSelectionX1, newSelectionX2, newSelectionY1, newSelectionY2;
 
-				OnSelectionChanged();
+				newSelectionX1 = newSelectionX2 = MouseToTileX(e.X);
+				newSelectionY1 = newSelectionY2 = MouseToTileY(e.Y);
+
+				if (newSelectionX1 != selectionX1 || newSelectionX2 != selectionX2 ||
+					newSelectionY1 != selectionY1 || newSelectionY2 != selectionY2) {
+
+					selectionX1 = newSelectionX1;
+					selectionX2 = newSelectionX2;
+					selectionY1 = newSelectionY1;
+					selectionY2 = newSelectionY2;
+
+					OnSelectionChanged();
+				}
 			}
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
 				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
@@ -178,10 +318,18 @@ namespace GB.GBMB
 
 		protected override void OnMouseMove(MouseEventArgs e) {
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
-				selectionX2 = MouseToTileX(e.X);
-				selectionY2 = MouseToTileY(e.Y);
+				int newSelectionX2, newSelectionY2;
 
-				OnSelectionChanged();
+				newSelectionX2 = MouseToTileX(e.X);
+				newSelectionY2 = MouseToTileY(e.Y);
+
+				if (newSelectionX2 != selectionX2 || newSelectionY2 != selectionY2) {
+
+					selectionX2 = newSelectionX2;
+					selectionY2 = newSelectionY2;
+
+					OnSelectionChanged();
+				}
 			}
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
 				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;

@@ -550,5 +550,18 @@ namespace GB.GBMB
 			default: throw new Exception("Tag for sending control was not a valid bookmark - got " + (sender as Control).Tag + ", expected number between 1 and 3 (inclusive).  Sender: " + sender);
 			}
 		}
+
+		private void mapControl_SelectionChanged(object sender, EventArgs e) {
+			infoPanelVerticalFlipCheckBox.CheckState = mapControl.SelectionVerticalFlip;
+			infoPanelHorizontalFlipCheckBox.CheckState = mapControl.SelectionHorizontalFlip;
+		}
+
+		private void infoPanelVerticalFlipCheckBox_Click(object sender, EventArgs e) {
+			mapControl.SelectionVerticalFlip = infoPanelVerticalFlipCheckBox.CheckState;
+		}
+
+		private void infoPanelHorizontalFlipCheckBox_Click(object sender, EventArgs e) {
+			mapControl.SelectionHorizontalFlip = infoPanelHorizontalFlipCheckBox.CheckState;
+		}
 	}
 }
