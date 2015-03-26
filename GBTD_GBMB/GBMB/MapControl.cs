@@ -165,6 +165,10 @@ namespace GB.GBMB
 			}
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
 				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].GBCPalette = null;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].SGBPalette = null;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedHorizontally = false;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedVertically = false;
 
 				OnMapChanged();
 			}
@@ -181,6 +185,10 @@ namespace GB.GBMB
 			}
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
 				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].GBCPalette = null;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].SGBPalette = null;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedHorizontally = false;
+				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedVertically = false;
 
 				OnMapChanged();
 			}
