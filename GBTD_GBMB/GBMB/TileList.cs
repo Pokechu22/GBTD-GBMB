@@ -59,7 +59,7 @@ namespace GB.GBMB
 		}
 		public UInt16 SelectedTile {
 			get { return selectedTile; }
-			set { selectedTile = value; this.Invalidate(); }
+			set { selectedTile = value; this.Invalidate(true); }
 		}
 		public UInt16 Bookmark1 { get { return bookmark1; } set { bookmark1 = value; this.Invalidate(true); } }
 		public UInt16 Bookmark2 { get { return bookmark2; } set { bookmark2 = value; this.Invalidate(true); } }
@@ -73,6 +73,8 @@ namespace GB.GBMB
 		private const int TILE_HEIGHT = 16;
 		private const int INFO_WIDTH = NUMBER_WIDTH + TILE_WIDTH + 1;
 		private const int INFO_HEIGHT = 17;
+		private const int SCROLL_X = INFO_WIDTH + 2;
+		private const int SCROLL_Y = 1;
 
 		public TileList() {
 			SetStyle(ControlStyles.FixedWidth, true);
@@ -89,25 +91,29 @@ namespace GB.GBMB
 			this.SuspendLayout();
 			this.scrollBar.Name = "scrollBar";
 			this.scrollBar.TabIndex = 0;
-			this.scrollBar.Dock = DockStyle.Right;
 			this.scrollBar.Enabled = false;
 			this.scrollBar.Minimum = 0;
 			this.scrollBar.Maximum = 15;
 			this.scrollBar.LargeChange = 1; //Otherwise maximum doesn't work.
 			this.scrollBar.SmallChange = 1;
+			this.scrollBar.Location = new Point(SCROLL_X, SCROLL_Y);
+			this.scrollBar.Height = this.Height - 2;
 
 			this.scrollBar.ValueChanged += new EventHandler((o, a) => this.Invalidate(true));
 			this.ResumeLayout(false);
 			this.Controls.Add(scrollBar);
 
-			this.Width = INFO_WIDTH  + scrollBar.Width + 1;
+			this.Width = INFO_WIDTH  + scrollBar.Width + 2;
 		}
 
 		protected override void OnResize(EventArgs e) {
 			this.SuspendLayout();
-			this.Width = INFO_WIDTH + scrollBar.Width + 1;
-			this.numberOfVisibleTiles = ((this.Height - 2) / INFO_HEIGHT);
-			this.Height = (numberOfVisibleTiles * INFO_HEIGHT) + 2;
+
+			this.Width = INFO_WIDTH + scrollBar.Width + 2;
+			this.numberOfVisibleTiles = ((this.Height - 1) / INFO_HEIGHT);
+			this.Height = (numberOfVisibleTiles * INFO_HEIGHT) + 1;
+			this.scrollBar.Height = this.Height - 2;
+			
 			this.ResumeLayout();
 			base.OnResize(e);
 		}
@@ -119,9 +125,9 @@ namespace GB.GBMB
 			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 			g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half; //Fixes lines in the middle issue.
 			g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-			
+
 			using (StringFormat format = new StringFormat())
-			using (Brush fore = new SolidBrush(this.BackColor), back = new SolidBrush(ControlPaint.Dark(this.BackColor))) {
+			using (Brush fore = new SolidBrush(this.BackColor), back = new SolidBrush(ControlPaint.DarkDark(this.BackColor))) {
 				format.FormatFlags = StringFormatFlags.NoClip;
 				format.Alignment = StringAlignment.Center;
 				format.LineAlignment = StringAlignment.Center;
@@ -159,6 +165,10 @@ namespace GB.GBMB
 					}
 				}
 			}
+
+			ControlPaint.DrawBorder3D(g, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, Border3DSide.Bottom);
+			ControlPaint.DrawBorder3D(g, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
+			ControlPaint.DrawBorder3D(g, new Rectangle(SCROLL_X - 1, SCROLL_Y - 1, scrollBar.Width + 1, this.Height), Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
 
 			base.OnPaint(e);
 		}
