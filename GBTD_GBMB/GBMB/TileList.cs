@@ -60,11 +60,11 @@ namespace GB.GBMB
 			get { return selectedTile; }
 			set { selectedTile = value; this.Invalidate(true); }
 		}
-		[DefaultValue(0xFFFF)]
+		[DefaultValue(typeof(UInt16), "65535")]
 		public UInt16 Bookmark1 { get { return bookmark1; } set { bookmark1 = value; this.Invalidate(true); } }
-		[DefaultValue(0xFFFF)]
+		[DefaultValue(typeof(UInt16), "65535")]
 		public UInt16 Bookmark2 { get { return bookmark2; } set { bookmark2 = value; this.Invalidate(true); } }
-		[DefaultValue(0xFFFF)]
+		[DefaultValue(typeof(UInt16), "65535")]
 		public UInt16 Bookmark3 { get { return bookmark3; } set { bookmark3 = value; this.Invalidate(true); } }
 
 		private Image bookmark1Icon = new Bitmap(5, 7);
