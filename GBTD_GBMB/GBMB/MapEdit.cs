@@ -157,6 +157,34 @@ namespace GB.GBMB
 			}
 		}
 
+		public UInt16 Bookmark1 {
+			get { return tileList.Bookmark1; }
+			set {
+				tileList.Bookmark1 = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().Bookmark1 = value;
+
+				gotoBookmark1MenuItem.Enabled = (value != 0xFFFF);
+			}
+		}
+		public UInt16 Bookmark2 {
+			get { return tileList.Bookmark2; }
+			set {
+				tileList.Bookmark2 = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().Bookmark2 = value;
+
+				gotoBookmark2MenuItem.Enabled = (value != 0xFFFF);
+			}
+		}
+		public UInt16 Bookmark3 {
+			get { return tileList.Bookmark3; }
+			set {
+				tileList.Bookmark3 = value;
+				gbmFile.GetObjectOfType<GBMObjectMapSettings>().Bookmark3 = value;
+
+				gotoBookmark3MenuItem.Enabled = (value != 0xFFFF);
+			}
+		}
+
 		public MapEdit() {
 			InitializeComponent();
 
@@ -221,6 +249,10 @@ namespace GB.GBMB
 			this.ShowDoubleMarkers = settings.ShowDoubleMarkers;
 			
 			this.ColorSet = (ColorSet)settings.ColorSet;
+
+			this.Bookmark1 = settings.Bookmark1;
+			this.Bookmark2 = settings.Bookmark2;
+			this.Bookmark3 = settings.Bookmark3;
 
 			this.Size = new Size((int)settings.FormWidth, (int)settings.FormHeight);
 			this.WindowState = (settings.FormMaximized ? FormWindowState.Maximized : FormWindowState.Normal);
@@ -461,6 +493,35 @@ namespace GB.GBMB
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
 			mapControl.SelectedTile = tileList.SelectedTile;
+		}
+
+		private void onSetBookmarkClicked(object sender, EventArgs e) {
+			switch ((int)(sender as MenuItem).Tag) {
+			case 1: Bookmark1 = tileList.SelectedTile; break;
+			case 2: Bookmark2 = tileList.SelectedTile; break;
+			case 3: Bookmark3 = tileList.SelectedTile; break;
+			default: throw new Exception("Tag for sending control was not a valid bookmark - got " + (sender as Control).Tag + ", expected number between 1 and 3 (inclusive).  Sender: " + sender);
+			}
+		}
+
+		private void onGotoBookmarkClicked(object sender, EventArgs e) {
+			switch ((int)(sender as MenuItem).Tag) {
+			case 1: tileList.SelectedTile = Bookmark1; break;
+			case 2: tileList.SelectedTile = Bookmark2; break;
+			case 3: tileList.SelectedTile = Bookmark3; break;
+			default: throw new Exception("Tag for sending control was not a valid bookmark - got " + (sender as Control).Tag + ", expected number between 1 and 3 (inclusive).  Sender: " + sender);
+			}
+		}
+
+		private void onClearBookmarkClicked(object sender, EventArgs e) {
+			const UInt16 CLEARED_BOOKMARK = 0xFFFF;
+
+			switch ((int)(sender as MenuItem).Tag) {
+			case 1: Bookmark1 = CLEARED_BOOKMARK; break;
+			case 2: Bookmark2 = CLEARED_BOOKMARK; break;
+			case 3: Bookmark3 = CLEARED_BOOKMARK; break;
+			default: throw new Exception("Tag for sending control was not a valid bookmark - got " + (sender as Control).Tag + ", expected number between 1 and 3 (inclusive).  Sender: " + sender);
+			}
 		}
 	}
 }
