@@ -115,7 +115,7 @@ namespace GB.GBMB
 		/// <summary>
 		/// Whether or not the entire set of tiles in the selection are vertically flipped or not.
 		/// </summary>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public CheckState SelectionVerticalFlip {
 			get {
 				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
@@ -171,7 +171,7 @@ namespace GB.GBMB
 		/// <summary>
 		/// Whether or not the entire set of tiles in the selection are horizontally flipped or not.
 		/// </summary>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public CheckState SelectionHorizontalFlip {
 			get {
 				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
