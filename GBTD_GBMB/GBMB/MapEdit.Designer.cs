@@ -250,7 +250,7 @@
 			topBoxBorder.Location = new System.Drawing.Point(0, 0);
 			topBoxBorder.Name = "topBoxBorder";
 			topBoxBorder.RightBorder = null;
-			topBoxBorder.Size = new System.Drawing.Size(351, 32);
+			topBoxBorder.Size = new System.Drawing.Size(382, 32);
 			topBoxBorder.TabIndex = 3;
 			topBoxBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
@@ -808,7 +808,7 @@
 			this.mapEditBorder.Location = new System.Drawing.Point(33, 38);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(237, 207);
+			this.mapEditBorder.Size = new System.Drawing.Size(286, 193);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
@@ -853,7 +853,7 @@
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
-			this.mapControl.Size = new System.Drawing.Size(235, 205);
+			this.mapControl.Size = new System.Drawing.Size(284, 191);
 			this.mapControl.TabIndex = 0;
 			this.mapControl.Text = "mapControl1";
 			this.mapControl.TileSet = null;
@@ -932,7 +932,7 @@
 			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
 			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
 			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList.Location = new System.Drawing.Point(295, 34);
+			this.tileList.Location = new System.Drawing.Point(326, 34);
 			this.tileList.Name = "tileList";
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
@@ -954,7 +954,7 @@
 			this.mainTileEditBorder.Location = new System.Drawing.Point(0, 34);
 			this.mainTileEditBorder.Name = "mainTileEditBorder";
 			this.mainTileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mainTileEditBorder.Size = new System.Drawing.Size(281, 215);
+			this.mainTileEditBorder.Size = new System.Drawing.Size(323, 227);
 			this.mainTileEditBorder.TabIndex = 18;
 			this.mainTileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
@@ -962,7 +962,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(351, 256);
+			this.ClientSize = new System.Drawing.Size(382, 261);
 			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
@@ -981,6 +981,7 @@
 			this.Controls.Add(this.mapControl);
 			this.Controls.Add(this.mapEditBorder);
 			this.Controls.Add(this.mainTileEditBorder);
+			this.MinimumSize = new System.Drawing.Size(390, 288);
 			this.Name = "MapEdit";
 			this.Text = "Gameboy Map Builder";
 			this.ResumeLayout(false);

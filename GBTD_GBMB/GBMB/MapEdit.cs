@@ -274,7 +274,7 @@ namespace GB.GBMB
 			mapEditBorder.Width = mainTileEditBorder.Width - 37;
 			mapEditBorder.Height = mainTileEditBorder.Height - 33; //TODO infopanel logic.
 
-			tileList.Height = mainTileEditBorder.Height - 22;
+			tileList.Height = mainTileEditBorder.Height - 20;
 
 			base.OnResize(e);
 		}
