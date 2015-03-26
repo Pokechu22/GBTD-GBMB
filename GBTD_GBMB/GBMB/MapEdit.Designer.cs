@@ -907,16 +907,19 @@
 			// tileList
 			// 
 			this.tileList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.tileList.Bookmark1 = ((ushort)(0));
-			this.tileList.Bookmark2 = ((ushort)(0));
-			this.tileList.Bookmark3 = ((ushort)(0));
+			this.tileList.Bookmark1 = ((ushort)(1));
+			this.tileList.Bookmark1Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon1;
+			this.tileList.Bookmark2 = ((ushort)(2));
+			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
+			this.tileList.Bookmark3 = ((ushort)(3));
+			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
 			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.tileList.Location = new System.Drawing.Point(295, 34);
 			this.tileList.Name = "tileList";
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
 			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(56, 206);
+			this.tileList.Size = new System.Drawing.Size(56, 205);
 			this.tileList.TabIndex = 17;
 			this.tileList.TileSet = null;
 			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);

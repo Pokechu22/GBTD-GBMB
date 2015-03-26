@@ -208,4 +208,13 @@
   <data name="Save_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TileListBookmarkIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TileListBookmarkIcon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TileListBookmarkIcon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TileListBookmarkIcon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TileListBookmarkIcon3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TileListBookmarkIcon3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -31,8 +31,7 @@ namespace GB.GBMB
 		private GBRObjectTileData tileSet;
 
 		private UInt16 selectedTile;
-		//Currently unused :/
-		private UInt16 bookmark1, bookmark2, bookmark3;
+		private UInt16 bookmark1 = 0xFFFF, bookmark2 = 0xFFFF, bookmark3 = 0xFFFF;
 
 		public ColorSet ColorSet {
 			get { return colorSet; }
@@ -61,9 +60,44 @@ namespace GB.GBMB
 			get { return selectedTile; }
 			set { selectedTile = value; this.Invalidate(true); }
 		}
+		[DefaultValue(0xFFFF)]
 		public UInt16 Bookmark1 { get { return bookmark1; } set { bookmark1 = value; this.Invalidate(true); } }
+		[DefaultValue(0xFFFF)]
 		public UInt16 Bookmark2 { get { return bookmark2; } set { bookmark2 = value; this.Invalidate(true); } }
+		[DefaultValue(0xFFFF)]
 		public UInt16 Bookmark3 { get { return bookmark3; } set { bookmark3 = value; this.Invalidate(true); } }
+
+		private Image bookmark1Icon = new Bitmap(5, 7);
+		private Image bookmark2Icon = new Bitmap(5, 7);
+		private Image bookmark3Icon = new Bitmap(5, 7);
+
+		[Category("Display"), Description("The icon to use for bookmark number 1.")]
+		public Image Bookmark1Icon {
+			get { return bookmark1Icon; }
+			set {
+				if (value == null) { value = new Bitmap(5, 7); }
+				bookmark1Icon = value;
+				this.Invalidate(true);
+			}
+		}
+		[Category("Display"), Description("The icon to use for bookmark number 2.")]
+		public Image Bookmark2Icon {
+			get { return bookmark2Icon; }
+			set {
+				if (value == null) { value = new Bitmap(5, 7); }
+				bookmark2Icon = value;
+				this.Invalidate(true);
+			}
+		}
+		[Category("Display"), Description("The icon to use for bookmark number 3.")]
+		public Image Bookmark3Icon {
+			get { return bookmark3Icon; }
+			set {
+				if (value == null) { value = new Bitmap(5, 7); }
+				bookmark3Icon = value;
+				this.Invalidate(true);
+			}
+		}
 
 		private const int NUMBER_WIDTH = 21;
 		private const int NUMBER_HEIGHT = 16;
@@ -154,6 +188,16 @@ namespace GB.GBMB
 						g.DrawString(tileNum.ToString(), new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black,
 							new RectangleF(1, -1 + y, NUMBER_WIDTH, NUMBER_HEIGHT), format);
 
+						//Tile bookmark number.
+						if (tileNum == bookmark1) {
+							g.DrawImageUnscaledAndClipped(bookmark1Icon, new Rectangle(2, y + 1, 5, 7));
+						} else if (tileNum == bookmark2) {
+							g.DrawImageUnscaledAndClipped(bookmark2Icon, new Rectangle(2, y + 1, 5, 7));
+						} else if (tileNum == bookmark3) {
+							g.DrawImageUnscaledAndClipped(bookmark3Icon, new Rectangle(2, y + 1, 5, 7));
+						}
+
+						//The tile itself.
 						g.DrawImage(MakeTileBitmap(TileSet.tiles[tileNum],
 								GetApropriatelyFilteredColor(tileNum, GBColor.WHITE),
 								GetApropriatelyFilteredColor(tileNum, GBColor.LIGHT_GRAY),
