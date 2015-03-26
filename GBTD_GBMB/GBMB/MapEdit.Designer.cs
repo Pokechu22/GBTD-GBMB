@@ -43,10 +43,10 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
-			GB.Shared.Palettes.PaletteData paletteData3 = new GB.Shared.Palettes.PaletteData();
-			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -776,11 +776,11 @@
 			// 
 			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
-			this.zoomLabel.Format = stringFormat7;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat1;
 			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
 			this.zoomLabel.Name = "zoomLabel";
 			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
@@ -856,7 +856,7 @@
 			this.mapControl.Location = new System.Drawing.Point(34, 39);
 			this.mapControl.Map = null;
 			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData3;
+			this.mapControl.PaletteData = paletteData1;
 			this.mapControl.SelectedTile = ((ushort)(0));
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
@@ -985,11 +985,11 @@
 			// 
 			this.infoPanelLocationLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.infoPanelLocationLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
-			this.infoPanelLocationLabel.Format = stringFormat8;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelLocationLabel.Format = stringFormat2;
 			this.infoPanelLocationLabel.Location = new System.Drawing.Point(38, 238);
 			this.infoPanelLocationLabel.Name = "infoPanelLocationLabel";
 			this.infoPanelLocationLabel.Size = new System.Drawing.Size(47, 14);
@@ -1021,23 +1021,34 @@
 			// 
 			// infoPanelPaletteComboBox
 			// 
-			this.infoPanelPaletteComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.infoPanelPaletteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.infoPanelPaletteComboBox.FormattingEnabled = true;
-			this.infoPanelPaletteComboBox.ItemHeight = 13;
-			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 236);
+			this.infoPanelPaletteComboBox.Items.AddRange(new object[] {
+            "Default",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 235);
+			this.infoPanelPaletteComboBox.MaxDropDownItems = 9;
 			this.infoPanelPaletteComboBox.Name = "infoPanelPaletteComboBox";
-			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 19);
+			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 21);
 			this.infoPanelPaletteComboBox.TabIndex = 23;
+			this.infoPanelPaletteComboBox.SelectedIndexChanged += new System.EventHandler(this.infoPanelPaletteComboBox_SelectedIndexChanged);
 			// 
 			// infoPanelPalLabel
 			// 
 			this.infoPanelPalLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.infoPanelPalLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
-			this.infoPanelPalLabel.Format = stringFormat9;
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelPalLabel.Format = stringFormat3;
 			this.infoPanelPalLabel.Location = new System.Drawing.Point(49, 238);
 			this.infoPanelPalLabel.Name = "infoPanelPalLabel";
 			this.infoPanelPalLabel.Size = new System.Drawing.Size(21, 14);

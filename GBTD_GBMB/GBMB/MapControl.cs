@@ -225,6 +225,83 @@ namespace GB.GBMB
 		}
 
 		/// <summary>
+		/// The palette that the selection uses.
+		/// <para>A value of <c>null</c> means that the palette is default.
+		/// A value of <c>-1</c> means that there are multiple palettes in the seelction.
+		/// Any other value is the actual palette.</para>
+		/// </summary>
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public int? SelectionPalette {
+			get {
+				if (this.colorSet != ColorSet.GAMEBOY_COLOR
+					&& this.colorSet != ColorSet.GAMEBOY_COLOR_FILTERED
+					&& this.colorSet != ColorSet.SUPER_GAMEBOY) {
+					throw new InvalidOperationException("Can only get the selected palette when using a GBC or SGB color set!");
+				}
+				
+				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+				int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+				int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+				int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+				byte? firstFoundValue; //TODO this is not the best name.
+				if (colorSet == ColorSet.SUPER_GAMEBOY) {
+					firstFoundValue = map.Tiles[lowerSelectionX, lowerSelectionY].SGBPalette;
+				} else {
+					firstFoundValue = map.Tiles[lowerSelectionX, lowerSelectionY].GBCPalette;
+				}
+				bool foundOthers = false;
+
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+						if (colorSet == ColorSet.SUPER_GAMEBOY) {
+							if (map.Tiles[x, y].SGBPalette != firstFoundValue) {
+								foundOthers = true;
+							}
+						} else {
+							if (map.Tiles[x, y].GBCPalette != firstFoundValue) {
+								foundOthers = true;
+							}
+						}
+					}
+				}
+
+				if (foundOthers) {
+					return -1;
+				} else {
+					return firstFoundValue;
+				}
+			}
+			set {
+				if (value == -1) { return; } //For -1, we will just ignore it.  But otherwise...
+				byte? val = (byte?)value; //If this cannot be casted, too bad.  It shouldn't be set like that.
+
+				if (this.colorSet != ColorSet.GAMEBOY_COLOR
+					&& this.colorSet != ColorSet.GAMEBOY_COLOR_FILTERED
+					&& this.colorSet != ColorSet.SUPER_GAMEBOY) {
+					throw new InvalidOperationException("Can only get the selected palette when using a GBC or SGB color set!");
+				}
+
+				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+				int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+				int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+				int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+						if (colorSet == ColorSet.SUPER_GAMEBOY) {
+							map.Tiles[x, y].SGBPalette = val;
+						} else {
+							map.Tiles[x, y].GBCPalette = val;
+						}
+					}
+				}
+
+				OnMapChanged();
+			}
+		}
+
+		/// <summary>
 		/// The currently selected tile.
 		/// </summary>
 		[Category("Map data"), Description("The tile that will be used on left click.")]

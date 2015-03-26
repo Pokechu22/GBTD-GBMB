@@ -554,6 +554,17 @@ namespace GB.GBMB
 		private void mapControl_SelectionChanged(object sender, EventArgs e) {
 			infoPanelVerticalFlipCheckBox.CheckState = mapControl.SelectionVerticalFlip;
 			infoPanelHorizontalFlipCheckBox.CheckState = mapControl.SelectionHorizontalFlip;
+
+			var palTemp = mapControl.SelectionPalette;
+			if (palTemp.HasValue) {
+				if (palTemp >= 0) {
+					infoPanelPaletteComboBox.SelectedIndex = palTemp.Value + 1;
+				} else {
+					infoPanelPaletteComboBox.SelectedIndex = -1;
+				}
+			} else {
+				infoPanelPaletteComboBox.SelectedIndex = 0;
+			}
 		}
 
 		private void infoPanelVerticalFlipCheckBox_Click(object sender, EventArgs e) {
@@ -562,6 +573,17 @@ namespace GB.GBMB
 
 		private void infoPanelHorizontalFlipCheckBox_Click(object sender, EventArgs e) {
 			mapControl.SelectionHorizontalFlip = infoPanelHorizontalFlipCheckBox.CheckState;
+		}
+
+		private void infoPanelPaletteComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			var palTemp = infoPanelPaletteComboBox.SelectedIndex;
+			if (palTemp == -1) {
+				return; //Do nothing
+			} else if (palTemp == 0) {
+				mapControl.SelectionPalette = null;
+			} else {
+				mapControl.SelectionPalette = infoPanelPaletteComboBox.SelectedIndex - 1;
+			}
 		}
 	}
 }
