@@ -31,7 +31,10 @@ namespace GB.GBMB
 			set {
 				infoPanelMenuItem.Checked = value;
 				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowInfoPanel = value;
+
 				infoPanel = value;
+
+				this.OnResize(new EventArgs());
 			}
 		}
 		[Description("Whether or not a grid is displayed.")]
@@ -269,12 +272,26 @@ namespace GB.GBMB
 		}
 
 		protected override void OnResize(EventArgs e) {
+			this.SuspendLayout();
+
 			mainTileEditBorder.Height = this.ClientSize.Height - 34;
 			mainTileEditBorder.Width = this.ClientSize.Width - 59;
 			mapEditBorder.Width = mainTileEditBorder.Width - 37;
-			mapEditBorder.Height = mainTileEditBorder.Height - 33; //TODO infopanel logic.
+			mapEditBorder.Height = mainTileEditBorder.Height - (ShowInfoPanel ? 33 : 8);
 
+			tileList.Left = mainTileEditBorder.Right + 3;
 			tileList.Height = mainTileEditBorder.Height - 20;
+
+			infoPanelBorder.Top = mapEditBorder.Bottom + 4;
+			infoPanelBorder.Width = mapEditBorder.Width - 1;
+
+			infoPanelLocationLabel.Location = new Point(infoPanelBorder.Left + 4, infoPanelBorder.Top + 3);
+			infoPanelHorizontalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 80, infoPanelBorder.Top + 3);
+			infoPanelVerticalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 150, infoPanelBorder.Top + 3);
+			infoPanelPaletteComboBox.Location = new Point(infoPanelBorder.Right - 246, infoPanelBorder.Top + 1);
+			infoPanelPalLabel.Location = new Point(infoPanelBorder.Right - 270, infoPanelBorder.Top + 3);
+			
+			this.ResumeLayout(true);
 
 			base.OnResize(e);
 		}

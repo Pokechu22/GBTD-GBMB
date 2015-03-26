@@ -45,6 +45,8 @@
 			GB.Shared.Controls.Border topBoxBorder;
 			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -123,6 +125,12 @@
 			this.helpButton = new GB.Shared.Controls.ImageButton();
 			this.tileList = new GB.GBMB.TileList();
 			this.mainTileEditBorder = new GB.Shared.Controls.Border();
+			this.infoPanelBorder = new GB.Shared.Controls.Border();
+			this.infoPanelLocationLabel = new GB.Shared.Controls.CleanLabel();
+			this.infoPanelHorizontalFlipCheckBox = new System.Windows.Forms.CheckBox();
+			this.infoPanelVerticalFlipCheckBox = new System.Windows.Forms.CheckBox();
+			this.infoPanelPaletteComboBox = new System.Windows.Forms.ComboBox();
+			this.infoPanelPalLabel = new GB.Shared.Controls.CleanLabel();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -927,7 +935,6 @@
 			// 
 			// tileList
 			// 
-			this.tileList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.tileList.Bookmark1Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon1;
 			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
 			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
@@ -958,11 +965,95 @@
 			this.mainTileEditBorder.TabIndex = 18;
 			this.mainTileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
+			// infoPanelBorder
+			// 
+			this.infoPanelBorder.BottomBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.infoPanelBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.infoPanelBorder.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.infoPanelBorder.Location = new System.Drawing.Point(34, 235);
+			this.infoPanelBorder.Name = "infoPanelBorder";
+			this.infoPanelBorder.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			this.infoPanelBorder.Size = new System.Drawing.Size(285, 21);
+			this.infoPanelBorder.TabIndex = 19;
+			this.infoPanelBorder.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
+			// 
+			// infoPanelLocationLabel
+			// 
+			this.infoPanelLocationLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.infoPanelLocationLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelLocationLabel.Format = stringFormat2;
+			this.infoPanelLocationLabel.Location = new System.Drawing.Point(38, 238);
+			this.infoPanelLocationLabel.Name = "infoPanelLocationLabel";
+			this.infoPanelLocationLabel.Size = new System.Drawing.Size(47, 14);
+			this.infoPanelLocationLabel.TabIndex = 20;
+			this.infoPanelLocationLabel.TabStop = false;
+			this.infoPanelLocationLabel.Text = "Location";
+			// 
+			// infoPanelHorizontalFlipCheckBox
+			// 
+			this.infoPanelHorizontalFlipCheckBox.AutoSize = true;
+			this.infoPanelHorizontalFlipCheckBox.Location = new System.Drawing.Point(239, 238);
+			this.infoPanelHorizontalFlipCheckBox.Name = "infoPanelHorizontalFlipCheckBox";
+			this.infoPanelHorizontalFlipCheckBox.Size = new System.Drawing.Size(73, 17);
+			this.infoPanelHorizontalFlipCheckBox.TabIndex = 21;
+			this.infoPanelHorizontalFlipCheckBox.Text = "&Horizontal";
+			this.infoPanelHorizontalFlipCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// infoPanelVerticalFlipCheckBox
+			// 
+			this.infoPanelVerticalFlipCheckBox.AutoSize = true;
+			this.infoPanelVerticalFlipCheckBox.Location = new System.Drawing.Point(169, 238);
+			this.infoPanelVerticalFlipCheckBox.Name = "infoPanelVerticalFlipCheckBox";
+			this.infoPanelVerticalFlipCheckBox.Size = new System.Drawing.Size(61, 17);
+			this.infoPanelVerticalFlipCheckBox.TabIndex = 22;
+			this.infoPanelVerticalFlipCheckBox.Text = "&Vertical";
+			this.infoPanelVerticalFlipCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// infoPanelPaletteComboBox
+			// 
+			this.infoPanelPaletteComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.infoPanelPaletteComboBox.FormattingEnabled = true;
+			this.infoPanelPaletteComboBox.ItemHeight = 13;
+			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 236);
+			this.infoPanelPaletteComboBox.Name = "infoPanelPaletteComboBox";
+			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 19);
+			this.infoPanelPaletteComboBox.TabIndex = 23;
+			// 
+			// infoPanelPalLabel
+			// 
+			this.infoPanelPalLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.infoPanelPalLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelPalLabel.Format = stringFormat3;
+			this.infoPanelPalLabel.Location = new System.Drawing.Point(49, 238);
+			this.infoPanelPalLabel.Name = "infoPanelPalLabel";
+			this.infoPanelPalLabel.Size = new System.Drawing.Size(21, 14);
+			this.infoPanelPalLabel.TabIndex = 24;
+			this.infoPanelPalLabel.TabStop = false;
+			this.infoPanelPalLabel.Text = "&Pal";
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(382, 261);
+			this.Controls.Add(this.infoPanelPalLabel);
+			this.Controls.Add(this.infoPanelPaletteComboBox);
+			this.Controls.Add(this.infoPanelVerticalFlipCheckBox);
+			this.Controls.Add(this.infoPanelHorizontalFlipCheckBox);
+			this.Controls.Add(this.infoPanelLocationLabel);
+			this.Controls.Add(this.infoPanelBorder);
 			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
@@ -985,6 +1076,7 @@
 			this.Name = "MapEdit";
 			this.Text = "Gameboy Map Builder";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -1068,6 +1160,12 @@
 		private Shared.Controls.ImageButton helpButton;
 		private TileList tileList;
 		private Shared.Controls.Border mainTileEditBorder;
+		private Shared.Controls.Border infoPanelBorder;
+		private Shared.Controls.CleanLabel infoPanelLocationLabel;
+		private System.Windows.Forms.CheckBox infoPanelHorizontalFlipCheckBox;
+		private System.Windows.Forms.CheckBox infoPanelVerticalFlipCheckBox;
+		private System.Windows.Forms.ComboBox infoPanelPaletteComboBox;
+		private Shared.Controls.CleanLabel infoPanelPalLabel;
 	}
 }
 
