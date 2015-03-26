@@ -585,5 +585,31 @@ namespace GB.GBMB
 				mapControl.SelectionPalette = infoPanelPaletteComboBox.SelectedIndex - 1;
 			}
 		}
+
+		private void infoPanelPaletteComboBox_DrawItem(object sender, DrawItemEventArgs e) {
+			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+			e.DrawBackground();
+			e.DrawFocusRectangle();
+			if (e.Index == -1) {
+				return;
+			} else if (e.Index == 0) {
+				e.Graphics.DrawString("Default", (sender as Control).Font, SystemBrushes.ControlText, e.Bounds);
+			} else {
+				Palette palette = mapControl.PaletteData.GetPaletteSet(this.ColorSet)[e.Index - 1];
+
+				float width = e.Bounds.Width / 5f;
+
+				RectangleF rect = new RectangleF(e.Bounds.X, e.Bounds.Y, width, e.Bounds.Height);
+
+				for (int i = 0; i < 4; i++) {
+					rect.X = e.Bounds.X + (width * i);
+					using (SolidBrush brush = new SolidBrush(palette[i])) {
+						e.Graphics.FillRectangle(brush, rect);
+						e.Graphics.DrawRectangle(Pens.Black, rect.X, rect.Y, rect.Width - 1, rect.Height - 1);
+					}
+				}
+			}
+		}
 	}
 }

@@ -1021,8 +1021,10 @@
 			// 
 			// infoPanelPaletteComboBox
 			// 
+			this.infoPanelPaletteComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
 			this.infoPanelPaletteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.infoPanelPaletteComboBox.FormattingEnabled = true;
+			this.infoPanelPaletteComboBox.ItemHeight = 13;
 			this.infoPanelPaletteComboBox.Items.AddRange(new object[] {
             "Default",
             "0",
@@ -1033,11 +1035,12 @@
             "5",
             "6",
             "7"});
-			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 235);
+			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 236);
 			this.infoPanelPaletteComboBox.MaxDropDownItems = 9;
 			this.infoPanelPaletteComboBox.Name = "infoPanelPaletteComboBox";
-			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 21);
+			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 19);
 			this.infoPanelPaletteComboBox.TabIndex = 23;
+			this.infoPanelPaletteComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.infoPanelPaletteComboBox_DrawItem);
 			this.infoPanelPaletteComboBox.SelectedIndexChanged += new System.EventHandler(this.infoPanelPaletteComboBox_SelectedIndexChanged);
 			// 
 			// infoPanelPalLabel
