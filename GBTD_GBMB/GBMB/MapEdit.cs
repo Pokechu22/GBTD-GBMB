@@ -21,20 +21,30 @@ namespace GB.GBMB
 		private AUMemMappedFile mmf;
 		private string tileFileName;
 
-		private bool infoPanel;
-
-		/// <summary>
-		/// TODO: NYI.
-		/// </summary>
+		[Description("Whether or not the info panel is shown.")]
 		public bool ShowInfoPanel {
-			get { return infoPanel; }
+			get { return infoPanelBorder.Visible; }
 			set {
 				infoPanelMenuItem.Checked = value;
 				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowInfoPanel = value;
 
-				infoPanel = value;
+				this.SuspendLayout();
+				infoPanelBorder.Visible = value;
+				infoPanelBorder.Enabled = value;
+				infoPanelHorizontalFlipCheckBox.Visible = value;
+				infoPanelHorizontalFlipCheckBox.Enabled = value;
+				infoPanelLocationLabel.Visible = value;
+				infoPanelLocationLabel.Enabled = value;
+				infoPanelPaletteComboBox.Visible = value;
+				infoPanelPaletteComboBox.Enabled = value;
+				infoPanelPalLabel.Visible = value;
+				infoPanelPalLabel.Enabled = value;
+				infoPanelVerticalFlipCheckBox.Visible = value;
+				infoPanelVerticalFlipCheckBox.Enabled = value;
 
 				this.OnResize(new EventArgs());
+
+				this.ResumeLayout(true);
 			}
 		}
 		[Description("Whether or not a grid is displayed.")]
