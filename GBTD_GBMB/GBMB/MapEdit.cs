@@ -710,7 +710,9 @@ namespace GB.GBMB
 		}
 
 		private void onPasteButtonClicked(object sender, EventArgs e) {
-			if (copied == null) { return; }
+			copied = MapCopyPaste.FromCopyPasteString(Clipboard.GetText());
+
+			//if (copied == null) { return; }
 
 			mapControl.PasteAtSelection(copied);
 		}
