@@ -220,6 +220,18 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
+		public void SaveToStream(Stream s) {
+			if (!s.CanWrite) { throw new NotSupportedException("Cannot write to stream."); }
+			if (!s.CanSeek) { throw new NotSupportedException("Cannot seek stream."); }
+
+			s.Position = 0;
+			this.FileHeader.SaveToStream(s);
+
+			foreach (GBMObject obj in this.Objects.Values) {
+				obj.SaveObject(s);
+			}
+		}
+
 		/// <summary>
 		/// The maximum depth for master objects before it is treated as an infinite loop.
 		/// </summary>

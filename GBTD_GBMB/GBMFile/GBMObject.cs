@@ -77,7 +77,9 @@ namespace GB.Shared.GBMFile
 				s.WriteGBMObjectHeader(this.Header);
 				this.SaveToStream(s);
 			} else {
-				using (MemoryStream ns = new MemoryStream(loadedData, true)) {
+				using (MemoryStream ns = new MemoryStream(loadedData.Length)) {
+					ns.Position = 0;
+					ns.Write(loadedData, 0, loadedData.Length);
 					ns.Position = 0;
 					this.SaveToStream(ns);
 

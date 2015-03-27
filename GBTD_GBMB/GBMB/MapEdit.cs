@@ -231,7 +231,21 @@ namespace GB.GBMB
 		}
 
 		private void onSaveButtonClicked(object sender, EventArgs e) {
-			MessageBox.Show("Saving is not yet implemented!");
+			//MessageBox.Show("Saving is not yet implemented!");
+
+			var result = MessageBox.Show("WARNING!  Saving is buggy.  Continue?", "Saving is dangerous", 
+				MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+			if (result != DialogResult.Yes) { return; }
+
+			SaveFileDialog d = new SaveFileDialog();
+			d.Filter = "GBM files|*.gbm|All files|*.*";
+
+			d.ShowDialog();
+
+			using (var stream = d.OpenFile()) {
+				gbmFile.SaveToStream(stream);
+			}
 		}
 
 		private void onExportButtonClicked(object sender, EventArgs e) {
