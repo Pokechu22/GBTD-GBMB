@@ -237,6 +237,8 @@ namespace GB.GBMB
 
 			if (result != DialogResult.Yes) { return; }
 
+			UpdateProducerInfo();
+
 			using (var stream = File.Open(mapFileName, FileMode.Create, FileAccess.ReadWrite)) {
 				gbmFile.SaveToStream(stream);
 			}
@@ -249,6 +251,8 @@ namespace GB.GBMB
 				"Saving is dangerous", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
 			if (result != DialogResult.Yes) { return; }
+
+			UpdateProducerInfo();
 
 			SaveFileDialog d = new SaveFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
@@ -754,6 +758,16 @@ namespace GB.GBMB
 			}
 
 			base.WndProc(ref m);
+		}
+
+		private void UpdateProducerInfo() {
+			var ProducerInfo = gbmFile.GetObjectOfType<GBMObjectProducerInfo>();
+
+			var splitVersion = ProductVersion.Split('.');
+
+			ProducerInfo.Name = "GBMB in C# v" + ProductVersion + " by Pokechu22";
+			ProducerInfo.Version = splitVersion[0] + "." + splitVersion[1];
+			ProducerInfo.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
 		}
 	}
 }
