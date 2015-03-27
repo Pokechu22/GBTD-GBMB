@@ -301,6 +301,61 @@ namespace GB.GBMB
 			}
 		}
 
+		public void FillSelectedTiles(UInt16 tileNumber = 0, bool flippedHorizontally = false, bool flippedVertically = false, 
+				byte? gbcPal = null, byte? sgbPal = null) {
+			int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+			int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+			int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+			for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					map.Tiles[x, y].TileNumber = tileNumber;
+					map.Tiles[x, y].FlippedHorizontally = flippedHorizontally;
+					map.Tiles[x, y].FlippedVertically = flippedVertically;
+					map.Tiles[x, y].GBCPalette = gbcPal;
+					map.Tiles[x, y].SGBPalette = sgbPal;
+				}
+			}
+
+			OnMapChanged();
+		}
+
+		public GBMObjectMapTileDataRecord[,] GetSelectedTiles() {
+			int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+			int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+			int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+			int selectionWidth = upperSelectionX - lowerSelectionX + 1;
+			int selectionHeight = upperSelectionY - lowerSelectionY + 1;
+
+			GBMObjectMapTileDataRecord[,] returned = new GBMObjectMapTileDataRecord[selectionWidth, selectionHeight];
+
+			for (int y = 0; y < selectionHeight; y++) {
+				for (int x = 0; x < selectionWidth; x++) {
+					returned[x, y] = map.Tiles[lowerSelectionX + x, lowerSelectionY + y];
+				}
+			}
+
+			return returned;
+		}
+
+		public void PasteAtSelection(GBMObjectMapTileDataRecord[,] data) {
+			int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+
+			for (int y = 0; y < data.GetLength(1); y++) {
+				for (int x = 0; x < data.GetLength(0); x++) {
+					if (x + lowerSelectionX >= map.Master.Width || y + lowerSelectionY >= map.Master.Height) { continue; }
+
+					map.Tiles[x + lowerSelectionX, y + lowerSelectionY] = data[x, y];
+				}
+			}
+
+			OnMapChanged();
+		}
+
 		/// <summary>
 		/// Tile sizes.  THis currently isn't dynamic and the app just won't be happy if something else is given.
 		/// </summary>

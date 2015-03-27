@@ -692,5 +692,25 @@ namespace GB.GBMB
 		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
 			this.SelectedTool = toolList.SelectedTool;
 		}
+
+		/// <summary>
+		/// The coppied tiles (TODO actually copy into GBMB format)
+		/// </summary>
+		GBMObjectMapTileDataRecord[,] copied = null;
+
+		private void onCutButtonClicked(object sender, EventArgs e) {
+			copied = mapControl.GetSelectedTiles();
+			mapControl.FillSelectedTiles();
+		}
+
+		private void onCopyButtonClicked(object sender, EventArgs e) {
+			copied = mapControl.GetSelectedTiles();
+		}
+
+		private void onPasteButtonClicked(object sender, EventArgs e) {
+			if (copied == null) { return; }
+
+			mapControl.PasteAtSelection(copied);
+		}
 	}
 }
