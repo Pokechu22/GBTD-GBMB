@@ -131,6 +131,7 @@
 			this.infoPanelVerticalFlipCheckBox = new System.Windows.Forms.CheckBox();
 			this.infoPanelPaletteComboBox = new System.Windows.Forms.ComboBox();
 			this.infoPanelPalLabel = new GB.Shared.Controls.CleanLabel();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -875,6 +876,7 @@
 			this.openButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Open_nonselected;
 			this.openButton.Size = new System.Drawing.Size(24, 24);
 			this.openButton.TabIndex = 10;
+			this.toolTip.SetToolTip(this.openButton, "Open");
 			this.openButton.Click += new System.EventHandler(this.onOpenButtonClicked);
 			// 
 			// saveButton
@@ -885,6 +887,7 @@
 			this.saveButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Save_nonselected;
 			this.saveButton.Size = new System.Drawing.Size(24, 24);
 			this.saveButton.TabIndex = 11;
+			this.toolTip.SetToolTip(this.saveButton, "Save");
 			this.saveButton.Click += new System.EventHandler(this.onSaveButtonClicked);
 			// 
 			// exportButton
@@ -895,6 +898,7 @@
 			this.exportButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Export_nonselected;
 			this.exportButton.Size = new System.Drawing.Size(24, 24);
 			this.exportButton.TabIndex = 12;
+			this.toolTip.SetToolTip(this.exportButton, "Export");
 			this.exportButton.Click += new System.EventHandler(this.onExportButtonClicked);
 			// 
 			// cutButton
@@ -905,6 +909,7 @@
 			this.cutButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Cut_nonselected;
 			this.cutButton.Size = new System.Drawing.Size(24, 24);
 			this.cutButton.TabIndex = 13;
+			this.toolTip.SetToolTip(this.cutButton, "Cut");
 			// 
 			// copyButton
 			// 
@@ -914,6 +919,7 @@
 			this.copyButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Copy_nonselected;
 			this.copyButton.Size = new System.Drawing.Size(24, 24);
 			this.copyButton.TabIndex = 14;
+			this.toolTip.SetToolTip(this.copyButton, "Copy");
 			// 
 			// pasteButton
 			// 
@@ -923,6 +929,7 @@
 			this.pasteButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Paste_nonselected;
 			this.pasteButton.Size = new System.Drawing.Size(24, 24);
 			this.pasteButton.TabIndex = 15;
+			this.toolTip.SetToolTip(this.pasteButton, "Paste");
 			// 
 			// helpButton
 			// 
@@ -932,6 +939,7 @@
 			this.helpButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Help_nonselected;
 			this.helpButton.Size = new System.Drawing.Size(24, 24);
 			this.helpButton.TabIndex = 16;
+			this.toolTip.SetToolTip(this.helpButton, "Help topics");
 			// 
 			// tileList
 			// 
@@ -1182,6 +1190,7 @@
 		private System.Windows.Forms.CheckBox infoPanelVerticalFlipCheckBox;
 		private System.Windows.Forms.ComboBox infoPanelPaletteComboBox;
 		private Shared.Controls.CleanLabel infoPanelPalLabel;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }
 
