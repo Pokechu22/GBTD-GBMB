@@ -25,6 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			GB.Shared.Controls.Border border;
 			this.autoUpdateCheckBox = new GB.Shared.Controls.ImageCheckBox();
 			this.removeColButton = new GB.Shared.Controls.ImageButton();
@@ -35,6 +36,7 @@
 			this.floodRadioButton = new GB.Shared.Controls.ImageRadioButton();
 			this.penRadioButton = new GB.Shared.Controls.ImageRadioButton();
 			this.borderInner = new GB.Shared.Controls.Border();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			border = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
 			// 
@@ -53,7 +55,6 @@
 			border.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			border.Size = new System.Drawing.Size(26, 174);
 			border.TabIndex = 0;
-			border.Text = "border1";
 			border.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
 			// autoUpdateCheckBox
@@ -65,6 +66,7 @@
 			this.autoUpdateCheckBox.NonhoveredImage = global::GB.GBMB.Properties.Resources.AutoUpdate_nonselected;
 			this.autoUpdateCheckBox.Size = new System.Drawing.Size(22, 17);
 			this.autoUpdateCheckBox.TabIndex = 9;
+			this.toolTip.SetToolTip(this.autoUpdateCheckBox, "Auto update");
 			this.autoUpdateCheckBox.CheckedChanged += new System.EventHandler(this.OnAutoUpdateChanged);
 			// 
 			// removeColButton
@@ -75,6 +77,7 @@
 			this.removeColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.RemoveCol_nonselected;
 			this.removeColButton.Size = new System.Drawing.Size(20, 20);
 			this.removeColButton.TabIndex = 8;
+			this.toolTip.SetToolTip(this.removeColButton, "Delete column");
 			this.removeColButton.Click += new System.EventHandler(this.OnRemoveColumnClicked);
 			// 
 			// removeRowButton
@@ -85,6 +88,7 @@
 			this.removeRowButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.RemoveRow_nonselected;
 			this.removeRowButton.Size = new System.Drawing.Size(20, 20);
 			this.removeRowButton.TabIndex = 7;
+			this.toolTip.SetToolTip(this.removeRowButton, "Delete row");
 			this.removeRowButton.Click += new System.EventHandler(this.OnRemoveRowClicked);
 			// 
 			// addColButton
@@ -95,6 +99,7 @@
 			this.addColButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddCol_nonselected;
 			this.addColButton.Size = new System.Drawing.Size(20, 20);
 			this.addColButton.TabIndex = 6;
+			this.toolTip.SetToolTip(this.addColButton, "Insert column");
 			this.addColButton.Click += new System.EventHandler(this.OnAddColumnClicked);
 			// 
 			// addRowButton
@@ -105,6 +110,7 @@
 			this.addRowButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.AddRow_nonselected;
 			this.addRowButton.Size = new System.Drawing.Size(20, 20);
 			this.addRowButton.TabIndex = 5;
+			this.toolTip.SetToolTip(this.addRowButton, "Insert row");
 			this.addRowButton.Click += new System.EventHandler(this.OnAddRowClicked);
 			// 
 			// dropperRadioButton
@@ -116,6 +122,7 @@
 			this.dropperRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Dropper_nonselected;
 			this.dropperRadioButton.Size = new System.Drawing.Size(22, 22);
 			this.dropperRadioButton.TabIndex = 4;
+			this.toolTip.SetToolTip(this.dropperRadioButton, "Dropper");
 			this.dropperRadioButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
 			// 
 			// floodRadioButton
@@ -127,6 +134,7 @@
 			this.floodRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Flood_nonselected;
 			this.floodRadioButton.Size = new System.Drawing.Size(22, 22);
 			this.floodRadioButton.TabIndex = 3;
+			this.toolTip.SetToolTip(this.floodRadioButton, "Flood fill");
 			this.floodRadioButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
 			// 
 			// penRadioButton
@@ -138,6 +146,7 @@
 			this.penRadioButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Pen_nonselected;
 			this.penRadioButton.Size = new System.Drawing.Size(22, 22);
 			this.penRadioButton.TabIndex = 2;
+			this.toolTip.SetToolTip(this.penRadioButton, "Pen");
 			this.penRadioButton.CheckedChanged += new System.EventHandler(this.OnSelectedToolChanged);
 			// 
 			// borderInner
@@ -155,7 +164,6 @@
 			this.borderInner.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.borderInner.Size = new System.Drawing.Size(22, 82);
 			this.borderInner.TabIndex = 1;
-			this.borderInner.Text = "border1";
 			this.borderInner.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
 			// ToolList
@@ -191,6 +199,7 @@
 		private Shared.Controls.ImageButton removeRowButton;
 		private Shared.Controls.ImageButton removeColButton;
 		private Shared.Controls.ImageCheckBox autoUpdateCheckBox;
+		private System.Windows.Forms.ToolTip toolTip;
 
 	}
 }
