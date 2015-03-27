@@ -104,6 +104,8 @@ namespace GB.Shared.Controls
 				size.Height++;
 				this.Size = size;
 			}
+
+			this.Invalidate(true);
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
