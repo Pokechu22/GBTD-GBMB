@@ -144,7 +144,7 @@ namespace GB.GBMB
 			}
 		}
 
-		private Tool tool;
+		private Tool tool = Tool.PEN;
 		/// <summary>
 		/// The selected tool.  TODO: Put this in the map or do something with it.
 		/// </summary>
@@ -168,6 +168,13 @@ namespace GB.GBMB
 
 				tool = value;
 			}
+		}
+
+		[DefaultValue(0)]
+		[Description("The currently selected tile, which will be used on right click.")]
+		public UInt16 SelectedTile {
+			get { return tileList.SelectedTile; }
+			set { tileList.SelectedTile = value; }
 		}
 
 		public UInt16 Bookmark1 {
@@ -432,10 +439,6 @@ namespace GB.GBMB
 			mapControl.Map = map;
 		}
 
-		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
-			this.SelectedTool = toolList.SelectedTool;
-		}
-
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
 			autoUpdateMenuItem.Checked = toolList.AutoUpdate;
 			auMessenger.Enabled = toolList.AutoUpdate;
@@ -519,7 +522,7 @@ namespace GB.GBMB
 		}
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
-			mapControl.SelectedTile = tileList.SelectedTile;
+			this.SelectedTile = tileList.SelectedTile;
 		}
 
 		private void onSetBookmarkClicked(object sender, EventArgs e) {
@@ -625,6 +628,28 @@ namespace GB.GBMB
 					}
 				}
 			}
+		}
+
+		private void mapControl_TileClicked(object sender, TileClickedEventArgs e) {
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+
+			switch (this.SelectedTool) {
+			case Tool.NONE: break; //Do nothing.
+			case Tool.PEN:
+				map.Tiles[e.tileX, e.tileY].TileNumber = this.SelectedTile;
+				break;
+			case Tool.FLOOD:
+				break; //TODO
+			case Tool.DROPPER: 
+				this.SelectedTile = map.Tiles[e.tileX, e.tileY].TileNumber;
+				break;
+			}
+
+			e.mapControl.Map = map;
+		}
+
+		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
+			this.SelectedTool = toolList.SelectedTool;
 		}
 	}
 }

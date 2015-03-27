@@ -413,6 +413,7 @@
 			// 
 			// penMenuItem
 			// 
+			this.penMenuItem.Checked = true;
 			this.penMenuItem.Index = 0;
 			this.penMenuItem.RadioCheck = true;
 			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
@@ -838,7 +839,7 @@
 			this.toolList.AutoUpdate = false;
 			this.toolList.Location = new System.Drawing.Point(4, 38);
 			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.GBMB.Tool.NONE;
+			this.toolList.SelectedTool = GB.GBMB.Tool.PEN;
 			this.toolList.Size = new System.Drawing.Size(26, 174);
 			this.toolList.TabIndex = 6;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
@@ -858,7 +859,6 @@
 			this.mapControl.Map = null;
 			this.mapControl.Name = "mapControl";
 			this.mapControl.PaletteData = paletteData1;
-			this.mapControl.SelectedTile = ((ushort)(0));
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
@@ -867,6 +867,7 @@
 			this.mapControl.TileSet = null;
 			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
 			this.mapControl.SelectionChanged += new System.EventHandler(this.mapControl_SelectionChanged);
+			this.mapControl.TileClicked += new System.EventHandler<GB.GBMB.TileClickedEventArgs>(this.mapControl_TileClicked);
 			// 
 			// openButton
 			// 

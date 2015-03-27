@@ -302,13 +302,6 @@ namespace GB.GBMB
 		}
 
 		/// <summary>
-		/// The currently selected tile.
-		/// </summary>
-		[Category("Map data"), Description("The tile that will be used on left click.")]
-		[DefaultValue(0)]
-		public UInt16 SelectedTile { get; set; }
-
-		/// <summary>
 		/// Tile sizes.  THis currently isn't dynamic and the app just won't be happy if something else is given.
 		/// </summary>
 		private const int TILE_WIDTH = 8, TILE_HEIGHT = 8;
@@ -362,6 +355,14 @@ namespace GB.GBMB
 			}
 		}
 
+		[Description("Fires when a tile is clicked -- use this to apply tools!")]
+		public event EventHandler<TileClickedEventArgs> TileClicked;
+		protected void OnTileClicked(int tileX, int tileY) {
+			if (TileClicked != null) {
+				TileClicked(this, new TileClickedEventArgs(tileX, tileY, this));
+			}
+		}
+
 		protected override void OnMouseDown(MouseEventArgs e) {
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
 				int newSelectionX1, newSelectionX2, newSelectionY1, newSelectionY2;
@@ -381,11 +382,7 @@ namespace GB.GBMB
 				}
 			}
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].GBCPalette = null;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].SGBPalette = null;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedHorizontally = false;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedVertically = false;
+				OnTileClicked(MouseToTileX(e.X), MouseToTileY(e.Y));
 
 				OnMapChanged();
 			}
@@ -409,11 +406,7 @@ namespace GB.GBMB
 				}
 			}
 			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].TileNumber = SelectedTile;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].GBCPalette = null;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].SGBPalette = null;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedHorizontally = false;
-				map.Tiles[MouseToTileX(e.X), MouseToTileY(e.Y)].FlippedVertically = false;
+				OnTileClicked(MouseToTileX(e.X), MouseToTileY(e.Y));
 
 				OnMapChanged();
 			}
@@ -751,6 +744,31 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			this.SuspendLayout();
 			this.ResumeLayout(false);
 
+		}
+	}
+
+	/// <summary>
+	/// Event args used when a tile is clicked.
+	/// </summary>
+	public class TileClickedEventArgs : EventArgs
+	{
+		/// <summary>
+		/// The x-cooridinate of the clicked tile.
+		/// </summary>
+		public readonly int tileX;
+		/// <summary>
+		/// The y-cooridinate of the clicked tile.
+		/// </summary>
+		public readonly int tileY;
+		/// <summary>
+		/// The mapcontrol that generated the event.
+		/// </summary>
+		public readonly MapControl mapControl;
+
+		public TileClickedEventArgs(int tileX, int tileY, MapControl sender) {
+			this.tileX = tileX;
+			this.tileY = tileY;
+			this.mapControl = sender;
 		}
 	}
 }
