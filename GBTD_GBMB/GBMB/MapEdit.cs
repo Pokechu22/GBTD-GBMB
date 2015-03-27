@@ -11,6 +11,7 @@ using GB.Shared.GBMFile;
 using System.IO;
 using GB.Shared.AutoUpdate;
 using GB.Shared.Palettes;
+using System.Runtime.InteropServices;
 
 namespace GB.GBMB
 {
@@ -286,6 +287,9 @@ namespace GB.GBMB
 		protected override void OnLoad(EventArgs e) {
 			base.OnLoad(e);
 			this.Menu = mainMenu;
+
+			AddClipboardFormatListener(this.Handle);
+			pasteButton.Enabled = pasteMenuItem.Enabled = Clipboard.ContainsText();
 		}
 
 		protected override void OnResize(EventArgs e) {
@@ -693,28 +697,32 @@ namespace GB.GBMB
 			this.SelectedTool = toolList.SelectedTool;
 		}
 
-		/// <summary>
-		/// The coppied tiles (TODO actually copy into GBMB format)
-		/// </summary>
-		GBMObjectMapTileDataRecord[,] copied = null;
-
 		private void onCutButtonClicked(object sender, EventArgs e) {
-			copied = mapControl.GetSelectedTiles();
+			Clipboard.SetText(mapControl.GetSelectedTiles().ToCopyPasteString());
 			mapControl.FillSelectedTiles();
-			Clipboard.SetText(copied.ToCopyPasteString());
 		}
 
 		private void onCopyButtonClicked(object sender, EventArgs e) {
-			copied = mapControl.GetSelectedTiles();
-			Clipboard.SetText(copied.ToCopyPasteString());
+			Clipboard.SetText(mapControl.GetSelectedTiles().ToCopyPasteString());
 		}
 
 		private void onPasteButtonClicked(object sender, EventArgs e) {
-			copied = MapCopyPaste.FromCopyPasteString(Clipboard.GetText());
+			mapControl.PasteAtSelection(MapCopyPaste.FromCopyPasteString(Clipboard.GetText()));
+		}
 
-			//if (copied == null) { return; }
+		[DllImport("user32.dll", SetLastError = true)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		private static extern bool AddClipboardFormatListener(IntPtr hwnd);
 
-			mapControl.PasteAtSelection(copied);
+		private const int WM_CLIPBOARDUPDATE = 0x031D;
+
+		protected override void WndProc(ref Message m) {
+			if (m.Msg == WM_CLIPBOARDUPDATE) {
+				//Clipboard update occured.
+				pasteButton.Enabled = pasteMenuItem.Enabled = Clipboard.ContainsText();
+			}
+
+			base.WndProc(ref m);
 		}
 	}
 }
