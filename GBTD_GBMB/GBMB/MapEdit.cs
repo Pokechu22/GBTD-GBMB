@@ -637,6 +637,10 @@ namespace GB.GBMB
 			case Tool.NONE: break; //Do nothing.
 			case Tool.PEN:
 				map.Tiles[e.tileX, e.tileY].TileNumber = this.SelectedTile;
+				map.Tiles[e.tileX, e.tileY].FlippedHorizontally = false;
+				map.Tiles[e.tileX, e.tileY].FlippedVertically = false;
+				map.Tiles[e.tileX, e.tileY].GBCPalette = null;
+				map.Tiles[e.tileX, e.tileY].SGBPalette = null;
 				break;
 			case Tool.FLOOD:
 				ChainFloodFill(map, e.tileX, e.tileY, this.SelectedTile, map.Tiles[e.tileX, e.tileY].TileNumber);
@@ -664,6 +668,10 @@ namespace GB.GBMB
 			}
 
 			map.Tiles[x, y].TileNumber = set;
+			map.Tiles[x, y].FlippedHorizontally = false;
+			map.Tiles[x, y].FlippedVertically = false;
+			map.Tiles[x, y].GBCPalette = null;
+			map.Tiles[x, y].SGBPalette = null;
 
 			if (x > 0 && map.Tiles[x - 1, y].TileNumber == search) {
 				ChainFloodFill(map, x - 1, y, set, search);
