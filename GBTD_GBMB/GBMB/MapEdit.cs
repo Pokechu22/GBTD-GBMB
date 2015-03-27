@@ -701,10 +701,12 @@ namespace GB.GBMB
 		private void onCutButtonClicked(object sender, EventArgs e) {
 			copied = mapControl.GetSelectedTiles();
 			mapControl.FillSelectedTiles();
+			Clipboard.SetText(copied.ToCopyPasteString());
 		}
 
 		private void onCopyButtonClicked(object sender, EventArgs e) {
 			copied = mapControl.GetSelectedTiles();
+			Clipboard.SetText(copied.ToCopyPasteString());
 		}
 
 		private void onPasteButtonClicked(object sender, EventArgs e) {

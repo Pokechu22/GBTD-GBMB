@@ -52,6 +52,7 @@
     <Compile Include="MapControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MapCopyPaste.cs" />
     <Compile Include="MapEdit.cs">
       <SubType>Form</SubType>
     </Compile>
