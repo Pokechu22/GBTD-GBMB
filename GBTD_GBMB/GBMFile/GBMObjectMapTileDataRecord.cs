@@ -10,7 +10,7 @@ namespace GB.Shared.GBMFile
 	/// <summary>
 	/// An individual record used by <see cref="GBMObjectMapTileData"/>.
 	/// </summary>
-	public class GBMObjectMapTileDataRecord
+	public struct GBMObjectMapTileDataRecord
 	{
 		private UInt16 tileNumber;
 		private byte? gbcPalette;
@@ -60,18 +60,16 @@ namespace GB.Shared.GBMFile
 			set { flippedVertically = value; }
 		}
 
-		/// <summary>
-		/// Creates a GBMObjectMapTileDataRecord with the default values.
-		/// </summary>
-		public GBMObjectMapTileDataRecord() {
-			tileNumber = 0;
-			unused1 = false;
-			unused2 = 0;
-			flippedHorizontally = false;
-			flippedVertically = false;
+		public GBMObjectMapTileDataRecord(UInt16 tileNumber, bool flippedVertically = false, bool flippedHorizontally = false,
+				byte? gbcPalette = null, byte? sgbPalette = null) {
+			this.unused1 = false;
+			this.unused2 = 0;
 
-			gbcPalette = null;
-			sgbPalette = null;
+			this.tileNumber = tileNumber;
+			this.flippedHorizontally = flippedHorizontally;
+			this.flippedVertically = flippedVertically;
+			this.gbcPalette = gbcPalette;
+			this.sgbPalette = sgbPalette;
 		}
 
 		public GBMObjectMapTileDataRecord(Stream s) {
@@ -123,7 +121,7 @@ namespace GB.Shared.GBMFile
 		/// It starts at start and reads length bits.  
 		/// <para>The value is shifted so that the bit at start is the first bit of the returned value.</para>
 		/// </summary>
-		private ulong GetBitRange(ulong l, ushort start, ushort length) {
+		private static ulong GetBitRange(ulong l, ushort start, ushort length) {
 			ulong mask = 0;
 			for (ushort i = start; i < start + length; i++) {
 				mask |= (1U << i);
@@ -139,7 +137,7 @@ namespace GB.Shared.GBMFile
 		/// <param name="bits">The value to write.</param>
 		/// <param name="start">The first value in the given long to write (bits always starts at 0)</param>
 		/// <param name="length">The length to write from bits.</param>
-		private void SetBitRange(ref ulong l, ulong bits, ushort start, ushort length) {
+		private static void SetBitRange(ref ulong l, ulong bits, ushort start, ushort length) {
 			ulong mask = 0;
 			for (ushort i = 0; i < length; i++) {
 				mask |= (1U << i);
