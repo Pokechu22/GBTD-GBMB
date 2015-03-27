@@ -639,13 +639,46 @@ namespace GB.GBMB
 				map.Tiles[e.tileX, e.tileY].TileNumber = this.SelectedTile;
 				break;
 			case Tool.FLOOD:
-				break; //TODO
+				ChainFloodFill(map, e.tileX, e.tileY, this.SelectedTile, map.Tiles[e.tileX, e.tileY].TileNumber);
+				break;
 			case Tool.DROPPER: 
 				this.SelectedTile = map.Tiles[e.tileX, e.tileY].TileNumber;
 				break;
 			}
 
 			e.mapControl.Map = map;
+		}
+
+		/// <summary>
+		/// Recursively applies the flood fill effect.
+		/// </summary>
+		/// <param name="map">The map to edit.</param>
+		/// <param name="x">The x to start the replacement at.</param>
+		/// <param name="y">The y to start the replacement at.</param>
+		/// <param name="set">The value to set each replaced tile to.</param>
+		/// <param name="search">The value to replace.</param>
+		/// <returns>The passed map parameter (both are modified)</returns>
+		private GBMObjectMapTileData ChainFloodFill(GBMObjectMapTileData map, int x, int y, UInt16 set, UInt16 search) {
+			if (search == set) {
+				return map; //Deny a potentially infinite loop.
+			}
+
+			map.Tiles[x, y].TileNumber = set;
+
+			if (x > 0 && map.Tiles[x - 1, y].TileNumber == search) {
+				ChainFloodFill(map, x - 1, y, set, search);
+			}
+			if (x < map.Master.Width - 1 && map.Tiles[x + 1, y].TileNumber == search) {
+				ChainFloodFill(map, x + 1, y, set, search);
+			}
+			if (y > 0 && map.Tiles[x, y - 1].TileNumber == search) {
+				ChainFloodFill(map, x, y - 1, set, search);
+			}
+			if (y < map.Master.Height - 1 && map.Tiles[x, y + 1].TileNumber == search) {
+				ChainFloodFill(map, x, y + 1, set, search);
+			}
+
+			return map;
 		}
 
 		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
