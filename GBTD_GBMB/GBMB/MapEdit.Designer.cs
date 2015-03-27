@@ -310,6 +310,7 @@
 			// 
 			this.saveAsMenuItem.Index = 2;
 			this.saveAsMenuItem.Text = "Save &as...";
+			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
 			// 
 			// reopenMenuItem
 			// 

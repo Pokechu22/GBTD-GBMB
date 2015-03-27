@@ -20,6 +20,7 @@ namespace GB.GBMB
 		private GBMFile gbmFile;
 		private GBRFile gbrFile;
 		private AUMemMappedFile mmf;
+		private string mapFileName;
 		private string tileFileName;
 
 		[Description("Whether or not the info panel is shown.")]
@@ -231,21 +232,35 @@ namespace GB.GBMB
 		}
 
 		private void onSaveButtonClicked(object sender, EventArgs e) {
-			//MessageBox.Show("Saving is not yet implemented!");
+			var result = MessageBox.Show("WARNING!  Saving is buggy.  Continue?  You may lose extra data from newer versions of the app.",
+				"Saving is dangerous", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-			var result = MessageBox.Show("WARNING!  Saving is buggy.  Continue?", "Saving is dangerous", 
-				MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+			if (result != DialogResult.Yes) { return; }
+
+			using (var stream = File.Open(mapFileName, FileMode.Create, FileAccess.ReadWrite)) {
+				gbmFile.SaveToStream(stream);
+			}
+
+			MessageBox.Show("File saved successfully.", "File saved successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void saveAsMenuItem_Click(object sender, EventArgs e) {
+			var result = MessageBox.Show("WARNING!  Saving is buggy.  Continue?  You may lose extra data from newer versions of the app.",
+				"Saving is dangerous", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
 			if (result != DialogResult.Yes) { return; }
 
 			SaveFileDialog d = new SaveFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
-			d.ShowDialog();
+			result = d.ShowDialog();
+			if (result != DialogResult.OK) { return; }
 
 			using (var stream = d.OpenFile()) {
 				gbmFile.SaveToStream(stream);
 			}
+
+			MessageBox.Show("File saved successfully.", "File saved successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void onExportButtonClicked(object sender, EventArgs e) {
@@ -253,6 +268,8 @@ namespace GB.GBMB
 		}
 
 		public void LoadFile(String mapPath) {
+			mapFileName = mapPath;
+
 			Environment.CurrentDirectory = Path.GetDirectoryName(mapPath);
 			using (var stream = File.OpenRead(mapPath)) {
 				gbmFile = new GBMFile(stream);
