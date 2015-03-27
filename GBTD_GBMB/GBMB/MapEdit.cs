@@ -565,6 +565,20 @@ namespace GB.GBMB
 			} else {
 				infoPanelPaletteComboBox.SelectedIndex = 0;
 			}
+
+			int lowerSelectionX = (mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX1 : mapControl.SelectionX2);
+			int upperSelectionX = (mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX2 : mapControl.SelectionX1);
+			int lowerSelectionY = (mapControl.SelectionY1 < mapControl.SelectionY2 ? mapControl.SelectionY1 : mapControl.SelectionY2);
+			int upperSelectionY = (mapControl.SelectionY1 < mapControl.SelectionY2 ? mapControl.SelectionY2 : mapControl.SelectionY1);
+
+			//If the selection is only 1 tile, use the location and the tile.  Otherwise, use the range of the selection.
+			if ((lowerSelectionX == upperSelectionX) && (lowerSelectionY == upperSelectionY)) {
+				infoPanelLocationLabel.Text = String.Format("Location:  [{0},{1}]: {2}",
+					lowerSelectionX, lowerSelectionY, mapControl.Map.Tiles[lowerSelectionX, lowerSelectionY].TileNumber);
+			} else {
+				infoPanelLocationLabel.Text = String.Format("Location:  [{0},{1}] - [{2},{3}]",
+					lowerSelectionX, lowerSelectionY, upperSelectionX, upperSelectionY);
+			}
 		}
 
 		private void infoPanelVerticalFlipCheckBox_Click(object sender, EventArgs e) {
@@ -588,13 +602,14 @@ namespace GB.GBMB
 
 		private void infoPanelPaletteComboBox_DrawItem(object sender, DrawItemEventArgs e) {
 			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-
+			
 			e.DrawBackground();
 			e.DrawFocusRectangle();
+			
 			if (e.Index == -1) {
 				return;
 			} else if (e.Index == 0) {
-				e.Graphics.DrawString("Default", (sender as Control).Font, SystemBrushes.ControlText, e.Bounds);
+				e.Graphics.DrawString("Default", e.Font, SystemBrushes.ControlText, e.Bounds);
 			} else {
 				Palette palette = mapControl.PaletteData.GetPaletteSet(this.ColorSet)[e.Index - 1];
 
