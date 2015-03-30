@@ -89,6 +89,7 @@ namespace GB.Shared.AutoUpdate
 
 		private bool enabled;
 		[Category("Behavior"), Description("Whether or not this is enabaled -- when disabled no events will be received nor sent.")]
+		[DefaultValue(false)]
 		public bool Enabled {
 			get { return enabled; }
 			set { enabled = value; }

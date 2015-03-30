@@ -39,6 +39,8 @@ namespace GBAutoUpdateSniffer
 			fileNameLabel.Text = openFileDialog.FileName;
 			auListener.FileName = openFileDialog.FileName;
 
+			auListener.Enabled = true;
+
 			listBoxMessages.Items.Clear();
 
 			labelMessageHex.Text = auListener.AutoUpdateMessageID.ToString("X4");
