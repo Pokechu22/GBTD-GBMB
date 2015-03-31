@@ -745,6 +745,10 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 				}
 			}
 
+			//Temporary code, but it is a good test.
+			if (record.FlippedHorizontally) { returned = returned.FilterAsRed(); }
+			if (record.FlippedVertically) { returned = returned.FilterAsGreen(); }
+
 			return returned;
 		}
 

@@ -54,11 +54,58 @@ namespace GB.Shared.Palettes
 		}
 
 		/// <summary>
+		/// Applies a red color filter to the specified color.
+		/// 
+		/// <para>Based off of lines 124-142 of ColorConverter.PAS.</para>
+		/// </summary>
+		/// 
+		/// <param name="c">The color to filter.</param>
+		/// <returns>The filtered color.</returns>
+		public static Color FilterAsRed(this Color c) {
+			int r, b, g;
+
+			r = (c.R / 2) * 3;
+			g = (c.G / 3) * 2;
+			b = (c.B / 3) * 2;
+
+			//Ensure in-bounds (may be unneeded, but was in origional)
+			if (r > 0xff) { r = 0xff; }
+			if (g > 0xff) { g = 0xff; }
+			if (b > 0xff) { b = 0xff; }
+
+			return Color.FromArgb(r, g, b);
+		}
+
+		/// <summary>
+		/// Applies a green color filter to the specified color.
+		/// 
+		/// <para>Based off of lines 145-163 of ColorConverter.PAS.</para>
+		/// </summary>
+		/// 
+		/// <param name="c">The color to filter.</param>
+		/// <returns>The filtered color.</returns>
+		public static Color FilterAsGreen(this Color c) {
+			int r, b, g;
+
+			r = (c.R / 3) * 2;
+			g = (c.G / 2) * 3;
+			b = (c.B / 3) * 2;
+
+			//Ensure in-bounds (may be unneeded, but was in origional)
+			if (r > 0xff) { r = 0xff; }
+			if (g > 0xff) { g = 0xff; }
+			if (b > 0xff) { b = 0xff; }
+
+			return Color.FromArgb(r, g, b);
+		}
+
+		/// <summary>
 		/// Converts the color to its selected varient.
 		/// 
-		/// Based on 166-186 of ColorConverter.PAS.
-		/// TODO: Move nicer place.
+		/// <para>Based on 166-186 of ColorConverter.PAS.</para>
 		/// </summary>
+		/// 
+		/// <param name="c">The color to filter.</param>
 		/// <returns></returns>
 		public static Color FilterAsSelected(this Color c) {
 			int r, b, g;
@@ -117,6 +164,32 @@ namespace GB.Shared.Palettes
 			pal.Color1 = FilterWithGBC(@this.Color1);
 			pal.Color2 = FilterWithGBC(@this.Color2);
 			pal.Color3 = FilterWithGBC(@this.Color3);
+			return pal;
+		}
+		/// <summary>
+		/// Applies the red filter to a Palette.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static Palette FilterAsRed(this Palette @this) {
+			Palette pal = new Palette();
+			pal.Color0 = FilterAsRed(@this.Color0);
+			pal.Color1 = FilterAsRed(@this.Color1);
+			pal.Color2 = FilterAsRed(@this.Color2);
+			pal.Color3 = FilterAsRed(@this.Color3);
+			return pal;
+		}
+		/// <summary>
+		/// Applies the green filter to a Palette.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static Palette FilterAsGreen(this Palette @this) {
+			Palette pal = new Palette();
+			pal.Color0 = FilterAsGreen(@this.Color0);
+			pal.Color1 = FilterAsGreen(@this.Color1);
+			pal.Color2 = FilterAsGreen(@this.Color2);
+			pal.Color3 = FilterAsGreen(@this.Color3);
 			return pal;
 		}
 		/// <summary>
