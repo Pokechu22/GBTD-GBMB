@@ -551,18 +551,21 @@ namespace GB.GBMB
 
 		private void clearMapMenuItem_Click(object sender, EventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-
-			GBMObjectMapTileDataRecord[,] newTiles = new GBMObjectMapTileDataRecord[map.Master.Width, map.Master.Height];
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
+			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
 			for (int y = 0; y < map.Master.Height; y++) {
 				for (int x = 0; x < map.Master.Width; x++) {
-					newTiles[x, y] = new GBMObjectMapTileDataRecord();
+					map.Tiles[x, y] = new GBMObjectMapTileDataRecord();
+
+					for (int i = 0; i < properties.Master.PropCount; i++) {
+						properties.Data[x, y, i] = defaultProperties.Data[0, i];
+					}
 				}
 			}
 
-			map.Tiles = newTiles;
-
 			mapControl.Map = map;
+			mapControl.Properties = properties;
 		}
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
