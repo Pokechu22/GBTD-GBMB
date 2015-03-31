@@ -17,6 +17,10 @@ namespace GB.Shared.GBMFile
 			: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
 		public GBMObjectMap(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
+		private UInt32 width, height;
+		private UInt32 propCount, propColorCount;
+		private UInt32 tileCount;
+
 		/// <summary>
 		/// The name of the map (currently ignored)
 		/// </summary>
@@ -24,15 +28,24 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// The width of the map.
 		/// </summary>
-		public UInt32 Width { get; set; }
+		public UInt32 Width {
+			get { return width; }
+			set { width = value; if (Resized != null) { Resized(this, new EventArgs()); } }
+		}
 		/// <summary>
 		/// The height of the map.
 		/// </summary>
-		public UInt32 Height { get; set; }
+		public UInt32 Height {
+			get { return height; }
+			set { height = value; if (Resized != null) { Resized(this, new EventArgs()); } }
+		}
 		/// <summary>
 		/// The number of properties.
 		/// </summary>
-		public UInt32 PropCount { get; set; }
+		public UInt32 PropCount {
+			get { return propCount; }
+			set { propCount = value; if (PropCountChanged != null) { PropCountChanged(this, new EventArgs()); } }
+		}
 		/// <summary>
 		/// The name of the GBR file.
 		/// </summary>
@@ -46,11 +59,35 @@ namespace GB.Shared.GBMFile
 		/// mainly the default properties.
 		/// </para>
 		/// </summary>
-		public UInt32 TileCount { get; set; }
+		public UInt32 TileCount {
+			get { return tileCount; }
+			set { tileCount = value; if (TileCountChanged != null) { TileCountChanged(this, new EventArgs()); } }
+		}
 		/// <summary>
 		/// Number of property colors.
 		/// </summary>
-		public UInt32 PropColorCount { get; set; }
+		public UInt32 PropColorCount {
+			get { return propColorCount; }
+			set { propColorCount = value; if (PropColorCountChanged != null) { PropColorCountChanged(this, new EventArgs()); } }
+		}
+
+		/// <summary>
+		/// Fires when the map is resized, either by changing <see cref="Width"/> or changing <see cref="Height"/>.
+		/// </summary>
+		public event EventHandler Resized;
+		/// <summary>
+		/// Fires when <see cref="PropCount"/> is changed.
+		/// </summary>
+		public event EventHandler PropCountChanged;
+		/// <summary>
+		/// Fires when <see cref="TileCount"/> is changed.
+		/// Please read the disclaimer there; this does NOT represent the amount of tiles in the GBR file.
+		/// </summary>
+		public event EventHandler TileCountChanged;
+		/// <summary>
+		/// Fires when <see cref="PropColorCount"/> is changed.
+		/// </summary>
+		public event EventHandler PropColorCountChanged;
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteString(Name, 128);
