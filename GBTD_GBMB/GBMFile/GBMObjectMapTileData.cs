@@ -10,37 +10,19 @@ namespace GB.Shared.GBMFile
 	public class GBMObjectMapTileData : MasteredGBMObject<GBMObjectMap>
 	{
 		public GBMObjectMapTileData(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+				: base(Master, TypeID, UniqueID, MasterID, Size, stream) {
 
-		public GBMObjectMapTileData(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
+			Master.SizeChanged += new EventHandler(Master_SizeChanged);
+		}
+
+		public GBMObjectMapTileData(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
+			Master.SizeChanged += new EventHandler(Master_SizeChanged);
+		}
 
 		/// <summary>
 		/// Tiles, ordered by x, y.
 		/// </summary>
 		public GBMObjectMapTileDataRecord[,] Tiles { get; set; }
-
-		public void Resize(UInt32 newWidth, UInt32 newHeight) {
-			//Force the size to be nonzero.
-			if (newHeight == 0) { newHeight = 1; }
-			if (newWidth == 0) { newWidth = 1; }
-
-			GBMObjectMapTileDataRecord[,] newTiles = new GBMObjectMapTileDataRecord[newWidth, newHeight];
-
-			for (uint y = 0; y < newHeight; y++) {
-				for (uint x = 0; x < newWidth; x++) {
-					if (x >= Master.Width || y >= Master.Height) { //If the value would be out of bounds in the origional tiles array.
-						newTiles[x, y] = new GBMObjectMapTileDataRecord();
-					} else {
-						newTiles[x, y] = Tiles[x, y];
-					}
-				}
-			}
-
-			Tiles = newTiles;
-
-			Master.Width = newWidth;
-			Master.Height = newHeight;
-		}
 
 		protected override void SaveToStream(Stream s) {
 			for (int y = 0; y < Master.Height; y++) {
@@ -78,6 +60,27 @@ namespace GB.Shared.GBMFile
 			node.Nodes.Add(tiles);
 
 			return node;
+		}
+
+		private void Master_SizeChanged(object sender, EventArgs e) {
+			uint oldWidth = (uint)Tiles.GetLength(0);
+			uint oldHeight = (uint)Tiles.GetLength(1);
+			uint newWidth = Master.Width;
+			uint newHeight = Master.Height;
+
+			GBMObjectMapTileDataRecord[,] newTiles = new GBMObjectMapTileDataRecord[newWidth, newHeight];
+
+			for (uint y = 0; y < newHeight; y++) {
+				for (uint x = 0; x < newWidth; x++) {
+					if (x >= oldWidth || y >= oldHeight) { //If the value would be out of bounds in the origional tiles array.
+						newTiles[x, y] = new GBMObjectMapTileDataRecord();
+					} else {
+						newTiles[x, y] = Tiles[x, y];
+					}
+				}
+			}
+			
+			Tiles = newTiles;
 		}
 	}
 }

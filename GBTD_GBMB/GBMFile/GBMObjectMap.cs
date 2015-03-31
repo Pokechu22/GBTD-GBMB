@@ -126,5 +126,17 @@ namespace GB.Shared.GBMFile
 
 			return root;
 		}
+
+		/// <summary>
+		/// Resizes the map, changing both <see cref="Width"/> and <see cref="Height"/> at the same time.
+		/// </summary>
+		/// <param name="newWidth">The new <see cref="Width"/>.</param>
+		/// <param name="newHeight">The new <see cref="Height"/></param>
+		public void Resize(uint newWidth, uint newHeight) {
+			this.width = newWidth;
+			this.height = newHeight;
+			
+			if (SizeChanged != null) { SizeChanged(this, new EventArgs()); }
+		}
 	}
 }

@@ -456,31 +456,43 @@ namespace GB.GBMB
 		}
 
 		private void addRowButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			map.Resize(map.Master.Width, map.Master.Height + 1);
+			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
 
-			mapControl.Map = map;
+			if (map.Height >= 1023) { return; }
+
+			map.Resize(map.Width, map.Height + 1);
+
+			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void addColumnButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			map.Resize(map.Master.Width + 1, map.Master.Height);
+			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
 
-			mapControl.Map = map;
+			if (map.Width >= 1023) { return; }
+
+			map.Resize(map.Width + 1, map.Height);
+
+			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void removeRowButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			map.Resize(map.Master.Width, map.Master.Height - 1);
+			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
 
-			mapControl.Map = map;
+			if (map.Height <= 1) { return; }
+
+			map.Resize(map.Width, map.Height - 1);
+
+			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void removeColumnButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			map.Resize(map.Master.Width - 1, map.Master.Height);
+			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
 
-			mapControl.Map = map;
+			if (map.Width <= 1) { return; }
+
+			map.Resize(map.Width - 1, map.Height);
+
+			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
