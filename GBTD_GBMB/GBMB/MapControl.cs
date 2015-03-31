@@ -68,21 +68,52 @@ namespace GB.GBMB
 		private GBRObjectTileData tileset;
 		private GBMObjectMapTileData map;
 		private GBRObjectTilePalette defaultPal;
+		private GBMObjectMapProperties propertyNames;
+		private GBMObjectMapPropertyData properties;
+		private GBMObjectMapPropertyColors propertyColors;
+		private GBMObjectDefaultTilePropertyValues defaultProperties;
 
 		[Category("Map data"), Description("The map to use.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBMObjectMapTileData Map {
 			get { return map; }
 			set { map = value; OnMapChanged(); }
 		}
 		[Category("Map data"), Description("The tileset to use.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBRObjectTileData TileSet {
 			get { return tileset; }
 			set { tileset = value; OnMapChanged(); }
 		}
 		[Category("Map data"), Description("The default palette to use.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBRObjectTilePalette DefaultPalette {
 			get { return defaultPal; }
 			set { defaultPal = value; OnMapChanged(); }
+		}
+		[Category("Map data"), Description("The names of each of the properties.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public GBMObjectMapProperties PropertyNames {
+			get { return propertyNames; }
+			set { propertyNames = value; OnMapChanged(); }
+		}
+		[Category("Map data"), Description("The actual data for each of the properties.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public GBMObjectMapPropertyData Properties {
+			get { return properties; }
+			set { properties = value; OnMapChanged(); }
+		}
+		[Category("Map data"), Description("The color data applied to each of the properties.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public GBMObjectMapPropertyColors PropertyColors {
+			get { return propertyColors; }
+			set { propertyColors = value; OnMapChanged(); }
+		}
+		[Category("Map data"), Description("The default values applied to each property per tile.")]
+		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public GBMObjectDefaultTilePropertyValues DefaultProperties {
+			get { return defaultProperties; }
+			set { defaultProperties = value; OnMapChanged(); }
 		}
 
 		private int selectionX1, selectionY1, selectionX2, selectionY2;
