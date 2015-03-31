@@ -30,14 +30,14 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public UInt32 Width {
 			get { return width; }
-			set { width = value; if (Resized != null) { Resized(this, new EventArgs()); } }
+			set { width = value; if (SizeChanged != null) { SizeChanged(this, new EventArgs()); } }
 		}
 		/// <summary>
 		/// The height of the map.
 		/// </summary>
 		public UInt32 Height {
 			get { return height; }
-			set { height = value; if (Resized != null) { Resized(this, new EventArgs()); } }
+			set { height = value; if (SizeChanged != null) { SizeChanged(this, new EventArgs()); } }
 		}
 		/// <summary>
 		/// The number of properties.
@@ -74,7 +74,7 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// Fires when the map is resized, either by changing <see cref="Width"/> or changing <see cref="Height"/>.
 		/// </summary>
-		public event EventHandler Resized;
+		public event EventHandler SizeChanged;
 		/// <summary>
 		/// Fires when <see cref="PropCount"/> is changed.
 		/// </summary>
