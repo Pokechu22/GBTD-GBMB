@@ -676,6 +676,8 @@ namespace GB.GBMB
 
 		private void mapControl_TileClicked(object sender, TileClickedEventArgs e) {
 			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
+			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
 			switch (this.SelectedTool) {
 			case Tool.NONE: break; //Do nothing.
@@ -685,9 +687,13 @@ namespace GB.GBMB
 				map.Tiles[e.tileX, e.tileY].FlippedVertically = false;
 				map.Tiles[e.tileX, e.tileY].GBCPalette = null;
 				map.Tiles[e.tileX, e.tileY].SGBPalette = null;
+
+				for (int i = 0; i < properties.Master.PropCount; i++) {
+					properties.Data[e.tileX, e.tileY, i] = defaultProperties.Data[this.SelectedTile, i];
+				}
 				break;
 			case Tool.FLOOD:
-				ChainFloodFill(map, e.tileX, e.tileY, this.SelectedTile, map.Tiles[e.tileX, e.tileY].TileNumber);
+				ChainFloodFill(map, properties, defaultProperties, e.tileX, e.tileY, this.SelectedTile, map.Tiles[e.tileX, e.tileY].TileNumber);
 				break;
 			case Tool.DROPPER: 
 				this.SelectedTile = map.Tiles[e.tileX, e.tileY].TileNumber;
@@ -706,7 +712,9 @@ namespace GB.GBMB
 		/// <param name="set">The value to set each replaced tile to.</param>
 		/// <param name="search">The value to replace.</param>
 		/// <returns>The passed map parameter (both are modified)</returns>
-		private GBMObjectMapTileData ChainFloodFill(GBMObjectMapTileData map, int x, int y, UInt16 set, UInt16 search) {
+		private GBMObjectMapTileData ChainFloodFill(GBMObjectMapTileData map, GBMObjectMapPropertyData properties,  
+				GBMObjectDefaultTilePropertyValues defaultProperties, int x, int y, UInt16 set, UInt16 search) {
+
 			if (search == set) {
 				return map; //Deny a potentially infinite loop.
 			}
@@ -717,17 +725,21 @@ namespace GB.GBMB
 			map.Tiles[x, y].GBCPalette = null;
 			map.Tiles[x, y].SGBPalette = null;
 
+			for (int i = 0; i < properties.Master.PropCount; i++) {
+				properties.Data[x, y, i] = defaultProperties.Data[set, i];
+			}
+
 			if (x > 0 && map.Tiles[x - 1, y].TileNumber == search) {
-				ChainFloodFill(map, x - 1, y, set, search);
+				ChainFloodFill(map, properties, defaultProperties, x - 1, y, set, search);
 			}
 			if (x < map.Master.Width - 1 && map.Tiles[x + 1, y].TileNumber == search) {
-				ChainFloodFill(map, x + 1, y, set, search);
+				ChainFloodFill(map, properties, defaultProperties, x + 1, y, set, search);
 			}
 			if (y > 0 && map.Tiles[x, y - 1].TileNumber == search) {
-				ChainFloodFill(map, x, y - 1, set, search);
+				ChainFloodFill(map, properties, defaultProperties, x, y - 1, set, search);
 			}
 			if (y < map.Master.Height - 1 && map.Tiles[x, y + 1].TileNumber == search) {
-				ChainFloodFill(map, x, y + 1, set, search);
+				ChainFloodFill(map, properties, defaultProperties, x, y + 1, set, search);
 			}
 
 			return map;
