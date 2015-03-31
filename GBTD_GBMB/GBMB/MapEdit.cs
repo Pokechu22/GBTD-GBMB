@@ -288,14 +288,21 @@ namespace GB.GBMB
 			}
 
 			this.mapControl.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			
 			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 			this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+
 			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
 			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			PaletteData paletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 			this.tileList.PaletteData = paletteData;
 			this.mapControl.PaletteData = paletteData;
+
+			this.mapControl.DefaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
+			this.mapControl.Properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
+			this.mapControl.PropertyColors = gbmFile.GetObjectOfType<GBMObjectMapPropertyColors>();
+			this.mapControl.PropertyNames = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
 
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
 			this.AutoUpdate = settings.AutoUpdate;

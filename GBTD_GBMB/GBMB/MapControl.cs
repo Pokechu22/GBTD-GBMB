@@ -776,10 +776,24 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 				}
 			}
 
-			//Temporary code, but it is a good test.
-			if (record.FlippedHorizontally) { returned = returned.FilterAsRed(); }
-			if (record.FlippedVertically) { returned = returned.FilterAsGreen(); }
+			if (properties != null && propertyColors != null && propertyNames != null && defaultProperties != null) {
+				//TODO properly handle amount of property colors other than 2.
+				if (propertyColors.Master.PropColorCount == 2 && properties.Master.PropCount != 0) {
+					var red = propertyColors.Data[0];
+					var green = propertyColors.Data[1];
 
+					//Red = 0, Green = 1
+					UInt16 redProp = properties.Data[tileX, tileY, red.Property];
+					UInt16 greenProp = properties.Data[tileX, tileY, green.Property];
+
+					if (red.Operator.IsTrue(redProp, red.Value)) {
+						returned = returned.FilterAsRed();
+					}
+					if (green.Operator.IsTrue(greenProp, green.Value)) {
+						returned = returned.FilterAsGreen();
+					}
+				}
+			}
 			return returned;
 		}
 
