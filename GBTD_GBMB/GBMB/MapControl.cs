@@ -68,11 +68,9 @@ namespace GB.GBMB
 		private GBRObjectTileData tileset;
 		private GBMObjectMapTileData map;
 		private GBRObjectTilePalette defaultPal;
-		private GBMObjectMapProperties propertyNames;
 		private GBMObjectMapPropertyData properties;
 		private GBMObjectMapPropertyColors propertyColors;
-		private GBMObjectDefaultTilePropertyValues defaultProperties;
-
+		
 		[Category("Map data"), Description("The map to use.")]
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBMObjectMapTileData Map {
@@ -91,12 +89,6 @@ namespace GB.GBMB
 			get { return defaultPal; }
 			set { defaultPal = value; OnMapChanged(); }
 		}
-		[Category("Map data"), Description("The names of each of the properties.")]
-		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public GBMObjectMapProperties PropertyNames {
-			get { return propertyNames; }
-			set { propertyNames = value; OnMapChanged(); }
-		}
 		[Category("Map data"), Description("The actual data for each of the properties.")]
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBMObjectMapPropertyData Properties {
@@ -108,12 +100,6 @@ namespace GB.GBMB
 		public GBMObjectMapPropertyColors PropertyColors {
 			get { return propertyColors; }
 			set { propertyColors = value; OnMapChanged(); }
-		}
-		[Category("Map data"), Description("The default values applied to each property per tile.")]
-		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public GBMObjectDefaultTilePropertyValues DefaultProperties {
-			get { return defaultProperties; }
-			set { defaultProperties = value; OnMapChanged(); }
 		}
 
 		private int selectionX1, selectionY1, selectionX2, selectionY2;
@@ -776,12 +762,11 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 				}
 			}
 
-			if (properties != null && propertyColors != null && propertyNames != null && defaultProperties != null) {
+			if (properties != null && propertyColors != null) {
 				//TODO properly handle amount of property colors other than 2.
 				if (propertyColors.Master.PropColorCount == 2 && properties.Master.PropCount != 0) {
 					var red = propertyColors.Data[0];
 					var green = propertyColors.Data[1];
-
 					//Red = 0, Green = 1
 					UInt16 redProp = properties.Data[tileX, tileY, red.Property];
 					UInt16 greenProp = properties.Data[tileX, tileY, green.Property];

@@ -299,10 +299,8 @@ namespace GB.GBMB
 			this.tileList.PaletteData = paletteData;
 			this.mapControl.PaletteData = paletteData;
 
-			this.mapControl.DefaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
 			this.mapControl.Properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
 			this.mapControl.PropertyColors = gbmFile.GetObjectOfType<GBMObjectMapPropertyColors>();
-			this.mapControl.PropertyNames = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
 
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
 			this.AutoUpdate = settings.AutoUpdate;
