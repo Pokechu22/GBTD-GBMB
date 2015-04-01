@@ -13,6 +13,18 @@ namespace GB.Shared.GBMFile
 		public PropertyColorOperator Operator { get; set; }
 		public UInt32 Value { get; set; }
 
+		/// <summary>
+		/// Creates a GBMObjectMapPropertyColorsRecord with the default values.
+		/// </summary>
+		public GBMObjectMapPropertyColorsRecord() {
+			Property = 0;
+			Operator = PropertyColorOperator.EQUAL;
+			Value = 0;
+		}
+
+		/// <summary>
+		/// Deserializes a GBMObjectMapPropertyColorsRecord from the speicifed stream.
+		/// </summary>
 		public GBMObjectMapPropertyColorsRecord(Stream s) {
 			this.Property = s.ReadInteger();
 			this.Operator = (PropertyColorOperator)s.ReadInteger();

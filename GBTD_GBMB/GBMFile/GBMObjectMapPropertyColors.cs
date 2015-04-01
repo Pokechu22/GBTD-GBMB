@@ -10,9 +10,14 @@ namespace GB.Shared.GBMFile
 	public class GBMObjectMapPropertyColors : MasteredGBMObject<GBMObjectMap>
 	{
 		public GBMObjectMapPropertyColors(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+				: base(Master, TypeID, UniqueID, MasterID, Size, stream) {
 
-		public GBMObjectMapPropertyColors(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
+			Master.PropColorCountChanged += new EventHandler(Master_PropColorCountChanged);
+		}
+
+		public GBMObjectMapPropertyColors(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
+			Master.PropColorCountChanged += new EventHandler(Master_PropColorCountChanged);
+		}
 
 		/// <summary>
 		/// The available colors in regular GBMB.
@@ -50,6 +55,23 @@ namespace GB.Shared.GBMFile
 			}
 
 			return root;
+		}
+
+		private void Master_PropColorCountChanged(object sender, EventArgs e) {
+			uint oldPropColorCount = (uint)Data.Length;
+			uint newPropColorCount = Master.PropColorCount;
+
+			GBMObjectMapPropertyColorsRecord[] newData = new GBMObjectMapPropertyColorsRecord[newPropColorCount];
+
+			for (int i = 0; i < newPropColorCount; i++) {
+				if (i >= oldPropColorCount) { //If i is out of bounds in the old data array.
+					newData[i] = new GBMObjectMapPropertyColorsRecord();
+				} else {
+					newData[i] = this.Data[i];
+				}
+			}
+
+			this.Data = newData;
 		}
 	}
 }
