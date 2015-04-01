@@ -10,15 +10,21 @@ namespace GB.Shared.GBMFile
 	public class GBMObjectMapExportProperties : MasteredGBMObject<GBMObjectMapExportSettings>
 	{
 		public GBMObjectMapExportProperties(GBMObjectMapExportSettings Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID,
-			UInt32 Size, Stream stream) : base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+				UInt32 Size, Stream stream) : base(Master, TypeID, UniqueID, MasterID, Size, stream) {
+
+			Master.ExportPropCountChanged += new EventHandler(Master_ExportPropCountChanged);
+		}
 
 		public GBMObjectMapExportProperties(GBMObjectMapExportSettings Master, GBMObjectHeader header, Stream stream)
-			: base(Master, header, stream) { }
+				: base(Master, header, stream) {
+
+			Master.ExportPropCountChanged += new EventHandler(Master_ExportPropCountChanged);
+		}
 
 		public GBMObjectMapExportPropertiesRecord[] Data { get; set; }
 
 		protected override void LoadFromStream(Stream s) {
-			Data = new GBMObjectMapExportPropertiesRecord[Master.PropCount];
+			Data = new GBMObjectMapExportPropertiesRecord[Master.ExportPropCount];
 
 			for (int i = 0; i < Data.Length; i++) {
 				Data[i] = new GBMObjectMapExportPropertiesRecord(s);
@@ -43,6 +49,23 @@ namespace GB.Shared.GBMFile
 			}
 
 			return root;
+		}
+
+		private void Master_ExportPropCountChanged(object sender, EventArgs e) {
+			uint oldExportPropCount = (uint)Data.Length;
+			uint newExportPropCount = Master.ExportPropCount;
+
+			GBMObjectMapExportPropertiesRecord[] newData = new GBMObjectMapExportPropertiesRecord[newExportPropCount];
+
+			for (int i = 0; i < newExportPropCount; i++) {
+				if (i > oldExportPropCount) { //Would be out of bounds in old data
+					newData[i] = new GBMObjectMapExportPropertiesRecord();
+				} else {
+					newData[i] = Data[i];
+				}
+			}
+
+			this.Data = newData;
 		}
 	}
 }

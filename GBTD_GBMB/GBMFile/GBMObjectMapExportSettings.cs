@@ -67,16 +67,21 @@ namespace GB.Shared.GBMFile
 		/// The selected tab.
 		/// </summary>
 		public byte SelTab { get; set; }
+		private UInt16 exportPropCount;
 		/// <summary>
 		/// The number of properties.
 		/// </summary>
-		public UInt16 PropCount { get; set; }
+		public UInt16 ExportPropCount {
+			get { return exportPropCount; }
+			set { exportPropCount = value; if (ExportPropCountChanged != null) { ExportPropCountChanged(this, new EventArgs()); } }
+		}
 		/// <summary>
 		/// The offset to add to each tile number.
 		/// </summary>
 		/// <remarks>Since: GBMB 1.2</remarks>
 		public UInt16 TileOffset { get; set; }
 
+		public event EventHandler ExportPropCountChanged;
 
 		protected override void LoadFromStream(Stream s) {
 			this.FileName = s.ReadString(255);
@@ -91,7 +96,7 @@ namespace GB.Shared.GBMFile
 			this.SplitSize = s.ReadInteger();
 			this.ChangeBankEachSplit = s.ReadBoolean();
 			this.SelTab = s.ReadByteEx();
-			this.PropCount = s.ReadWord();
+			this.ExportPropCount = s.ReadWord();
 			this.TileOffset = s.ReadWord(0);
 		}
 
@@ -108,7 +113,7 @@ namespace GB.Shared.GBMFile
 			s.WriteInteger(SplitSize);
 			s.WriteBoolean(ChangeBankEachSplit);
 			s.WriteByte(SelTab);
-			s.WriteWord(PropCount);
+			s.WriteWord(ExportPropCount);
 			s.WriteWord(TileOffset);
 		}
 
@@ -131,7 +136,7 @@ namespace GB.Shared.GBMFile
 			root.Nodes.Add("SplitSize", "SplitSize: " + SplitSize);
 			root.Nodes.Add("ChangeBankEachSplit", "ChangeBankEachSplit: " + ChangeBankEachSplit);
 			root.Nodes.Add("SelTab", "SelTab: " + SelTab);
-			root.Nodes.Add("PropCount", "PropCount: " + PropCount);
+			root.Nodes.Add("ExportPropCount", "ExportPropCount: " + ExportPropCount);
 			root.Nodes.Add("TileOffset", "TileOffset: " + TileOffset);
 
 			return root;

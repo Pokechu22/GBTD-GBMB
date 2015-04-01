@@ -25,6 +25,17 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public UInt32 Size { get; set; }
 
+		/// <summary>
+		/// Creates a GBMObjectMapExportPropertiesRecord with the default values.
+		/// </summary>
+		public GBMObjectMapExportPropertiesRecord() {
+			this.Property = 0;
+			this.Size = 0;
+		}
+
+		/// <summary>
+		/// Deserializes the GBMObjectMapExportPropertiesRecord from the given stream.
+		/// </summary>
 		public GBMObjectMapExportPropertiesRecord(Stream s) {
 			//Intentional - this is a byte stored as an integer.  Yes, I have no idea how that happened.  But it's garbage data beyond the byte.
 			//Formats are weird.

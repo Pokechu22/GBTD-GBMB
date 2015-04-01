@@ -76,7 +76,7 @@ namespace GB.Shared.GBMFile
 			return root;
 		}
 
-		void Master_PropCountChanged(object sender, EventArgs e) {
+		private void Master_PropCountChanged(object sender, EventArgs e) {
 			uint width = (uint)Data.GetLength(0);
 			uint height = (uint)Data.GetLength(1);
 			uint oldPropCount = (uint)Data.GetLength(2);
@@ -99,7 +99,7 @@ namespace GB.Shared.GBMFile
 			Data = newData;
 		}
 
-		void Master_SizeChanged(object sender, EventArgs e) {
+		private void Master_SizeChanged(object sender, EventArgs e) {
 			uint propCount = (uint)Data.GetLength(2);
 			uint oldWidth = (uint)Data.GetLength(0);
 			uint oldHeight = (uint)Data.GetLength(1);
