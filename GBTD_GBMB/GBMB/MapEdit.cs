@@ -12,6 +12,7 @@ using System.IO;
 using GB.Shared.AutoUpdate;
 using GB.Shared.Palettes;
 using System.Runtime.InteropServices;
+using GB.Shared.Controls;
 
 namespace GB.GBMB
 {
@@ -271,7 +272,25 @@ namespace GB.GBMB
 			MessageBox.Show("Exporting is not yet implemented!");
 		}
 
+		/// <summary>
+		/// Unloads the current <see cref="gbmFile"/> if present.
+		/// </summary>
+		public void UnloadCurrentFile() {
+			if (gbmFile != null) {
+				var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+				if (map != null) {
+					map.PropCountChanged -= new EventHandler(map_PropCountChanged);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Loads a GBMFile from the specified path.
+		/// </summary>
+		/// <param name="mapPath"></param>
 		public void LoadFile(String mapPath) {
+			UnloadCurrentFile();
+
 			mapFileName = mapPath;
 
 			Environment.CurrentDirectory = Path.GetDirectoryName(mapPath);
@@ -287,6 +306,7 @@ namespace GB.GBMB
 				gbrFile = new GBRFile(stream);
 			}
 
+			map.PropCountChanged += new EventHandler(map_PropCountChanged);
 			this.infoPanelPropBorder1.Visible = this.infoPanelPropBorder1.Enabled = (map.PropCount != 0);
 			this.infoPanelPropBorder2.Visible = this.infoPanelPropBorder2.Enabled = (map.PropCount != 0);
 
@@ -320,6 +340,8 @@ namespace GB.GBMB
 
 			this.Size = new Size((int)settings.FormWidth, (int)settings.FormHeight);
 			this.WindowState = (settings.FormMaximized ? FormWindowState.Maximized : FormWindowState.Normal);
+
+			this.map_PropCountChanged(map, new EventArgs());
 		}
 
 		/// <summary>
@@ -808,6 +830,60 @@ namespace GB.GBMB
 			ProducerInfo.Name = "GBMB in C# v" + ProductVersion + " by Pokechu22";
 			ProducerInfo.Version = splitVersion[0] + "." + splitVersion[1];
 			ProducerInfo.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
+		}
+
+		private CleanLabel[] infoPanelPropLabels = new CleanLabel[0];
+		private NumericTextBox[] infoPanelPropTextBoxes = new NumericTextBox[0];
+
+		void map_PropCountChanged(object sender, EventArgs e) {
+			GBMObjectMap map = (sender as GBMObjectMap);
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			if (map != null) {
+				this.infoPanelPropBorder1.Visible = this.infoPanelPropBorder1.Enabled = (map.PropCount != 0);
+				this.infoPanelPropBorder2.Visible = this.infoPanelPropBorder2.Enabled = (map.PropCount != 0);
+				
+				//Dispose all of the curent labels and text boxes.
+				foreach (var control in infoPanelPropLabels) { control.Dispose(); }
+				foreach (var control in infoPanelPropTextBoxes) { control.Dispose(); }
+
+				uint newPropCount = map.PropCount;
+
+				infoPanelPropLabels = new CleanLabel[newPropCount];
+				infoPanelPropTextBoxes = new NumericTextBox[newPropCount];
+
+				int currentX = 6;
+				int textBoxY = 2;
+				int labelY = 4;
+
+				for (int i = 0; i < map.PropCount; i++) {
+					GBMObjectMapPropertiesRecord prop = properties.Properties[i];
+
+					CleanLabel label = new CleanLabel();
+					label.Text = prop.Name;
+					label.Name = "infoPanelPropLabel" + i;
+					label.Location = new Point(currentX, labelY);
+
+					currentX += label.Width;
+					currentX += 10;
+
+					NumericTextBox textBox = new NumericTextBox();
+					textBox.Value = 0;
+					textBox.Width = 38;
+					textBox.Height = 19;
+					textBox.Location = new Point(currentX, textBoxY);
+
+					currentX += textBox.Width;
+					currentX += 6;
+
+					infoPanelPropBorder1.Controls.Add(label);
+					infoPanelPropBorder1.Controls.Add(textBox);
+
+					infoPanelPropLabels[i] = label;
+					infoPanelPropTextBoxes[i] = textBox;
+				}
+			}
+
+			this.OnResize(new EventArgs());
 		}
 	}
 }
