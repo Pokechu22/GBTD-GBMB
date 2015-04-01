@@ -9,8 +9,12 @@ namespace GB.Shared.Controls
 {
 	public class NumericTextBox : TextBox
 	{
+		[DefaultValue(false)]
+		public override bool AutoSize { get { return base.AutoSize; } set { base.AutoSize = value; } }
+
 		public NumericTextBox() {
 			this.Text = "0";
+			this.AutoSize = false;
 		}
 
 		private int value = 0;

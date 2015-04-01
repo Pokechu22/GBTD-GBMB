@@ -864,7 +864,7 @@ namespace GB.GBMB
 					label.Location = new Point(currentX, labelY);
 
 					currentX += label.Width;
-					currentX += 10;
+					currentX += 6;
 
 					NumericTextBox textBox = new NumericTextBox();
 					textBox.Value = 0;
@@ -873,7 +873,7 @@ namespace GB.GBMB
 					textBox.Location = new Point(currentX, textBoxY);
 
 					currentX += textBox.Width;
-					currentX += 6;
+					currentX += 3;
 
 					infoPanelPropBorder1.Controls.Add(label);
 					infoPanelPropBorder1.Controls.Add(textBox);
