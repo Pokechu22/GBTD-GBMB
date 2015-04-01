@@ -827,7 +827,6 @@
 			this.mapEditBorder.Size = new System.Drawing.Size(286, 168);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
 			// 
 			// auMessenger
 			// 

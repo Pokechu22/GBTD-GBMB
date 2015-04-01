@@ -210,7 +210,7 @@ namespace GB.GBMB
 		public MapEdit() {
 			InitializeComponent();
 
-			mapEditBorder_Resize(mapEditBorder, new EventArgs());
+			this.OnResize(new EventArgs());
 
 			zoomComboBox.SelectedIndex = 4;
 		}
@@ -345,6 +345,8 @@ namespace GB.GBMB
 			mapEditBorder.Width = mainTileEditBorder.Width - 37;
 			mapEditBorder.Height = mainTileEditBorder.Height - (ShowInfoPanel ? (showProperties ? 58 : 33) : 8);
 
+			mapControl.SetBounds(mapEditBorder.Location.X + 1, mapEditBorder.Location.Y + 1, mapEditBorder.Width - 2, mapEditBorder.Height - 2);
+
 			tileList.Left = mainTileEditBorder.Right + 3;
 			tileList.Height = mainTileEditBorder.Height - 20;
 
@@ -362,15 +364,10 @@ namespace GB.GBMB
 			infoPanelVerticalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 150, infoPanelBorder.Top + 3);
 			infoPanelPaletteComboBox.Location = new Point(infoPanelBorder.Right - 246, infoPanelBorder.Top + 1);
 			infoPanelPalLabel.Location = new Point(infoPanelBorder.Right - 270, infoPanelBorder.Top + 3);
-			
+
 			this.ResumeLayout(true);
 
 			base.OnResize(e);
-		}
-
-		private void mapEditBorder_Resize(object sender, EventArgs e) {
-			//Keep mapControl within mapEditBorder.
-			mapControl.SetBounds(mapEditBorder.Location.X + 1, mapEditBorder.Location.Y + 1, mapEditBorder.Width - 2, mapEditBorder.Height - 2);
 		}
 
 		private void auMessenger_OnTileChanged(object sender, TileChangedEventArgs args) {
