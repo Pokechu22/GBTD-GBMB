@@ -287,6 +287,9 @@ namespace GB.GBMB
 				gbrFile = new GBRFile(stream);
 			}
 
+			this.infoPanelPropBorder1.Visible = this.infoPanelPropBorder1.Enabled = (map.PropCount != 0);
+			this.infoPanelPropBorder2.Visible = this.infoPanelPropBorder2.Enabled = (map.PropCount != 0);
+
 			this.mapControl.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			
 			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
@@ -335,16 +338,24 @@ namespace GB.GBMB
 		protected override void OnResize(EventArgs e) {
 			this.SuspendLayout();
 
+			bool showProperties = infoPanelPropBorder1.Visible;
+
 			mainTileEditBorder.Height = this.ClientSize.Height - 34;
 			mainTileEditBorder.Width = this.ClientSize.Width - 59;
 			mapEditBorder.Width = mainTileEditBorder.Width - 37;
-			mapEditBorder.Height = mainTileEditBorder.Height - (ShowInfoPanel ? 33 : 8);
+			mapEditBorder.Height = mainTileEditBorder.Height - (ShowInfoPanel ? (showProperties ? 58 : 33) : 8);
 
 			tileList.Left = mainTileEditBorder.Right + 3;
 			tileList.Height = mainTileEditBorder.Height - 20;
 
 			infoPanelBorder.Top = mapEditBorder.Bottom + 4;
 			infoPanelBorder.Width = mapEditBorder.Width - 1;
+			infoPanelBorder.Height = (showProperties ? 46 : 21);
+
+			infoPanelPropBorder1.Top = infoPanelBorder.Top + 21;
+			infoPanelPropBorder1.Width = infoPanelBorder.Width - 4;
+			infoPanelPropBorder2.Top = infoPanelBorder.Top + 20;
+			infoPanelPropBorder2.Width = infoPanelBorder.Width - 4;
 
 			infoPanelLocationLabel.Location = new Point(infoPanelBorder.Left + 4, infoPanelBorder.Top + 3);
 			infoPanelHorizontalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 80, infoPanelBorder.Top + 3);

@@ -132,6 +132,8 @@
 			this.infoPanelPaletteComboBox = new System.Windows.Forms.ComboBox();
 			this.infoPanelPalLabel = new GB.Shared.Controls.CleanLabel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.infoPanelPropBorder1 = new GB.Shared.Controls.Border();
+			this.infoPanelPropBorder2 = new GB.Shared.Controls.Border();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -822,14 +824,13 @@
 			this.mapEditBorder.Location = new System.Drawing.Point(33, 38);
 			this.mapEditBorder.Name = "mapEditBorder";
 			this.mapEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.mapEditBorder.Size = new System.Drawing.Size(286, 193);
+			this.mapEditBorder.Size = new System.Drawing.Size(286, 168);
 			this.mapEditBorder.TabIndex = 2;
 			this.mapEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.mapEditBorder.Resize += new System.EventHandler(this.mapEditBorder_Resize);
 			// 
 			// auMessenger
 			// 
-			this.auMessenger.Enabled = false;
 			this.auMessenger.FileName = null;
 			this.auMessenger.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auMessenger_OnTileChanged);
 			this.auMessenger.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTotalRefreshNeeded);
@@ -857,18 +858,15 @@
 			// 
 			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
 			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl.DefaultPalette = null;
 			this.mapControl.Enabled = false;
 			this.mapControl.Location = new System.Drawing.Point(34, 39);
-			this.mapControl.Map = null;
 			this.mapControl.Name = "mapControl";
 			this.mapControl.PaletteData = paletteData1;
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
-			this.mapControl.Size = new System.Drawing.Size(284, 191);
+			this.mapControl.Size = new System.Drawing.Size(284, 166);
 			this.mapControl.TabIndex = 0;
-			this.mapControl.TileSet = null;
 			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
 			this.mapControl.SelectionChanged += new System.EventHandler(this.mapControl_SelectionChanged);
 			this.mapControl.TileClicked += new System.EventHandler<GB.GBMB.TileClickedEventArgs>(this.mapControl_TileClicked);
@@ -990,10 +988,10 @@
         System.Windows.Forms.Border3DSide.Left,
         System.Windows.Forms.Border3DSide.Bottom};
 			this.infoPanelBorder.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.infoPanelBorder.Location = new System.Drawing.Point(34, 235);
+			this.infoPanelBorder.Location = new System.Drawing.Point(34, 210);
 			this.infoPanelBorder.Name = "infoPanelBorder";
 			this.infoPanelBorder.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.infoPanelBorder.Size = new System.Drawing.Size(285, 21);
+			this.infoPanelBorder.Size = new System.Drawing.Size(285, 46);
 			this.infoPanelBorder.TabIndex = 19;
 			this.infoPanelBorder.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
@@ -1006,7 +1004,7 @@
 			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
 			this.infoPanelLocationLabel.Format = stringFormat2;
-			this.infoPanelLocationLabel.Location = new System.Drawing.Point(38, 238);
+			this.infoPanelLocationLabel.Location = new System.Drawing.Point(38, 213);
 			this.infoPanelLocationLabel.Name = "infoPanelLocationLabel";
 			this.infoPanelLocationLabel.Size = new System.Drawing.Size(47, 14);
 			this.infoPanelLocationLabel.TabIndex = 20;
@@ -1016,7 +1014,7 @@
 			// infoPanelHorizontalFlipCheckBox
 			// 
 			this.infoPanelHorizontalFlipCheckBox.AutoSize = true;
-			this.infoPanelHorizontalFlipCheckBox.Location = new System.Drawing.Point(239, 238);
+			this.infoPanelHorizontalFlipCheckBox.Location = new System.Drawing.Point(239, 213);
 			this.infoPanelHorizontalFlipCheckBox.Name = "infoPanelHorizontalFlipCheckBox";
 			this.infoPanelHorizontalFlipCheckBox.Size = new System.Drawing.Size(73, 17);
 			this.infoPanelHorizontalFlipCheckBox.TabIndex = 21;
@@ -1027,7 +1025,7 @@
 			// infoPanelVerticalFlipCheckBox
 			// 
 			this.infoPanelVerticalFlipCheckBox.AutoSize = true;
-			this.infoPanelVerticalFlipCheckBox.Location = new System.Drawing.Point(169, 238);
+			this.infoPanelVerticalFlipCheckBox.Location = new System.Drawing.Point(169, 213);
 			this.infoPanelVerticalFlipCheckBox.Name = "infoPanelVerticalFlipCheckBox";
 			this.infoPanelVerticalFlipCheckBox.Size = new System.Drawing.Size(61, 17);
 			this.infoPanelVerticalFlipCheckBox.TabIndex = 22;
@@ -1051,7 +1049,7 @@
             "5",
             "6",
             "7"});
-			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 236);
+			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 211);
 			this.infoPanelPaletteComboBox.MaxDropDownItems = 9;
 			this.infoPanelPaletteComboBox.Name = "infoPanelPaletteComboBox";
 			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 19);
@@ -1068,18 +1066,49 @@
 			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
 			this.infoPanelPalLabel.Format = stringFormat3;
-			this.infoPanelPalLabel.Location = new System.Drawing.Point(49, 238);
+			this.infoPanelPalLabel.Location = new System.Drawing.Point(49, 213);
 			this.infoPanelPalLabel.Name = "infoPanelPalLabel";
 			this.infoPanelPalLabel.Size = new System.Drawing.Size(21, 14);
 			this.infoPanelPalLabel.TabIndex = 24;
 			this.infoPanelPalLabel.TabStop = false;
 			this.infoPanelPalLabel.Text = "&Pal";
 			// 
+			// infoPanelPropBorder1
+			// 
+			this.infoPanelPropBorder1.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.infoPanelPropBorder1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Bottom,
+        System.Windows.Forms.Border3DSide.Left};
+			this.infoPanelPropBorder1.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.infoPanelPropBorder1.Location = new System.Drawing.Point(36, 232);
+			this.infoPanelPropBorder1.Name = "infoPanelPropBorder1";
+			this.infoPanelPropBorder1.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.infoPanelPropBorder1.Size = new System.Drawing.Size(281, 23);
+			this.infoPanelPropBorder1.TabIndex = 25;
+			this.infoPanelPropBorder1.TopBorder = System.Windows.Forms.Border3DStyle.SunkenInner;
+			// 
+			// infoPanelPropBorder2
+			// 
+			this.infoPanelPropBorder2.BottomBorder = null;
+			this.infoPanelPropBorder2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top};
+			this.infoPanelPropBorder2.LeftBorder = null;
+			this.infoPanelPropBorder2.Location = new System.Drawing.Point(36, 231);
+			this.infoPanelPropBorder2.Name = "infoPanelPropBorder2";
+			this.infoPanelPropBorder2.RightBorder = null;
+			this.infoPanelPropBorder2.Size = new System.Drawing.Size(281, 1);
+			this.infoPanelPropBorder2.TabIndex = 26;
+			this.infoPanelPropBorder2.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
 			// MapEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(382, 261);
+			this.Controls.Add(this.infoPanelPropBorder1);
+			this.Controls.Add(this.infoPanelPropBorder2);
 			this.Controls.Add(this.infoPanelPalLabel);
 			this.Controls.Add(this.infoPanelPaletteComboBox);
 			this.Controls.Add(this.infoPanelVerticalFlipCheckBox);
@@ -1199,6 +1228,8 @@
 		private System.Windows.Forms.ComboBox infoPanelPaletteComboBox;
 		private Shared.Controls.CleanLabel infoPanelPalLabel;
 		private System.Windows.Forms.ToolTip toolTip;
+		private Shared.Controls.Border infoPanelPropBorder1;
+		private Shared.Controls.Border infoPanelPropBorder2;
 	}
 }
 
