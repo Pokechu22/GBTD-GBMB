@@ -13,9 +13,16 @@ namespace GB.Shared.GBMFile
 	public class GBMObjectDefaultTilePropertyValues : MasteredGBMObject<GBMObjectMap>
 	{
 		public GBMObjectDefaultTilePropertyValues(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+				: base(Master, TypeID, UniqueID, MasterID, Size, stream) {
 
-		public GBMObjectDefaultTilePropertyValues(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
+			Master.TileCountChanged += new EventHandler(Master_TileCountChanged);
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
+
+		public GBMObjectDefaultTilePropertyValues(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
+			Master.TileCountChanged += new EventHandler(Master_TileCountChanged);
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
 
 		/// <summary>
 		/// All of the data.
@@ -60,6 +67,46 @@ namespace GB.Shared.GBMFile
 			}
 
 			return root;
+		}
+
+		private void Master_TileCountChanged(object sender, EventArgs e) {
+			uint oldTileCount = (uint)Data.GetLength(0);
+			uint newTileCount = Master.TileCount;
+			uint propCount = (uint)Data.GetLength(1);
+
+			UInt16[,] newData = new UInt16[newTileCount, propCount];
+
+			for (int p = 0; p < propCount; p++) {
+				for (int t = 0; t < newTileCount; t++) {
+					if (t >= oldTileCount) { //Would be out of bounds in the origional array
+						newData[t, p] = 0;
+					} else {
+						newData[t, p] = Data[t, p];
+					}
+				}
+			}
+
+			this.Data = newData;
+		}
+
+		private void Master_PropCountChanged(object sender, EventArgs e) {
+			uint tileCount = (uint)Data.GetLength(0);
+			uint oldPropCount = (uint)Data.GetLength(1);
+			uint newPropCount = Master.PropCount;
+
+			UInt16[,] newData = new UInt16[tileCount, newPropCount];
+
+			for (int p = 0; p < newPropCount; p++) {
+				for (int t = 0; t < tileCount; t++) {
+					if (t >= oldPropCount) { //Would be out of bounds in the origional array
+						newData[t, p] = 0;
+					} else {
+						newData[t, p] = Data[t, p];
+					}
+				}
+			}
+
+			this.Data = newData;
 		}
 	}
 }
