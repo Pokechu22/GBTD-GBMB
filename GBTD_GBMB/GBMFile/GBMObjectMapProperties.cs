@@ -13,9 +13,14 @@ namespace GB.Shared.GBMFile
 	public class GBMObjectMapProperties : MasteredGBMObject<GBMObjectMap>
 	{
 		public GBMObjectMapProperties(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-				: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
+				: base(Master, TypeID, UniqueID, MasterID, Size, stream) {
 
-		public GBMObjectMapProperties(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
+
+		public GBMObjectMapProperties(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
 
 		public GBMObjectMapPropertiesRecord[] Properties { get; set; }
 
@@ -45,6 +50,23 @@ namespace GB.Shared.GBMFile
 			}
 
 			return root;
+		}
+
+		private void Master_PropCountChanged(object sender, EventArgs e) {
+			uint oldPropCount = (uint)Properties.Length;
+			uint newPropCount = Master.PropCount;
+
+			GBMObjectMapPropertiesRecord[] newProperties = new GBMObjectMapPropertiesRecord[newPropCount];
+
+			for (int i = 0; i < newPropCount; i++) {
+				if (i >= oldPropCount) { //Would be out of bounds in origional data
+					newProperties[i] = new GBMObjectMapPropertiesRecord();
+				} else {
+					newProperties[i] = Properties[i];
+				}
+			}
+
+			this.Properties = newProperties;
 		}
 	}
 }

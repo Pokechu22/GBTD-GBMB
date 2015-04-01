@@ -27,6 +27,18 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public String Name { get; set; }
 
+		/// <summary>
+		/// Creates a GBMObjectMapPropertiesRecord with the default values.
+		/// </summary>
+		public GBMObjectMapPropertiesRecord() {
+			this.Type = 0;
+			this.MaxValue = 0;
+			this.Name = "";
+		}
+
+		/// <summary>
+		/// Deserializes a GBMObjectMapPropertiesRecord from the given stream.
+		/// </summary>
 		public GBMObjectMapPropertiesRecord(Stream s) {
 			this.Type = s.ReadInteger();
 			this.MaxValue = s.ReadInteger();
