@@ -17,21 +17,20 @@ namespace GB.Shared.Controls
 			this.AutoSize = false;
 		}
 
-		private int value = 0;
 		private bool acceptsSigned = false;
 
 		[Category("Data"), Description("The numeric value.")]
 		[DefaultValue(0)]
 		public int Value {
 			get {
-				return this.value;
+				return Int32.Parse(this.Text);
 			}
 			set {
 				if (!acceptsSigned && value < 0) {
 					return;
 				}
 				this.Text = value.ToString();
-			}
+			}	
 		}
 
 		[Category("Data"), Description("Whether or not numbers are allowed to be signed (negative).")]
@@ -50,7 +49,6 @@ namespace GB.Shared.Controls
 					if (!acceptsSigned && result < 0) {
 						return;
 					}
-					this.value = result;
 					base.Text = value;
 				} else {
 					//Do nothing as it is invalid input.
