@@ -126,7 +126,7 @@ namespace GB.GBMB
 			get { return mapControl.ColorSet; }
 			set {
 				MenuItem[] ColorSetControls = new MenuItem[] {
-					colorSetFilteredGameboyColorMenuItem,
+					colorSetGameboyPocketMenuItem,
 					colorSetGameboyMenuItem,
 					colorSetGameboyColorMenuItem,
 					colorSetSuperGameboyMenuItem,
