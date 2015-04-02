@@ -803,7 +803,7 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 				}
 			}
 
-			if (properties != null && propertyColors != null) {
+			if (showPropertyColors && properties != null && propertyColors != null) {
 				//TODO properly handle amount of property colors other than 2.
 				if (propertyColors.Master.PropColorCount == 2 && properties.Master.PropCount != 0) {
 					var red = propertyColors.Data[0];
