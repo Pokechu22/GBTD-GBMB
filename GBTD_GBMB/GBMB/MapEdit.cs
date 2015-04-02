@@ -144,6 +144,29 @@ namespace GB.GBMB
 
 				mapControl.ColorSet = value;
 				tileList.ColorSet = value;
+
+				infoPanelPaletteComboBox.Visible = infoPanelPaletteComboBox.Enabled = value.SupportsPaletteCustomization();
+				infoPanelPalLabel.Visible = infoPanelPalLabel.Enabled = value.SupportsPaletteCustomization();
+
+				infoPanelPaletteComboBox.Items.Clear();
+				infoPanelPaletteComboBox.MaxDropDownItems = value.GetNumberOfRows() + 1;
+				infoPanelPaletteComboBox.Items.Add("Defualt");
+				for (int i = 0; i < value.GetNumberOfRows(); i++) {
+					infoPanelPaletteComboBox.Items.Add(i.ToString());
+				}
+
+				if (value.SupportsPaletteCustomization()) {
+					var palTemp = mapControl.SelectionPalette;
+					if (palTemp.HasValue) {
+						if (palTemp >= 0) {
+							infoPanelPaletteComboBox.SelectedIndex = palTemp.Value + 1;
+						} else {
+							infoPanelPaletteComboBox.SelectedIndex = -1;
+						}
+					} else {
+						infoPanelPaletteComboBox.SelectedIndex = 0;
+					}
+				}
 			}
 		}
 
@@ -649,15 +672,17 @@ namespace GB.GBMB
 			infoPanelVerticalFlipCheckBox.CheckState = mapControl.SelectionVerticalFlip;
 			infoPanelHorizontalFlipCheckBox.CheckState = mapControl.SelectionHorizontalFlip;
 
-			var palTemp = mapControl.SelectionPalette;
-			if (palTemp.HasValue) {
-				if (palTemp >= 0) {
-					infoPanelPaletteComboBox.SelectedIndex = palTemp.Value + 1;
+			if (ColorSet.SupportsPaletteCustomization()) {
+				var palTemp = mapControl.SelectionPalette;
+				if (palTemp.HasValue) {
+					if (palTemp >= 0) {
+						infoPanelPaletteComboBox.SelectedIndex = palTemp.Value + 1;
+					} else {
+						infoPanelPaletteComboBox.SelectedIndex = -1;
+					}
 				} else {
-					infoPanelPaletteComboBox.SelectedIndex = -1;
+					infoPanelPaletteComboBox.SelectedIndex = 0;
 				}
-			} else {
-				infoPanelPaletteComboBox.SelectedIndex = 0;
 			}
 			for (int i = 0; i < properties.Master.PropCount; i++) {
 				var propTemp = mapControl.GetSelectionPropertyData(i);
