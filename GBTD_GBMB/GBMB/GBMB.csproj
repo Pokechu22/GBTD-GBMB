@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\BlockFillDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\BlockFillDialog.Designer.cs">
+      <DependentUpon>BlockFillDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MapPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
       <DependentUpon>ToolList.cs</DependentUpon>
     </Compile>
     <Compile Include="ZoomLevel.cs" />
+    <EmbeddedResource Include="Dialogs\BlockFillDialog.resx">
+      <DependentUpon>BlockFillDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MapPropertiesDialog.resx">
       <DependentUpon>MapPropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>

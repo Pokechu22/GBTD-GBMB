@@ -154,66 +154,69 @@ namespace GB.GBMB
 
 		#region Graphics stuff
 		protected override void OnPaint(PaintEventArgs e) {
-			Graphics g = e.Graphics;
+			try {
+				Graphics g = e.Graphics;
 
-			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-			g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half; //Fixes lines in the middle issue.
-			g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+				g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+				g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half; //Fixes lines in the middle issue.
+				g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
 
-			using (StringFormat format = new StringFormat())
-			using (Brush fore = new SolidBrush(this.BackColor), back = new SolidBrush(ControlPaint.DarkDark(this.BackColor))) {
-				format.FormatFlags = StringFormatFlags.NoClip;
-				format.Alignment = StringAlignment.Center;
-				format.LineAlignment = StringAlignment.Center;
+				using (StringFormat format = new StringFormat())
+				using (Brush fore = new SolidBrush(this.BackColor), back = new SolidBrush(ControlPaint.DarkDark(this.BackColor))) {
+					format.FormatFlags = StringFormatFlags.NoClip;
+					format.Alignment = StringAlignment.Center;
+					format.LineAlignment = StringAlignment.Center;
 
-				int scrolledPos = scrollBar.Value - numberOfVisibleTiles + 1;
-				if (scrolledPos < 0) { scrolledPos = 0; }
+					int scrolledPos = scrollBar.Value - numberOfVisibleTiles + 1;
+					if (scrolledPos < 0) { scrolledPos = 0; }
 
-				for (UInt16 i = 0; i < numberOfVisibleTiles; i++) {
-					UInt16 tileNum = (UInt16)(i + scrolledPos);
+					for (UInt16 i = 0; i < numberOfVisibleTiles; i++) {
+						UInt16 tileNum = (UInt16)(i + scrolledPos);
 
-					int y = 1 + (i * INFO_HEIGHT);
+						int y = 1 + (i * INFO_HEIGHT);
 
-					//Fill background.
-					g.FillRectangle(back, 1, y, INFO_WIDTH, INFO_HEIGHT);
+						//Fill background.
+						g.FillRectangle(back, 1, y, INFO_WIDTH, INFO_HEIGHT);
 
-					ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Left);
-					ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Bottom);
-					ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Right);
-					ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Top);
-					//The inside part.
-					g.FillRectangle(fore, 2, 1 + y, NUMBER_WIDTH - 2, NUMBER_HEIGHT - 2);
+						ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Left);
+						ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Bottom);
+						ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Right);
+						ControlPaint.DrawBorder3D(g, 1, y, NUMBER_WIDTH, NUMBER_HEIGHT, Border3DStyle.RaisedInner, Border3DSide.Top);
+						//The inside part.
+						g.FillRectangle(fore, 2, 1 + y, NUMBER_WIDTH - 2, NUMBER_HEIGHT - 2);
 
-					if (this.Enabled && tileSet != null && tileNum < tileSet.Count) {
-						g.DrawString(tileNum.ToString(), new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black,
-							new RectangleF(1, -1 + y, NUMBER_WIDTH, NUMBER_HEIGHT), format);
+						if (this.Enabled && tileSet != null && tileNum < tileSet.Count) {
+							g.DrawString(tileNum.ToString(), new Font(DefaultFont.FontFamily, 7.5f), Brushes.Black,
+								new RectangleF(1, -1 + y, NUMBER_WIDTH, NUMBER_HEIGHT), format);
 
-						//Tile bookmark number.
-						if (tileNum == bookmark1) {
-							g.DrawImageUnscaledAndClipped(bookmark1Icon, new Rectangle(2, y + 1, 5, 7));
-						} else if (tileNum == bookmark2) {
-							g.DrawImageUnscaledAndClipped(bookmark2Icon, new Rectangle(2, y + 1, 5, 7));
-						} else if (tileNum == bookmark3) {
-							g.DrawImageUnscaledAndClipped(bookmark3Icon, new Rectangle(2, y + 1, 5, 7));
+							//Tile bookmark number.
+							if (tileNum == bookmark1) {
+								g.DrawImageUnscaledAndClipped(bookmark1Icon, new Rectangle(2, y + 1, 5, 7));
+							} else if (tileNum == bookmark2) {
+								g.DrawImageUnscaledAndClipped(bookmark2Icon, new Rectangle(2, y + 1, 5, 7));
+							} else if (tileNum == bookmark3) {
+								g.DrawImageUnscaledAndClipped(bookmark3Icon, new Rectangle(2, y + 1, 5, 7));
+							}
+
+							//The tile itself.
+							g.DrawImage(MakeTileBitmap(TileSet.tiles[tileNum],
+									GetApropriatelyFilteredColor(tileNum, GBColor.WHITE),
+									GetApropriatelyFilteredColor(tileNum, GBColor.LIGHT_GRAY),
+									GetApropriatelyFilteredColor(tileNum, GBColor.DARK_GRAY),
+									GetApropriatelyFilteredColor(tileNum, GBColor.BLACK)),
+								TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
+						} else {
+							g.FillRectangle(fore, TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
 						}
-
-						//The tile itself.
-						g.DrawImage(MakeTileBitmap(TileSet.tiles[tileNum],
-								GetApropriatelyFilteredColor(tileNum, GBColor.WHITE),
-								GetApropriatelyFilteredColor(tileNum, GBColor.LIGHT_GRAY),
-								GetApropriatelyFilteredColor(tileNum, GBColor.DARK_GRAY),
-								GetApropriatelyFilteredColor(tileNum, GBColor.BLACK)),
-							TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
-					} else {
-						g.FillRectangle(fore, TILE_X + 1, TILE_Y + y, TILE_WIDTH, TILE_HEIGHT);
 					}
 				}
+
+				ControlPaint.DrawBorder3D(g, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, Border3DSide.Bottom);
+				ControlPaint.DrawBorder3D(g, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
+				ControlPaint.DrawBorder3D(g, new Rectangle(SCROLL_X - 1, SCROLL_Y - 1, scrollBar.Width + 1, this.Height), Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
+			} catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
 			}
-
-			ControlPaint.DrawBorder3D(g, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, Border3DSide.Bottom);
-			ControlPaint.DrawBorder3D(g, new Rectangle(Point.Empty, this.Size), Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
-			ControlPaint.DrawBorder3D(g, new Rectangle(SCROLL_X - 1, SCROLL_Y - 1, scrollBar.Width + 1, this.Height), Border3DStyle.SunkenOuter, Border3DSide.Top | Border3DSide.Left);
-
 			base.OnPaint(e);
 		}
 

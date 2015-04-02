@@ -116,14 +116,6 @@
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.toolList = new GB.GBMB.ToolList();
 			this.mapControl = new GB.GBMB.MapControl();
-			this.openButton = new GB.Shared.Controls.ImageButton();
-			this.saveButton = new GB.Shared.Controls.ImageButton();
-			this.exportButton = new GB.Shared.Controls.ImageButton();
-			this.cutButton = new GB.Shared.Controls.ImageButton();
-			this.copyButton = new GB.Shared.Controls.ImageButton();
-			this.pasteButton = new GB.Shared.Controls.ImageButton();
-			this.helpButton = new GB.Shared.Controls.ImageButton();
-			this.tileList = new GB.GBMB.TileList();
 			this.mainTileEditBorder = new GB.Shared.Controls.Border();
 			this.infoPanelBorder = new GB.Shared.Controls.Border();
 			this.infoPanelLocationLabel = new GB.Shared.Controls.CleanLabel();
@@ -134,6 +126,14 @@
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.infoPanelPropBorder1 = new GB.Shared.Controls.Border();
 			this.infoPanelPropBorder2 = new GB.Shared.Controls.Border();
+			this.tileList = new GB.GBMB.TileList();
+			this.helpButton = new GB.Shared.Controls.ImageButton();
+			this.pasteButton = new GB.Shared.Controls.ImageButton();
+			this.copyButton = new GB.Shared.Controls.ImageButton();
+			this.cutButton = new GB.Shared.Controls.ImageButton();
+			this.exportButton = new GB.Shared.Controls.ImageButton();
+			this.saveButton = new GB.Shared.Controls.ImageButton();
+			this.openButton = new GB.Shared.Controls.ImageButton();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			menuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -481,6 +481,7 @@
 			this.blockFillMenuItem.Index = 10;
 			this.blockFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlB;
 			this.blockFillMenuItem.Text = "&Block fill";
+			this.blockFillMenuItem.Click += new System.EventHandler(this.blockFillMenuItem_Click);
 			// 
 			// viewMenuItem
 			// 
@@ -871,98 +872,6 @@
 			this.mapControl.SelectionChanged += new System.EventHandler(this.mapControl_SelectionChanged);
 			this.mapControl.TileClicked += new System.EventHandler<GB.GBMB.TileClickedEventArgs>(this.mapControl_TileClicked);
 			// 
-			// openButton
-			// 
-			this.openButton.HoveredImage = global::GB.GBMB.Properties.Resources.Open_selected;
-			this.openButton.Location = new System.Drawing.Point(7, 4);
-			this.openButton.Name = "openButton";
-			this.openButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Open_nonselected;
-			this.openButton.Size = new System.Drawing.Size(24, 24);
-			this.openButton.TabIndex = 10;
-			this.toolTip.SetToolTip(this.openButton, "Open");
-			this.openButton.Click += new System.EventHandler(this.onOpenButtonClicked);
-			// 
-			// saveButton
-			// 
-			this.saveButton.HoveredImage = global::GB.GBMB.Properties.Resources.Save_selected;
-			this.saveButton.Location = new System.Drawing.Point(30, 4);
-			this.saveButton.Name = "saveButton";
-			this.saveButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Save_nonselected;
-			this.saveButton.Size = new System.Drawing.Size(24, 24);
-			this.saveButton.TabIndex = 11;
-			this.toolTip.SetToolTip(this.saveButton, "Save");
-			this.saveButton.Click += new System.EventHandler(this.onSaveButtonClicked);
-			// 
-			// exportButton
-			// 
-			this.exportButton.HoveredImage = global::GB.GBMB.Properties.Resources.Export_selected;
-			this.exportButton.Location = new System.Drawing.Point(53, 4);
-			this.exportButton.Name = "exportButton";
-			this.exportButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Export_nonselected;
-			this.exportButton.Size = new System.Drawing.Size(24, 24);
-			this.exportButton.TabIndex = 12;
-			this.toolTip.SetToolTip(this.exportButton, "Export");
-			this.exportButton.Click += new System.EventHandler(this.onExportButtonClicked);
-			// 
-			// cutButton
-			// 
-			this.cutButton.HoveredImage = global::GB.GBMB.Properties.Resources.Cut_selected;
-			this.cutButton.Location = new System.Drawing.Point(87, 4);
-			this.cutButton.Name = "cutButton";
-			this.cutButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Cut_nonselected;
-			this.cutButton.Size = new System.Drawing.Size(24, 24);
-			this.cutButton.TabIndex = 13;
-			this.toolTip.SetToolTip(this.cutButton, "Cut");
-			this.cutButton.Click += new System.EventHandler(this.onCutButtonClicked);
-			// 
-			// copyButton
-			// 
-			this.copyButton.HoveredImage = global::GB.GBMB.Properties.Resources.Copy_selected;
-			this.copyButton.Location = new System.Drawing.Point(110, 4);
-			this.copyButton.Name = "copyButton";
-			this.copyButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Copy_nonselected;
-			this.copyButton.Size = new System.Drawing.Size(24, 24);
-			this.copyButton.TabIndex = 14;
-			this.toolTip.SetToolTip(this.copyButton, "Copy");
-			this.copyButton.Click += new System.EventHandler(this.onCopyButtonClicked);
-			// 
-			// pasteButton
-			// 
-			this.pasteButton.HoveredImage = global::GB.GBMB.Properties.Resources.Paste_selected;
-			this.pasteButton.Location = new System.Drawing.Point(133, 4);
-			this.pasteButton.Name = "pasteButton";
-			this.pasteButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Paste_nonselected;
-			this.pasteButton.Size = new System.Drawing.Size(24, 24);
-			this.pasteButton.TabIndex = 15;
-			this.toolTip.SetToolTip(this.pasteButton, "Paste");
-			this.pasteButton.Click += new System.EventHandler(this.onPasteButtonClicked);
-			// 
-			// helpButton
-			// 
-			this.helpButton.HoveredImage = global::GB.GBMB.Properties.Resources.Help_selected;
-			this.helpButton.Location = new System.Drawing.Point(265, 4);
-			this.helpButton.Name = "helpButton";
-			this.helpButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Help_nonselected;
-			this.helpButton.Size = new System.Drawing.Size(24, 24);
-			this.helpButton.TabIndex = 16;
-			this.toolTip.SetToolTip(this.helpButton, "Help topics");
-			// 
-			// tileList
-			// 
-			this.tileList.Bookmark1Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon1;
-			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
-			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
-			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList.Location = new System.Drawing.Point(326, 34);
-			this.tileList.Name = "tileList";
-			this.tileList.PaletteData = null;
-			this.tileList.PaletteMapping = null;
-			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(56, 205);
-			this.tileList.TabIndex = 17;
-			this.tileList.TileSet = null;
-			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
-			// 
 			// mainTileEditBorder
 			// 
 			this.mainTileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
@@ -1101,6 +1010,98 @@
 			this.infoPanelPropBorder2.Size = new System.Drawing.Size(281, 1);
 			this.infoPanelPropBorder2.TabIndex = 26;
 			this.infoPanelPropBorder2.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
+			// tileList
+			// 
+			this.tileList.Bookmark1Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon1;
+			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
+			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
+			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.tileList.Location = new System.Drawing.Point(326, 34);
+			this.tileList.Name = "tileList";
+			this.tileList.PaletteData = null;
+			this.tileList.PaletteMapping = null;
+			this.tileList.SelectedTile = ((ushort)(0));
+			this.tileList.Size = new System.Drawing.Size(56, 205);
+			this.tileList.TabIndex = 17;
+			this.tileList.TileSet = null;
+			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
+			// 
+			// helpButton
+			// 
+			this.helpButton.HoveredImage = global::GB.GBMB.Properties.Resources.Help_selected;
+			this.helpButton.Location = new System.Drawing.Point(265, 4);
+			this.helpButton.Name = "helpButton";
+			this.helpButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Help_nonselected;
+			this.helpButton.Size = new System.Drawing.Size(24, 24);
+			this.helpButton.TabIndex = 16;
+			this.toolTip.SetToolTip(this.helpButton, "Help topics");
+			// 
+			// pasteButton
+			// 
+			this.pasteButton.HoveredImage = global::GB.GBMB.Properties.Resources.Paste_selected;
+			this.pasteButton.Location = new System.Drawing.Point(133, 4);
+			this.pasteButton.Name = "pasteButton";
+			this.pasteButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Paste_nonselected;
+			this.pasteButton.Size = new System.Drawing.Size(24, 24);
+			this.pasteButton.TabIndex = 15;
+			this.toolTip.SetToolTip(this.pasteButton, "Paste");
+			this.pasteButton.Click += new System.EventHandler(this.onPasteButtonClicked);
+			// 
+			// copyButton
+			// 
+			this.copyButton.HoveredImage = global::GB.GBMB.Properties.Resources.Copy_selected;
+			this.copyButton.Location = new System.Drawing.Point(110, 4);
+			this.copyButton.Name = "copyButton";
+			this.copyButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Copy_nonselected;
+			this.copyButton.Size = new System.Drawing.Size(24, 24);
+			this.copyButton.TabIndex = 14;
+			this.toolTip.SetToolTip(this.copyButton, "Copy");
+			this.copyButton.Click += new System.EventHandler(this.onCopyButtonClicked);
+			// 
+			// cutButton
+			// 
+			this.cutButton.HoveredImage = global::GB.GBMB.Properties.Resources.Cut_selected;
+			this.cutButton.Location = new System.Drawing.Point(87, 4);
+			this.cutButton.Name = "cutButton";
+			this.cutButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Cut_nonselected;
+			this.cutButton.Size = new System.Drawing.Size(24, 24);
+			this.cutButton.TabIndex = 13;
+			this.toolTip.SetToolTip(this.cutButton, "Cut");
+			this.cutButton.Click += new System.EventHandler(this.onCutButtonClicked);
+			// 
+			// exportButton
+			// 
+			this.exportButton.HoveredImage = global::GB.GBMB.Properties.Resources.Export_selected;
+			this.exportButton.Location = new System.Drawing.Point(53, 4);
+			this.exportButton.Name = "exportButton";
+			this.exportButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Export_nonselected;
+			this.exportButton.Size = new System.Drawing.Size(24, 24);
+			this.exportButton.TabIndex = 12;
+			this.toolTip.SetToolTip(this.exportButton, "Export");
+			this.exportButton.Click += new System.EventHandler(this.onExportButtonClicked);
+			// 
+			// saveButton
+			// 
+			this.saveButton.HoveredImage = global::GB.GBMB.Properties.Resources.Save_selected;
+			this.saveButton.Location = new System.Drawing.Point(30, 4);
+			this.saveButton.Name = "saveButton";
+			this.saveButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Save_nonselected;
+			this.saveButton.Size = new System.Drawing.Size(24, 24);
+			this.saveButton.TabIndex = 11;
+			this.toolTip.SetToolTip(this.saveButton, "Save");
+			this.saveButton.Click += new System.EventHandler(this.onSaveButtonClicked);
+			// 
+			// openButton
+			// 
+			this.openButton.HoveredImage = global::GB.GBMB.Properties.Resources.Open_selected;
+			this.openButton.Location = new System.Drawing.Point(7, 4);
+			this.openButton.Name = "openButton";
+			this.openButton.NonhoveredImage = global::GB.GBMB.Properties.Resources.Open_nonselected;
+			this.openButton.Size = new System.Drawing.Size(24, 24);
+			this.openButton.TabIndex = 10;
+			this.toolTip.SetToolTip(this.openButton, "Open");
+			this.openButton.Click += new System.EventHandler(this.onOpenButtonClicked);
 			// 
 			// MapEdit
 			// 
