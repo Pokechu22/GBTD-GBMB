@@ -83,5 +83,22 @@ namespace GB.Shared.Palettes
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
 			}
 		}
+
+		/// <summary>
+		/// Gets the number of rows that a paletteset would have of this type.  
+		/// If the palette set does not support customization, returns 0.
+		/// </summary>
+		/// <param name="this"></param>
+		/// <returns></returns>
+		public static int GetNumberOfRows(this ColorSet @this) {
+			switch (@this) {
+			case ColorSet.GAMEBOY_POCKET: return 0;
+			case ColorSet.GAMEBOY: return 0;
+			case ColorSet.GAMEBOY_COLOR: return 8;
+			case ColorSet.SUPER_GAMEBOY: return 4;
+			case ColorSet.GAMEBOY_COLOR_FILTERED: return 8;
+			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(ColorSet));
+			}
+		}
 	}
 }
