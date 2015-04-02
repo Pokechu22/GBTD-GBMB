@@ -25,9 +25,9 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
@@ -40,6 +40,7 @@
 			this.labelFileName = new GB.Shared.Controls.CleanLabel();
 			this.fileNameTextBox = new System.Windows.Forms.TextBox();
 			this.browseButton = new System.Windows.Forms.Button();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.groupBoxSize.SuspendLayout();
 			this.groupBoxTileSet.SuspendLayout();
 			this.SuspendLayout();
@@ -52,6 +53,7 @@
 			this.okButton.TabIndex = 0;
 			this.okButton.Text = "OK";
 			this.okButton.UseVisualStyleBackColor = true;
+			this.okButton.Click += new System.EventHandler(this.okButton_Click);
 			// 
 			// cancelButton
 			// 
@@ -99,11 +101,11 @@
 			// 
 			this.labelWidth.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelWidth.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelWidth.Format = stringFormat2;
+			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelWidth.Format = stringFormat4;
 			this.labelWidth.Location = new System.Drawing.Point(14, 19);
 			this.labelWidth.Name = "labelWidth";
 			this.labelWidth.Size = new System.Drawing.Size(33, 14);
@@ -115,11 +117,11 @@
 			// 
 			this.labelHeight.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelHeight.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelHeight.Format = stringFormat1;
+			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelHeight.Format = stringFormat5;
 			this.labelHeight.Location = new System.Drawing.Point(150, 19);
 			this.labelHeight.Name = "labelHeight";
 			this.labelHeight.Size = new System.Drawing.Size(37, 14);
@@ -145,11 +147,11 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat3;
+			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat6;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -172,6 +174,11 @@
 			this.browseButton.TabIndex = 6;
 			this.browseButton.Text = "&Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
+			this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
 			// 
 			// MapPropertiesDialog
 			// 
@@ -212,5 +219,6 @@
 		private Shared.Controls.CleanLabel labelFileName;
 		private System.Windows.Forms.TextBox fileNameTextBox;
 		private System.Windows.Forms.Button browseButton;
+		private System.Windows.Forms.OpenFileDialog openFileDialog;
 	}
 }

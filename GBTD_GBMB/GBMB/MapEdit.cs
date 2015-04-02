@@ -973,8 +973,12 @@ namespace GB.GBMB
 		}
 
 		private void mapPropertiesMenuItem_Click(object sender, EventArgs e) {
-			var dialog = new MapPropertiesDialog();
+			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+
+			MapPropertiesDialog dialog = new MapPropertiesDialog(map);
 			dialog.ShowDialog();
+
+			mapControl.Map = mapControl.Map;
 		}
 	}
 }
