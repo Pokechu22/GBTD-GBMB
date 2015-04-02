@@ -326,6 +326,7 @@
 			// 
 			this.mapPropertiesMenuItem.Index = 6;
 			this.mapPropertiesMenuItem.Text = "&Map properties...";
+			this.mapPropertiesMenuItem.Click += new System.EventHandler(this.mapPropertiesMenuItem_Click);
 			// 
 			// locationPropertiesMenuItem
 			// 

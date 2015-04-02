@@ -13,6 +13,7 @@ using GB.Shared.AutoUpdate;
 using GB.Shared.Palettes;
 using System.Runtime.InteropServices;
 using GB.Shared.Controls;
+using GB.GBMB.Dialogs;
 
 namespace GB.GBMB
 {
@@ -969,6 +970,11 @@ namespace GB.GBMB
 					}
 				}
 			}
+		}
+
+		private void mapPropertiesMenuItem_Click(object sender, EventArgs e) {
+			var dialog = new MapPropertiesDialog();
+			dialog.ShowDialog();
 		}
 	}
 }
