@@ -145,6 +145,9 @@ namespace GB.GBMB
 				mapControl.ColorSet = value;
 				tileList.ColorSet = value;
 
+				infoPanelVerticalFlipCheckBox.Visible = infoPanelVerticalFlipCheckBox.Enabled = value.SupportsTileFlipping();
+				infoPanelHorizontalFlipCheckBox.Visible = infoPanelHorizontalFlipCheckBox.Enabled = value.SupportsTileFlipping();
+
 				infoPanelPaletteComboBox.Visible = infoPanelPaletteComboBox.Enabled = value.SupportsPaletteCustomization();
 				infoPanelPalLabel.Visible = infoPanelPalLabel.Enabled = value.SupportsPaletteCustomization();
 
@@ -167,6 +170,11 @@ namespace GB.GBMB
 						infoPanelPaletteComboBox.SelectedIndex = 0;
 					}
 				}
+
+				infoPanelPaletteComboBox.Location =
+					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 246 : 96), infoPanelBorder.Top + 1);
+				infoPanelPalLabel.Location = 
+					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 270 : 120), infoPanelBorder.Top + 3);
 			}
 		}
 
@@ -384,6 +392,7 @@ namespace GB.GBMB
 			this.SuspendLayout();
 
 			bool showProperties = infoPanelPropBorder1.Visible;
+			bool showFlips = infoPanelVerticalFlipCheckBox.Visible || infoPanelHorizontalFlipCheckBox.Visible;
 
 			mainTileEditBorder.Height = this.ClientSize.Height - 34;
 			mainTileEditBorder.Width = this.ClientSize.Width - 59;
@@ -407,8 +416,8 @@ namespace GB.GBMB
 			infoPanelLocationLabel.Location = new Point(infoPanelBorder.Left + 4, infoPanelBorder.Top + 3);
 			infoPanelHorizontalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 80, infoPanelBorder.Top + 3);
 			infoPanelVerticalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 150, infoPanelBorder.Top + 3);
-			infoPanelPaletteComboBox.Location = new Point(infoPanelBorder.Right - 246, infoPanelBorder.Top + 1);
-			infoPanelPalLabel.Location = new Point(infoPanelBorder.Right - 270, infoPanelBorder.Top + 3);
+			infoPanelPaletteComboBox.Location = new Point(infoPanelBorder.Right - (showFlips ? 246 : 96), infoPanelBorder.Top + 1);
+			infoPanelPalLabel.Location = new Point(infoPanelBorder.Right - (showFlips ? 270 : 120), infoPanelBorder.Top + 3);
 
 			this.ResumeLayout(true);
 
