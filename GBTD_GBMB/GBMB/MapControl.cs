@@ -383,7 +383,7 @@ namespace GB.GBMB
 			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
 			int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
 
-			UInt16? returned = properties.Data[lowerSelectionX, lowerSelectionX, property];
+			UInt16? returned = properties.Data[lowerSelectionX, lowerSelectionY, property];
 
 			for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
 				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
@@ -404,8 +404,6 @@ namespace GB.GBMB
 			int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
 			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
 			int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
-
-			int? returned = properties.Data[lowerSelectionX, lowerSelectionX, property];
 
 			for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
 				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {

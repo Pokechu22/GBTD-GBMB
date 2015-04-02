@@ -644,6 +644,8 @@ namespace GB.GBMB
 		}
 
 		private void mapControl_SelectionChanged(object sender, EventArgs e) {
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+
 			infoPanelVerticalFlipCheckBox.CheckState = mapControl.SelectionVerticalFlip;
 			infoPanelHorizontalFlipCheckBox.CheckState = mapControl.SelectionHorizontalFlip;
 
@@ -656,6 +658,14 @@ namespace GB.GBMB
 				}
 			} else {
 				infoPanelPaletteComboBox.SelectedIndex = 0;
+			}
+			for (int i = 0; i < properties.Master.PropCount; i++) {
+				var propTemp = mapControl.GetSelectionPropertyData(i);
+				if (propTemp.HasValue) {
+					infoPanelPropTextBoxes[i].Text = propTemp.Value.ToString();
+				} else {
+					infoPanelPropTextBoxes[i].Text = "";
+				}
 			}
 
 			int lowerSelectionX = (mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX1 : mapControl.SelectionX2);
