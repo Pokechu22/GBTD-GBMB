@@ -833,7 +833,7 @@ namespace GB.GBMB
 		}
 
 		private CleanLabel[] infoPanelPropLabels = new CleanLabel[0];
-		private NumericTextBox[] infoPanelPropTextBoxes = new NumericTextBox[0];
+		private TextBox[] infoPanelPropTextBoxes = new TextBox[0];
 
 		void map_PropCountChanged(object sender, EventArgs e) {
 			GBMObjectMap map = (sender as GBMObjectMap);
@@ -849,28 +849,33 @@ namespace GB.GBMB
 				uint newPropCount = map.PropCount;
 
 				infoPanelPropLabels = new CleanLabel[newPropCount];
-				infoPanelPropTextBoxes = new NumericTextBox[newPropCount];
+				infoPanelPropTextBoxes = new TextBox[newPropCount];
 
 				int currentX = 6;
 				int textBoxY = 2;
 				int labelY = 4;
-
+				
 				for (int i = 0; i < map.PropCount; i++) {
 					GBMObjectMapPropertiesRecord prop = properties.Properties[i];
-
+					
 					CleanLabel label = new CleanLabel();
 					label.Text = prop.Name;
 					label.Name = "infoPanelPropLabel" + i;
 					label.Location = new Point(currentX, labelY);
+					label.Tag = i;
 
 					currentX += label.Width;
 					currentX += 6;
 
-					NumericTextBox textBox = new NumericTextBox();
-					textBox.Value = 0;
+					TextBox textBox = new TextBox();
+					textBox.Text = "";
 					textBox.Width = 38;
 					textBox.Height = 19;
 					textBox.Location = new Point(currentX, textBoxY);
+					
+					textBox.Tag = i;
+					textBox.KeyPress += new KeyPressEventHandler((s, a) => a.Handled = !(Char.IsNumber(a.KeyChar) || a.KeyChar == '\x08'));
+					textBox.TextChanged += new EventHandler(infoPanelPropertyTextBox_TextChanged);
 
 					currentX += textBox.Width;
 					currentX += 3;
@@ -884,6 +889,37 @@ namespace GB.GBMB
 			}
 
 			this.OnResize(new EventArgs());
+		}
+
+		void infoPanelPropertyTextBox_TextChanged(object sender, EventArgs e) {
+			var textBox = sender as TextBox;
+
+			if (gbmFile == null) {return;}
+			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			if (map == null||properties == null) { return; }
+
+			if (textBox != null) {
+				if (!(textBox.Tag is int)) {
+					throw new Exception("Text box " + textBox + "'s tag is not a number -- got " + textBox.Tag + ".");
+				}
+				int prop = (int)textBox.Tag;
+				if (prop >= map.PropCount) {
+					throw new Exception("Text box's tag is beyond the maximum number of properties -- got " + prop + ", max is " + map.PropCount);
+				}
+				var property = properties.Properties[prop];
+
+				if (!String.IsNullOrWhiteSpace(textBox.Text)) {
+					UInt16 value;
+
+					if (UInt16.TryParse(textBox.Text, out value)) {
+						mapControl.SetSelectionPropertyData(prop, value);
+					} else {
+						textBox.Text = "";
+						return;
+					}
+				}
+			}
 		}
 	}
 }

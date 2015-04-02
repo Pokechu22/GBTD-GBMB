@@ -374,6 +374,49 @@ namespace GB.GBMB
 		}
 
 		/// <summary>
+		/// Gets the value of the specified proeprty within the selection.
+		/// </summary>
+		/// <returns>The value, or <c>null</c> if there are multiple values.</returns>
+		public UInt16? GetSelectionPropertyData(int property) {
+			int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+			int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+			int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+			UInt16? returned = properties.Data[lowerSelectionX, lowerSelectionX, property];
+
+			for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					if (properties.Data[x, y, property] != returned) {
+						returned = null;
+					}
+				}
+			}
+
+			return returned;
+		}
+
+		/// <summary>
+		/// Sets the selection's property value.
+		/// </summary>
+		public void SetSelectionPropertyData(int property, UInt16 value) {
+			int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);
+			int upperSelectionX = (selectionX1 < selectionX2 ? selectionX2 : selectionX1);
+			int lowerSelectionY = (selectionY1 < selectionY2 ? selectionY1 : selectionY2);
+			int upperSelectionY = (selectionY1 < selectionY2 ? selectionY2 : selectionY1);
+
+			int? returned = properties.Data[lowerSelectionX, lowerSelectionX, property];
+
+			for (int y = lowerSelectionY; y <= upperSelectionY; y++) {
+				for (int x = lowerSelectionX; x <= upperSelectionX; x++) {
+					properties.Data[x, y, property] = value;
+				}
+			}
+
+			OnMapChanged();
+		}
+
+		/// <summary>
 		/// Tile sizes.  THis currently isn't dynamic and the app just won't be happy if something else is given.
 		/// </summary>
 		private const int TILE_WIDTH = 8, TILE_HEIGHT = 8;
