@@ -19,6 +19,7 @@ namespace GB.Shared.GBMFile
 
 		private UInt32 width, height;
 		private UInt32 propCount, propColorCount;
+		private String fileName;
 		private UInt32 tileCount;
 
 		/// <summary>
@@ -49,7 +50,10 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// The name of the GBR file.
 		/// </summary>
-		public string TileFile { get; set; }
+		public String TileFile {
+			get { return fileName; }
+			set { fileName = value; if (TileFileChanged != null) { TileFileChanged(this, new EventArgs()); } }
+		}
 		/// <summary>
 		/// The number of tiles in the GBR file.
 		/// <para>
@@ -79,6 +83,10 @@ namespace GB.Shared.GBMFile
 		/// Fires when <see cref="PropCount"/> is changed.
 		/// </summary>
 		public event EventHandler PropCountChanged;
+		/// <summary>
+		/// Fires when <see cref="TileFile"/> is changed.
+		/// </summary>
+		public event EventHandler TileFileChanged;
 		/// <summary>
 		/// Fires when <see cref="TileCount"/> is changed.
 		/// Please read the disclaimer there; this does NOT represent the amount of tiles in the GBR file.
