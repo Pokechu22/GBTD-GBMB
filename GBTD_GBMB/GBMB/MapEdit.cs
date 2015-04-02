@@ -257,9 +257,7 @@ namespace GB.GBMB
 				return;
 			}
 
-			LoadFile(d.FileName);
-			auMessenger.FileName = tileFileName;
-			mmf = new AUMemMappedFile(tileFileName, auMessenger, gbrFile);
+			LoadMapFile(d.FileName);
 
 			mapControl.Enabled = true;
 		}
@@ -312,6 +310,7 @@ namespace GB.GBMB
 				var map = gbmFile.GetObjectOfType<GBMObjectMap>();
 				if (map != null) {
 					map.PropCountChanged -= new EventHandler(map_PropCountChanged);
+					map.TileFileChanged -= new EventHandler(map_TileFileChanged);
 				}
 			}
 		}
@@ -320,7 +319,7 @@ namespace GB.GBMB
 		/// Loads a GBMFile from the specified path.
 		/// </summary>
 		/// <param name="mapPath"></param>
-		public void LoadFile(String mapPath) {
+		public void LoadMapFile(String mapPath) {
 			UnloadCurrentFile();
 
 			mapFileName = mapPath;
@@ -334,26 +333,15 @@ namespace GB.GBMB
 
 			tileFileName = Path.GetFullPath(map.TileFile);
 
-			using (var stream = File.OpenRead(tileFileName)) {
-				gbrFile = new GBRFile(stream);
-			}
+			LoadTileFile(tileFileName);
 
 			map.PropCountChanged += new EventHandler(map_PropCountChanged);
+			map.TileFileChanged += new EventHandler(map_TileFileChanged);
 			this.infoPanelPropBorder1.Visible = this.infoPanelPropBorder1.Enabled = (map.PropCount != 0);
 			this.infoPanelPropBorder2.Visible = this.infoPanelPropBorder2.Enabled = (map.PropCount != 0);
 
 			this.mapControl.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 			
-			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-			this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-
-			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
-			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-			this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-			PaletteData paletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
-			this.tileList.PaletteData = paletteData;
-			this.mapControl.PaletteData = paletteData;
-
 			this.mapControl.Properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
 			this.mapControl.PropertyColors = gbmFile.GetObjectOfType<GBMObjectMapPropertyColors>();
 
@@ -374,6 +362,28 @@ namespace GB.GBMB
 			this.WindowState = (settings.FormMaximized ? FormWindowState.Maximized : FormWindowState.Normal);
 
 			this.map_PropCountChanged(map, new EventArgs());
+		}
+
+		public void LoadTileFile(string tilePath) {
+			using (var stream = File.OpenRead(tilePath)) {
+				gbrFile = new GBRFile(stream);
+			}
+
+			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+
+			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
+			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			PaletteData paletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
+			this.tileList.PaletteData = paletteData;
+			this.mapControl.PaletteData = paletteData;
+
+			auMessenger.FileName = tilePath;
+			if (mmf != null) {
+				mmf.Dispose(); //Remove old MMF.
+			}
+			mmf = new AUMemMappedFile(tilePath, auMessenger, gbrFile);
 		}
 
 		/// <summary>
@@ -934,6 +944,10 @@ namespace GB.GBMB
 			}
 
 			this.OnResize(new EventArgs());
+		}
+
+		void map_TileFileChanged(object sender, EventArgs e) {
+			LoadTileFile((sender as GBMObjectMap).TileFile);
 		}
 
 		void infoPanelPropertyTextBox_TextChanged(object sender, EventArgs e) {
