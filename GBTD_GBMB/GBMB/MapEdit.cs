@@ -876,7 +876,7 @@ namespace GB.GBMB
 					textBox.Tag = i;
 					textBox.KeyPress += new KeyPressEventHandler((s, a) => a.Handled = !(Char.IsNumber(a.KeyChar) || a.KeyChar == '\x08'));
 					textBox.TextChanged += new EventHandler(infoPanelPropertyTextBox_TextChanged);
-
+					
 					currentX += textBox.Width;
 					currentX += 3;
 
@@ -913,6 +913,11 @@ namespace GB.GBMB
 					UInt16 value;
 
 					if (UInt16.TryParse(textBox.Text, out value)) {
+						if (value >= property.MaxValue) {
+							value = (UInt16)property.MaxValue;
+							textBox.Text = property.MaxValue.ToString();
+						}
+
 						mapControl.SetSelectionPropertyData(prop, value);
 					} else {
 						textBox.Text = "";
