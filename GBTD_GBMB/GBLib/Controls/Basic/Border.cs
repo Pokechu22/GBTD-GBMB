@@ -90,6 +90,7 @@ namespace GB.Shared.Controls
 				case Border3DSide.Left: return this.leftBorder;
 				case Border3DSide.Right: return this.rightBorder;
 				case Border3DSide.Bottom: return this.bottomBorder;
+				case Border3DSide.All: return this.AllBorders;
 				default: return null;
 				}
 			}
@@ -99,6 +100,7 @@ namespace GB.Shared.Controls
 				case Border3DSide.Left: this.leftBorder = value; return;
 				case Border3DSide.Right: this.rightBorder = value; return;
 				case Border3DSide.Bottom: this.bottomBorder = value; return;
+				case Border3DSide.All: this.AllBorders = value; return;
 				default: return;
 				}
 			}
