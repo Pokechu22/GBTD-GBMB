@@ -43,10 +43,10 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
-			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -332,11 +332,13 @@
 			// 
 			this.locationPropertiesMenuItem.Index = 7;
 			this.locationPropertiesMenuItem.Text = "&Location properties...";
+			this.locationPropertiesMenuItem.Click += new System.EventHandler(this.locationPropertiesMenuItem_Click);
 			// 
 			// defaultLocationPropertiesMenuItem
 			// 
 			this.defaultLocationPropertiesMenuItem.Index = 8;
 			this.defaultLocationPropertiesMenuItem.Text = "&Default location properties...";
+			this.defaultLocationPropertiesMenuItem.Click += new System.EventHandler(this.defaultLocationPropertiesMenuItem_Click);
 			// 
 			// exportMenuItem
 			// 
@@ -786,11 +788,11 @@
 			// 
 			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.zoomLabel.Format = stringFormat1;
+			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat4;
 			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
 			this.zoomLabel.Name = "zoomLabel";
 			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
@@ -862,7 +864,7 @@
 			this.mapControl.Enabled = false;
 			this.mapControl.Location = new System.Drawing.Point(34, 39);
 			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData1;
+			this.mapControl.PaletteData = paletteData2;
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
@@ -908,11 +910,11 @@
 			// 
 			this.infoPanelLocationLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.infoPanelLocationLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.infoPanelLocationLabel.Format = stringFormat2;
+			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelLocationLabel.Format = stringFormat5;
 			this.infoPanelLocationLabel.Location = new System.Drawing.Point(38, 213);
 			this.infoPanelLocationLabel.Name = "infoPanelLocationLabel";
 			this.infoPanelLocationLabel.Size = new System.Drawing.Size(47, 14);
@@ -970,11 +972,11 @@
 			// 
 			this.infoPanelPalLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.infoPanelPalLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.infoPanelPalLabel.Format = stringFormat3;
+			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelPalLabel.Format = stringFormat6;
 			this.infoPanelPalLabel.Location = new System.Drawing.Point(49, 213);
 			this.infoPanelPalLabel.Name = "infoPanelPalLabel";
 			this.infoPanelPalLabel.Size = new System.Drawing.Size(21, 14);

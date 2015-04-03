@@ -1009,8 +1009,18 @@ namespace GB.GBMB
 			BlockFillDialog dialog = new BlockFillDialog(settings, ColorSet, SelectedTile, lowerSelectionX, lowerSelectionY, 
 				tileSet, paletteMapping, tileList.PaletteData, map, properties, defaultProperties);
 			dialog.ShowDialog();
-
+			
 			mapControl.Map = mapControl.Map;
+		}
+
+		private void locationPropertiesMenuItem_Click(object sender, EventArgs e) {
+
+		}
+
+		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
+			DefaultLocationPropertiesDialog dialog = new DefaultLocationPropertiesDialog();
+
+			dialog.ShowDialog();
 		}
 	}
 }
