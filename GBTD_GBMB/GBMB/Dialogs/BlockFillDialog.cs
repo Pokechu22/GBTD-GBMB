@@ -135,6 +135,7 @@ namespace GB.GBMB.Dialogs
 
 			uint mapWidth = Map.Master.Width;
 			uint mapHeight = Map.Master.Height;
+			uint propCount = Properties.Master.PropCount;
 
 			switch (mode) {
 			case BlockFillMode.SELECTED_TILE:
@@ -142,6 +143,9 @@ namespace GB.GBMB.Dialogs
 					for (int y = minY; y <= maxY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 					}
 				}
@@ -151,6 +155,9 @@ namespace GB.GBMB.Dialogs
 					for (int y = minY; y <= maxY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 					}
 					IncrementTile(ref currentTile);
@@ -161,6 +168,9 @@ namespace GB.GBMB.Dialogs
 					for (int x = minX; x <= maxX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 						IncrementTile(ref currentTile);
 					}
@@ -171,6 +181,9 @@ namespace GB.GBMB.Dialogs
 					for (int x = minX; x <= maxX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 					}
 					IncrementTile(ref currentTile);
@@ -181,6 +194,9 @@ namespace GB.GBMB.Dialogs
 					for (int y = minY; y <= maxY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 						IncrementTile(ref currentTile);
 					}
@@ -191,6 +207,9 @@ namespace GB.GBMB.Dialogs
 					for (int y = maxY; y <= minY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 					}
 					IncrementTile(ref currentTile);
@@ -201,6 +220,9 @@ namespace GB.GBMB.Dialogs
 					for (int x = maxX; x <= minX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 						IncrementTile(ref currentTile);
 					}
@@ -211,6 +233,9 @@ namespace GB.GBMB.Dialogs
 					for (int x = maxX; x <= minX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 					}
 					IncrementTile(ref currentTile);
@@ -221,6 +246,9 @@ namespace GB.GBMB.Dialogs
 					for (int y = maxY; y <= minY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+							for (int i = 0; i < propCount; i++) {
+								Properties.Data[x, y, i] = DefaultProperties.Data[currentTile, i];
+							}
 						}
 						IncrementTile(ref currentTile);
 					}
