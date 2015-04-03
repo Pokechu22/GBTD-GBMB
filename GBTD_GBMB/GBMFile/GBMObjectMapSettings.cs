@@ -68,10 +68,8 @@ namespace GB.Shared.GBMFile
 		public UInt16 Bookmark3 { get; set; }
 		/// <summary>
 		/// The block fill pattern.
-		/// 
-		/// TODO: Enum?
 		/// </summary>
-		public UInt32 BlockFillPattern { get; set; }
+		public BlockFillMode BlockFillPattern { get; set; }
 		/// <summary>
 		/// The width of block fill.
 		/// </summary>
@@ -99,7 +97,7 @@ namespace GB.Shared.GBMFile
 			this.Bookmark1 = s.ReadWord();
 			this.Bookmark2 = s.ReadWord();
 			this.Bookmark3 = s.ReadWord();
-			this.BlockFillPattern = s.ReadInteger();
+			this.BlockFillPattern = (BlockFillMode)s.ReadInteger();
 			this.BlockFillWidth = s.ReadInteger();
 			this.BlockFillHeight = s.ReadInteger();
 			this.AutoUpdate = s.ReadBoolean(false);
@@ -118,7 +116,7 @@ namespace GB.Shared.GBMFile
 			s.WriteWord(Bookmark1);
 			s.WriteWord(Bookmark2);
 			s.WriteWord(Bookmark3);
-			s.WriteInteger(BlockFillPattern);
+			s.WriteInteger((uint)BlockFillPattern);
 			s.WriteInteger(BlockFillWidth);
 			s.WriteInteger(BlockFillHeight);
 			s.WriteBoolean(AutoUpdate);
@@ -155,5 +153,18 @@ namespace GB.Shared.GBMFile
 
 			return node;
 		}
+	}
+
+	public enum BlockFillMode : uint
+	{
+		SELECTED_TILE = 0,
+		LEFT_TO_RIGHT = 1,
+		LEFT_TO_RIGHT_TOP_TO_BOTTOM = 2,
+		TOP_TO_BOTTOM = 3,
+		TOP_TO_BOTTOM_LEFT_TO_RIGHT = 4,
+		RIGHT_TO_LEFT = 5,
+		RIGHT_TO_LEFT_TOP_TO_BOTTOM = 6,
+		BOTTOM_TO_TOP = 7,
+		BOTTOM_TO_TOP_RIGHT_TO_LEFT = 8
 	}
 }
