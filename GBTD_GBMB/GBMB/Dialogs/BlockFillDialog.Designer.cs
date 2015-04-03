@@ -25,11 +25,11 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			GB.Shared.Controls.Border tileListBorder;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlockFillDialog));
 			this.okButton = new System.Windows.Forms.Button();
@@ -82,16 +82,16 @@
 			// 
 			// groupBoxSettings
 			// 
-			this.groupBoxSettings.Controls.Add(this.paternLabel);
-			this.groupBoxSettings.Controls.Add(this.leftLabel);
-			this.groupBoxSettings.Controls.Add(this.widthLabel);
-			this.groupBoxSettings.Controls.Add(this.topLabel);
-			this.groupBoxSettings.Controls.Add(this.heightLabel);
-			this.groupBoxSettings.Controls.Add(this.paternComboBox);
-			this.groupBoxSettings.Controls.Add(this.leftTextBox);
-			this.groupBoxSettings.Controls.Add(this.widthTextBox);
-			this.groupBoxSettings.Controls.Add(this.topTextBox);
 			this.groupBoxSettings.Controls.Add(this.heightTextBox);
+			this.groupBoxSettings.Controls.Add(this.topTextBox);
+			this.groupBoxSettings.Controls.Add(this.widthTextBox);
+			this.groupBoxSettings.Controls.Add(this.leftTextBox);
+			this.groupBoxSettings.Controls.Add(this.paternComboBox);
+			this.groupBoxSettings.Controls.Add(this.heightLabel);
+			this.groupBoxSettings.Controls.Add(this.topLabel);
+			this.groupBoxSettings.Controls.Add(this.widthLabel);
+			this.groupBoxSettings.Controls.Add(this.leftLabel);
+			this.groupBoxSettings.Controls.Add(this.paternLabel);
 			this.groupBoxSettings.Location = new System.Drawing.Point(70, 8);
 			this.groupBoxSettings.Name = "groupBoxSettings";
 			this.groupBoxSettings.Size = new System.Drawing.Size(241, 142);
@@ -102,11 +102,11 @@
 			// 
 			this.paternLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.paternLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.paternLabel.Format = stringFormat1;
+			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
+			this.paternLabel.Format = stringFormat5;
 			this.paternLabel.Location = new System.Drawing.Point(14, 20);
 			this.paternLabel.Name = "paternLabel";
 			this.paternLabel.Size = new System.Drawing.Size(41, 14);
@@ -118,11 +118,11 @@
 			// 
 			this.leftLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.leftLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.leftLabel.Format = stringFormat2;
+			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
+			this.leftLabel.Format = stringFormat4;
 			this.leftLabel.Location = new System.Drawing.Point(14, 43);
 			this.leftLabel.Name = "leftLabel";
 			this.leftLabel.Size = new System.Drawing.Size(23, 14);
@@ -150,11 +150,11 @@
 			// 
 			this.topLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.topLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.topLabel.Format = stringFormat4;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.topLabel.Format = stringFormat2;
 			this.topLabel.Location = new System.Drawing.Point(134, 43);
 			this.topLabel.Name = "topLabel";
 			this.topLabel.Size = new System.Drawing.Size(24, 14);
@@ -166,11 +166,11 @@
 			// 
 			this.heightLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.heightLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.heightLabel.Format = stringFormat5;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.heightLabel.Format = stringFormat1;
 			this.heightLabel.Location = new System.Drawing.Point(134, 67);
 			this.heightLabel.Name = "heightLabel";
 			this.heightLabel.Size = new System.Drawing.Size(37, 14);
@@ -180,7 +180,18 @@
 			// 
 			// paternComboBox
 			// 
+			this.paternComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.paternComboBox.FormattingEnabled = true;
+			this.paternComboBox.Items.AddRange(new object[] {
+            "Selected tile",
+            "Left to right",
+            "Left to right, top to bottom",
+            "Top to bottom",
+            "Top to bottom, left to right",
+            "Right to left",
+            "Right to left, top to bottom",
+            "Bottom to top",
+            "Bottom to top, right to left"});
 			this.paternComboBox.Location = new System.Drawing.Point(64, 16);
 			this.paternComboBox.Name = "paternComboBox";
 			this.paternComboBox.Size = new System.Drawing.Size(161, 21);

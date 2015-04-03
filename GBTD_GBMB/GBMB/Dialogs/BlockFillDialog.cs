@@ -21,7 +21,7 @@ namespace GB.GBMB.Dialogs
 		}
 
 		public BlockFillDialog(GBMObjectMapSettings settings, ColorSet colorSet, UInt16 selectedTile, int left, int top,
-			GBRObjectTileData tileSet, GBRObjectTilePalette paletteMapping, PaletteData paletteData) : this() {
+				GBRObjectTileData tileSet, GBRObjectTilePalette paletteMapping, PaletteData paletteData) : this() {
 			
 			this.Settings = settings;
 
@@ -30,15 +30,22 @@ namespace GB.GBMB.Dialogs
 			tileList.PaletteData = paletteData;
 			tileList.ColorSet = colorSet;
 			tileList.SelectedTile = selectedTile;
-			
-			//TODO: Left, top, and other stuff from the settings.
+
+			leftTextBox.Value = left;
+			topTextBox.Value = top;
+
+			widthTextBox.Value = (int)settings.BlockFillWidth;
+			heightTextBox.Value = (int)settings.BlockFillHeight;
+			paternComboBox.SelectedIndex = (int)settings.BlockFillPattern;
 		}
 
 		private void okButton_Click(object sender, EventArgs e) {
-			//TODO update settings.
-
 			this.DialogResult = DialogResult.OK;
 			this.Close();
+
+			Settings.BlockFillHeight = (uint)heightTextBox.Value;
+			Settings.BlockFillWidth = (uint)widthTextBox.Value;
+			Settings.BlockFillPattern = (uint)paternComboBox.SelectedIndex;
 		}
 	}
 }
