@@ -999,12 +999,13 @@ namespace GB.GBMB
 			var tileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 			var paletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
+			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 
 			int lowerSelectionX = (mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX1 : mapControl.SelectionX2);
 			int lowerSelectionY = (mapControl.SelectionY1 < mapControl.SelectionY2 ? mapControl.SelectionY1 : mapControl.SelectionY2);
 
 			BlockFillDialog dialog = new BlockFillDialog(settings, ColorSet, SelectedTile, lowerSelectionX, lowerSelectionY, 
-				tileSet, paletteMapping, tileList.PaletteData);
+				tileSet, paletteMapping, tileList.PaletteData, map);
 			dialog.ShowDialog();
 		}
 	}
