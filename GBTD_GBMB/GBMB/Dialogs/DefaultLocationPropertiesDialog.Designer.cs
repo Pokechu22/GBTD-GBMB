@@ -28,9 +28,11 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefaultLocationPropertiesDialog));
 			this.okButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
-			this.tileGroupBox = new GB.Shared.Controls.GroupBox();
 			this.tileListBorder = new GB.Shared.Controls.Border();
 			this.tileList = new GB.GBMB.TileList();
+			this.tileGroupBox = new GB.Shared.Controls.GroupBox();
+			this.defaultLocationPropertiesEditControl1 = new GB.GBMB.Dialogs.DefaultLocationPropertiesEditControl();
+			this.tileGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// okButton
@@ -50,14 +52,6 @@
 			this.helpButton.TabIndex = 1;
 			this.helpButton.Text = "&Help";
 			this.helpButton.UseVisualStyleBackColor = true;
-			// 
-			// tileGroupBox
-			// 
-			this.tileGroupBox.Location = new System.Drawing.Point(70, 8);
-			this.tileGroupBox.Name = "tileGroupBox";
-			this.tileGroupBox.Size = new System.Drawing.Size(217, 193);
-			this.tileGroupBox.TabIndex = 2;
-			this.tileGroupBox.Text = "Tile 0";
 			// 
 			// tileListBorder
 			// 
@@ -87,6 +81,24 @@
 			this.tileList.TabIndex = 3;
 			this.tileList.TileSet = null;
 			// 
+			// tileGroupBox
+			// 
+			this.tileGroupBox.Controls.Add(this.defaultLocationPropertiesEditControl1);
+			this.tileGroupBox.Location = new System.Drawing.Point(70, 8);
+			this.tileGroupBox.Name = "tileGroupBox";
+			this.tileGroupBox.Size = new System.Drawing.Size(217, 193);
+			this.tileGroupBox.TabIndex = 2;
+			this.tileGroupBox.Text = "Tile 0";
+			// 
+			// defaultLocationPropertiesEditControl1
+			// 
+			this.defaultLocationPropertiesEditControl1.BackColor = System.Drawing.Color.White;
+			this.defaultLocationPropertiesEditControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.defaultLocationPropertiesEditControl1.Location = new System.Drawing.Point(8, 16);
+			this.defaultLocationPropertiesEditControl1.Name = "defaultLocationPropertiesEditControl1";
+			this.defaultLocationPropertiesEditControl1.Size = new System.Drawing.Size(201, 169);
+			this.defaultLocationPropertiesEditControl1.TabIndex = 4;
+			// 
 			// DefaultLocationPropertiesDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -103,6 +115,7 @@
 			this.MinimizeBox = false;
 			this.Name = "DefaultLocationPropertiesDialog";
 			this.Text = "Default location properties";
+			this.tileGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -114,5 +127,6 @@
 		private Shared.Controls.GroupBox tileGroupBox;
 		private TileList tileList;
 		private Shared.Controls.Border tileListBorder;
+		private DefaultLocationPropertiesEditControl defaultLocationPropertiesEditControl1;
 	}
 }
