@@ -1018,7 +1018,13 @@ namespace GB.GBMB
 		}
 
 		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
-			DefaultLocationPropertiesDialog dialog = new DefaultLocationPropertiesDialog();
+			var paletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			var tileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
+
+			DefaultLocationPropertiesDialog dialog = new DefaultLocationPropertiesDialog(tileSet, ColorSet, SelectedTile, 
+				paletteMapping, tileList.PaletteData, properties, defaultProperties);
 
 			dialog.ShowDialog();
 		}

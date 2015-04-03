@@ -37,7 +37,7 @@ namespace GB.GBMB.Dialogs
 			tileList.PaletteData = paletteData;
 			tileList.ColorSet = colorSet;
 			tileList.SelectedTile = selectedTile;
-
+			
 			leftTextBox.Value = left;
 			topTextBox.Value = top;
 
