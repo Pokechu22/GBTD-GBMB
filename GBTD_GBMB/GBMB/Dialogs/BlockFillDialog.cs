@@ -16,16 +16,21 @@ namespace GB.GBMB.Dialogs
 	{
 		public GBMObjectMapSettings Settings { get; private set; }
 		public GBMObjectMapTileData Map { get; private set; }
+		public GBMObjectMapPropertyData Properties { get; private set; }
+		public GBMObjectDefaultTilePropertyValues DefaultProperties { get; private set; }
 
 		private BlockFillDialog() {
 			InitializeComponent();
 		}
 
 		public BlockFillDialog(GBMObjectMapSettings settings, ColorSet colorSet, UInt16 selectedTile, int left, int top,
-				GBRObjectTileData tileSet, GBRObjectTilePalette paletteMapping, PaletteData paletteData, GBMObjectMapTileData map) : this() {
+				GBRObjectTileData tileSet, GBRObjectTilePalette paletteMapping, PaletteData paletteData, GBMObjectMapTileData map,
+				GBMObjectMapPropertyData properties, GBMObjectDefaultTilePropertyValues defaultProperties) : this() {
 			
 			this.Settings = settings;
 			this.Map = map;
+			this.Properties = properties;
+			this.DefaultProperties = defaultProperties;
 
 			tileList.TileSet = tileSet;
 			tileList.PaletteMapping = paletteMapping;
@@ -116,9 +121,123 @@ namespace GB.GBMB.Dialogs
 
 			Settings.BlockFillHeight = (uint)heightTextBox.Value;
 			Settings.BlockFillWidth = (uint)widthTextBox.Value;
-			Settings.BlockFillPattern = (uint)paternComboBox.SelectedIndex;
-			
-			//TODO apply the effect.
+			Settings.BlockFillPattern = (BlockFillMode)paternComboBox.SelectedIndex;
+
+			ApplyEffectToMap(Settings.BlockFillPattern, tileList.SelectedTile, leftTextBox.Value, topTextBox.Value, 
+				widthTextBox.Value, heightTextBox.Value);
+		}
+
+		private void ApplyEffectToMap(BlockFillMode mode, UInt16 tile, int minX, int minY, int width, int height) {
+			UInt16 currentTile = tile;
+
+			int maxX = minX + width - 1;
+			int maxY = minY + height - 1;
+
+			uint mapWidth = Map.Master.Width;
+			uint mapHeight = Map.Master.Height;
+
+			switch (mode) {
+			case BlockFillMode.SELECTED_TILE:
+				for (int x = minX; x <= maxX; x++) {
+					for (int y = minY; y <= maxY; y++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+					}
+				}
+				break;
+			case BlockFillMode.LEFT_TO_RIGHT: 
+				for (int x = minX; x <= maxX; x++) {
+					for (int y = minY; y <= maxY; y++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+					}
+					IncrementTile(ref currentTile);
+				}
+				break;
+			case BlockFillMode.LEFT_TO_RIGHT_TOP_TO_BOTTOM:
+				for (int y = minY; y <= maxY; y++) {
+					for (int x = minX; x <= maxX; x++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+						IncrementTile(ref currentTile);
+					}
+				}
+				break;
+			case BlockFillMode.TOP_TO_BOTTOM:
+				for (int y = minY; y <= maxY; y++) {
+					for (int x = minX; x <= maxX; x++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+					}
+					IncrementTile(ref currentTile);
+				}
+				break;
+			case BlockFillMode.TOP_TO_BOTTOM_LEFT_TO_RIGHT: 
+				for (int x = minX; x <= maxX; x++) {
+					for (int y = minY; y <= maxY; y++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+						IncrementTile(ref currentTile);
+					}
+				}
+				break;
+			case BlockFillMode.RIGHT_TO_LEFT:
+				for (int x = maxX; x <= minX; x++) {
+					for (int y = maxY; y <= minY; y++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+					}
+					IncrementTile(ref currentTile);
+				}
+				break;
+			case BlockFillMode.RIGHT_TO_LEFT_TOP_TO_BOTTOM: 
+				for (int y = maxY; y <= minY; y++) {
+					for (int x = maxX; x <= minX; x++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+						IncrementTile(ref currentTile);
+					}
+				}
+				break;
+			case BlockFillMode.BOTTOM_TO_TOP:
+				for (int y = maxY; y <= minY; y++) {
+					for (int x = maxX; x <= minX; x++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+					}
+					IncrementTile(ref currentTile);
+				}
+				break;
+			case BlockFillMode.BOTTOM_TO_TOP_RIGHT_TO_LEFT:
+				for (int x = maxX; x <= minX; x++) {
+					for (int y = maxY; y <= minY; y++) {
+						if (x < mapWidth && y < mapHeight) {
+							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
+						}
+						IncrementTile(ref currentTile);
+					}
+				}
+				break;
+			default: throw new InvalidEnumArgumentException("mode", (int)mode, typeof(BlockFillMode));
+			}
+		}
+
+		/// <summary>
+		/// Increments the tile, wrapping around if beyond the maximum.
+		/// </summary>
+		private void IncrementTile(ref UInt16 currentTile) {
+			currentTile++;
+			if (currentTile >= tileList.TileSet.Count) {
+				currentTile = 0;
+			}
 		}
 	}
 }
