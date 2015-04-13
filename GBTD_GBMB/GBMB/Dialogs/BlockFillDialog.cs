@@ -23,7 +23,7 @@ namespace GB.GBMB.Dialogs
 			InitializeComponent();
 		}
 
-		public BlockFillDialog(GBMObjectMapSettings settings, ColorSet colorSet, UInt16 selectedTile, int left, int top,
+		public BlockFillDialog(GBMObjectMapSettings settings, ColorSet colorSet, UInt16 selectedTile, uint left, uint top,
 				GBRObjectTileData tileSet, GBRObjectTilePalette paletteMapping, PaletteData paletteData, GBMObjectMapTileData map,
 				GBMObjectMapPropertyData properties, GBMObjectDefaultTilePropertyValues defaultProperties) : this() {
 			
@@ -41,8 +41,8 @@ namespace GB.GBMB.Dialogs
 			leftTextBox.Value = left;
 			topTextBox.Value = top;
 
-			widthTextBox.Value = (int)settings.BlockFillWidth;
-			heightTextBox.Value = (int)settings.BlockFillHeight;
+			widthTextBox.Value = settings.BlockFillWidth;
+			heightTextBox.Value = settings.BlockFillHeight;
 			paternComboBox.SelectedIndex = (int)settings.BlockFillPattern;
 		}
 
@@ -127,11 +127,11 @@ namespace GB.GBMB.Dialogs
 				widthTextBox.Value, heightTextBox.Value);
 		}
 
-		private void ApplyEffectToMap(BlockFillMode mode, UInt16 tile, int minX, int minY, int width, int height) {
+		private void ApplyEffectToMap(BlockFillMode mode, UInt16 tile, uint minX, uint minY, uint width, uint height) {
 			UInt16 currentTile = tile;
 
-			int maxX = minX + width - 1;
-			int maxY = minY + height - 1;
+			uint maxX = minX + width - 1;
+			uint maxY = minY + height - 1;
 
 			uint mapWidth = Map.Master.Width;
 			uint mapHeight = Map.Master.Height;
@@ -139,8 +139,8 @@ namespace GB.GBMB.Dialogs
 
 			switch (mode) {
 			case BlockFillMode.SELECTED_TILE:
-				for (int x = minX; x <= maxX; x++) {
-					for (int y = minY; y <= maxY; y++) {
+				for (uint x = minX; x <= maxX; x++) {
+					for (uint y = minY; y <= maxY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -151,8 +151,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.LEFT_TO_RIGHT: 
-				for (int x = minX; x <= maxX; x++) {
-					for (int y = minY; y <= maxY; y++) {
+				for (uint x = minX; x <= maxX; x++) {
+					for (uint y = minY; y <= maxY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -164,8 +164,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.LEFT_TO_RIGHT_TOP_TO_BOTTOM:
-				for (int y = minY; y <= maxY; y++) {
-					for (int x = minX; x <= maxX; x++) {
+				for (uint y = minY; y <= maxY; y++) {
+					for (uint x = minX; x <= maxX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -177,8 +177,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.TOP_TO_BOTTOM:
-				for (int y = minY; y <= maxY; y++) {
-					for (int x = minX; x <= maxX; x++) {
+				for (uint y = minY; y <= maxY; y++) {
+					for (uint x = minX; x <= maxX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -190,8 +190,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.TOP_TO_BOTTOM_LEFT_TO_RIGHT: 
-				for (int x = minX; x <= maxX; x++) {
-					for (int y = minY; y <= maxY; y++) {
+				for (uint x = minX; x <= maxX; x++) {
+					for (uint y = minY; y <= maxY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -203,8 +203,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.RIGHT_TO_LEFT:
-				for (int x = maxX; x <= minX; x++) {
-					for (int y = maxY; y <= minY; y++) {
+				for (uint x = maxX; x <= minX; x++) {
+					for (uint y = maxY; y <= minY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -216,8 +216,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.RIGHT_TO_LEFT_TOP_TO_BOTTOM: 
-				for (int y = maxY; y <= minY; y++) {
-					for (int x = maxX; x <= minX; x++) {
+				for (uint y = maxY; y <= minY; y++) {
+					for (uint x = maxX; x <= minX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -229,8 +229,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.BOTTOM_TO_TOP:
-				for (int y = maxY; y <= minY; y++) {
-					for (int x = maxX; x <= minX; x++) {
+				for (uint y = maxY; y <= minY; y++) {
+					for (uint x = maxX; x <= minX; x++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {
@@ -242,8 +242,8 @@ namespace GB.GBMB.Dialogs
 				}
 				break;
 			case BlockFillMode.BOTTOM_TO_TOP_RIGHT_TO_LEFT:
-				for (int x = maxX; x <= minX; x++) {
-					for (int y = maxY; y <= minY; y++) {
+				for (uint x = maxX; x <= minX; x++) {
+					for (uint y = maxY; y <= minY; y++) {
 						if (x < mapWidth && y < mapHeight) {
 							Map.Tiles[x, y] = new GBMObjectMapTileDataRecord(currentTile);
 							for (int i = 0; i < propCount; i++) {

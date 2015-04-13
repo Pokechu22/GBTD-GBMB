@@ -42,7 +42,7 @@ namespace GB.GBTD.Dialogs
 			this.firstGBTDTileTextBox.Value = settings.FirstProgramTile;
 			this.tileCountTextBox.Value = settings.TileCount;
 			this.firstImportFileTileTextBox.Value = settings.FirstImportFileTile;
-			this.firstByteToUseTextBox.Value = (int)settings.FirstByte;
+			this.firstByteToUseTextBox.Value = settings.FirstByte;
 			this.formatComboBox.SelectedIndex = (int)settings.BinaryFileFormat;
 		}
 
@@ -52,7 +52,7 @@ namespace GB.GBTD.Dialogs
 			settings.FirstProgramTile = (UInt16)this.firstGBTDTileTextBox.Value;
 			settings.TileCount = (UInt16)this.tileCountTextBox.Value;
 			settings.FirstImportFileTile = (UInt16)this.firstImportFileTileTextBox.Value;
-			settings.FirstByte = (UInt16)this.firstByteToUseTextBox.Value;
+			settings.FirstByte = this.firstByteToUseTextBox.Value;
 			settings.BinaryFileFormat = (ImportBinaryFileFormat)this.formatComboBox.SelectedIndex;
 		}
 

@@ -24,8 +24,8 @@ namespace GB.GBMB.Dialogs
 		public MapPropertiesDialog(GBMObjectMap map) : this() {
 			this.Map = map;
 
-			widthTextBox.Value = (int)this.Map.Width;
-			heightTextBox.Value = (int)this.Map.Height;
+			widthTextBox.Value = this.Map.Width;
+			heightTextBox.Value = this.Map.Height;
 			fileNameTextBox.Text = this.Map.TileFile;
 		}
 
@@ -33,7 +33,7 @@ namespace GB.GBMB.Dialogs
 			this.DialogResult = DialogResult.OK;
 			this.Close();
 
-			this.Map.Resize((uint)widthTextBox.Value, (uint)heightTextBox.Value);
+			this.Map.Resize(widthTextBox.Value, heightTextBox.Value);
 			this.Map.TileFile = fileNameTextBox.Text;
 		}
 

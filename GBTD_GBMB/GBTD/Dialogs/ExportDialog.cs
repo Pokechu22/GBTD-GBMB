@@ -62,10 +62,10 @@ namespace GB.GBTD.Dialogs
 			this.palettesCGBComboBox.SelectedIndex = (int)settings.GBCPalMode;
 			this.palettesSGBComboBox.SelectedIndex = (int)settings.SGBPalMode;
 			this.metatileConvertCheckBox.Checked = settings.MakeMetaTiles;
-			this.indexOffsetTextBox.Value = (int)settings.MetaTileOffset;
+			this.indexOffsetTextBox.Value = settings.MetaTileOffset;
 			this.indexCounterComboBox.SelectedIndex = (int)settings.MetaCounterFormat;
 			this.splitDataCheckBox.Checked = settings.Split;
-			this.blockSizeTextBox.Value = (int)settings.BlockSize;
+			this.blockSizeTextBox.Value = settings.BlockSize;
 		}
 
 		protected void SaveToSettings() {
@@ -87,10 +87,10 @@ namespace GB.GBTD.Dialogs
 			settings.GBCPalMode = (ExportPaletteMode)this.palettesCGBComboBox.SelectedIndex;
 			settings.SGBPalMode= (ExportPaletteMode)this.palettesSGBComboBox.SelectedIndex;
 			settings.MakeMetaTiles = this.metatileConvertCheckBox.Checked;
-			settings.MetaTileOffset = (UInt32)this.indexOffsetTextBox.Value;
+			settings.MetaTileOffset = this.indexOffsetTextBox.Value;
 			settings.MetaCounterFormat= (ExportCounterType)this.indexCounterComboBox.SelectedIndex;
 			settings.Split = this.splitDataCheckBox.Checked;
-			settings.BlockSize = (UInt32)this.blockSizeTextBox.Value;
+			settings.BlockSize = this.blockSizeTextBox.Value;
 		}
 	}
 }

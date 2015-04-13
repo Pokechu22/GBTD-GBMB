@@ -17,38 +17,23 @@ namespace GB.Shared.Controls
 			this.AutoSize = false;
 		}
 
-		private bool acceptsSigned = false;
-
 		[Category("Data"), Description("The numeric value.")]
 		[DefaultValue(0)]
-		public int Value {
+		public UInt32 Value {
 			get {
-				return Int32.Parse(this.Text);
+				return UInt32.Parse(this.Text);
 			}
 			set {
-				if (!acceptsSigned && value < 0) {
-					return;
-				}
 				this.Text = value.ToString();
 			}	
-		}
-
-		[Category("Data"), Description("Whether or not numbers are allowed to be signed (negative).")]
-		[DefaultValue(false)]
-		public bool AcceptsSigned {
-			get { return this.acceptsSigned; }
-			set { this.acceptsSigned = value; }
 		}
 
 		[DefaultValue("0")]
 		public override string Text {
 			get { return base.Text; }
 			set {
-				int result = 0;
-				if (Int32.TryParse(value, out result)) {
-					if (!acceptsSigned && result < 0) {
-						return;
-					}
+				UInt32 result = 0;
+				if (UInt32.TryParse(value, out result)) {
 					base.Text = value;
 				} else {
 					//Do nothing as it is invalid input.
@@ -58,8 +43,7 @@ namespace GB.Shared.Controls
 
 		protected override void OnKeyPress(KeyPressEventArgs e) {
 			if (!(char.IsNumber(e.KeyChar) 
-					|| e.KeyChar == (char)0x08
-					|| (acceptsSigned && TextLength == 0 && e.KeyChar == '-'))) {
+					|| e.KeyChar == (char)0x08)) {
 				e.Handled = true;
 			}
 			base.OnKeyPress(e);

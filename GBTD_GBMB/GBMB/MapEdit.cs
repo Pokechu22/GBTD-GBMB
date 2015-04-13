@@ -1003,8 +1003,8 @@ namespace GB.GBMB
 			var properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
 			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
-			int lowerSelectionX = (mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX1 : mapControl.SelectionX2);
-			int lowerSelectionY = (mapControl.SelectionY1 < mapControl.SelectionY2 ? mapControl.SelectionY1 : mapControl.SelectionY2);
+			uint lowerSelectionX = (uint)(mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX1 : mapControl.SelectionX2);
+			uint lowerSelectionY = (uint)(mapControl.SelectionY1 < mapControl.SelectionY2 ? mapControl.SelectionY1 : mapControl.SelectionY2);
 
 			BlockFillDialog dialog = new BlockFillDialog(settings, ColorSet, SelectedTile, lowerSelectionX, lowerSelectionY, 
 				tileSet, paletteMapping, tileList.PaletteData, map, properties, defaultProperties);
