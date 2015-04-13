@@ -14,9 +14,6 @@ namespace GB.GBMB.Dialogs
 {
 	public partial class DefaultLocationPropertiesDialog : Form
 	{
-		public GBMObjectMapProperties Properties { get; private set; }
-		public GBMObjectDefaultTilePropertyValues DefaultProperties { get; private set; }
-
 		private DefaultLocationPropertiesDialog() {
 			InitializeComponent();
 		}
@@ -25,8 +22,8 @@ namespace GB.GBMB.Dialogs
 				GBRObjectTilePalette paletteMapping, PaletteData paletteData, GBMObjectMapProperties properties, 
 				GBMObjectDefaultTilePropertyValues defaultProperties) : this() {
 
-			this.Properties = properties;
-			this.DefaultProperties = defaultProperties;
+			defaultLocationPropertiesEditControl1.Properties = properties;
+			defaultLocationPropertiesEditControl1.DefaultProperties = defaultProperties;
 
 			tileList.TileSet = tileSet;
 			tileList.PaletteMapping = paletteMapping;
