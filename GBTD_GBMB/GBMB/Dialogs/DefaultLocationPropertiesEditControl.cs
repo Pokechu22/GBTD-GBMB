@@ -83,6 +83,7 @@ namespace GB.GBMB.Dialogs
 					t.TabStop = false;
 					t.Name = "PropTextBox" + i;
 					t.Tag = properties.Properties[i].Name;
+					t.MaxLength = 5;
 
 					textBoxes[i] = t;
 

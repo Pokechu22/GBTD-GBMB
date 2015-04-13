@@ -22,8 +22,8 @@ namespace GB.GBMB.Dialogs
 				GBRObjectTilePalette paletteMapping, PaletteData paletteData, GBMObjectMapProperties properties, 
 				GBMObjectDefaultTilePropertyValues defaultProperties) : this() {
 
-			defaultLocationPropertiesEditControl1.Properties = properties;
-			defaultLocationPropertiesEditControl1.DefaultProperties = defaultProperties;
+			editControl.Properties = properties;
+			editControl.DefaultProperties = defaultProperties;
 			
 			tileList.TileSet = tileSet;
 			tileList.PaletteMapping = paletteMapping;
@@ -33,29 +33,30 @@ namespace GB.GBMB.Dialogs
 		}
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
-			if (tileList.SelectedTile == defaultLocationPropertiesEditControl1.SelectedTile) {
+			tileGroupBox.Text = "Tile " + tileList.SelectedTile;
+			if (tileList.SelectedTile == editControl.SelectedTile) {
 				return;
 			}
 
-			if (!defaultLocationPropertiesEditControl1.IsValid()) {
-				tileList.SelectedTile = defaultLocationPropertiesEditControl1.SelectedTile; //Cancel the change.
+			if (!editControl.IsValid()) {
+				tileList.SelectedTile = editControl.SelectedTile; //Cancel the change.
 			} else {
-				defaultLocationPropertiesEditControl1.SelectedTile = tileList.SelectedTile;
+				editControl.SelectedTile = tileList.SelectedTile;
 			}
 		}
 
 		protected override void OnClosing(CancelEventArgs e) {
-			if (!defaultLocationPropertiesEditControl1.IsValid()) {
+			if (!editControl.IsValid()) {
 				e.Cancel = true;
 			} else {
-				defaultLocationPropertiesEditControl1.SaveCurrent();
+				editControl.SaveCurrent();
 			}
 			base.OnClosing(e);
 		}
 
 		private void okButton_Click(object sender, EventArgs e) {
-			if (defaultLocationPropertiesEditControl1.IsValid()) {
-				defaultLocationPropertiesEditControl1.SaveCurrent();
+			if (editControl.IsValid()) {
+				editControl.SaveCurrent();
 				this.Close();
 			}
 		}
