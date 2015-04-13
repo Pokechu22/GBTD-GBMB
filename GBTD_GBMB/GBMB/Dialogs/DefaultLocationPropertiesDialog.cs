@@ -24,12 +24,40 @@ namespace GB.GBMB.Dialogs
 
 			defaultLocationPropertiesEditControl1.Properties = properties;
 			defaultLocationPropertiesEditControl1.DefaultProperties = defaultProperties;
-
+			
 			tileList.TileSet = tileSet;
 			tileList.PaletteMapping = paletteMapping;
 			tileList.PaletteData = paletteData;
 			tileList.ColorSet = colorSet;
 			tileList.SelectedTile = selectedTile;
+		}
+
+		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
+			if (tileList.SelectedTile == defaultLocationPropertiesEditControl1.SelectedTile) {
+				return;
+			}
+
+			if (!defaultLocationPropertiesEditControl1.IsValid()) {
+				tileList.SelectedTile = defaultLocationPropertiesEditControl1.SelectedTile; //Cancel the change.
+			} else {
+				defaultLocationPropertiesEditControl1.SelectedTile = tileList.SelectedTile;
+			}
+		}
+
+		protected override void OnClosing(CancelEventArgs e) {
+			if (!defaultLocationPropertiesEditControl1.IsValid()) {
+				e.Cancel = true;
+			} else {
+				defaultLocationPropertiesEditControl1.SaveCurrent();
+			}
+			base.OnClosing(e);
+		}
+
+		private void okButton_Click(object sender, EventArgs e) {
+			if (defaultLocationPropertiesEditControl1.IsValid()) {
+				defaultLocationPropertiesEditControl1.SaveCurrent();
+				this.Close();
+			}
 		}
 	}
 }

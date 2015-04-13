@@ -29,9 +29,9 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.tileListBorder = new GB.Shared.Controls.Border();
-			this.tileList = new GB.GBMB.TileList();
 			this.tileGroupBox = new GB.Shared.Controls.GroupBox();
 			this.defaultLocationPropertiesEditControl1 = new GB.GBMB.Dialogs.DefaultLocationPropertiesEditControl();
+			this.tileList = new GB.GBMB.TileList();
 			this.tileGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -43,6 +43,7 @@
 			this.okButton.TabIndex = 0;
 			this.okButton.Text = "OK";
 			this.okButton.UseVisualStyleBackColor = true;
+			this.okButton.Click += new System.EventHandler(this.okButton_Click);
 			// 
 			// helpButton
 			// 
@@ -66,6 +67,26 @@
 			this.tileListBorder.TabIndex = 4;
 			this.tileListBorder.TopBorder = null;
 			// 
+			// tileGroupBox
+			// 
+			this.tileGroupBox.Controls.Add(this.defaultLocationPropertiesEditControl1);
+			this.tileGroupBox.Location = new System.Drawing.Point(70, 8);
+			this.tileGroupBox.Name = "tileGroupBox";
+			this.tileGroupBox.Size = new System.Drawing.Size(217, 193);
+			this.tileGroupBox.TabIndex = 2;
+			this.tileGroupBox.Text = "Tile 0";
+			// 
+			// defaultLocationPropertiesEditControl1
+			// 
+			this.defaultLocationPropertiesEditControl1.BackColor = System.Drawing.Color.White;
+			this.defaultLocationPropertiesEditControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.defaultLocationPropertiesEditControl1.DefaultProperties = null;
+			this.defaultLocationPropertiesEditControl1.Location = new System.Drawing.Point(8, 16);
+			this.defaultLocationPropertiesEditControl1.Name = "defaultLocationPropertiesEditControl1";
+			this.defaultLocationPropertiesEditControl1.Properties = null;
+			this.defaultLocationPropertiesEditControl1.Size = new System.Drawing.Size(201, 169);
+			this.defaultLocationPropertiesEditControl1.TabIndex = 4;
+			// 
 			// tileList
 			// 
 			this.tileList.Bookmark1Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark1Icon")));
@@ -80,24 +101,7 @@
 			this.tileList.Size = new System.Drawing.Size(56, 188);
 			this.tileList.TabIndex = 3;
 			this.tileList.TileSet = null;
-			// 
-			// tileGroupBox
-			// 
-			this.tileGroupBox.Controls.Add(this.defaultLocationPropertiesEditControl1);
-			this.tileGroupBox.Location = new System.Drawing.Point(70, 8);
-			this.tileGroupBox.Name = "tileGroupBox";
-			this.tileGroupBox.Size = new System.Drawing.Size(217, 193);
-			this.tileGroupBox.TabIndex = 2;
-			this.tileGroupBox.Text = "Tile 0";
-			// 
-			// defaultLocationPropertiesEditControl1
-			// 
-			this.defaultLocationPropertiesEditControl1.BackColor = System.Drawing.Color.White;
-			this.defaultLocationPropertiesEditControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.defaultLocationPropertiesEditControl1.Location = new System.Drawing.Point(8, 16);
-			this.defaultLocationPropertiesEditControl1.Name = "defaultLocationPropertiesEditControl1";
-			this.defaultLocationPropertiesEditControl1.Size = new System.Drawing.Size(201, 169);
-			this.defaultLocationPropertiesEditControl1.TabIndex = 4;
+			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
 			// 
 			// DefaultLocationPropertiesDialog
 			// 

@@ -17,6 +17,7 @@ namespace GB.GBMB.Dialogs
 
 		private GBMObjectMapProperties properties;
 		private GBMObjectDefaultTilePropertyValues defaultProperties;
+		private UInt16 selectedTile;
 
 		public GBMObjectMapProperties Properties {
 			get { return properties; }
@@ -24,7 +25,24 @@ namespace GB.GBMB.Dialogs
 		}
 		public GBMObjectDefaultTilePropertyValues DefaultProperties {
 			get { return defaultProperties; }
-			set { defaultProperties = value; this.Invalidate(true); }
+			set { defaultProperties = value; LoadTile(selectedTile); this.Invalidate(true); }
+		}
+
+		/// <summary>
+		/// The selected tile.  Before changing, check that the data is valid!
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		public UInt16 SelectedTile {
+			get { return selectedTile; }
+			set {
+				if (!IsValid()) {
+					throw new Exception("One of the textboxes is invalid; abort tile change!");
+				}
+				
+				SelectedTileChanged(selectedTile, value);
+
+				selectedTile = value;
+			}
 		}
 
 		public DefaultLocationPropertiesEditControl() {
@@ -57,11 +75,14 @@ namespace GB.GBMB.Dialogs
 					panel.Click += new EventHandler((s, a) => { t.Focus(); t.SelectAll(); });
 					panel.Padding = new Padding(2, 2, 2, 2);
 					panel.Cursor = Cursors.IBeam;
+					t.Name = "PropPanel" + i;
 
 					t.Dock = DockStyle.Fill;
 					t.BorderStyle = BorderStyle.None;
 					t.Value = 0;
 					t.TabStop = false;
+					t.Name = "PropTextBox" + i;
+					t.Tag = properties.Properties[i].Name;
 
 					textBoxes[i] = t;
 
@@ -71,6 +92,62 @@ namespace GB.GBMB.Dialogs
 
 				this.ResumeLayout();
 			}
+		}
+
+		private void LoadTile(UInt16 tile) {
+			for (int i = 0; i < textBoxes.Length; i++) {
+				defaultProperties.Data[tile, i] = (UInt16)textBoxes[i].Value;
+			}
+		}
+		private void SelectedTileChanged(UInt16 oldTile, UInt16 newTile) {
+			for (int i = 0; i < textBoxes.Length; i++) {
+				defaultProperties.Data[oldTile, i] = (UInt16)textBoxes[i].Value;
+			}
+			for (int i = 0; i < textBoxes.Length; i++) {
+				textBoxes[i].Value = defaultProperties.Data[newTile, i];
+			}
+		}
+
+		/// <summary>
+		/// Saves the current data (if it is valid).
+		/// </summary>
+		public void SaveCurrent() {
+			if (IsValid()) {
+				for (int i = 0; i < textBoxes.Length; i++) {
+					defaultProperties.Data[selectedTile, i] = (UInt16)textBoxes[i].Value;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Checks if the data is valid.  If the data is invalid, an error message is displayed.
+		/// </summary>
+		/// <returns></returns>
+		public bool IsValid() {
+			if (properties == null) {
+				throw new WarningException("Cannot validate when properties is null -- this should not happen!");
+			}
+			if (defaultProperties == null) {
+				throw new WarningException("Cannot validate when defaultProperties is null -- this should not happen!");
+			}
+
+			for (int i = 0; i < textBoxes.Length; i++) {
+				if (String.IsNullOrWhiteSpace(textBoxes[i].Text)) {
+					//TODO A "is required" message?
+					MessageBox.Show(textBoxes[i].Tag + " should be at least 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+				if (textBoxes[i].Value < 0) {
+					MessageBox.Show(textBoxes[i].Tag + " should be at least 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+				if (textBoxes[i].Value > properties.Properties[i].MaxValue) {
+					MessageBox.Show(textBoxes[i].Tag + " should be lower or equal to " + properties.Properties[i].MaxValue + ".", 
+						"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+			}
+			return true;
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
