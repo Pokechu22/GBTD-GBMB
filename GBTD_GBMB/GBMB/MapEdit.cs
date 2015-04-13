@@ -1014,7 +1014,9 @@ namespace GB.GBMB
 		}
 
 		private void locationPropertiesMenuItem_Click(object sender, EventArgs e) {
+			LocationPropertiesDialog dialog = new LocationPropertiesDialog();
 
+			dialog.ShowDialog();
 		}
 
 		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
