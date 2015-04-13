@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorderPaint.cs" />
     <Compile Include="Dialogs\BlockFillDialog.cs">
       <SubType>Form</SubType>
     </Compile>
