@@ -79,49 +79,78 @@ namespace GB.GBMB.Dialogs
 			const int DATA_Y = TOP_Y + BOX_HEIGHT;
 
 			this.SuspendLayout();
+
+			foreach (Control c in names) { c.Dispose(); }
+			foreach (Control c in maximums) { c.Dispose(); }
+			foreach (Control c in bits) { c.Dispose(); }
+
+			this.Controls.Clear();
+
 			names = new TextBox[properties.Length];
 			maximums = new NumericTextBox[properties.Length];
 			bits = new NumericTextBox[properties.Length];
-
-			this.Controls.Clear();
 
 			for (int i = 0; i < properties.Length; i++) {
 				int y = DATA_Y + (i * BOX_HEIGHT);
 
 				names[i] = new TextBox();
-				names[i].Name = "PropTextBox" + i;
-				names[i].Top = y;
-				names[i].Left = NAME_X;
-				names[i].Width = NAME_WIDTH;
-				names[i].Height = BOX_HEIGHT;
+				names[i].Name = "NameTextBox" + i;
 				names[i].BorderStyle = BorderStyle.None;
-				names[i].AutoSize = false;
+				names[i].Dock = DockStyle.Fill;
+				names[i].MaxLength = 31;
 				names[i].Tag = i;
+
+				Panel namePanel = new Panel();
+				namePanel.SetBounds(NAME_X, y, NAME_WIDTH - 1, BOX_HEIGHT - 1);
+				namePanel.BorderStyle = BorderStyle.None;
+				namePanel.GotFocus += new EventHandler((s, a) => { names[i].Focus(); names[i].SelectAll(); });
+				namePanel.Click += new EventHandler((s, a) => { names[i].Focus(); names[i].SelectAll(); });
+				namePanel.Padding = new Padding(2, 2, 1, 1);
+				namePanel.Cursor = Cursors.IBeam;
+				namePanel.Name = "NamePanel" + i;
+
+				namePanel.Controls.Add(names[i]);
 
 				maximums[i] = new NumericTextBox();
 				maximums[i].Name = "MaxTextBox" + i;
-				maximums[i].Top = y;
-				maximums[i].Left = MAX_X;
-				maximums[i].Width = MAX_WIDTH;
-				maximums[i].Height = BOX_HEIGHT;
 				maximums[i].BorderStyle = BorderStyle.None;
-				maximums[i].AutoSize = false;
+				maximums[i].Dock = DockStyle.Fill;
+				maximums[i].MaxLength = 10; //10 is the length of the max UInt32 value.
 				maximums[i].Tag = i;
 
-				bits[i] = new NumericTextBox();
-				bits[i].Name = "BitsTextBox" + i;
-				bits[i].Top = y;
-				bits[i].Left = BITS_X;
-				bits[i].Width = BITS_WIDTH;
-				bits[i].Height = BOX_HEIGHT;
-				bits[i].BorderStyle = BorderStyle.None;
-				bits[i].AutoSize = false;
-				bits[i].ReadOnly = true;
-				bits[i].Tag = i;
+				Panel maximumPanel = new Panel();
+				maximumPanel.SetBounds(MAX_X, y, MAX_WIDTH - 1, BOX_HEIGHT - 1);
+				maximumPanel.BorderStyle = BorderStyle.None;
+				maximumPanel.GotFocus += new EventHandler((s, a) => { maximums[i].Focus(); maximums[i].SelectAll(); });
+				maximumPanel.Click += new EventHandler((s, a) => { maximums[i].Focus(); maximums[i].SelectAll(); });
+				maximumPanel.Padding = new Padding(2, 2, 1, 1);
+				maximumPanel.Cursor = Cursors.IBeam;
+				maximumPanel.Name = "MaxPanel" + i;
 
-				this.Controls.Add(names[i]);
-				this.Controls.Add(maximums[i]);
-				this.Controls.Add(bits[i]);
+				maximumPanel.Controls.Add(maximums[i]);
+
+				bits[i] = new NumericTextBox();
+				bits[i].Name = "MaxTextBox" + i;
+				bits[i].BorderStyle = BorderStyle.None;
+				bits[i].Dock = DockStyle.Fill;
+				bits[i].Tag = i;
+				bits[i].ReadOnly = true;
+
+				Panel bitsPanel = new Panel();
+				bitsPanel.SetBounds(BITS_X, y, BITS_WIDTH - 1, BOX_HEIGHT - 1);
+				bitsPanel.BorderStyle = BorderStyle.None;
+				bitsPanel.GotFocus += new EventHandler((s, a) => { bits[i].Focus(); bits[i].SelectAll(); });
+				bitsPanel.Click += new EventHandler((s, a) => { bits[i].Focus(); bits[i].SelectAll(); });
+				bitsPanel.Padding = new Padding(2, 2, 1, 1);
+				bitsPanel.Cursor = Cursors.IBeam;
+				bitsPanel.Name = "MaxPanel" + i;
+				bitsPanel.BackColor = SystemColors.Control;
+
+				bitsPanel.Controls.Add(bits[i]);
+
+				this.Controls.Add(namePanel);
+				this.Controls.Add(maximumPanel);
+				this.Controls.Add(bitsPanel);
 			}
 
 			this.ResumeLayout(true);

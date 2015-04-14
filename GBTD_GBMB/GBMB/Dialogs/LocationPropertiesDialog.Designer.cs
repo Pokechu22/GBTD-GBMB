@@ -25,8 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.propColorsGroupBox = new GB.Shared.Controls.GroupBox();
 			this.greenOperandTextBox = new GB.Shared.Controls.NumericTextBox();
@@ -58,14 +58,14 @@
 			// 
 			// propColorsGroupBox
 			// 
-			this.propColorsGroupBox.Controls.Add(this.redLabel);
-			this.propColorsGroupBox.Controls.Add(this.greenLabel);
-			this.propColorsGroupBox.Controls.Add(this.redPropertyComboBox);
-			this.propColorsGroupBox.Controls.Add(this.greenPropertyComboBox);
-			this.propColorsGroupBox.Controls.Add(this.redOperatorComboBox);
-			this.propColorsGroupBox.Controls.Add(this.greenOperatorComboBox);
-			this.propColorsGroupBox.Controls.Add(this.redOperandTextBox);
 			this.propColorsGroupBox.Controls.Add(this.greenOperandTextBox);
+			this.propColorsGroupBox.Controls.Add(this.redOperandTextBox);
+			this.propColorsGroupBox.Controls.Add(this.greenOperatorComboBox);
+			this.propColorsGroupBox.Controls.Add(this.redOperatorComboBox);
+			this.propColorsGroupBox.Controls.Add(this.greenPropertyComboBox);
+			this.propColorsGroupBox.Controls.Add(this.redPropertyComboBox);
+			this.propColorsGroupBox.Controls.Add(this.greenLabel);
+			this.propColorsGroupBox.Controls.Add(this.redLabel);
 			this.propColorsGroupBox.Location = new System.Drawing.Point(8, 239);
 			this.propColorsGroupBox.Name = "propColorsGroupBox";
 			this.propColorsGroupBox.Size = new System.Drawing.Size(273, 77);
@@ -144,11 +144,11 @@
 			// 
 			this.greenLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.greenLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.greenLabel.Format = stringFormat3;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.greenLabel.Format = stringFormat1;
 			this.greenLabel.Location = new System.Drawing.Point(14, 47);
 			this.greenLabel.Name = "greenLabel";
 			this.greenLabel.Size = new System.Drawing.Size(36, 14);
@@ -160,11 +160,11 @@
 			// 
 			this.redLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.redLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.redLabel.Format = stringFormat4;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.redLabel.Format = stringFormat2;
 			this.redLabel.Location = new System.Drawing.Point(14, 23);
 			this.redLabel.Name = "redLabel";
 			this.redLabel.Size = new System.Drawing.Size(25, 14);

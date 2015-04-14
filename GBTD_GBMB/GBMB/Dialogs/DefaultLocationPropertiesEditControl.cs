@@ -56,6 +56,8 @@ namespace GB.GBMB.Dialogs
 			const int BOX_X = 135;
 
 			if (properties != null) {
+				this.Controls.Clear();
+
 				foreach (Control c in textBoxes) { c.Dispose(); }
 
 				textBoxes = new NumericTextBox[properties.Master.PropCount];
