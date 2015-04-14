@@ -46,5 +46,19 @@ namespace GB.GBMB.Dialogs
 			greenOperatorComboBox.SelectedIndex = (int)propColors.Data[1].Operator;
 			greenOperandTextBox.Value = propColors.Data[1].Value;
 		}
+
+		protected override void OnClosing(CancelEventArgs e) {
+			//TODO validate data.
+			//TODO check if dialogresult is OK.
+			PropColors.Data[0].Property = (uint)redPropertyComboBox.SelectedIndex;
+			PropColors.Data[0].Operator = (PropertyColorOperator)redOperatorComboBox.SelectedIndex;
+			PropColors.Data[0].Value = redOperandTextBox.Value;
+
+			PropColors.Data[1].Property = (uint)greenPropertyComboBox.SelectedIndex;
+			PropColors.Data[1].Operator = (PropertyColorOperator)greenOperatorComboBox.SelectedIndex;
+			PropColors.Data[1].Value = greenOperandTextBox.Value;
+
+			base.OnClosing(e);
+		}
 	}
 }

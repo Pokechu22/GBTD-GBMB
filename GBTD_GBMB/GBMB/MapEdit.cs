@@ -1020,6 +1020,9 @@ namespace GB.GBMB
 			LocationPropertiesDialog dialog = new LocationPropertiesDialog(properties, propColors);
 
 			dialog.ShowDialog();
+
+			mapControl.Properties = mapControl.Properties;
+			mapControl.PropertyColors = mapControl.PropertyColors;
 		}
 
 		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
