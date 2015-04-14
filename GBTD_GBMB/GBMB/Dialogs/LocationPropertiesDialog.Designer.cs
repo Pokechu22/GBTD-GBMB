@@ -28,13 +28,13 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
-			this.propertiesGroupBox = new GB.Shared.Controls.GroupBox();
 			this.propColorsGroupBox = new GB.Shared.Controls.GroupBox();
+			this.propertiesGroupBox = new GB.Shared.Controls.GroupBox();
 			this.SuspendLayout();
 			// 
 			// okButton
 			// 
-			this.okButton.Location = new System.Drawing.Point(48, 326);
+			this.okButton.Location = new System.Drawing.Point(48, 324);
 			this.okButton.Name = "okButton";
 			this.okButton.Size = new System.Drawing.Size(75, 25);
 			this.okButton.TabIndex = 0;
@@ -44,7 +44,7 @@
 			// cancelButton
 			// 
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(129, 326);
+			this.cancelButton.Location = new System.Drawing.Point(127, 324);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(75, 25);
 			this.cancelButton.TabIndex = 1;
@@ -53,28 +53,28 @@
 			// 
 			// helpButton
 			// 
-			this.helpButton.Location = new System.Drawing.Point(210, 326);
+			this.helpButton.Location = new System.Drawing.Point(206, 324);
 			this.helpButton.Name = "helpButton";
 			this.helpButton.Size = new System.Drawing.Size(75, 25);
 			this.helpButton.TabIndex = 2;
 			this.helpButton.Text = "Help";
 			this.helpButton.UseVisualStyleBackColor = true;
 			// 
-			// propertiesGroupBox
-			// 
-			this.propertiesGroupBox.Location = new System.Drawing.Point(12, 12);
-			this.propertiesGroupBox.Name = "propertiesGroupBox";
-			this.propertiesGroupBox.Size = new System.Drawing.Size(265, 202);
-			this.propertiesGroupBox.TabIndex = 3;
-			this.propertiesGroupBox.Text = "Properties";
-			// 
 			// propColorsGroupBox
 			// 
-			this.propColorsGroupBox.Location = new System.Drawing.Point(12, 220);
+			this.propColorsGroupBox.Location = new System.Drawing.Point(8, 239);
 			this.propColorsGroupBox.Name = "propColorsGroupBox";
-			this.propColorsGroupBox.Size = new System.Drawing.Size(265, 100);
+			this.propColorsGroupBox.Size = new System.Drawing.Size(273, 77);
 			this.propColorsGroupBox.TabIndex = 4;
 			this.propColorsGroupBox.Text = "Property colors";
+			// 
+			// propertiesGroupBox
+			// 
+			this.propertiesGroupBox.Location = new System.Drawing.Point(8, 8);
+			this.propertiesGroupBox.Name = "propertiesGroupBox";
+			this.propertiesGroupBox.Size = new System.Drawing.Size(273, 226);
+			this.propertiesGroupBox.TabIndex = 3;
+			this.propertiesGroupBox.Text = "Properties";
 			// 
 			// LocationPropertiesDialog
 			// 
