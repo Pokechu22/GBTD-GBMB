@@ -45,6 +45,28 @@ namespace GB.GBMB.Dialogs
 			greenPropertyComboBox.SelectedIndex = (int)propColors.Data[1].Property;
 			greenOperatorComboBox.SelectedIndex = (int)propColors.Data[1].Operator;
 			greenOperandTextBox.Value = propColors.Data[1].Value;
+
+			this.Properties.Master.PropCountChanged += new EventHandler(PropCountChanged);
+		}
+
+		private void removeButton_Click(object sender, EventArgs e) {
+			this.Properties.Master.PropCount--;
+		}
+
+		private void addButton_Click(object sender, EventArgs e) {
+			this.Properties.Master.PropCount++;
+		}
+
+		void PropCountChanged(object sender, EventArgs e) {
+			if (redPropertyComboBox.SelectedIndex >= Properties.Master.PropCount) {
+				redPropertyComboBox.SelectedIndex = (int)(Properties.Master.PropCount - 1);
+			}
+			if (greenPropertyComboBox.SelectedIndex >= Properties.Master.PropCount) {
+				greenPropertyComboBox.SelectedIndex = (int)(Properties.Master.PropCount - 1);
+			}
+
+			removeButton.Enabled = (Properties.Master.PropCount > 0);
+			addButton.Enabled = (Properties.Master.PropCount <= 32); //The maximum from GBMB.
 		}
 
 		protected override void OnClosing(CancelEventArgs e) {

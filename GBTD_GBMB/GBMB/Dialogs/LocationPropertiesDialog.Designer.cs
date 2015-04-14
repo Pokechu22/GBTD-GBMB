@@ -25,8 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
@@ -40,7 +40,10 @@
 			this.greenOperatorComboBox = new System.Windows.Forms.ComboBox();
 			this.redOperandTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.greenOperandTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.removeButton = new System.Windows.Forms.Button();
+			this.addButton = new System.Windows.Forms.Button();
 			this.propColorsGroupBox.SuspendLayout();
+			this.propertiesGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// okButton
@@ -89,6 +92,8 @@
 			// 
 			// propertiesGroupBox
 			// 
+			this.propertiesGroupBox.Controls.Add(this.addButton);
+			this.propertiesGroupBox.Controls.Add(this.removeButton);
 			this.propertiesGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.propertiesGroupBox.Name = "propertiesGroupBox";
 			this.propertiesGroupBox.Size = new System.Drawing.Size(273, 226);
@@ -99,11 +104,11 @@
 			// 
 			this.redLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.redLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
-			this.redLabel.Format = stringFormat8;
+			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
+			this.redLabel.Format = stringFormat5;
 			this.redLabel.Location = new System.Drawing.Point(14, 23);
 			this.redLabel.Name = "redLabel";
 			this.redLabel.Size = new System.Drawing.Size(25, 14);
@@ -115,11 +120,11 @@
 			// 
 			this.greenLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.greenLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
-			this.greenLabel.Format = stringFormat7;
+			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
+			this.greenLabel.Format = stringFormat6;
 			this.greenLabel.Location = new System.Drawing.Point(14, 47);
 			this.greenLabel.Name = "greenLabel";
 			this.greenLabel.Size = new System.Drawing.Size(36, 14);
@@ -193,6 +198,26 @@
 			this.greenOperandTextBox.TabIndex = 11;
 			this.greenOperandTextBox.Value = ((uint)(0u));
 			// 
+			// removeButton
+			// 
+			this.removeButton.Location = new System.Drawing.Point(189, 201);
+			this.removeButton.Name = "removeButton";
+			this.removeButton.Size = new System.Drawing.Size(60, 19);
+			this.removeButton.TabIndex = 4;
+			this.removeButton.Text = "&Remove";
+			this.removeButton.UseVisualStyleBackColor = true;
+			this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+			// 
+			// addButton
+			// 
+			this.addButton.Location = new System.Drawing.Point(126, 201);
+			this.addButton.Name = "addButton";
+			this.addButton.Size = new System.Drawing.Size(60, 19);
+			this.addButton.TabIndex = 5;
+			this.addButton.Text = "&Add";
+			this.addButton.UseVisualStyleBackColor = true;
+			this.addButton.Click += new System.EventHandler(this.addButton_Click);
+			// 
 			// LocationPropertiesDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -211,6 +236,7 @@
 			this.Name = "LocationPropertiesDialog";
 			this.Text = "Location properties";
 			this.propColorsGroupBox.ResumeLayout(false);
+			this.propertiesGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -230,5 +256,7 @@
 		private System.Windows.Forms.ComboBox redPropertyComboBox;
 		private Shared.Controls.CleanLabel greenLabel;
 		private Shared.Controls.CleanLabel redLabel;
+		private System.Windows.Forms.Button addButton;
+		private System.Windows.Forms.Button removeButton;
 	}
 }
