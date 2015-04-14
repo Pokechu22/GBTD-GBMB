@@ -25,8 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
@@ -99,11 +99,11 @@
 			// 
 			this.redLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.redLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.redLabel.Format = stringFormat4;
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.redLabel.Format = stringFormat8;
 			this.redLabel.Location = new System.Drawing.Point(14, 23);
 			this.redLabel.Name = "redLabel";
 			this.redLabel.Size = new System.Drawing.Size(25, 14);
@@ -115,11 +115,11 @@
 			// 
 			this.greenLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.greenLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.greenLabel.Format = stringFormat3;
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.greenLabel.Format = stringFormat7;
 			this.greenLabel.Location = new System.Drawing.Point(14, 47);
 			this.greenLabel.Name = "greenLabel";
 			this.greenLabel.Size = new System.Drawing.Size(36, 14);
@@ -131,11 +131,6 @@
 			// 
 			this.redPropertyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.redPropertyComboBox.FormattingEnabled = true;
-			this.redPropertyComboBox.Items.AddRange(new object[] {
-            "Actual properties",
-            "Will appear here",
-            "You should never",
-            "See this"});
 			this.redPropertyComboBox.Location = new System.Drawing.Point(64, 20);
 			this.redPropertyComboBox.Name = "redPropertyComboBox";
 			this.redPropertyComboBox.Size = new System.Drawing.Size(105, 21);
@@ -145,11 +140,6 @@
 			// 
 			this.greenPropertyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.greenPropertyComboBox.FormattingEnabled = true;
-			this.greenPropertyComboBox.Items.AddRange(new object[] {
-            "Actual properties",
-            "Will appear here",
-            "You should never",
-            "See this"});
 			this.greenPropertyComboBox.Location = new System.Drawing.Point(64, 44);
 			this.greenPropertyComboBox.Name = "greenPropertyComboBox";
 			this.greenPropertyComboBox.Size = new System.Drawing.Size(105, 21);
@@ -159,6 +149,13 @@
 			// 
 			this.redOperatorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.redOperatorComboBox.FormattingEnabled = true;
+			this.redOperatorComboBox.Items.AddRange(new object[] {
+            "=",
+            "<>",
+            "<",
+            ">",
+            "<=",
+            ">="});
 			this.redOperatorComboBox.Location = new System.Drawing.Point(176, 20);
 			this.redOperatorComboBox.Name = "redOperatorComboBox";
 			this.redOperatorComboBox.Size = new System.Drawing.Size(38, 21);
@@ -168,6 +165,13 @@
 			// 
 			this.greenOperatorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.greenOperatorComboBox.FormattingEnabled = true;
+			this.greenOperatorComboBox.Items.AddRange(new object[] {
+            "=",
+            "<>",
+            "<",
+            ">",
+            "<=",
+            ">="});
 			this.greenOperatorComboBox.Location = new System.Drawing.Point(176, 44);
 			this.greenOperatorComboBox.Name = "greenOperatorComboBox";
 			this.greenOperatorComboBox.Size = new System.Drawing.Size(38, 21);

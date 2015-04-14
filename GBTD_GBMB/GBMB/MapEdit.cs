@@ -1014,7 +1014,10 @@ namespace GB.GBMB
 		}
 
 		private void locationPropertiesMenuItem_Click(object sender, EventArgs e) {
-			LocationPropertiesDialog dialog = new LocationPropertiesDialog();
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var propColors = gbmFile.GetObjectOfType<GBMObjectMapPropertyColors>();
+
+			LocationPropertiesDialog dialog = new LocationPropertiesDialog(properties, propColors);
 
 			dialog.ShowDialog();
 		}
