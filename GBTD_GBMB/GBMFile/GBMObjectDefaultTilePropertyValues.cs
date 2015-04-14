@@ -98,7 +98,7 @@ namespace GB.Shared.GBMFile
 
 			for (int p = 0; p < newPropCount; p++) {
 				for (int t = 0; t < tileCount; t++) {
-					if (t >= oldPropCount) { //Would be out of bounds in the origional array
+					if (p >= oldPropCount) { //Would be out of bounds in the origional array
 						newData[t, p] = 0;
 					} else {
 						newData[t, p] = Data[t, p];
