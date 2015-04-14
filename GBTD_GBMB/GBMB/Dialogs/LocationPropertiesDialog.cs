@@ -33,7 +33,7 @@ namespace GB.GBMB.Dialogs
 			this.Properties = properties;
 			this.PropColors = propColors;
 
-			this.propertiesData = properties.Properties;
+			this.editControl.Properties = this.propertiesData = properties.Properties;
 			this.propColorsData = propColors.Data;
 
 			if (propColors.Master.PropColorCount < 2) {

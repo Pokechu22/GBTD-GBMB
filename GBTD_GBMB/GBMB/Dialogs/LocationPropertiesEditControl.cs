@@ -32,23 +32,37 @@ namespace GB.GBMB.Dialogs
 			const int NAME_X = LEFT_X + 21, NAME_WIDTH = 121;
 			const int MAX_X = LEFT_X + 142, MAX_WIDTH = 50;
 			const int BITS_X = LEFT_X + 192, BITS_WIDTH = 45;
+			const int DATA_Y = TOP_Y + BOX_HEIGHT;
 
 			base.OnPaint(e);
 
 			ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(Point.Empty, this.Size), Border3DStyle.Sunken, 
 				Border3DSide.Bottom | Border3DSide.Right | Border3DSide.Top | Border3DSide.Left);
 
-			DrawTextRect(e.Graphics, "", NUMBER_X, TOP_Y, NUMBER_WIDTH, BOX_HEIGHT);
-			DrawTextRect(e.Graphics, "Name", NAME_X, TOP_Y, NAME_WIDTH, BOX_HEIGHT);
-			DrawTextRect(e.Graphics, "Max", MAX_X, TOP_Y, MAX_WIDTH, BOX_HEIGHT);
-			DrawTextRect(e.Graphics, "Bits", BITS_X, TOP_Y, BITS_WIDTH, BOX_HEIGHT);
-		}
-
-		private void DrawTextRect(Graphics g, String text, int x, int y, int width, int height) {
 			StringFormat format = new StringFormat();
 			format.Alignment = StringAlignment.Near;
 			format.LineAlignment = StringAlignment.Center;
 
+			DrawTextRect(e.Graphics, "", NUMBER_X, TOP_Y, NUMBER_WIDTH, BOX_HEIGHT, format);
+			DrawTextRect(e.Graphics, "Name", NAME_X, TOP_Y, NAME_WIDTH, BOX_HEIGHT, format);
+			DrawTextRect(e.Graphics, "Max", MAX_X, TOP_Y, MAX_WIDTH, BOX_HEIGHT, format);
+			DrawTextRect(e.Graphics, "Bits", BITS_X, TOP_Y, BITS_WIDTH, BOX_HEIGHT, format);
+
+			if (properties == null) { return; }
+
+			format.LineAlignment = StringAlignment.Center;
+			format.Alignment = StringAlignment.Center;
+
+			for (int i = 0; i < properties.Length; i++) {
+				int y = (DATA_Y + (i * BOX_HEIGHT));
+				DrawTextRect(e.Graphics, (i + 1).ToString(), NUMBER_X, y, NUMBER_WIDTH, BOX_HEIGHT, format);
+				DrawEditRect(e.Graphics, NAME_X, y, NAME_WIDTH, BOX_HEIGHT);
+				DrawEditRect(e.Graphics, MAX_X, y, MAX_WIDTH, BOX_HEIGHT);
+				DrawEditRect(e.Graphics, BITS_X, y, BITS_WIDTH, BOX_HEIGHT);
+			}
+		}
+
+		private void DrawTextRect(Graphics g, String text, int x, int y, int width, int height, StringFormat format) {
 			Rectangle OuterBorderRect = new Rectangle(x, y, width, height);
 			Rectangle InnerBorderRect = new Rectangle(x, y, width - 1, height - 1);
 			Rectangle TextRect = new Rectangle(x + 0, y + 1, width - 2, height - 3);
