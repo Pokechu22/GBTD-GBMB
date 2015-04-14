@@ -74,6 +74,9 @@
     <Compile Include="Dialogs\LocationPropertiesDialog.Designer.cs">
       <DependentUpon>LocationPropertiesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\LocationPropertiesEditControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dialogs\MapPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>

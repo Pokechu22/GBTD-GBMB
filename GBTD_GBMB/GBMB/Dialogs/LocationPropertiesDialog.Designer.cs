@@ -41,6 +41,8 @@
 			this.addButton = new System.Windows.Forms.Button();
 			this.removeButton = new System.Windows.Forms.Button();
 			this.okButton = new System.Windows.Forms.Button();
+			this.cancelButton = new System.Windows.Forms.Button();
+			this.editControl = new GB.GBMB.Dialogs.LocationPropertiesEditControl();
 			this.propColorsGroupBox.SuspendLayout();
 			this.propertiesGroupBox.SuspendLayout();
 			this.SuspendLayout();
@@ -51,7 +53,7 @@
 			this.helpButton.Name = "helpButton";
 			this.helpButton.Size = new System.Drawing.Size(75, 25);
 			this.helpButton.TabIndex = 2;
-			this.helpButton.Text = "Help";
+			this.helpButton.Text = "&Help";
 			this.helpButton.UseVisualStyleBackColor = true;
 			// 
 			// propColorsGroupBox
@@ -73,6 +75,7 @@
 			// greenOperandTextBox
 			// 
 			this.greenOperandTextBox.Location = new System.Drawing.Point(221, 44);
+			this.greenOperandTextBox.MaxLength = 5;
 			this.greenOperandTextBox.Name = "greenOperandTextBox";
 			this.greenOperandTextBox.Size = new System.Drawing.Size(38, 21);
 			this.greenOperandTextBox.TabIndex = 11;
@@ -81,6 +84,7 @@
 			// redOperandTextBox
 			// 
 			this.redOperandTextBox.Location = new System.Drawing.Point(221, 20);
+			this.redOperandTextBox.MaxLength = 5;
 			this.redOperandTextBox.Name = "redOperandTextBox";
 			this.redOperandTextBox.Size = new System.Drawing.Size(38, 21);
 			this.redOperandTextBox.TabIndex = 10;
@@ -172,6 +176,7 @@
 			// 
 			this.propertiesGroupBox.Controls.Add(this.removeButton);
 			this.propertiesGroupBox.Controls.Add(this.addButton);
+			this.propertiesGroupBox.Controls.Add(this.editControl);
 			this.propertiesGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.propertiesGroupBox.Name = "propertiesGroupBox";
 			this.propertiesGroupBox.Size = new System.Drawing.Size(273, 226);
@@ -201,12 +206,29 @@
 			// okButton
 			// 
 			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.okButton.Location = new System.Drawing.Point(127, 324);
+			this.okButton.Location = new System.Drawing.Point(48, 324);
 			this.okButton.Name = "okButton";
 			this.okButton.Size = new System.Drawing.Size(75, 25);
 			this.okButton.TabIndex = 1;
 			this.okButton.Text = "OK";
 			this.okButton.UseVisualStyleBackColor = true;
+			// 
+			// cancelButton
+			// 
+			this.cancelButton.Location = new System.Drawing.Point(127, 324);
+			this.cancelButton.Name = "cancelButton";
+			this.cancelButton.Size = new System.Drawing.Size(75, 25);
+			this.cancelButton.TabIndex = 5;
+			this.cancelButton.Text = "Cancel";
+			this.cancelButton.UseVisualStyleBackColor = true;
+			// 
+			// editControl
+			// 
+			this.editControl.BackColor = System.Drawing.Color.White;
+			this.editControl.Location = new System.Drawing.Point(16, 20);
+			this.editControl.Name = "editControl";
+			this.editControl.Size = new System.Drawing.Size(241, 174);
+			this.editControl.TabIndex = 8;
 			// 
 			// LocationPropertiesDialog
 			// 
@@ -214,10 +236,11 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(289, 354);
+			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.propColorsGroupBox);
-			this.Controls.Add(this.propertiesGroupBox);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.okButton);
+			this.Controls.Add(this.propertiesGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -245,5 +268,7 @@
 		private System.Windows.Forms.Button addButton;
 		private System.Windows.Forms.Button removeButton;
 		private System.Windows.Forms.Button okButton;
+		private System.Windows.Forms.Button cancelButton;
+		private LocationPropertiesEditControl editControl;
 	}
 }

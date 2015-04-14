@@ -21,13 +21,20 @@ namespace GB.GBMB.Dialogs
 			private set;
 		}
 
+		private GBMObjectMapPropertiesRecord[] propertiesData;
+		private GBMObjectMapPropertyColorsRecord[] propColorsData;
+
 		private LocationPropertiesDialog() {
+
 			InitializeComponent();
 		}
 
 		public LocationPropertiesDialog(GBMObjectMapProperties properties, GBMObjectMapPropertyColors propColors) : this() {
 			this.Properties = properties;
 			this.PropColors = propColors;
+
+			this.propertiesData = properties.Properties;
+			this.propColorsData = propColors.Data;
 
 			if (propColors.Master.PropColorCount < 2) {
 				//Not valid right now.
@@ -45,40 +52,60 @@ namespace GB.GBMB.Dialogs
 			greenPropertyComboBox.SelectedIndex = (int)propColors.Data[1].Property;
 			greenOperatorComboBox.SelectedIndex = (int)propColors.Data[1].Operator;
 			greenOperandTextBox.Value = propColors.Data[1].Value;
-
-			this.Properties.Master.PropCountChanged += new EventHandler(PropCountChanged);
 		}
 
 		private void removeButton_Click(object sender, EventArgs e) {
-			this.Properties.Master.PropCount--;
+			//this.Properties.Master.PropCount--;
 		}
 
 		private void addButton_Click(object sender, EventArgs e) {
-			this.Properties.Master.PropCount++;
+			//this.Properties.Master.PropCount++;
 		}
 
 		void PropCountChanged(object sender, EventArgs e) {
-			if (redPropertyComboBox.SelectedIndex >= Properties.Master.PropCount) {
-				redPropertyComboBox.SelectedIndex = (int)(Properties.Master.PropCount - 1);
+			redPropertyComboBox.Items.Clear();
+			redPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
+			greenPropertyComboBox.Items.Clear();
+			greenPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
+
+			if (redPropertyComboBox.SelectedIndex >= propertiesData.Length) {
+				redPropertyComboBox.SelectedIndex = propertiesData.Length - 1;
 			}
-			if (greenPropertyComboBox.SelectedIndex >= Properties.Master.PropCount) {
-				greenPropertyComboBox.SelectedIndex = (int)(Properties.Master.PropCount - 1);
+			if (greenPropertyComboBox.SelectedIndex >= propertiesData.Length) {
+				greenPropertyComboBox.SelectedIndex = propertiesData.Length - 1;
+			}
+			//Make sure SelectedIndex isn't -1 if it can be anything else.
+			if (propertiesData.Length != 0) {
+				if (redPropertyComboBox.SelectedIndex < 0) {
+					redPropertyComboBox.SelectedIndex = 0;
+				}
+				if (greenPropertyComboBox.SelectedIndex < 0) {
+					greenPropertyComboBox.SelectedIndex = 0;
+				}
 			}
 
-			removeButton.Enabled = (Properties.Master.PropCount > 0);
-			addButton.Enabled = (Properties.Master.PropCount <= 32); //The maximum from GBMB.
+			removeButton.Enabled = (propertiesData.Length > 0);
+			addButton.Enabled = (propertiesData.Length <= 32); //The maximum from GBMB.
+
+			redPropertyComboBox.Enabled = (propertiesData.Length > 0);
+			redOperatorComboBox.Enabled = (propertiesData.Length > 0);
+			redOperandTextBox.Enabled = (propertiesData.Length > 0);
+
+			greenPropertyComboBox.Enabled = (propertiesData.Length > 0);
+			greenOperatorComboBox.Enabled = (propertiesData.Length > 0);
+			greenOperandTextBox.Enabled = (propertiesData.Length > 0);
 		}
 
 		protected override void OnClosing(CancelEventArgs e) {
 			//TODO validate data.
 			//TODO check if dialogresult is OK.
-			PropColors.Data[0].Property = (uint)redPropertyComboBox.SelectedIndex;
-			PropColors.Data[0].Operator = (PropertyColorOperator)redOperatorComboBox.SelectedIndex;
-			PropColors.Data[0].Value = redOperandTextBox.Value;
+			propColorsData[0].Property = (uint)redPropertyComboBox.SelectedIndex;
+			propColorsData[0].Operator = (PropertyColorOperator)redOperatorComboBox.SelectedIndex;
+			propColorsData[0].Value = redOperandTextBox.Value;
 
-			PropColors.Data[1].Property = (uint)greenPropertyComboBox.SelectedIndex;
-			PropColors.Data[1].Operator = (PropertyColorOperator)greenOperatorComboBox.SelectedIndex;
-			PropColors.Data[1].Value = greenOperandTextBox.Value;
+			propColorsData[1].Property = (uint)greenPropertyComboBox.SelectedIndex;
+			propColorsData[1].Operator = (PropertyColorOperator)greenOperatorComboBox.SelectedIndex;
+			propColorsData[1].Value = greenOperandTextBox.Value;
 
 			base.OnClosing(e);
 		}
