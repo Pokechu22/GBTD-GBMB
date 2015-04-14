@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using GB.Shared.GBMFile;
+using GB.Shared.Controls;
 
 namespace GB.GBMB.Dialogs
 {
@@ -17,12 +18,113 @@ namespace GB.GBMB.Dialogs
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBMObjectMapPropertiesRecord[] Properties {
-			get { return properties; }
-			set { properties = value; this.Invalidate(); }
+			get { SaveChanges(); return properties; }
+			set { properties = value; LoadChanges(); this.Invalidate(); }
 		}
+
+		private TextBox[] names = new TextBox[0];
+		private NumericTextBox[] maximums = new NumericTextBox[0];
+		private NumericTextBox[] bits = new NumericTextBox[0];
 
 		public LocationPropertiesEditControl() {
 			SetStyle(ControlStyles.FixedWidth | ControlStyles.FixedHeight, true);
+		}
+
+		public void SaveChanges() {
+			properties = new GBMObjectMapPropertiesRecord[names.Length];
+
+			for (int i = 0; i < properties.Length; i++) {
+				properties[i].Name = names[i].Text;
+				properties[i].MaxValue = maximums[i].Value;
+			}
+		}
+
+		public void LoadChanges() {
+			//If the size changed and everything needs to be resized.
+			if (names.Length != properties.Length) {
+				ResizeControls();
+			}
+
+			for (int i = 0; i < properties.Length; i++) {
+				names[i].Text = properties[i].Name;
+				maximums[i].Value = properties[i].MaxValue;
+				bits[i].Value = GetNumberOfBits(properties[i].MaxValue);
+			}
+		}
+
+		/// <summary>
+		/// Gets the number of bits used for a number.
+		/// </summary>
+		private UInt32 GetNumberOfBits(UInt32 number) {
+			UInt32 bits = 32;
+
+			while (bits > 0) {
+				//If the topmost bit is set.
+				if ((number & 0x80000000U) != 0) {
+					break;
+				}
+				number <<= 1;
+				bits--;
+			}
+
+			return bits;
+		}
+
+		private void ResizeControls() {
+			const int LEFT_X = 2, TOP_Y = 2; //TopLeft coords (due to border).
+			const int BOX_HEIGHT = 19;
+			const int NAME_X = LEFT_X + 21, NAME_WIDTH = 121;
+			const int MAX_X = LEFT_X + 142, MAX_WIDTH = 50;
+			const int BITS_X = LEFT_X + 192, BITS_WIDTH = 45;
+			const int DATA_Y = TOP_Y + BOX_HEIGHT;
+
+			this.SuspendLayout();
+			names = new TextBox[properties.Length];
+			maximums = new NumericTextBox[properties.Length];
+			bits = new NumericTextBox[properties.Length];
+
+			this.Controls.Clear();
+
+			for (int i = 0; i < properties.Length; i++) {
+				int y = DATA_Y + (i * BOX_HEIGHT);
+
+				names[i] = new TextBox();
+				names[i].Name = "PropTextBox" + i;
+				names[i].Top = y;
+				names[i].Left = NAME_X;
+				names[i].Width = NAME_WIDTH;
+				names[i].Height = BOX_HEIGHT;
+				names[i].BorderStyle = BorderStyle.None;
+				names[i].AutoSize = false;
+				names[i].Tag = i;
+
+				maximums[i] = new NumericTextBox();
+				maximums[i].Name = "MaxTextBox" + i;
+				maximums[i].Top = y;
+				maximums[i].Left = MAX_X;
+				maximums[i].Width = MAX_WIDTH;
+				maximums[i].Height = BOX_HEIGHT;
+				maximums[i].BorderStyle = BorderStyle.None;
+				maximums[i].AutoSize = false;
+				maximums[i].Tag = i;
+
+				bits[i] = new NumericTextBox();
+				bits[i].Name = "BitsTextBox" + i;
+				bits[i].Top = y;
+				bits[i].Left = BITS_X;
+				bits[i].Width = BITS_WIDTH;
+				bits[i].Height = BOX_HEIGHT;
+				bits[i].BorderStyle = BorderStyle.None;
+				bits[i].AutoSize = false;
+				bits[i].ReadOnly = true;
+				bits[i].Tag = i;
+
+				this.Controls.Add(names[i]);
+				this.Controls.Add(maximums[i]);
+				this.Controls.Add(bits[i]);
+			}
+
+			this.ResumeLayout(true);
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
@@ -33,8 +135,6 @@ namespace GB.GBMB.Dialogs
 			const int MAX_X = LEFT_X + 142, MAX_WIDTH = 50;
 			const int BITS_X = LEFT_X + 192, BITS_WIDTH = 45;
 			const int DATA_Y = TOP_Y + BOX_HEIGHT;
-
-			base.OnPaint(e);
 
 			ControlPaint.DrawBorder3D(e.Graphics, new Rectangle(Point.Empty, this.Size), Border3DStyle.Sunken, 
 				Border3DSide.Bottom | Border3DSide.Right | Border3DSide.Top | Border3DSide.Left);
@@ -60,6 +160,8 @@ namespace GB.GBMB.Dialogs
 				DrawEditRect(e.Graphics, MAX_X, y, MAX_WIDTH, BOX_HEIGHT);
 				DrawEditRect(e.Graphics, BITS_X, y, BITS_WIDTH, BOX_HEIGHT);
 			}
+
+			base.OnPaint(e);
 		}
 
 		private void DrawTextRect(Graphics g, String text, int x, int y, int width, int height, StringFormat format) {
