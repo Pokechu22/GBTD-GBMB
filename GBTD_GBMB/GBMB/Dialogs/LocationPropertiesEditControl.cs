@@ -40,7 +40,13 @@ namespace GB.GBMB.Dialogs
 			SetStyle(ControlStyles.FixedWidth | ControlStyles.FixedHeight, true);
 		}
 
+		volatile bool loadingOrSaving = false;
+
 		public void SaveChanges() {
+			if (loadingOrSaving) { return; }
+
+			loadingOrSaving = true;
+			
 			properties = new GBMObjectMapPropertiesRecord[names.Length];
 
 			for (int i = 0; i < properties.Length; i++) {
@@ -50,9 +56,15 @@ namespace GB.GBMB.Dialogs
 				properties[i].MaxValue = maximums[i].Value;
 				properties[i].Type = 0;
 			}
+
+			loadingOrSaving = false;
 		}
 
 		public void LoadChanges() {
+			if (loadingOrSaving) { return; }
+
+			loadingOrSaving = true;
+
 			//If the size changed and everything needs to be resized.
 			if (names.Length != properties.Length) {
 				ResizeControls();
@@ -63,6 +75,8 @@ namespace GB.GBMB.Dialogs
 				maximums[i].Value = properties[i].MaxValue;
 				bits[i].Value = GetNumberOfBits(properties[i].MaxValue);
 			}
+
+			loadingOrSaving = false;
 		}
 
 		/// <summary>
@@ -182,12 +196,16 @@ namespace GB.GBMB.Dialogs
 		public event EventHandler MaximumTextBoxChanged;
 
 		private void nameTextBox_TextChanged(object sender, EventArgs e) {
+			if (loadingOrSaving) { return; }
+
 			if (NameTextBoxChanged != null) {
 				NameTextBoxChanged(this, e);
 			}
 		}
 
 		private void maximumTextBox_TextChanged(object sender, EventArgs e) {
+			if (loadingOrSaving) { return; }
+
 			if (MaximumTextBoxChanged != null) {
 				MaximumTextBoxChanged(this, e);
 			}

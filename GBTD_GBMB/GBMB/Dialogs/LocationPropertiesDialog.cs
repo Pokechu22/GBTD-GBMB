@@ -116,10 +116,22 @@ namespace GB.GBMB.Dialogs
 		private void editControl_NameTextBoxChanged(object sender, EventArgs e) {
 			GBMObjectMapPropertiesRecord[] propertiesData = editControl.Properties;
 
-			redPropertyComboBox.Items.Clear();
-			redPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
-			greenPropertyComboBox.Items.Clear();
-			greenPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
+			if (redPropertyComboBox.Items.Count != propertiesData.Length) {
+				redPropertyComboBox.Items.Clear();
+				redPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
+			} else {
+				for (int i = 0; i < propertiesData.Length; i++) {
+					redPropertyComboBox.Items[i] = propertiesData[i].Name;
+				}
+			}
+			if (greenPropertyComboBox.Items.Count != propertiesData.Length) {
+				greenPropertyComboBox.Items.Clear();
+				greenPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
+			} else {
+				for (int i = 0; i < propertiesData.Length; i++) {
+					greenPropertyComboBox.Items[i] = propertiesData[i].Name;
+				}
+			}
 		}
 	}
 }
