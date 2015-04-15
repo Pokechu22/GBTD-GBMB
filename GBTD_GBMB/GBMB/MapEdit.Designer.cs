@@ -26,8 +26,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.MenuItem seperatorMenuItem1;
-			System.Windows.Forms.MenuItem menuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
@@ -43,10 +41,11 @@
 			GB.Shared.Controls.Border topBoxSeperator1;
 			GB.Shared.Controls.Border topBoxBorder2;
 			GB.Shared.Controls.Border topBoxBorder;
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			GB.Shared.Palettes.PaletteData paletteData2 = new GB.Shared.Palettes.PaletteData();
-			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			GB.Shared.Palettes.PaletteData paletteData1 = new GB.Shared.Palettes.PaletteData();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			this.reopenSeperatorMenuItem = new System.Windows.Forms.MenuItem();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -124,9 +123,6 @@
 			this.infoPanelPaletteComboBox = new System.Windows.Forms.ComboBox();
 			this.infoPanelPalLabel = new GB.Shared.Controls.CleanLabel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.infoPanelPropBorder1 = new GB.Shared.Controls.Border();
-			this.infoPanelPropBorder2 = new GB.Shared.Controls.Border();
-			this.tileList = new GB.GBMB.TileList();
 			this.helpButton = new GB.Shared.Controls.ImageButton();
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.copyButton = new GB.Shared.Controls.ImageButton();
@@ -134,8 +130,9 @@
 			this.exportButton = new GB.Shared.Controls.ImageButton();
 			this.saveButton = new GB.Shared.Controls.ImageButton();
 			this.openButton = new GB.Shared.Controls.ImageButton();
-			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
-			menuItem10 = new System.Windows.Forms.MenuItem();
+			this.infoPanelPropBorder1 = new GB.Shared.Controls.Border();
+			this.infoPanelPropBorder2 = new GB.Shared.Controls.Border();
+			this.tileList = new GB.GBMB.TileList();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
@@ -153,15 +150,10 @@
 			topBoxBorder = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
 			// 
-			// seperatorMenuItem1
+			// reopenSeperatorMenuItem
 			// 
-			seperatorMenuItem1.Index = 3;
-			seperatorMenuItem1.Text = "-";
-			// 
-			// menuItem10
-			// 
-			menuItem10.Index = 0;
-			menuItem10.Text = "NYI";
+			this.reopenSeperatorMenuItem.Index = 3;
+			this.reopenSeperatorMenuItem.Text = "-";
 			// 
 			// seperatorMenuItem2
 			// 
@@ -281,7 +273,7 @@
             this.openMenuItem,
             this.saveMenuItem,
             this.saveAsMenuItem,
-            seperatorMenuItem1,
+            this.reopenSeperatorMenuItem,
             this.reopenMenuItem,
             seperatorMenuItem2,
             this.mapPropertiesMenuItem,
@@ -316,10 +308,7 @@
 			// 
 			// reopenMenuItem
 			// 
-			this.reopenMenuItem.Enabled = false;
 			this.reopenMenuItem.Index = 4;
-			this.reopenMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            menuItem10});
 			this.reopenMenuItem.Text = "&Reopen";
 			// 
 			// mapPropertiesMenuItem
@@ -788,11 +777,11 @@
 			// 
 			this.zoomLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.zoomLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.zoomLabel.Format = stringFormat4;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.zoomLabel.Format = stringFormat1;
 			this.zoomLabel.Location = new System.Drawing.Point(169, 9);
 			this.zoomLabel.Name = "zoomLabel";
 			this.zoomLabel.Size = new System.Drawing.Size(33, 14);
@@ -864,7 +853,7 @@
 			this.mapControl.Enabled = false;
 			this.mapControl.Location = new System.Drawing.Point(34, 39);
 			this.mapControl.Name = "mapControl";
-			this.mapControl.PaletteData = paletteData2;
+			this.mapControl.PaletteData = paletteData1;
 			this.mapControl.ShowDoubleMarkers = false;
 			this.mapControl.ShowGrid = true;
 			this.mapControl.ShowPropertyColors = false;
@@ -910,11 +899,11 @@
 			// 
 			this.infoPanelLocationLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.infoPanelLocationLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.infoPanelLocationLabel.Format = stringFormat5;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelLocationLabel.Format = stringFormat2;
 			this.infoPanelLocationLabel.Location = new System.Drawing.Point(38, 213);
 			this.infoPanelLocationLabel.Name = "infoPanelLocationLabel";
 			this.infoPanelLocationLabel.Size = new System.Drawing.Size(47, 14);
@@ -972,62 +961,17 @@
 			// 
 			this.infoPanelPalLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.infoPanelPalLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
-			this.infoPanelPalLabel.Format = stringFormat6;
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.infoPanelPalLabel.Format = stringFormat3;
 			this.infoPanelPalLabel.Location = new System.Drawing.Point(49, 213);
 			this.infoPanelPalLabel.Name = "infoPanelPalLabel";
 			this.infoPanelPalLabel.Size = new System.Drawing.Size(21, 14);
 			this.infoPanelPalLabel.TabIndex = 24;
 			this.infoPanelPalLabel.TabStop = false;
 			this.infoPanelPalLabel.Text = "&Pal";
-			// 
-			// infoPanelPropBorder1
-			// 
-			this.infoPanelPropBorder1.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.infoPanelPropBorder1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Bottom,
-        System.Windows.Forms.Border3DSide.Left};
-			this.infoPanelPropBorder1.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.infoPanelPropBorder1.Location = new System.Drawing.Point(36, 232);
-			this.infoPanelPropBorder1.Name = "infoPanelPropBorder1";
-			this.infoPanelPropBorder1.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.infoPanelPropBorder1.Size = new System.Drawing.Size(281, 23);
-			this.infoPanelPropBorder1.TabIndex = 25;
-			this.infoPanelPropBorder1.TopBorder = System.Windows.Forms.Border3DStyle.SunkenInner;
-			// 
-			// infoPanelPropBorder2
-			// 
-			this.infoPanelPropBorder2.BottomBorder = null;
-			this.infoPanelPropBorder2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top};
-			this.infoPanelPropBorder2.LeftBorder = null;
-			this.infoPanelPropBorder2.Location = new System.Drawing.Point(36, 231);
-			this.infoPanelPropBorder2.Name = "infoPanelPropBorder2";
-			this.infoPanelPropBorder2.RightBorder = null;
-			this.infoPanelPropBorder2.Size = new System.Drawing.Size(281, 1);
-			this.infoPanelPropBorder2.TabIndex = 26;
-			this.infoPanelPropBorder2.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// tileList
-			// 
-			this.tileList.Bookmark1Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon1;
-			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
-			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
-			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList.Location = new System.Drawing.Point(326, 34);
-			this.tileList.Name = "tileList";
-			this.tileList.PaletteData = null;
-			this.tileList.PaletteMapping = null;
-			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(56, 205);
-			this.tileList.TabIndex = 17;
-			this.tileList.TileSet = null;
-			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
 			// 
 			// helpButton
 			// 
@@ -1104,6 +1048,51 @@
 			this.openButton.TabIndex = 10;
 			this.toolTip.SetToolTip(this.openButton, "Open");
 			this.openButton.Click += new System.EventHandler(this.onOpenButtonClicked);
+			// 
+			// infoPanelPropBorder1
+			// 
+			this.infoPanelPropBorder1.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.infoPanelPropBorder1.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Bottom,
+        System.Windows.Forms.Border3DSide.Left};
+			this.infoPanelPropBorder1.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.infoPanelPropBorder1.Location = new System.Drawing.Point(36, 232);
+			this.infoPanelPropBorder1.Name = "infoPanelPropBorder1";
+			this.infoPanelPropBorder1.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.infoPanelPropBorder1.Size = new System.Drawing.Size(281, 23);
+			this.infoPanelPropBorder1.TabIndex = 25;
+			this.infoPanelPropBorder1.TopBorder = System.Windows.Forms.Border3DStyle.SunkenInner;
+			// 
+			// infoPanelPropBorder2
+			// 
+			this.infoPanelPropBorder2.BottomBorder = null;
+			this.infoPanelPropBorder2.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top};
+			this.infoPanelPropBorder2.LeftBorder = null;
+			this.infoPanelPropBorder2.Location = new System.Drawing.Point(36, 231);
+			this.infoPanelPropBorder2.Name = "infoPanelPropBorder2";
+			this.infoPanelPropBorder2.RightBorder = null;
+			this.infoPanelPropBorder2.Size = new System.Drawing.Size(281, 1);
+			this.infoPanelPropBorder2.TabIndex = 26;
+			this.infoPanelPropBorder2.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
+			// tileList
+			// 
+			this.tileList.Bookmark1Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon1;
+			this.tileList.Bookmark2Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon2;
+			this.tileList.Bookmark3Icon = global::GB.GBMB.Properties.Resources.TileListBookmarkIcon3;
+			this.tileList.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.tileList.Location = new System.Drawing.Point(326, 34);
+			this.tileList.Name = "tileList";
+			this.tileList.PaletteData = null;
+			this.tileList.PaletteMapping = null;
+			this.tileList.SelectedTile = ((ushort)(0));
+			this.tileList.Size = new System.Drawing.Size(56, 205);
+			this.tileList.TabIndex = 17;
+			this.tileList.TileSet = null;
+			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
 			// 
 			// MapEdit
 			// 
@@ -1233,6 +1222,7 @@
 		private System.Windows.Forms.ToolTip toolTip;
 		private Shared.Controls.Border infoPanelPropBorder1;
 		private Shared.Controls.Border infoPanelPropBorder2;
+		private System.Windows.Forms.MenuItem reopenSeperatorMenuItem;
 	}
 }
 
