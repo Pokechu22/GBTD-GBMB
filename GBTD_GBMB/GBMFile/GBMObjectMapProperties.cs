@@ -22,13 +22,23 @@ namespace GB.Shared.GBMFile
 			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
 		}
 
-		public GBMObjectMapPropertiesRecord[] Properties { get; set; }
+		private GBMObjectMapPropertiesRecord[] properties;
+
+		public GBMObjectMapPropertiesRecord[] Properties {
+			get { return properties; }
+			set {
+				properties = value;
+				if (Master.PropCount != properties.Length) {
+					Master.PropCount = (uint)properties.Length;
+				}
+			}
+		}
 
 		protected override void LoadFromStream(Stream s) {
-			this.Properties = new GBMObjectMapPropertiesRecord[Master.PropCount];
+			this.properties = new GBMObjectMapPropertiesRecord[Master.PropCount];
 
 			for (int i = 0; i < Properties.Length; i++) {
-				Properties[i] = new GBMObjectMapPropertiesRecord(s);
+				properties[i] = new GBMObjectMapPropertiesRecord(s);
 			}
 		}
 

@@ -33,7 +33,7 @@ namespace GB.GBMB.Dialogs
 			this.PropColors = propColors;
 
 			this.editControl.Properties = properties.Properties;
-			this.propColorsData = propColors.Data;
+			this.propColorsData = (GBMObjectMapPropertyColorsRecord[])propColors.Data.Clone();
 
 			if (propColors.Master.PropColorCount < 2) {
 				//Not valid right now.
@@ -66,6 +66,15 @@ namespace GB.GBMB.Dialogs
 		protected override void OnClosing(CancelEventArgs e) {
 			//TODO validate data.
 			//TODO check if dialogresult is OK.
+			SavePropColors();
+
+			PropColors.Data = propColorsData;
+			Properties.Properties = editControl.Properties;
+
+			base.OnClosing(e);
+		}
+
+		private void SavePropColors() {
 			propColorsData[0].Property = (uint)redPropertyComboBox.SelectedIndex;
 			propColorsData[0].Operator = (PropertyColorOperator)redOperatorComboBox.SelectedIndex;
 			propColorsData[0].Value = redOperandTextBox.Value;
@@ -73,10 +82,8 @@ namespace GB.GBMB.Dialogs
 			propColorsData[1].Property = (uint)greenPropertyComboBox.SelectedIndex;
 			propColorsData[1].Operator = (PropertyColorOperator)greenOperatorComboBox.SelectedIndex;
 			propColorsData[1].Value = greenOperandTextBox.Value;
-
-			base.OnClosing(e);
 		}
-
+		
 		private void editControl_NameTextBoxChanged(object sender, EventArgs e) {
 			GBMObjectMapPropertiesRecord[] propertiesData = editControl.Properties;
 
