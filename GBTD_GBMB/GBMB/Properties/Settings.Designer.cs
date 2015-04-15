@@ -22,5 +22,40 @@ namespace GB.GBMB.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GBRPath {
+            get {
+                return ((string)(this["GBRPath"]));
+            }
+            set {
+                this["GBRPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GBMPath {
+            get {
+                return ((string)(this["GBMPath"]));
+            }
+            set {
+                this["GBMPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection RecentlyUsedFiles {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RecentlyUsedFiles"]));
+            }
+            set {
+                this["RecentlyUsedFiles"] = value;
+            }
+        }
     }
 }

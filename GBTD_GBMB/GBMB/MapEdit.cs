@@ -252,6 +252,8 @@ namespace GB.GBMB
 			OpenFileDialog d = new OpenFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
+			d.InitialDirectory = Properties.Settings.Default.GBMPath;
+
 			var result = d.ShowDialog();
 			if (result != DialogResult.OK) {
 				return;
@@ -260,6 +262,8 @@ namespace GB.GBMB
 			LoadMapFile(d.FileName);
 
 			mapControl.Enabled = true;
+
+			Properties.Settings.Default.GBMPath = Path.GetDirectoryName(d.FileName);
 		}
 
 		private void onSaveButtonClicked(object sender, EventArgs e) {
@@ -288,6 +292,8 @@ namespace GB.GBMB
 			SaveFileDialog d = new SaveFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
+			d.InitialDirectory = Properties.Settings.Default.GBMPath;
+
 			result = d.ShowDialog();
 			if (result != DialogResult.OK) { return; }
 
@@ -296,6 +302,8 @@ namespace GB.GBMB
 			}
 
 			MessageBox.Show("File saved successfully.", "File saved successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			Properties.Settings.Default.GBMPath = Path.GetDirectoryName(d.FileName);
 		}
 
 		private void onExportButtonClicked(object sender, EventArgs e) {
