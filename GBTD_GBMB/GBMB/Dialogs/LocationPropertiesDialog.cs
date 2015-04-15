@@ -46,13 +46,31 @@ namespace GB.GBMB.Dialogs
 			greenPropertyComboBox.Items.Clear();
 			greenPropertyComboBox.Items.AddRange(properties.Properties.Select(r => r.Name).ToArray());
 
-			redPropertyComboBox.SelectedIndex = (int)propColors.Data[0].Property;
-			redOperatorComboBox.SelectedIndex = (int)propColors.Data[0].Operator;
-			redOperandTextBox.Value = propColors.Data[0].Value;
+			if (Properties.Master.PropCount > 0) {
+				redPropertyComboBox.SelectedIndex = (int)propColors.Data[0].Property;
+				redOperatorComboBox.SelectedIndex = (int)propColors.Data[0].Operator;
+				redOperandTextBox.Value = propColors.Data[0].Value;
 
-			greenPropertyComboBox.SelectedIndex = (int)propColors.Data[1].Property;
-			greenOperatorComboBox.SelectedIndex = (int)propColors.Data[1].Operator;
-			greenOperandTextBox.Value = propColors.Data[1].Value;
+				greenPropertyComboBox.SelectedIndex = (int)propColors.Data[1].Property;
+				greenOperatorComboBox.SelectedIndex = (int)propColors.Data[1].Operator;
+				greenOperandTextBox.Value = propColors.Data[1].Value;
+			} else {
+				redPropertyComboBox.SelectedIndex = -1;
+				redOperatorComboBox.SelectedIndex = (int)propColors.Data[0].Operator;
+				redOperandTextBox.Value = propColors.Data[0].Value;
+
+				greenPropertyComboBox.SelectedIndex = -1;
+				greenOperatorComboBox.SelectedIndex = (int)propColors.Data[1].Operator;
+				greenOperandTextBox.Value = propColors.Data[1].Value;
+
+				redPropertyComboBox.Enabled = false;
+				redOperatorComboBox.Enabled = false;
+				redOperandTextBox.Enabled = false;
+
+				greenPropertyComboBox.Enabled = false;
+				greenOperatorComboBox.Enabled = false;
+				greenOperandTextBox.Enabled = false;
+			}
 		}
 
 		private void removeButton_Click(object sender, EventArgs e) {
@@ -64,12 +82,12 @@ namespace GB.GBMB.Dialogs
 		}
 
 		protected override void OnClosing(CancelEventArgs e) {
-			//TODO validate data.
-			//TODO check if dialogresult is OK.
-			SavePropColors();
+			if (DialogResult == DialogResult.OK) {
+				SavePropColors();
 
-			PropColors.Data = propColorsData;
-			Properties.Properties = editControl.Properties;
+				PropColors.Data = propColorsData;
+				Properties.Properties = editControl.Properties;
+			}
 
 			base.OnClosing(e);
 		}
