@@ -93,7 +93,8 @@ namespace GB.GBMB.Dialogs
 			for (int i = 0; i < properties.Length; i++) {
 				int y = DATA_Y + (i * BOX_HEIGHT);
 
-				names[i] = new TextBox();
+				TextBox nameTextBox = new TextBox();
+				names[i] = nameTextBox;
 				names[i].Name = "NameTextBox" + i;
 				names[i].BorderStyle = BorderStyle.None;
 				names[i].Dock = DockStyle.Fill;
@@ -103,15 +104,16 @@ namespace GB.GBMB.Dialogs
 				Panel namePanel = new Panel();
 				namePanel.SetBounds(NAME_X, y, NAME_WIDTH - 1, BOX_HEIGHT - 1);
 				namePanel.BorderStyle = BorderStyle.None;
-				namePanel.GotFocus += new EventHandler((s, a) => { names[i].Focus(); names[i].SelectAll(); });
-				namePanel.Click += new EventHandler((s, a) => { names[i].Focus(); names[i].SelectAll(); });
+				namePanel.GotFocus += new EventHandler((s, a) => { nameTextBox.Focus(); nameTextBox.SelectAll(); });
+				namePanel.Click += new EventHandler((s, a) => { nameTextBox.Focus(); nameTextBox.SelectAll(); });
 				namePanel.Padding = new Padding(2, 2, 1, 1);
 				namePanel.Cursor = Cursors.IBeam;
 				namePanel.Name = "NamePanel" + i;
 
 				namePanel.Controls.Add(names[i]);
 
-				maximums[i] = new NumericTextBox();
+				NumericTextBox maximumTextBox = new NumericTextBox();
+				maximums[i] = maximumTextBox;
 				maximums[i].Name = "MaxTextBox" + i;
 				maximums[i].BorderStyle = BorderStyle.None;
 				maximums[i].Dock = DockStyle.Fill;
@@ -121,15 +123,16 @@ namespace GB.GBMB.Dialogs
 				Panel maximumPanel = new Panel();
 				maximumPanel.SetBounds(MAX_X, y, MAX_WIDTH - 1, BOX_HEIGHT - 1);
 				maximumPanel.BorderStyle = BorderStyle.None;
-				maximumPanel.GotFocus += new EventHandler((s, a) => { maximums[i].Focus(); maximums[i].SelectAll(); });
-				maximumPanel.Click += new EventHandler((s, a) => { maximums[i].Focus(); maximums[i].SelectAll(); });
+				maximumPanel.GotFocus += new EventHandler((s, a) => { maximumTextBox.Focus(); maximumTextBox.SelectAll(); });
+				maximumPanel.Click += new EventHandler((s, a) => { maximumTextBox.Focus(); maximumTextBox.SelectAll(); });
 				maximumPanel.Padding = new Padding(2, 2, 1, 1);
 				maximumPanel.Cursor = Cursors.IBeam;
 				maximumPanel.Name = "MaxPanel" + i;
 
 				maximumPanel.Controls.Add(maximums[i]);
 
-				bits[i] = new NumericTextBox();
+				NumericTextBox bitsTextBox = new NumericTextBox();
+				bits[i] = bitsTextBox;
 				bits[i].Name = "MaxTextBox" + i;
 				bits[i].BorderStyle = BorderStyle.None;
 				bits[i].Dock = DockStyle.Fill;
@@ -139,8 +142,8 @@ namespace GB.GBMB.Dialogs
 				Panel bitsPanel = new Panel();
 				bitsPanel.SetBounds(BITS_X, y, BITS_WIDTH - 1, BOX_HEIGHT - 1);
 				bitsPanel.BorderStyle = BorderStyle.None;
-				bitsPanel.GotFocus += new EventHandler((s, a) => { bits[i].Focus(); bits[i].SelectAll(); });
-				bitsPanel.Click += new EventHandler((s, a) => { bits[i].Focus(); bits[i].SelectAll(); });
+				bitsPanel.GotFocus += new EventHandler((s, a) => { bitsTextBox.Focus(); bitsTextBox.SelectAll(); });
+				bitsPanel.Click += new EventHandler((s, a) => { bitsTextBox.Focus(); bitsTextBox.SelectAll(); });
 				bitsPanel.Padding = new Padding(2, 2, 1, 1);
 				bitsPanel.Cursor = Cursors.IBeam;
 				bitsPanel.Name = "MaxPanel" + i;
