@@ -108,26 +108,32 @@ namespace GB.GBMB.Dialogs
 		private void editControl_PropCountChanged(object sender, EventArgs e) {
 			GBMObjectMapPropertiesRecord[] propertiesData = editControl.Properties;
 
+			int redPos = redPropertyComboBox.SelectedIndex;
+			int greenPos = greenPropertyComboBox.SelectedIndex;
+
 			redPropertyComboBox.Items.Clear();
 			redPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
 			greenPropertyComboBox.Items.Clear();
 			greenPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
 
-			if (redPropertyComboBox.SelectedIndex >= propertiesData.Length) {
-				redPropertyComboBox.SelectedIndex = propertiesData.Length - 1;
+			if (redPos >= propertiesData.Length) {
+				redPos = propertiesData.Length - 1;
 			}
-			if (greenPropertyComboBox.SelectedIndex >= propertiesData.Length) {
-				greenPropertyComboBox.SelectedIndex = propertiesData.Length - 1;
+			if (greenPos >= propertiesData.Length) {
+				greenPos = propertiesData.Length - 1;
 			}
 			//Make sure SelectedIndex isn't -1 if it can be anything else.
 			if (propertiesData.Length != 0) {
-				if (redPropertyComboBox.SelectedIndex < 0) {
-					redPropertyComboBox.SelectedIndex = 0;
+				if (redPos < 0) {
+					redPos = 0;
 				}
-				if (greenPropertyComboBox.SelectedIndex < 0) {
-					greenPropertyComboBox.SelectedIndex = 0;
+				if (greenPos < 0) {
+					greenPos = 0;
 				}
 			}
+
+			redPropertyComboBox.SelectedIndex = redPos;
+			greenPropertyComboBox.SelectedIndex = greenPos;
 
 			removeButton.Enabled = (propertiesData.Length > 0);
 			addButton.Enabled = (propertiesData.Length <= 32); //The maximum from GBMB.
