@@ -188,12 +188,16 @@ namespace GB.GBMB.Dialogs
 			}
 
 			this.ResumeLayout(true);
+
+			this.Invalidate(true);
 		}
 
 		[Description("Called when one of the names is changed.")]
 		public event EventHandler NameTextBoxChanged;
 		[Description("Called when one of the maximum values is changed.")]
 		public event EventHandler MaximumTextBoxChanged;
+		[Description("Called when the number of properties is changed.")]
+		public event EventHandler PropCountChanged;
 
 		private void nameTextBox_TextChanged(object sender, EventArgs e) {
 			if (loadingOrSaving) { return; }
@@ -278,6 +282,50 @@ namespace GB.GBMB.Dialogs
 			Color color = Color.FromArgb(192, 192, 192);
 
 			BorderPaint.DrawBorderFull(g, new Rectangle(x, y, width, height), color, Border3DSide.Right | Border3DSide.Bottom);
+		}
+
+		public void AddRow() {
+			SaveChanges();
+			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[properties.Length + 1];
+
+			for (int i = 0; i < newProps.Length; i++) {
+				if (i < properties.Length) {
+					newProps[i] = properties[i];
+				} else {
+					newProps[i] = new GBMObjectMapPropertiesRecord();
+				}
+			}
+
+			properties = newProps;
+			LoadChanges();
+
+			if (PropCountChanged != null) {
+				PropCountChanged(this, new EventArgs());
+			}
+		}
+
+		public void RemoveRow() {
+			if (properties.Length == 0) {
+				throw new InvalidOperationException("Cannot decrease the number of properties below 0!");
+			}
+
+			SaveChanges();
+			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[properties.Length - 1];
+
+			for (int i = 0; i < newProps.Length; i++) {
+				if (i < properties.Length) {
+					newProps[i] = properties[i];
+				} else {
+					newProps[i] = new GBMObjectMapPropertiesRecord();
+				}
+			}
+
+			properties = newProps;
+			LoadChanges();
+
+			if (PropCountChanged != null) {
+				PropCountChanged(this, new EventArgs());
+			}
 		}
 	}
 }

@@ -31,18 +31,18 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.propColorsGroupBox = new GB.Shared.Controls.GroupBox();
-			this.greenOperandTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.redOperandTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.greenOperatorComboBox = new System.Windows.Forms.ComboBox();
-			this.redOperatorComboBox = new System.Windows.Forms.ComboBox();
-			this.greenPropertyComboBox = new System.Windows.Forms.ComboBox();
-			this.redPropertyComboBox = new System.Windows.Forms.ComboBox();
-			this.greenLabel = new GB.Shared.Controls.CleanLabel();
 			this.redLabel = new GB.Shared.Controls.CleanLabel();
+			this.greenLabel = new GB.Shared.Controls.CleanLabel();
+			this.redPropertyComboBox = new System.Windows.Forms.ComboBox();
+			this.greenPropertyComboBox = new System.Windows.Forms.ComboBox();
+			this.redOperatorComboBox = new System.Windows.Forms.ComboBox();
+			this.greenOperatorComboBox = new System.Windows.Forms.ComboBox();
+			this.redOperandTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.greenOperandTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.propertiesGroupBox = new GB.Shared.Controls.GroupBox();
-			this.removeButton = new System.Windows.Forms.Button();
-			this.addButton = new System.Windows.Forms.Button();
 			this.editControl = new GB.GBMB.Dialogs.LocationPropertiesEditControl();
+			this.addButton = new System.Windows.Forms.Button();
+			this.removeButton = new System.Windows.Forms.Button();
 			this.propColorsGroupBox.SuspendLayout();
 			this.propertiesGroupBox.SuspendLayout();
 			this.SuspendLayout();
@@ -77,53 +77,69 @@
 			// 
 			// propColorsGroupBox
 			// 
-			this.propColorsGroupBox.Controls.Add(this.redLabel);
-			this.propColorsGroupBox.Controls.Add(this.greenLabel);
-			this.propColorsGroupBox.Controls.Add(this.redPropertyComboBox);
-			this.propColorsGroupBox.Controls.Add(this.greenPropertyComboBox);
-			this.propColorsGroupBox.Controls.Add(this.redOperatorComboBox);
-			this.propColorsGroupBox.Controls.Add(this.greenOperatorComboBox);
-			this.propColorsGroupBox.Controls.Add(this.redOperandTextBox);
 			this.propColorsGroupBox.Controls.Add(this.greenOperandTextBox);
+			this.propColorsGroupBox.Controls.Add(this.redOperandTextBox);
+			this.propColorsGroupBox.Controls.Add(this.greenOperatorComboBox);
+			this.propColorsGroupBox.Controls.Add(this.redOperatorComboBox);
+			this.propColorsGroupBox.Controls.Add(this.greenPropertyComboBox);
+			this.propColorsGroupBox.Controls.Add(this.redPropertyComboBox);
+			this.propColorsGroupBox.Controls.Add(this.greenLabel);
+			this.propColorsGroupBox.Controls.Add(this.redLabel);
 			this.propColorsGroupBox.Location = new System.Drawing.Point(8, 239);
 			this.propColorsGroupBox.Name = "propColorsGroupBox";
 			this.propColorsGroupBox.Size = new System.Drawing.Size(273, 77);
 			this.propColorsGroupBox.TabIndex = 4;
 			this.propColorsGroupBox.Text = "Property colors";
 			// 
-			// greenOperandTextBox
+			// redLabel
 			// 
-			this.greenOperandTextBox.Location = new System.Drawing.Point(221, 44);
-			this.greenOperandTextBox.MaxLength = 5;
-			this.greenOperandTextBox.Name = "greenOperandTextBox";
-			this.greenOperandTextBox.Size = new System.Drawing.Size(38, 21);
-			this.greenOperandTextBox.TabIndex = 11;
-			this.greenOperandTextBox.Value = ((uint)(0u));
+			this.redLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.redLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.redLabel.Format = stringFormat2;
+			this.redLabel.Location = new System.Drawing.Point(14, 23);
+			this.redLabel.Name = "redLabel";
+			this.redLabel.Size = new System.Drawing.Size(25, 14);
+			this.redLabel.TabIndex = 4;
+			this.redLabel.TabStop = false;
+			this.redLabel.Text = "&Red";
 			// 
-			// redOperandTextBox
+			// greenLabel
 			// 
-			this.redOperandTextBox.Location = new System.Drawing.Point(221, 20);
-			this.redOperandTextBox.MaxLength = 5;
-			this.redOperandTextBox.Name = "redOperandTextBox";
-			this.redOperandTextBox.Size = new System.Drawing.Size(38, 21);
-			this.redOperandTextBox.TabIndex = 10;
-			this.redOperandTextBox.Value = ((uint)(0u));
+			this.greenLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.greenLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.greenLabel.Format = stringFormat1;
+			this.greenLabel.Location = new System.Drawing.Point(14, 47);
+			this.greenLabel.Name = "greenLabel";
+			this.greenLabel.Size = new System.Drawing.Size(36, 14);
+			this.greenLabel.TabIndex = 5;
+			this.greenLabel.TabStop = false;
+			this.greenLabel.Text = "&Green";
 			// 
-			// greenOperatorComboBox
+			// redPropertyComboBox
 			// 
-			this.greenOperatorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.greenOperatorComboBox.FormattingEnabled = true;
-			this.greenOperatorComboBox.Items.AddRange(new object[] {
-            "=",
-            "<>",
-            "<",
-            ">",
-            "<=",
-            ">="});
-			this.greenOperatorComboBox.Location = new System.Drawing.Point(176, 44);
-			this.greenOperatorComboBox.Name = "greenOperatorComboBox";
-			this.greenOperatorComboBox.Size = new System.Drawing.Size(38, 21);
-			this.greenOperatorComboBox.TabIndex = 9;
+			this.redPropertyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.redPropertyComboBox.FormattingEnabled = true;
+			this.redPropertyComboBox.Location = new System.Drawing.Point(64, 20);
+			this.redPropertyComboBox.Name = "redPropertyComboBox";
+			this.redPropertyComboBox.Size = new System.Drawing.Size(105, 21);
+			this.redPropertyComboBox.TabIndex = 6;
+			// 
+			// greenPropertyComboBox
+			// 
+			this.greenPropertyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.greenPropertyComboBox.FormattingEnabled = true;
+			this.greenPropertyComboBox.Location = new System.Drawing.Point(64, 44);
+			this.greenPropertyComboBox.Name = "greenPropertyComboBox";
+			this.greenPropertyComboBox.Size = new System.Drawing.Size(105, 21);
+			this.greenPropertyComboBox.TabIndex = 7;
 			// 
 			// redOperatorComboBox
 			// 
@@ -141,76 +157,60 @@
 			this.redOperatorComboBox.Size = new System.Drawing.Size(38, 21);
 			this.redOperatorComboBox.TabIndex = 8;
 			// 
-			// greenPropertyComboBox
+			// greenOperatorComboBox
 			// 
-			this.greenPropertyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.greenPropertyComboBox.FormattingEnabled = true;
-			this.greenPropertyComboBox.Location = new System.Drawing.Point(64, 44);
-			this.greenPropertyComboBox.Name = "greenPropertyComboBox";
-			this.greenPropertyComboBox.Size = new System.Drawing.Size(105, 21);
-			this.greenPropertyComboBox.TabIndex = 7;
+			this.greenOperatorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.greenOperatorComboBox.FormattingEnabled = true;
+			this.greenOperatorComboBox.Items.AddRange(new object[] {
+            "=",
+            "<>",
+            "<",
+            ">",
+            "<=",
+            ">="});
+			this.greenOperatorComboBox.Location = new System.Drawing.Point(176, 44);
+			this.greenOperatorComboBox.Name = "greenOperatorComboBox";
+			this.greenOperatorComboBox.Size = new System.Drawing.Size(38, 21);
+			this.greenOperatorComboBox.TabIndex = 9;
 			// 
-			// redPropertyComboBox
+			// redOperandTextBox
 			// 
-			this.redPropertyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.redPropertyComboBox.FormattingEnabled = true;
-			this.redPropertyComboBox.Location = new System.Drawing.Point(64, 20);
-			this.redPropertyComboBox.Name = "redPropertyComboBox";
-			this.redPropertyComboBox.Size = new System.Drawing.Size(105, 21);
-			this.redPropertyComboBox.TabIndex = 6;
+			this.redOperandTextBox.Location = new System.Drawing.Point(221, 20);
+			this.redOperandTextBox.MaxLength = 5;
+			this.redOperandTextBox.Name = "redOperandTextBox";
+			this.redOperandTextBox.Size = new System.Drawing.Size(38, 21);
+			this.redOperandTextBox.TabIndex = 10;
+			this.redOperandTextBox.Value = ((uint)(0u));
 			// 
-			// greenLabel
+			// greenOperandTextBox
 			// 
-			this.greenLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.greenLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.greenLabel.Format = stringFormat2;
-			this.greenLabel.Location = new System.Drawing.Point(14, 47);
-			this.greenLabel.Name = "greenLabel";
-			this.greenLabel.Size = new System.Drawing.Size(36, 14);
-			this.greenLabel.TabIndex = 5;
-			this.greenLabel.TabStop = false;
-			this.greenLabel.Text = "&Green";
-			// 
-			// redLabel
-			// 
-			this.redLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.redLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.redLabel.Format = stringFormat1;
-			this.redLabel.Location = new System.Drawing.Point(14, 23);
-			this.redLabel.Name = "redLabel";
-			this.redLabel.Size = new System.Drawing.Size(25, 14);
-			this.redLabel.TabIndex = 4;
-			this.redLabel.TabStop = false;
-			this.redLabel.Text = "&Red";
+			this.greenOperandTextBox.Location = new System.Drawing.Point(221, 44);
+			this.greenOperandTextBox.MaxLength = 5;
+			this.greenOperandTextBox.Name = "greenOperandTextBox";
+			this.greenOperandTextBox.Size = new System.Drawing.Size(38, 21);
+			this.greenOperandTextBox.TabIndex = 11;
+			this.greenOperandTextBox.Value = ((uint)(0u));
 			// 
 			// propertiesGroupBox
 			// 
-			this.propertiesGroupBox.Controls.Add(this.editControl);
-			this.propertiesGroupBox.Controls.Add(this.addButton);
 			this.propertiesGroupBox.Controls.Add(this.removeButton);
+			this.propertiesGroupBox.Controls.Add(this.addButton);
+			this.propertiesGroupBox.Controls.Add(this.editControl);
 			this.propertiesGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.propertiesGroupBox.Name = "propertiesGroupBox";
 			this.propertiesGroupBox.Size = new System.Drawing.Size(273, 226);
 			this.propertiesGroupBox.TabIndex = 3;
 			this.propertiesGroupBox.Text = "Properties";
 			// 
-			// removeButton
+			// editControl
 			// 
-			this.removeButton.Location = new System.Drawing.Point(189, 201);
-			this.removeButton.Name = "removeButton";
-			this.removeButton.Size = new System.Drawing.Size(60, 19);
-			this.removeButton.TabIndex = 4;
-			this.removeButton.Text = "&Remove";
-			this.removeButton.UseVisualStyleBackColor = true;
-			this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+			this.editControl.BackColor = System.Drawing.Color.White;
+			this.editControl.Location = new System.Drawing.Point(16, 20);
+			this.editControl.Name = "editControl";
+			this.editControl.Size = new System.Drawing.Size(241, 174);
+			this.editControl.TabIndex = 8;
+			this.editControl.NameTextBoxChanged += new System.EventHandler(this.editControl_NameTextBoxChanged);
+			this.editControl.PropCountChanged += new System.EventHandler(this.editControl_PropCountChanged);
 			// 
 			// addButton
 			// 
@@ -222,14 +222,15 @@
 			this.addButton.UseVisualStyleBackColor = true;
 			this.addButton.Click += new System.EventHandler(this.addButton_Click);
 			// 
-			// editControl
+			// removeButton
 			// 
-			this.editControl.BackColor = System.Drawing.Color.White;
-			this.editControl.Location = new System.Drawing.Point(16, 20);
-			this.editControl.Name = "editControl";
-			this.editControl.Size = new System.Drawing.Size(241, 174);
-			this.editControl.TabIndex = 8;
-			this.editControl.NameTextBoxChanged += new System.EventHandler(this.editControl_NameTextBoxChanged);
+			this.removeButton.Location = new System.Drawing.Point(189, 201);
+			this.removeButton.Name = "removeButton";
+			this.removeButton.Size = new System.Drawing.Size(60, 19);
+			this.removeButton.TabIndex = 4;
+			this.removeButton.Text = "&Remove";
+			this.removeButton.UseVisualStyleBackColor = true;
+			this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
 			// 
 			// LocationPropertiesDialog
 			// 
