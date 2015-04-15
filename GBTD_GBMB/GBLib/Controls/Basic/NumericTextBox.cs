@@ -21,7 +21,14 @@ namespace GB.Shared.Controls
 		[DefaultValue(0)]
 		public UInt32 Value {
 			get {
-				return UInt32.Parse(this.Text);
+				try {
+					return UInt32.Parse(this.Text);
+				} catch (OverflowException) {
+					this.Value = UInt32.MaxValue;
+					return UInt32.MaxValue;
+				} catch (Exception) {
+					throw;
+				}
 			}
 			set {
 				this.Text = value.ToString();
