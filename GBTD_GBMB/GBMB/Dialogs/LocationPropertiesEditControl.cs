@@ -101,6 +101,8 @@ namespace GB.GBMB.Dialogs
 				names[i].MaxLength = 31;
 				names[i].Tag = i;
 
+				names[i].TextChanged += new EventHandler(nameTextBox_TextChanged);
+
 				Panel namePanel = new Panel();
 				namePanel.SetBounds(NAME_X, y, NAME_WIDTH - 1, BOX_HEIGHT - 1);
 				namePanel.BorderStyle = BorderStyle.None;
@@ -119,6 +121,8 @@ namespace GB.GBMB.Dialogs
 				maximums[i].Dock = DockStyle.Fill;
 				maximums[i].MaxLength = 10; //10 is the length of the max UInt32 value.
 				maximums[i].Tag = i;
+
+				maximums[i].TextChanged += new EventHandler(maximumTextBox_TextChanged);
 
 				Panel maximumPanel = new Panel();
 				maximumPanel.SetBounds(MAX_X, y, MAX_WIDTH - 1, BOX_HEIGHT - 1);
@@ -157,6 +161,27 @@ namespace GB.GBMB.Dialogs
 			}
 
 			this.ResumeLayout(true);
+		}
+
+		private void nameTextBox_TextChanged(object sender, EventArgs e) {
+			//TODO events and such.
+		}
+
+		private void maximumTextBox_TextChanged(object sender, EventArgs e) {
+			//TODO events and such.
+
+
+			NumericTextBox textBox = sender as NumericTextBox;
+			if (textBox != null) {
+				int index = (int)textBox.Tag;
+
+				if (String.IsNullOrEmpty(textBox.Text)) {
+					bits[index].Value = 1;
+					return;
+				}
+
+				bits[index].Value = GetNumberOfBits(textBox.Value);
+			}
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
