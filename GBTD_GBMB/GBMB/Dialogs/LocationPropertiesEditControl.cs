@@ -14,12 +14,22 @@ namespace GB.GBMB.Dialogs
 	{
 		protected override Size DefaultSize { get { return new Size(241, 174); } }
 
-		private GBMObjectMapPropertiesRecord[] properties;
+		private GBMObjectMapPropertiesRecord[] properties = new GBMObjectMapPropertiesRecord[0];
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+		[Browsable(false), ReadOnly(true)]
 		public GBMObjectMapPropertiesRecord[] Properties {
 			get { SaveChanges(); return properties; }
-			set { properties = value; LoadChanges(); this.Invalidate(); }
+			set {
+				if (value == null) {
+					value = new GBMObjectMapPropertiesRecord[0];
+				} else {
+					value = (GBMObjectMapPropertiesRecord[])value.Clone();
+				}
+				properties = value;
+				LoadChanges();
+				this.Invalidate(true);
+			}
 		}
 
 		private TextBox[] names = new TextBox[0];
@@ -34,8 +44,11 @@ namespace GB.GBMB.Dialogs
 			properties = new GBMObjectMapPropertiesRecord[names.Length];
 
 			for (int i = 0; i < properties.Length; i++) {
+				properties[i] = new GBMObjectMapPropertiesRecord();
+
 				properties[i].Name = names[i].Text;
 				properties[i].MaxValue = maximums[i].Value;
+				properties[i].Type = 0;
 			}
 		}
 
@@ -163,13 +176,21 @@ namespace GB.GBMB.Dialogs
 			this.ResumeLayout(true);
 		}
 
+		[Description("Called when one of the names is changed.")]
+		public event EventHandler NameTextBoxChanged;
+		[Description("Called when one of the maximum values is changed.")]
+		public event EventHandler MaximumTextBoxChanged;
+
 		private void nameTextBox_TextChanged(object sender, EventArgs e) {
-			//TODO events and such.
+			if (NameTextBoxChanged != null) {
+				NameTextBoxChanged(this, e);
+			}
 		}
 
 		private void maximumTextBox_TextChanged(object sender, EventArgs e) {
-			//TODO events and such.
-
+			if (MaximumTextBoxChanged != null) {
+				MaximumTextBoxChanged(this, e);
+			}
 
 			NumericTextBox textBox = sender as NumericTextBox;
 			if (textBox != null) {

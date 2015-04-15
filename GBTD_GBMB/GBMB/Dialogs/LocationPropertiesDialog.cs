@@ -21,7 +21,6 @@ namespace GB.GBMB.Dialogs
 			private set;
 		}
 
-		private GBMObjectMapPropertiesRecord[] propertiesData;
 		private GBMObjectMapPropertyColorsRecord[] propColorsData;
 
 		private LocationPropertiesDialog() {
@@ -33,7 +32,7 @@ namespace GB.GBMB.Dialogs
 			this.Properties = properties;
 			this.PropColors = propColors;
 
-			this.editControl.Properties = this.propertiesData = properties.Properties;
+			this.editControl.Properties = properties.Properties;
 			this.propColorsData = propColors.Data;
 
 			if (propColors.Master.PropColorCount < 2) {
@@ -42,7 +41,9 @@ namespace GB.GBMB.Dialogs
 				return;
 			}
 
+			redPropertyComboBox.Items.Clear();
 			redPropertyComboBox.Items.AddRange(properties.Properties.Select(r => r.Name).ToArray());
+			greenPropertyComboBox.Items.Clear();
 			greenPropertyComboBox.Items.AddRange(properties.Properties.Select(r => r.Name).ToArray());
 
 			redPropertyComboBox.SelectedIndex = (int)propColors.Data[0].Property;
@@ -63,6 +64,8 @@ namespace GB.GBMB.Dialogs
 		}
 
 		void PropCountChanged(object sender, EventArgs e) {
+			GBMObjectMapPropertiesRecord[] propertiesData = editControl.Properties;
+
 			redPropertyComboBox.Items.Clear();
 			redPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
 			greenPropertyComboBox.Items.Clear();
@@ -108,6 +111,15 @@ namespace GB.GBMB.Dialogs
 			propColorsData[1].Value = greenOperandTextBox.Value;
 
 			base.OnClosing(e);
+		}
+
+		private void editControl_NameTextBoxChanged(object sender, EventArgs e) {
+			GBMObjectMapPropertiesRecord[] propertiesData = editControl.Properties;
+
+			redPropertyComboBox.Items.Clear();
+			redPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
+			greenPropertyComboBox.Items.Clear();
+			greenPropertyComboBox.Items.AddRange(propertiesData.Select(r => r.Name).ToArray());
 		}
 	}
 }

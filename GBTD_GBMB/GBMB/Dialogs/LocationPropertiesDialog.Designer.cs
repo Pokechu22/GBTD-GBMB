@@ -25,9 +25,11 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			this.helpButton = new System.Windows.Forms.Button();
+			this.okButton = new System.Windows.Forms.Button();
+			this.cancelButton = new System.Windows.Forms.Button();
 			this.propColorsGroupBox = new GB.Shared.Controls.GroupBox();
 			this.greenOperandTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.redOperandTextBox = new GB.Shared.Controls.NumericTextBox();
@@ -38,10 +40,8 @@
 			this.greenLabel = new GB.Shared.Controls.CleanLabel();
 			this.redLabel = new GB.Shared.Controls.CleanLabel();
 			this.propertiesGroupBox = new GB.Shared.Controls.GroupBox();
-			this.addButton = new System.Windows.Forms.Button();
 			this.removeButton = new System.Windows.Forms.Button();
-			this.okButton = new System.Windows.Forms.Button();
-			this.cancelButton = new System.Windows.Forms.Button();
+			this.addButton = new System.Windows.Forms.Button();
 			this.editControl = new GB.GBMB.Dialogs.LocationPropertiesEditControl();
 			this.propColorsGroupBox.SuspendLayout();
 			this.propertiesGroupBox.SuspendLayout();
@@ -56,16 +56,35 @@
 			this.helpButton.Text = "&Help";
 			this.helpButton.UseVisualStyleBackColor = true;
 			// 
+			// okButton
+			// 
+			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.okButton.Location = new System.Drawing.Point(48, 324);
+			this.okButton.Name = "okButton";
+			this.okButton.Size = new System.Drawing.Size(75, 25);
+			this.okButton.TabIndex = 1;
+			this.okButton.Text = "OK";
+			this.okButton.UseVisualStyleBackColor = true;
+			// 
+			// cancelButton
+			// 
+			this.cancelButton.Location = new System.Drawing.Point(127, 324);
+			this.cancelButton.Name = "cancelButton";
+			this.cancelButton.Size = new System.Drawing.Size(75, 25);
+			this.cancelButton.TabIndex = 5;
+			this.cancelButton.Text = "Cancel";
+			this.cancelButton.UseVisualStyleBackColor = true;
+			// 
 			// propColorsGroupBox
 			// 
-			this.propColorsGroupBox.Controls.Add(this.greenOperandTextBox);
-			this.propColorsGroupBox.Controls.Add(this.redOperandTextBox);
-			this.propColorsGroupBox.Controls.Add(this.greenOperatorComboBox);
-			this.propColorsGroupBox.Controls.Add(this.redOperatorComboBox);
-			this.propColorsGroupBox.Controls.Add(this.greenPropertyComboBox);
-			this.propColorsGroupBox.Controls.Add(this.redPropertyComboBox);
-			this.propColorsGroupBox.Controls.Add(this.greenLabel);
 			this.propColorsGroupBox.Controls.Add(this.redLabel);
+			this.propColorsGroupBox.Controls.Add(this.greenLabel);
+			this.propColorsGroupBox.Controls.Add(this.redPropertyComboBox);
+			this.propColorsGroupBox.Controls.Add(this.greenPropertyComboBox);
+			this.propColorsGroupBox.Controls.Add(this.redOperatorComboBox);
+			this.propColorsGroupBox.Controls.Add(this.greenOperatorComboBox);
+			this.propColorsGroupBox.Controls.Add(this.redOperandTextBox);
+			this.propColorsGroupBox.Controls.Add(this.greenOperandTextBox);
 			this.propColorsGroupBox.Location = new System.Drawing.Point(8, 239);
 			this.propColorsGroupBox.Name = "propColorsGroupBox";
 			this.propColorsGroupBox.Size = new System.Drawing.Size(273, 77);
@@ -144,11 +163,11 @@
 			// 
 			this.greenLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.greenLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.greenLabel.Format = stringFormat1;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.greenLabel.Format = stringFormat2;
 			this.greenLabel.Location = new System.Drawing.Point(14, 47);
 			this.greenLabel.Name = "greenLabel";
 			this.greenLabel.Size = new System.Drawing.Size(36, 14);
@@ -160,11 +179,11 @@
 			// 
 			this.redLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.redLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.redLabel.Format = stringFormat2;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.redLabel.Format = stringFormat1;
 			this.redLabel.Location = new System.Drawing.Point(14, 23);
 			this.redLabel.Name = "redLabel";
 			this.redLabel.Size = new System.Drawing.Size(25, 14);
@@ -174,24 +193,14 @@
 			// 
 			// propertiesGroupBox
 			// 
-			this.propertiesGroupBox.Controls.Add(this.removeButton);
-			this.propertiesGroupBox.Controls.Add(this.addButton);
 			this.propertiesGroupBox.Controls.Add(this.editControl);
+			this.propertiesGroupBox.Controls.Add(this.addButton);
+			this.propertiesGroupBox.Controls.Add(this.removeButton);
 			this.propertiesGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.propertiesGroupBox.Name = "propertiesGroupBox";
 			this.propertiesGroupBox.Size = new System.Drawing.Size(273, 226);
 			this.propertiesGroupBox.TabIndex = 3;
 			this.propertiesGroupBox.Text = "Properties";
-			// 
-			// addButton
-			// 
-			this.addButton.Location = new System.Drawing.Point(126, 201);
-			this.addButton.Name = "addButton";
-			this.addButton.Size = new System.Drawing.Size(60, 19);
-			this.addButton.TabIndex = 5;
-			this.addButton.Text = "&Add";
-			this.addButton.UseVisualStyleBackColor = true;
-			this.addButton.Click += new System.EventHandler(this.addButton_Click);
 			// 
 			// removeButton
 			// 
@@ -203,24 +212,15 @@
 			this.removeButton.UseVisualStyleBackColor = true;
 			this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
 			// 
-			// okButton
+			// addButton
 			// 
-			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.okButton.Location = new System.Drawing.Point(48, 324);
-			this.okButton.Name = "okButton";
-			this.okButton.Size = new System.Drawing.Size(75, 25);
-			this.okButton.TabIndex = 1;
-			this.okButton.Text = "OK";
-			this.okButton.UseVisualStyleBackColor = true;
-			// 
-			// cancelButton
-			// 
-			this.cancelButton.Location = new System.Drawing.Point(127, 324);
-			this.cancelButton.Name = "cancelButton";
-			this.cancelButton.Size = new System.Drawing.Size(75, 25);
-			this.cancelButton.TabIndex = 5;
-			this.cancelButton.Text = "Cancel";
-			this.cancelButton.UseVisualStyleBackColor = true;
+			this.addButton.Location = new System.Drawing.Point(126, 201);
+			this.addButton.Name = "addButton";
+			this.addButton.Size = new System.Drawing.Size(60, 19);
+			this.addButton.TabIndex = 5;
+			this.addButton.Text = "&Add";
+			this.addButton.UseVisualStyleBackColor = true;
+			this.addButton.Click += new System.EventHandler(this.addButton_Click);
 			// 
 			// editControl
 			// 
@@ -229,6 +229,7 @@
 			this.editControl.Name = "editControl";
 			this.editControl.Size = new System.Drawing.Size(241, 174);
 			this.editControl.TabIndex = 8;
+			this.editControl.NameTextBoxChanged += new System.EventHandler(this.editControl_NameTextBoxChanged);
 			// 
 			// LocationPropertiesDialog
 			// 
