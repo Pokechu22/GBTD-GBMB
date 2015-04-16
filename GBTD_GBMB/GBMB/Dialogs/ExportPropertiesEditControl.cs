@@ -88,7 +88,11 @@ namespace GB.GBMB.Dialogs
 			}
 
 			for (int i = 0; i < exportProperties.Length; i++) {
-				propertyBoxes[i].SelectedIndex = exportProperties[i].Property;
+				if (propertyBoxes[i].Items.Count >= exportProperties[i].Property) {
+					propertyBoxes[i].SelectedIndex = 0;
+				} else {
+					propertyBoxes[i].SelectedIndex = exportProperties[i].Property;
+				}
 				bits[i].Value = exportProperties[i].Size;
 			}
 
