@@ -31,7 +31,11 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
+			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
+			this.settingsGroupBox = new GB.Shared.Controls.GroupBox();
+			this.splitDataGroupBox = new GB.Shared.Controls.GroupBox();
 			this.tabControl.SuspendLayout();
+			this.standardTabPage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -46,6 +50,9 @@
 			// 
 			// standardTabPage
 			// 
+			this.standardTabPage.Controls.Add(this.splitDataGroupBox);
+			this.standardTabPage.Controls.Add(this.settingsGroupBox);
+			this.standardTabPage.Controls.Add(this.fileGroupBox);
 			this.standardTabPage.Location = new System.Drawing.Point(4, 22);
 			this.standardTabPage.Name = "standardTabPage";
 			this.standardTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -92,6 +99,30 @@
 			this.helpButton.Text = "&Help";
 			this.helpButton.UseVisualStyleBackColor = true;
 			// 
+			// fileGroupBox
+			// 
+			this.fileGroupBox.Location = new System.Drawing.Point(8, 10);
+			this.fileGroupBox.Name = "fileGroupBox";
+			this.fileGroupBox.Size = new System.Drawing.Size(433, 73);
+			this.fileGroupBox.TabIndex = 0;
+			this.fileGroupBox.Text = "File";
+			// 
+			// settingsGroupBox
+			// 
+			this.settingsGroupBox.Location = new System.Drawing.Point(8, 90);
+			this.settingsGroupBox.Name = "settingsGroupBox";
+			this.settingsGroupBox.Size = new System.Drawing.Size(433, 97);
+			this.settingsGroupBox.TabIndex = 1;
+			this.settingsGroupBox.Text = "Settings";
+			// 
+			// splitDataGroupBox
+			// 
+			this.splitDataGroupBox.Location = new System.Drawing.Point(8, 194);
+			this.splitDataGroupBox.Name = "splitDataGroupBox";
+			this.splitDataGroupBox.Size = new System.Drawing.Size(433, 73);
+			this.splitDataGroupBox.TabIndex = 2;
+			this.splitDataGroupBox.Text = "Split data";
+			// 
 			// ExportOptionsDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -109,6 +140,7 @@
 			this.Name = "ExportOptionsDialog";
 			this.Text = "Export options";
 			this.tabControl.ResumeLayout(false);
+			this.standardTabPage.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -121,5 +153,8 @@
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.Button helpButton;
 		private System.Windows.Forms.TabPage standardTabPage;
+		private Shared.Controls.GroupBox splitDataGroupBox;
+		private Shared.Controls.GroupBox settingsGroupBox;
+		private Shared.Controls.GroupBox fileGroupBox;
 	}
 }
