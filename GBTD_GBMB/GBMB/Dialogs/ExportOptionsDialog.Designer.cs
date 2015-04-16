@@ -25,6 +25,8 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.standardTabPage = new System.Windows.Forms.TabPage();
 			this.locationFormatTabPage = new System.Windows.Forms.TabPage();
@@ -34,8 +36,14 @@
 			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
 			this.settingsGroupBox = new GB.Shared.Controls.GroupBox();
 			this.splitDataGroupBox = new GB.Shared.Controls.GroupBox();
+			this.labelFileName = new GB.Shared.Controls.CleanLabel();
+			this.labelType = new GB.Shared.Controls.CleanLabel();
+			this.fileNameTextBox = new System.Windows.Forms.TextBox();
+			this.typeDropDown = new System.Windows.Forms.ComboBox();
+			this.browseButton = new System.Windows.Forms.Button();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
+			this.fileGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -101,6 +109,11 @@
 			// 
 			// fileGroupBox
 			// 
+			this.fileGroupBox.Controls.Add(this.browseButton);
+			this.fileGroupBox.Controls.Add(this.typeDropDown);
+			this.fileGroupBox.Controls.Add(this.fileNameTextBox);
+			this.fileGroupBox.Controls.Add(this.labelType);
+			this.fileGroupBox.Controls.Add(this.labelFileName);
 			this.fileGroupBox.Location = new System.Drawing.Point(8, 10);
 			this.fileGroupBox.Name = "fileGroupBox";
 			this.fileGroupBox.Size = new System.Drawing.Size(433, 73);
@@ -123,6 +136,63 @@
 			this.splitDataGroupBox.TabIndex = 2;
 			this.splitDataGroupBox.Text = "Split data";
 			// 
+			// labelFileName
+			// 
+			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat2;
+			this.labelFileName.Location = new System.Drawing.Point(14, 19);
+			this.labelFileName.Name = "labelFileName";
+			this.labelFileName.Size = new System.Drawing.Size(51, 14);
+			this.labelFileName.TabIndex = 4;
+			this.labelFileName.TabStop = false;
+			this.labelFileName.Text = "File&name";
+			// 
+			// labelType
+			// 
+			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat1;
+			this.labelType.Location = new System.Drawing.Point(14, 43);
+			this.labelType.Name = "labelType";
+			this.labelType.Size = new System.Drawing.Size(29, 14);
+			this.labelType.TabIndex = 5;
+			this.labelType.TabStop = false;
+			this.labelType.Text = "T&ype";
+			// 
+			// fileNameTextBox
+			// 
+			this.fileNameTextBox.Location = new System.Drawing.Point(72, 16);
+			this.fileNameTextBox.Name = "fileNameTextBox";
+			this.fileNameTextBox.Size = new System.Drawing.Size(281, 20);
+			this.fileNameTextBox.TabIndex = 6;
+			// 
+			// typeDropDown
+			// 
+			this.typeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.typeDropDown.FormattingEnabled = true;
+			this.typeDropDown.Location = new System.Drawing.Point(72, 40);
+			this.typeDropDown.Name = "typeDropDown";
+			this.typeDropDown.Size = new System.Drawing.Size(177, 21);
+			this.typeDropDown.TabIndex = 7;
+			// 
+			// browseButton
+			// 
+			this.browseButton.Location = new System.Drawing.Point(359, 16);
+			this.browseButton.Name = "browseButton";
+			this.browseButton.Size = new System.Drawing.Size(65, 21);
+			this.browseButton.TabIndex = 8;
+			this.browseButton.Text = "&Browse...";
+			this.browseButton.UseVisualStyleBackColor = true;
+			// 
 			// ExportOptionsDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -141,6 +211,8 @@
 			this.Text = "Export options";
 			this.tabControl.ResumeLayout(false);
 			this.standardTabPage.ResumeLayout(false);
+			this.fileGroupBox.ResumeLayout(false);
+			this.fileGroupBox.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -156,5 +228,10 @@
 		private Shared.Controls.GroupBox splitDataGroupBox;
 		private Shared.Controls.GroupBox settingsGroupBox;
 		private Shared.Controls.GroupBox fileGroupBox;
+		private System.Windows.Forms.ComboBox typeDropDown;
+		private System.Windows.Forms.TextBox fileNameTextBox;
+		private Shared.Controls.CleanLabel labelType;
+		private Shared.Controls.CleanLabel labelFileName;
+		private System.Windows.Forms.Button browseButton;
 	}
 }
