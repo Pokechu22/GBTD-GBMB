@@ -340,6 +340,7 @@
 			// 
 			this.exportToMenuItem.Index = 11;
 			this.exportToMenuItem.Text = "Ex&port to...";
+			this.exportToMenuItem.Click += new System.EventHandler(this.exportToMenuItem_Click);
 			// 
 			// exitMenuItem
 			// 

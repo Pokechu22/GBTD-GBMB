@@ -306,10 +306,6 @@ namespace GB.GBMB
 			Properties.Settings.Default.GBMPath = Path.GetDirectoryName(d.FileName);
 		}
 
-		private void onExportButtonClicked(object sender, EventArgs e) {
-			MessageBox.Show("Exporting is not yet implemented!");
-		}
-
 		/// <summary>
 		/// Unloads the current <see cref="gbmFile"/> if present.
 		/// </summary>
@@ -1089,6 +1085,16 @@ namespace GB.GBMB
 			using (Bitmap bitmap = mapControl.GetMapImage()) {
 				Clipboard.SetImage(bitmap);
 			}
+		}
+
+		private void onExportButtonClicked(object sender, EventArgs e) {
+			MessageBox.Show("Exporting is not yet implemented!");
+		}
+
+		private void exportToMenuItem_Click(object sender, EventArgs e) {
+			ExportOptionsDialog d = new ExportOptionsDialog();
+
+			d.ShowDialog();
 		}
 	}
 }
