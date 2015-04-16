@@ -25,6 +25,9 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
@@ -41,9 +44,16 @@
 			this.fileNameTextBox = new System.Windows.Forms.TextBox();
 			this.typeDropDown = new System.Windows.Forms.ComboBox();
 			this.browseButton = new System.Windows.Forms.Button();
+			this.labelLabel = new GB.Shared.Controls.CleanLabel();
+			this.labelSection = new GB.Shared.Controls.CleanLabel();
+			this.labelBank = new GB.Shared.Controls.CleanLabel();
+			this.labelTextBox = new System.Windows.Forms.TextBox();
+			this.sectionTextBox = new System.Windows.Forms.TextBox();
+			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
 			this.fileGroupBox.SuspendLayout();
+			this.settingsGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -122,6 +132,12 @@
 			// 
 			// settingsGroupBox
 			// 
+			this.settingsGroupBox.Controls.Add(this.bankTextBox);
+			this.settingsGroupBox.Controls.Add(this.sectionTextBox);
+			this.settingsGroupBox.Controls.Add(this.labelTextBox);
+			this.settingsGroupBox.Controls.Add(this.labelBank);
+			this.settingsGroupBox.Controls.Add(this.labelSection);
+			this.settingsGroupBox.Controls.Add(this.labelLabel);
 			this.settingsGroupBox.Location = new System.Drawing.Point(8, 90);
 			this.settingsGroupBox.Name = "settingsGroupBox";
 			this.settingsGroupBox.Size = new System.Drawing.Size(433, 97);
@@ -140,11 +156,11 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat2;
+			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat5;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -156,11 +172,11 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat1;
+			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat4;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
@@ -193,6 +209,76 @@
 			this.browseButton.Text = "&Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
 			// 
+			// labelLabel
+			// 
+			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelLabel.Format = stringFormat3;
+			this.labelLabel.Location = new System.Drawing.Point(14, 19);
+			this.labelLabel.Name = "labelLabel";
+			this.labelLabel.Size = new System.Drawing.Size(32, 14);
+			this.labelLabel.TabIndex = 4;
+			this.labelLabel.TabStop = false;
+			this.labelLabel.Text = "&Label";
+			// 
+			// labelSection
+			// 
+			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelSection.Format = stringFormat2;
+			this.labelSection.Location = new System.Drawing.Point(14, 43);
+			this.labelSection.Name = "labelSection";
+			this.labelSection.Size = new System.Drawing.Size(42, 14);
+			this.labelSection.TabIndex = 5;
+			this.labelSection.TabStop = false;
+			this.labelSection.Text = "&Section";
+			// 
+			// labelBank
+			// 
+			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBank.Format = stringFormat1;
+			this.labelBank.Location = new System.Drawing.Point(14, 67);
+			this.labelBank.Name = "labelBank";
+			this.labelBank.Size = new System.Drawing.Size(30, 14);
+			this.labelBank.TabIndex = 6;
+			this.labelBank.TabStop = false;
+			this.labelBank.Text = "B&ank";
+			// 
+			// labelTextBox
+			// 
+			this.labelTextBox.Location = new System.Drawing.Point(72, 16);
+			this.labelTextBox.Name = "labelTextBox";
+			this.labelTextBox.Size = new System.Drawing.Size(351, 20);
+			this.labelTextBox.TabIndex = 7;
+			// 
+			// sectionTextBox
+			// 
+			this.sectionTextBox.Location = new System.Drawing.Point(72, 40);
+			this.sectionTextBox.Name = "sectionTextBox";
+			this.sectionTextBox.Size = new System.Drawing.Size(249, 20);
+			this.sectionTextBox.TabIndex = 8;
+			// 
+			// bankTextBox
+			// 
+			this.bankTextBox.Location = new System.Drawing.Point(72, 64);
+			this.bankTextBox.Name = "bankTextBox";
+			this.bankTextBox.Size = new System.Drawing.Size(33, 21);
+			this.bankTextBox.TabIndex = 9;
+			this.bankTextBox.Value = ((uint)(0u));
+			// 
 			// ExportOptionsDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -213,6 +299,8 @@
 			this.standardTabPage.ResumeLayout(false);
 			this.fileGroupBox.ResumeLayout(false);
 			this.fileGroupBox.PerformLayout();
+			this.settingsGroupBox.ResumeLayout(false);
+			this.settingsGroupBox.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -233,5 +321,11 @@
 		private Shared.Controls.CleanLabel labelType;
 		private Shared.Controls.CleanLabel labelFileName;
 		private System.Windows.Forms.Button browseButton;
+		private Shared.Controls.NumericTextBox bankTextBox;
+		private System.Windows.Forms.TextBox sectionTextBox;
+		private System.Windows.Forms.TextBox labelTextBox;
+		private Shared.Controls.CleanLabel labelBank;
+		private Shared.Controls.CleanLabel labelSection;
+		private Shared.Controls.CleanLabel labelLabel;
 	}
 }
