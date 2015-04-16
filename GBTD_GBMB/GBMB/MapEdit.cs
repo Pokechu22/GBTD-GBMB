@@ -1092,7 +1092,10 @@ namespace GB.GBMB
 		}
 
 		private void exportToMenuItem_Click(object sender, EventArgs e) {
-			ExportOptionsDialog d = new ExportOptionsDialog();
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var exportProperties = gbmFile.GetObjectOfType<GBMObjectMapExportProperties>();
+
+			ExportOptionsDialog d = new ExportOptionsDialog(properties, exportProperties);
 
 			d.ShowDialog();
 		}

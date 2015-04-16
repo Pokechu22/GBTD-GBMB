@@ -25,41 +25,43 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat11 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat12 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.standardTabPage = new System.Windows.Forms.TabPage();
+			this.splitDataGroupBox = new GB.Shared.Controls.GroupBox();
+			this.changeBankForEachBlockCheckBox = new System.Windows.Forms.CheckBox();
+			this.blockSizeTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
+			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
+			this.settingsGroupBox = new GB.Shared.Controls.GroupBox();
+			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.sectionTextBox = new System.Windows.Forms.TextBox();
+			this.labelTextBox = new System.Windows.Forms.TextBox();
+			this.labelBank = new GB.Shared.Controls.CleanLabel();
+			this.labelSection = new GB.Shared.Controls.CleanLabel();
+			this.labelLabel = new GB.Shared.Controls.CleanLabel();
+			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
+			this.browseButton = new System.Windows.Forms.Button();
+			this.typeDropDown = new System.Windows.Forms.ComboBox();
+			this.fileNameTextBox = new System.Windows.Forms.TextBox();
+			this.labelType = new GB.Shared.Controls.CleanLabel();
+			this.labelFileName = new GB.Shared.Controls.CleanLabel();
 			this.locationFormatTabPage = new System.Windows.Forms.TabPage();
+			this.exportPropertiesEditControl1 = new GB.GBMB.Dialogs.ExportPropertiesEditControl();
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
-			this.fileGroupBox = new GB.Shared.Controls.GroupBox();
-			this.settingsGroupBox = new GB.Shared.Controls.GroupBox();
-			this.splitDataGroupBox = new GB.Shared.Controls.GroupBox();
-			this.labelFileName = new GB.Shared.Controls.CleanLabel();
-			this.labelType = new GB.Shared.Controls.CleanLabel();
-			this.fileNameTextBox = new System.Windows.Forms.TextBox();
-			this.typeDropDown = new System.Windows.Forms.ComboBox();
-			this.browseButton = new System.Windows.Forms.Button();
-			this.labelLabel = new GB.Shared.Controls.CleanLabel();
-			this.labelSection = new GB.Shared.Controls.CleanLabel();
-			this.labelBank = new GB.Shared.Controls.CleanLabel();
-			this.labelTextBox = new System.Windows.Forms.TextBox();
-			this.sectionTextBox = new System.Windows.Forms.TextBox();
-			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
-			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
-			this.blockSizeTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.changeBankForEachBlockCheckBox = new System.Windows.Forms.CheckBox();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
-			this.fileGroupBox.SuspendLayout();
-			this.settingsGroupBox.SuspendLayout();
 			this.splitDataGroupBox.SuspendLayout();
+			this.settingsGroupBox.SuspendLayout();
+			this.fileGroupBox.SuspendLayout();
+			this.locationFormatTabPage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -85,15 +87,235 @@
 			this.standardTabPage.Text = "Standard";
 			this.standardTabPage.UseVisualStyleBackColor = true;
 			// 
+			// splitDataGroupBox
+			// 
+			this.splitDataGroupBox.Controls.Add(this.splitDataCheckBox);
+			this.splitDataGroupBox.Controls.Add(this.labelBlockSize);
+			this.splitDataGroupBox.Controls.Add(this.blockSizeTextBox);
+			this.splitDataGroupBox.Controls.Add(this.changeBankForEachBlockCheckBox);
+			this.splitDataGroupBox.Location = new System.Drawing.Point(8, 194);
+			this.splitDataGroupBox.Name = "splitDataGroupBox";
+			this.splitDataGroupBox.Size = new System.Drawing.Size(433, 73);
+			this.splitDataGroupBox.TabIndex = 2;
+			this.splitDataGroupBox.Text = "Split data";
+			// 
+			// changeBankForEachBlockCheckBox
+			// 
+			this.changeBankForEachBlockCheckBox.AutoSize = true;
+			this.changeBankForEachBlockCheckBox.Location = new System.Drawing.Point(144, 44);
+			this.changeBankForEachBlockCheckBox.Name = "changeBankForEachBlockCheckBox";
+			this.changeBankForEachBlockCheckBox.Size = new System.Drawing.Size(161, 17);
+			this.changeBankForEachBlockCheckBox.TabIndex = 7;
+			this.changeBankForEachBlockCheckBox.Text = "&Change bank for each block";
+			this.changeBankForEachBlockCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// blockSizeTextBox
+			// 
+			this.blockSizeTextBox.Location = new System.Drawing.Point(72, 41);
+			this.blockSizeTextBox.Name = "blockSizeTextBox";
+			this.blockSizeTextBox.Size = new System.Drawing.Size(57, 21);
+			this.blockSizeTextBox.TabIndex = 6;
+			this.blockSizeTextBox.Value = ((uint)(0u));
+			// 
+			// labelBlockSize
+			// 
+			this.labelBlockSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelBlockSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBlockSize.Format = stringFormat7;
+			this.labelBlockSize.Location = new System.Drawing.Point(14, 43);
+			this.labelBlockSize.Name = "labelBlockSize";
+			this.labelBlockSize.Size = new System.Drawing.Size(55, 14);
+			this.labelBlockSize.TabIndex = 5;
+			this.labelBlockSize.TabStop = false;
+			this.labelBlockSize.Text = "Bl&ock size";
+			// 
+			// splitDataCheckBox
+			// 
+			this.splitDataCheckBox.AutoSize = true;
+			this.splitDataCheckBox.Location = new System.Drawing.Point(16, 20);
+			this.splitDataCheckBox.Name = "splitDataCheckBox";
+			this.splitDataCheckBox.Size = new System.Drawing.Size(70, 17);
+			this.splitDataCheckBox.TabIndex = 4;
+			this.splitDataCheckBox.Text = "S&plit data";
+			this.splitDataCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// settingsGroupBox
+			// 
+			this.settingsGroupBox.Controls.Add(this.labelLabel);
+			this.settingsGroupBox.Controls.Add(this.labelSection);
+			this.settingsGroupBox.Controls.Add(this.labelBank);
+			this.settingsGroupBox.Controls.Add(this.labelTextBox);
+			this.settingsGroupBox.Controls.Add(this.sectionTextBox);
+			this.settingsGroupBox.Controls.Add(this.bankTextBox);
+			this.settingsGroupBox.Location = new System.Drawing.Point(8, 90);
+			this.settingsGroupBox.Name = "settingsGroupBox";
+			this.settingsGroupBox.Size = new System.Drawing.Size(433, 97);
+			this.settingsGroupBox.TabIndex = 1;
+			this.settingsGroupBox.Text = "Settings";
+			// 
+			// bankTextBox
+			// 
+			this.bankTextBox.Location = new System.Drawing.Point(72, 64);
+			this.bankTextBox.Name = "bankTextBox";
+			this.bankTextBox.Size = new System.Drawing.Size(33, 21);
+			this.bankTextBox.TabIndex = 9;
+			this.bankTextBox.Value = ((uint)(0u));
+			// 
+			// sectionTextBox
+			// 
+			this.sectionTextBox.Location = new System.Drawing.Point(72, 40);
+			this.sectionTextBox.Name = "sectionTextBox";
+			this.sectionTextBox.Size = new System.Drawing.Size(249, 20);
+			this.sectionTextBox.TabIndex = 8;
+			// 
+			// labelTextBox
+			// 
+			this.labelTextBox.Location = new System.Drawing.Point(72, 16);
+			this.labelTextBox.Name = "labelTextBox";
+			this.labelTextBox.Size = new System.Drawing.Size(351, 20);
+			this.labelTextBox.TabIndex = 7;
+			// 
+			// labelBank
+			// 
+			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBank.Format = stringFormat8;
+			this.labelBank.Location = new System.Drawing.Point(14, 67);
+			this.labelBank.Name = "labelBank";
+			this.labelBank.Size = new System.Drawing.Size(30, 14);
+			this.labelBank.TabIndex = 6;
+			this.labelBank.TabStop = false;
+			this.labelBank.Text = "B&ank";
+			// 
+			// labelSection
+			// 
+			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelSection.Format = stringFormat9;
+			this.labelSection.Location = new System.Drawing.Point(14, 43);
+			this.labelSection.Name = "labelSection";
+			this.labelSection.Size = new System.Drawing.Size(42, 14);
+			this.labelSection.TabIndex = 5;
+			this.labelSection.TabStop = false;
+			this.labelSection.Text = "&Section";
+			// 
+			// labelLabel
+			// 
+			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelLabel.Format = stringFormat10;
+			this.labelLabel.Location = new System.Drawing.Point(14, 19);
+			this.labelLabel.Name = "labelLabel";
+			this.labelLabel.Size = new System.Drawing.Size(32, 14);
+			this.labelLabel.TabIndex = 4;
+			this.labelLabel.TabStop = false;
+			this.labelLabel.Text = "&Label";
+			// 
+			// fileGroupBox
+			// 
+			this.fileGroupBox.Controls.Add(this.labelFileName);
+			this.fileGroupBox.Controls.Add(this.labelType);
+			this.fileGroupBox.Controls.Add(this.fileNameTextBox);
+			this.fileGroupBox.Controls.Add(this.typeDropDown);
+			this.fileGroupBox.Controls.Add(this.browseButton);
+			this.fileGroupBox.Location = new System.Drawing.Point(8, 10);
+			this.fileGroupBox.Name = "fileGroupBox";
+			this.fileGroupBox.Size = new System.Drawing.Size(433, 73);
+			this.fileGroupBox.TabIndex = 0;
+			this.fileGroupBox.Text = "File";
+			// 
+			// browseButton
+			// 
+			this.browseButton.Location = new System.Drawing.Point(359, 16);
+			this.browseButton.Name = "browseButton";
+			this.browseButton.Size = new System.Drawing.Size(65, 21);
+			this.browseButton.TabIndex = 8;
+			this.browseButton.Text = "&Browse...";
+			this.browseButton.UseVisualStyleBackColor = true;
+			// 
+			// typeDropDown
+			// 
+			this.typeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.typeDropDown.FormattingEnabled = true;
+			this.typeDropDown.Location = new System.Drawing.Point(72, 40);
+			this.typeDropDown.Name = "typeDropDown";
+			this.typeDropDown.Size = new System.Drawing.Size(177, 21);
+			this.typeDropDown.TabIndex = 7;
+			// 
+			// fileNameTextBox
+			// 
+			this.fileNameTextBox.Location = new System.Drawing.Point(72, 16);
+			this.fileNameTextBox.Name = "fileNameTextBox";
+			this.fileNameTextBox.Size = new System.Drawing.Size(281, 20);
+			this.fileNameTextBox.TabIndex = 6;
+			// 
+			// labelType
+			// 
+			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat11;
+			this.labelType.Location = new System.Drawing.Point(14, 43);
+			this.labelType.Name = "labelType";
+			this.labelType.Size = new System.Drawing.Size(29, 14);
+			this.labelType.TabIndex = 5;
+			this.labelType.TabStop = false;
+			this.labelType.Text = "T&ype";
+			// 
+			// labelFileName
+			// 
+			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat12;
+			this.labelFileName.Location = new System.Drawing.Point(14, 19);
+			this.labelFileName.Name = "labelFileName";
+			this.labelFileName.Size = new System.Drawing.Size(51, 14);
+			this.labelFileName.TabIndex = 4;
+			this.labelFileName.TabStop = false;
+			this.labelFileName.Text = "File&name";
+			// 
 			// locationFormatTabPage
 			// 
+			this.locationFormatTabPage.Controls.Add(this.exportPropertiesEditControl1);
 			this.locationFormatTabPage.Location = new System.Drawing.Point(4, 22);
 			this.locationFormatTabPage.Name = "locationFormatTabPage";
 			this.locationFormatTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.locationFormatTabPage.Size = new System.Drawing.Size(440, 267);
+			this.locationFormatTabPage.Size = new System.Drawing.Size(449, 277);
 			this.locationFormatTabPage.TabIndex = 1;
 			this.locationFormatTabPage.Text = "Location format";
 			this.locationFormatTabPage.UseVisualStyleBackColor = true;
+			// 
+			// exportPropertiesEditControl1
+			// 
+			this.exportPropertiesEditControl1.BackColor = System.Drawing.Color.White;
+			this.exportPropertiesEditControl1.Location = new System.Drawing.Point(6, 42);
+			this.exportPropertiesEditControl1.Name = "exportPropertiesEditControl1";
+			this.exportPropertiesEditControl1.Size = new System.Drawing.Size(193, 193);
+			this.exportPropertiesEditControl1.TabIndex = 0;
+			this.exportPropertiesEditControl1.Text = "exportPropertiesEditControl1";
 			// 
 			// okButton
 			// 
@@ -123,216 +345,6 @@
 			this.helpButton.Text = "&Help";
 			this.helpButton.UseVisualStyleBackColor = true;
 			// 
-			// fileGroupBox
-			// 
-			this.fileGroupBox.Controls.Add(this.browseButton);
-			this.fileGroupBox.Controls.Add(this.typeDropDown);
-			this.fileGroupBox.Controls.Add(this.fileNameTextBox);
-			this.fileGroupBox.Controls.Add(this.labelType);
-			this.fileGroupBox.Controls.Add(this.labelFileName);
-			this.fileGroupBox.Location = new System.Drawing.Point(8, 10);
-			this.fileGroupBox.Name = "fileGroupBox";
-			this.fileGroupBox.Size = new System.Drawing.Size(433, 73);
-			this.fileGroupBox.TabIndex = 0;
-			this.fileGroupBox.Text = "File";
-			// 
-			// settingsGroupBox
-			// 
-			this.settingsGroupBox.Controls.Add(this.bankTextBox);
-			this.settingsGroupBox.Controls.Add(this.sectionTextBox);
-			this.settingsGroupBox.Controls.Add(this.labelTextBox);
-			this.settingsGroupBox.Controls.Add(this.labelBank);
-			this.settingsGroupBox.Controls.Add(this.labelSection);
-			this.settingsGroupBox.Controls.Add(this.labelLabel);
-			this.settingsGroupBox.Location = new System.Drawing.Point(8, 90);
-			this.settingsGroupBox.Name = "settingsGroupBox";
-			this.settingsGroupBox.Size = new System.Drawing.Size(433, 97);
-			this.settingsGroupBox.TabIndex = 1;
-			this.settingsGroupBox.Text = "Settings";
-			// 
-			// splitDataGroupBox
-			// 
-			this.splitDataGroupBox.Controls.Add(this.changeBankForEachBlockCheckBox);
-			this.splitDataGroupBox.Controls.Add(this.blockSizeTextBox);
-			this.splitDataGroupBox.Controls.Add(this.labelBlockSize);
-			this.splitDataGroupBox.Controls.Add(this.splitDataCheckBox);
-			this.splitDataGroupBox.Location = new System.Drawing.Point(8, 194);
-			this.splitDataGroupBox.Name = "splitDataGroupBox";
-			this.splitDataGroupBox.Size = new System.Drawing.Size(433, 73);
-			this.splitDataGroupBox.TabIndex = 2;
-			this.splitDataGroupBox.Text = "Split data";
-			// 
-			// labelFileName
-			// 
-			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat8;
-			this.labelFileName.Location = new System.Drawing.Point(14, 19);
-			this.labelFileName.Name = "labelFileName";
-			this.labelFileName.Size = new System.Drawing.Size(51, 14);
-			this.labelFileName.TabIndex = 4;
-			this.labelFileName.TabStop = false;
-			this.labelFileName.Text = "File&name";
-			// 
-			// labelType
-			// 
-			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat9;
-			this.labelType.Location = new System.Drawing.Point(14, 43);
-			this.labelType.Name = "labelType";
-			this.labelType.Size = new System.Drawing.Size(29, 14);
-			this.labelType.TabIndex = 5;
-			this.labelType.TabStop = false;
-			this.labelType.Text = "T&ype";
-			// 
-			// fileNameTextBox
-			// 
-			this.fileNameTextBox.Location = new System.Drawing.Point(72, 16);
-			this.fileNameTextBox.Name = "fileNameTextBox";
-			this.fileNameTextBox.Size = new System.Drawing.Size(281, 20);
-			this.fileNameTextBox.TabIndex = 6;
-			// 
-			// typeDropDown
-			// 
-			this.typeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.typeDropDown.FormattingEnabled = true;
-			this.typeDropDown.Location = new System.Drawing.Point(72, 40);
-			this.typeDropDown.Name = "typeDropDown";
-			this.typeDropDown.Size = new System.Drawing.Size(177, 21);
-			this.typeDropDown.TabIndex = 7;
-			// 
-			// browseButton
-			// 
-			this.browseButton.Location = new System.Drawing.Point(359, 16);
-			this.browseButton.Name = "browseButton";
-			this.browseButton.Size = new System.Drawing.Size(65, 21);
-			this.browseButton.TabIndex = 8;
-			this.browseButton.Text = "&Browse...";
-			this.browseButton.UseVisualStyleBackColor = true;
-			// 
-			// labelLabel
-			// 
-			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelLabel.Format = stringFormat10;
-			this.labelLabel.Location = new System.Drawing.Point(14, 19);
-			this.labelLabel.Name = "labelLabel";
-			this.labelLabel.Size = new System.Drawing.Size(32, 14);
-			this.labelLabel.TabIndex = 4;
-			this.labelLabel.TabStop = false;
-			this.labelLabel.Text = "&Label";
-			// 
-			// labelSection
-			// 
-			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelSection.Format = stringFormat11;
-			this.labelSection.Location = new System.Drawing.Point(14, 43);
-			this.labelSection.Name = "labelSection";
-			this.labelSection.Size = new System.Drawing.Size(42, 14);
-			this.labelSection.TabIndex = 5;
-			this.labelSection.TabStop = false;
-			this.labelSection.Text = "&Section";
-			// 
-			// labelBank
-			// 
-			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBank.Format = stringFormat12;
-			this.labelBank.Location = new System.Drawing.Point(14, 67);
-			this.labelBank.Name = "labelBank";
-			this.labelBank.Size = new System.Drawing.Size(30, 14);
-			this.labelBank.TabIndex = 6;
-			this.labelBank.TabStop = false;
-			this.labelBank.Text = "B&ank";
-			// 
-			// labelTextBox
-			// 
-			this.labelTextBox.Location = new System.Drawing.Point(72, 16);
-			this.labelTextBox.Name = "labelTextBox";
-			this.labelTextBox.Size = new System.Drawing.Size(351, 20);
-			this.labelTextBox.TabIndex = 7;
-			// 
-			// sectionTextBox
-			// 
-			this.sectionTextBox.Location = new System.Drawing.Point(72, 40);
-			this.sectionTextBox.Name = "sectionTextBox";
-			this.sectionTextBox.Size = new System.Drawing.Size(249, 20);
-			this.sectionTextBox.TabIndex = 8;
-			// 
-			// bankTextBox
-			// 
-			this.bankTextBox.Location = new System.Drawing.Point(72, 64);
-			this.bankTextBox.Name = "bankTextBox";
-			this.bankTextBox.Size = new System.Drawing.Size(33, 21);
-			this.bankTextBox.TabIndex = 9;
-			this.bankTextBox.Value = ((uint)(0u));
-			// 
-			// splitDataCheckBox
-			// 
-			this.splitDataCheckBox.AutoSize = true;
-			this.splitDataCheckBox.Location = new System.Drawing.Point(16, 20);
-			this.splitDataCheckBox.Name = "splitDataCheckBox";
-			this.splitDataCheckBox.Size = new System.Drawing.Size(70, 17);
-			this.splitDataCheckBox.TabIndex = 4;
-			this.splitDataCheckBox.Text = "S&plit data";
-			this.splitDataCheckBox.UseVisualStyleBackColor = true;
-			// 
-			// labelBlockSize
-			// 
-			this.labelBlockSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelBlockSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBlockSize.Format = stringFormat7;
-			this.labelBlockSize.Location = new System.Drawing.Point(14, 43);
-			this.labelBlockSize.Name = "labelBlockSize";
-			this.labelBlockSize.Size = new System.Drawing.Size(55, 14);
-			this.labelBlockSize.TabIndex = 5;
-			this.labelBlockSize.TabStop = false;
-			this.labelBlockSize.Text = "Bl&ock size";
-			// 
-			// blockSizeTextBox
-			// 
-			this.blockSizeTextBox.Location = new System.Drawing.Point(72, 41);
-			this.blockSizeTextBox.Name = "blockSizeTextBox";
-			this.blockSizeTextBox.Size = new System.Drawing.Size(57, 21);
-			this.blockSizeTextBox.TabIndex = 6;
-			this.blockSizeTextBox.Value = ((uint)(0u));
-			// 
-			// changeBankForEachBlockCheckBox
-			// 
-			this.changeBankForEachBlockCheckBox.AutoSize = true;
-			this.changeBankForEachBlockCheckBox.Location = new System.Drawing.Point(144, 44);
-			this.changeBankForEachBlockCheckBox.Name = "changeBankForEachBlockCheckBox";
-			this.changeBankForEachBlockCheckBox.Size = new System.Drawing.Size(161, 17);
-			this.changeBankForEachBlockCheckBox.TabIndex = 7;
-			this.changeBankForEachBlockCheckBox.Text = "&Change bank for each block";
-			this.changeBankForEachBlockCheckBox.UseVisualStyleBackColor = true;
-			// 
 			// ExportOptionsDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -351,12 +363,13 @@
 			this.Text = "Export options";
 			this.tabControl.ResumeLayout(false);
 			this.standardTabPage.ResumeLayout(false);
-			this.fileGroupBox.ResumeLayout(false);
-			this.fileGroupBox.PerformLayout();
-			this.settingsGroupBox.ResumeLayout(false);
-			this.settingsGroupBox.PerformLayout();
 			this.splitDataGroupBox.ResumeLayout(false);
 			this.splitDataGroupBox.PerformLayout();
+			this.settingsGroupBox.ResumeLayout(false);
+			this.settingsGroupBox.PerformLayout();
+			this.fileGroupBox.ResumeLayout(false);
+			this.fileGroupBox.PerformLayout();
+			this.locationFormatTabPage.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -387,5 +400,6 @@
 		private Shared.Controls.NumericTextBox blockSizeTextBox;
 		private Shared.Controls.CleanLabel labelBlockSize;
 		private System.Windows.Forms.CheckBox splitDataCheckBox;
+		private ExportPropertiesEditControl exportPropertiesEditControl1;
 	}
 }
