@@ -1084,5 +1084,11 @@ namespace GB.GBMB
 				LoadMapFile(item.Text);
 			}
 		}
+
+		private void copyAsBitmapMenuItem_Click(object sender, EventArgs e) {
+			using (Bitmap bitmap = mapControl.GetMapImage()) {
+				Clipboard.SetImage(bitmap);
+			}
+		}
 	}
 }

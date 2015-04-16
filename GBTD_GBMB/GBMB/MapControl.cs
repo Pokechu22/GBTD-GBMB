@@ -549,6 +549,36 @@ namespace GB.GBMB
 			return value;
 		}
 
+		/// <summary>
+		/// Creates an image representation of the map.
+		/// </summary>
+		/// <returns></returns>
+		public Bitmap GetMapImage() {
+			if (map == null || tileset == null) {
+				throw new WarningException("Map or tileset not set; cannot create map bitmap!");
+			}
+			
+			Bitmap bitmap = new Bitmap((int)(map.Master.Width * tileset.Width), (int)(map.Master.Height * tileset.Height));
+			using (Graphics g = Graphics.FromImage(bitmap)) {
+				for (int y = 0; y < map.Master.Height; y++) {
+					for (int x = 0; x < map.Master.Width; x++) {
+						GBMObjectMapTileDataRecord record = map.Tiles[x, y];
+						Tile t = tileset.tiles[record.TileNumber];
+
+						Bitmap bmp = MakeTileBitmap(record, t,
+							GetColor(colorSet, record, GBColor.WHITE),
+							GetColor(colorSet, record, GBColor.LIGHT_GRAY),
+							GetColor(colorSet, record, GBColor.DARK_GRAY),
+							GetColor(colorSet, record, GBColor.BLACK));
+
+						g.DrawImageUnscaled(bmp, x * tileset.Width, y * tileset.Width);
+					}
+				}
+			}
+
+			return bitmap;
+		}
+
 		protected override void OnPaint(PaintEventArgs e) {
 			e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 			e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half; //Fixes lines in the middle issue.

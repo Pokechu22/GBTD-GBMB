@@ -150,11 +150,6 @@
 			topBoxBorder = new GB.Shared.Controls.Border();
 			this.SuspendLayout();
 			// 
-			// reopenSeperatorMenuItem
-			// 
-			this.reopenSeperatorMenuItem.Index = 3;
-			this.reopenSeperatorMenuItem.Text = "-";
-			// 
 			// seperatorMenuItem2
 			// 
 			seperatorMenuItem2.Index = 5;
@@ -256,6 +251,11 @@
 			topBoxBorder.Size = new System.Drawing.Size(382, 32);
 			topBoxBorder.TabIndex = 3;
 			topBoxBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
+			// 
+			// reopenSeperatorMenuItem
+			// 
+			this.reopenSeperatorMenuItem.Index = 3;
+			this.reopenSeperatorMenuItem.Text = "-";
 			// 
 			// mainMenu
 			// 
@@ -391,6 +391,7 @@
 			this.copyAsBitmapMenuItem.Index = 6;
 			this.copyAsBitmapMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
 			this.copyAsBitmapMenuItem.Text = "Copy as bit&map";
+			this.copyAsBitmapMenuItem.Click += new System.EventHandler(this.copyAsBitmapMenuItem_Click);
 			// 
 			// designMenuItem
 			// 
