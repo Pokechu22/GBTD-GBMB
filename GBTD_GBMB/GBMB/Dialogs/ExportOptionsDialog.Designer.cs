@@ -38,10 +38,10 @@
 			// 
 			this.tabControl.Controls.Add(this.standardTabPage);
 			this.tabControl.Controls.Add(this.locationFormatTabPage);
-			this.tabControl.Location = new System.Drawing.Point(12, 12);
+			this.tabControl.Location = new System.Drawing.Point(8, 8);
 			this.tabControl.Name = "tabControl";
 			this.tabControl.SelectedIndex = 0;
-			this.tabControl.Size = new System.Drawing.Size(448, 293);
+			this.tabControl.Size = new System.Drawing.Size(457, 303);
 			this.tabControl.TabIndex = 0;
 			// 
 			// standardTabPage
@@ -49,7 +49,7 @@
 			this.standardTabPage.Location = new System.Drawing.Point(4, 22);
 			this.standardTabPage.Name = "standardTabPage";
 			this.standardTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.standardTabPage.Size = new System.Drawing.Size(440, 267);
+			this.standardTabPage.Size = new System.Drawing.Size(449, 277);
 			this.standardTabPage.TabIndex = 0;
 			this.standardTabPage.Text = "Standard";
 			this.standardTabPage.UseVisualStyleBackColor = true;
@@ -66,7 +66,7 @@
 			// 
 			// okButton
 			// 
-			this.okButton.Location = new System.Drawing.Point(223, 314);
+			this.okButton.Location = new System.Drawing.Point(224, 318);
 			this.okButton.Name = "okButton";
 			this.okButton.Size = new System.Drawing.Size(75, 25);
 			this.okButton.TabIndex = 1;
@@ -76,7 +76,7 @@
 			// cancelButton
 			// 
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(304, 314);
+			this.cancelButton.Location = new System.Drawing.Point(303, 318);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(75, 25);
 			this.cancelButton.TabIndex = 2;
@@ -85,7 +85,7 @@
 			// 
 			// helpButton
 			// 
-			this.helpButton.Location = new System.Drawing.Point(385, 314);
+			this.helpButton.Location = new System.Drawing.Point(382, 318);
 			this.helpButton.Name = "helpButton";
 			this.helpButton.Size = new System.Drawing.Size(75, 25);
 			this.helpButton.TabIndex = 3;
