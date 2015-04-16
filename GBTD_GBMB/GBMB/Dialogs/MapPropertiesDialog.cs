@@ -38,6 +38,8 @@ namespace GB.GBMB.Dialogs
 		}
 
 		private void browseButton_Click(object sender, EventArgs e) {
+			openFileDialog.InitialDirectory = Properties.Settings.Default.GBRPath;
+
 			//Start with the current file name, if it is set.
 			openFileDialog.FileName = fileNameTextBox.Text;
 			var result = openFileDialog.ShowDialog();
@@ -45,6 +47,7 @@ namespace GB.GBMB.Dialogs
 			if (result != DialogResult.OK) { return; }
 
 			fileNameTextBox.Text = openFileDialog.FileName;
+			Properties.Settings.Default.GBRPath = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
 		}
 	}
 }
