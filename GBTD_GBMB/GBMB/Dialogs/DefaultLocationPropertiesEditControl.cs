@@ -11,7 +11,7 @@ using GB.Shared.Controls;
 
 namespace GB.GBMB.Dialogs
 {
-	internal partial class DefaultLocationPropertiesEditControl : UserControl
+	internal partial class DefaultLocationPropertiesEditControl : Control
 	{
 		protected override Size DefaultSize { get { return new Size(201, 169); } }
 
@@ -46,14 +46,14 @@ namespace GB.GBMB.Dialogs
 		}
 
 		public DefaultLocationPropertiesEditControl() {
-			InitializeComponent();
+			
 		}
 
 		private NumericTextBox[] textBoxes = new NumericTextBox[0];
 
 		private void RecreateTextBoxes() {
 			const int BOX_WIDTH = 62, BOX_HEIGHT = 19;
-			const int BOX_X = 135;
+			const int FIRST_BOX_Y = 21; const int BOX_X = 137;
 
 			if (properties != null) {
 				this.Controls.Clear();
@@ -65,17 +65,17 @@ namespace GB.GBMB.Dialogs
 				this.SuspendLayout();
 
 				for (int i = 0; i < textBoxes.Length; i++) {
-					int y = (i + 1) * BOX_HEIGHT;
+					int y = (i * BOX_HEIGHT) + FIRST_BOX_Y;
 
 					NumericTextBox t = new NumericTextBox();
 					
 					Panel panel = new Panel();
 					panel.Location = new Point(BOX_X, y);
-					panel.Size = new Size(BOX_WIDTH, BOX_HEIGHT);
+					panel.Size = new Size(BOX_WIDTH - 1, BOX_HEIGHT - 1);
 					panel.BorderStyle = BorderStyle.None;
 					panel.GotFocus += new EventHandler((s, a) => { t.Focus(); t.SelectAll(); });
 					panel.Click += new EventHandler((s, a) => { t.Focus(); t.SelectAll(); });
-					panel.Padding = new Padding(2, 2, 2, 2);
+					panel.Padding = new Padding(2, 2, 1, 1);
 					panel.Cursor = Cursors.IBeam;
 					t.Name = "PropPanel" + i;
 
@@ -154,19 +154,23 @@ namespace GB.GBMB.Dialogs
 		}
 
 		protected override void OnPaint(PaintEventArgs e) {
+			const int DATA_Y = 2, BOX_INITIAL = 21;
 			const int BOX_HEIGHT = 19;
-			const int PROPERTY_X = 0, PROPERTY_WIDTH = 135;
-			const int VALUE_X = 135, VALUE_WIDTH = 62;
+			const int PROPERTY_X = 2, PROPERTY_WIDTH = 135;
+			const int VALUE_X = 137, VALUE_WIDTH = 62;
 
 			base.OnPaint(e);
 
-			DrawTextRect(e.Graphics, "Property", PROPERTY_X, 0, PROPERTY_WIDTH, BOX_HEIGHT);
-			DrawTextRect(e.Graphics, "Value", VALUE_X, 0, VALUE_WIDTH, BOX_HEIGHT);
+			ControlPaint.DrawBorder3D(e.Graphics, 0, 0, Width, Height, Border3DStyle.Sunken, 
+				Border3DSide.Left | Border3DSide.Right | Border3DSide.Top | Border3DSide.Bottom);
+
+			DrawTextRect(e.Graphics, "Property", PROPERTY_X, DATA_Y, PROPERTY_WIDTH, BOX_HEIGHT);
+			DrawTextRect(e.Graphics, "Value", VALUE_X, DATA_Y, VALUE_WIDTH, BOX_HEIGHT);
 
 			if (properties == null || defaultProperties == null) { return; }
 
 			for (int i = 0; i < properties.Master.PropCount; i++) {
-				int y = (i + 1) * BOX_HEIGHT;
+				int y = (i * BOX_HEIGHT) + BOX_INITIAL;
 
 				DrawTextRect(e.Graphics, properties.Properties[i].Name, PROPERTY_X, y, PROPERTY_WIDTH, BOX_HEIGHT);
 				DrawEditRect(e.Graphics, VALUE_X, y, VALUE_WIDTH, BOX_HEIGHT);

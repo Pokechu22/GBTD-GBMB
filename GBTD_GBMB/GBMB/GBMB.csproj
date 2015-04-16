@@ -63,10 +63,7 @@
       <DependentUpon>DefaultLocationPropertiesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\DefaultLocationPropertiesEditControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Dialogs\DefaultLocationPropertiesEditControl.Designer.cs">
-      <DependentUpon>DefaultLocationPropertiesEditControl.cs</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dialogs\LocationPropertiesDialog.cs">
       <SubType>Form</SubType>
@@ -111,9 +108,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\DefaultLocationPropertiesDialog.resx">
       <DependentUpon>DefaultLocationPropertiesDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\DefaultLocationPropertiesEditControl.resx">
-      <DependentUpon>DefaultLocationPropertiesEditControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\LocationPropertiesDialog.resx">
       <DependentUpon>LocationPropertiesDialog.cs</DependentUpon>

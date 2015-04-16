@@ -95,7 +95,6 @@
 			// editControl
 			// 
 			this.editControl.BackColor = System.Drawing.Color.White;
-			this.editControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.editControl.DefaultProperties = null;
 			this.editControl.Location = new System.Drawing.Point(8, 16);
 			this.editControl.Name = "editControl";
