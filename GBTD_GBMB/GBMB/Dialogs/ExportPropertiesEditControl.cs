@@ -22,7 +22,7 @@ namespace GB.GBMB.Dialogs
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		[Browsable(false), ReadOnly(true)]
 		public GBMObjectMapPropertiesRecord[] Properties {
-			get { SaveChanges(); return properties; }
+			get { return properties; }
 			set {
 				if (value == null) {
 					value = new GBMObjectMapPropertiesRecord[0];
@@ -30,7 +30,7 @@ namespace GB.GBMB.Dialogs
 					value = (GBMObjectMapPropertiesRecord[])value.Clone();
 				}
 				properties = value;
-				LoadChanges();
+				RegenerateControls();
 				this.Invalidate(true);
 			}
 		}
@@ -84,7 +84,7 @@ namespace GB.GBMB.Dialogs
 
 			//If the size changed and everything needs to be resized.
 			if (propertyBoxes.Length != properties.Length) {
-				ResizeControls();
+				RegenerateControls();
 			}
 
 			for (int i = 0; i < exportProperties.Length; i++) {
@@ -95,7 +95,7 @@ namespace GB.GBMB.Dialogs
 			loadingOrSaving = false;
 		}
 
-		private void ResizeControls() {
+		private void RegenerateControls() {
 			const int LEFT_X = 2, TOP_Y = 2; //TopLeft coords (due to border).
 			const int BOX_HEIGHT = 19;
 			const int PROPERTY_X = LEFT_X + 21, PROPERTY_WIDTH = 121;
@@ -126,22 +126,22 @@ namespace GB.GBMB.Dialogs
 				propertyBoxes[i].MaxLength = 31;
 				propertyBoxes[i].Tag = i;
 				propertyBoxes[i].Items.AddRange(new Object[] {
-					"0",
-					"1",
-					"2",
-					"3",
-					"4",
-					"5",
-					"6",
-					"7",
-					"8",
-					"9",
-					"10",
-					"11",
-					"12",
-					"13"
+					"",
+					"[Tile number]",
+					"[Tile number: Low 8]",
+					"[Tile number: High 9]",
+					"[Vertical flip]",
+					"[Horiztontal flip]",
+					"[GBC Palette]",
+					"[SGB Palette]",
+					"[GBC BG Attribute]",
+					"[0 filler]",
+					"[1 filler]"
 				});
-				propertyBoxes[i].TextChanged += new EventHandler(nameTextBox_TextChanged);
+				if (properties != null) {
+					propertyBoxes[i].Items.AddRange(properties.Select(r => r.Name).ToArray());
+				}
+				propertyBoxes[i].SelectedIndexChanged += new EventHandler(propComboBox_SelectedIndexChanged);
 
 				NumericTextBox bitsTextBox = new NumericTextBox();
 				bits[i] = bitsTextBox;
@@ -183,18 +183,21 @@ namespace GB.GBMB.Dialogs
 			DrawEditRect(e.Graphics, 0, 0, control.Width, control.Height);
 		}
 
-		[Description("Called when one of the names is changed.")]
-		public event EventHandler NameTextBoxChanged;
+		[Description("Called when one of the selected properties is changed.")]
+		public event EventHandler PropertyComboBoxChanged;
 		[Description("Called when one of the maximum values is changed.")]
 		public event EventHandler BitsTextBoxChanged;
-		[Description("Called when the number of properties is changed.")]
-		public event EventHandler PropCountChanged;
+		[Description("Fires when the number of entries has changed or the amount of bits in one entry has changed.")]
+		public event EventHandler SizeOrCountChanged;
 
-		private void nameTextBox_TextChanged(object sender, EventArgs e) {
+		void propComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			if (loadingOrSaving) { return; }
 
-			if (NameTextBoxChanged != null) {
-				NameTextBoxChanged(this, e);
+			if (PropertyComboBoxChanged != null) {
+				PropertyComboBoxChanged(this, new EventArgs());
+			}
+			if (SizeOrCountChanged != null) {
+				SizeOrCountChanged(this, new EventArgs());
 			}
 		}
 
@@ -203,6 +206,9 @@ namespace GB.GBMB.Dialogs
 
 			if (BitsTextBoxChanged != null) {
 				BitsTextBoxChanged(this, e);
+			}
+			if (SizeOrCountChanged != null) {
+				SizeOrCountChanged(this, new EventArgs());
 			}
 		}
 
@@ -279,8 +285,8 @@ namespace GB.GBMB.Dialogs
 			properties = newProps;
 			LoadChanges();
 
-			if (PropCountChanged != null) {
-				PropCountChanged(this, new EventArgs());
+			if (SizeOrCountChanged != null) {
+				SizeOrCountChanged(this, new EventArgs());
 			}
 		}
 
@@ -303,8 +309,8 @@ namespace GB.GBMB.Dialogs
 			properties = newProps;
 			LoadChanges();
 
-			if (PropCountChanged != null) {
-				PropCountChanged(this, new EventArgs());
+			if (SizeOrCountChanged != null) {
+				SizeOrCountChanged(this, new EventArgs());
 			}
 		}
 	}
