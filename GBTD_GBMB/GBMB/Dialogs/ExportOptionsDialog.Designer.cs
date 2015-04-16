@@ -25,11 +25,12 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat11 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat12 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.standardTabPage = new System.Windows.Forms.TabPage();
 			this.locationFormatTabPage = new System.Windows.Forms.TabPage();
@@ -50,10 +51,15 @@
 			this.labelTextBox = new System.Windows.Forms.TextBox();
 			this.sectionTextBox = new System.Windows.Forms.TextBox();
 			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
+			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
+			this.blockSizeTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.changeBankForEachBlockCheckBox = new System.Windows.Forms.CheckBox();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
 			this.fileGroupBox.SuspendLayout();
 			this.settingsGroupBox.SuspendLayout();
+			this.splitDataGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -146,6 +152,10 @@
 			// 
 			// splitDataGroupBox
 			// 
+			this.splitDataGroupBox.Controls.Add(this.changeBankForEachBlockCheckBox);
+			this.splitDataGroupBox.Controls.Add(this.blockSizeTextBox);
+			this.splitDataGroupBox.Controls.Add(this.labelBlockSize);
+			this.splitDataGroupBox.Controls.Add(this.splitDataCheckBox);
 			this.splitDataGroupBox.Location = new System.Drawing.Point(8, 194);
 			this.splitDataGroupBox.Name = "splitDataGroupBox";
 			this.splitDataGroupBox.Size = new System.Drawing.Size(433, 73);
@@ -156,11 +166,11 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat5;
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat8;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -172,11 +182,11 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat4;
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat9;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
@@ -213,11 +223,11 @@
 			// 
 			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelLabel.Format = stringFormat3;
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelLabel.Format = stringFormat10;
 			this.labelLabel.Location = new System.Drawing.Point(14, 19);
 			this.labelLabel.Name = "labelLabel";
 			this.labelLabel.Size = new System.Drawing.Size(32, 14);
@@ -229,11 +239,11 @@
 			// 
 			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelSection.Format = stringFormat2;
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelSection.Format = stringFormat11;
 			this.labelSection.Location = new System.Drawing.Point(14, 43);
 			this.labelSection.Name = "labelSection";
 			this.labelSection.Size = new System.Drawing.Size(42, 14);
@@ -245,11 +255,11 @@
 			// 
 			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBank.Format = stringFormat1;
+			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBank.Format = stringFormat12;
 			this.labelBank.Location = new System.Drawing.Point(14, 67);
 			this.labelBank.Name = "labelBank";
 			this.labelBank.Size = new System.Drawing.Size(30, 14);
@@ -279,6 +289,50 @@
 			this.bankTextBox.TabIndex = 9;
 			this.bankTextBox.Value = ((uint)(0u));
 			// 
+			// splitDataCheckBox
+			// 
+			this.splitDataCheckBox.AutoSize = true;
+			this.splitDataCheckBox.Location = new System.Drawing.Point(16, 20);
+			this.splitDataCheckBox.Name = "splitDataCheckBox";
+			this.splitDataCheckBox.Size = new System.Drawing.Size(70, 17);
+			this.splitDataCheckBox.TabIndex = 4;
+			this.splitDataCheckBox.Text = "S&plit data";
+			this.splitDataCheckBox.UseVisualStyleBackColor = true;
+			// 
+			// labelBlockSize
+			// 
+			this.labelBlockSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelBlockSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBlockSize.Format = stringFormat7;
+			this.labelBlockSize.Location = new System.Drawing.Point(14, 43);
+			this.labelBlockSize.Name = "labelBlockSize";
+			this.labelBlockSize.Size = new System.Drawing.Size(55, 14);
+			this.labelBlockSize.TabIndex = 5;
+			this.labelBlockSize.TabStop = false;
+			this.labelBlockSize.Text = "Bl&ock size";
+			// 
+			// blockSizeTextBox
+			// 
+			this.blockSizeTextBox.Location = new System.Drawing.Point(72, 41);
+			this.blockSizeTextBox.Name = "blockSizeTextBox";
+			this.blockSizeTextBox.Size = new System.Drawing.Size(57, 21);
+			this.blockSizeTextBox.TabIndex = 6;
+			this.blockSizeTextBox.Value = ((uint)(0u));
+			// 
+			// changeBankForEachBlockCheckBox
+			// 
+			this.changeBankForEachBlockCheckBox.AutoSize = true;
+			this.changeBankForEachBlockCheckBox.Location = new System.Drawing.Point(144, 44);
+			this.changeBankForEachBlockCheckBox.Name = "changeBankForEachBlockCheckBox";
+			this.changeBankForEachBlockCheckBox.Size = new System.Drawing.Size(161, 17);
+			this.changeBankForEachBlockCheckBox.TabIndex = 7;
+			this.changeBankForEachBlockCheckBox.Text = "&Change bank for each block";
+			this.changeBankForEachBlockCheckBox.UseVisualStyleBackColor = true;
+			// 
 			// ExportOptionsDialog
 			// 
 			this.AcceptButton = this.okButton;
@@ -301,6 +355,8 @@
 			this.fileGroupBox.PerformLayout();
 			this.settingsGroupBox.ResumeLayout(false);
 			this.settingsGroupBox.PerformLayout();
+			this.splitDataGroupBox.ResumeLayout(false);
+			this.splitDataGroupBox.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -327,5 +383,9 @@
 		private Shared.Controls.CleanLabel labelBank;
 		private Shared.Controls.CleanLabel labelSection;
 		private Shared.Controls.CleanLabel labelLabel;
+		private System.Windows.Forms.CheckBox changeBankForEachBlockCheckBox;
+		private Shared.Controls.NumericTextBox blockSizeTextBox;
+		private Shared.Controls.CleanLabel labelBlockSize;
+		private System.Windows.Forms.CheckBox splitDataCheckBox;
 	}
 }
