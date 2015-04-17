@@ -19,6 +19,8 @@ namespace GB.GBMB.Dialogs
 		public ExportOptionsDialog(GBMObjectMapProperties properties, GBMObjectMapExportProperties exportProperties) : this() {
 			propEditControl.PropertyNames = properties.Properties;
 			propEditControl.ExportProperties = exportProperties.Data;
+
+			resultingExportPlanesControl1.Properties = exportProperties.Data;
 		}
 
 		private void addRowButton_Click(object sender, EventArgs e) {
@@ -33,6 +35,10 @@ namespace GB.GBMB.Dialogs
 
 			addRowButton.Enabled = (propEditControl.ExportProperties.Length < 32);
 			removeRowButton.Enabled = (propEditControl.ExportProperties.Length > 0);
+		}
+
+		private void propEditControl_SizeOrCountChanged(object sender, EventArgs e) {
+			resultingExportPlanesControl1.Properties = propEditControl.ExportProperties;
 		}
 	}
 }

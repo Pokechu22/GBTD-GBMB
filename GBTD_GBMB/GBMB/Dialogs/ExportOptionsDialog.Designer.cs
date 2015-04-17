@@ -388,6 +388,7 @@
 			this.propEditControl.Name = "propEditControl";
 			this.propEditControl.Size = new System.Drawing.Size(193, 193);
 			this.propEditControl.TabIndex = 4;
+			this.propEditControl.SizeOrCountChanged += new System.EventHandler(this.propEditControl_SizeOrCountChanged);
 			// 
 			// ExportOptionsDialog
 			// 
