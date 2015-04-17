@@ -59,6 +59,13 @@ namespace GB.GBMB.Dialogs
 
 			for (int y = 0; y < 4; y++) {
 				for (int x = 0; x < 8; x++) {
+					if (properties != null && currentNumber < properties.Length && currentPos == 0) {
+						do {
+							currentNumber++;
+							currentPos = (currentNumber < properties.Length ? properties[currentNumber].Size : 0);
+						} while (currentNumber < properties.Length && (properties[currentNumber].Size == 0));
+					}
+
 					String text;
 					if (properties == null || currentNumber >= properties.Length) {
 						text = "";
@@ -74,12 +81,6 @@ namespace GB.GBMB.Dialogs
 
 					if (currentPos != 0) {
 						currentPos--;
-					}
-					if (properties != null && currentNumber < properties.Length && currentPos == 0) {
-						do {
-							currentNumber++;
-							currentPos = (currentNumber < properties.Length ? properties[currentNumber].Size : 0);
-						} while (currentNumber < properties.Length && (properties[currentNumber].Size == 0));
 					}
 				}
 			}

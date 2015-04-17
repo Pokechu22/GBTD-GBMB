@@ -26,15 +26,15 @@
 		/// </summary>
 		private void InitializeComponent() {
 			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.standardTabPage = new System.Windows.Forms.TabPage();
 			this.locationFormatTabPage = new System.Windows.Forms.TabPage();
@@ -70,8 +70,8 @@
 			this.planeCountComboBox = new System.Windows.Forms.ComboBox();
 			this.planeOrderComboBox = new System.Windows.Forms.ComboBox();
 			this.tileOffsetTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.resultingExportPlanesControl1 = new GB.GBMB.Dialogs.ResultingExportPlanesControl();
 			this.propEditControl = new GB.GBMB.Dialogs.ExportPropertiesEditControl();
+			this.resultingExportPlanesControl1 = new GB.GBMB.Dialogs.ResultingExportPlanesControl();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
 			this.locationFormatTabPage.SuspendLayout();
@@ -145,10 +145,10 @@
 			// 
 			// splitDataGroupBox
 			// 
-			this.splitDataGroupBox.Controls.Add(this.changeBankForEachBlockCheckBox);
-			this.splitDataGroupBox.Controls.Add(this.blockSizeTextBox);
-			this.splitDataGroupBox.Controls.Add(this.labelBlockSize);
 			this.splitDataGroupBox.Controls.Add(this.splitDataCheckBox);
+			this.splitDataGroupBox.Controls.Add(this.labelBlockSize);
+			this.splitDataGroupBox.Controls.Add(this.blockSizeTextBox);
+			this.splitDataGroupBox.Controls.Add(this.changeBankForEachBlockCheckBox);
 			this.splitDataGroupBox.Location = new System.Drawing.Point(8, 194);
 			this.splitDataGroupBox.Name = "splitDataGroupBox";
 			this.splitDataGroupBox.Size = new System.Drawing.Size(433, 73);
@@ -201,12 +201,12 @@
 			// 
 			// settingsGroupBox
 			// 
-			this.settingsGroupBox.Controls.Add(this.bankTextBox);
-			this.settingsGroupBox.Controls.Add(this.sectionTextBox);
-			this.settingsGroupBox.Controls.Add(this.labelTextBox);
-			this.settingsGroupBox.Controls.Add(this.labelBank);
-			this.settingsGroupBox.Controls.Add(this.labelSection);
 			this.settingsGroupBox.Controls.Add(this.labelLabel);
+			this.settingsGroupBox.Controls.Add(this.labelSection);
+			this.settingsGroupBox.Controls.Add(this.labelBank);
+			this.settingsGroupBox.Controls.Add(this.labelTextBox);
+			this.settingsGroupBox.Controls.Add(this.sectionTextBox);
+			this.settingsGroupBox.Controls.Add(this.bankTextBox);
 			this.settingsGroupBox.Location = new System.Drawing.Point(8, 90);
 			this.settingsGroupBox.Name = "settingsGroupBox";
 			this.settingsGroupBox.Size = new System.Drawing.Size(433, 97);
@@ -217,11 +217,11 @@
 			// 
 			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelLabel.Format = stringFormat4;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelLabel.Format = stringFormat2;
 			this.labelLabel.Location = new System.Drawing.Point(14, 19);
 			this.labelLabel.Name = "labelLabel";
 			this.labelLabel.Size = new System.Drawing.Size(32, 14);
@@ -249,11 +249,11 @@
 			// 
 			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBank.Format = stringFormat2;
+			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBank.Format = stringFormat4;
 			this.labelBank.Location = new System.Drawing.Point(14, 67);
 			this.labelBank.Name = "labelBank";
 			this.labelBank.Size = new System.Drawing.Size(30, 14);
@@ -285,11 +285,11 @@
 			// 
 			// fileGroupBox
 			// 
-			this.fileGroupBox.Controls.Add(this.browseButton);
-			this.fileGroupBox.Controls.Add(this.typeDropDown);
-			this.fileGroupBox.Controls.Add(this.fileNameTextBox);
-			this.fileGroupBox.Controls.Add(this.labelType);
 			this.fileGroupBox.Controls.Add(this.labelFileName);
+			this.fileGroupBox.Controls.Add(this.labelType);
+			this.fileGroupBox.Controls.Add(this.fileNameTextBox);
+			this.fileGroupBox.Controls.Add(this.typeDropDown);
+			this.fileGroupBox.Controls.Add(this.browseButton);
 			this.fileGroupBox.Location = new System.Drawing.Point(8, 10);
 			this.fileGroupBox.Name = "fileGroupBox";
 			this.fileGroupBox.Size = new System.Drawing.Size(433, 73);
@@ -300,11 +300,11 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat6;
+			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat5;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -316,11 +316,11 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat5;
+			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat6;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
@@ -355,18 +355,18 @@
 			// 
 			// locationFormatGroupBox
 			// 
-			this.locationFormatGroupBox.Controls.Add(this.removeRowButton);
-			this.locationFormatGroupBox.Controls.Add(this.addRowButton);
-			this.locationFormatGroupBox.Controls.Add(this.propEditControl);
-			this.locationFormatGroupBox.Controls.Add(this.resultingExportPlanesControl1);
-			this.locationFormatGroupBox.Controls.Add(this.labelMapLayout);
-			this.locationFormatGroupBox.Controls.Add(this.labelPlaneCount);
-			this.locationFormatGroupBox.Controls.Add(this.cleanLabel3);
-			this.locationFormatGroupBox.Controls.Add(this.cleanLabel4);
-			this.locationFormatGroupBox.Controls.Add(this.mapLayoutComboBox);
-			this.locationFormatGroupBox.Controls.Add(this.planeCountComboBox);
-			this.locationFormatGroupBox.Controls.Add(this.planeOrderComboBox);
 			this.locationFormatGroupBox.Controls.Add(this.tileOffsetTextBox);
+			this.locationFormatGroupBox.Controls.Add(this.planeOrderComboBox);
+			this.locationFormatGroupBox.Controls.Add(this.planeCountComboBox);
+			this.locationFormatGroupBox.Controls.Add(this.mapLayoutComboBox);
+			this.locationFormatGroupBox.Controls.Add(this.cleanLabel4);
+			this.locationFormatGroupBox.Controls.Add(this.cleanLabel3);
+			this.locationFormatGroupBox.Controls.Add(this.labelPlaneCount);
+			this.locationFormatGroupBox.Controls.Add(this.labelMapLayout);
+			this.locationFormatGroupBox.Controls.Add(this.resultingExportPlanesControl1);
+			this.locationFormatGroupBox.Controls.Add(this.propEditControl);
+			this.locationFormatGroupBox.Controls.Add(this.addRowButton);
+			this.locationFormatGroupBox.Controls.Add(this.removeRowButton);
 			this.locationFormatGroupBox.Location = new System.Drawing.Point(8, 10);
 			this.locationFormatGroupBox.Name = "locationFormatGroupBox";
 			this.locationFormatGroupBox.Size = new System.Drawing.Size(433, 257);
@@ -397,11 +397,11 @@
 			// 
 			this.labelMapLayout.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelMapLayout.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelMapLayout.Format = stringFormat7;
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelMapLayout.Format = stringFormat10;
 			this.labelMapLayout.Location = new System.Drawing.Point(222, 24);
 			this.labelMapLayout.Name = "labelMapLayout";
 			this.labelMapLayout.Size = new System.Drawing.Size(60, 14);
@@ -413,11 +413,11 @@
 			// 
 			this.labelPlaneCount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelPlaneCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelPlaneCount.Format = stringFormat8;
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelPlaneCount.Format = stringFormat9;
 			this.labelPlaneCount.Location = new System.Drawing.Point(222, 48);
 			this.labelPlaneCount.Name = "labelPlaneCount";
 			this.labelPlaneCount.Size = new System.Drawing.Size(64, 14);
@@ -429,11 +429,11 @@
 			// 
 			this.cleanLabel3.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.cleanLabel3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
-			this.cleanLabel3.Format = stringFormat9;
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.cleanLabel3.Format = stringFormat8;
 			this.cleanLabel3.Location = new System.Drawing.Point(222, 72);
 			this.cleanLabel3.Name = "cleanLabel3";
 			this.cleanLabel3.Size = new System.Drawing.Size(63, 14);
@@ -445,11 +445,11 @@
 			// 
 			this.cleanLabel4.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.cleanLabel4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
-			this.cleanLabel4.Format = stringFormat10;
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.cleanLabel4.Format = stringFormat7;
 			this.cleanLabel4.Location = new System.Drawing.Point(222, 95);
 			this.cleanLabel4.Name = "cleanLabel4";
 			this.cleanLabel4.Size = new System.Drawing.Size(53, 14);
@@ -489,14 +489,6 @@
 			this.tileOffsetTextBox.TabIndex = 15;
 			this.tileOffsetTextBox.Value = ((uint)(0u));
 			// 
-			// resultingExportPlanesControl1
-			// 
-			this.resultingExportPlanesControl1.Location = new System.Drawing.Point(225, 125);
-			this.resultingExportPlanesControl1.Name = "resultingExportPlanesControl1";
-			this.resultingExportPlanesControl1.Size = new System.Drawing.Size(197, 116);
-			this.resultingExportPlanesControl1.TabIndex = 7;
-			this.resultingExportPlanesControl1.Text = "Resulting planes";
-			// 
 			// propEditControl
 			// 
 			this.propEditControl.BackColor = System.Drawing.Color.White;
@@ -505,6 +497,14 @@
 			this.propEditControl.Size = new System.Drawing.Size(193, 193);
 			this.propEditControl.TabIndex = 4;
 			this.propEditControl.SizeOrCountChanged += new System.EventHandler(this.propEditControl_SizeOrCountChanged);
+			// 
+			// resultingExportPlanesControl1
+			// 
+			this.resultingExportPlanesControl1.Location = new System.Drawing.Point(225, 125);
+			this.resultingExportPlanesControl1.Name = "resultingExportPlanesControl1";
+			this.resultingExportPlanesControl1.Size = new System.Drawing.Size(197, 116);
+			this.resultingExportPlanesControl1.TabIndex = 7;
+			this.resultingExportPlanesControl1.Text = "Resulting planes";
 			// 
 			// ExportOptionsDialog
 			// 
