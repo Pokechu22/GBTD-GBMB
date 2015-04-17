@@ -16,20 +16,20 @@ namespace GB.GBMB.Dialogs
 	{
 		protected override Size DefaultSize { get { return new Size(193, 193); } }
 
-		private GBMObjectMapPropertiesRecord[] properties = new GBMObjectMapPropertiesRecord[0];
+		private GBMObjectMapPropertiesRecord[] propertyNames = new GBMObjectMapPropertiesRecord[0];
 		private GBMObjectMapExportPropertiesRecord[] exportProperties = new GBMObjectMapExportPropertiesRecord[0];
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		[Browsable(false), ReadOnly(true)]
-		public GBMObjectMapPropertiesRecord[] Properties {
-			get { return properties; }
+		public GBMObjectMapPropertiesRecord[] PropertyNames {
+			get { return propertyNames; }
 			set {
 				if (value == null) {
 					value = new GBMObjectMapPropertiesRecord[0];
 				} else {
 					value = (GBMObjectMapPropertiesRecord[])value.Clone();
 				}
-				properties = value;
+				propertyNames = value;
 				RegenerateControls();
 				this.Invalidate(true);
 			}
@@ -83,13 +83,13 @@ namespace GB.GBMB.Dialogs
 			loadingOrSaving = true;
 
 			//If the size changed and everything needs to be resized.
-			if (propertyBoxes.Length != properties.Length) {
+			if (propertyBoxes.Length != exportProperties.Length) {
 				RegenerateControls();
 			}
 
 			for (int i = 0; i < exportProperties.Length; i++) {
-				if (propertyBoxes[i].Items.Count >= exportProperties[i].Property) {
-					propertyBoxes[i].SelectedIndex = 0;
+				if (exportProperties[i].Property >= propertyBoxes[i].Items.Count) {
+					propertyBoxes[i].SelectedIndex = propertyBoxes[i].Items.Count - 1;
 				} else {
 					propertyBoxes[i].SelectedIndex = exportProperties[i].Property;
 				}
@@ -129,6 +129,7 @@ namespace GB.GBMB.Dialogs
 				propertyBoxes[i].Name = "NameTextBox" + i;
 				propertyBoxes[i].MaxLength = 31;
 				propertyBoxes[i].Tag = i;
+				propertyBoxes[i].DropDownStyle = ComboBoxStyle.DropDownList;
 				propertyBoxes[i].Items.AddRange(new Object[] {
 					"",
 					"[Tile number]",
@@ -142,8 +143,8 @@ namespace GB.GBMB.Dialogs
 					"[0 filler]",
 					"[1 filler]"
 				});
-				if (properties != null) {
-					propertyBoxes[i].Items.AddRange(properties.Select(r => r.Name).ToArray());
+				if (propertyNames != null) {
+					propertyBoxes[i].Items.AddRange(propertyNames.Select(r => r.Name).ToArray());
 				}
 				propertyBoxes[i].SelectedIndexChanged += new EventHandler(propComboBox_SelectedIndexChanged);
 
@@ -238,7 +239,7 @@ namespace GB.GBMB.Dialogs
 			DrawTextRect(e.Graphics, "Property", PROPERTY_X, TOP_Y, PROPERTY_WIDTH, BOX_HEIGHT, format);
 			DrawTextRect(e.Graphics, "Bits", BITS_X, TOP_Y, BITS_WIDTH, BOX_HEIGHT, format);
 
-			if (properties == null) { return; }
+			if (propertyNames == null) { return; }
 
 			format.LineAlignment = StringAlignment.Center;
 			format.Alignment = StringAlignment.Center;
@@ -278,17 +279,17 @@ namespace GB.GBMB.Dialogs
 
 		public void AddRow() {
 			SaveChanges();
-			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[properties.Length + 1];
+			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[propertyNames.Length + 1];
 
 			for (int i = 0; i < newProps.Length; i++) {
-				if (i < properties.Length) {
-					newProps[i] = properties[i];
+				if (i < propertyNames.Length) {
+					newProps[i] = propertyNames[i];
 				} else {
 					newProps[i] = new GBMObjectMapPropertiesRecord();
 				}
 			}
 
-			properties = newProps;
+			propertyNames = newProps;
 			LoadChanges();
 
 			if (SizeOrCountChanged != null) {
@@ -297,22 +298,22 @@ namespace GB.GBMB.Dialogs
 		}
 
 		public void RemoveRow() {
-			if (properties.Length == 0) {
+			if (propertyNames.Length == 0) {
 				throw new InvalidOperationException("Cannot decrease the number of properties below 0!");
 			}
 
 			SaveChanges();
-			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[properties.Length - 1];
+			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[propertyNames.Length - 1];
 
 			for (int i = 0; i < newProps.Length; i++) {
-				if (i < properties.Length) {
-					newProps[i] = properties[i];
+				if (i < propertyNames.Length) {
+					newProps[i] = propertyNames[i];
 				} else {
 					newProps[i] = new GBMObjectMapPropertiesRecord();
 				}
 			}
 
-			properties = newProps;
+			propertyNames = newProps;
 			LoadChanges();
 
 			if (SizeOrCountChanged != null) {

@@ -17,7 +17,7 @@ namespace GB.GBMB.Dialogs
 		}
 
 		public ExportOptionsDialog(GBMObjectMapProperties properties, GBMObjectMapExportProperties exportProperties) : this() {
-			propEditControl.Properties = properties.Properties;
+			propEditControl.PropertyNames = properties.Properties;
 			propEditControl.ExportProperties = exportProperties.Data;
 		}
 	}
