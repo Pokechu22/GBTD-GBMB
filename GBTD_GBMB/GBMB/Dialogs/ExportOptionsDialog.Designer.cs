@@ -31,8 +31,16 @@
 			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.standardTabPage = new System.Windows.Forms.TabPage();
+			this.locationFormatTabPage = new System.Windows.Forms.TabPage();
+			this.okButton = new System.Windows.Forms.Button();
+			this.cancelButton = new System.Windows.Forms.Button();
+			this.helpButton = new System.Windows.Forms.Button();
 			this.splitDataGroupBox = new GB.Shared.Controls.GroupBox();
 			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
 			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
@@ -51,21 +59,25 @@
 			this.fileNameTextBox = new System.Windows.Forms.TextBox();
 			this.typeDropDown = new System.Windows.Forms.ComboBox();
 			this.browseButton = new System.Windows.Forms.Button();
-			this.locationFormatTabPage = new System.Windows.Forms.TabPage();
-			this.okButton = new System.Windows.Forms.Button();
-			this.cancelButton = new System.Windows.Forms.Button();
-			this.helpButton = new System.Windows.Forms.Button();
 			this.locationFormatGroupBox = new GB.Shared.Controls.GroupBox();
 			this.addRowButton = new System.Windows.Forms.Button();
 			this.removeRowButton = new System.Windows.Forms.Button();
+			this.labelMapLayout = new GB.Shared.Controls.CleanLabel();
+			this.labelPlaneCount = new GB.Shared.Controls.CleanLabel();
+			this.cleanLabel3 = new GB.Shared.Controls.CleanLabel();
+			this.cleanLabel4 = new GB.Shared.Controls.CleanLabel();
+			this.mapLayoutComboBox = new System.Windows.Forms.ComboBox();
+			this.planeCountComboBox = new System.Windows.Forms.ComboBox();
+			this.planeOrderComboBox = new System.Windows.Forms.ComboBox();
+			this.tileOffsetTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.resultingExportPlanesControl1 = new GB.GBMB.Dialogs.ResultingExportPlanesControl();
 			this.propEditControl = new GB.GBMB.Dialogs.ExportPropertiesEditControl();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
+			this.locationFormatTabPage.SuspendLayout();
 			this.splitDataGroupBox.SuspendLayout();
 			this.settingsGroupBox.SuspendLayout();
 			this.fileGroupBox.SuspendLayout();
-			this.locationFormatTabPage.SuspendLayout();
 			this.locationFormatGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -91,6 +103,45 @@
 			this.standardTabPage.TabIndex = 0;
 			this.standardTabPage.Text = "Standard";
 			this.standardTabPage.UseVisualStyleBackColor = true;
+			// 
+			// locationFormatTabPage
+			// 
+			this.locationFormatTabPage.Controls.Add(this.locationFormatGroupBox);
+			this.locationFormatTabPage.Location = new System.Drawing.Point(4, 22);
+			this.locationFormatTabPage.Name = "locationFormatTabPage";
+			this.locationFormatTabPage.Padding = new System.Windows.Forms.Padding(3);
+			this.locationFormatTabPage.Size = new System.Drawing.Size(449, 277);
+			this.locationFormatTabPage.TabIndex = 1;
+			this.locationFormatTabPage.Text = "Location format";
+			this.locationFormatTabPage.UseVisualStyleBackColor = true;
+			// 
+			// okButton
+			// 
+			this.okButton.Location = new System.Drawing.Point(224, 318);
+			this.okButton.Name = "okButton";
+			this.okButton.Size = new System.Drawing.Size(75, 25);
+			this.okButton.TabIndex = 1;
+			this.okButton.Text = "OK";
+			this.okButton.UseVisualStyleBackColor = true;
+			// 
+			// cancelButton
+			// 
+			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.cancelButton.Location = new System.Drawing.Point(303, 318);
+			this.cancelButton.Name = "cancelButton";
+			this.cancelButton.Size = new System.Drawing.Size(75, 25);
+			this.cancelButton.TabIndex = 2;
+			this.cancelButton.Text = "Cancel";
+			this.cancelButton.UseVisualStyleBackColor = true;
+			// 
+			// helpButton
+			// 
+			this.helpButton.Location = new System.Drawing.Point(382, 318);
+			this.helpButton.Name = "helpButton";
+			this.helpButton.Size = new System.Drawing.Size(75, 25);
+			this.helpButton.TabIndex = 3;
+			this.helpButton.Text = "&Help";
+			this.helpButton.UseVisualStyleBackColor = true;
 			// 
 			// splitDataGroupBox
 			// 
@@ -302,51 +353,20 @@
 			this.browseButton.Text = "&Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
 			// 
-			// locationFormatTabPage
-			// 
-			this.locationFormatTabPage.Controls.Add(this.locationFormatGroupBox);
-			this.locationFormatTabPage.Location = new System.Drawing.Point(4, 22);
-			this.locationFormatTabPage.Name = "locationFormatTabPage";
-			this.locationFormatTabPage.Padding = new System.Windows.Forms.Padding(3);
-			this.locationFormatTabPage.Size = new System.Drawing.Size(449, 277);
-			this.locationFormatTabPage.TabIndex = 1;
-			this.locationFormatTabPage.Text = "Location format";
-			this.locationFormatTabPage.UseVisualStyleBackColor = true;
-			// 
-			// okButton
-			// 
-			this.okButton.Location = new System.Drawing.Point(224, 318);
-			this.okButton.Name = "okButton";
-			this.okButton.Size = new System.Drawing.Size(75, 25);
-			this.okButton.TabIndex = 1;
-			this.okButton.Text = "OK";
-			this.okButton.UseVisualStyleBackColor = true;
-			// 
-			// cancelButton
-			// 
-			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(303, 318);
-			this.cancelButton.Name = "cancelButton";
-			this.cancelButton.Size = new System.Drawing.Size(75, 25);
-			this.cancelButton.TabIndex = 2;
-			this.cancelButton.Text = "Cancel";
-			this.cancelButton.UseVisualStyleBackColor = true;
-			// 
-			// helpButton
-			// 
-			this.helpButton.Location = new System.Drawing.Point(382, 318);
-			this.helpButton.Name = "helpButton";
-			this.helpButton.Size = new System.Drawing.Size(75, 25);
-			this.helpButton.TabIndex = 3;
-			this.helpButton.Text = "&Help";
-			this.helpButton.UseVisualStyleBackColor = true;
-			// 
 			// locationFormatGroupBox
 			// 
 			this.locationFormatGroupBox.Controls.Add(this.removeRowButton);
 			this.locationFormatGroupBox.Controls.Add(this.addRowButton);
 			this.locationFormatGroupBox.Controls.Add(this.propEditControl);
 			this.locationFormatGroupBox.Controls.Add(this.resultingExportPlanesControl1);
+			this.locationFormatGroupBox.Controls.Add(this.labelMapLayout);
+			this.locationFormatGroupBox.Controls.Add(this.labelPlaneCount);
+			this.locationFormatGroupBox.Controls.Add(this.cleanLabel3);
+			this.locationFormatGroupBox.Controls.Add(this.cleanLabel4);
+			this.locationFormatGroupBox.Controls.Add(this.mapLayoutComboBox);
+			this.locationFormatGroupBox.Controls.Add(this.planeCountComboBox);
+			this.locationFormatGroupBox.Controls.Add(this.planeOrderComboBox);
+			this.locationFormatGroupBox.Controls.Add(this.tileOffsetTextBox);
 			this.locationFormatGroupBox.Location = new System.Drawing.Point(8, 10);
 			this.locationFormatGroupBox.Name = "locationFormatGroupBox";
 			this.locationFormatGroupBox.Size = new System.Drawing.Size(433, 257);
@@ -372,6 +392,102 @@
 			this.removeRowButton.Text = "&Delete";
 			this.removeRowButton.UseVisualStyleBackColor = true;
 			this.removeRowButton.Click += new System.EventHandler(this.removeRowButton_Click);
+			// 
+			// labelMapLayout
+			// 
+			this.labelMapLayout.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelMapLayout.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelMapLayout.Format = stringFormat7;
+			this.labelMapLayout.Location = new System.Drawing.Point(222, 24);
+			this.labelMapLayout.Name = "labelMapLayout";
+			this.labelMapLayout.Size = new System.Drawing.Size(60, 14);
+			this.labelMapLayout.TabIndex = 8;
+			this.labelMapLayout.TabStop = false;
+			this.labelMapLayout.Text = "&Map layout";
+			// 
+			// labelPlaneCount
+			// 
+			this.labelPlaneCount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelPlaneCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelPlaneCount.Format = stringFormat8;
+			this.labelPlaneCount.Location = new System.Drawing.Point(222, 48);
+			this.labelPlaneCount.Name = "labelPlaneCount";
+			this.labelPlaneCount.Size = new System.Drawing.Size(64, 14);
+			this.labelPlaneCount.TabIndex = 9;
+			this.labelPlaneCount.TabStop = false;
+			this.labelPlaneCount.Text = "&Plane count";
+			// 
+			// cleanLabel3
+			// 
+			this.cleanLabel3.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.cleanLabel3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
+			this.cleanLabel3.Format = stringFormat9;
+			this.cleanLabel3.Location = new System.Drawing.Point(222, 72);
+			this.cleanLabel3.Name = "cleanLabel3";
+			this.cleanLabel3.Size = new System.Drawing.Size(63, 14);
+			this.cleanLabel3.TabIndex = 10;
+			this.cleanLabel3.TabStop = false;
+			this.cleanLabel3.Text = "Plane &order";
+			// 
+			// cleanLabel4
+			// 
+			this.cleanLabel4.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.cleanLabel4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.cleanLabel4.Format = stringFormat10;
+			this.cleanLabel4.Location = new System.Drawing.Point(222, 95);
+			this.cleanLabel4.Name = "cleanLabel4";
+			this.cleanLabel4.Size = new System.Drawing.Size(53, 14);
+			this.cleanLabel4.TabIndex = 11;
+			this.cleanLabel4.TabStop = false;
+			this.cleanLabel4.Text = "&Tile offset";
+			// 
+			// mapLayoutComboBox
+			// 
+			this.mapLayoutComboBox.FormattingEnabled = true;
+			this.mapLayoutComboBox.Location = new System.Drawing.Point(296, 20);
+			this.mapLayoutComboBox.Name = "mapLayoutComboBox";
+			this.mapLayoutComboBox.Size = new System.Drawing.Size(129, 21);
+			this.mapLayoutComboBox.TabIndex = 12;
+			// 
+			// planeCountComboBox
+			// 
+			this.planeCountComboBox.FormattingEnabled = true;
+			this.planeCountComboBox.Location = new System.Drawing.Point(296, 44);
+			this.planeCountComboBox.Name = "planeCountComboBox";
+			this.planeCountComboBox.Size = new System.Drawing.Size(129, 21);
+			this.planeCountComboBox.TabIndex = 13;
+			// 
+			// planeOrderComboBox
+			// 
+			this.planeOrderComboBox.FormattingEnabled = true;
+			this.planeOrderComboBox.Location = new System.Drawing.Point(296, 68);
+			this.planeOrderComboBox.Name = "planeOrderComboBox";
+			this.planeOrderComboBox.Size = new System.Drawing.Size(129, 21);
+			this.planeOrderComboBox.TabIndex = 14;
+			// 
+			// tileOffsetTextBox
+			// 
+			this.tileOffsetTextBox.Location = new System.Drawing.Point(296, 92);
+			this.tileOffsetTextBox.Name = "tileOffsetTextBox";
+			this.tileOffsetTextBox.Size = new System.Drawing.Size(33, 21);
+			this.tileOffsetTextBox.TabIndex = 15;
+			this.tileOffsetTextBox.Value = ((uint)(0u));
 			// 
 			// resultingExportPlanesControl1
 			// 
@@ -408,13 +524,13 @@
 			this.Text = "Export options";
 			this.tabControl.ResumeLayout(false);
 			this.standardTabPage.ResumeLayout(false);
+			this.locationFormatTabPage.ResumeLayout(false);
 			this.splitDataGroupBox.ResumeLayout(false);
 			this.splitDataGroupBox.PerformLayout();
 			this.settingsGroupBox.ResumeLayout(false);
 			this.settingsGroupBox.PerformLayout();
 			this.fileGroupBox.ResumeLayout(false);
 			this.fileGroupBox.PerformLayout();
-			this.locationFormatTabPage.ResumeLayout(false);
 			this.locationFormatGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -451,5 +567,13 @@
 		private System.Windows.Forms.Button removeRowButton;
 		private System.Windows.Forms.Button addRowButton;
 		private ResultingExportPlanesControl resultingExportPlanesControl1;
+		private Shared.Controls.NumericTextBox tileOffsetTextBox;
+		private System.Windows.Forms.ComboBox planeOrderComboBox;
+		private System.Windows.Forms.ComboBox planeCountComboBox;
+		private System.Windows.Forms.ComboBox mapLayoutComboBox;
+		private Shared.Controls.CleanLabel cleanLabel4;
+		private Shared.Controls.CleanLabel cleanLabel3;
+		private Shared.Controls.CleanLabel labelPlaneCount;
+		private Shared.Controls.CleanLabel labelMapLayout;
 	}
 }
