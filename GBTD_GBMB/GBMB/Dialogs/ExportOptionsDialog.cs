@@ -40,5 +40,11 @@ namespace GB.GBMB.Dialogs
 		private void propEditControl_SizeOrCountChanged(object sender, EventArgs e) {
 			resultingExportPlanesControl1.Properties = propEditControl.ExportProperties;
 		}
+
+		private void splitDataCheckBox_CheckedChanged(object sender, EventArgs e) {
+			labelBlockSize.Enabled = splitDataCheckBox.Checked;
+			blockSizeTextBox.Enabled = splitDataCheckBox.Checked;
+			changeBankForEachBlockCheckBox.Enabled = splitDataCheckBox.Checked;
+		}
 	}
 }
