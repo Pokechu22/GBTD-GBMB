@@ -21,6 +21,9 @@ namespace GB.Shared.Controls
 		[DefaultValue(0)]
 		public UInt32 Value {
 			get {
+				if (String.IsNullOrEmpty(this.Text)) {
+					return 0;
+				}
 				try {
 					return UInt32.Parse(this.Text);
 				} catch (OverflowException) {
