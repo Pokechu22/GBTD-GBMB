@@ -25,12 +25,12 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat11 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat12 = new System.Drawing.StringFormat();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.standardTabPage = new System.Windows.Forms.TabPage();
 			this.splitDataGroupBox = new GB.Shared.Controls.GroupBox();
@@ -117,11 +117,11 @@
 			// 
 			this.labelBlockSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelBlockSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBlockSize.Format = stringFormat1;
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBlockSize.Format = stringFormat7;
 			this.labelBlockSize.Location = new System.Drawing.Point(14, 43);
 			this.labelBlockSize.Name = "labelBlockSize";
 			this.labelBlockSize.Size = new System.Drawing.Size(55, 14);
@@ -165,11 +165,11 @@
 			// 
 			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelLabel.Format = stringFormat2;
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelLabel.Format = stringFormat8;
 			this.labelLabel.Location = new System.Drawing.Point(14, 19);
 			this.labelLabel.Name = "labelLabel";
 			this.labelLabel.Size = new System.Drawing.Size(32, 14);
@@ -181,11 +181,11 @@
 			// 
 			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelSection.Format = stringFormat3;
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelSection.Format = stringFormat9;
 			this.labelSection.Location = new System.Drawing.Point(14, 43);
 			this.labelSection.Name = "labelSection";
 			this.labelSection.Size = new System.Drawing.Size(42, 14);
@@ -197,11 +197,11 @@
 			// 
 			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelBank.Format = stringFormat4;
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelBank.Format = stringFormat10;
 			this.labelBank.Location = new System.Drawing.Point(14, 67);
 			this.labelBank.Name = "labelBank";
 			this.labelBank.Size = new System.Drawing.Size(30, 14);
@@ -248,11 +248,11 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelFileName.Format = stringFormat5;
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelFileName.Format = stringFormat11;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -264,11 +264,11 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelType.Format = stringFormat6;
+			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelType.Format = stringFormat12;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
@@ -359,6 +359,7 @@
 			this.addRowButton.TabIndex = 5;
 			this.addRowButton.Text = "&Add";
 			this.addRowButton.UseVisualStyleBackColor = true;
+			this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
 			// 
 			// removeRowButton
 			// 
@@ -368,6 +369,7 @@
 			this.removeRowButton.TabIndex = 6;
 			this.removeRowButton.Text = "&Delete";
 			this.removeRowButton.UseVisualStyleBackColor = true;
+			this.removeRowButton.Click += new System.EventHandler(this.removeRowButton_Click);
 			// 
 			// propEditControl
 			// 

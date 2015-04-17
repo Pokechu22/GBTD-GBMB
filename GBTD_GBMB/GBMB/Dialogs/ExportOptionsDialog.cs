@@ -20,5 +20,19 @@ namespace GB.GBMB.Dialogs
 			propEditControl.PropertyNames = properties.Properties;
 			propEditControl.ExportProperties = exportProperties.Data;
 		}
+
+		private void addRowButton_Click(object sender, EventArgs e) {
+			propEditControl.AddRow();
+
+			addRowButton.Enabled = (propEditControl.ExportProperties.Length < 32);
+			removeRowButton.Enabled = (propEditControl.ExportProperties.Length > 0);
+		}
+
+		private void removeRowButton_Click(object sender, EventArgs e) {
+			propEditControl.RemoveRow();
+
+			addRowButton.Enabled = (propEditControl.ExportProperties.Length < 32);
+			removeRowButton.Enabled = (propEditControl.ExportProperties.Length > 0);
+		}
 	}
 }

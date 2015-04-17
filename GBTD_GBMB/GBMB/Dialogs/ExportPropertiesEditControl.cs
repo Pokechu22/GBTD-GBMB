@@ -97,6 +97,8 @@ namespace GB.GBMB.Dialogs
 			}
 
 			loadingOrSaving = false;
+
+			this.Invalidate(true);
 		}
 
 		private void RegenerateControls() {
@@ -279,17 +281,17 @@ namespace GB.GBMB.Dialogs
 
 		public void AddRow() {
 			SaveChanges();
-			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[propertyNames.Length + 1];
+			GBMObjectMapExportPropertiesRecord[] newProps = new GBMObjectMapExportPropertiesRecord[exportProperties.Length + 1];
 
 			for (int i = 0; i < newProps.Length; i++) {
-				if (i < propertyNames.Length) {
-					newProps[i] = propertyNames[i];
+				if (i < exportProperties.Length) {
+					newProps[i] = exportProperties[i];
 				} else {
-					newProps[i] = new GBMObjectMapPropertiesRecord();
+					newProps[i] = new GBMObjectMapExportPropertiesRecord();
 				}
 			}
 
-			propertyNames = newProps;
+			exportProperties = newProps;
 			LoadChanges();
 
 			if (SizeOrCountChanged != null) {
@@ -298,22 +300,22 @@ namespace GB.GBMB.Dialogs
 		}
 
 		public void RemoveRow() {
-			if (propertyNames.Length == 0) {
+			if (exportProperties.Length == 0) {
 				throw new InvalidOperationException("Cannot decrease the number of properties below 0!");
 			}
 
 			SaveChanges();
-			GBMObjectMapPropertiesRecord[] newProps = new GBMObjectMapPropertiesRecord[propertyNames.Length - 1];
+			GBMObjectMapExportPropertiesRecord[] newProps = new GBMObjectMapExportPropertiesRecord[exportProperties.Length - 1];
 
 			for (int i = 0; i < newProps.Length; i++) {
-				if (i < propertyNames.Length) {
-					newProps[i] = propertyNames[i];
+				if (i < exportProperties.Length) {
+					newProps[i] = exportProperties[i];
 				} else {
-					newProps[i] = new GBMObjectMapPropertiesRecord();
+					newProps[i] = new GBMObjectMapExportPropertiesRecord();
 				}
 			}
 
-			propertyNames = newProps;
+			exportProperties = newProps;
 			LoadChanges();
 
 			if (SizeOrCountChanged != null) {
