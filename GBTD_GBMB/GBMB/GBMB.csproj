@@ -87,6 +87,9 @@
     <Compile Include="Dialogs\MapPropertiesDialog.Designer.cs">
       <DependentUpon>MapPropertiesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ResultingExportPlanesControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MapControl.cs">
       <SubType>Component</SubType>
     </Compile>
