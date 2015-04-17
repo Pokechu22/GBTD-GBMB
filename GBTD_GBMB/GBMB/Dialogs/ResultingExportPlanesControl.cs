@@ -72,13 +72,14 @@ namespace GB.GBMB.Dialogs
 						DrawEntryCell(e.Graphics, x + 1, y + 1, text);
 					}
 
+					if (currentPos != 0) {
+						currentPos--;
+					}
 					if (properties != null && currentNumber < properties.Length && currentPos == 0) {
 						do {
 							currentNumber++;
-							currentPos = unchecked(currentNumber < properties.Length ? properties[currentNumber].Size - 1 : 0);
+							currentPos = (currentNumber < properties.Length ? properties[currentNumber].Size : 0);
 						} while (currentNumber < properties.Length && (properties[currentNumber].Size == 0));
-					} else {
-						currentPos--;
 					}
 				}
 			}
