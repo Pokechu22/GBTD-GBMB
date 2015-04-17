@@ -22,6 +22,10 @@ namespace GB.GBMB.Dialogs
 			set { properties = value; this.Invalidate(true); }
 		}
 
+		public ResultingExportPlanesControl() {
+			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+		}
+
 		#region Graphics/rendering
 		const int FIRST_CELL_X = 4, FIRST_CELL_Y = 17;
 		const int CELL_WIDTH = 21, CELL_HEIGHT = 19;
@@ -69,9 +73,10 @@ namespace GB.GBMB.Dialogs
 					}
 
 					if (properties != null && currentNumber < properties.Length && currentPos == 0) {
-						//TODO: What happens if size == 0?  Right now checked will cause an exception, but do we want that?
-						currentNumber++;
-						currentPos = checked(currentNumber < properties.Length ? properties[currentNumber].Size - 1 : 0);
+						do {
+							currentNumber++;
+							currentPos = unchecked(currentNumber < properties.Length ? properties[currentNumber].Size - 1 : 0);
+						} while (currentNumber < properties.Length && (properties[currentNumber].Size == 0));
 					} else {
 						currentPos--;
 					}
