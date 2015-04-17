@@ -164,7 +164,7 @@ namespace GB.GBMB.Dialogs
 				bitsPanel.Cursor = Cursors.IBeam;
 				bitsPanel.Padding = new Padding(2, 2, 1, 1);
 				bitsPanel.Name = "MaxPanel" + i;
-				bitsPanel.BackColor = SystemColors.Control;
+				bitsPanel.BackColor = Color.White;
 
 				bitsPanel.Controls.Add(bits[i]);
 
@@ -173,6 +173,8 @@ namespace GB.GBMB.Dialogs
 			}
 
 			this.ResumeLayout(true);
+
+			LoadChanges();
 
 			this.Invalidate(true);
 		}
