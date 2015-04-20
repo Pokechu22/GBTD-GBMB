@@ -444,6 +444,7 @@
 			// 
 			// mapLayoutComboBox
 			// 
+			this.mapLayoutComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.mapLayoutComboBox.FormattingEnabled = true;
 			this.mapLayoutComboBox.Items.AddRange(new object[] {
             "Rows",
@@ -455,6 +456,7 @@
 			// 
 			// planeCountComboBox
 			// 
+			this.planeCountComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.planeCountComboBox.FormattingEnabled = true;
 			this.planeCountComboBox.Items.AddRange(new object[] {
             "0.5 planes (4 bits)",
@@ -469,6 +471,7 @@
 			// 
 			// planeOrderComboBox
 			// 
+			this.planeOrderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.planeOrderComboBox.FormattingEnabled = true;
 			this.planeOrderComboBox.Items.AddRange(new object[] {
             "Tiles are continues",
