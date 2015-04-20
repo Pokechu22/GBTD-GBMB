@@ -38,7 +38,23 @@ namespace GB.GBMB.Dialogs
 
 			resultingPlanesControl.Properties = exportProperties.Data;
 
+			fileNameTextBox.Text = exportSettings.FileName;
 			typeDropDown.SelectedIndex = (int)exportSettings.FileType;
+
+			labelTextBox.Text = exportSettings.LabelName;
+			sectionTextBox.Text = exportSettings.LabelName;
+			bankTextBox.Value = exportSettings.Bank;
+
+			splitDataCheckBox.Checked = exportSettings.Split;
+			blockSizeTextBox.Value = exportSettings.SplitSize;
+			changeBankForEachBlockCheckBox.Checked = exportSettings.ChangeBankEachSplit;
+
+			mapLayoutComboBox.SelectedIndex = exportSettings.MapLayout;
+			planeCountComboBox.SelectedIndex = exportSettings.PlaneCount;
+			planeOrderComboBox.SelectedIndex = exportSettings.PlaneOrder;
+			tileOffsetTextBox.Value = exportSettings.TileOffset;
+
+			tabControl.SelectedIndex = exportSettings.SelTab;
 		}
 
 		private void addRowButton_Click(object sender, EventArgs e) {
