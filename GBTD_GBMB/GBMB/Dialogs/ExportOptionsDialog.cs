@@ -158,5 +158,20 @@ namespace GB.GBMB.Dialogs
 			//Update the textbox to use the wanted extension.
 			fileNameTextBox.Text = Path.ChangeExtension(fileNameTextBox.Text, fileType.GetExtension());
 		}
+
+		private void planeCountComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			int width = 8, height = 4;
+
+			switch (planeCountComboBox.SelectedIndex) {
+			case 0: width = 4; height = 1; break;
+			case 1: width = 8; height = 1; break;
+			case 2: width = 8; height = 2; break;
+			case 3: width = 8; height = 3; break;
+			case 4: width = 8; height = 4; break;
+			}
+
+			resultingPlanesControl.DataWidth = width;
+			resultingPlanesControl.DataHeight = height;
+		}
 	}
 }

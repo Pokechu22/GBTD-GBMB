@@ -26,6 +26,35 @@ namespace GB.GBMB.Dialogs
 			SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
 		}
 
+		private int displayWidth = 8, displayHeight = 4;
+		private int dataWidth = 8, dataHeight = 4;
+
+		[DefaultValue(8)]
+		[Description("The number of entries inside of the control in total.")]
+		public int DisplayWidth {
+			get { return displayWidth; }
+			set { displayWidth = value; this.Invalidate(true); }
+		}
+		[DefaultValue(4)]
+		[Description("The number of entries inside of the control in total.")]
+		public int DisplayHeight {
+			get { return displayHeight; }
+			set { displayHeight = value; this.Invalidate(true); }
+		}
+
+		[DefaultValue(8)]
+		[Description("The number of entries that should have data be displayed.")]
+		public int DataWidth {
+			get { return dataWidth; }
+			set { dataWidth = value; this.Invalidate(true); }
+		}
+		[DefaultValue(4)]
+		[Description("The number of entries that should have data be displayed.")]
+		public int DataHeight {
+			get { return dataHeight; }
+			set { dataHeight = value; this.Invalidate(true); }
+		}
+
 		#region Graphics/rendering
 		const int FIRST_CELL_X = 4, FIRST_CELL_Y = 17;
 		const int CELL_WIDTH = 21, CELL_HEIGHT = 19;
@@ -48,29 +77,40 @@ namespace GB.GBMB.Dialogs
 
 			DrawHeaderCell(e.Graphics, 0, 0);
 
-			for (int x = 0; x < 8; x++) { //TODO unhardcode this.
-				DrawHeaderCell(e.Graphics, x + 1, 0, x.ToString());
+			for (int x = 0; x < displayWidth; x++) {
+				if (x < dataWidth) {
+					DrawHeaderCell(e.Graphics, x + 1, 0, x.ToString());
+				} else {
+					DrawHeaderCell(e.Graphics, x + 1, 0, "");
+				}
 			}
-			for (int y = 0; y < 4; y++) { //TODO unhardcode this.
-				DrawHeaderCell(e.Graphics, 0, y + 1, y.ToString());
+			for (int y = 0; y < displayHeight; y++) {
+				if (y < dataHeight) {
+					DrawHeaderCell(e.Graphics, 0, y + 1, y.ToString());
+				} else {
+					DrawHeaderCell(e.Graphics, 0, y + 1, "");
+				}
 			}
 			int currentNumber = 0;
 			uint currentPos = ((properties != null && properties.Length > 0) ? properties[0].Size : 0);
 
-			for (int y = 0; y < 4; y++) {
-				for (int x = 0; x < 8; x++) {
-					if (properties != null && currentNumber < properties.Length && currentPos == 0) {
-						do {
-							currentNumber++;
-							currentPos = (currentNumber < properties.Length ? properties[currentNumber].Size : 0);
-						} while (currentNumber < properties.Length && (properties[currentNumber].Size == 0));
-					}
+			for (int y = 0; y < displayHeight; y++) {
+				for (int x = 0; x < displayWidth; x++) {
 
-					String text;
-					if (properties == null || currentNumber >= properties.Length) {
-						text = "";
-					} else {
-						text = (currentNumber + 1).ToString();
+					String text = "";
+
+					//Skip to the next piece of data if the used data has been endd.
+					if (x < dataWidth && y < dataHeight) {
+						if (properties != null && currentNumber < properties.Length && currentPos == 0) {
+							do {
+								currentNumber++;
+								currentPos = (currentNumber < properties.Length ? properties[currentNumber].Size : 0);
+							} while (currentNumber < properties.Length && (properties[currentNumber].Size == 0));
+						}
+
+						if (properties != null && currentNumber < properties.Length) {
+							text = (currentNumber + 1).ToString();
+						}
 					}
 
 					if (x == 0 && y == 0) { //TODO better selection test -- why can it even be selected?
