@@ -24,10 +24,19 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public const int RED = 0, GREEN = 1;
 
+		private GBMObjectMapPropertyColorsRecord[] data;
 		/// <summary>
 		/// The individual colors.
 		/// </summary>
-		public GBMObjectMapPropertyColorsRecord[] Data { get; set; }
+		public GBMObjectMapPropertyColorsRecord[] Data {
+			get { return data; }
+			set {
+				data = value;
+				if (Master.PropColorCount != data.Length) {
+					Master.PropColorCount = (uint)data.Length;
+				}
+			}
+		}
 
 		protected override void LoadFromStream(Stream s) {
 			Data = new GBMObjectMapPropertyColorsRecord[Master.PropColorCount];

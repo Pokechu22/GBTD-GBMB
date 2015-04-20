@@ -21,7 +21,16 @@ namespace GB.Shared.GBMFile
 			Master.ExportPropCountChanged += new EventHandler(Master_ExportPropCountChanged);
 		}
 
-		public GBMObjectMapExportPropertiesRecord[] Data { get; set; }
+		private GBMObjectMapExportPropertiesRecord[] data;
+		public GBMObjectMapExportPropertiesRecord[] Data {
+			get { return data; }
+			set {
+				data = value;
+				if (Master.ExportPropCount != data.Length) {
+					Master.ExportPropCount = (UInt16)data.Length;
+				}
+			}
+		}
 
 		protected override void LoadFromStream(Stream s) {
 			Data = new GBMObjectMapExportPropertiesRecord[Master.ExportPropCount];
