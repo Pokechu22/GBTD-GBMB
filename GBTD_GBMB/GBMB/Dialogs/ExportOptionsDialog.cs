@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GB.Shared.GBMFile;
+using System.IO;
 
 namespace GB.GBMB.Dialogs
 {
@@ -80,6 +81,21 @@ namespace GB.GBMB.Dialogs
 		private void cancelButton_Click(object sender, EventArgs e) {
 			this.DialogResult = DialogResult.Cancel;
 			this.Close();
+		}
+
+		private void browseButton_Click(object sender, EventArgs e) {
+			SaveFileDialog dialog = new SaveFileDialog();
+
+			//TODO set up filter.
+			dialog.InitialDirectory = Properties.Settings.Default.ExportPath;
+			dialog.FileName = fileNameTextBox.Text;
+
+			var result = dialog.ShowDialog();
+
+			if (result != DialogResult.OK) { return; }
+
+			fileNameTextBox.Text = dialog.FileName;
+			Properties.Settings.Default.ExportPath = Path.GetDirectoryName(dialog.FileName);
 		}
 	}
 }
