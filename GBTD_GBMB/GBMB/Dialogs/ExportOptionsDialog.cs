@@ -42,7 +42,7 @@ namespace GB.GBMB.Dialogs
 			typeDropDown.SelectedIndex = (int)exportSettings.FileType;
 
 			labelTextBox.Text = exportSettings.LabelName;
-			sectionTextBox.Text = exportSettings.LabelName;
+			sectionTextBox.Text = exportSettings.SectionName;
 			bankTextBox.Value = exportSettings.Bank;
 
 			splitDataCheckBox.Checked = exportSettings.Split;
@@ -91,7 +91,7 @@ namespace GB.GBMB.Dialogs
 				ExportSettings.FileType = (ExportFileType)typeDropDown.SelectedIndex;
 
 				ExportSettings.LabelName = labelTextBox.Text;
-				ExportSettings.LabelName = sectionTextBox.Text;
+				ExportSettings.SectionName = sectionTextBox.Text;
 				ExportSettings.Bank = (byte)bankTextBox.Value;
 
 				ExportSettings.Split = splitDataCheckBox.Checked;
