@@ -87,6 +87,23 @@ namespace GB.GBMB.Dialogs
 			//Save data.  TODO exportsettings portion.
 			if (DialogResult == DialogResult.OK) {
 				this.ExportProperties.Data = propEditControl.ExportProperties;
+				ExportSettings.FileName = fileNameTextBox.Text;
+				ExportSettings.FileType = (ExportFileType)typeDropDown.SelectedIndex;
+
+				ExportSettings.LabelName = labelTextBox.Text;
+				ExportSettings.LabelName = sectionTextBox.Text;
+				ExportSettings.Bank = (byte)bankTextBox.Value;
+
+				ExportSettings.Split = splitDataCheckBox.Checked;
+				ExportSettings.SplitSize = blockSizeTextBox.Value;
+				ExportSettings.ChangeBankEachSplit = changeBankForEachBlockCheckBox.Checked;
+
+				ExportSettings.MapLayout = (UInt16)mapLayoutComboBox.SelectedIndex;
+				ExportSettings.PlaneCount = (UInt16)planeCountComboBox.SelectedIndex;
+				ExportSettings.PlaneOrder = (UInt16)planeOrderComboBox.SelectedIndex;
+				ExportSettings.TileOffset = (UInt16)tileOffsetTextBox.Value;
+
+				ExportSettings.SelTab = (byte)tabControl.SelectedIndex;
 			}
 			base.OnClosing(e);
 		}
