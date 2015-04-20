@@ -109,5 +109,21 @@ namespace GB.GBMB.Dialogs
 			Properties.Settings.Default.ExportPath = Path.GetDirectoryName(dialog.FileName);
 			typeDropDown.SelectedIndex = dialog.FilterIndex - 1;
 		}
+
+		private void typeDropDown_SelectedIndexChanged(object sender, EventArgs e) {
+			ExportFileType fileType = (ExportFileType)typeDropDown.SelectedIndex;
+
+			labelSection.Enabled = fileType.SupportsBankAndSection();
+			sectionTextBox.Enabled = fileType.SupportsBankAndSection();
+			labelBank.Enabled = fileType.SupportsBankAndSection();
+			bankTextBox.Enabled = fileType.SupportsBankAndSection();
+			changeBankForEachBlockCheckBox.Enabled = fileType.SupportsBankAndSection();
+
+			labelLabel.Enabled = fileType.SupportsLabel();
+			labelTextBox.Enabled = fileType.SupportsLabel();
+
+			//Update the textbox to use the wanted extension.
+			fileNameTextBox.Text = Path.ChangeExtension(fileNameTextBox.Text, fileType.GetExtension());
+		}
 	}
 }
