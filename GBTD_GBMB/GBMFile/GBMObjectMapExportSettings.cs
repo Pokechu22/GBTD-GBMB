@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace GB.Shared.GBMFile
 {
@@ -146,8 +147,71 @@ namespace GB.Shared.GBMFile
 		RGBDS_Assembly_File = 0,
 		RGBDS_Object_File = 1,
 		TASM_Assembly_File = 2,
-		GBDK_C_file = 3,
-		All_purpose_binary_file = 4,
+		GBDK_C_File = 3,
+		All_Purpose_Binary_File = 4,
 		ISAS_Assembly_File = 5
+	}
+
+	public static class ExportFileTypeExtensions
+	{
+		/// <summary>
+		/// The display name for the given ExportFileType.
+		/// </summary>
+		public static string GetDisplayName(this ExportFileType type) {
+			switch (type) {
+			case ExportFileType.RGBDS_Assembly_File: return "RGBDS Assembly file";
+			case ExportFileType.RGBDS_Object_File: return "RGBDS Object file";
+			case ExportFileType.TASM_Assembly_File: return "TASM Assembly file";
+			case ExportFileType.GBDK_C_File: return "GBDK C file";
+			case ExportFileType.All_Purpose_Binary_File: return "All-purpose binary file";
+			case ExportFileType.ISAS_Assembly_File: return "ISAS Assembly file";
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// The file extension used by the given ExportFileType.
+		/// </summary>
+		public static string GetExtension(this ExportFileType type) {
+			switch (type) {
+			case ExportFileType.RGBDS_Assembly_File: return ".z80";
+			case ExportFileType.RGBDS_Object_File: return ".obj";
+			case ExportFileType.TASM_Assembly_File: return ".z80";
+			case ExportFileType.GBDK_C_File: return ".c";
+			case ExportFileType.All_Purpose_Binary_File: return ".bin";
+			case ExportFileType.ISAS_Assembly_File: return ".s";
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// Whether or not the specified ExportFileType supports setting the bank and section in the exported file.
+		/// </summary>
+		public static bool SupportsBankAndSection(this ExportFileType type) {
+			switch (type) {
+			case ExportFileType.RGBDS_Assembly_File: return true;
+			case ExportFileType.RGBDS_Object_File: return true;
+			case ExportFileType.TASM_Assembly_File: return false;
+			case ExportFileType.GBDK_C_File: return false; //It may be possible to use banks but I don't know how yet.
+			case ExportFileType.All_Purpose_Binary_File: return false;
+			case ExportFileType.ISAS_Assembly_File: return true;
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// Whether or not the specified ExportFileType supports a custom label in the exported file.
+		/// </summary>
+		public static bool SupportsLabel(this ExportFileType type) {
+			switch (type) {
+			case ExportFileType.RGBDS_Assembly_File: return true;
+			case ExportFileType.RGBDS_Object_File: return true;
+			case ExportFileType.TASM_Assembly_File: return true;
+			case ExportFileType.GBDK_C_File: return true;
+			case ExportFileType.All_Purpose_Binary_File: return false;
+			case ExportFileType.ISAS_Assembly_File: return true;
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportFileType));
+			}
+		}
 	}
 }
