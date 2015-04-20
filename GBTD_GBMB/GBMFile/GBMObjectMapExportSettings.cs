@@ -20,10 +20,8 @@ namespace GB.Shared.GBMFile
 		public String FileName { get; set; }
 		/// <summary>
 		/// The type of the file.
-		/// 
-		/// TODO: Enum?
 		/// </summary>
-		public byte FileType { get; set; }
+		public ExportFileType FileType { get; set; }
 		/// <summary>
 		/// The name of the section.
 		/// </summary>
@@ -85,7 +83,7 @@ namespace GB.Shared.GBMFile
 
 		protected override void LoadFromStream(Stream s) {
 			this.FileName = s.ReadString(255);
-			this.FileType = s.ReadByteEx();
+			this.FileType = (ExportFileType)s.ReadByteEx();
 			this.SectionName = s.ReadString(40);
 			this.LabelName = s.ReadString(40);
 			this.Bank = s.ReadByteEx();
@@ -102,7 +100,7 @@ namespace GB.Shared.GBMFile
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteString(FileName, 255);
-			s.WriteByteEx(FileType);
+			s.WriteByteEx((byte)FileType);
 			s.WriteString(SectionName, 40);
 			s.WriteString(LabelName, 40);
 			s.WriteByteEx(Bank);
@@ -141,5 +139,15 @@ namespace GB.Shared.GBMFile
 
 			return root;
 		}
+	}
+
+	public enum ExportFileType : byte
+	{
+		RGBDS_Assembly_File = 0,
+		RGBDS_Object_File = 1,
+		TASM_Assembly_File = 2,
+		GBDK_C_file = 3,
+		All_purpose_binary_file = 4,
+		ISAS_Assembly_File = 5
 	}
 }
