@@ -37,6 +37,8 @@ namespace GB.GBMB.Dialogs
 			propEditControl.ExportProperties = exportProperties.Data;
 
 			resultingPlanesControl.Properties = exportProperties.Data;
+
+			typeDropDown.SelectedIndex = (int)exportSettings.FileType;
 		}
 
 		private void addRowButton_Click(object sender, EventArgs e) {
@@ -89,6 +91,15 @@ namespace GB.GBMB.Dialogs
 			//TODO set up filter.
 			dialog.InitialDirectory = Properties.Settings.Default.ExportPath;
 			dialog.FileName = fileNameTextBox.Text;
+			dialog.Filter = new String[] {
+				"RGBDS Assembly file|*.z80|",
+				"RGBDS Object file|*.obj|",
+				"TASM Assembly file|*.z80|",
+				"GBDK C file|*.c|",
+				"All-purpose binary file|*.bin|",
+				"ISAS Assembly file|*.s"
+			}.Aggregate(new StringBuilder(), (b, s) => b.Append(s)).ToString();
+			dialog.FilterIndex = typeDropDown.SelectedIndex + 1; //FilterIndex starts at 1 rather than 0.
 
 			var result = dialog.ShowDialog();
 
@@ -96,6 +107,7 @@ namespace GB.GBMB.Dialogs
 
 			fileNameTextBox.Text = dialog.FileName;
 			Properties.Settings.Default.ExportPath = Path.GetDirectoryName(dialog.FileName);
+			typeDropDown.SelectedIndex = dialog.FilterIndex - 1;
 		}
 	}
 }
