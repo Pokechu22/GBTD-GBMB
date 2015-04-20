@@ -59,8 +59,6 @@
 			this.locationFormatGroupBox = new GB.Shared.Controls.GroupBox();
 			this.removeRowButton = new System.Windows.Forms.Button();
 			this.addRowButton = new System.Windows.Forms.Button();
-			this.propEditControl = new GB.GBMB.Dialogs.ExportPropertiesEditControl();
-			this.resultingPlanesControl = new GB.GBMB.Dialogs.ResultingExportPlanesControl();
 			this.labelMapLayout = new GB.Shared.Controls.CleanLabel();
 			this.labelPlaneCount = new GB.Shared.Controls.CleanLabel();
 			this.cleanLabel3 = new GB.Shared.Controls.CleanLabel();
@@ -72,6 +70,8 @@
 			this.okButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
+			this.propEditControl = new GB.GBMB.Dialogs.ExportPropertiesEditControl();
+			this.resultingPlanesControl = new GB.GBMB.Dialogs.ResultingExportPlanesControl();
 			this.tabControl.SuspendLayout();
 			this.standardTabPage.SuspendLayout();
 			this.splitDataGroupBox.SuspendLayout();
@@ -378,23 +378,6 @@
 			this.addRowButton.UseVisualStyleBackColor = true;
 			this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
 			// 
-			// propEditControl
-			// 
-			this.propEditControl.BackColor = System.Drawing.Color.White;
-			this.propEditControl.Location = new System.Drawing.Point(16, 20);
-			this.propEditControl.Name = "propEditControl";
-			this.propEditControl.Size = new System.Drawing.Size(193, 193);
-			this.propEditControl.TabIndex = 4;
-			this.propEditControl.SizeOrCountChanged += new System.EventHandler(this.propEditControl_SizeOrCountChanged);
-			// 
-			// resultingPlanesControl
-			// 
-			this.resultingPlanesControl.Location = new System.Drawing.Point(225, 125);
-			this.resultingPlanesControl.Name = "resultingPlanesControl";
-			this.resultingPlanesControl.Size = new System.Drawing.Size(197, 116);
-			this.resultingPlanesControl.TabIndex = 7;
-			this.resultingPlanesControl.Text = "Resulting planes";
-			// 
 			// labelMapLayout
 			// 
 			this.labelMapLayout.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -462,6 +445,9 @@
 			// mapLayoutComboBox
 			// 
 			this.mapLayoutComboBox.FormattingEnabled = true;
+			this.mapLayoutComboBox.Items.AddRange(new object[] {
+            "Rows",
+            "Columns"});
 			this.mapLayoutComboBox.Location = new System.Drawing.Point(296, 20);
 			this.mapLayoutComboBox.Name = "mapLayoutComboBox";
 			this.mapLayoutComboBox.Size = new System.Drawing.Size(129, 21);
@@ -470,6 +456,12 @@
 			// planeCountComboBox
 			// 
 			this.planeCountComboBox.FormattingEnabled = true;
+			this.planeCountComboBox.Items.AddRange(new object[] {
+            "0.5 planes (4 bits)",
+            "1 plane (8 bits)",
+            "2 planes (16 bits)",
+            "3 planes (24 bits)",
+            "4 planes (32 bits)\t"});
 			this.planeCountComboBox.Location = new System.Drawing.Point(296, 44);
 			this.planeCountComboBox.Name = "planeCountComboBox";
 			this.planeCountComboBox.Size = new System.Drawing.Size(129, 21);
@@ -478,6 +470,9 @@
 			// planeOrderComboBox
 			// 
 			this.planeOrderComboBox.FormattingEnabled = true;
+			this.planeOrderComboBox.Items.AddRange(new object[] {
+            "Tiles are continues",
+            "Planes are continues"});
 			this.planeOrderComboBox.Location = new System.Drawing.Point(296, 68);
 			this.planeOrderComboBox.Name = "planeOrderComboBox";
 			this.planeOrderComboBox.Size = new System.Drawing.Size(129, 21);
@@ -521,6 +516,23 @@
 			this.helpButton.TabIndex = 3;
 			this.helpButton.Text = "&Help";
 			this.helpButton.UseVisualStyleBackColor = true;
+			// 
+			// propEditControl
+			// 
+			this.propEditControl.BackColor = System.Drawing.Color.White;
+			this.propEditControl.Location = new System.Drawing.Point(16, 20);
+			this.propEditControl.Name = "propEditControl";
+			this.propEditControl.Size = new System.Drawing.Size(193, 193);
+			this.propEditControl.TabIndex = 4;
+			this.propEditControl.SizeOrCountChanged += new System.EventHandler(this.propEditControl_SizeOrCountChanged);
+			// 
+			// resultingPlanesControl
+			// 
+			this.resultingPlanesControl.Location = new System.Drawing.Point(225, 125);
+			this.resultingPlanesControl.Name = "resultingPlanesControl";
+			this.resultingPlanesControl.Size = new System.Drawing.Size(197, 116);
+			this.resultingPlanesControl.TabIndex = 7;
+			this.resultingPlanesControl.Text = "Resulting planes";
 			// 
 			// ExportOptionsDialog
 			// 
