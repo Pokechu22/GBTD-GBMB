@@ -90,6 +90,8 @@
     <Compile Include="Dialogs\ResultingExportPlanesControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Exporting\IMapExporter.cs" />
+    <Compile Include="Exporting\MapExportTextBase.cs" />
     <Compile Include="MapControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -272,6 +274,7 @@
   <ItemGroup>
     <None Include="Resources\TileListBookmarkIcon3.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
