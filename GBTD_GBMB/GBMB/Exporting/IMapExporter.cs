@@ -14,6 +14,6 @@ namespace GB.GBMB.Exporting
 	/// </summary>
 	public interface IMapExporter
 	{
-		public void Export(GBMFile file, Stream stream, String fileName);
+		void Export(GBMFile file, Stream stream, String fileName);
 	}
 }

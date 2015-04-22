@@ -1099,6 +1099,9 @@ namespace GB.GBMB
 			ExportOptionsDialog d = new ExportOptionsDialog(properties, exportSettings, exportProperties);
 
 			d.ShowDialog();
+
+			var ex = new Exporting.GBDKCMapExporter();
+			ex.Export(gbmFile, Console.OpenStandardOutput(), "EXPORT.C");
 		}
 	}
 }
