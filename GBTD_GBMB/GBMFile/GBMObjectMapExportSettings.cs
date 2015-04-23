@@ -37,14 +37,12 @@ namespace GB.Shared.GBMFile
 		public byte Bank { get; set; }
 		/// <summary>
 		/// The number of planes.
-		/// TODO: Enum
 		/// </summary>
-		public UInt16 PlaneCount { get; set; }
+		public PlaneCount PlaneCount { get; set; }
 		/// <summary>
 		/// The order of the planes.
-		/// TODO: Enum
 		/// </summary>
-		public UInt16 PlaneOrder { get; set; }
+		public PlaneOrder PlaneOrder { get; set; }
 		/// <summary>
 		/// The layout of the map.
 		/// TODO: Enum
@@ -88,8 +86,8 @@ namespace GB.Shared.GBMFile
 			this.SectionName = s.ReadString(40);
 			this.LabelName = s.ReadString(40);
 			this.Bank = s.ReadByteEx();
-			this.PlaneCount = s.ReadWord();
-			this.PlaneOrder = s.ReadWord();
+			this.PlaneCount = (PlaneCount)s.ReadWord();
+			this.PlaneOrder = (PlaneOrder)s.ReadWord();
 			this.MapLayout = s.ReadWord();
 			this.Split = s.ReadBoolean();
 			this.SplitSize = s.ReadInteger();
@@ -105,8 +103,8 @@ namespace GB.Shared.GBMFile
 			s.WriteString(SectionName, 40);
 			s.WriteString(LabelName, 40);
 			s.WriteByteEx(Bank);
-			s.WriteWord(PlaneCount);
-			s.WriteWord(PlaneOrder);
+			s.WriteWord((UInt16)PlaneCount);
+			s.WriteWord((UInt16)PlaneOrder);
 			s.WriteWord(MapLayout);
 			s.WriteBoolean(Split);
 			s.WriteInteger(SplitSize);
@@ -142,6 +140,9 @@ namespace GB.Shared.GBMFile
 		}
 	}
 
+	/// <summary>
+	/// Different export file modes.
+	/// </summary>
 	public enum ExportFileType : byte
 	{
 		RGBDS_Assembly_File = 0,
@@ -152,7 +153,28 @@ namespace GB.Shared.GBMFile
 		ISAS_Assembly_File = 5
 	}
 
-	public static class ExportFileTypeExtensions
+	/// <summary>
+	/// Different plane count modes.
+	/// </summary>
+	public enum PlaneCount : ushort
+	{
+		Half_Plane = 0,
+		One_Plane = 1,
+		Two_Planes = 2,
+		Three_Planes = 3,
+		Four_Planes = 4
+	}
+
+	/// <summary>
+	/// Different plane order modes.
+	/// </summary>
+	public enum PlaneOrder : ushort
+	{
+		Tiles_Are_Continues = 0,
+		Planes_Are_Continues = 1
+	}
+
+	public static class ExportSettingsEnumExtensions
 	{
 		/// <summary>
 		/// The display name for the given ExportFileType.
@@ -166,6 +188,31 @@ namespace GB.Shared.GBMFile
 			case ExportFileType.All_Purpose_Binary_File: return "All-purpose binary file";
 			case ExportFileType.ISAS_Assembly_File: return "ISAS Assembly file";
 			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// The display name for the given PlaneCount.
+		/// </summary>
+		public static string GetDisplayName(this PlaneCount type) {
+			switch (type) {
+			case PlaneCount.Half_Plane: return "0.5 plane (4 bits)";
+			case PlaneCount.One_Plane: return "1 plane (8 bits)";
+			case PlaneCount.Two_Planes: return "2 planes (16 bits)";
+			case PlaneCount.Three_Planes: return "3 planes (24 bits)";
+			case PlaneCount.Four_Planes: return "4 planes (32 bits)";
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(PlaneCount));
+			}
+		}
+
+		/// <summary>
+		/// The display name for the given PlaneOrder.
+		/// </summary>
+		public static string GetDisplayName(this PlaneOrder type) {
+			switch (type) {
+			case PlaneOrder.Tiles_Are_Continues: return "Tiles are continues";
+			case PlaneOrder.Planes_Are_Continues: return "Planes are continues";
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(PlaneOrder));
 			}
 		}
 
