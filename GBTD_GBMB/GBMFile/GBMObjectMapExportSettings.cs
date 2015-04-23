@@ -260,5 +260,19 @@ namespace GB.Shared.GBMFile
 			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportFileType));
 			}
 		}
+
+		/// <summary>
+		/// Gets the number of planes that the given planecount contians.
+		/// </summary>
+		public static int GetNumberOfPlanes(this PlaneCount planeCount) {
+			switch (planeCount) {
+			case PlaneCount.Half_Plane: return 1;
+			case PlaneCount.One_Plane: return 1;
+			case PlaneCount.Two_Planes: return 2;
+			case PlaneCount.Three_Planes: return 3;
+			case PlaneCount.Four_Planes: return 4;
+			default: throw new InvalidEnumArgumentException("planeCount", (int)planeCount, typeof(PlaneCount));
+			}
+		}
 	}
 }

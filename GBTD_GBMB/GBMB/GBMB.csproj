@@ -90,9 +90,9 @@
     <Compile Include="Dialogs\ResultingExportPlanesControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Exporting\DataPlaner.cs" />
     <Compile Include="Exporting\GBDKCMapExporter.cs" />
     <Compile Include="Exporting\IMapExporter.cs" />
+    <Compile Include="Exporting\MapDataMaker.cs" />
     <Compile Include="Exporting\MapExportTextBase.cs" />
     <Compile Include="MapControl.cs">
       <SubType>Component</SubType>
