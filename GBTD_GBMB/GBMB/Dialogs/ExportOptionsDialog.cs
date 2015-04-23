@@ -50,8 +50,8 @@ namespace GB.GBMB.Dialogs
 			changeBankForEachBlockCheckBox.Checked = exportSettings.ChangeBankEachSplit;
 
 			mapLayoutComboBox.SelectedIndex = exportSettings.MapLayout;
-			planeCountComboBox.SelectedIndex = exportSettings.PlaneCount;
-			planeOrderComboBox.SelectedIndex = exportSettings.PlaneOrder;
+			planeCountComboBox.SelectedIndex = (int)exportSettings.PlaneCount;
+			planeOrderComboBox.SelectedIndex = (int)exportSettings.PlaneOrder;
 			tileOffsetTextBox.Value = exportSettings.TileOffset;
 
 			tabControl.SelectedIndex = exportSettings.SelTab;
@@ -99,8 +99,8 @@ namespace GB.GBMB.Dialogs
 				ExportSettings.ChangeBankEachSplit = changeBankForEachBlockCheckBox.Checked;
 
 				ExportSettings.MapLayout = (UInt16)mapLayoutComboBox.SelectedIndex;
-				ExportSettings.PlaneCount = (UInt16)planeCountComboBox.SelectedIndex;
-				ExportSettings.PlaneOrder = (UInt16)planeOrderComboBox.SelectedIndex;
+				ExportSettings.PlaneCount = (PlaneCount)planeCountComboBox.SelectedIndex;
+				ExportSettings.PlaneOrder = (PlaneOrder)planeOrderComboBox.SelectedIndex;
 				ExportSettings.TileOffset = (UInt16)tileOffsetTextBox.Value;
 
 				ExportSettings.SelTab = (byte)tabControl.SelectedIndex;

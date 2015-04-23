@@ -36,7 +36,7 @@ namespace GB.GBMB.Exporting
 
 				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
-				WriteSizeDefines();
+				WriteSizeDefines(mapExportSettings);
 			}
 		}
 
@@ -71,6 +71,6 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes the defines that state the width, height, and bank.
 		/// </summary>
-		public abstract void WriteSizeDefines();
+		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
 	}
 }
