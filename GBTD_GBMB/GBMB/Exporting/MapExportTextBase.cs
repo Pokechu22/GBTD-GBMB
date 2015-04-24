@@ -30,6 +30,15 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		protected abstract string HeaderEnd { get; }
 
+		/// <summary>
+		/// The text that starts a block.  EG for C, "<c>{</c>".
+		/// </summary>
+		protected abstract string BlockBegin { get; }
+		/// <summary>
+		/// The text that ends a block.  EG for C, "<c>};</c>".
+		/// </summary>
+		protected abstract string BlockEnd { get; }
+
 		public void Export(GBMFile file, Stream stream, String fileName) {
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = file.GetObjectOfType<GBMObjectMapExportSettings>();
@@ -80,5 +89,23 @@ namespace GB.GBMB.Exporting
 		/// <param name="plane"></param>
 		/// <param name="block"></param>
 		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
+
+		public virtual void WriteData(Byte[] bytes) {
+			//The number of values to write each line.
+			const int DATA_PER_LINE = 10;
+
+			int position = 0;
+			while (position < bytes.Length) {
+				WriteDataLine(bytes, ref position, DATA_PER_LINE);
+			}
+		}
+
+		/// <summary>
+		/// Writes a line of data.
+		/// </summary>
+		/// <param name="bytes">The data to write.</param>
+		/// <param name="position">The position in the array to start at.  Will be incremented.</param>
+		/// <param name="count">The number of bytes to write.</param>
+		public abstract void WriteDataLine(Byte[] bytes, ref int position, int count);
 	}
 }

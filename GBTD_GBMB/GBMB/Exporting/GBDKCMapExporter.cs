@@ -47,8 +47,6 @@ namespace GB.GBMB.Exporting
 					Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
 				}
 			} else {
-				WriteBlockEnd(); //TODO First, make this method, and second, should this even be a method?
-
 				Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
 			}
 		}
