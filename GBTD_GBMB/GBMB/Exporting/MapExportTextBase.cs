@@ -46,7 +46,6 @@ namespace GB.GBMB.Exporting
 				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
-				Stream.WriteLine();
 				WriteMapData(file);
 			}
 		}

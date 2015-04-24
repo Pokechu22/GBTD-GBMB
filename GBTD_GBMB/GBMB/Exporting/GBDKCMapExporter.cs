@@ -48,7 +48,7 @@ namespace GB.GBMB.Exporting
 
 			if (plane == 0) {
 				Stream.WriteLine();
-				if (settings.PlaneOrder == PlaneOrder.Planes_Are_Continues) {
+				if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
 					Stream.WriteLine("unsigned char {0}[] =", name);
 				} else {
 					Stream.WriteLine("#define {0} {0}PLN{1}", name, plane);
