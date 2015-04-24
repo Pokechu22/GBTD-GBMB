@@ -98,12 +98,22 @@ namespace GB.GBMB.Exporting
 			//Build the byte array data of data.
 			Byte[] dataTemp = new Byte[settings.Master.Width * settings.Master.Height * planeCount];
 
-			//TODO respect settings.MapLayout -- rows vs columns.
-			for (int y = 0; y < settings.Master.Height; y++) {
+			if (settings.MapLayout == MapLayout.Rows) {
+				for (int y = 0; y < settings.Master.Height; y++) {
+					for (int x = 0; x < settings.Master.Width; x++) {
+						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+						for (int i = 0; i < planeCount; i++) {
+							dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+						}
+					}
+				}
+			} else if (settings.MapLayout == MapLayout.Columns) {
 				for (int x = 0; x < settings.Master.Width; x++) {
-					Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
-					for (int i = 0; i < planeCount; i++) {
-						dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+					for (int y = 0; y < settings.Master.Height; y++) {
+						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+						for (int i = 0; i < planeCount; i++) {
+							dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+						}
 					}
 				}
 			}
