@@ -49,7 +49,7 @@ namespace GB.GBMB.Dialogs
 			blockSizeTextBox.Value = exportSettings.SplitSize;
 			changeBankForEachBlockCheckBox.Checked = exportSettings.ChangeBankEachSplit;
 
-			mapLayoutComboBox.SelectedIndex = exportSettings.MapLayout;
+			mapLayoutComboBox.SelectedIndex = (int)exportSettings.MapLayout;
 			planeCountComboBox.SelectedIndex = (int)exportSettings.PlaneCount;
 			planeOrderComboBox.SelectedIndex = (int)exportSettings.PlaneOrder;
 			tileOffsetTextBox.Value = exportSettings.TileOffset;
@@ -98,7 +98,7 @@ namespace GB.GBMB.Dialogs
 				ExportSettings.SplitSize = blockSizeTextBox.Value;
 				ExportSettings.ChangeBankEachSplit = changeBankForEachBlockCheckBox.Checked;
 
-				ExportSettings.MapLayout = (UInt16)mapLayoutComboBox.SelectedIndex;
+				ExportSettings.MapLayout = (MapLayout)mapLayoutComboBox.SelectedIndex;
 				ExportSettings.PlaneCount = (PlaneCount)planeCountComboBox.SelectedIndex;
 				ExportSettings.PlaneOrder = (PlaneOrder)planeOrderComboBox.SelectedIndex;
 				ExportSettings.TileOffset = (UInt16)tileOffsetTextBox.Value;

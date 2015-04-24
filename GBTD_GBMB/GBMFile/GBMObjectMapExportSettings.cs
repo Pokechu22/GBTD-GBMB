@@ -45,9 +45,8 @@ namespace GB.Shared.GBMFile
 		public PlaneOrder PlaneOrder { get; set; }
 		/// <summary>
 		/// The layout of the map.
-		/// TODO: Enum
 		/// </summary>
-		public UInt16 MapLayout { get; set; }
+		public MapLayout MapLayout { get; set; }
 		/// <summary>
 		/// Whether or not to split the tiles.
 		/// </summary>
@@ -88,7 +87,7 @@ namespace GB.Shared.GBMFile
 			this.Bank = s.ReadByteEx();
 			this.PlaneCount = (PlaneCount)s.ReadWord();
 			this.PlaneOrder = (PlaneOrder)s.ReadWord();
-			this.MapLayout = s.ReadWord();
+			this.MapLayout = (MapLayout)s.ReadWord();
 			this.Split = s.ReadBoolean();
 			this.SplitSize = s.ReadInteger();
 			this.ChangeBankEachSplit = s.ReadBoolean();
@@ -105,7 +104,7 @@ namespace GB.Shared.GBMFile
 			s.WriteByteEx(Bank);
 			s.WriteWord((UInt16)PlaneCount);
 			s.WriteWord((UInt16)PlaneOrder);
-			s.WriteWord(MapLayout);
+			s.WriteWord((UInt16)MapLayout);
 			s.WriteBoolean(Split);
 			s.WriteInteger(SplitSize);
 			s.WriteBoolean(ChangeBankEachSplit);
@@ -172,6 +171,15 @@ namespace GB.Shared.GBMFile
 	{
 		Tiles_Are_Continues = 0,
 		Planes_Are_Continues = 1
+	}
+
+	/// <summary>
+	/// The map layouts.
+	/// </summary>
+	public enum MapLayout : ushort
+	{
+		Rows = 0,
+		Columns = 1
 	}
 
 	public static class ExportSettingsEnumExtensions
