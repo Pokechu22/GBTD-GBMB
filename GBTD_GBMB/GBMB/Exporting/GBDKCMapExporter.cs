@@ -64,7 +64,7 @@ namespace GB.GBMB.Exporting
 
 			Stream.Write("  ");
 			while (position < endPos && position < bytes.Length) {
-				Stream.Write("0x{0:x2}", bytes[position]);
+				Stream.Write("0x{0:X2}", bytes[position]);
 
 				position++;
 
