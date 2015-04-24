@@ -92,8 +92,8 @@ namespace GB.GBMB.Exporting
 		private static uint CreateBitMask(uint size) {
 			uint result = 0;
 			for (int i = 0; i < size; i++) {
-				result |= 1;
 				result <<= 1;
+				result |= 1;
 			}
 
 			return result;
