@@ -46,6 +46,8 @@ namespace GB.GBMB.Exporting
 				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
+				Stream.WriteLine();
+				WriteMapData(file);
 			}
 		}
 
@@ -83,6 +85,50 @@ namespace GB.GBMB.Exporting
 		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
 
 		/// <summary>
+		/// Writes the entire map's data.
+		/// </summary>
+		public void WriteMapData(GBMFile gbmFile) {
+			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+
+			//TODO this doesn't handle planes... or anything really.
+			//Currently, asume "Tiles are continuous".
+
+			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
+
+			//Build the byte array data of data.
+			Byte[] dataTemp = new Byte[settings.Master.Width * settings.Master.Height * planeCount];
+
+			//TODO respect settings.MapLayout -- rows vs columns.
+			for (int y = 0; y < settings.Master.Height; y++) {
+				for (int x = 0; x < settings.Master.Width; x++) {
+					Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+					for (int i = 0; i < planeCount; i++) {
+						dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+					}
+				}
+			}
+
+			int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height * planeCount) / settings.SplitSize);
+
+			Byte[][] data = new Byte[numberOfSplitBlocks][];
+			for (uint i = 0; i < numberOfSplitBlocks; i++) {
+				uint length = settings.SplitSize;
+				if (length > dataTemp.Length - (settings.SplitSize * i)) {
+					length = (uint)(dataTemp.Length - (settings.SplitSize * i));
+				}
+				data[i] = new Byte[length];
+				Array.Copy(dataTemp, settings.SplitSize * i, data[i], 0, length);
+			}
+
+			for (int i = 0; i < data.Length; i++) {
+				WritePlaneLabel(settings, 0, i);
+				WriteData(data[i]);
+			}
+
+			WritePlaneLabel(settings, 0, 0);
+		}
+
+		/// <summary>
 		/// Writes the label for the specified plane and block.
 		/// </summary>
 		/// <param name="settings"></param>
@@ -90,6 +136,10 @@ namespace GB.GBMB.Exporting
 		/// <param name="block"></param>
 		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
 
+		/// <summary>
+		/// Writes a section of data -- a plane or a block.
+		/// </summary>
+		/// <param name="bytes"></param>
 		public virtual void WriteData(Byte[] bytes) {
 			//The number of values to write each line.
 			const int DATA_PER_LINE = 10;
