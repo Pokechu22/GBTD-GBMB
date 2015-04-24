@@ -1101,7 +1101,11 @@ namespace GB.GBMB
 			d.ShowDialog();
 
 			var ex = new Exporting.GBDKCMapExporter();
-			ex.Export(gbmFile, Console.OpenStandardOutput(), "EXPORT.C");
+			using (MemoryStream stream = new MemoryStream()) {
+				ex.Export(gbmFile, stream, "EXPORT.C");
+
+				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
+			}
 		}
 	}
 }

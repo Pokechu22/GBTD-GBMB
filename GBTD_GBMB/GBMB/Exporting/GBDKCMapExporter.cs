@@ -68,7 +68,7 @@ namespace GB.GBMB.Exporting
 
 				position++;
 
-				if (position < endPos || position < bytes.Length) {
+				if (position < endPos && position < bytes.Length) {
 					Stream.Write(",");
 				}
 			}
