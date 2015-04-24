@@ -89,49 +89,93 @@ namespace GB.GBMB.Exporting
 		public void WriteMapData(GBMFile gbmFile) {
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
-			//TODO this doesn't handle planes... or anything really.
-			//Currently, asume "Tiles are continuous".
-
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 
-			//Build the byte array data of data.
-			Byte[] dataTemp = new Byte[settings.Master.Width * settings.Master.Height * planeCount];
+			if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
+				//Build the byte array data of data.
+				Byte[] dataTemp = new Byte[settings.Master.Width * settings.Master.Height * planeCount];
 
-			if (settings.MapLayout == MapLayout.Rows) {
-				for (int y = 0; y < settings.Master.Height; y++) {
-					for (int x = 0; x < settings.Master.Width; x++) {
-						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
-						for (int i = 0; i < planeCount; i++) {
-							dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
-						}
-					}
-				}
-			} else if (settings.MapLayout == MapLayout.Columns) {
-				for (int x = 0; x < settings.Master.Width; x++) {
+				if (settings.MapLayout == MapLayout.Rows) {
 					for (int y = 0; y < settings.Master.Height; y++) {
-						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
-						for (int i = 0; i < planeCount; i++) {
-							dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+						for (int x = 0; x < settings.Master.Width; x++) {
+							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+							for (int i = 0; i < planeCount; i++) {
+								dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							}
+						}
+					}
+				} else if (settings.MapLayout == MapLayout.Columns) {
+					for (int x = 0; x < settings.Master.Width; x++) {
+						for (int y = 0; y < settings.Master.Height; y++) {
+							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+							for (int i = 0; i < planeCount; i++) {
+								dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							}
 						}
 					}
 				}
-			}
 
-			int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height * planeCount) / settings.SplitSize);
+				int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
 
-			Byte[][] data = new Byte[numberOfSplitBlocks][];
-			for (uint i = 0; i < numberOfSplitBlocks; i++) {
-				uint length = settings.SplitSize;
-				if (length > dataTemp.Length - (settings.SplitSize * i)) {
-					length = (uint)(dataTemp.Length - (settings.SplitSize * i));
+				Byte[][] data = new Byte[numberOfSplitBlocks][];
+				for (uint i = 0; i < numberOfSplitBlocks; i++) {
+					uint length = (uint)(settings.SplitSize * planeCount);
+					if (length > dataTemp.Length - (settings.SplitSize * planeCount * i)) {
+						length = (uint)(dataTemp.Length - (settings.SplitSize * planeCount * i));
+					}
+					data[i] = new Byte[length];
+					Array.Copy(dataTemp, settings.SplitSize * planeCount * i, data[i], 0, length);
 				}
-				data[i] = new Byte[length];
-				Array.Copy(dataTemp, settings.SplitSize * i, data[i], 0, length);
-			}
 
-			for (int i = 0; i < data.Length; i++) {
-				WritePlaneLabel(settings, 0, i);
-				WriteData(data[i]);
+				for (int i = 0; i < data.Length; i++) {
+					WritePlaneLabel(settings, 0, i);
+					WriteData(data[i]);
+				}
+			} else { //Planes are continues.
+				Byte[][] planedDataTemp = new Byte[planeCount][];
+
+				for (int i = 0; i < planeCount; i++) {
+					planedDataTemp[i] = new byte[settings.Master.Width * settings.Master.Height * planeCount];
+
+					if (settings.MapLayout == MapLayout.Rows) {
+						for (int y = 0; y < settings.Master.Height; y++) {
+							for (int x = 0; x < settings.Master.Width; x++) {
+								Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+
+								planedDataTemp[i][(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							}
+						}
+					} else if (settings.MapLayout == MapLayout.Columns) {
+						for (int x = 0; x < settings.Master.Width; x++) {
+							for (int y = 0; y < settings.Master.Height; y++) {
+								Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+								
+								planedDataTemp[i][(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							}
+						}
+					}
+				}
+
+				int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
+
+				Byte[,][] planedData = new Byte[planeCount, numberOfSplitBlocks][];
+				for (int plane = 0; plane < planeCount; plane++) {
+					for (uint block = 0; block < numberOfSplitBlocks; block++) {
+						uint length = settings.SplitSize;
+						if (length > planedDataTemp[plane].Length - (settings.SplitSize * block)) {
+							length = (uint)(planedDataTemp[plane].Length - (settings.SplitSize * block));
+						}
+						planedData[plane, block] = new Byte[length];
+						Array.Copy(planedDataTemp[plane], settings.SplitSize * block, planedData[plane, block], 0, length);
+					}
+				}
+
+				for (int block = 0; block < numberOfSplitBlocks; block++) {
+					for (int plane = 0; plane < planeCount; plane++ ) {
+						WritePlaneLabel(settings, plane, block);
+						WriteData(planedData[plane, block]);
+					}
+				}
 			}
 		}
 
