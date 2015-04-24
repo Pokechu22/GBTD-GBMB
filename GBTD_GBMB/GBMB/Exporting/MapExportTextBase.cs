@@ -72,5 +72,13 @@ namespace GB.GBMB.Exporting
 		/// Writes the defines that state the width, height, and bank.
 		/// </summary>
 		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
+
+		/// <summary>
+		/// Writes the label for the specified plane and block.
+		/// </summary>
+		/// <param name="settings"></param>
+		/// <param name="plane"></param>
+		/// <param name="block"></param>
+		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
 	}
 }

@@ -28,5 +28,29 @@ namespace GB.GBMB.Exporting
 			Stream.WriteLine("#define {0}Height {1}", settings.LabelName.Trim(), settings.Master.Height);
 			Stream.WriteLine("#define {0}Bank {1}", settings.LabelName.Trim(), settings.Bank);
 		}
+
+		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
+			String name;
+
+			if (settings.Split) {
+				name = settings.LabelName + "BLK" + block.ToString();
+			} else {
+				name = settings.LabelName;
+			}
+
+			if (plane == 0) {
+				Stream.WriteLine();
+				if (settings.PlaneOrder == PlaneOrder.Planes_Are_Continues) {
+					Stream.WriteLine("unsigned char {0}[] =", name);
+				} else {
+					Stream.WriteLine("#define {0} {0}PLN{1}", name, plane);
+					Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
+				}
+			} else {
+				WriteBlockEnd(); //TODO First, make this method, and second, should this even be a method?
+
+				Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
+			}
+		}
 	}
 }
