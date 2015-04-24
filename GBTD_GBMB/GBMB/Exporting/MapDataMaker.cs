@@ -50,7 +50,17 @@ namespace GB.GBMB.Exporting
 					AddBits(ref temp, GetNumericValue(true), position, property.Size);
 					break;
 				default:
-					//TODO These would be properties, but they aren't yet implemented.
+					int propNum = property.Property - 11;
+					if (propNum < 0 || propNum >= 32) {
+						throw new IndexOutOfRangeException("Could not parse the property value -- property is beyond the maximum property count (0 to 31) and is not a specific other property.  ExportProperty is " + property.Property + ", and tried to get " + propNum + " as the property.");
+					}
+
+					var mapProperties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
+					if (propNum >= mapProperties.Data.GetLength(2)) {
+						throw new IndexOutOfRangeException("Could not parse the property value -- property is beyond the total current property count and is not a specific other property.  ExportProperty is " + property.Property + ", and tried to get " + propNum + " as the property.  Length of the 3rd dimension of GBMObjectMapPropertyData's data array is " + mapProperties.Data.GetLength(2) + ", must be less than that.");
+					}
+
+					AddBits(ref temp, mapProperties.Data[x, y, propNum], position, property.Size);
 					break;
 				}
 
