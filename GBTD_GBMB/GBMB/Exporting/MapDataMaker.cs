@@ -26,7 +26,7 @@ namespace GB.GBMB.Exporting
 				case 1: //Tile number
 				case 2: //Tile number: Low 8
 				case 3: //Tile number: High 9
-					AddBits(ref temp, mapData.Tiles[x, y].TileNumber, position, property.Size);
+					AddBits(ref temp, (uint)(mapData.Tiles[x, y].TileNumber + properties.Master.TileOffset), position, property.Size);
 					break;
 				case 4: //Vertical flip
 					AddBits(ref temp, GetNumericValue(mapData.Tiles[x, y].FlippedVertically), position, property.Size);
