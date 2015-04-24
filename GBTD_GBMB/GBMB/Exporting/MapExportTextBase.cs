@@ -124,8 +124,6 @@ namespace GB.GBMB.Exporting
 				WritePlaneLabel(settings, 0, i);
 				WriteData(data[i]);
 			}
-
-			WritePlaneLabel(settings, 0, 0);
 		}
 
 		/// <summary>
@@ -144,10 +142,14 @@ namespace GB.GBMB.Exporting
 			//The number of values to write each line.
 			const int DATA_PER_LINE = 10;
 
+			Stream.Write(BlockBegin);
 			int position = 0;
 			while (position < bytes.Length) {
 				WriteDataLine(bytes, ref position, DATA_PER_LINE);
 			}
+			Stream.Write(BlockEnd);
+
+			Stream.WriteLine();
 		}
 
 		/// <summary>
