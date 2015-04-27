@@ -93,7 +93,7 @@ namespace GB.GBMB.Exporting
 					for (int x = 0; x < settings.Master.Width; x++) {
 						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
 						for (int i = 0; i < planeCount; i++) {
-							dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							dataTemp[(((y * settings.Master.Width) + x) * planeCount) + i] = tileData[i];
 						}
 					}
 				}
@@ -102,7 +102,7 @@ namespace GB.GBMB.Exporting
 					for (int y = 0; y < settings.Master.Height; y++) {
 						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
 						for (int i = 0; i < planeCount; i++) {
-							dataTemp[(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							dataTemp[(((x * settings.Master.Height) + y) * planeCount) + i] = tileData[i];
 						}
 					}
 				}
@@ -141,7 +141,7 @@ namespace GB.GBMB.Exporting
 						for (int x = 0; x < settings.Master.Width; x++) {
 							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
 
-							planedDataTemp[i][(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							planedDataTemp[i][(((y * settings.Master.Width) + x) * planeCount) + i] = tileData[i];
 						}
 					}
 				} else if (settings.MapLayout == MapLayout.Columns) {
@@ -149,7 +149,7 @@ namespace GB.GBMB.Exporting
 						for (int y = 0; y < settings.Master.Height; y++) {
 							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
 
-							planedDataTemp[i][(((y * settings.Master.Height) + x) * planeCount) + i] = tileData[i];
+							planedDataTemp[i][(((x * settings.Master.Height) + y) * planeCount) + i] = tileData[i];
 						}
 					}
 				}
