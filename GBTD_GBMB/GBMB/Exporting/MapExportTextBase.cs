@@ -51,7 +51,7 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		protected abstract string FooterEnd { get; }
 
-		public void Export(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
+		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
@@ -61,6 +61,22 @@ namespace GB.GBMB.Exporting
 				WriteMapData(gbmFile, gbrFile);
 				WriteFooter(fileName);
 			}
+
+			this.Stream = null;
+		}
+
+		public void ExportInclude(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
+			using (this.Stream = new StreamWriter(stream)) {
+				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+
+				WriteHeader(mapExportSettings, fileName);
+				Stream.WriteLine();
+				WriteSizeDefines(mapExportSettings);
+				WriteMapData(gbmFile, gbrFile);
+				WriteFooter(fileName);
+			}
+
+			this.Stream = null;
 		}
 
 		/// <summary>
@@ -108,7 +124,7 @@ namespace GB.GBMB.Exporting
 				Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile, gbrFile);
 
 				for (int i = 0; i < data.Length; i++) {
-					WritePlaneLabel(settings, 0, i);
+					WritePlaneLabel(settings, 0, i, false);
 					WriteData(data[i]);
 				}
 			} else { //Planes are continues.
@@ -118,7 +134,7 @@ namespace GB.GBMB.Exporting
 
 				for (int block = 0; block < blockCount; block++) {
 					for (int plane = 0; plane < planeCount; plane++ ) {
-						WritePlaneLabel(settings, plane, block);
+						WritePlaneLabel(settings, plane, block, false);
 						WriteData(planedData[plane, block]);
 					}
 				}
@@ -131,7 +147,7 @@ namespace GB.GBMB.Exporting
 		/// <param name="settings"></param>
 		/// <param name="plane"></param>
 		/// <param name="block"></param>
-		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
+		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header);
 
 		/// <summary>
 		/// Writes a section of data -- a plane or a block.

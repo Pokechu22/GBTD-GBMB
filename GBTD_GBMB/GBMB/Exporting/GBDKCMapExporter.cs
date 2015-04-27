@@ -45,7 +45,7 @@ namespace GB.GBMB.Exporting
 			Stream.WriteLine("#define {0}Bank {1}", settings.LabelName.Trim(), settings.Bank);
 		}
 
-		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
+		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header) {
 			String name;
 
 			if (settings.Split) {
@@ -54,16 +54,30 @@ namespace GB.GBMB.Exporting
 				name = settings.LabelName;
 			}
 
-			if (plane == 0) {
-				Stream.WriteLine();
-				if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
-					Stream.WriteLine("unsigned char {0}[] =", name);
+			if (header) {
+				if (plane == 0) {
+					Stream.WriteLine();
+					if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
+						Stream.WriteLine("extern unsigned char {0}[];", name);
+					} else {
+						Stream.WriteLine("#define {0} {0}PLN{1}", name, plane);
+						Stream.WriteLine("extern unsigned char {0}PLN{1}[];", name, plane);
+					}
 				} else {
-					Stream.WriteLine("#define {0} {0}PLN{1}", name, plane);
-					Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
+					Stream.WriteLine("extern unsigned char {0}PLN{1}[];", name, plane);
 				}
 			} else {
-				Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
+				if (plane == 0) {
+					Stream.WriteLine();
+					if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
+						Stream.WriteLine("unsigned char {0}[] =", name);
+					} else {
+						Stream.WriteLine("#define {0} {0}PLN{1}", name, plane);
+						Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
+					}
+				} else {
+					Stream.WriteLine("unsigned char {0}PLN{1}[] =", name, plane);
+				}
 			}
 		}
 
