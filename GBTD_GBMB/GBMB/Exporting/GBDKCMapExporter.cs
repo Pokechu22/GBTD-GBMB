@@ -56,7 +56,6 @@ namespace GB.GBMB.Exporting
 
 			if (header) {
 				if (plane == 0) {
-					Stream.WriteLine();
 					if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
 						Stream.WriteLine("extern unsigned char {0}[];", name);
 					} else {

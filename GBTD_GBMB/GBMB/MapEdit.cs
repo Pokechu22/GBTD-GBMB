@@ -1100,9 +1100,14 @@ namespace GB.GBMB
 
 			d.ShowDialog();
 
+			//TODO decent and proper exporting, and not a message box.
 			var ex = new Exporting.GBDKCMapExporter();
 			using (MemoryStream stream = new MemoryStream()) {
-				ex.ExportMain(gbmFile, gbrFile, stream, "EXPORT.C");
+				if (MessageBox.Show("Header?", "Header", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+					ex.ExportInclude(gbmFile, gbrFile, stream, "EXPORT.H");
+				} else {
+					ex.ExportMain(gbmFile, gbrFile, stream, "EXPORT.C");
+				}
 
 				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
 			}

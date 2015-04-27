@@ -55,7 +55,7 @@ namespace GB.GBMB.Exporting
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
-				WriteHeader(mapExportSettings, fileName);
+				WriteHeader(mapExportSettings, fileName, false);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
 				WriteMapData(gbmFile, gbrFile);
@@ -69,10 +69,12 @@ namespace GB.GBMB.Exporting
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
-				WriteHeader(mapExportSettings, fileName);
+				WriteHeader(mapExportSettings, fileName, true);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
-				WriteMapData(gbmFile, gbrFile);
+				Stream.WriteLine();
+				WriteMapDataIncludes(gbmFile, gbrFile);
+				Stream.WriteLine();
 				WriteFooter(fileName);
 			}
 
@@ -84,13 +86,11 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		/// <param name="settings"></param>
 		/// <param name="fileName"></param>
-		public void WriteHeader(GBMObjectMapExportSettings settings, String fileName) {
-			//TODO handle source vs include file.
-			
+		public void WriteHeader(GBMObjectMapExportSettings settings, String fileName, bool header) {
 			Stream.WriteLine(HeaderBegin);
 			Stream.WriteLine(HeaderLine + " " + Path.GetFileName(fileName).ToUpperInvariant());
 			Stream.WriteLine(HeaderLine);
-			Stream.WriteLine(HeaderLine + " Map Source File.");
+			Stream.WriteLine(HeaderLine + " Map {0} File.", header ? "Include" : "Source");
 			Stream.WriteLine(HeaderLine);
 			Stream.WriteLine(HeaderLine + " Info:");
 			Stream.WriteLine(HeaderLine + "   Section       : {0}", settings.SectionName);
@@ -136,6 +136,28 @@ namespace GB.GBMB.Exporting
 					for (int plane = 0; plane < planeCount; plane++ ) {
 						WritePlaneLabel(settings, plane, block, false);
 						WriteData(planedData[plane, block]);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Writes the includes that are used for the map.
+		/// </summary>
+		public void WriteMapDataIncludes(GBMFile gbmFile, GBRFile gbrFile) {
+			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+
+			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
+			int blockCount = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
+
+			if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
+				for (int plane = 0; plane < planeCount; plane++) {
+					WritePlaneLabel(settings, 0, plane, true);
+				}
+			} else {
+				for (int block = 0; block < blockCount; block++) {
+					for (int plane = 0; plane < planeCount; plane++) {
+						WritePlaneLabel(settings, plane, block, true);
 					}
 				}
 			}
