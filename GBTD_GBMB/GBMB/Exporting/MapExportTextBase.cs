@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GB.Shared.GBMFile;
 using System.IO;
+using GB.Shared.GBRFile;
 
 namespace GB.GBMB.Exporting
 {
@@ -39,14 +40,26 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		protected abstract string BlockEnd { get; }
 
-		public void Export(GBMFile file, Stream stream, String fileName) {
+		/// <summary>
+		/// The text that begins the line of the footer.  EG for C, "<c>/*</c>".
+		/// A newline is not, by default, appended after this.
+		/// </summary>
+		protected abstract string FooterBegin { get; }
+		/// <summary>
+		/// The text that ends the line of the footer.  EG for C, "<c>*/</c>".
+		/// A newline is appended after this by default.
+		/// </summary>
+		protected abstract string FooterEnd { get; }
+
+		public void Export(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
 			using (this.Stream = new StreamWriter(stream)) {
-				var mapExportSettings = file.GetObjectOfType<GBMObjectMapExportSettings>();
+				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
 				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
-				WriteMapData(file);
+				WriteMapData(gbmFile, gbrFile);
+				WriteFooter(fileName);
 			}
 		}
 
@@ -86,20 +99,20 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes the entire map's data.
 		/// </summary>
-		public void WriteMapData(GBMFile gbmFile) {
+		public void WriteMapData(GBMFile gbmFile, GBRFile gbrFile) {
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 
 			if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
-				Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile);
+				Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile, gbrFile);
 
 				for (int i = 0; i < data.Length; i++) {
 					WritePlaneLabel(settings, 0, i);
 					WriteData(data[i]);
 				}
 			} else { //Planes are continues.
-				Byte[,][] planedData = MapDataMaker.GetPlaneContinuousData(gbmFile);
+				Byte[,][] planedData = MapDataMaker.GetPlaneContinuousData(gbmFile, gbrFile);
 
 				int blockCount = planedData.GetLength(1);
 
@@ -145,5 +158,12 @@ namespace GB.GBMB.Exporting
 		/// <param name="position">The position in the array to start at.  Will be incremented.</param>
 		/// <param name="count">The number of bytes to write.</param>
 		public abstract void WriteDataLine(Byte[] bytes, ref int position, int count);
+
+		/// <summary>
+		/// Writes the footer.
+		/// </summary>
+		public virtual void WriteFooter(String fileName) {
+			Stream.WriteLine(FooterBegin + " End of " + fileName + " " + FooterEnd);
+		}
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GB.Shared.GBMFile;
+using GB.Shared.GBRFile;
 
 namespace GB.GBMB.Exporting
 {
@@ -11,9 +12,8 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Gets the bytes for a specific tile.
 		/// </summary>
-		/// <param name="gbmFile"></param>
 		/// <returns></returns>
-		public static byte[] GetBytesForTile(GBMFile gbmFile, int x, int y, PlaneCount count) {
+		public static byte[] GetBytesForTile(GBMFile gbmFile, GBRFile gbrFile, int x, int y, PlaneCount count) {
 			var properties = gbmFile.GetObjectOfType<GBMObjectMapExportProperties>();
 			var mapData = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
 
@@ -35,13 +35,13 @@ namespace GB.GBMB.Exporting
 					AddBits(ref temp, GetNumericValue(mapData.Tiles[x, y].FlippedHorizontally), position, property.Size);
 					break;
 				case 6: //GBC palette.
-					AddBits(ref temp, GetGBCPalette(gbmFile, mapData.Tiles[x, y]), position, property.Size);
+					AddBits(ref temp, GetGBCPalette(gbrFile, mapData.Tiles[x, y]), position, property.Size);
 					break;
 				case 7: //SGB palette
-					AddBits(ref temp, GetSGBPalette(gbmFile, mapData.Tiles[x, y]), position, property.Size);
+					AddBits(ref temp, GetSGBPalette(gbrFile, mapData.Tiles[x, y]), position, property.Size);
 					break;
 				case 8: //GBC BG Attribute
-					AddBits(ref temp, GetGBCBGAttribute(gbmFile, mapData.Tiles[x, y]), position, property.Size);
+					AddBits(ref temp, GetGBCBGAttribute(gbrFile, mapData.Tiles[x, y]), position, property.Size);
 					break;
 				case 9: //0 filler
 					AddBits(ref temp, GetNumericValue(false), position, property.Size);
@@ -80,7 +80,7 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Gets the tiles are continues bytes for the specified GBMFile.
 		/// </summary>
-		public static byte[][] GetTileContinuousData(GBMFile gbmFile) {
+		public static byte[][] GetTileContinuousData(GBMFile gbmFile, GBRFile gbrFile) {
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
@@ -91,7 +91,7 @@ namespace GB.GBMB.Exporting
 			if (settings.MapLayout == MapLayout.Rows) {
 				for (int y = 0; y < settings.Master.Height; y++) {
 					for (int x = 0; x < settings.Master.Width; x++) {
-						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, gbrFile, x, y, settings.PlaneCount);
 						for (int i = 0; i < planeCount; i++) {
 							dataTemp[(((y * settings.Master.Width) + x) * planeCount) + i] = tileData[i];
 						}
@@ -100,7 +100,7 @@ namespace GB.GBMB.Exporting
 			} else if (settings.MapLayout == MapLayout.Columns) {
 				for (int x = 0; x < settings.Master.Width; x++) {
 					for (int y = 0; y < settings.Master.Height; y++) {
-						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+						Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, gbrFile, x, y, settings.PlaneCount);
 						for (int i = 0; i < planeCount; i++) {
 							dataTemp[(((x * settings.Master.Height) + y) * planeCount) + i] = tileData[i];
 						}
@@ -126,7 +126,7 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Gets the planes are continues bytes for the specified GBMFile.
 		/// </summary>
-		public static byte[,][] GetPlaneContinuousData(GBMFile gbmFile) {
+		public static byte[,][] GetPlaneContinuousData(GBMFile gbmFile, GBRFile gbrFile) {
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
@@ -139,7 +139,7 @@ namespace GB.GBMB.Exporting
 				if (settings.MapLayout == MapLayout.Rows) {
 					for (int y = 0; y < settings.Master.Height; y++) {
 						for (int x = 0; x < settings.Master.Width; x++) {
-							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, gbrFile, x, y, settings.PlaneCount);
 
 							planedDataTemp[i][((y * settings.Master.Width) + x)] = tileData[i];
 						}
@@ -147,7 +147,7 @@ namespace GB.GBMB.Exporting
 				} else if (settings.MapLayout == MapLayout.Columns) {
 					for (int x = 0; x < settings.Master.Width; x++) {
 						for (int y = 0; y < settings.Master.Height; y++) {
-							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, x, y, settings.PlaneCount);
+							Byte[] tileData = MapDataMaker.GetBytesForTile(gbmFile, gbrFile, x, y, settings.PlaneCount);
 
 							planedDataTemp[i][((x * settings.Master.Height) + y)] = tileData[i];
 						}
@@ -204,22 +204,22 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Converts a palette to the apropriate value, using default if needed.
 		/// </summary>
-		private static UInt16 GetGBCPalette(GBMFile gbmFile, GBMObjectMapTileDataRecord tile) {
+		private static UInt16 GetGBCPalette(GBRFile gbrFile, GBMObjectMapTileDataRecord tile) {
 			if (tile.GBCPalette != null) {
 				return tile.GBCPalette.Value;
 			} else {
-				return 0; //TODO get defaults from GBRFile.
+				return (UInt16)gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().GBCPalettes[tile.TileNumber];
 			}
 		}
 
 		/// <summary>
 		/// Converts a palette to the apropriate value, using default if needed.
 		/// </summary>
-		private static UInt16 GetSGBPalette(GBMFile gbmFile, GBMObjectMapTileDataRecord tile) {
+		private static UInt16 GetSGBPalette(GBRFile gbrFile, GBMObjectMapTileDataRecord tile) {
 			if (tile.SGBPalette != null) {
 				return tile.SGBPalette.Value;
 			} else {
-				return 0; //TODO get defaults from GBRFile.
+				return (UInt16)gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes[tile.TileNumber];
 			}
 		}
 
@@ -242,7 +242,7 @@ namespace GB.GBMB.Exporting
 		/// <para>Bit 0 - Bits 0-2 indicate which of the 7 BKG colour palettes the tile is
 		/// assigned.</para>
 		/// </summary>
-		private static Byte GetGBCBGAttribute(GBMFile gbmFile, GBMObjectMapTileDataRecord tile) {
+		private static Byte GetGBCBGAttribute(GBRFile gbrFile, GBMObjectMapTileDataRecord tile) {
 			Byte result = 0;
 
 			result |= (byte)(false ? 0x80 : 0x00); //TODO actual priority value, which doesn't exist yet.
@@ -250,7 +250,7 @@ namespace GB.GBMB.Exporting
 			result |= (byte)(tile.FlippedHorizontally ? 0x20 : 0x00);
 
 			result |= (byte)(((tile.TileNumber & 0x100) != 0) ? 0x08 : 0x00); //If the tile number has bit 8 set, it's in the second bank.
-			result |= (byte)(GetGBCPalette(gbmFile, tile) & 0x07);
+			result |= (byte)(GetGBCPalette(gbrFile, tile) & 0x07);
 
 			return result;
 		}

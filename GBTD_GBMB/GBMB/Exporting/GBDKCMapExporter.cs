@@ -31,6 +31,14 @@ namespace GB.GBMB.Exporting
 			get { return "};" + Stream.NewLine; }
 		}
 
+		protected override string FooterBegin {
+			get { return "/*"; }
+		}
+
+		protected override string FooterEnd {
+			get { return "*/"; }
+		}
+
 		public override void WriteSizeDefines(GBMObjectMapExportSettings settings) {
 			Stream.WriteLine("#define {0}Width {1}", settings.LabelName.Trim(), settings.Master.Width);
 			Stream.WriteLine("#define {0}Height {1}", settings.LabelName.Trim(), settings.Master.Height);

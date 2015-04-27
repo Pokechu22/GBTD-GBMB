@@ -1102,7 +1102,7 @@ namespace GB.GBMB
 
 			var ex = new Exporting.GBDKCMapExporter();
 			using (MemoryStream stream = new MemoryStream()) {
-				ex.Export(gbmFile, stream, "EXPORT.C");
+				ex.Export(gbmFile, gbrFile, stream, "EXPORT.C");
 
 				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
 			}

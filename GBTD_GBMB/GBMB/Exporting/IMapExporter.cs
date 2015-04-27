@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GB.Shared.GBMFile;
 using System.IO;
+using GB.Shared.GBRFile;
 
 namespace GB.GBMB.Exporting
 {
@@ -14,6 +15,6 @@ namespace GB.GBMB.Exporting
 	/// </summary>
 	public interface IMapExporter
 	{
-		void Export(GBMFile file, Stream stream, String fileName);
+		void Export(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName);
 	}
 }
