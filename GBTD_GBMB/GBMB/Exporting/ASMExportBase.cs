@@ -29,6 +29,14 @@ namespace GB.GBMB.Exporting
 			get { return ""; }
 		}
 
+		protected override string BlockBegin {
+			get { return ""; }
+		}
+
+		protected override string BlockEnd {
+			get { return ""; }
+		}
+
 		protected override string FooterBegin {
 			get { return ";"; }
 		}
