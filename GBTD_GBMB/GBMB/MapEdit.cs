@@ -1101,12 +1101,22 @@ namespace GB.GBMB
 			d.ShowDialog();
 
 			//TODO decent and proper exporting, and not a message box.
-			var ex = new Exporting.RGBDSAssemblyMapExporter();
+			//Also, import stuff.  Once all the export types are done, clean this up.
+			Exporting.IMapExporter exporter;
+
+			switch (exportSettings.FileType) {
+			case Shared.GBMFile.ExportFileType.GBDK_C_File: exporter = new Exporting.GBDKCMapExporter(); break;
+			case Shared.GBMFile.ExportFileType.RGBDS_Assembly_File: exporter = new Exporting.RGBDSAssemblyMapExporter(); break;
+			default: 
+				MessageBox.Show("Currently unsuported export format '" + exportSettings.FileType.GetDisplayName() + "'", "Error", 
+						MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+			}
+
 			using (MemoryStream stream = new MemoryStream()) {
 				if (MessageBox.Show("Header?", "Header", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-					ex.ExportInclude(gbmFile, gbrFile, stream, "EXPORT.H");
+					exporter.ExportInclude(gbmFile, gbrFile, stream, "EXPORT.H");
 				} else {
-					ex.ExportMain(gbmFile, gbrFile, stream, "EXPORT.C");
+					exporter.ExportMain(gbmFile, gbrFile, stream, "EXPORT.C");
 				}
 
 				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
