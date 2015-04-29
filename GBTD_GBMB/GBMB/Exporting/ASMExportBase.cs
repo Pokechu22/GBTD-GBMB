@@ -45,6 +45,10 @@ namespace GB.GBMB.Exporting
 			get { return ""; }
 		}
 
+		protected override bool IncludeIncBank {
+			get { return true; }
+		}
+
 		public override void WriteSizeDefines(GBMObjectMapExportSettings settings) {
 			Stream.WriteLine("{0}Width  {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Master.Width);
 			Stream.WriteLine("{0}Height {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Master.Height);
