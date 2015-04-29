@@ -63,6 +63,7 @@ namespace GB.GBMB.Exporting
 				WriteHeader(mapExportSettings, fileName, false);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
+				WriteSection(mapExportSettings, 0);
 				WriteMapData(gbmFile, gbrFile);
 				WriteFooter(fileName);
 			}
@@ -77,6 +78,7 @@ namespace GB.GBMB.Exporting
 				WriteHeader(mapExportSettings, fileName, true);
 				Stream.WriteLine();
 				WriteSizeDefines(mapExportSettings);
+				WriteSection(mapExportSettings, 0);
 				Stream.WriteLine();
 				WriteMapDataIncludes(gbmFile, gbrFile);
 				Stream.WriteLine();
@@ -154,6 +156,10 @@ namespace GB.GBMB.Exporting
 				int blockCount = planedData.GetLength(1);
 
 				for (int block = 0; block < blockCount; block++) {
+					if (settings.ChangeBankEachSplit && block > 0) {
+						WriteSection(settings, block);
+					}
+
 					for (int plane = 0; plane < planeCount; plane++ ) {
 						WritePlaneLabel(settings, plane, block, false);
 						WriteData(planedData[plane, block]);

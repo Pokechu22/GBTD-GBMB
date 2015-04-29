@@ -53,5 +53,23 @@ namespace GB.GBMB.Exporting
 				Stream.WriteLine();
 			}
 		}
+
+		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+			Stream.WriteLine();
+
+			String s;
+
+			if (settings.Split && settings.ChangeBankEachSplit) {
+				s = settings.SectionName.Trim() + "BLK" + bankOffset;
+			} else {
+				s = settings.SectionName.Trim();
+			}
+
+			if (settings.Bank + bankOffset > 0) {
+				Stream.WriteLine(" SECTION \"{0}\", DATA, BANK[{1}]", s, settings.Bank + bankOffset);
+			} else {
+				Stream.WriteLine(" SECTION \"{0}\", HOME", s);
+			}
+		}
 	}
 }

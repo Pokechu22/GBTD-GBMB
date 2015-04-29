@@ -54,5 +54,9 @@ namespace GB.GBMB.Exporting
 			Stream.WriteLine("{0}Height {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Master.Height);
 			Stream.WriteLine("{0}Bank   {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Bank);
 		}
+
+		//Force overriding in the next class!
+		//http://stackoverflow.com/a/8905465/3991344
+		public override abstract void WriteSection(GBMObjectMapExportSettings settings, int bankOffset);
 	}
 }
