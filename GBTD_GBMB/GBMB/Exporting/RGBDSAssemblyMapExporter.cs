@@ -15,8 +15,6 @@ namespace GB.GBMB.Exporting
 		}
 
 		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header) {
-			Stream.WriteLine();
-
 			String s;
 
 			if (!settings.Split) {
@@ -25,13 +23,28 @@ namespace GB.GBMB.Exporting
 				s = settings.LabelName.Trim() + "BLK" + block;
 			}
 
-			if (plane == 0) {
-				Stream.WriteLine("{0}::", s);
-				if (settings.PlaneOrder == PlaneOrder.Planes_Are_Continues) {
-					Stream.WriteLine("{0}PLN0::", s);
+			if (header) {
+				if (plane == 0) {
+					Stream.WriteLine();
+
+					Stream.WriteLine(" GLOBAL {0}", s);
+					if (settings.PlaneOrder == PlaneOrder.Planes_Are_Continues) {
+						Stream.WriteLine(" GLOBAL {0}PLN0", s);
+					}
+				} else {
+					Stream.WriteLine(" GLOBAL {0}PLN{1}", s, plane);
 				}
 			} else {
-				Stream.WriteLine("{0}PLN{1}::", s, plane);
+				Stream.WriteLine();
+
+				if (plane == 0) {
+					Stream.WriteLine("{0}::", s);
+					if (settings.PlaneOrder == PlaneOrder.Planes_Are_Continues) {
+						Stream.WriteLine("{0}PLN0::", s);
+					}
+				} else {
+					Stream.WriteLine("{0}PLN{1}::", s, plane);
+				}
 			}
 		}
 
@@ -54,7 +67,9 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
-		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset, bool header) {
+			if (header) { return; } //No sections in the header.
+
 			Stream.WriteLine();
 
 			String s;

@@ -62,8 +62,8 @@ namespace GB.GBMB.Exporting
 
 				WriteHeader(mapExportSettings, fileName, false);
 				Stream.WriteLine();
-				WriteSizeDefines(mapExportSettings);
-				WriteSection(mapExportSettings, 0);
+				WriteSizeDefines(mapExportSettings, false);
+				WriteSection(mapExportSettings, 0, false);
 				WriteMapData(gbmFile, gbrFile);
 				WriteFooter(fileName);
 			}
@@ -77,9 +77,8 @@ namespace GB.GBMB.Exporting
 
 				WriteHeader(mapExportSettings, fileName, true);
 				Stream.WriteLine();
-				WriteSizeDefines(mapExportSettings);
-				WriteSection(mapExportSettings, 0);
-				Stream.WriteLine();
+				WriteSizeDefines(mapExportSettings, true);
+				WriteSection(mapExportSettings, 0, true);
 				WriteMapDataIncludes(gbmFile, gbrFile);
 				Stream.WriteLine();
 				WriteFooter(fileName);
@@ -124,14 +123,14 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes the defines that state the width, height, and bank.
 		/// </summary>
-		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
+		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings, bool header);
 
 		/// <summary>
 		/// Writes a section label.  Only relevant for ASM; by default this method does nothing.
 		/// </summary>
 		/// <param name="settings"></param>
 		/// <param name="bankOffset"></param>
-		public virtual void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+		public virtual void WriteSection(GBMObjectMapExportSettings settings, int bankOffset, bool header) {
 			//Do nothing by default.
 		}
 
@@ -157,7 +156,7 @@ namespace GB.GBMB.Exporting
 
 				for (int block = 0; block < blockCount; block++) {
 					if (settings.ChangeBankEachSplit && block > 0) {
-						WriteSection(settings, block);
+						WriteSection(settings, block, false); //By definition, if the map data is being written you are not in the header.
 					}
 
 					for (int plane = 0; plane < planeCount; plane++ ) {

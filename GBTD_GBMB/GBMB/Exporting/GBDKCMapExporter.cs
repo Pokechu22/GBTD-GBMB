@@ -43,10 +43,14 @@ namespace GB.GBMB.Exporting
 			get { return false; }
 		}
 
-		public override void WriteSizeDefines(GBMObjectMapExportSettings settings) {
+		public override void WriteSizeDefines(GBMObjectMapExportSettings settings, bool header) {
 			Stream.WriteLine("#define {0}Width {1}", settings.LabelName.Trim(), settings.Master.Width);
 			Stream.WriteLine("#define {0}Height {1}", settings.LabelName.Trim(), settings.Master.Height);
 			Stream.WriteLine("#define {0}Bank {1}", settings.LabelName.Trim(), settings.Bank);
+
+			if (header) {
+				Stream.WriteLine();
+			}
 		}
 
 		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header) {
