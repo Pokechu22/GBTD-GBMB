@@ -36,8 +36,20 @@ namespace GB.GBMB.Exporting
 		}
 
 		public override void WriteDataLine(byte[] bytes, ref int position, int count) {
-			//TODO
-			throw new NotImplementedException();
+			int endPos = position + count;
+
+			Stream.Write("DB ");
+			while (position < endPos && position < bytes.Length) {
+				Stream.Write("${0:X2}", bytes[position]);
+
+				position++;
+
+				if (position < endPos && position < bytes.Length) {
+					Stream.Write(",");
+				}
+			}
+
+			Stream.WriteLine();
 		}
 	}
 }
