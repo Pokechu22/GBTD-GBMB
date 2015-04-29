@@ -108,5 +108,12 @@ namespace GB.GBMB.Exporting
 				Stream.WriteLine();
 			}
 		}
+
+		public override void WriteFooter(string fileName) {
+			if (Header) {
+				Stream.WriteLine();
+			}
+			base.WriteFooter(fileName);
+		}
 	}
 }

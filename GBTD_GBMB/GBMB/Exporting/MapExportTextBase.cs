@@ -96,7 +96,6 @@ namespace GB.GBMB.Exporting
 				WriteSizeDefines(mapExportSettings);
 				WriteSection(mapExportSettings, 0);
 				WriteMapDataIncludes(gbmFile, gbrFile);
-				Stream.WriteLine();
 				WriteFooter(fileName);
 			}
 
