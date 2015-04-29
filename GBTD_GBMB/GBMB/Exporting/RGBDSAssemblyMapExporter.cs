@@ -14,7 +14,7 @@ namespace GB.GBMB.Exporting
 			get { return "EQU"; }
 		}
 
-		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header) {
+		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
 			String s;
 
 			if (!settings.Split) {
@@ -23,7 +23,7 @@ namespace GB.GBMB.Exporting
 				s = settings.LabelName.Trim() + "BLK" + block;
 			}
 
-			if (header) {
+			if (Header) {
 				if (plane == 0) {
 					Stream.WriteLine();
 
@@ -67,8 +67,8 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
-		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset, bool header) {
-			if (header) { return; } //No sections in the header.
+		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+			if (Header) { return; } //No sections in the header.
 
 			Stream.WriteLine();
 

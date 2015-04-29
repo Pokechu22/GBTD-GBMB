@@ -18,6 +18,18 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		protected StreamWriter Stream { get; private set; }
 
+		private bool header;
+		/// <summary>
+		/// Whether it is the header file that is currently being written.
+		/// </summary>
+		protected bool Header {
+			get {
+				if (Stream == null) { throw new InvalidOperationException("Not currently exporting!  Stream is null."); }
+				return header;
+			}
+			private set { header = value; }
+		}
+
 		/// <summary>
 		/// Text that should be put at the begining of the header block.  EG for C, "<c>/*</c>".
 		/// </summary>
@@ -57,13 +69,15 @@ namespace GB.GBMB.Exporting
 		protected abstract bool IncludeIncBank { get; }
 
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
+			Header = false;
+
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
-				WriteHeader(mapExportSettings, fileName, false);
+				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
-				WriteSizeDefines(mapExportSettings, false);
-				WriteSection(mapExportSettings, 0, false);
+				WriteSizeDefines(mapExportSettings);
+				WriteSection(mapExportSettings, 0);
 				WriteMapData(gbmFile, gbrFile);
 				WriteFooter(fileName);
 			}
@@ -72,13 +86,15 @@ namespace GB.GBMB.Exporting
 		}
 
 		public void ExportInclude(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
+			Header = true;
+
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
-				WriteHeader(mapExportSettings, fileName, true);
+				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
-				WriteSizeDefines(mapExportSettings, true);
-				WriteSection(mapExportSettings, 0, true);
+				WriteSizeDefines(mapExportSettings);
+				WriteSection(mapExportSettings, 0);
 				WriteMapDataIncludes(gbmFile, gbrFile);
 				Stream.WriteLine();
 				WriteFooter(fileName);
@@ -92,13 +108,13 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		/// <param name="settings"></param>
 		/// <param name="fileName"></param>
-		public void WriteHeader(GBMObjectMapExportSettings settings, String fileName, bool header) {
+		public void WriteHeader(GBMObjectMapExportSettings settings, String fileName) {
 			if (!String.IsNullOrEmpty(HeaderBegin)) {
 				Stream.WriteLine(HeaderBegin);
 			}
 			Stream.WriteLine(HeaderLine + " " + Path.GetFileName(fileName).ToUpperInvariant());
 			Stream.WriteLine(HeaderLine);
-			Stream.WriteLine(HeaderLine + " Map {0} File.", header ? "Include" : "Source");
+			Stream.WriteLine(HeaderLine + " Map {0} File.", Header ? "Include" : "Source");
 			Stream.WriteLine(HeaderLine);
 			Stream.WriteLine(HeaderLine + " Info:");
 			Stream.WriteLine(HeaderLine + "   Section       : {0}", settings.SectionName);
@@ -123,14 +139,14 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes the defines that state the width, height, and bank.
 		/// </summary>
-		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings, bool header);
+		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
 
 		/// <summary>
 		/// Writes a section label.  Only relevant for ASM; by default this method does nothing.
 		/// </summary>
 		/// <param name="settings"></param>
 		/// <param name="bankOffset"></param>
-		public virtual void WriteSection(GBMObjectMapExportSettings settings, int bankOffset, bool header) {
+		public virtual void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
 			//Do nothing by default.
 		}
 
@@ -146,7 +162,7 @@ namespace GB.GBMB.Exporting
 				Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile, gbrFile);
 
 				for (int i = 0; i < data.Length; i++) {
-					WritePlaneLabel(settings, 0, i, false);
+					WritePlaneLabel(settings, 0, i);
 					WriteData(data[i]);
 				}
 			} else { //Planes are continues.
@@ -156,11 +172,11 @@ namespace GB.GBMB.Exporting
 
 				for (int block = 0; block < blockCount; block++) {
 					if (settings.ChangeBankEachSplit && block > 0) {
-						WriteSection(settings, block, false); //By definition, if the map data is being written you are not in the header.
+						WriteSection(settings, block);
 					}
 
 					for (int plane = 0; plane < planeCount; plane++ ) {
-						WritePlaneLabel(settings, plane, block, false);
+						WritePlaneLabel(settings, plane, block);
 						WriteData(planedData[plane, block]);
 					}
 				}
@@ -178,12 +194,12 @@ namespace GB.GBMB.Exporting
 
 			if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
 				for (int plane = 0; plane < planeCount; plane++) {
-					WritePlaneLabel(settings, 0, plane, true);
+					WritePlaneLabel(settings, 0, plane);
 				}
 			} else {
 				for (int block = 0; block < blockCount; block++) {
 					for (int plane = 0; plane < planeCount; plane++) {
-						WritePlaneLabel(settings, plane, block, true);
+						WritePlaneLabel(settings, plane, block);
 					}
 				}
 			}
@@ -195,7 +211,7 @@ namespace GB.GBMB.Exporting
 		/// <param name="settings"></param>
 		/// <param name="plane"></param>
 		/// <param name="block"></param>
-		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header);
+		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
 
 		/// <summary>
 		/// Writes a section of data -- a plane or a block.

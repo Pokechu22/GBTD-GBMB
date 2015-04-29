@@ -43,17 +43,17 @@ namespace GB.GBMB.Exporting
 			get { return false; }
 		}
 
-		public override void WriteSizeDefines(GBMObjectMapExportSettings settings, bool header) {
+		public override void WriteSizeDefines(GBMObjectMapExportSettings settings) {
 			Stream.WriteLine("#define {0}Width {1}", settings.LabelName.Trim(), settings.Master.Width);
 			Stream.WriteLine("#define {0}Height {1}", settings.LabelName.Trim(), settings.Master.Height);
 			Stream.WriteLine("#define {0}Bank {1}", settings.LabelName.Trim(), settings.Bank);
 
-			if (header) {
+			if (Header) {
 				Stream.WriteLine();
 			}
 		}
 
-		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block, bool header) {
+		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
 			String name;
 
 			if (settings.Split) {
@@ -62,7 +62,7 @@ namespace GB.GBMB.Exporting
 				name = settings.LabelName;
 			}
 
-			if (header) {
+			if (Header) {
 				if (plane == 0) {
 					if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
 						Stream.WriteLine("extern unsigned char {0}[];", name);
