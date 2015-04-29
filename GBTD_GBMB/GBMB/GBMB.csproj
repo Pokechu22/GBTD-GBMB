@@ -93,6 +93,7 @@
     <Compile Include="Exporting\ASMExportBase.cs" />
     <Compile Include="Exporting\GBDKCMapExporter.cs" />
     <Compile Include="Exporting\IMapExporter.cs" />
+    <Compile Include="Exporting\RGBDSAssemblyMapExporter.cs" />
     <Compile Include="Exporting\MapDataMaker.cs" />
     <Compile Include="Exporting\MapExportTextBase.cs" />
     <Compile Include="MapControl.cs">

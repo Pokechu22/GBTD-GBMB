@@ -26,12 +26,12 @@ namespace GB.GBMB.Exporting
 			}
 
 			if (plane == 0) {
-				Stream.WriteLine("{0}::");
+				Stream.WriteLine("{0}::", s);
 				if (settings.PlaneOrder == PlaneOrder.Planes_Are_Continues) {
-					Stream.WriteLine("{0}PLN0::");
+					Stream.WriteLine("{0}PLN0::", s);
 				}
 			} else {
-				Stream.WriteLine("{0}PLN{1}::", plane);
+				Stream.WriteLine("{0}PLN{1}::", s, plane);
 			}
 		}
 
