@@ -38,7 +38,7 @@ namespace GB.GBMB.Exporting
 		}
 
 		protected override string FooterBegin {
-			get { return ";"; }
+			get { return Stream.NewLine + ";"; }
 		}
 
 		protected override string FooterEnd {

@@ -49,7 +49,9 @@ namespace GB.GBMB.Exporting
 				}
 			}
 
-			Stream.WriteLine();
+			if (position != bytes.Length) {
+				Stream.WriteLine();
+			}
 		}
 	}
 }
