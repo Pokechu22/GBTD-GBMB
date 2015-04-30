@@ -1114,9 +1114,9 @@ namespace GB.GBMB
 
 			using (MemoryStream stream = new MemoryStream()) {
 				if (MessageBox.Show("Header?", "Header", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-					exporter.ExportInclude(gbmFile, gbrFile, stream, "EXPORT.H");
+					exporter.ExportInclude(gbmFile, gbrFile, stream, exportSettings.FileName);
 				} else {
-					exporter.ExportMain(gbmFile, gbrFile, stream, "EXPORT.C");
+					exporter.ExportMain(gbmFile, gbrFile, stream, exportSettings.FileName);
 				}
 
 				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
