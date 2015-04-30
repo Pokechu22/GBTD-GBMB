@@ -10,6 +10,8 @@ namespace GB.GBMB.Exporting
 {
 	public abstract class ASMExportBase : MapExportTextBase
 	{
+		protected ASMExportBase() { }
+
 		/// <summary>
 		/// The text used in the SizeDefines section between the term and the value.
 		/// 

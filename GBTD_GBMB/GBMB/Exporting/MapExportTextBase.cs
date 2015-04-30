@@ -13,6 +13,8 @@ namespace GB.GBMB.Exporting
 	/// </summary>
 	public abstract class MapExportTextBase : IMapExporter
 	{
+		protected MapExportTextBase() { }
+
 		/// <summary>
 		/// The stream that is being written to.
 		/// </summary>
