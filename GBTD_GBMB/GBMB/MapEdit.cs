@@ -1107,6 +1107,7 @@ namespace GB.GBMB
 			switch (exportSettings.FileType) {
 			case Shared.GBMFile.ExportFileType.GBDK_C_File: exporter = new Exporting.GBDKCMapExporter(); break;
 			case Shared.GBMFile.ExportFileType.RGBDS_Assembly_File: exporter = new Exporting.RGBDSAssemblyMapExporter(); break;
+			case Shared.GBMFile.ExportFileType.ISAS_Assembly_File: exporter = new Exporting.ISASAssemblyMapExporter(); break;
 			default: 
 				MessageBox.Show("Currently unsuported export format '" + exportSettings.FileType.GetDisplayName() + "'", "Error", 
 						MessageBoxButtons.OK, MessageBoxIcon.Error); return;
