@@ -14,7 +14,7 @@ namespace GB.GBMB.Exporting
 	/// <para>For reference, this is how that export works (as far as I can tell):</para>
 	/// 
 	/// <para>In general, everything is little endian, strings are ASCII, and strings are null-terminated.</para>
-	/// <para>The header.  "RGB1" followed by a 4-byte number: the amount of objects.  Little endian.</para>
+	/// <para>The header.  "RGB1" followed by 2 four-byte numbers: the amount of objects, and the number of sections.</para>
 	/// <para>Labels for each of the objects.  See <see cref="RGBDSLabel"/> for the format.</para>
 	/// </summary>
 	public class RGBDSObjMapExporter : IMapExporter
@@ -69,6 +69,9 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
+		/// <summary>
+		/// A label put in the labels section that describes some data.
+		/// </summary>
 		private struct RGBDSLabel
 		{
 			/// <summary>
@@ -88,11 +91,17 @@ namespace GB.GBMB.Exporting
 			/// </summary>
 			public UInt32 Location { get; set; }
 
-			public void WriteToStream(RGBDSFormatWriter stream) {
-				stream.WriteNullTerminatedString(Name);
-				stream.WriteByte(Mode);
-				stream.WriteUInt32(Section);
-				stream.WriteUInt32(Location);
+			/// <summary>
+			/// Writes the label to the given writer.
+			/// 
+			/// <para>The format is: A null-terminated string for the <see cref="Name"/>, 
+			/// then the <see cref="Mode"/>, then the <see cref="Section"/>, then the <see cref="Location"/>.</para>
+			/// </summary>
+			public void WriteToStream(RGBDSFormatWriter writer) {
+				writer.WriteNullTerminatedString(Name);
+				writer.WriteByte(Mode);
+				writer.WriteUInt32(Section);
+				writer.WriteUInt32(Location);
 			}
 		}
 
@@ -105,9 +114,42 @@ namespace GB.GBMB.Exporting
 		}
 
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, string fileName) {
+			const UInt32 NUMBER_OF_SECTIONS = 1;
+
+			UInt32 numberOfBlocks = 0; //TODO
+
 			RGBDSFormatWriter writer = new RGBDSFormatWriter(stream);
 
-			
+			//Header.  This is fairly simple.  
+			writer.WriteNonNullTerminatedString("RGB1");
+			writer.WriteUInt32(numberOfBlocks);
+			writer.WriteUInt32(NUMBER_OF_SECTIONS);
+		}
+
+		/// <summary>
+		/// Writes a properly formated RGBDS header.
+		/// 
+		/// <para>
+		/// The header format is a magic string ("RGB1"),
+		/// then the number of blocks (4 bit, little endian unsigned int),
+		/// then the number of sections (4 bit, little endian unsigned int).
+		/// </para>
+		/// </summary>
+		protected void WriteHeader(RGBDSFormatWriter writer, UInt32 numberOfBlocks, UInt32 numberOfSections) {
+			const string MAGIC_HEADER = "RGB1";
+
+			writer.WriteNonNullTerminatedString(MAGIC_HEADER);
+			writer.WriteUInt32(numberOfBlocks);
+			writer.WriteUInt32(numberOfSections);
+		}
+
+		/// <summary>
+		/// Writes each of the labels.  The format of the label is described in <see cref="RGBDSLabel.WriteToStream"/>
+		/// </summary>
+		protected void WriteLabels(RGBDSFormatWriter writer, RGBDSLabel[] labels) {
+			for (int i = 0; i < labels.Length; i++) {
+				labels[i].WriteToStream(writer);
+			}
 		}
 
 		// Object include for RGBDS is actually that of RGBDS asm.  So we create a new RGBDS ASM exporter and do it there.
