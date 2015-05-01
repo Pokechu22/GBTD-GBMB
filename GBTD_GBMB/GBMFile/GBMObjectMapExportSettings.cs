@@ -225,7 +225,7 @@ namespace GB.Shared.GBMFile
 		}
 
 		/// <summary>
-		/// The file extension used by the given ExportFileType.
+		/// The file extension used by the main file of the given ExportFileType.
 		/// </summary>
 		public static string GetExtension(this GBMExportFileType type) {
 			switch (type) {
@@ -235,6 +235,21 @@ namespace GB.Shared.GBMFile
 			case GBMExportFileType.GBDK_C_File: return ".c";
 			case GBMExportFileType.All_Purpose_Binary_File: return ".bin";
 			case GBMExportFileType.ISAS_Assembly_File: return ".s";
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(GBMExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// The file extension used by the include file of the given ExportFileType.  If there is no such extension, an exception is thrown.
+		/// </summary>
+		public static string GetIncludeExtension(this GBMExportFileType type) {
+			switch (type) {
+			case GBMExportFileType.RGBDS_Assembly_File: return ".inc";
+			case GBMExportFileType.RGBDS_Object_File: return ".inc";
+			case GBMExportFileType.TASM_Assembly_File: throw new InvalidOperationException(type + " does not have an include file extension!");
+			case GBMExportFileType.GBDK_C_File: return ".h";
+			case GBMExportFileType.All_Purpose_Binary_File: throw new InvalidOperationException(type + " does not have an include file extension!");
+			case GBMExportFileType.ISAS_Assembly_File: return ".inc";
 			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(GBMExportFileType));
 			}
 		}
