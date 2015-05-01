@@ -97,6 +97,7 @@
     <Compile Include="Exporting\RGBDSAssemblyMapExporter.cs" />
     <Compile Include="Exporting\MapDataMaker.cs" />
     <Compile Include="Exporting\MapExportTextBase.cs" />
+    <Compile Include="Exporting\TASMAssemblyMapExporter.cs" />
     <Compile Include="MapControl.cs">
       <SubType>Component</SubType>
     </Compile>
