@@ -40,7 +40,7 @@ namespace GB.GBMB.Exporting
 
 				WriteNonNullTerminatedString(value);
 
-				WriteUInt32(NULL_TERMINATOR);
+				WriteByte(NULL_TERMINATOR);
 			}
 
 			/// <summary>
@@ -77,7 +77,7 @@ namespace GB.GBMB.Exporting
 		protected struct RGBDSLabel
 		{
 			private const byte DEFAULT_MODE = 2;
-			private const byte DEFAULT_SECTION = 0;
+			private const UInt32 DEFAULT_SECTION = 0;
 
 			/// <summary>
 			/// Creates a RGBDSLabel with the given info.  Mode and Section are set at their normal values.
