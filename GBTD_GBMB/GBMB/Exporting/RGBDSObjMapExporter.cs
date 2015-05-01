@@ -22,7 +22,7 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes stuff in the RGBDS format.  Vaugly messy, but simplifies other code.
 		/// </summary>
-		private class RGBDSFormatWriter
+		protected class RGBDSFormatWriter
 		{
 			private Stream stream;
 
@@ -61,7 +61,7 @@ namespace GB.GBMB.Exporting
 				stream.Write(bytes, 0, bytes.Length);
 			}
 
-			public override void WriteUInt32(UInt32 value) {
+			public void WriteUInt32(UInt32 value) {
 				WriteByte((byte)((value >> 0) & 0xFF));
 				WriteByte((byte)((value >> 8) & 0xFF));
 				WriteByte((byte)((value >> 16) & 0xFF));
@@ -72,7 +72,7 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// A label put in the labels section that describes some data.
 		/// </summary>
-		private struct RGBDSLabel
+		protected struct RGBDSLabel
 		{
 			/// <summary>
 			/// The name of the label.
