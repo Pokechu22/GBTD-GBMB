@@ -152,6 +152,32 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
+		/// <summary>
+		/// Writes the header data to the specified writer.
+		/// 
+		/// <para>Currently this data is hardcoded.  That's fine, since it'll always be the same.</para>
+		/// <para>Layout: A uint32, the size; then a byte that indicates the section type (decided by bank), 
+		/// then the org (no idea what that is, but it's always 0xFFFFFFFF), and then the bank.  The bank is
+		/// either the one from the settings, or if the one in the settings is 0, 0xFFFFFFFF.</para>
+		/// </summary>
+		protected void WriteSection(RGBDSFormatWriter writer, UInt32 size, UInt32 bank) {
+			//The two sections.  Home is for when bank is 0.
+			const byte SECTION_HOME = 0x03;
+			//And code is for nonzero banks.
+			const byte SECTION_CODE = 0x02;
+
+			//The ORG value.  No clue what this is, but it's always 0xFFFFFFFF.
+			const UInt32 ORG = 0xFFFFFFFF;
+
+			//The bank used when in SECTION_HOME (when bank is 0).
+			const UInt32 BANK_FOR_HOME = 0xFFFFFFFF;
+
+			writer.WriteUInt32(size);
+			writer.WriteByte(bank == 0 ? SECTION_HOME : SECTION_CODE);
+			writer.WriteUInt32(ORG);
+			writer.WriteUInt32(bank != 0 ? bank : BANK_FOR_HOME);
+		}
+
 		// Object include for RGBDS is actually that of RGBDS asm.  So we create a new RGBDS ASM exporter and do it there.
 		// It's a bit silly, but it would be weirder to copy that code here.  And Object main isn't text-based, so having this
 		// partially implement that would be a bad idea.
