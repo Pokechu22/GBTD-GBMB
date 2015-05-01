@@ -70,9 +70,16 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		protected abstract bool IncludeIncBank { get; }
 
-		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
-			Header = false;
+		public virtual bool SupportsExportMain { get { return true; } }
+		public virtual bool SupportsExportInclude { get { return true; } }
 
+		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
+			if (!SupportsExportMain) {
+				throw new InvalidOperationException("This map exporter does not support exporting main files!");
+			}
+
+			Header = false;
+			
 			using (this.Stream = new StreamWriter(stream)) {
 				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
@@ -88,6 +95,10 @@ namespace GB.GBMB.Exporting
 		}
 
 		public void ExportInclude(GBMFile gbmFile, GBRFile gbrFile, Stream stream, String fileName) {
+			if (!SupportsExportInclude) {
+				throw new InvalidOperationException("This map exporter does not support exporting main files!");
+			}
+
 			Header = true;
 
 			using (this.Stream = new StreamWriter(stream)) {

@@ -12,6 +12,10 @@ namespace GB.GBMB.Exporting
 			get { return ".equ"; }
 		}
 
+		public override bool SupportsExportInclude {
+			get { return false; }
+		}
+
 		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
 			//Do nothing.
 		}

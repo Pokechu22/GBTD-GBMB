@@ -16,6 +16,16 @@ namespace GB.GBMB.Exporting
 	public interface IMapExporter
 	{
 		/// <summary>
+		/// Whether or not <see cref="ExportMain"/> is supported.
+		/// <para>This should be true all the time, but is included for clarity.</para>
+		/// </summary>
+		bool SupportsExportMain { get; }
+		/// <summary>
+		/// Whether or not <see cref="ExportInclude"/> is supported.
+		/// </summary>
+		bool SupportsExportInclude { get; }
+
+		/// <summary>
 		/// Exports the main data file to the specified stream.
 		/// </summary>
 		/// <param name="gbmFile">The GBM file.</param>
