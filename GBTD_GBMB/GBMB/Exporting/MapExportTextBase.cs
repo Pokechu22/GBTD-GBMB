@@ -244,7 +244,7 @@ namespace GB.GBMB.Exporting
 		/// Writes the footer.
 		/// </summary>
 		public virtual void WriteFooter(String fileName) {
-			Stream.WriteLine(FooterBegin + " End of " + fileName + " " + FooterEnd);
+			Stream.WriteLine("{0} End of {1} {2}", FooterBegin, Path.GetFileName(fileName).ToUpperInvariant(), FooterEnd);
 		}
 	}
 }
