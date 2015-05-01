@@ -19,6 +19,56 @@ namespace GB.GBMB.Exporting
 	/// </summary>
 	public class RGBDSObjMapExporter : IMapExporter
 	{
+		/// <summary>
+		/// Writes stuff in the RGBDS format.  Vaugly messy, but simplifies other code.
+		/// </summary>
+		private class RGBDSFormatWriter
+		{
+			private Stream stream;
+
+			public RGBDSFormatWriter(Stream stream) {
+				this.stream = stream;
+			}
+
+			/// <summary>
+			/// Writes a null-terminated string to the stream.
+			/// </summary>
+			public void WriteNullTerminatedString(string value) {
+				const byte NULL_TERMINATOR = 0x00;
+
+				WriteNonNullTerminatedString(value);
+
+				WriteUInt32(NULL_TERMINATOR);
+			}
+
+			/// <summary>
+			/// Writes a non-null-terminated string to the stream.
+			/// </summary>
+			public void WriteNonNullTerminatedString(string value) {
+				byte[] bytes = Encoding.ASCII.GetBytes(value);
+
+				WriteBytes(bytes);
+			}
+
+			/// <summary>
+			/// Writes a byte to the stream.
+			/// </summary>
+			public void WriteByte(byte b) {
+				stream.WriteByte(b);
+			}
+
+			public void WriteBytes(byte[] bytes) {
+				stream.Write(bytes, 0, bytes.Length);
+			}
+
+			public override void WriteUInt32(UInt32 value) {
+				WriteByte((byte)((value >> 0) & 0xFF));
+				WriteByte((byte)((value >> 8) & 0xFF));
+				WriteByte((byte)((value >> 16) & 0xFF));
+				WriteByte((byte)((value >> 24) & 0xFF));
+			}
+		}
+
 		private struct RGBDSLabel
 		{
 			/// <summary>
@@ -38,22 +88,11 @@ namespace GB.GBMB.Exporting
 			/// </summary>
 			public UInt32 Location { get; set; }
 
-			public void WriteToStream(Stream stream) {
-				byte[] name = Encoding.ASCII.GetBytes(this.Name);
-
-				stream.Write(name, 0, name.Length);
-
-				stream.WriteByte(0); //Null terminator.
+			public void WriteToStream(RGBDSFormatWriter stream) {
+				stream.WriteNullTerminatedString(Name);
 				stream.WriteByte(Mode);
-				WriteUInt32(stream, Section);
-				WriteUInt32(stream, Location);
-			}
-
-			private void WriteUInt32(Stream stream, UInt32 value) {
-				stream.WriteByte((byte)((value >> 0) & 0xFF));
-				stream.WriteByte((byte)((value >> 8) & 0xFF));
-				stream.WriteByte((byte)((value >> 16) & 0xFF));
-				stream.WriteByte((byte)((value >> 24) & 0xFF));
+				stream.WriteUInt32(Section);
+				stream.WriteUInt32(Location);
 			}
 		}
 
@@ -66,6 +105,8 @@ namespace GB.GBMB.Exporting
 		}
 
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, string fileName) {
+			RGBDSFormatWriter writer = new RGBDSFormatWriter(stream);
+
 			
 		}
 
