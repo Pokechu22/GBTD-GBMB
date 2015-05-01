@@ -7,6 +7,9 @@ using GB.Shared.GBRFile;
 
 namespace GB.GBMB.Exporting
 {
+	/// <summary>
+	/// Seperates data into planes for export.  TODO: This does not respect half-planes yet.
+	/// </summary>
 	public static class MapDataMaker
 	{
 		/// <summary>

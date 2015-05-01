@@ -1101,27 +1101,23 @@ namespace GB.GBMB
 
 			d.ShowDialog();
 
-			IMapExporter exporter = IMapExporter.GetExporterForType(exportSettings.FileType);
+			IMapExporter exporter = exportSettings.FileType.CreateExporter();
 
-			using (MemoryStream stream = new MemoryStream()) {
-				if (MessageBox.Show("Header?", "Header", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-					if (exporter.SupportsExportInclude) {
-						exporter.ExportInclude(gbmFile, gbrFile, stream, exportSettings.FileName);
-					} else {
-						MessageBox.Show("Include export not supported!");
-						return;
-					}
-				} else {
-					if (exporter.SupportsExportMain) {
-						exporter.ExportMain(gbmFile, gbrFile, stream, exportSettings.FileName);
-					} else {
-						MessageBox.Show("Main export not supported!");
-						return;
-					}
+			if (exporter.SupportsExportMain) {
+				//File name with the extension set to the main file extension.
+				String fileName = Path.ChangeExtension(exportSettings.FileName, exportSettings.FileType.GetExtension());
+
+				using (var stream = File.Create(fileName)) {
+					exporter.ExportMain(gbmFile, gbrFile, stream, fileName);
 				}
+			}
+			if (exporter.SupportsExportInclude) {
+				//File name with the extension set to the include file extension.
+				String fileName = Path.ChangeExtension(exportSettings.FileName, exportSettings.FileType.GetIncludeExtension());
 
-				//Replace is test code, due to binary and copy-paste.
-				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()).Replace('\0', '\xff'));
+				using (var stream = File.Create(fileName)) {
+					exporter.ExportInclude(gbmFile, gbrFile, stream, fileName);
+				}
 			}
 		}
 	}
