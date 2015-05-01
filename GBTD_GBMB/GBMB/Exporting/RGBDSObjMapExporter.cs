@@ -11,6 +11,8 @@ namespace GB.GBMB.Exporting
 	/// <summary>
 	/// Exports to a pre-compiled RBDS object file.  
 	/// 
+	/// TODO: multi-section support.  Doesn't seem impossible, but it would take thinking.
+	/// 
 	/// <para>For reference, this is how that export works (as far as I can tell):</para>
 	/// 
 	/// <para>In general, everything is little endian, strings are ASCII, and strings are null-terminated.</para>
@@ -74,6 +76,19 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		protected struct RGBDSLabel
 		{
+			private const byte DEFAULT_MODE = 2;
+			private const byte DEFAULT_SECTION = 0;
+
+			/// <summary>
+			/// Creates a RGBDSLabel with the given info.  Mode and Section are set at their normal values.
+			/// </summary>
+			public RGBDSLabel(String name, UInt32 location) : this() {
+				Name = name;
+				Mode = DEFAULT_MODE;
+				Section = DEFAULT_SECTION;
+				Location = location;
+			}
+
 			/// <summary>
 			/// The name of the label.
 			/// </summary>
@@ -124,6 +139,65 @@ namespace GB.GBMB.Exporting
 			writer.WriteNonNullTerminatedString("RGB1");
 			writer.WriteUInt32(numberOfBlocks);
 			writer.WriteUInt32(NUMBER_OF_SECTIONS);
+		}
+
+		/// <summary>
+		/// Writes the data map data to the stream, and creates a list of indexes for each of the peices of data.
+		/// </summary>
+		/// <param name="stream">The stream to write to.</param>
+		/// <param name="gbmFile">The GBM File.</param>
+		/// <param name="gbrFile">The GBR File.</param>
+		/// <param name="labels">Out -- contains the indecies and names of each section.</param>
+		protected void WriteData(Stream stream, GBMFile gbmFile, GBRFile gbrFile, out RGBDSLabel[] labels) {
+			List<RGBDSLabel> labelsList = new List<RGBDSLabel>();
+
+			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+
+			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
+
+			if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
+				Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile, gbrFile);
+
+				for (int block = 0; block < data.Length; block++) {
+					String name;
+					if (settings.Split) {
+						name = settings.LabelName.Trim() + "BLK" + block;
+					} else {
+						name = settings.LabelName.Trim();
+					}
+
+					labelsList.Add(new RGBDSLabel(name, (UInt32)stream.Position));
+
+					stream.Write(data[block], 0, data[block].Length);
+				}
+			} else { //Planes are continues.
+				Byte[,][] planedData = MapDataMaker.GetPlaneContinuousData(gbmFile, gbrFile);
+
+				int blockCount = planedData.GetLength(1);
+
+				for (int block = 0; block < blockCount; block++) {
+					for (int plane = 0; plane < planeCount; plane++) {
+						String name;
+
+						if (settings.Split) {
+							name = settings.LabelName.Trim() + "BLK" + block;
+						} else {
+							name = settings.LabelName.Trim();
+						}
+
+						if (plane == 0) {
+							labelsList.Add(new RGBDSLabel(name, (UInt32)stream.Position));
+							labelsList.Add(new RGBDSLabel(name + "PLN" + plane, (UInt32)stream.Position));
+						} else {
+							labelsList.Add(new RGBDSLabel(name + "PLN" + plane, (UInt32)stream.Position));
+						}
+
+						stream.Write(planedData[plane, block], 0, planedData[plane, block].Length);
+					}
+				}
+			}
+
+			labels = labelsList.ToArray();
 		}
 
 		/// <summary>
