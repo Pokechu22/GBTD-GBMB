@@ -129,75 +129,71 @@ namespace GB.GBMB.Exporting
 		}
 
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, string fileName) {
-			const UInt32 NUMBER_OF_SECTIONS = 1;
-
-			UInt32 numberOfBlocks = 0; //TODO
-
+			const UInt32 NUMBER_OF_SECTIONS = 1; //TODO -- this currently can't be changed... but in the future, mabye?
+			
 			RGBDSFormatWriter writer = new RGBDSFormatWriter(stream);
-
-			//Header.  This is fairly simple.  
-			writer.WriteNonNullTerminatedString("RGB1");
-			writer.WriteUInt32(numberOfBlocks);
-			writer.WriteUInt32(NUMBER_OF_SECTIONS);
 		}
 
 		/// <summary>
-		/// Writes the data map data to the stream, and creates a list of indexes for each of the peices of data.
+		/// Creates the map data and a list of indexes for each of the peices of data.
 		/// </summary>
-		/// <param name="stream">The stream to write to.</param>
 		/// <param name="gbmFile">The GBM File.</param>
 		/// <param name="gbrFile">The GBR File.</param>
+		/// <param name="bytes">Out -- contains all of the map bytes.</param>
 		/// <param name="labels">Out -- contains the indecies and names of each section.</param>
-		protected void WriteData(Stream stream, GBMFile gbmFile, GBRFile gbrFile, out RGBDSLabel[] labels) {
-			List<RGBDSLabel> labelsList = new List<RGBDSLabel>();
+		protected void CreateData(GBMFile gbmFile, GBRFile gbrFile, out Byte[] bytes, out RGBDSLabel[] labels) {
+			using (MemoryStream stream = new MemoryStream()) {
+				List<RGBDSLabel> labelsList = new List<RGBDSLabel>();
 
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+				var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
-			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
+				int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 
-			if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
-				Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile, gbrFile);
+				if (settings.PlaneOrder == PlaneOrder.Tiles_Are_Continues) {
+					Byte[][] data = MapDataMaker.GetTileContinuousData(gbmFile, gbrFile);
 
-				for (int block = 0; block < data.Length; block++) {
-					String name;
-					if (settings.Split) {
-						name = settings.LabelName.Trim() + "BLK" + block;
-					} else {
-						name = settings.LabelName.Trim();
-					}
-
-					labelsList.Add(new RGBDSLabel(name, (UInt32)stream.Position));
-
-					stream.Write(data[block], 0, data[block].Length);
-				}
-			} else { //Planes are continues.
-				Byte[,][] planedData = MapDataMaker.GetPlaneContinuousData(gbmFile, gbrFile);
-
-				int blockCount = planedData.GetLength(1);
-
-				for (int block = 0; block < blockCount; block++) {
-					for (int plane = 0; plane < planeCount; plane++) {
+					for (int block = 0; block < data.Length; block++) {
 						String name;
-
 						if (settings.Split) {
 							name = settings.LabelName.Trim() + "BLK" + block;
 						} else {
 							name = settings.LabelName.Trim();
 						}
 
-						if (plane == 0) {
-							labelsList.Add(new RGBDSLabel(name, (UInt32)stream.Position));
-							labelsList.Add(new RGBDSLabel(name + "PLN" + plane, (UInt32)stream.Position));
-						} else {
-							labelsList.Add(new RGBDSLabel(name + "PLN" + plane, (UInt32)stream.Position));
-						}
+						labelsList.Add(new RGBDSLabel(name, (UInt32)stream.Position));
 
-						stream.Write(planedData[plane, block], 0, planedData[plane, block].Length);
+						stream.Write(data[block], 0, data[block].Length);
+					}
+				} else { //Planes are continues.
+					Byte[,][] planedData = MapDataMaker.GetPlaneContinuousData(gbmFile, gbrFile);
+
+					int blockCount = planedData.GetLength(1);
+
+					for (int block = 0; block < blockCount; block++) {
+						for (int plane = 0; plane < planeCount; plane++) {
+							String name;
+
+							if (settings.Split) {
+								name = settings.LabelName.Trim() + "BLK" + block;
+							} else {
+								name = settings.LabelName.Trim();
+							}
+
+							if (plane == 0) {
+								labelsList.Add(new RGBDSLabel(name, (UInt32)stream.Position));
+								labelsList.Add(new RGBDSLabel(name + "PLN" + plane, (UInt32)stream.Position));
+							} else {
+								labelsList.Add(new RGBDSLabel(name + "PLN" + plane, (UInt32)stream.Position));
+							}
+
+							stream.Write(planedData[plane, block], 0, planedData[plane, block].Length);
+						}
 					}
 				}
-			}
 
-			labels = labelsList.ToArray();
+				bytes = stream.ToArray();
+				labels = labelsList.ToArray();
+			}
 		}
 
 		/// <summary>
