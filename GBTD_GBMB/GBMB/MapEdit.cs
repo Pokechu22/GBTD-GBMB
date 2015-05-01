@@ -1109,6 +1109,7 @@ namespace GB.GBMB
 			case Shared.GBMFile.ExportFileType.RGBDS_Assembly_File: exporter = new Exporting.RGBDSAssemblyMapExporter(); break;
 			case Shared.GBMFile.ExportFileType.ISAS_Assembly_File: exporter = new Exporting.ISASAssemblyMapExporter(); break;
 			case Shared.GBMFile.ExportFileType.TASM_Assembly_File: exporter = new Exporting.TASMAssemblyMapExporter(); break;
+			case Shared.GBMFile.ExportFileType.All_Purpose_Binary_File: exporter = new Exporting.BinaryMapExporter(); break;
 			default: 
 				MessageBox.Show("Currently unsuported export format '" + exportSettings.FileType.GetDisplayName() + "'", "Error", 
 						MessageBoxButtons.OK, MessageBoxIcon.Error); return;
@@ -1120,16 +1121,19 @@ namespace GB.GBMB
 						exporter.ExportInclude(gbmFile, gbrFile, stream, exportSettings.FileName);
 					} else {
 						MessageBox.Show("Include export not supported!");
+						return;
 					}
 				} else {
 					if (exporter.SupportsExportMain) {
 						exporter.ExportMain(gbmFile, gbrFile, stream, exportSettings.FileName);
 					} else {
 						MessageBox.Show("Main export not supported!");
+						return;
 					}
 				}
 
-				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
+				//Replace is test code, due to binary and copy-paste.
+				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()).Replace('\0', '\xff'));
 			}
 		}
 	}

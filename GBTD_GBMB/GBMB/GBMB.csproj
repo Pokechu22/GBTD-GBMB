@@ -91,6 +91,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Exporting\ASMExportBase.cs" />
+    <Compile Include="Exporting\BinaryMapExporter.cs" />
     <Compile Include="Exporting\GBDKCMapExporter.cs" />
     <Compile Include="Exporting\IMapExporter.cs" />
     <Compile Include="Exporting\ISASAssemblyMapExporter.cs" />
