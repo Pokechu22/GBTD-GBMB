@@ -59,7 +59,7 @@ namespace GB.GBMB.Exporting
 				stream.WriteByte(b);
 			}
 
-			public void WriteBytes(byte[] bytes) {
+			public void WriteBytes(params byte[] bytes) {
 				stream.Write(bytes, 0, bytes.Length);
 			}
 
@@ -130,8 +130,25 @@ namespace GB.GBMB.Exporting
 
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, string fileName) {
 			const UInt32 NUMBER_OF_SECTIONS = 1; //TODO -- this currently can't be changed... but in the future, mabye?
-			
+
+			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+
 			RGBDSFormatWriter writer = new RGBDSFormatWriter(stream);
+
+			byte[] data;
+			RGBDSLabel[] labels;
+
+			CreateData(gbmFile, gbrFile, out data, out labels);
+
+			WriteHeader(writer, (UInt32)labels.Length, NUMBER_OF_SECTIONS);
+
+			WriteLabels(writer, labels);
+			WriteSection(writer, (UInt16)data.Length, settings.Bank);
+
+			writer.WriteBytes(data);
+
+			//EOF data, supposedly.
+			writer.WriteBytes(0, 0, 0, 0);
 		}
 
 		/// <summary>

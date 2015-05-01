@@ -1110,6 +1110,7 @@ namespace GB.GBMB
 			case Shared.GBMFile.ExportFileType.ISAS_Assembly_File: exporter = new Exporting.ISASAssemblyMapExporter(); break;
 			case Shared.GBMFile.ExportFileType.TASM_Assembly_File: exporter = new Exporting.TASMAssemblyMapExporter(); break;
 			case Shared.GBMFile.ExportFileType.All_Purpose_Binary_File: exporter = new Exporting.BinaryMapExporter(); break;
+			case Shared.GBMFile.ExportFileType.RGBDS_Object_File: exporter = new Exporting.RGBDSObjMapExporter(); break;
 			default: 
 				MessageBox.Show("Currently unsuported export format '" + exportSettings.FileType.GetDisplayName() + "'", "Error", 
 						MessageBoxButtons.OK, MessageBoxIcon.Error); return;
