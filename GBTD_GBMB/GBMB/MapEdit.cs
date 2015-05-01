@@ -14,6 +14,7 @@ using GB.Shared.Palettes;
 using System.Runtime.InteropServices;
 using GB.Shared.Controls;
 using GB.GBMB.Dialogs;
+using GB.GBMB.Exporting;
 
 namespace GB.GBMB
 {
@@ -1100,21 +1101,7 @@ namespace GB.GBMB
 
 			d.ShowDialog();
 
-			//TODO decent and proper exporting, and not a message box.
-			//Also, import stuff.  Once all the export types are done, clean this up.
-			Exporting.IMapExporter exporter;
-
-			switch (exportSettings.FileType) {
-			case Shared.GBMFile.GBMExportFileType.GBDK_C_File: exporter = new Exporting.GBDKCMapExporter(); break;
-			case Shared.GBMFile.GBMExportFileType.RGBDS_Assembly_File: exporter = new Exporting.RGBDSAssemblyMapExporter(); break;
-			case Shared.GBMFile.GBMExportFileType.ISAS_Assembly_File: exporter = new Exporting.ISASAssemblyMapExporter(); break;
-			case Shared.GBMFile.GBMExportFileType.TASM_Assembly_File: exporter = new Exporting.TASMAssemblyMapExporter(); break;
-			case Shared.GBMFile.GBMExportFileType.All_Purpose_Binary_File: exporter = new Exporting.BinaryMapExporter(); break;
-			case Shared.GBMFile.GBMExportFileType.RGBDS_Object_File: exporter = new Exporting.RGBDSObjMapExporter(); break;
-			default: 
-				MessageBox.Show("Currently unsuported export format '" + exportSettings.FileType.GetDisplayName() + "'", "Error", 
-						MessageBoxButtons.OK, MessageBoxIcon.Error); return;
-			}
+			IMapExporter exporter = IMapExporter.GetExporterForType(exportSettings.FileType);
 
 			using (MemoryStream stream = new MemoryStream()) {
 				if (MessageBox.Show("Header?", "Header", MessageBoxButtons.YesNo) == DialogResult.Yes) {
