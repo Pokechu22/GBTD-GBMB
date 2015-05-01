@@ -120,7 +120,7 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		/// <param name="settings"></param>
 		/// <param name="fileName"></param>
-		public void WriteHeader(GBMObjectMapExportSettings settings, String fileName) {
+		protected void WriteHeader(GBMObjectMapExportSettings settings, String fileName) {
 			if (!String.IsNullOrEmpty(HeaderBegin)) {
 				Stream.WriteLine(HeaderBegin);
 			}
@@ -151,21 +151,21 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes the defines that state the width, height, and bank.
 		/// </summary>
-		public abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
+		protected abstract void WriteSizeDefines(GBMObjectMapExportSettings settings);
 
 		/// <summary>
 		/// Writes a section label.  Only relevant for ASM; by default this method does nothing.
 		/// </summary>
 		/// <param name="settings"></param>
 		/// <param name="bankOffset"></param>
-		public virtual void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+		protected virtual void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
 			//Do nothing by default.
 		}
 
 		/// <summary>
 		/// Writes the entire map's data.
 		/// </summary>
-		public void WriteMapData(GBMFile gbmFile, GBRFile gbrFile) {
+		protected void WriteMapData(GBMFile gbmFile, GBRFile gbrFile) {
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
@@ -198,7 +198,7 @@ namespace GB.GBMB.Exporting
 		/// <summary>
 		/// Writes the includes that are used for the map.
 		/// </summary>
-		public void WriteMapDataIncludes(GBMFile gbmFile, GBRFile gbrFile) {
+		protected void WriteMapDataIncludes(GBMFile gbmFile, GBRFile gbrFile) {
 			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
@@ -223,13 +223,13 @@ namespace GB.GBMB.Exporting
 		/// <param name="settings"></param>
 		/// <param name="plane"></param>
 		/// <param name="block"></param>
-		public abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
+		protected abstract void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block);
 
 		/// <summary>
 		/// Writes a section of data -- a plane or a block.
 		/// </summary>
 		/// <param name="bytes"></param>
-		public virtual void WriteData(Byte[] bytes) {
+		protected virtual void WriteData(Byte[] bytes) {
 			//The number of values to write each line.
 			const int DATA_PER_LINE = 10;
 
@@ -249,12 +249,12 @@ namespace GB.GBMB.Exporting
 		/// <param name="bytes">The data to write.</param>
 		/// <param name="position">The position in the array to start at.  Will be incremented.</param>
 		/// <param name="count">The number of bytes to write.</param>
-		public abstract void WriteDataLine(Byte[] bytes, ref int position, int count);
+		protected abstract void WriteDataLine(Byte[] bytes, ref int position, int count);
 
 		/// <summary>
 		/// Writes the footer.
 		/// </summary>
-		public virtual void WriteFooter(String fileName) {
+		protected virtual void WriteFooter(String fileName) {
 			Stream.WriteLine("{0} End of {1} {2}", FooterBegin, Path.GetFileName(fileName).ToUpperInvariant(), FooterEnd);
 		}
 	}

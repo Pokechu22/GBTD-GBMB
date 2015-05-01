@@ -12,7 +12,7 @@ namespace GB.GBMB.Exporting
 			get { return "EQU"; }
 		}
 
-		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+		protected override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
 			if (Header) { return; }
 
 			Stream.WriteLine();
@@ -24,7 +24,7 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
-		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
+		protected override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
 			string s;
 
 			if (!settings.Split) {
@@ -65,7 +65,7 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
-		public override void WriteDataLine(byte[] bytes, ref int position, int count) {
+		protected override void WriteDataLine(byte[] bytes, ref int position, int count) {
 			int endPos = position + count;
 
 			Stream.Write(" DB ");

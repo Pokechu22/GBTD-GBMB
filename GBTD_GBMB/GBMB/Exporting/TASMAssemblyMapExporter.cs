@@ -16,11 +16,11 @@ namespace GB.GBMB.Exporting
 			get { return false; }
 		}
 
-		public override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
+		protected override void WriteSection(GBMObjectMapExportSettings settings, int bankOffset) {
 			//Do nothing.
 		}
 
-		public override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
+		protected override void WritePlaneLabel(GBMObjectMapExportSettings settings, int plane, int block) {
 			string s;
 
 			if (!settings.Split) {
@@ -42,7 +42,7 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
-		public override void WriteDataLine(byte[] bytes, ref int position, int count) {
+		protected override void WriteDataLine(byte[] bytes, ref int position, int count) {
 			int endPos = position + count;
 
 			Stream.Write(".byte ");
@@ -61,7 +61,7 @@ namespace GB.GBMB.Exporting
 			}
 		}
 
-		public override void WriteFooter(string fileName) {
+		protected override void WriteFooter(string fileName) {
 			//TASM needs '.end' before the footer.
 			Stream.WriteLine();
 			Stream.WriteLine(".end");

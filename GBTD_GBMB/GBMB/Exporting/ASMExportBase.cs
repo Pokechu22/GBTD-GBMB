@@ -51,7 +51,7 @@ namespace GB.GBMB.Exporting
 			get { return true; }
 		}
 
-		public override void WriteSizeDefines(GBMObjectMapExportSettings settings) {
+		protected override void WriteSizeDefines(GBMObjectMapExportSettings settings) {
 			Stream.WriteLine("{0}Width  {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Master.Width);
 			Stream.WriteLine("{0}Height {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Master.Height);
 			Stream.WriteLine("{0}Bank   {1} {2}", settings.LabelName.Trim(), DefineEQU, settings.Bank);
@@ -59,6 +59,6 @@ namespace GB.GBMB.Exporting
 
 		//Force overriding in the next class!
 		//http://stackoverflow.com/a/8905465/3991344
-		public override abstract void WriteSection(GBMObjectMapExportSettings settings, int bankOffset);
+		protected override abstract void WriteSection(GBMObjectMapExportSettings settings, int bankOffset);
 	}
 }
