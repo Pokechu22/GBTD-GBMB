@@ -72,7 +72,7 @@ namespace GB.GBTD.Dialogs
 			settings.SelectedTab = (byte)this.tabControl.SelectedIndex;
 
 			settings.FileName = this.fileNameTextBox.Text;
-			settings.FileType = (ExportFileType)this.fileTypeComboBox.SelectedIndex;
+			settings.FileType = (GBRExportFileType)this.fileTypeComboBox.SelectedIndex;
 			settings.LabelName = this.labelTextBox.Text;
 			settings.SectionName= this.sectionTextBox.Text;
 			settings.Bank = (byte)this.bankTextBox.Value;

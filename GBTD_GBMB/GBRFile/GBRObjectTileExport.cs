@@ -26,7 +26,7 @@ namespace GB.Shared.GBRFile
 		/// The type of the file.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public ExportFileType FileType { get; set; }
+		public GBRExportFileType FileType { get; set; }
 		/// <summary>
 		/// The name of the section (when using ASM).
 		/// </summary>
@@ -146,7 +146,7 @@ namespace GB.Shared.GBRFile
 		protected override void LoadFromStream(Stream s) {
 			this.ReferedObjectID = s.ReadWord();
 			this.FileName = s.ReadString(128);
-			this.FileType = (ExportFileType)s.ReadByte();
+			this.FileType = (GBRExportFileType)s.ReadByte();
 			this.SectionName = s.ReadString(20);
 			this.LabelName = s.ReadString(20);
 			this.Bank = s.ReadByteEx();
@@ -205,7 +205,7 @@ namespace GB.Shared.GBRFile
 		}
 	}
 
-	public enum ExportFileType : byte
+	public enum GBRExportFileType : byte
 	{
 		RGBDSAssemblyFile = 0,
 		RGBDSObjectFile = 1,

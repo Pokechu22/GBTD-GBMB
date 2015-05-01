@@ -88,7 +88,7 @@ namespace GB.GBMB.Dialogs
 			if (DialogResult == DialogResult.OK) {
 				this.ExportProperties.Data = propEditControl.ExportProperties;
 				ExportSettings.FileName = fileNameTextBox.Text;
-				ExportSettings.FileType = (ExportFileType)typeDropDown.SelectedIndex;
+				ExportSettings.FileType = (GBMExportFileType)typeDropDown.SelectedIndex;
 
 				ExportSettings.LabelName = labelTextBox.Text;
 				ExportSettings.SectionName = sectionTextBox.Text;
@@ -144,7 +144,7 @@ namespace GB.GBMB.Dialogs
 		}
 
 		private void typeDropDown_SelectedIndexChanged(object sender, EventArgs e) {
-			ExportFileType fileType = (ExportFileType)typeDropDown.SelectedIndex;
+			GBMExportFileType fileType = (GBMExportFileType)typeDropDown.SelectedIndex;
 
 			labelSection.Enabled = fileType.SupportsBankAndSection();
 			sectionTextBox.Enabled = fileType.SupportsBankAndSection();
