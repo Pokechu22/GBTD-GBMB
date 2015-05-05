@@ -111,16 +111,47 @@ namespace GB.GBMB.Exporting
 				}
 			}
 
-			int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
+			Byte[][] data;
 
-			Byte[][] data = new Byte[numberOfSplitBlocks][];
-			for (uint i = 0; i < numberOfSplitBlocks; i++) {
-				uint length = (uint)(settings.SplitSize * planeCount);
-				if (length > dataTemp.Length - (settings.SplitSize * planeCount * i)) {
-					length = (uint)(dataTemp.Length - (settings.SplitSize * planeCount * i));
+			if (settings.PlaneCount != PlaneCount.Half_Plane) {
+				int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
+
+				data = new Byte[numberOfSplitBlocks][];
+
+				for (uint i = 0; i < numberOfSplitBlocks; i++) {
+					uint length = (uint)(settings.SplitSize * planeCount);
+					if (length > dataTemp.Length - (settings.SplitSize * planeCount * i)) {
+						length = (uint)(dataTemp.Length - (settings.SplitSize * planeCount * i));
+					}
+					data[i] = new Byte[length];
+					Array.Copy(dataTemp, settings.SplitSize * planeCount * i, data[i], 0, length);
 				}
-				data[i] = new Byte[length];
-				Array.Copy(dataTemp, settings.SplitSize * planeCount * i, data[i], 0, length);
+			} else { //Half-plane exporting.
+				uint splitSize = (uint)Math.Ceiling(settings.SplitSize / 2.0);
+
+				int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / (settings.SplitSize * 2));
+
+				data = new Byte[numberOfSplitBlocks][];
+
+				for (uint block = 0; block < numberOfSplitBlocks; block++) {
+
+					uint length = splitSize;
+					if (length > dataTemp.Length - (splitSize * block)) {
+						length = (uint)(dataTemp.Length - (splitSize * block));
+					}
+					data[block] = new Byte[length];
+
+					for (int i = 0; i < splitSize; i++) {
+						data[block][i] = 0;
+
+						if ((splitSize * block * 2) + (i * 2) < dataTemp.Length) {
+							data[block][i] |= (byte)((dataTemp[(splitSize * block * 2) + (i * 2)] & 0x0f) << 4);
+						}
+						if ((splitSize * block * 2) + (i * 2) + 1 < dataTemp.Length) {	
+							data[block][i] |= (byte)(dataTemp[(splitSize * block * 2) + (i * 2) + 1] & 0x0f);
+						}
+					}
+				}
 			}
 
 			return data;
@@ -158,17 +189,50 @@ namespace GB.GBMB.Exporting
 				}
 			}
 
-			int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
+			Byte[,][] planedData;
 
-			Byte[,][] planedData = new Byte[planeCount, numberOfSplitBlocks][];
-			for (int plane = 0; plane < planeCount; plane++) {
+			if (settings.PlaneCount != PlaneCount.Half_Plane) {
+				int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);
+
+				planedData = new Byte[planeCount, numberOfSplitBlocks][];
+
+				for (int plane = 0; plane < planeCount; plane++) {
+					for (uint block = 0; block < numberOfSplitBlocks; block++) {
+						uint length = settings.SplitSize;
+						if (length > planedDataTemp[plane].Length - (settings.SplitSize * block)) {
+							length = (uint)(planedDataTemp[plane].Length - (settings.SplitSize * block));
+						}
+						planedData[plane, block] = new Byte[length];
+						Array.Copy(planedDataTemp[plane], settings.SplitSize * block, planedData[plane, block], 0, length);
+					}
+				}
+			} else { //Half-planes
+				uint splitSize = (uint)Math.Ceiling(settings.SplitSize / 2.0);
+
+				int numberOfSplitBlocks = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / (settings.SplitSize * 2));
+
+				planedData = new Byte[1, numberOfSplitBlocks][];
+
+				const uint plane = 0; //Current plane; will never change on .5 planes.
+
 				for (uint block = 0; block < numberOfSplitBlocks; block++) {
-					uint length = settings.SplitSize;
-					if (length > planedDataTemp[plane].Length - (settings.SplitSize * block)) {
-						length = (uint)(planedDataTemp[plane].Length - (settings.SplitSize * block));
+
+					uint length = splitSize;
+					if (length > planedDataTemp[plane].Length - (splitSize * block)) {
+						length = (uint)(planedDataTemp[plane].Length - (splitSize * block));
 					}
 					planedData[plane, block] = new Byte[length];
-					Array.Copy(planedDataTemp[plane], settings.SplitSize * block, planedData[plane, block], 0, length);
+
+					for (int i = 0; i < splitSize; i++) {
+						planedData[plane, block][i] = 0;
+
+						if ((splitSize * block * 2) + (i * 2) < planedDataTemp[plane].Length) {
+							planedData[plane, block][i] |= (byte)((planedDataTemp[plane][(splitSize * block * 2) + (i * 2)] & 0x0f) << 4);
+						}
+						if ((splitSize * block * 2) + (i * 2) + 1 < planedDataTemp[plane].Length) {
+							planedData[plane, block][i] |= (byte)(planedDataTemp[plane][(splitSize * block * 2) + (i * 2) + 1] & 0x0f);
+						}
+					}
 				}
 			}
 
