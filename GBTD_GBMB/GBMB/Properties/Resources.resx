@@ -166,6 +166,9 @@
   <data name="Flood_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flood_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GBMB_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GBMB.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Help_nonselected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Help_nonselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

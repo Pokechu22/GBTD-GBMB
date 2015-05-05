@@ -1127,6 +1127,7 @@
 			this.Controls.Add(this.mapControl);
 			this.Controls.Add(this.mapEditBorder);
 			this.Controls.Add(this.mainTileEditBorder);
+			this.Icon = global::GB.GBMB.Properties.Resources.GBMB_Icon;
 			this.MinimumSize = new System.Drawing.Size(390, 288);
 			this.Name = "MapEdit";
 			this.Text = "Gameboy Map Builder";
