@@ -233,6 +233,16 @@ namespace GB.GBMB.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GBMB_image {
+            get {
+                object obj = ResourceManager.GetObject("GBMB_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Help_nonselected {
             get {
                 object obj = ResourceManager.GetObject("Help_nonselected", resourceCulture);

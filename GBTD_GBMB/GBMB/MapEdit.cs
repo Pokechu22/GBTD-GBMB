@@ -1145,5 +1145,10 @@ namespace GB.GBMB
 				}
 			}
 		}
+
+		private void aboutMenuItem_Click(object sender, EventArgs e) {
+			GBMBAboutBox dialog = new GBMBAboutBox();
+			dialog.ShowDialog();
+		}
 	}
 }

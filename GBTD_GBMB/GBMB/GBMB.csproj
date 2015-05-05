@@ -72,6 +72,12 @@
     <Compile Include="Dialogs\ExportOptionsDialog.Designer.cs">
       <DependentUpon>ExportOptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\GBMBAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\GBMBAboutBox.Designer.cs">
+      <DependentUpon>GBMBAboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\LocationPropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ExportOptionsDialog.resx">
       <DependentUpon>ExportOptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\GBMBAboutBox.resx">
+      <DependentUpon>GBMBAboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\LocationPropertiesDialog.resx">
       <DependentUpon>LocationPropertiesDialog.cs</DependentUpon>
@@ -284,6 +293,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GBMB.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GBMB_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
