@@ -52,5 +52,14 @@ namespace GB.GBMB.Dialogs
 			dt = dt.ToLocalTime();
 			return dt;
 		}
+
+		private void labelWithLink_Click(object sender, EventArgs args) {
+			Control control = sender as Control;
+			if (control != null) {
+				if (control.Tag is String) {
+					System.Diagnostics.Process.Start((String)control.Tag); //If the tag is a URL this opens the right web browser.
+				}
+			}
+		}
 	}
 }
