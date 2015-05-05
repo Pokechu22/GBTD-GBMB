@@ -1089,7 +1089,28 @@ namespace GB.GBMB
 		}
 
 		private void onExportButtonClicked(object sender, EventArgs e) {
-			MessageBox.Show("Exporting is not yet implemented!");
+			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var exportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+			var exportProperties = gbmFile.GetObjectOfType<GBMObjectMapExportProperties>();
+
+			IMapExporter exporter = exportSettings.FileType.CreateExporter();
+
+			if (exporter.SupportsExportMain) {
+				//File name with the extension set to the main file extension.
+				String fileName = Path.ChangeExtension(exportSettings.FileName, exportSettings.FileType.GetExtension());
+
+				using (var stream = File.Create(fileName)) {
+					exporter.ExportMain(gbmFile, gbrFile, stream, fileName);
+				}
+			}
+			if (exporter.SupportsExportInclude) {
+				//File name with the extension set to the include file extension.
+				String fileName = Path.ChangeExtension(exportSettings.FileName, exportSettings.FileType.GetIncludeExtension());
+
+				using (var stream = File.Create(fileName)) {
+					exporter.ExportInclude(gbmFile, gbrFile, stream, fileName);
+				}
+			}
 		}
 
 		private void exportToMenuItem_Click(object sender, EventArgs e) {
