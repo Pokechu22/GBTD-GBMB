@@ -21,8 +21,6 @@ namespace GB.Shared.GBMFile
 		/// Any aditional data that was not read, which is added to the end.
 		/// </summary>
 		private byte[] extraData;
-
-		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 		
 		/// <summary>
 		/// The Header of this object.
@@ -94,34 +92,6 @@ namespace GB.Shared.GBMFile
 		protected abstract void SaveToStream(Stream s);
 
 		/// <summary>
-		/// Reads an object and its Header and returns said object.
-		/// </summary>
-		/// <param name="master">The master object or null if there is no master.</param>
-		/// <param name="header">The header of the object.</param>
-		/// <param name="s">The stream to read from.</param>
-		/// <returns></returns>
-		public static GBMObject ReadObject(GBMObject master, GBMObjectHeader header, Stream s) {
-
-			GBMObject obj;
-			if (mapping.ContainsKey(header.ObjectType)) {
-				Type masterType = (master != null ? master.GetType() : typeof(GBMObject));
-
-				//Use reflection to create an instance of the specified object.
-				var ctor = mapping[header.ObjectType].GetConstructor(new Type[] { masterType, typeof(GBMObjectHeader), typeof(Stream) });
-				if (ctor == null) {
-					throw new Exception(String.Format("Failed to find a constructor for {0} taking arguments {1}, {2}, and {3}.", 
-						mapping[header.ObjectType], masterType, typeof(GBMObjectHeader), typeof(Stream)));
-				}
-
-				obj = (GBMObject)ctor.Invoke(new Object[] { master, header, s });
-			} else {
-				obj = new GBMObjectUnknownData(master, header, s);
-			}
-
-			return obj;
-		}
-
-		/// <summary>
 		/// Gets the name of the object type, which should be constant for all instances.
 		/// </summary>
 		/// <returns></returns>
@@ -163,31 +133,6 @@ namespace GB.Shared.GBMFile
 			}
 
 			return root;
-		}
-
-		public static void RegisterExportable(UInt16 ID, Type type) {
-			if (mapping.ContainsKey(ID)) {
-				throw new InvalidOperationException("Already registered mapping for ID " + ID);
-			}
-			if (type == null) {
-				throw new ArgumentNullException("type");
-			}
-			
-			mapping.Add(ID, type);
-		}
-
-		static GBMObject() {
-			RegisterExportable(0xFFFF, typeof(GBMObjectDeleted));
-			RegisterExportable(0x01, typeof(GBMObjectProducerInfo));
-			RegisterExportable(0x02, typeof(GBMObjectMap));
-			RegisterExportable(0x03, typeof(GBMObjectMapTileData));
-			RegisterExportable(0x04, typeof(GBMObjectMapProperties));
-			RegisterExportable(0x05, typeof(GBMObjectMapPropertyData));
-			RegisterExportable(0x06, typeof(GBMObjectDefaultTilePropertyValues));
-			RegisterExportable(0x07, typeof(GBMObjectMapSettings));
-			RegisterExportable(0x08, typeof(GBMObjectMapPropertyColors));
-			RegisterExportable(0x09, typeof(GBMObjectMapExportSettings));
-			RegisterExportable(0x0A, typeof(GBMObjectMapExportProperties));
 		}
 	}
 

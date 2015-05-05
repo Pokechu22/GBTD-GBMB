@@ -20,7 +20,7 @@ namespace GB.GBMB
 {
 	public partial class MapEdit : Form
 	{
-		private GBMFile gbmFile;
+		private GBMFile gbmFile = new GBMFile();
 		private GBRFile gbrFile;
 		private AUMemMappedFile mmf;
 		private string mapFileName;
