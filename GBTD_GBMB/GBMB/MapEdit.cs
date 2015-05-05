@@ -1099,7 +1099,11 @@ namespace GB.GBMB
 
 			ExportOptionsDialog d = new ExportOptionsDialog(properties, exportSettings, exportProperties);
 
-			d.ShowDialog();
+			var result = d.ShowDialog();
+
+			if (result != DialogResult.OK) {
+				return;
+			}
 
 			IMapExporter exporter = exportSettings.FileType.CreateExporter();
 
