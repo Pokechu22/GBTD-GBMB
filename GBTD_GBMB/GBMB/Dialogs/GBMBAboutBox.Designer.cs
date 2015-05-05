@@ -31,6 +31,11 @@
 			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
 			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat10 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat11 = new System.Drawing.StringFormat();
 			this.border = new GB.Shared.Controls.Border();
 			this.okButton = new System.Windows.Forms.Button();
 			this.titleLabel1 = new GB.Shared.Controls.CleanLabel();
@@ -39,7 +44,12 @@
 			this.versionLabel = new GB.Shared.Controls.CleanLabel();
 			this.releasesLabel1 = new GB.Shared.Controls.CleanLabel();
 			this.releasesLabel2 = new GB.Shared.Controls.CleanLabel();
+			this.origionalCopyrightLabel = new GB.Shared.Controls.CleanLabel();
 			this.newCopyrightLabel = new GB.Shared.Controls.CleanLabel();
+			this.releasesLabel3 = new GB.Shared.Controls.CleanLabel();
+			this.releasesLabel4 = new GB.Shared.Controls.CleanLabel();
+			this.buildLabel = new GB.Shared.Controls.CleanLabel();
+			this.buildDateLabel = new GB.Shared.Controls.CleanLabel();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxGBMB)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -52,17 +62,17 @@
         System.Windows.Forms.Border3DSide.Left,
         System.Windows.Forms.Border3DSide.Bottom};
 			this.border.LeftBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.border.Location = new System.Drawing.Point(1, 80);
+			this.border.Location = new System.Drawing.Point(1, 112);
 			this.border.Name = "border";
 			this.border.RightBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
-			this.border.Size = new System.Drawing.Size(256, 57);
+			this.border.Size = new System.Drawing.Size(256, 97);
 			this.border.TabIndex = 0;
 			this.border.TopBorder = System.Windows.Forms.Border3DStyle.RaisedInner;
 			// 
 			// okButton
 			// 
 			this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.okButton.Location = new System.Drawing.Point(91, 172);
+			this.okButton.Location = new System.Drawing.Point(91, 260);
 			this.okButton.Name = "okButton";
 			this.okButton.Size = new System.Drawing.Size(75, 25);
 			this.okButton.TabIndex = 1;
@@ -122,7 +132,7 @@
 			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
 			this.versionLabel.Format = stringFormat3;
-			this.versionLabel.Location = new System.Drawing.Point(98, 55);
+			this.versionLabel.Location = new System.Drawing.Point(27, 55);
 			this.versionLabel.Name = "versionLabel";
 			this.versionLabel.Size = new System.Drawing.Size(43, 14);
 			this.versionLabel.TabIndex = 5;
@@ -138,7 +148,7 @@
 			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
 			this.releasesLabel1.Format = stringFormat4;
-			this.releasesLabel1.Location = new System.Drawing.Point(51, 92);
+			this.releasesLabel1.Location = new System.Drawing.Point(51, 124);
 			this.releasesLabel1.Name = "releasesLabel1";
 			this.releasesLabel1.Size = new System.Drawing.Size(165, 14);
 			this.releasesLabel1.TabIndex = 6;
@@ -154,36 +164,121 @@
 			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
 			this.releasesLabel2.Format = stringFormat5;
-			this.releasesLabel2.Location = new System.Drawing.Point(43, 108);
+			this.releasesLabel2.Location = new System.Drawing.Point(13, 140);
 			this.releasesLabel2.Name = "releasesLabel2";
-			this.releasesLabel2.Size = new System.Drawing.Size(176, 14);
+			this.releasesLabel2.Size = new System.Drawing.Size(225, 14);
 			this.releasesLabel2.TabIndex = 7;
 			this.releasesLabel2.TabStop = false;
-			this.releasesLabel2.Text = "http://www.casema.net/~hpmulder";
+			this.releasesLabel2.Text = "https://github.com/Pokechu22/GBTD-GBMB";
+			// 
+			// origionalCopyrightLabel
+			// 
+			this.origionalCopyrightLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.origionalCopyrightLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
+			this.origionalCopyrightLabel.Format = stringFormat6;
+			this.origionalCopyrightLabel.Location = new System.Drawing.Point(27, 237);
+			this.origionalCopyrightLabel.Name = "origionalCopyrightLabel";
+			this.origionalCopyrightLabel.Size = new System.Drawing.Size(208, 14);
+			this.origionalCopyrightLabel.TabIndex = 8;
+			this.origionalCopyrightLabel.TabStop = false;
+			this.origionalCopyrightLabel.Text = "Origional App Copyright H. Mulder, 1999";
 			// 
 			// newCopyrightLabel
 			// 
 			this.newCopyrightLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.newCopyrightLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
-			this.newCopyrightLabel.Format = stringFormat6;
-			this.newCopyrightLabel.Location = new System.Drawing.Point(63, 148);
+			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
+			this.newCopyrightLabel.Format = stringFormat7;
+			this.newCopyrightLabel.Location = new System.Drawing.Point(27, 221);
 			this.newCopyrightLabel.Name = "newCopyrightLabel";
-			this.newCopyrightLabel.Size = new System.Drawing.Size(136, 14);
+			this.newCopyrightLabel.Size = new System.Drawing.Size(144, 14);
 			this.newCopyrightLabel.TabIndex = 9;
 			this.newCopyrightLabel.TabStop = false;
-			this.newCopyrightLabel.Text = "Copyright H. Mulder, 1999";
+			this.newCopyrightLabel.Text = "Copyright Pokechu22, 2015";
+			// 
+			// releasesLabel3
+			// 
+			this.releasesLabel3.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.releasesLabel3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
+			this.releasesLabel3.Format = stringFormat8;
+			this.releasesLabel3.Location = new System.Drawing.Point(42, 166);
+			this.releasesLabel3.Name = "releasesLabel3";
+			this.releasesLabel3.Size = new System.Drawing.Size(172, 14);
+			this.releasesLabel3.TabIndex = 10;
+			this.releasesLabel3.TabStop = false;
+			this.releasesLabel3.Text = "For the old version and info, goto:";
+			// 
+			// releasesLabel4
+			// 
+			this.releasesLabel4.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.releasesLabel4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
+			this.releasesLabel4.Format = stringFormat9;
+			this.releasesLabel4.Location = new System.Drawing.Point(23, 182);
+			this.releasesLabel4.Name = "releasesLabel4";
+			this.releasesLabel4.Size = new System.Drawing.Size(210, 14);
+			this.releasesLabel4.TabIndex = 11;
+			this.releasesLabel4.TabStop = false;
+			this.releasesLabel4.Text = "http://www.devrs.com/gb/hmgd/intro.html";
+			// 
+			// buildLabel
+			// 
+			this.buildLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.buildLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat10.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat10.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat10.Trimming = System.Drawing.StringTrimming.Character;
+			this.buildLabel.Format = stringFormat10;
+			this.buildLabel.Location = new System.Drawing.Point(27, 71);
+			this.buildLabel.Name = "buildLabel";
+			this.buildLabel.Size = new System.Drawing.Size(29, 14);
+			this.buildLabel.TabIndex = 12;
+			this.buildLabel.TabStop = false;
+			this.buildLabel.Text = "Build";
+			// 
+			// buildDateLabel
+			// 
+			this.buildDateLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.buildDateLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.Character;
+			this.buildDateLabel.Format = stringFormat11;
+			this.buildDateLabel.Location = new System.Drawing.Point(27, 87);
+			this.buildDateLabel.Name = "buildDateLabel";
+			this.buildDateLabel.Size = new System.Drawing.Size(55, 14);
+			this.buildDateLabel.TabIndex = 13;
+			this.buildDateLabel.TabStop = false;
+			this.buildDateLabel.Text = "Build date";
 			// 
 			// GBMBAboutBox
 			// 
 			this.AcceptButton = this.okButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(257, 207);
+			this.ClientSize = new System.Drawing.Size(257, 295);
+			this.Controls.Add(this.buildDateLabel);
+			this.Controls.Add(this.buildLabel);
+			this.Controls.Add(this.releasesLabel4);
+			this.Controls.Add(this.releasesLabel3);
 			this.Controls.Add(this.newCopyrightLabel);
+			this.Controls.Add(this.origionalCopyrightLabel);
 			this.Controls.Add(this.releasesLabel2);
 			this.Controls.Add(this.releasesLabel1);
 			this.Controls.Add(this.versionLabel);
@@ -212,6 +307,11 @@
 		private Shared.Controls.CleanLabel versionLabel;
 		private Shared.Controls.CleanLabel releasesLabel1;
 		private Shared.Controls.CleanLabel releasesLabel2;
+		private Shared.Controls.CleanLabel origionalCopyrightLabel;
 		private Shared.Controls.CleanLabel newCopyrightLabel;
+		private Shared.Controls.CleanLabel releasesLabel3;
+		private Shared.Controls.CleanLabel releasesLabel4;
+		private Shared.Controls.CleanLabel buildLabel;
+		private Shared.Controls.CleanLabel buildDateLabel;
 	}
 }
