@@ -15,6 +15,10 @@ namespace GB.Shared.GBMFile
 		public GBMObjectMapProperties(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
 			this.properties = new GBMObjectMapPropertiesRecord[Master.PropCount];
 
+			for (int i = 0; i < properties.Length; i++) {
+				properties[i] = new GBMObjectMapPropertiesRecord();
+			}
+
 			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
 		}
 

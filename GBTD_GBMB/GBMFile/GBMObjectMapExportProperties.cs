@@ -13,6 +13,10 @@ namespace GB.Shared.GBMFile
 
 			this.data = new GBMObjectMapExportPropertiesRecord[Master.ExportPropCount];
 
+			for (int i = 0; i < data.Length; i++) {
+				data[i] = new GBMObjectMapExportPropertiesRecord();
+			}
+
 			Master.ExportPropCountChanged += new EventHandler(Master_ExportPropCountChanged);
 		}
 

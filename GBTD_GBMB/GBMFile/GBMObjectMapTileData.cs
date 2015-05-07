@@ -12,6 +12,12 @@ namespace GB.Shared.GBMFile
 		public GBMObjectMapTileData(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
 			Tiles = new GBMObjectMapTileDataRecord[Master.Width, Master.Height];
 
+			for (int x = 0; x < Master.Width; x++) {
+				for (int y = 0; y < Master.Height; y++) {
+					Tiles[x, y] = new GBMObjectMapTileDataRecord();
+				}
+			}
+
 			Master.SizeChanged += new EventHandler(Master_SizeChanged);
 		}
 

@@ -12,6 +12,10 @@ namespace GB.Shared.GBMFile
 		public GBMObjectMapPropertyColors(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
 			data = new GBMObjectMapPropertyColorsRecord[Master.PropColorCount];
 
+			for (int i = 0; i < data.Length; i++) {
+				data[i] = new GBMObjectMapPropertyColorsRecord();
+			}
+
 			Master.PropColorCountChanged += new EventHandler(Master_PropColorCountChanged);
 		}
 
