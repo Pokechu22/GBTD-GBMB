@@ -15,10 +15,17 @@ namespace GB.Shared.GBMFile
 	{
 		public GBMObjectMap(UInt16 UniqueID) : this(UniqueID, 10, 10) { }
 
-		public GBMObjectMap(UInt16 UniqueID, UInt32 Width, UInt32 Height) : this(UniqueID, Width, Height, 0, "", 512, 2) { }
+		public GBMObjectMap(UInt16 UniqueID, String Name) : this(UniqueID, Name, 10, 10) { }
 
-		public GBMObjectMap(UInt16 UniqueID, UInt32 Width, UInt32 Height, UInt32 PropCount, String TileFileName, UInt32 TileCount, 
+		public GBMObjectMap(UInt16 UniqueID, UInt32 Width, UInt32 Height) : this(UniqueID, "", Width, Height) { }
+
+		public GBMObjectMap(UInt16 UniqueID, String Name, UInt32 Width, UInt32 Height) : this(UniqueID, Name, Width, Height, 0, "", 512, 2) { }
+
+		public GBMObjectMap(UInt16 UniqueID, String Name, UInt32 Width, UInt32 Height, UInt32 PropCount, String TileFileName, UInt32 TileCount, 
 				UInt32 PropColorCount) : base(UniqueID) {
+			
+			this.Name = Name;
+
 			this.width = Width;
 			this.height = Height;
 
