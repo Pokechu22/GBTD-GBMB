@@ -9,6 +9,13 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMObjectMapPropertyData : MasteredGBMObject<GBMObjectMap>
 	{
+		public GBMObjectMapPropertyData(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
+			this.Data = new UInt16[Master.Width, Master.Height, Master.PropCount];
+
+			Master.SizeChanged += new EventHandler(Master_SizeChanged);
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
+
 		public GBMObjectMapPropertyData(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
 			Master.SizeChanged += new EventHandler(Master_SizeChanged);
 			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);

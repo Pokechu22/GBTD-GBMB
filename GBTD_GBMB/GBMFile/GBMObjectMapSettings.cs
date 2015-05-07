@@ -9,6 +9,25 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMObjectMapSettings : MasteredGBMObject<GBMObjectMap>
 	{
+		public GBMObjectMapSettings(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
+			this.FormWidth = 390;
+			this.FormHeight = 288;
+			this.FormMaximized = false;
+			this.ShowInfoPanel = false;
+			this.ShowGrid = false;
+			this.ShowDoubleMarkers = false;
+			this.ShowPropColors = false;
+			this.Zoom = 0;
+			this.ColorSet = 0;
+			this.Bookmark1 = 0xFFFF;
+			this.Bookmark2 = 0xFFFF;
+			this.Bookmark3 = 0xFFFF;
+			this.BlockFillPattern = BlockFillMode.SELECTED_TILE;
+			this.BlockFillWidth = 1;
+			this.BlockFillHeight = 1;
+			this.AutoUpdate = false;
+		}
+
 		public GBMObjectMapSettings(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		/// <summary>

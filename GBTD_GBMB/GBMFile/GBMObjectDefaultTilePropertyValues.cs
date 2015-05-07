@@ -12,6 +12,13 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectDefaultTilePropertyValues : MasteredGBMObject<GBMObjectMap>
 	{
+		public GBMObjectDefaultTilePropertyValues(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
+			Data = new UInt16[Master.TileCount, Master.PropCount];
+
+			Master.TileCountChanged += new EventHandler(Master_TileCountChanged);
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
+
 		public GBMObjectDefaultTilePropertyValues(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
 			Master.TileCountChanged += new EventHandler(Master_TileCountChanged);
 			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);

@@ -9,6 +9,13 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMObjectMapExportProperties : MasteredGBMObject<GBMObjectMapExportSettings>
 	{
+		public GBMObjectMapExportProperties(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
+
+			this.data = new GBMObjectMapExportPropertiesRecord[Master.ExportPropCount];
+
+			Master.ExportPropCountChanged += new EventHandler(Master_ExportPropCountChanged);
+		}
+
 		public GBMObjectMapExportProperties(GBMObjectMapExportSettings Master, GBMObjectHeader header, Stream stream)
 				: base(Master, header, stream) {
 

@@ -10,6 +10,23 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMObjectMapExportSettings : MasteredGBMObject<GBMObjectMap>
 	{
+		public GBMObjectMapExportSettings(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
+			this.FileName = "";
+			this.FileType = GBMExportFileType.RGBDS_Object_File;
+			this.SectionName = "";
+			this.LabelName = "";
+			this.Bank = 0;
+			this.PlaneCount = PlaneCount.Half_Plane;
+			this.PlaneOrder = PlaneOrder.Tiles_Are_Continues;
+			this.MapLayout = MapLayout.Rows;
+			this.Split = false;
+			this.SplitSize = 0;
+			this.ChangeBankEachSplit = true;
+			this.SelTab = 0;
+			this.exportPropCount = 0;
+			this.TileOffset = 0;
+		}
+
 		public GBMObjectMapExportSettings(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		/// <summary>

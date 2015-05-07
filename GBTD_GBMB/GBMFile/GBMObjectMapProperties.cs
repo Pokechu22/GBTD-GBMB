@@ -12,6 +12,12 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectMapProperties : MasteredGBMObject<GBMObjectMap>
 	{
+		public GBMObjectMapProperties(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
+			this.properties = new GBMObjectMapPropertiesRecord[Master.PropCount];
+
+			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
+		}
+
 		public GBMObjectMapProperties(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
 			Master.PropCountChanged += new EventHandler(Master_PropCountChanged);
 		}
