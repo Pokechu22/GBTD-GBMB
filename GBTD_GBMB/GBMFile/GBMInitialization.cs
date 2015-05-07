@@ -89,17 +89,17 @@ namespace GB.Shared.GBMFile
 		}
 
 		static GBMInitialization() {
-			RegisterExportable<GBMObjectDeleted>(0xFFFF, (f, i) => new GBMObjectDeleted(), (o, h, s) => new GBMObjectDeleted(o, h, s));
-			RegisterExportable<GBMObjectProducerInfo>(0x0001, (f, i) => new GBMObjectProducerInfo(), (o, h, s) => new GBMObjectProducerInfo(o, h, s));
-			RegisterExportable<GBMObjectMap>(0x0002, (f, i) => new GBMObjectMap(), (o, h, s) => new GBMObjectMap(o, h, s));
-			RegisterExportable<GBMObjectMapTileData>(0x0003, (f, i) => new GBMObjectMapTileData(), (o, h, s) => new GBMObjectMapTileData(o, h, s));
-			RegisterExportable<GBMObjectMapProperties>(0x0004, (f, i) => new GBMObjectMapProperties(), (o, h, s) => new GBMObjectMapProperties(o, h, s));
-			RegisterExportable<GBMObjectMapPropertyData>(0x0005, (f, i) => new GBMObjectMapPropertyData(), (o, h, s) => new GBMObjectMapPropertyData(o, h, s));
-			RegisterExportable<GBMObjectDefaultTilePropertyValues>(0x0006, (f, i) => new GBMObjectDefaultTilePropertyValues(), (o, h, s) => new GBMObjectDefaultTilePropertyValues(o, h, s));
-			RegisterExportable<GBMObjectMapSettings>(0x0007, (f, i) => new GBMObjectMapSettings(), (o, h, s) => new GBMObjectMapSettings(o, h, s));
-			RegisterExportable<GBMObjectMapPropertyColors>(0x0008, (f, i) => new GBMObjectMapPropertyColors(), (o, h, s) => new GBMObjectMapPropertyColors(o, h, s));
-			RegisterExportable<GBMObjectMapExportSettings>(0x0009, (f, i) => new GBMObjectMapExportSettings(), (o, h, s) => new GBMObjectMapExportSettings(o, h, s));
-			RegisterExportable<GBMObjectMapExportProperties>(0x000A, (f, i) => new GBMObjectMapExportProperties(), (o, h, s) => new GBMObjectMapExportProperties(o, h, s));
+			RegisterExportable<GBMObjectDeleted>(0xFFFF, (f, i) => new GBMObjectDeleted(i), (o, h, s) => new GBMObjectDeleted(o, h, s));
+			RegisterExportable<GBMObjectProducerInfo>(0x0001, (f, i) => new GBMObjectProducerInfo(i), (o, h, s) => new GBMObjectProducerInfo(o, h, s));
+			RegisterExportable<GBMObjectMap>(0x0002, (f, i) => new GBMObjectMap(i), (o, h, s) => new GBMObjectMap(o, h, s));
+			RegisterExportable<GBMObjectMapTileData>(0x0003, (f, i) => new GBMObjectMapTileData(i, f), (o, h, s) => new GBMObjectMapTileData((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectMapProperties>(0x0004, (f, i) => new GBMObjectMapProperties(i, f), (o, h, s) => new GBMObjectMapProperties((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectMapPropertyData>(0x0005, (f, i) => new GBMObjectMapPropertyData(i, f), (o, h, s) => new GBMObjectMapPropertyData((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectDefaultTilePropertyValues>(0x0006, (f, i) => new GBMObjectDefaultTilePropertyValues(i, f), (o, h, s) => new GBMObjectDefaultTilePropertyValues((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectMapSettings>(0x0007, (f, i) => new GBMObjectMapSettings(i, f), (o, h, s) => new GBMObjectMapSettings((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectMapPropertyColors>(0x0008, (f, i) => new GBMObjectMapPropertyColors(i, f), (o, h, s) => new GBMObjectMapPropertyColors((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectMapExportSettings>(0x0009, (f, i) => new GBMObjectMapExportSettings(i, f), (o, h, s) => new GBMObjectMapExportSettings((GBMObjectMap)o, h, s));
+			RegisterExportable<GBMObjectMapExportProperties>(0x000A, (f, i) => new GBMObjectMapExportProperties(i, f), (o, h, s) => new GBMObjectMapExportProperties((GBMObjectMapExportSettings)o, h, s));
 		}
 	}
 }
