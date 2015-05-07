@@ -12,10 +12,6 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectProducerInfo : GBMObject
 	{
-		public GBMObjectProducerInfo(UInt16 UniqueID) : base(UniqueID) {
-			this.Name = "
-		}
-
 		public GBMObjectProducerInfo(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 		
 		/// <summary>
@@ -41,6 +37,17 @@ namespace GB.Shared.GBMFile
 			Name = s.ReadString(128);
 			Version = s.ReadString(10);
 			Info = s.ReadString(128);
+		}
+
+		/// <summary>
+		/// Writes the current app information to this object's data.
+		/// </summary>
+		public void UpdateWithCurrentApp() {
+			var splitVersion = Application.ProductVersion.Split('.');
+			
+			this.Name = "GBMB in C# v" + Application.ProductVersion + " by Pokechu22";
+			this.Version = splitVersion[0] + "." + splitVersion[1];
+			this.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
 		}
 
 		public override string GetTypeName() {

@@ -889,11 +889,7 @@ namespace GB.GBMB
 		private void UpdateProducerInfo() {
 			var ProducerInfo = gbmFile.GetObjectOfType<GBMObjectProducerInfo>();
 
-			var splitVersion = ProductVersion.Split('.');
-
-			ProducerInfo.Name = "GBMB in C# v" + ProductVersion + " by Pokechu22";
-			ProducerInfo.Version = splitVersion[0] + "." + splitVersion[1];
-			ProducerInfo.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
+			ProducerInfo.UpdateWithCurrentApp();
 		}
 
 		private CleanLabel[] infoPanelPropLabels = new CleanLabel[0];
