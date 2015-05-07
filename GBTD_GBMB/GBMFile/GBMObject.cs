@@ -32,11 +32,25 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public GBMObject Master { get; protected set; }
 
+		/// <summary>
+		/// Loads a GBMObject from the given <paramref name="stream"/>.
+		/// </summary>
+		/// <param name="Master">The master object.  May be null.</param>
+		/// <param name="header">The header of the object.</param>
+		/// <param name="stream">The stream to load the object from.</param>
 		protected GBMObject(GBMObject Master, GBMObjectHeader header, Stream stream) {
 			this.Master = Master;
 
 			this.Header = header;
 			LoadObject(stream);
+		}
+
+		/// <summary>
+		/// Creates a new GBMObject with the given UniqueID.
+		/// </summary>
+		/// <param name="UniqueID">The Unique ID of the object.</param>
+		protected GBMObject(UInt16 UniqueID) {
+			this.Header = new GBMObjectHeader(GBMInitialization.GetTypeID(this.GetType()), UniqueID, null, 0);
 		}
 
 		private void LoadObject(Stream s) {
@@ -141,6 +155,12 @@ namespace GB.Shared.GBMFile
 		public new TMaster Master {
 			get { return (TMaster)base.Master; }
 			protected set { base.Master = value; }
+		}
+
+		protected MasteredGBMObject(UInt16 UniqueID, GBMFile file) : base(UniqueID) {
+			this.Master = file.GetObjectOfType<TMaster>();
+
+			this.Header = new GBMObjectHeader(GBMInitialization.GetTypeID(this.GetType()), UniqueID, Master.Header.ObjectID, 0);
 		}
 
 		protected MasteredGBMObject(TMaster Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
