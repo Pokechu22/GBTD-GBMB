@@ -12,6 +12,10 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectProducerInfo : GBMObject
 	{
+		public GBMObjectProducerInfo(UInt16 UniqueID) : base(UniqueID) {
+			this.Name = "
+		}
+
 		public GBMObjectProducerInfo(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 		
 		/// <summary>
@@ -29,7 +33,7 @@ namespace GB.Shared.GBMFile
 
 		protected override void SaveToStream(Stream s) {
 			s.WriteString(Name, 128);
-			s.WriteString(Version, 128);
+			s.WriteString(Version, 10);
 			s.WriteString(Info, 128);
 		}
 
