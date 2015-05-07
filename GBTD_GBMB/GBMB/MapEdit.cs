@@ -1162,5 +1162,24 @@ namespace GB.GBMB
 			GBMBAboutBox dialog = new GBMBAboutBox();
 			dialog.ShowDialog();
 		}
+
+		/// <summary>
+		/// Enables/disables a menu item based off of whether the GBR file is not null.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void menuItemWithGBRCheckingSubitems_Popup(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				foreach (MenuItem child in item.MenuItems) {
+					if (child.Tag is String) {
+						if ((child.Tag as string).Contains("NeedsGBR")) {
+							child.Enabled = (gbrFile != null);
+						}
+					}
+				}
+			}
+		}
 	}
 }

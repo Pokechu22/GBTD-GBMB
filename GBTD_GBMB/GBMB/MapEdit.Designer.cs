@@ -285,6 +285,7 @@
             seperatorMenuItem4,
             this.exitMenuItem});
 			this.fileMenuItem.Text = "&File";
+			this.fileMenuItem.Popup += new System.EventHandler(this.menuItemWithGBRCheckingSubitems_Popup);
 			// 
 			// openMenuItem
 			// 
@@ -326,6 +327,7 @@
 			// defaultLocationPropertiesMenuItem
 			// 
 			this.defaultLocationPropertiesMenuItem.Index = 8;
+			this.defaultLocationPropertiesMenuItem.Tag = "NeedsGBR";
 			this.defaultLocationPropertiesMenuItem.Text = "&Default location properties...";
 			this.defaultLocationPropertiesMenuItem.Click += new System.EventHandler(this.defaultLocationPropertiesMenuItem_Click);
 			// 
@@ -359,6 +361,7 @@
             seperatorMenuItem6,
             this.copyAsBitmapMenuItem});
 			this.editMenuItem.Text = "&Edit";
+			this.editMenuItem.Popup += new System.EventHandler(this.menuItemWithGBRCheckingSubitems_Popup);
 			// 
 			// undoMenuItem
 			// 
@@ -391,6 +394,7 @@
 			// 
 			this.copyAsBitmapMenuItem.Index = 6;
 			this.copyAsBitmapMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
+			this.copyAsBitmapMenuItem.Tag = "NeedsGBR";
 			this.copyAsBitmapMenuItem.Text = "Copy as bit&map";
 			this.copyAsBitmapMenuItem.Click += new System.EventHandler(this.copyAsBitmapMenuItem_Click);
 			// 
@@ -410,6 +414,7 @@
             this.clearMapMenuItem,
             this.blockFillMenuItem});
 			this.designMenuItem.Text = "&Design";
+			this.designMenuItem.Popup += new System.EventHandler(this.menuItemWithGBRCheckingSubitems_Popup);
 			// 
 			// penMenuItem
 			// 
@@ -495,6 +500,7 @@
             this.gotoBookmarkMenuItem,
             this.clearBookmarkMenuItem});
 			this.viewMenuItem.Text = "Vie&w";
+			this.viewMenuItem.Popup += new System.EventHandler(this.menuItemWithGBRCheckingSubitems_Popup);
 			// 
 			// zoomMenuItem
 			// 
@@ -744,6 +750,7 @@
             seperatorMenuItem13,
             this.aboutMenuItem});
 			this.helpMenuItem.Text = "Hel&p";
+			this.helpMenuItem.Popup += new System.EventHandler(this.menuItemWithGBRCheckingSubitems_Popup);
 			// 
 			// helpTopicsMenuItem
 			// 
