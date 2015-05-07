@@ -81,7 +81,7 @@ namespace GB.GBMB.Exporting
 			Header = false;
 			
 			using (this.Stream = new StreamWriter(stream)) {
-				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+				var mapExportSettings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
@@ -102,7 +102,7 @@ namespace GB.GBMB.Exporting
 			Header = true;
 
 			using (this.Stream = new StreamWriter(stream)) {
-				var mapExportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+				var mapExportSettings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 				WriteHeader(mapExportSettings, fileName);
 				Stream.WriteLine();
@@ -166,7 +166,7 @@ namespace GB.GBMB.Exporting
 		/// Writes the entire map's data.
 		/// </summary>
 		protected void WriteMapData(GBMFile gbmFile, GBRFile gbrFile) {
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 
@@ -199,7 +199,7 @@ namespace GB.GBMB.Exporting
 		/// Writes the includes that are used for the map.
 		/// </summary>
 		protected void WriteMapDataIncludes(GBMFile gbmFile, GBRFile gbrFile) {
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 			int blockCount = (int)Math.Ceiling((double)(settings.Master.Width * settings.Master.Height) / settings.SplitSize);

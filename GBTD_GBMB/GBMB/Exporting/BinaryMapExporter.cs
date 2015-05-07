@@ -20,7 +20,7 @@ namespace GB.GBMB.Exporting
 
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, string fileName) {
 			using (BinaryWriter writer = new BinaryWriter(stream)) {
-				var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+				var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 				int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 

@@ -20,7 +20,7 @@ namespace GB.GBMB
 {
 	public partial class MapEdit : Form
 	{
-		private GBMFile gbmFile = new GBMFile();
+		private GBMFile gbmFile;
 		private GBRFile gbrFile;
 		private AUMemMappedFile mmf;
 		private string mapFileName;
@@ -31,7 +31,7 @@ namespace GB.GBMB
 			get { return infoPanelBorder.Visible; }
 			set {
 				infoPanelMenuItem.Checked = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowInfoPanel = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowInfoPanel = value;
 
 				this.SuspendLayout();
 				infoPanelBorder.Visible = value;
@@ -57,7 +57,7 @@ namespace GB.GBMB
 			get { return mapControl.ShowGrid; }
 			set {
 				gridMenuItem.Checked = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowGrid = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowGrid = value;
 				mapControl.ShowGrid = value;
 			}
 		}
@@ -66,7 +66,7 @@ namespace GB.GBMB
 			get { return mapControl.ShowDoubleMarkers; }
 			set {
 				doubleMarkersMenuItem.Checked = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowDoubleMarkers = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowDoubleMarkers = value;
 				mapControl.ShowDoubleMarkers = value;
 			}
 		}
@@ -75,7 +75,7 @@ namespace GB.GBMB
 			get { return mapControl.ShowPropertyColors; }
 			set {
 				propertyColorsMenuItem.Checked = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().ShowPropColors = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowPropColors = value;
 				mapControl.ShowPropertyColors = value;
 			}
 		}
@@ -84,7 +84,7 @@ namespace GB.GBMB
 			get { return toolList.AutoUpdate; }
 			set {
 				autoUpdateMenuItem.Checked = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().AutoUpdate = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().AutoUpdate = value;
 				toolList.AutoUpdate = value;
 			}
 		}
@@ -217,7 +217,7 @@ namespace GB.GBMB
 			get { return tileList.Bookmark1; }
 			set {
 				tileList.Bookmark1 = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().Bookmark1 = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Bookmark1 = value;
 
 				gotoBookmark1MenuItem.Enabled = (value != 0xFFFF);
 			}
@@ -226,7 +226,7 @@ namespace GB.GBMB
 			get { return tileList.Bookmark2; }
 			set {
 				tileList.Bookmark2 = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().Bookmark2 = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Bookmark2 = value;
 
 				gotoBookmark2MenuItem.Enabled = (value != 0xFFFF);
 			}
@@ -235,7 +235,7 @@ namespace GB.GBMB
 			get { return tileList.Bookmark3; }
 			set {
 				tileList.Bookmark3 = value;
-				gbmFile.GetObjectOfType<GBMObjectMapSettings>().Bookmark3 = value;
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Bookmark3 = value;
 
 				gotoBookmark3MenuItem.Enabled = (value != 0xFFFF);
 			}
@@ -261,8 +261,6 @@ namespace GB.GBMB
 			}
 
 			LoadMapFile(d.FileName);
-
-			mapControl.Enabled = true;
 
 			Properties.Settings.Default.GBMPath = Path.GetDirectoryName(d.FileName);
 		}
@@ -317,6 +315,8 @@ namespace GB.GBMB
 					map.PropCountChanged -= new EventHandler(map_PropCountChanged);
 					map.TileFileChanged -= new EventHandler(map_TileFileChanged);
 				}
+
+				gbmFile = null;
 			}
 		}
 
@@ -331,26 +331,40 @@ namespace GB.GBMB
 
 			Environment.CurrentDirectory = Path.GetDirectoryName(mapPath);
 			using (var stream = File.OpenRead(mapPath)) {
-				gbmFile = new GBMFile(stream);
+				LoadMapFile(new GBMFile(stream));
 			}
-			
-			GBMObjectMap map = gbmFile.GetObjectOfType<GBMObjectMap>();
 
-			tileFileName = Path.GetFullPath(map.TileFile);
+			AddToReopenList(mapPath);
+		}
 
-			LoadTileFile(tileFileName);
+		/// <summary>
+		/// Loads the given GBM file.
+		/// </summary>
+		/// <param name="file"></param>
+		public void LoadMapFile(GBMFile file) {
+			this.gbmFile = file;
+
+			GBMObjectMap map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
+
+			try {
+				tileFileName = Path.GetFullPath(map.TileFile);
+
+				LoadTileFile(tileFileName);
+			} catch (ArgumentException) {
+				//Do nothing.  This happens when there's an invalid path.
+			}
 
 			map.PropCountChanged += new EventHandler(map_PropCountChanged);
 			map.TileFileChanged += new EventHandler(map_TileFileChanged);
 			this.infoPanelPropBorder1.Visible = this.infoPanelPropBorder1.Enabled = (map.PropCount != 0);
 			this.infoPanelPropBorder2.Visible = this.infoPanelPropBorder2.Enabled = (map.PropCount != 0);
 
-			this.mapControl.Map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			this.mapControl.Map = gbmFile.GetOrCreateObjectOfType<GBMObjectMapTileData>();
 			
-			this.mapControl.Properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
-			this.mapControl.PropertyColors = gbmFile.GetObjectOfType<GBMObjectMapPropertyColors>();
+			this.mapControl.Properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyData>();
+			this.mapControl.PropertyColors = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyColors>();
 
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>();
 			this.AutoUpdate = settings.AutoUpdate;
 			this.ShowGrid = settings.ShowGrid;
 			this.ShowInfoPanel = settings.ShowInfoPanel;
@@ -367,8 +381,6 @@ namespace GB.GBMB
 			this.WindowState = (settings.FormMaximized ? FormWindowState.Maximized : FormWindowState.Normal);
 
 			this.map_PropCountChanged(map, new EventArgs());
-
-			AddToReopenList(mapPath);
 		}
 
 		public void LoadTileFile(string tilePath) {
@@ -401,11 +413,15 @@ namespace GB.GBMB
 		protected override void OnLoad(EventArgs e) {
 			base.OnLoad(e);
 			this.Menu = mainMenu;
-
+			
 			AddClipboardFormatListener(this.Handle);
 			pasteButton.Enabled = pasteMenuItem.Enabled = Clipboard.ContainsText();
 
 			LoadReopenList();
+
+			if (gbmFile == null) {
+				LoadMapFile(new GBMFile());
+			}
 		}
 
 		protected override void OnResize(EventArgs e) {
@@ -538,7 +554,7 @@ namespace GB.GBMB
 		}
 
 		private void addRowButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
 			if (map.Height >= 1023) { return; }
 
@@ -548,7 +564,7 @@ namespace GB.GBMB
 		}
 
 		private void addColumnButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
 			if (map.Width >= 1023) { return; }
 
@@ -558,7 +574,7 @@ namespace GB.GBMB
 		}
 
 		private void removeRowButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
 			if (map.Height <= 1) { return; }
 
@@ -568,7 +584,7 @@ namespace GB.GBMB
 		}
 
 		private void removeColumnButtonClicked(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
 			if (map.Width <= 1) { return; }
 
@@ -644,9 +660,9 @@ namespace GB.GBMB
 		}
 
 		private void clearMapMenuItem_Click(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
-			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMapTileData>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyData>();
+			var defaultProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
 			for (int y = 0; y < map.Master.Height; y++) {
 				for (int x = 0; x < map.Master.Width; x++) {
@@ -696,7 +712,7 @@ namespace GB.GBMB
 		}
 
 		private void mapControl_SelectionChanged(object sender, EventArgs e) {
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
 
 			infoPanelVerticalFlipCheckBox.CheckState = mapControl.SelectionVerticalFlip;
 			infoPanelHorizontalFlipCheckBox.CheckState = mapControl.SelectionHorizontalFlip;
@@ -784,9 +800,9 @@ namespace GB.GBMB
 		}
 
 		private void mapControl_TileClicked(object sender, TileClickedEventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
-			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMapTileData>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyData>();
+			var defaultProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
 			switch (this.SelectedTool) {
 			case Tool.NONE: break; //Do nothing.
@@ -887,7 +903,7 @@ namespace GB.GBMB
 		}
 
 		private void UpdateProducerInfo() {
-			var ProducerInfo = gbmFile.GetObjectOfType<GBMObjectProducerInfo>();
+			var ProducerInfo = gbmFile.GetOrCreateObjectOfType<GBMObjectProducerInfo>();
 
 			ProducerInfo.UpdateWithCurrentApp();
 		}
@@ -897,7 +913,7 @@ namespace GB.GBMB
 
 		void map_PropCountChanged(object sender, EventArgs e) {
 			GBMObjectMap map = (sender as GBMObjectMap);
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
 			if (map != null) {
 				this.infoPanelPropBorder1.Visible = this.infoPanelPropBorder1.Enabled = (map.PropCount != 0);
 				this.infoPanelPropBorder2.Visible = this.infoPanelPropBorder2.Enabled = (map.PropCount != 0);
@@ -959,8 +975,8 @@ namespace GB.GBMB
 			var textBox = sender as TextBox;
 
 			if (gbmFile == null) {return;}
-			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
 			if (map == null||properties == null) { return; }
 
 			if (textBox != null) {
@@ -992,7 +1008,7 @@ namespace GB.GBMB
 		}
 
 		private void mapPropertiesMenuItem_Click(object sender, EventArgs e) {
-			var map = gbmFile.GetObjectOfType<GBMObjectMap>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
 			MapPropertiesDialog dialog = new MapPropertiesDialog(map);
 			dialog.ShowDialog();
@@ -1003,10 +1019,10 @@ namespace GB.GBMB
 		private void blockFillMenuItem_Click(object sender, EventArgs e) {
 			var tileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
 			var paletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapSettings>();
-			var map = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
-			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMapTileData>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyData>();
+			var defaultProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
 			uint lowerSelectionX = (uint)(mapControl.SelectionX1 < mapControl.SelectionX2 ? mapControl.SelectionX1 : mapControl.SelectionX2);
 			uint lowerSelectionY = (uint)(mapControl.SelectionY1 < mapControl.SelectionY2 ? mapControl.SelectionY1 : mapControl.SelectionY2);
@@ -1019,8 +1035,8 @@ namespace GB.GBMB
 		}
 
 		private void locationPropertiesMenuItem_Click(object sender, EventArgs e) {
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
-			var propColors = gbmFile.GetObjectOfType<GBMObjectMapPropertyColors>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
+			var propColors = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyColors>();
 
 			LocationPropertiesDialog dialog = new LocationPropertiesDialog(properties, propColors);
 
@@ -1033,8 +1049,8 @@ namespace GB.GBMB
 		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
 			var paletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
 			var tileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
-			var defaultProperties = gbmFile.GetObjectOfType<GBMObjectDefaultTilePropertyValues>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
+			var defaultProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectDefaultTilePropertyValues>();
 
 			DefaultLocationPropertiesDialog dialog = new DefaultLocationPropertiesDialog(tileSet, ColorSet, SelectedTile, 
 				paletteMapping, tileList.PaletteData, properties, defaultProperties);
@@ -1085,9 +1101,9 @@ namespace GB.GBMB
 		}
 
 		private void onExportButtonClicked(object sender, EventArgs e) {
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
-			var exportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
-			var exportProperties = gbmFile.GetObjectOfType<GBMObjectMapExportProperties>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
+			var exportSettings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
+			var exportProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportProperties>();
 
 			IMapExporter exporter = exportSettings.FileType.CreateExporter();
 
@@ -1110,9 +1126,9 @@ namespace GB.GBMB
 		}
 
 		private void exportToMenuItem_Click(object sender, EventArgs e) {
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapProperties>();
-			var exportSettings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
-			var exportProperties = gbmFile.GetObjectOfType<GBMObjectMapExportProperties>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
+			var exportSettings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
+			var exportProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportProperties>();
 
 			ExportOptionsDialog d = new ExportOptionsDialog(properties, exportSettings, exportProperties);
 

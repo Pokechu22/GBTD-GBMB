@@ -177,7 +177,11 @@ namespace GB.Shared.GBMFile
 		/// <typeparam name="TObject"></typeparam>
 		/// <returns></returns>
 		public TObject GetObjectOfType<TObject>() where TObject : GBMObject {
-			return this.Objects.Values.OfType<TObject>().Single();
+			if (this.Objects.Values.OfType<TObject>().Count() == 0) {
+				return null;
+			} else {
+				return this.Objects.Values.OfType<TObject>().Single();
+			}
 		}
 
 		/// <summary>

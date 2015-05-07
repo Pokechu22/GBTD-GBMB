@@ -853,7 +853,6 @@
 			// 
 			this.mapControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(208)))), ((int)(((byte)(212)))));
 			this.mapControl.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.mapControl.Enabled = false;
 			this.mapControl.Location = new System.Drawing.Point(34, 39);
 			this.mapControl.Name = "mapControl";
 			this.mapControl.PaletteData = paletteData1;

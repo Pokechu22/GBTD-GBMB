@@ -17,8 +17,8 @@ namespace GB.GBMB.Exporting
 		/// </summary>
 		/// <returns></returns>
 		public static byte[] GetBytesForTile(GBMFile gbmFile, GBRFile gbrFile, int x, int y, PlaneCount count) {
-			var properties = gbmFile.GetObjectOfType<GBMObjectMapExportProperties>();
-			var mapData = gbmFile.GetObjectOfType<GBMObjectMapTileData>();
+			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportProperties>();
+			var mapData = gbmFile.GetOrCreateObjectOfType<GBMObjectMapTileData>();
 
 			ulong temp = 0;
 			uint position = 0;
@@ -58,7 +58,7 @@ namespace GB.GBMB.Exporting
 						throw new IndexOutOfRangeException("Could not parse the property value -- property is beyond the maximum property count (0 to 31) and is not a specific other property.  ExportProperty is " + property.Property + ", and tried to get " + propNum + " as the property.");
 					}
 
-					var mapProperties = gbmFile.GetObjectOfType<GBMObjectMapPropertyData>();
+					var mapProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyData>();
 					if (propNum >= mapProperties.Data.GetLength(2)) {
 						throw new IndexOutOfRangeException("Could not parse the property value -- property is beyond the total current property count and is not a specific other property.  ExportProperty is " + property.Property + ", and tried to get " + propNum + " as the property.  Length of the 3rd dimension of GBMObjectMapPropertyData's data array is " + mapProperties.Data.GetLength(2) + ", must be less than that.");
 					}
@@ -84,7 +84,7 @@ namespace GB.GBMB.Exporting
 		/// Gets the tiles are continues bytes for the specified GBMFile.
 		/// </summary>
 		public static byte[][] GetTileContinuousData(GBMFile gbmFile, GBRFile gbrFile) {
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 
@@ -161,7 +161,7 @@ namespace GB.GBMB.Exporting
 		/// Gets the planes are continues bytes for the specified GBMFile.
 		/// </summary>
 		public static byte[,][] GetPlaneContinuousData(GBMFile gbmFile, GBRFile gbrFile) {
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 			int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 

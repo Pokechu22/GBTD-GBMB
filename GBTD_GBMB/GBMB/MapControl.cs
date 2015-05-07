@@ -477,51 +477,55 @@ namespace GB.GBMB
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e) {
-			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
-				int newSelectionX1, newSelectionX2, newSelectionY1, newSelectionY2;
+			if (map != null && tileset != null) {
+				if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
+					int newSelectionX1, newSelectionX2, newSelectionY1, newSelectionY2;
 
-				newSelectionX1 = newSelectionX2 = MouseToTileX(e.X);
-				newSelectionY1 = newSelectionY2 = MouseToTileY(e.Y);
+					newSelectionX1 = newSelectionX2 = MouseToTileX(e.X);
+					newSelectionY1 = newSelectionY2 = MouseToTileY(e.Y);
 
-				if (newSelectionX1 != selectionX1 || newSelectionX2 != selectionX2 ||
-					newSelectionY1 != selectionY1 || newSelectionY2 != selectionY2) {
+					if (newSelectionX1 != selectionX1 || newSelectionX2 != selectionX2 ||
+						newSelectionY1 != selectionY1 || newSelectionY2 != selectionY2) {
 
-					selectionX1 = newSelectionX1;
-					selectionX2 = newSelectionX2;
-					selectionY1 = newSelectionY1;
-					selectionY2 = newSelectionY2;
+						selectionX1 = newSelectionX1;
+						selectionX2 = newSelectionX2;
+						selectionY1 = newSelectionY1;
+						selectionY2 = newSelectionY2;
 
-					OnSelectionChanged();
+						OnSelectionChanged();
+					}
 				}
-			}
-			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
-				OnTileClicked(MouseToTileX(e.X), MouseToTileY(e.Y));
+				if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
+					OnTileClicked(MouseToTileX(e.X), MouseToTileY(e.Y));
 
-				OnMapChanged();
+					OnMapChanged();
+				}
 			}
 
 			base.OnMouseDown(e);
 		}
 
 		protected override void OnMouseMove(MouseEventArgs e) {
-			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
-				int newSelectionX2, newSelectionY2;
+			if (map != null && tileset != null) {
+				if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Left)) {
+					int newSelectionX2, newSelectionY2;
 
-				newSelectionX2 = MouseToTileX(e.X);
-				newSelectionY2 = MouseToTileY(e.Y);
+					newSelectionX2 = MouseToTileX(e.X);
+					newSelectionY2 = MouseToTileY(e.Y);
 
-				if (newSelectionX2 != selectionX2 || newSelectionY2 != selectionY2) {
+					if (newSelectionX2 != selectionX2 || newSelectionY2 != selectionY2) {
 
-					selectionX2 = newSelectionX2;
-					selectionY2 = newSelectionY2;
+						selectionX2 = newSelectionX2;
+						selectionY2 = newSelectionY2;
 
-					OnSelectionChanged();
+						OnSelectionChanged();
+					}
 				}
-			}
-			if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
-				OnTileClicked(MouseToTileX(e.X), MouseToTileY(e.Y));
+				if (e.Button.HasFlag(System.Windows.Forms.MouseButtons.Right)) {
+					OnTileClicked(MouseToTileX(e.X), MouseToTileY(e.Y));
 
-				OnMapChanged();
+					OnMapChanged();
+				}
 			}
 
 			base.OnMouseMove(e);

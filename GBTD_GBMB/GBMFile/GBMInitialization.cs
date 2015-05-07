@@ -16,8 +16,8 @@ namespace GB.Shared.GBMFile
 		/// <param name="s">The stream to read from.</param>
 		/// <returns></returns>
 		public static GBMObject ReadObject(GBMObject master, GBMObjectHeader header, Stream s) {
-			if (mapping.ContainsKey(header.ObjectID)) {
-				return mapping[header.ObjectID].Read(master, header, s);
+			if (mapping.ContainsKey(header.ObjectType)) {
+				return mapping[header.ObjectType].Read(master, header, s);
 			} else {
 				return new GBMObjectUnknownData(master, header, s);
 			}

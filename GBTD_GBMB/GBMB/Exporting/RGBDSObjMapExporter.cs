@@ -131,7 +131,7 @@ namespace GB.GBMB.Exporting
 		public void ExportMain(GBMFile gbmFile, GBRFile gbrFile, Stream stream, string fileName) {
 			const UInt32 NUMBER_OF_SECTIONS = 1; //TODO -- this currently can't be changed... but in the future, mabye?
 
-			var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 			RGBDSFormatWriter writer = new RGBDSFormatWriter(stream);
 
@@ -162,7 +162,7 @@ namespace GB.GBMB.Exporting
 			using (MemoryStream stream = new MemoryStream()) {
 				List<RGBDSLabel> labelsList = new List<RGBDSLabel>();
 
-				var settings = gbmFile.GetObjectOfType<GBMObjectMapExportSettings>();
+				var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapExportSettings>();
 
 				int planeCount = settings.PlaneCount.GetNumberOfPlanes();
 
