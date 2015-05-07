@@ -12,6 +12,16 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectProducerInfo : GBMObject
 	{
+		public GBMObjectProducerInfo(UInt16 UniqueID) : base(UniqueID) {
+			this.UpdateWithCurrentApp();
+		}
+
+		public GBMObjectProducerInfo(UInt16 UniqueID, string Name, string Version, string Info) : base(UniqueID) {
+			this.Name = Name;
+			this.Version = Version;
+			this.Info = Info;
+		}
+
 		public GBMObjectProducerInfo(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 		
 		/// <summary>

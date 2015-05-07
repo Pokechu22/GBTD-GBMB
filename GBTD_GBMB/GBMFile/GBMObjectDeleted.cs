@@ -15,6 +15,14 @@ namespace GB.Shared.GBMFile
 	{
 		private byte[] data;
 
+		public GBMObjectDeleted(UInt16 UniqueID) : base(UniqueID) {
+			this.data = new byte[0];
+		}
+
+		public GBMObjectDeleted(UInt16 UniqueID, byte[] data) : base(UniqueID) {
+			this.data = data;
+		}
+
 		public GBMObjectDeleted(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		protected override void SaveToStream(Stream s) {

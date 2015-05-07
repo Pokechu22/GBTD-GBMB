@@ -13,11 +13,29 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectMap : GBMObject
 	{
+		public GBMObjectMap(UInt16 UniqueID) : this(UniqueID, 10, 10) { }
+
+		public GBMObjectMap(UInt16 UniqueID, UInt32 Width, UInt32 Height) : this(UniqueID, Width, Height, 0, "", 512, 2) { }
+
+		public GBMObjectMap(UInt16 UniqueID, UInt32 Width, UInt32 Height, UInt32 PropCount, String TileFileName, UInt32 TileCount, 
+				UInt32 PropColorCount) : base(UniqueID) {
+			this.width = Width;
+			this.height = Height;
+
+			this.propCount = PropCount;
+
+			this.tileFileName = TileFileName;
+
+			this.tileCount = TileCount;
+
+			this.propColorCount = PropColorCount;
+		}
+
 		public GBMObjectMap(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		private UInt32 width, height;
 		private UInt32 propCount, propColorCount;
-		private String fileName;
+		private String tileFileName;
 		private UInt32 tileCount;
 
 		/// <summary>
@@ -49,8 +67,8 @@ namespace GB.Shared.GBMFile
 		/// The name of the GBR file.
 		/// </summary>
 		public String TileFile {
-			get { return fileName; }
-			set { fileName = value; if (TileFileChanged != null) { TileFileChanged(this, new EventArgs()); } }
+			get { return tileFileName; }
+			set { tileFileName = value; if (TileFileChanged != null) { TileFileChanged(this, new EventArgs()); } }
 		}
 		/// <summary>
 		/// The number of tiles in the GBR file.
