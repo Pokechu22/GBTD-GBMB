@@ -172,12 +172,27 @@ namespace GB.Shared.GBMFile
 		}
 
 		/// <summary>
-		/// Gets the first object of the specified type.
+		/// Gets the only object of the specified type.
 		/// </summary>
 		/// <typeparam name="TObject"></typeparam>
 		/// <returns></returns>
 		public TObject GetObjectOfType<TObject>() where TObject : GBMObject {
-			return this.Objects.Values.OfType<TObject>().First();
+			return this.Objects.Values.OfType<TObject>().Single();
+		}
+
+		/// <summary>
+		/// Gets the only object of the specified type, if it exists, or else creates a new one.
+		/// </summary>
+		/// <typeparam name="TObject"></typeparam>
+		/// <returns></returns>
+		public TObject GetOrCreateObjectOfType<TObject>() where TObject : GBMObject {
+			if (this.Objects.Values.OfType<TObject>().Count() == 0) {
+				TObject obj = GBMInitialization.CreateObject<TObject>(this);
+
+				this.Objects.Add(obj.Header.ObjectID, obj);
+			}
+
+			return this.Objects.Values.OfType<TObject>().Single();
 		}
 
 		/// <summary>

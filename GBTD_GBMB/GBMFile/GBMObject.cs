@@ -158,7 +158,7 @@ namespace GB.Shared.GBMFile
 		}
 
 		protected MasteredGBMObject(UInt16 UniqueID, GBMFile file) : base(UniqueID) {
-			this.Master = file.GetObjectOfType<TMaster>();
+			this.Master = file.GetOrCreateObjectOfType<TMaster>();
 
 			this.Header = new GBMObjectHeader(GBMInitialization.GetTypeID(this.GetType()), UniqueID, Master.Header.ObjectID, 0);
 		}

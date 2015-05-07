@@ -24,15 +24,32 @@ namespace GB.Shared.GBMFile
 		}
 
 		/// <summary>
-		/// Creates an object of the specified type in the given file.  The object is added to the file, and an ID is assigned.
+		/// Creates an object of the specified type in the given file.  An unique ID is assigned to the object, 
+		/// but the object is NOT added to the file.
 		/// 
 		/// <para>If a master object is needed, it will be created.</para>
 		/// </summary>
 		/// <typeparam name="TObjectType"></typeparam>
 		/// <param name="file"></param>
 		/// <returns></returns>
-		public static GBMObject CreateObject<TObjectType>(GBMFile file) {
-			return null;
+		public static TObjectType CreateObject<TObjectType>(GBMFile file) where TObjectType : GBMObject {
+			var objectMapping = mapping.Values.Single(o => (o.Type == typeof(TObjectType)));
+
+			return (TObjectType)objectMapping.Create(file, GetNextUniqueID(file));
+		}
+
+		/// <summary>
+		/// Gets the next open UniqueID in the given file.
+		/// </summary>
+		/// <param name="file"></param>
+		private static UInt16 GetNextUniqueID(GBMFile file) {
+			for (UInt16 id = 1; id < UInt16.MaxValue; id++) {
+				if (!file.Objects.ContainsKey(id)) {
+					return id;
+				}
+			}
+
+			throw new InvalidOperationException("There are no more unique object IDs!");
 		}
 
 		private class ObjectMapping
