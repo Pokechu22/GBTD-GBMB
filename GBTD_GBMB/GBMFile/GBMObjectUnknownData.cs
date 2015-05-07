@@ -11,8 +11,6 @@ namespace GB.Shared.GBMFile
 	{
 		private byte[] data;
 
-		public GBMObjectUnknownData(GBMObject Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-			: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
 		public GBMObjectUnknownData(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		protected override void SaveToStream(Stream s) {

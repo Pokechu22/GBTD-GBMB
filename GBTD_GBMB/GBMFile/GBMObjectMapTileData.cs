@@ -9,12 +9,6 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMObjectMapTileData : MasteredGBMObject<GBMObjectMap>
 	{
-		public GBMObjectMapTileData(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-				: base(Master, TypeID, UniqueID, MasterID, Size, stream) {
-
-			Master.SizeChanged += new EventHandler(Master_SizeChanged);
-		}
-
 		public GBMObjectMapTileData(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) {
 			Master.SizeChanged += new EventHandler(Master_SizeChanged);
 		}

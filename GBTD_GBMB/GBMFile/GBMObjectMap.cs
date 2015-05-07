@@ -13,8 +13,6 @@ namespace GB.Shared.GBMFile
 	/// </summary>
 	public class GBMObjectMap : GBMObject
 	{
-		public GBMObjectMap(GBMObject Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-			: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
 		public GBMObjectMap(GBMObject Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		private UInt32 width, height;

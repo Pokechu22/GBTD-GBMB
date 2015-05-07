@@ -9,9 +9,6 @@ namespace GB.Shared.GBMFile
 {
 	public class GBMObjectMapSettings : MasteredGBMObject<GBMObjectMap>
 	{
-		public GBMObjectMapSettings(GBMObjectMap Master, UInt16 TypeID, UInt16 UniqueID, UInt16? MasterID, UInt32 Size, Stream stream)
-			: base(Master, TypeID, UniqueID, MasterID, Size, stream) { }
-
 		public GBMObjectMapSettings(GBMObjectMap Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 
 		/// <summary>
