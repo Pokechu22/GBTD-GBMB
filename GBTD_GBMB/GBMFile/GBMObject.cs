@@ -78,20 +78,19 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		/// <param name="s"></param>
 		public void SaveObject(Stream s) {
-			if (loadedData == null) {
-				s.WriteGBMObjectHeader(this.Header);
-				this.SaveToStream(s);
-			} else {
-				using (MemoryStream ns = new MemoryStream(loadedData.Length)) {
-					ns.Position = 0;
-					ns.Write(loadedData, 0, loadedData.Length);
-					ns.Position = 0;
-					this.SaveToStream(ns);
+			using (MemoryStream ms = new MemoryStream()) {
+				ms.Position = 0;
 
-					this.Header = this.Header.Resize((UInt32)ns.Length);
-					s.WriteGBMObjectHeader(this.Header);
-					s.Write(ns.ToArray(), 0, (int)this.Header.Size);
+				if (loadedData != null) {
+					//Write data, but then allow overwriting.
+					ms.Write(loadedData, 0, loadedData.Length);
+					ms.Position = 0;
 				}
+				this.SaveToStream(ms);
+
+				this.Header = this.Header.Resize((UInt32)ms.Length);
+				s.WriteGBMObjectHeader(this.Header);
+				s.Write(ms.ToArray(), 0, (int)this.Header.Size);
 			}
 		}
 
@@ -171,7 +170,7 @@ namespace GB.Shared.GBMFile
 		/// <summary>
 		/// The marker text - should ALWAYS be "HPJMTL".
 		/// </summary>
-		public readonly String Marker;
+		public readonly byte[] Marker;
 
 		/// <summary>
 		/// The typeid of this object, which should remain constant.
@@ -204,7 +203,7 @@ namespace GB.Shared.GBMFile
 
 #pragma warning disable 618 //Disables obsolete warnings - http://stackoverflow.com/q/968293/3991344
 		public GBMObjectHeader(UInt16 ObjectType, UInt16 ObjectID, UInt16? MasterID, UInt32 Size) {
-			this.Marker = "HPJMTL";
+			this.Marker = new byte[] { 0x48, 0x50, 0x4A, 0x4D, 0x54, 0x4C }; //"HPJTML"
 			this.ObjectType = ObjectType;
 			this.ObjectID = ObjectID;
 			this.MasterID = MasterID;
@@ -217,7 +216,7 @@ namespace GB.Shared.GBMFile
 		}
 
 		[Obsolete("Sets unused values; you probably want the other one.")]
-		public GBMObjectHeader(String Marker, UInt16 ObjectType, UInt16 ObjectID, UInt16? MasterID, UInt32 CRC, UInt32 Size) {
+		public GBMObjectHeader(byte[] Marker, UInt16 ObjectType, UInt16 ObjectID, UInt16? MasterID, UInt32 CRC, UInt32 Size) {
 			this.Marker = Marker;
 			this.ObjectType = ObjectType;
 			this.ObjectID = ObjectID;
@@ -234,9 +233,9 @@ namespace GB.Shared.GBMFile
 		/// <param name="index">Optional value that provides the location in the file of this object, if available.  Otherwise, <c>null</c>.</param>
 		/// <exception cref="Exception">Thrown when the marker is invalid.</exception>
 		public void Validate(long? index = null) {
-			if (this.Marker != "HPJMTL") {
+			if (!this.Marker.SequenceEqual(new byte[] { 0x48, 0x50, 0x4A, 0x4D, 0x54, 0x4C })) {
 				String wantedHex = String.Join(" ", Encoding.ASCII.GetBytes("HPJMTL").Select(b => b.ToString("X2")));
-				String markerHex = String.Join(" ", Encoding.ASCII.GetBytes(Marker).Select(b => b.ToString("X2")));
+				String markerHex = String.Join(" ", Marker.Select(b => b.ToString("X2")));
 				
 				//TODO better exception type.
 				if (index.HasValue) {

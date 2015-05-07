@@ -415,14 +415,21 @@ namespace GB.Shared.GBMFile
 		internal static GBMObjectHeader ReadGBMObjectHeader(this Stream stream) {
 			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
 
-			String marker = stream.ReadString(6);
+			byte[] marker = new byte[6];
+			{
+				int read = stream.Read(marker, 0, 6);
+
+				if (read != 6) {
+					throw new EndOfStreamException();
+				}
+			}
 			UInt16 objectType = stream.ReadWord();
 			UInt16 objectId = stream.ReadWord();
 			UInt16 masterId = stream.ReadWord();
 			UInt32 crc = stream.ReadUnsignedLong();
 			UInt32 size = stream.ReadUnsignedLong();
-			
-			return new GBMObjectHeader(marker, objectType, objectId, masterId != 0 ? masterId : (UInt16?) null, crc, size);
+
+			return new GBMObjectHeader(marker, objectType, objectId, masterId != 0 ? masterId : (UInt16?)null, crc, size);
 		}
 
 		/// <summary>
@@ -435,7 +442,14 @@ namespace GB.Shared.GBMFile
 			if (!stream.CanRead) { throw new NotSupportedException("Stream cannot be read!"); }
 
 			try {
-				String marker = stream.ReadString(6);
+				byte[] marker = new byte[6];
+				{
+					int read = stream.Read(marker, 0, 6);
+
+					if (read != 6) {
+						return def;
+					}
+				}
 				UInt16 objectType = stream.ReadWord();
 				UInt16 objectId = stream.ReadWord();
 				UInt16 masterId = stream.ReadWord();
@@ -457,7 +471,7 @@ namespace GB.Shared.GBMFile
 		internal static void WriteGBMObjectHeader(this Stream stream, GBMObjectHeader value) {
 			if (!stream.CanWrite) { throw new NotSupportedException("Stream cannot be written to!"); }
 
-			stream.WriteString(value.Marker, 6);
+			stream.Write(value.Marker, 0, 6);
 			stream.WriteWord(value.ObjectType);
 			stream.WriteWord(value.ObjectID);
 			stream.WriteWord(value.MasterID.HasValue ? value.MasterID.Value : (UInt16)0);
