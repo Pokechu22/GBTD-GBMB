@@ -13,11 +13,11 @@ namespace GB.Shared.GBMFile
 			this.FormWidth = 390;
 			this.FormHeight = 288;
 			this.FormMaximized = false;
-			this.ShowInfoPanel = false;
-			this.ShowGrid = false;
+			this.ShowInfoPanel = true;
+			this.ShowGrid = true;
 			this.ShowDoubleMarkers = false;
 			this.ShowPropColors = false;
-			this.Zoom = 0;
+			this.Zoom = 2;
 			this.ColorSet = 0;
 			this.Bookmark1 = 0xFFFF;
 			this.Bookmark2 = 0xFFFF;

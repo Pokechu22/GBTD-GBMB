@@ -12,7 +12,7 @@ namespace GB.Shared.GBMFile
 	{
 		public GBMObjectMapExportSettings(UInt16 UniqueID, GBMFile File) : base(UniqueID, File) {
 			this.FileName = "";
-			this.FileType = GBMExportFileType.RGBDS_Object_File;
+			this.FileType = GBMExportFileType.RGBDS_Assembly_File;
 			this.SectionName = "";
 			this.LabelName = "";
 			this.Bank = 0;
@@ -21,7 +21,7 @@ namespace GB.Shared.GBMFile
 			this.MapLayout = MapLayout.Rows;
 			this.Split = false;
 			this.SplitSize = 0;
-			this.ChangeBankEachSplit = true;
+			this.ChangeBankEachSplit = false;
 			this.SelTab = 0;
 			this.exportPropCount = 0;
 			this.TileOffset = 0;
