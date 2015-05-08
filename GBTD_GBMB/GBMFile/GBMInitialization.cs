@@ -24,18 +24,59 @@ namespace GB.Shared.GBMFile
 		}
 
 		/// <summary>
-		/// Creates an object of the specified type in the given file.  An unique ID is assigned to the object, 
+		/// Creates an object of the specified type.  An unique ID is assigned to the object, 
 		/// but the object is NOT added to the file.
 		/// 
-		/// <para>If a master object is needed, it will be created.</para>
+		/// <para>If a master object is needed, it will be created.  The file is used for locating the master.</para>
 		/// </summary>
 		/// <typeparam name="TObjectType"></typeparam>
 		/// <param name="file"></param>
 		/// <returns></returns>
 		public static TObjectType CreateObject<TObjectType>(GBMFile file) where TObjectType : GBMObject {
+			return CreateObject<TObjectType>(GetNextUniqueID(file), file);
+		}
+
+		/// <summary>
+		/// Creates an object of the specified type.  An unique ID is assigned to the object, 
+		/// but the object is NOT added to the file.
+		/// 
+		/// <para>If a master object is needed, it will be created.  The file is used for locating the master.</para>
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <param name="file"></param>
+		/// <returns></returns>
+		public static GBMObject CreateObject(UInt16 ObjectType, GBMFile file) {
+			return CreateObject(ObjectType, GetNextUniqueID(file), file);
+		}
+
+		/// <summary>
+		/// Creates an object of the specified type.  An unique ID is assigned to the object, 
+		/// but the object is NOT added to the file.
+		/// 
+		/// <para>If a master object is needed, it will be created.  The file is used for locating the master.</para>
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <param name="file"></param>
+		/// <returns></returns>
+		public static TObjectType CreateObject<TObjectType>(UInt16 ObjectID, GBMFile file) where TObjectType : GBMObject {
 			var objectMapping = mapping.Values.Single(o => (o.Type == typeof(TObjectType)));
 
-			return (TObjectType)objectMapping.Create(file, GetNextUniqueID(file));
+			return (TObjectType)objectMapping.Create(file, ObjectID);
+		}
+
+		/// <summary>
+		/// Creates an object of the specified type with the given unique ID.
+		/// The object is NOT added to the file.
+		/// 
+		/// <para>If a master object is needed, it will be created.  The file is used for locating the master.</para>
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <param name="file"></param>
+		/// <returns></returns>
+		public static GBMObject CreateObject(UInt16 ObjectType, UInt16 ObjectID, GBMFile file) {
+			var objectMapping = mapping[ObjectType];
+
+			return objectMapping.Create(file, ObjectID);
 		}
 
 		/// <summary>

@@ -172,6 +172,55 @@ namespace GB.Shared.GBMFile
 		}
 
 		/// <summary>
+		/// Creates a GBMFile with the default data already added.
+		/// </summary>
+		public static GBMFile CreatePrePopulated() {
+			GBMFile file = new GBMFile();
+
+			file.AddObject<GBMObjectProducerInfo>(0);
+			file.AddObject<GBMObjectMap>(1);
+			file.AddObject<GBMObjectMapTileData>(2);
+			file.AddObject<GBMObjectMapProperties>(3);
+			file.AddObject<GBMObjectMapPropertyData>(4);
+			file.AddObject<GBMObjectDefaultTilePropertyValues>(5);
+			file.AddObject<GBMObjectMapSettings>(6);
+			file.AddObject<GBMObjectMapPropertyColors>(7);
+			file.AddObject<GBMObjectMapExportSettings>(8);
+			file.AddObject<GBMObjectMapExportProperties>(9);
+
+			return file;
+		}
+
+		/// <summary>
+		/// Adds a new object of the given type and ID.  TODO: Make this public if needed.
+		/// </summary>
+		/// <param name="ObjectType"></param>
+		/// <param name="UniqueID"></param>
+		private void AddObject(UInt16 ObjectType, UInt16 UniqueID) {
+			if (this.Objects.ContainsKey(UniqueID)) {
+				throw new InvalidOperationException(String.Format("Object ID 0x{0:X4} is already registered for {1}!", UniqueID, Objects[UniqueID]));
+			}
+
+			GBMObject obj = GBMInitialization.CreateObject(ObjectType, UniqueID, this);
+
+			this.Objects.Add(UniqueID, obj);
+		}
+
+		/// <summary>
+		/// Adds a new object of the given type and ID.  TODO: Make this public if needed.
+		/// </summary>
+		/// <param name="UniqueID"></param>
+		private void AddObject<TObjectType>(UInt16 UniqueID) where TObjectType : GBMObject {
+			if (this.Objects.ContainsKey(UniqueID)) {
+				throw new InvalidOperationException(String.Format("Object ID 0x{0:X4} is already registered for {1}!", UniqueID, Objects[UniqueID]));
+			}
+
+			GBMObject obj = GBMInitialization.CreateObject<TObjectType>(UniqueID, this);
+
+			this.Objects.Add(UniqueID, obj);
+		}
+
+		/// <summary>
 		/// Gets the only object of the specified type.
 		/// </summary>
 		/// <typeparam name="TObject"></typeparam>

@@ -54,10 +54,13 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public void UpdateWithCurrentApp() {
 			var splitVersion = Application.ProductVersion.Split('.');
-			
-			this.Name = "GBMB in C# v" + Application.ProductVersion + " by Pokechu22";
-			this.Version = splitVersion[0] + "." + splitVersion[1];
-			this.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
+
+			this.Name = "Gameboy Map Builder";
+			this.Version = "1.8";
+			this.Info = "Home: http://www.casema.net/~hpmulder";
+			//this.Name = "GBMB in C# v" + Application.ProductVersion + " by Pokechu22";
+			//this.Version = splitVersion[0] + "." + splitVersion[1];
+			//this.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
 		}
 
 		public override string GetTypeName() {

@@ -428,7 +428,7 @@ namespace GB.GBMB
 			LoadReopenList();
 
 			if (gbmFile == null) {
-				LoadMapFile(new GBMFile());
+				LoadMapFile(GBMFile.CreatePrePopulated());
 			}
 		}
 
