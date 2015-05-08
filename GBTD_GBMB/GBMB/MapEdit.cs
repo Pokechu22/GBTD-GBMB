@@ -388,8 +388,16 @@ namespace GB.GBMB
 				gbrFile = new GBRFile(stream);
 			}
 
-			this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-			this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
+
+			var tileData = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+
+			if (map.TileCount < tileData.Count) { //GBR File has more tiles than GBM; update!
+				map.TileCount = tileData.Count;
+			}
+
+			this.mapControl.TileSet = tileData;
+			this.tileList.TileSet = tileData;
 
 			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
 			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
@@ -491,7 +499,12 @@ namespace GB.GBMB
 		private void auMessenger_OnTileRefreshNeeded(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				gbrFile.GetObjectsOfType<GBRObjectTileData>().First().tiles = mmf.Tiles.GetTilesArray();
+				var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
+
+				var tileData = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				var defaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+
+				tileData.tiles = mmf.Tiles.GetTilesArray();
 
 				//Inefficiant, but it works.
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];
@@ -502,13 +515,17 @@ namespace GB.GBMB
 					 sgbPal[i] = mmf.PalMaps[i].SGB;
 				}
 
-				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().GBCPalettes = gbcPal;
-				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes = sgbPal;
+				defaultPalette.GBCPalettes = gbcPal;
+				defaultPalette.SGBPalettes = sgbPal;
 
-				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-				this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				if (map.TileCount < tileData.Count) { //GBR File has more tiles than GBM; update!
+					map.TileCount = tileData.Count;
+				}
+
+				this.mapControl.TileSet = tileData;
+				this.mapControl.DefaultPalette = defaultPalette;
+				this.tileList.TileSet = tileData;
+				this.tileList.PaletteMapping = defaultPalette;
 			}));
 		}
 
@@ -531,7 +548,12 @@ namespace GB.GBMB
 		private void auMessenger_OnTotalRefreshNeeded(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				gbrFile.GetObjectsOfType<GBRObjectTileData>().First().tiles = mmf.Tiles.GetTilesArray();
+				var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
+
+				var tileData = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				var defaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+
+				tileData.tiles = mmf.Tiles.GetTilesArray();
 
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];
 				UInt32[] sgbPal = new UInt32[mmf.TileCount];
@@ -541,14 +563,18 @@ namespace GB.GBMB
 					sgbPal[i] = mmf.PalMaps[i].SGB;
 				}
 
-				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().GBCPalettes = gbcPal;
-				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes = sgbPal;
+				defaultPalette.GBCPalettes = gbcPal;
+				defaultPalette.SGBPalettes = sgbPal;
+
+				if (map.TileCount < tileData.Count) { //GBR File has more tiles than GBM; update!
+					map.TileCount = tileData.Count;
+				}
 
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-				this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				this.mapControl.TileSet = tileData;
+				this.mapControl.DefaultPalette = defaultPalette;
+				this.tileList.TileSet = tileData;
+				this.tileList.PaletteMapping = defaultPalette;
 				//TODO load the palettedata from MMF (for both map and tilelist)
 			}));
 		}

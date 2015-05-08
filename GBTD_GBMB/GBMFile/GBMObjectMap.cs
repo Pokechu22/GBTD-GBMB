@@ -19,7 +19,7 @@ namespace GB.Shared.GBMFile
 
 		public GBMObjectMap(UInt16 UniqueID, UInt32 Width, UInt32 Height) : this(UniqueID, "", Width, Height) { }
 
-		public GBMObjectMap(UInt16 UniqueID, String Name, UInt32 Width, UInt32 Height) : this(UniqueID, Name, Width, Height, 0, "", 512, 2) { }
+		public GBMObjectMap(UInt16 UniqueID, String Name, UInt32 Width, UInt32 Height) : this(UniqueID, Name, Width, Height, 1, "", 80, 2) { }
 
 		public GBMObjectMap(UInt16 UniqueID, String Name, UInt32 Width, UInt32 Height, UInt32 PropCount, String TileFileName, UInt32 TileCount, 
 				UInt32 PropColorCount) : base(UniqueID) {

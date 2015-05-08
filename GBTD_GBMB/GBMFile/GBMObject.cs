@@ -88,9 +88,12 @@ namespace GB.Shared.GBMFile
 				}
 				this.SaveToStream(ms);
 
-				this.Header = this.Header.Resize((UInt32)ms.Length);
+				this.Header.SetSize((UInt32)ms.Length);
 				s.WriteGBMObjectHeader(this.Header);
-				s.Write(ms.ToArray(), 0, (int)this.Header.Size);
+
+				ms.Position = 0;
+				ms.CopyTo(s);
+				//s.Write(ms.ToArray(), 0, (int)this.Header.Size);
 			}
 		}
 
@@ -153,55 +156,53 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		public new TMaster Master {
 			get { return (TMaster)base.Master; }
-			protected set { base.Master = value; }
+			protected set { base.Master = value; this.Header.SetMaster(this.Master); }
 		}
 
 		protected MasteredGBMObject(UInt16 UniqueID, GBMFile file) : base(UniqueID) {
 			this.Master = file.GetOrCreateObjectOfType<TMaster>();
 
-			this.Header = new GBMObjectHeader(GBMInitialization.GetTypeID(this.GetType()), UniqueID, Master.Header.ObjectID, 0);
+			this.Header.SetMaster(this.Master);
 		}
 
 		protected MasteredGBMObject(TMaster Master, GBMObjectHeader header, Stream stream) : base(Master, header, stream) { }
 	}
 	
-	public struct GBMObjectHeader
+	public class GBMObjectHeader
 	{
 		/// <summary>
 		/// The marker text - should ALWAYS be "HPJMTL".
 		/// </summary>
-		public readonly byte[] Marker;
+		public byte[] Marker { get; private set; }
 
 		/// <summary>
 		/// The typeid of this object, which should remain constant.
 		/// </summary>
-		public readonly UInt16 ObjectType;
+		public UInt16 ObjectType { get; private set; }
 
 		/// <summary>
 		/// The Unique Object ID of the object.
 		/// </summary>
-		public readonly UInt16 ObjectID;
+		public UInt16 ObjectID { get; private set; }
 
 		/// <summary>
 		/// If this object is a sub-object, this contains the main object's ID.
 		/// If it is null, this is not a subobject.  A value of 0 is treated as null.
 		/// </summary>
-		public readonly UInt16? MasterID;
+		public UInt16? MasterID { get; private set; }
 
 		/// <summary>
 		/// The CRC of the object, which is currently unused.
 		/// 
 		/// If 0, it has not yet been calculated.
 		/// </summary>
-		[Obsolete("Currently not yet used - will always be 0.")]
-		public readonly UInt32 CRC;
+		public UInt32 CRC { get; private set; }
 
 		/// <summary>
 		/// The size that this object was deserialized with.
 		/// </summary>
-		public readonly UInt32 Size;
+		public UInt32 Size{ get; private set; }
 
-#pragma warning disable 618 //Disables obsolete warnings - http://stackoverflow.com/q/968293/3991344
 		public GBMObjectHeader(UInt16 ObjectType, UInt16 ObjectID, UInt16? MasterID, UInt32 Size) {
 			this.Marker = new byte[] { 0x48, 0x50, 0x4A, 0x4D, 0x54, 0x4C }; //"HPJTML"
 			this.ObjectType = ObjectType;
@@ -210,12 +211,23 @@ namespace GB.Shared.GBMFile
 			this.CRC = 0x00000000U;
 			this.Size = Size;
 		}
-
-		public GBMObjectHeader Resize(UInt32 newSize) {
-			return new GBMObjectHeader(this.Marker, this.ObjectType, this.ObjectID, this.MasterID, this.CRC, newSize);
+		
+		public void SetSize(UInt32 newSize) {
+			this.Size = newSize;
 		}
 
-		[Obsolete("Sets unused values; you probably want the other one.")]
+		public void SetMaster(GBMObject Master) {
+			if (Master == null) {
+				this.MasterID = null;
+			} else {
+				if (Master.Header.ObjectID == 0) {
+					throw new InvalidOperationException("Cannot set the master object to object 0!  Please don't!");
+				} else {
+					this.MasterID = Master.Header.ObjectID;
+				}
+			}
+		}
+
 		public GBMObjectHeader(byte[] Marker, UInt16 ObjectType, UInt16 ObjectID, UInt16? MasterID, UInt32 CRC, UInt32 Size) {
 			this.Marker = Marker;
 			this.ObjectType = ObjectType;
@@ -224,7 +236,6 @@ namespace GB.Shared.GBMFile
 			this.CRC = CRC;
 			this.Size = Size;
 		}
-#pragma warning restore 618
 		
 		/// <summary>
 		/// Validates the marker text (and mabye the CRC later).
