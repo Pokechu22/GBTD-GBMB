@@ -843,6 +843,7 @@
 			this.MaximizeBox = false;
 			this.Name = "TileEdit";
 			this.Text = " ";
+			this.Icon = global::GB.GBTD.Properties.Resources.GBTDIcon;
 			this.tileEditBorder.ResumeLayout(false);
 			this.ResumeLayout(false);
 
