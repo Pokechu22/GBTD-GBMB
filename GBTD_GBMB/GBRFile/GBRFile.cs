@@ -122,8 +122,10 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns></returns>
-		public GBRObject GetReferedObject(ReferentialGBRObject obj) {
-			return Objects.First(o => o.Header.UniqueID == obj.ReferedObjectID);
+		public TRefferedType GetReferedObject<TRefferedType>(ReferentialGBRObject<TRefferedType> obj) where TRefferedType : GBRObject {
+			return Objects
+				.OfType<TRefferedType>()
+				.Single(o => o.Header.UniqueID == obj.ReferedObjectID);
 		}
 
 		/// <summary>
@@ -131,21 +133,9 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns></returns>
-		public List<ReferentialGBRObject> GetReferingObjects(GBRObject obj) {
-			return new List<ReferentialGBRObject>(Objects
-				.OfType<ReferentialGBRObject>()
-				.Where(o => o.ReferedObjectID == obj.Header.UniqueID));
-		}
-
-		/// <summary>
-		/// Gets all objects of the specified type that refer to the specified object.
-		/// </summary>
-		/// <typeparam name="TObjectType"></typeparam>
-		/// <param name="obj"></param>
-		/// <returns></returns>
-		public List<TObjectType> GetReferingObjects<TObjectType>(GBRObject obj) where TObjectType : ReferentialGBRObject {
-			return new List<TObjectType>(Objects
-				.OfType<TObjectType>()
+		public List<ReferentialGBRObject<TObjectType>> GetReferingObjects<TObjectType>(TObjectType obj) where TObjectType : GBRObject {
+			return new List<ReferentialGBRObject<TObjectType>>(Objects
+				.OfType<ReferentialGBRObject<TObjectType>>()
 				.Where(o => o.ReferedObjectID == obj.Header.UniqueID));
 		}
 

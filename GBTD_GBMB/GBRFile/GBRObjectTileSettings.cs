@@ -9,7 +9,7 @@ using GB.Shared.Palettes;
 
 namespace GB.Shared.GBRFile
 {
-	public class GBRObjectTileSettings : ReferentialGBRObject
+	public class GBRObjectTileSettings : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectTileSettings(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 

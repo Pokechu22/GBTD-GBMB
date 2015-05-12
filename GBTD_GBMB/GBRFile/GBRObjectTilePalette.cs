@@ -10,7 +10,7 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// Represents the palette *mappings* for a group of tiles.
 	/// </summary>
-	public class GBRObjectTilePalette : ReferentialGBRObject
+	public class GBRObjectTilePalette : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectTilePalette(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 

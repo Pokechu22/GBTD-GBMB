@@ -182,7 +182,7 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// A GBRObject that refers to another GBRObject.
 	/// </summary>
-	public abstract class ReferentialGBRObject : GBRObject
+	public abstract class ReferentialGBRObject<TReferedType> : GBRObject
 	{
 		protected ReferentialGBRObject(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
