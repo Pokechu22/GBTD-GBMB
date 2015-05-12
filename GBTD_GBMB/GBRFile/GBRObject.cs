@@ -26,11 +26,6 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public GBRObjectHeader Header { get; protected set; }
 
-		protected GBRObject(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) {
-			this.Header = new GBRObjectHeader(TypeID, UniqueID, Size);
-			LoadObject(stream);
-		}
-
 		protected GBRObject(GBRObjectHeader header, Stream stream) {
 			this.Header = header;
 			LoadObject(stream);
@@ -189,7 +184,6 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public abstract class ReferentialGBRObject : GBRObject
 	{
-		protected ReferentialGBRObject(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		protected ReferentialGBRObject(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		public abstract UInt16 ReferedObjectID { get; set; }

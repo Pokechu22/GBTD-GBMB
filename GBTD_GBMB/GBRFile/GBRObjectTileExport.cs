@@ -9,7 +9,6 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileExport : ReferentialGBRObject
 	{
-		public GBRObjectTileExport(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileExport(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		/// <summary>

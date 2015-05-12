@@ -12,7 +12,6 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public class GBRObjectProducerInfo : GBRObject
 	{
-		public GBRObjectProducerInfo(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectProducerInfo(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		private string name, version, info;

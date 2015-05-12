@@ -12,7 +12,6 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public class GBRObjectTilePalette : ReferentialGBRObject
 	{
-		public GBRObjectTilePalette(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTilePalette(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		/// <summary>

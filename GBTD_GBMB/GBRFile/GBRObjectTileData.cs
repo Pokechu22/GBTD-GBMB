@@ -10,7 +10,6 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileData : GBRObject
 	{
-		public GBRObjectTileData(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileData(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		private string name;

@@ -9,7 +9,6 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileImport : ReferentialGBRObject
 	{
-		public GBRObjectTileImport(UInt16 TypeID, UInt16 UniqueID, UInt32 Size, Stream stream) : base(TypeID, UniqueID, Size, stream) { }
 		public GBRObjectTileImport(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
 		/// <summary>
