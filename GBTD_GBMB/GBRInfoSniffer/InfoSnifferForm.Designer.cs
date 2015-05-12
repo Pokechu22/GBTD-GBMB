@@ -89,6 +89,7 @@
 			this.Controls.Add(this.panel);
 			this.Name = "InfoSnifferForm";
 			this.Text = "GBR Info Sniffer";
+			this.Icon = global::GBRInfoSniffer.Properties.Resources.GBRSnifferIcon;
 			this.groupBox.ResumeLayout(false);
 			this.panel.ResumeLayout(false);
 			this.ResumeLayout(false);
