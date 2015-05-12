@@ -517,7 +517,7 @@
 			// 
 			this.zoom25PercentMenuItem.Index = 0;
 			this.zoom25PercentMenuItem.RadioCheck = true;
-			this.zoom25PercentMenuItem.Tag = GB.GBMB.ZoomLevel._25;
+			this.zoom25PercentMenuItem.Tag = GB.Shared.GBMFile.ZoomLevel._25;
 			this.zoom25PercentMenuItem.Text = "25&%";
 			this.zoom25PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
@@ -525,7 +525,7 @@
 			// 
 			this.zoom50PercentMenuItem.Index = 1;
 			this.zoom50PercentMenuItem.RadioCheck = true;
-			this.zoom50PercentMenuItem.Tag = GB.GBMB.ZoomLevel._50;
+			this.zoom50PercentMenuItem.Tag = GB.Shared.GBMFile.ZoomLevel._50;
 			this.zoom50PercentMenuItem.Text = "&50%";
 			this.zoom50PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
@@ -533,7 +533,7 @@
 			// 
 			this.zoom100PercentMenuItem.Index = 2;
 			this.zoom100PercentMenuItem.RadioCheck = true;
-			this.zoom100PercentMenuItem.Tag = GB.GBMB.ZoomLevel._100;
+			this.zoom100PercentMenuItem.Tag = GB.Shared.GBMFile.ZoomLevel._100;
 			this.zoom100PercentMenuItem.Text = "&100%";
 			this.zoom100PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
@@ -541,7 +541,7 @@
 			// 
 			this.zoom150PercentMenuItem.Index = 3;
 			this.zoom150PercentMenuItem.RadioCheck = true;
-			this.zoom150PercentMenuItem.Tag = GB.GBMB.ZoomLevel._150;
+			this.zoom150PercentMenuItem.Tag = GB.Shared.GBMFile.ZoomLevel._150;
 			this.zoom150PercentMenuItem.Text = "15&0%";
 			this.zoom150PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
@@ -549,7 +549,7 @@
 			// 
 			this.zoom200PercentMenuItem.Index = 4;
 			this.zoom200PercentMenuItem.RadioCheck = true;
-			this.zoom200PercentMenuItem.Tag = GB.GBMB.ZoomLevel._200;
+			this.zoom200PercentMenuItem.Tag = GB.Shared.GBMFile.ZoomLevel._200;
 			this.zoom200PercentMenuItem.Text = "&200%";
 			this.zoom200PercentMenuItem.Click += new System.EventHandler(this.onZoomMenuItemClicked);
 			// 
@@ -868,7 +868,7 @@
 			this.mapControl.ShowPropertyColors = false;
 			this.mapControl.Size = new System.Drawing.Size(284, 166);
 			this.mapControl.TabIndex = 0;
-			this.mapControl.ZoomLevel = GB.GBMB.ZoomLevel._200;
+			this.mapControl.ZoomLevel = GB.Shared.GBMFile.ZoomLevel._200;
 			this.mapControl.SelectionChanged += new System.EventHandler(this.mapControl_SelectionChanged);
 			this.mapControl.TileClicked += new System.EventHandler<GB.GBMB.TileClickedEventArgs>(this.mapControl_TileClicked);
 			// 

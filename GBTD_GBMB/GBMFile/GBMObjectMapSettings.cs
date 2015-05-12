@@ -17,7 +17,7 @@ namespace GB.Shared.GBMFile
 			this.ShowGrid = true;
 			this.ShowDoubleMarkers = false;
 			this.ShowPropColors = false;
-			this.Zoom = 2;
+			this.Zoom = ZoomLevel._100;
 			this.ColorSet = 0;
 			this.Bookmark1 = 0xFFFF;
 			this.Bookmark2 = 0xFFFF;
@@ -60,10 +60,8 @@ namespace GB.Shared.GBMFile
 		public bool ShowPropColors { get; set; }
 		/// <summary>
 		/// The current zoom level.
-		/// 
-		/// TODO: Enum?
 		/// </summary>
-		public UInt16 Zoom { get; set; }
+		public ZoomLevel Zoom { get; set; }
 		/// <summary>
 		/// The current colorset.
 		/// 
@@ -108,7 +106,7 @@ namespace GB.Shared.GBMFile
 			this.ShowGrid = s.ReadBoolean();
 			this.ShowDoubleMarkers = s.ReadBoolean();
 			this.ShowPropColors = s.ReadBoolean();
-			this.Zoom = s.ReadWord();
+			this.Zoom = (ZoomLevel)s.ReadWord();
 			this.ColorSet = s.ReadWord();
 			this.Bookmark1 = s.ReadWord();
 			this.Bookmark2 = s.ReadWord();
@@ -127,7 +125,7 @@ namespace GB.Shared.GBMFile
 			s.WriteBoolean(ShowGrid);
 			s.WriteBoolean(ShowDoubleMarkers);
 			s.WriteBoolean(ShowPropColors);
-			s.WriteWord(Zoom);
+			s.WriteWord((UInt16)Zoom);
 			s.WriteWord(ColorSet);
 			s.WriteWord(Bookmark1);
 			s.WriteWord(Bookmark2);
@@ -169,6 +167,15 @@ namespace GB.Shared.GBMFile
 
 			return node;
 		}
+	}
+
+	public enum ZoomLevel : ushort
+	{
+		_25 = 0,
+		_50 = 1,
+		_100 = 2,
+		_150 = 3,
+		_200 = 4,
 	}
 
 	public enum BlockFillMode : uint

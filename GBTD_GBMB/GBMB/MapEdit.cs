@@ -110,6 +110,8 @@ namespace GB.GBMB
 					}
 				}
 
+				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Zoom = value;
+
 				switch (value) {
 				case ZoomLevel._25: zoomComboBox.SelectedIndex = 0; break;
 				case ZoomLevel._50: zoomComboBox.SelectedIndex = 1; break;
@@ -372,6 +374,7 @@ namespace GB.GBMB
 			this.ShowDoubleMarkers = settings.ShowDoubleMarkers;
 			
 			this.ColorSet = (ColorSet)settings.ColorSet;
+			this.ZoomLevel = settings.Zoom;
 
 			this.Bookmark1 = settings.Bookmark1;
 			this.Bookmark2 = settings.Bookmark2;
@@ -645,13 +648,19 @@ namespace GB.GBMB
 		}
 
 		private void zoomComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+			ZoomLevel level;
+
 			switch (zoomComboBox.SelectedIndex) {
-			case 0: ZoomLevel = ZoomLevel._25; return;
-			case 1: ZoomLevel = ZoomLevel._50; return;
-			case 2: ZoomLevel = ZoomLevel._100; return;
-			case 3: ZoomLevel = ZoomLevel._150; return;
-			case 4: ZoomLevel = ZoomLevel._200; return;
+			case 0: level = ZoomLevel._25; break;
+			case 1: level = ZoomLevel._50; break;
+			case 2: level = ZoomLevel._100; break;
+			case 3: level = ZoomLevel._150; break;
+			case 4: level = ZoomLevel._200; break;
 			default: zoomComboBox.SelectedIndex = 0; return;
+			}
+
+			if (this.ZoomLevel != level) {
+				this.ZoomLevel = level;
 			}
 		}
 

@@ -21,7 +21,7 @@ namespace GB.GBMB
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public override string Text { get { return base.Text; } set { base.Text = value; } }
 
-		private float zoom;
+		private float zoom = 2.0f;
 		private bool showGrid;
 		private bool showDoubleMarkers;
 		private bool showPropertyColors;
@@ -31,8 +31,33 @@ namespace GB.GBMB
 		/// </summary>
 		[Category("Map display"), Description("The scale factor used for the map.")]
 		public ZoomLevel ZoomLevel {
-			get { return (ZoomLevel)(zoom * 2); }
-			set { zoom = ((int)value / 2f); this.Invalidate(); }
+			get {
+				if (this.zoom == .5f) {
+					return ZoomLevel._25;
+				} else if (this.zoom == 1.0f) {
+					return ZoomLevel._50;
+				} else if (this.zoom == 2.0f) {
+					return ZoomLevel._100;
+				} else if (this.zoom == 3.0f) {
+					return ZoomLevel._150;
+				} else if (this.zoom == 4.0f) {
+					return ZoomLevel._200;
+				} else {
+					this.zoom = 2.0f;
+					return ZoomLevel._100;
+				}
+			}
+			set {
+				switch (value) {
+				case ZoomLevel._25: this.zoom = .5f; break;
+				case ZoomLevel._50: this.zoom = 1.0f; break;
+				case ZoomLevel._100: this.zoom = 2.0f; break;
+				case ZoomLevel._150: this.zoom = 3.0f; break;
+				case ZoomLevel._200: this.zoom = 4.0f; break;
+				}
+
+				this.Invalidate();
+			}
 		}
 
 		[Category("Map display"), Description("Whether or not a per-tile grid is shown.")]

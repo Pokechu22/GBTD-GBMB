@@ -131,7 +131,6 @@
     <Compile Include="ToolList.Designer.cs">
       <DependentUpon>ToolList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ZoomLevel.cs" />
     <EmbeddedResource Include="Dialogs\BlockFillDialog.resx">
       <DependentUpon>BlockFillDialog.cs</DependentUpon>
     </EmbeddedResource>
