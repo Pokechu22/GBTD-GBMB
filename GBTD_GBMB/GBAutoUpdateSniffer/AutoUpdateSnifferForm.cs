@@ -24,7 +24,9 @@ namespace GBAutoUpdateSniffer
 		}
 
 		protected override void OnClosed(EventArgs e) {
-			mmf.Dispose();
+			if (mmf != null) {
+				mmf.Dispose();
+			}
 			base.OnClosed(e);
 		}
 
@@ -47,6 +49,9 @@ namespace GBAutoUpdateSniffer
 			labelMessageName.Text = auListener.AutoUpdateMessageName;
 
 			using (var stream = openFileDialog.OpenFile()) {
+				if (mmf != null) {
+					mmf.Dispose();
+				}
 				this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener, new GBRFile(stream));
 			}
 
