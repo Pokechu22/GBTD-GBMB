@@ -908,6 +908,7 @@
 			this.ClientSize = new System.Drawing.Size(292, 286);
 			this.Controls.Add(this.tabControl);
 			this.Name = "AutoUpdateSnifferForm";
+			this.Icon = global::GBAutoUpdateSniffer.Properties.Resources.AUSnifferIcon;
 			this.Text = "GBTD Auto Update Sniffer";
 			mmfIDAndColorMappingTableLayoutPanel.ResumeLayout(false);
 			mmfMagicMarkerGroupBox.ResumeLayout(false);
