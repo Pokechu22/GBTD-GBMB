@@ -275,7 +275,7 @@ namespace GB.GBMB.Exporting
 			if (tile.GBCPalette != null) {
 				return tile.GBCPalette.Value;
 			} else {
-				return (UInt16)gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().GBCPalettes[tile.TileNumber];
+				return (UInt16)gbrFile.GetObjectOfType<GBRObjectTilePalette>().GBCPalettes[tile.TileNumber];
 			}
 		}
 
@@ -286,7 +286,7 @@ namespace GB.GBMB.Exporting
 			if (tile.SGBPalette != null) {
 				return tile.SGBPalette.Value;
 			} else {
-				return (UInt16)gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes[tile.TileNumber];
+				return (UInt16)gbrFile.GetObjectOfType<GBRObjectTilePalette>().SGBPalettes[tile.TileNumber];
 			}
 		}
 

@@ -109,6 +109,29 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
+		/// Gets the only object of the given type.
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <returns></returns>
+		public TObjectType GetObjectOfType<TObjectType>() where TObjectType : GBRObject {
+			return Objects.OfType<TObjectType>().Single();
+		}
+
+		/// <summary>
+		/// Gets the only object of the given type, or creates one if it does not exist.
+		/// </summary>
+		/// <typeparam name="TObjectType"></typeparam>
+		/// <returns></returns>
+		public TObjectType GetOrCreateObjectOfType<TObjectType>() where TObjectType : GBRObject {
+			if (Objects.OfType<TObjectType>().Count() == 0) {
+				//TODO: Create a new object.
+				return null;
+			}
+
+			return Objects.OfType<TObjectType>().Single();
+		}
+
+		/// <summary>
 		/// Gets all of the objects that are of the specified type.
 		/// </summary>
 		/// <typeparam name="TObjectType"></typeparam>

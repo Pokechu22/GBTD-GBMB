@@ -397,7 +397,7 @@ namespace GB.GBMB
 
 			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
-			var tileData = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 
 			if (map.TileCount < tileData.Count) { //GBR File has more tiles than GBM; update!
 				map.TileCount = tileData.Count;
@@ -406,9 +406,9 @@ namespace GB.GBMB
 			this.mapControl.TileSet = tileData;
 			this.tileList.TileSet = tileData;
 
-			var pals = gbrFile.GetObjectsOfType<GBRObjectPalettes>().First();
-			this.mapControl.DefaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-			this.tileList.PaletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			var pals = gbrFile.GetObjectOfType<GBRObjectPalettes>();
+			this.mapControl.DefaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+			this.tileList.PaletteMapping = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 			PaletteData paletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 			this.tileList.PaletteData = paletteData;
 			this.mapControl.PaletteData = paletteData;
@@ -502,14 +502,14 @@ namespace GB.GBMB
 		private void auMessenger_OnTileChanged(object sender, TileChangedEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				gbrFile.GetObjectsOfType<GBRObjectTileData>().First().tiles[args.TileID] = mmf.Tiles[args.TileID];
+				gbrFile.GetObjectOfType<GBRObjectTileData>().tiles[args.TileID] = mmf.Tiles[args.TileID];
 				//TODO: Below is very ineficiant.
-				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().GBCPalettes[args.TileID] = mmf.PalMaps[args.TileID].GBC;
-				gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First().SGBPalettes[args.TileID] = mmf.PalMaps[args.TileID].SGB;
+				gbrFile.GetObjectOfType<GBRObjectTilePalette>().GBCPalettes[args.TileID] = mmf.PalMaps[args.TileID].GBC;
+				gbrFile.GetObjectOfType<GBRObjectTilePalette>().SGBPalettes[args.TileID] = mmf.PalMaps[args.TileID].SGB;
 
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.mapControl.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				this.tileList.TileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+				this.mapControl.TileSet = gbrFile.GetObjectOfType<GBRObjectTileData>();
+				this.tileList.TileSet = gbrFile.GetObjectOfType<GBRObjectTileData>();
 			}));
 		}
 
@@ -532,8 +532,8 @@ namespace GB.GBMB
 			{
 				var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
-				var tileData = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				var defaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
+				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
 				tileData.tiles = mmf.Tiles.GetTilesArray();
 
@@ -581,8 +581,8 @@ namespace GB.GBMB
 			{
 				var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
 
-				var tileData = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-				var defaultPalette = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
+				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
 				tileData.tiles = mmf.Tiles.GetTilesArray();
 
@@ -1080,8 +1080,8 @@ namespace GB.GBMB
 		}
 
 		private void blockFillMenuItem_Click(object sender, EventArgs e) {
-			var tileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
-			var paletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+			var tileSet = gbrFile.GetObjectOfType<GBRObjectTileData>();
+			var paletteMapping = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 			var settings = gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>();
 			var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMapTileData>();
 			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapPropertyData>();
@@ -1110,8 +1110,8 @@ namespace GB.GBMB
 		}
 
 		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
-			var paletteMapping = gbrFile.GetObjectsOfType<GBRObjectTilePalette>().First();
-			var tileSet = gbrFile.GetObjectsOfType<GBRObjectTileData>().First();
+			var paletteMapping = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+			var tileSet = gbrFile.GetObjectOfType<GBRObjectTileData>();
 			var properties = gbmFile.GetOrCreateObjectOfType<GBMObjectMapProperties>();
 			var defaultProperties = gbmFile.GetOrCreateObjectOfType<GBMObjectDefaultTilePropertyValues>();
 

@@ -420,9 +420,9 @@ namespace GB.Shared.AutoUpdate
 
 				ID = "TU01";
 
-				var tiles = loadedFile.GetObjectsOfType<GBRObjectTileData>().First();
-				var pals = loadedFile.GetObjectsOfType<GBRObjectPalettes>().First();
-				var palMaps = loadedFile.GetObjectsOfType<GBRObjectTilePalette>().First();
+				var tiles = loadedFile.GetObjectOfType<GBRObjectTileData>();
+				var pals = loadedFile.GetObjectOfType<GBRObjectPalettes>();
+				var palMaps = loadedFile.GetObjectOfType<GBRObjectTilePalette>();
 
 				TileCount = tiles.Count;
 				TileWidth = tiles.Width;
