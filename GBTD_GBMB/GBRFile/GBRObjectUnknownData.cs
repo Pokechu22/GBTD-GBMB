@@ -15,7 +15,9 @@ namespace GB.Shared.GBRFile
 	{
 		private byte[] data;
 
-		public GBRObjectUnknownData(UInt16 UniqueID) : base(UniqueID) { }
+		public GBRObjectUnknownData(UInt16 UniqueID) : base(UniqueID) {
+			this.data = new byte[0];
+		}
 
 		protected override void SaveToStream(Stream s) {
 			s.Write(data, 0, (int)Header.Size);

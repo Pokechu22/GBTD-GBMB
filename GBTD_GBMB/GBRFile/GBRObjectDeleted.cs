@@ -15,7 +15,9 @@ namespace GB.Shared.GBRFile
 	{
 		private byte[] data;
 
-		public GBRObjectDeleted(GBRObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBRObjectDeleted(UInt16 UniqueID) : base(UniqueID) {
+			this.data = new byte[0];
+		}
 
 		protected override void SaveToStream(Stream s) {
 			s.Write(data, 0, (int)Header.Size);
