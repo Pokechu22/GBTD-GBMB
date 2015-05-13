@@ -97,7 +97,7 @@ namespace GB.Shared.GBRFile
 				throw new NotSupportedException("Stream cannot be written to.");
 			}
 
-			stream.WriteWord(header.ObjectID);
+			stream.WriteWord(header.ObjectTypeID);
 			stream.WriteWord(header.UniqueID);
 			stream.WriteLong(header.Size);
 		}

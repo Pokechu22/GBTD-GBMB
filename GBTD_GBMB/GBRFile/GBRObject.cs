@@ -73,7 +73,7 @@ namespace GB.Shared.GBRFile
 					ns.Position = 0;
 					this.SaveToStream(ns);
 
-					this.Header = this.Header.Resize((UInt32)ns.Length);
+					this.Header.Size = (UInt32)ns.Length;
 					s.WriteHeader(this.Header);
 					s.Write(ns.ToArray(), 0, (int)this.Header.Size);
 				}
@@ -92,8 +92,8 @@ namespace GB.Shared.GBRFile
 			GBRObjectHeader h = s.ReadHeader();
 
 			GBRObject exportable;
-			if (mapping.ContainsKey(h.ObjectID)) {
-				var ctor = mapping[h.ObjectID].GetConstructor(new Type[] { typeof(GBRObjectHeader), typeof(Stream) });
+			if (mapping.ContainsKey(h.ObjectTypeID)) {
+				var ctor = mapping[h.ObjectTypeID].GetConstructor(new Type[] { typeof(GBRObjectHeader), typeof(Stream) });
 				exportable = (GBRObject)ctor.Invoke(new Object[] { h, s });
 			} else {
 				exportable = new GBRObjectUnknownData(h, s);
@@ -119,7 +119,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <returns></returns>
 		protected TreeNode CreateRootTreeNode() {
-			return new TreeNode(GetTypeName() + " (" + this.Header.ObjectID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4") + ", size " + this.Header.Size);
+			return new TreeNode(GetTypeName() + " (" + this.Header.ObjectTypeID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4") + ", size " + this.Header.Size);
 		}
 
 		/// <summary>
@@ -158,12 +158,12 @@ namespace GB.Shared.GBRFile
 		}
 	}
 
-	public struct GBRObjectHeader
+	public class GBRObjectHeader
 	{
 		/// <summary>
 		/// The typeid of this object, which should remain constant.
 		/// </summary>
-		public readonly UInt16 ObjectID;
+		public readonly UInt16 ObjectTypeID;
 
 		/// <summary>
 		/// The Unique ID of the object.
@@ -173,16 +173,12 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The size that this object was deserialized with.
 		/// </summary>
-		public readonly UInt32 Size;
+		public UInt32 Size;
 
-		public GBRObjectHeader(UInt16 ObjectID, UInt16 UniqueID, UInt32 Size) {
-			this.ObjectID = ObjectID;
+		public GBRObjectHeader(UInt16 ObjectTypeID, UInt16 UniqueID, UInt32 Size) {
+			this.ObjectTypeID = ObjectTypeID;
 			this.UniqueID = UniqueID;
 			this.Size = Size;
-		}
-
-		public GBRObjectHeader Resize(UInt32 newSize) {
-			return new GBRObjectHeader(this.ObjectID, this.UniqueID, newSize);
 		}
 	}
 
