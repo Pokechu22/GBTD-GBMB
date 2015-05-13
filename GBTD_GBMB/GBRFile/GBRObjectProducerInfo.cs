@@ -12,7 +12,11 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public class GBRObjectProducerInfo : GBRObject
 	{
-		public GBRObjectProducerInfo(GBRObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBRObjectProducerInfo(UInt16 UniqueID) : base(UniqueID) {
+			this.Name = "Gameboy Tile Designer";
+			this.Version = "2.2";
+			this.Info = "Home: www.casema.net/~hpmulder";
+		}
 
 		private string name, version, info;
 

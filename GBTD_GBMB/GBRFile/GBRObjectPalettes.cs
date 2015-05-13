@@ -12,7 +12,10 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectPalettes : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectPalettes(GBRObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBRObjectPalettes(UInt16 UniqueID, GBRObjectTileData ReferedObject)
+			: base(UniqueID, ReferedObject) {
+			//TODO: Set defaults
+		}
 
 		/// <summary>
 		/// The corresponding ID of the TileData.

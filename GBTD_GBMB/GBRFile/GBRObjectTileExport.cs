@@ -9,7 +9,10 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileExport : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectTileExport(GBRObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBRObjectTileExport(UInt16 UniqueID, GBRObjectTileData ReferedObject)
+			: base(UniqueID, ReferedObject) {
+			//TODO: Set defaults
+		}
 
 		/// <summary>
 		/// The coresponding object ID.

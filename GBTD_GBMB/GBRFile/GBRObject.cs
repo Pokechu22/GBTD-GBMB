@@ -26,14 +26,6 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public GBRObjectHeader Header { get; protected set; }
 
-		protected GBRObject(GBRObjectHeader header, Stream stream) {
-			this.Header = header;
-			LoadObject(stream);
-		}
-
-		/// <summary>
-		/// Creates a GBRObject with the specified UniqueID.
-		/// </summary>
 		protected GBRObject(UInt16 UniqueID) {
 			this.Header = new GBRObjectHeader(GBRInitialization.GetTypeID(this.GetType()), UniqueID, 0);
 		}
@@ -185,13 +177,15 @@ namespace GB.Shared.GBRFile
 	/// <summary>
 	/// A GBRObject that refers to another GBRObject.
 	/// </summary>
-	public abstract class ReferentialGBRObject<TReferedType> : GBRObject
+	public abstract class ReferentialGBRObject<TRefered> : GBRObject
+		where TRefered : GBRObject
 	{
-		protected ReferentialGBRObject(GBRObjectHeader header, Stream stream) : base(header, stream) { }
-
-		protected ReferentialGBRObject(UInt16 UniqueID, UInt16 ReferedObjectID) : base(UniqueID) {
-			this.ReferedObjectID = ReferedObjectID;
+		protected ReferentialGBRObject(UInt16 UniqueID, TRefered ReferedObject) : base(UniqueID) {
+			this.ReferedObject = ReferedObject;
+			this.ReferedObjectID = ReferedObject.Header.UniqueID;
 		}
-		public abstract UInt16 ReferedObjectID { get; set; }
+
+		public TRefered ReferedObject { get; private set; }
+		public UInt16 ReferedObjectID { get; private set; }
 	}
 }

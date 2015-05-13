@@ -11,7 +11,9 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileSettings : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectTileSettings(GBRObjectHeader header, Stream stream) : base(header, stream) { }
+		public GBRObjectTileSettings(UInt16 UniqueID, GBRObjectTileData ReferedObject) : base(UniqueID, ReferedObject) {
+			//TODO: Set defaults
+		}
 
 		/// <summary>
 		/// The constant value that is used to represent a non-bookmarked-tile.
