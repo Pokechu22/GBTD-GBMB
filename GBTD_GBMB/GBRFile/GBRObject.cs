@@ -31,6 +31,13 @@ namespace GB.Shared.GBRFile
 			LoadObject(stream);
 		}
 
+		/// <summary>
+		/// Creates a GBRObject with the specified UniqueID.
+		/// </summary>
+		protected GBRObject(UInt16 UniqueID) {
+			this.Header = new GBRObjectHeader(GBRInitialization.GetTypeID(this.GetType()), UniqueID, 0);
+		}
+
 		private void LoadObject(Stream s) {
 			byte[] data = new byte[Header.Size];
 			int read = s.Read(data, 0, (int)Header.Size);
@@ -186,6 +193,9 @@ namespace GB.Shared.GBRFile
 	{
 		protected ReferentialGBRObject(GBRObjectHeader header, Stream stream) : base(header, stream) { }
 
+		protected ReferentialGBRObject(UInt16 UniqueID, UInt16 ReferedObjectID) : base(UniqueID) {
+			this.ReferedObjectID = ReferedObjectID;
+		}
 		public abstract UInt16 ReferedObjectID { get; set; }
 	}
 }
