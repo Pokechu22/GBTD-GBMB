@@ -32,26 +32,6 @@ namespace GB.Shared.GBRFile
 			this.Header = new GBRObjectHeader(GBRInitialization.GetTypeID(this.GetType()), UniqueID, 0);
 		}
 
-		private void LoadObject(GBRFile file, Stream s) {
-			byte[] data = new byte[Header.Size];
-			int read = s.Read(data, 0, (int)Header.Size);
-
-			if (read != Header.Size) {
-				throw new EndOfStreamException();
-			}
-
-			loadedData = data;
-
-			using (MemoryStream ns = new MemoryStream(data, false)) {
-				LoadFromStream(file, ns);
-
-				if (ns.Position != ns.Length) {
-					extraData = new byte[ns.Length - ns.Position];
-					ns.Read(extraData, 0, (int)(ns.Length - ns.Position));
-				}
-			}
-		}
-
 		/// <summary>
 		/// Saves the object to the given stream.
 		/// </summary>
@@ -133,16 +113,12 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The size that this object was deserialized with.
 		/// </summary>
-		public UInt32 Size { get; private set; }
+		public UInt32 Size { get; internal set; }
 
 		public GBRObjectHeader(UInt16 ObjectTypeID, UInt16 UniqueID, UInt32 Size) {
 			this.ObjectTypeID = ObjectTypeID;
 			this.UniqueID = UniqueID;
 			this.Size = Size;
-		}
-
-		public void SetSize(UInt32 newSize) {
-			this.Size = newSize;
 		}
 	}
 

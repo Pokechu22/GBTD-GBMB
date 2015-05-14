@@ -32,6 +32,8 @@ namespace GB.Shared.GBRFile
 				obj = new GBRObjectUnknownData(header);
 			}
 
+			obj.Header.Size = header.Size;
+
 			byte[] data = new byte[header.Size];
 			int read = s.Read(data, 0, (int)header.Size);
 
