@@ -127,10 +127,6 @@ namespace GB.Shared.GBMFile
 			s.WriteWord(TileOffset);
 		}
 
-		public override string GetTypeName() {
-			return "Map export settings";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode root = CreateRootTreeNode();
 

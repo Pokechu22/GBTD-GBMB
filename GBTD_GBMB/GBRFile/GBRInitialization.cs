@@ -131,10 +131,16 @@ namespace GB.Shared.GBRFile
 			throw new InvalidOperationException("There are no more unique object IDs!");
 		}
 
+		/// <summary>
+		/// Gets a user-visible type name for the given object.
+		/// </summary>
 		public static String GetTypeString(GBRObject obj) {
 			return GetTypeString(obj.GetType());
 		}
 
+		/// <summary>
+		/// Gets a user-visible type name for the given object type.
+		/// </summary>
 		public static String GetTypeString(Type type) {
 			try {
 				return mapping.Values.Single(o => (o.Type == type)).TypeString;
@@ -143,6 +149,9 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
+		/// <summary>
+		/// Gets a user-visible type name for the given type.
+		/// </summary>
 		public static String GetTypeString(UInt16 typeID) {
 			try {
 				return mapping[typeID].TypeString;

@@ -49,10 +49,6 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
-		public override string GetTypeName() {
-			return "Default tile property values";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode root = CreateRootTreeNode();
 

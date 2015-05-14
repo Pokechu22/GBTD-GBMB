@@ -101,12 +101,6 @@ namespace GB.Shared.GBMFile
 		protected abstract void SaveToStream(Stream s);
 
 		/// <summary>
-		/// Gets the name of the object type, which should be constant for all instances.
-		/// </summary>
-		/// <returns></returns>
-		public abstract string GetTypeName();
-
-		/// <summary>
 		/// Converts to a treenode, for debug purposes.
 		/// </summary>
 		/// <returns></returns>
@@ -117,22 +111,9 @@ namespace GB.Shared.GBMFile
 		/// </summary>
 		/// <returns></returns>
 		protected TreeNode CreateRootTreeNode() {
-			TreeNode root = new TreeNode(GetTypeName() + " - #" + this.Header.ObjectID.ToString("X4"));
+			TreeNode root = new TreeNode(Header.ToString());
 
-#pragma warning disable 618 //Disables obsolete warnings - http://stackoverflow.com/q/968293/3991344
-			
-			TreeNode header = new TreeNode("Header");
-			
-			header.Nodes.Add("Marker", "Marker: " + this.Header.Marker);
-			header.Nodes.Add("Type", "Type: " + GetTypeName() + " (" + this.Header.ObjectType.ToString("X4") + ")");
-			header.Nodes.Add("ObjectID", "ObjectID: " + this.Header.ObjectID.ToString("X4"));
-			header.Nodes.Add("MasterID", "MasterID: " + (this.Header.MasterID.HasValue ? this.Header.MasterID.Value.ToString("X4") : "None"));
-			header.Nodes.Add("CRC", "CRC: " + this.Header.CRC.ToString("X8"));
-			header.Nodes.Add("Size", "Size: " + this.Header.Size);
-
-			root.Nodes.Add(header);
-
-#pragma warning restore 618
+			root.Nodes.Add(Header.ToTreeNode());
 
 			if (extraData != null) {
 				TreeNode extraNode = new TreeNode("Extra unknown data (" + extraData.Length + " bytes)");
@@ -258,6 +239,29 @@ namespace GB.Shared.GBMFile
 						"Marker text for object #{0:X4} of type {1:X4} at offset {2:X16} is not valid - should be \"HPJMTL\" ({3}) but was actualy {4} ({5}).", ObjectID, ObjectType, index.Value, wantedHex, Marker, markerHex));
 				}
 			}
+		}
+
+		public override string ToString() {
+			return String.Format("{0} (0x{1:X4}) - ID {2:X4}, size {3}", GBMInitialization.GetTypeString(ObjectType), ObjectType, ObjectID, Size);
+		}
+
+		public TreeNode ToTreeNode() {
+			TreeNode node = new TreeNode("Header");
+
+			TreeNode marker = new TreeNode("Marker: " + Encoding.ASCII.GetString(this.Marker));
+			for (int i = 0; i < this.Marker.Length; i++) {
+				marker.Nodes.Add(i.ToString(), String.Format("{0:X2} ('{1}')", this.Marker[i],
+					Encoding.ASCII.GetString(this.Marker, i, 1))); //Get the ascii char version of Marker[i].
+			}
+
+			node.Nodes.Add(marker);
+			node.Nodes.Add("Type", "Type: " + GBMInitialization.GetTypeString(this.ObjectType) + " (0x" + this.ObjectType.ToString("X4") + ")");
+			node.Nodes.Add("ObjectID", "ObjectID: " + this.ObjectID.ToString("X4"));
+			node.Nodes.Add("MasterID", "MasterID: " + (this.MasterID.HasValue ? this.MasterID.Value.ToString("X4") : "None"));
+			node.Nodes.Add("CRC", "CRC: " + this.CRC.ToString("X8"));
+			node.Nodes.Add("Size", "Size: " + this.Size);
+
+			return node;
 		}
 	}
 }

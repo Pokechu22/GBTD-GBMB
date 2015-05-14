@@ -63,10 +63,6 @@ namespace GB.Shared.GBMFile
 			//this.Info = "By Pokechu22; a remake of Harry Mulder's GBMB.  See http://github.com/pokechu22/GBTD_GBMB.";
 		}
 
-		public override string GetTypeName() {
-			return "Producer info";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode node = CreateRootTreeNode();
 

@@ -52,10 +52,6 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
-		public override string GetTypeName() {
-			return "Map properties list";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode root = CreateRootTreeNode();
 

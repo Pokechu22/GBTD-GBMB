@@ -136,10 +136,6 @@ namespace GB.Shared.GBMFile
 			s.WriteBoolean(AutoUpdate);
 		}
 
-		public override string GetTypeName() {
-			return "Map settings";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode node = CreateRootTreeNode();
 

@@ -140,10 +140,6 @@ namespace GB.Shared.GBMFile
 			PropColorCount = s.ReadInteger();
 		}
 
-		public override string GetTypeName() {
-			return "Map";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode root = CreateRootTreeNode();
 

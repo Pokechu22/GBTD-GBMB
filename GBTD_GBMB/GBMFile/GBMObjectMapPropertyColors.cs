@@ -56,10 +56,6 @@ namespace GB.Shared.GBMFile
 			}
 		}
 
-		public override string GetTypeName() {
-			return "Map property colors";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode root = CreateRootTreeNode();
 
