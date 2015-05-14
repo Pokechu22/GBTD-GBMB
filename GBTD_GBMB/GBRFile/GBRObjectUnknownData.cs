@@ -19,11 +19,11 @@ namespace GB.Shared.GBRFile
 			this.data = new byte[0];
 		}
 
-		protected override void SaveToStream(Stream s) {
+		protected override void SaveToStream(GBRFile file, Stream s) {
 			s.Write(data, 0, (int)Header.Size);
 		}
 
-		protected override void LoadFromStream(Stream s) {
+		protected override void LoadFromStream(GBRFile file, Stream s) {
 			data = new byte[Header.Size];
 			s.Read(data, 0, (int)Header.Size);
 		}
@@ -33,12 +33,11 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = CreateRootTreeNode();
-			returned.Nodes.Add(String.Join(" ", this.data.Select(x => x.ToString("X2")).ToArray()));
+			TreeNode node = base.ToTreeNode();
 
-			AddExtraDataToTreeNode(returned);
+			node.Nodes.Add(String.Join(" ", this.data.Select(x => x.ToString("X2")).ToArray()));
 
-			return returned;
+			return node;
 		}
 	}
 }

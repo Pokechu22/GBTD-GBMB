@@ -12,15 +12,9 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectPalettes : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectPalettes(UInt16 UniqueID, GBRObjectTileData ReferedObject)
-			: base(UniqueID, ReferedObject) {
+		public GBRObjectPalettes(UInt16 UniqueID) : base(UniqueID) {
 			//TODO: Set defaults
 		}
-
-		/// <summary>
-		/// The corresponding ID of the TileData.
-		/// </summary>
-		public override UInt16 ReferedObjectID { get; set; }
 
 		/// <summary>
 		/// The Gameboy Color palettes.
@@ -31,8 +25,8 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public PaletteSet SGBPalettes { get; set; }
 
-		protected override void SaveToStream(Stream s) {
-			s.WriteWord(ReferedObjectID);
+		protected override void SaveToStream(GBRFile file, Stream s) {
+			base.SaveToStream(file, s);
 			
 			s.WriteWord(GBCPalettes.Size);
 			for (int i = 0; i < GBCPalettes.Size; i++) {
@@ -55,8 +49,8 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected override void LoadFromStream(Stream s) {
-			this.ReferedObjectID = s.ReadWord();
+		protected override void LoadFromStream(GBRFile file, Stream s) {
+			base.LoadFromStream(file, s);
 			
 			this.GBCPalettes = new PaletteSet(s.ReadWord());
 			for (int i = 0; i < GBCPalettes.Size; i++) {
@@ -92,9 +86,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode node = CreateRootTreeNode();
-
-			node.Nodes.Add("correspondingID", "ReferedObjectID: " + this.ReferedObjectID);
+			TreeNode node = base.ToTreeNode();
 			
 			TreeNode GBCPalettesNode = new TreeNode("GBCPalettes (Size: " + GBCPalettes.Size + ")");
 			for (int y = 0; y < GBCPalettes.Size; y++) {

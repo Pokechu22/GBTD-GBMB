@@ -12,15 +12,10 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public class GBRObjectTilePalette : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectTilePalette(UInt16 UniqueID, GBRObjectTileData ReferedObject)
-			: base(UniqueID, ReferedObject) {
+		public GBRObjectTilePalette(UInt16 UniqueID)
+			: base(UniqueID) {
 			//TODO: Set defaults
 		}
-
-		/// <summary>
-		/// The ObjectID of the object that is refered to by this object (Usually a TileData).
-		/// </summary>
-		public override UInt16 ReferedObjectID { get; set; }
 
 		/// <summary>
 		/// The Gameboy Color Palette Mapping.
@@ -31,8 +26,8 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public UInt32[] SGBPalettes { get; set; }
 
-		protected override void SaveToStream(Stream s) {
-			s.WriteWord(ReferedObjectID);
+		protected override void SaveToStream(GBRFile file, Stream s) {
+			base.SaveToStream(file, s);
 
 			s.WriteWord((UInt16)GBCPalettes.Length);
 			for (int i = 0; i < GBCPalettes.Length; i++) {
@@ -45,8 +40,8 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected override void LoadFromStream(Stream s) {
-			this.ReferedObjectID = s.ReadWord();
+		protected override void LoadFromStream(GBRFile file, Stream s) {
+			base.LoadFromStream(file, s);
 
 			GBCPalettes = new UInt32[s.ReadWord()];
 			for (int i = 0; i < GBCPalettes.Length; i++) {
@@ -64,9 +59,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = CreateRootTreeNode();
-
-			returned.Nodes.Add("Corresponding Object: " + this.ReferedObjectID.ToString("X4"));
+			TreeNode node = base.ToTreeNode();
 
 			TreeNode gbcPal = new TreeNode("GBC Palettes: Length " + GBCPalettes.Length);
 			for (int i = 0; i < GBCPalettes.Length; i++) {
@@ -78,12 +71,10 @@ namespace GB.Shared.GBRFile
 				sgbPal.Nodes.Add(i.ToString() + ": " + SGBPalettes[i]);
 			}
 
-			returned.Nodes.Add(gbcPal);
-			returned.Nodes.Add(sgbPal);
+			node.Nodes.Add(gbcPal);
+			node.Nodes.Add(sgbPal);
 
-			AddExtraDataToTreeNode(returned);
-
-			return returned;
+			return node;
 		}
 	}
 }

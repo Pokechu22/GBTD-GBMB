@@ -57,7 +57,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public Tile[] tiles;
 
-		protected override void SaveToStream(Stream s) {
+		protected override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(name, 30);
 
 			s.WriteWord(Width);
@@ -79,7 +79,7 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected override void LoadFromStream(Stream s) {
+		protected override void LoadFromStream(GBRFile file, Stream s) {
 			name = s.ReadString(30);
 
 			Width = s.ReadWord();
@@ -136,7 +136,7 @@ namespace GB.Shared.GBRFile
 		public override TreeNode ToTreeNode() {
 			const char BLACK = '\u2588', DARK_GRAY = '\u2593', LIGHT_GRAY = '\u2592', WHITE = '\u2591';
 
-			TreeNode returned = CreateRootTreeNode();
+			TreeNode returned = base.ToTreeNode();
 
 			returned.Nodes.Add("name", "Name: " + name);
 			returned.Nodes.Add("width", "Width: " + Width);

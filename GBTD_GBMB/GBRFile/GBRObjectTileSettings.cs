@@ -11,7 +11,7 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileSettings : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectTileSettings(UInt16 UniqueID, GBRObjectTileData ReferedObject) : base(UniqueID, ReferedObject) {
+		public GBRObjectTileSettings(UInt16 UniqueID) : base(UniqueID) {
 			//TODO: Set defaults
 		}
 
@@ -21,12 +21,6 @@ namespace GB.Shared.GBRFile
 		public const UInt16 NON_BOOKMAKRED_NUMBER = UInt16.MaxValue;
 
 		#region Since initial version
-		/// <summary>
-		/// The UUID of the object that is refered to by these settings; usually a <see cref="GBRObjectTileData"/>.
-		/// </summary>
-		/// <remarks>Since: Included always.</remarks>
-		public override UInt16 ReferedObjectID { get; set; }
-		
 		/// <summary>
 		/// Whether or not simple mode is used.
 		/// </summary>
@@ -133,8 +127,9 @@ namespace GB.Shared.GBRFile
 		public GBColor X2MouseColor { get; set; }
 		#endregion
 
-		protected override void SaveToStream(Stream s) {
-			s.WriteWord(ReferedObjectID);
+		protected override void SaveToStream(GBRFile file, Stream s) {
+			base.SaveToStream(file, s);
+
 			s.WriteBool(SimpleMode);
 			
 			//Create the flags. 
@@ -163,8 +158,9 @@ namespace GB.Shared.GBRFile
 			s.WriteByte((byte)X2MouseColor);
 		}
 
-		protected override void LoadFromStream(Stream s) {
-			this.ReferedObjectID = s.ReadWord();
+		protected override void LoadFromStream(GBRFile file, Stream s) {
+			base.LoadFromStream(file, s);
+
 			this.SimpleMode = s.ReadBool(false);
 
 			//Create the flags. 
@@ -197,40 +193,39 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = CreateRootTreeNode();
+			TreeNode node = base.ToTreeNode();
 
-			returned.Nodes.Add("Refered Object ID: " + ReferedObjectID.ToString("X4"));
-			returned.Nodes.Add("Simple mode: " + SimpleMode);
+			node.Nodes.Add("Simple mode: " + SimpleMode);
 
 			TreeNode flags = new TreeNode("Flags"); //TODO include the numbers.
 			flags.Nodes.Add("Grid: " + this.ShowGrid);
 			flags.Nodes.Add("Nibble Markers: " + this.ShowNibbleMarkers);
-			returned.Nodes.Add(flags);
+			node.Nodes.Add(flags);
 
-			returned.Nodes.Add("Left color: " + LeftColor);
-			returned.Nodes.Add("Right color: " + RightColor);
+			node.Nodes.Add("Left color: " + LeftColor);
+			node.Nodes.Add("Right color: " + RightColor);
 
 			TreeNode splitSettings = new TreeNode("Split Copy/Paste settings");
 			splitSettings.Nodes.Add("Split Width: " + SplitWidth);
 			splitSettings.Nodes.Add("Split Height: " + SplitHeight);
 			splitSettings.Nodes.Add("Split Order: " + SplitOrder + " (" + (byte)SplitOrder + ")");
-			returned.Nodes.Add(splitSettings);
+			node.Nodes.Add(splitSettings);
 
-			returned.Nodes.Add("Color set: " + ColorSet + " (" + (byte)ColorSet + ")");
+			node.Nodes.Add("Color set: " + ColorSet + " (" + (byte)ColorSet + ")");
 
 			TreeNode bookmarks = new TreeNode("Bookmarks");
 			bookmarks.Nodes.Add("1: " + Bookmark1);
 			bookmarks.Nodes.Add("2: " + Bookmark2);
 			bookmarks.Nodes.Add("3: " + Bookmark3);
-			returned.Nodes.Add(bookmarks);
+			node.Nodes.Add(bookmarks);
 
-			returned.Nodes.Add("AutoUpdate: " + AutoUpdate);
+			node.Nodes.Add("AutoUpdate: " + AutoUpdate);
 
-			returned.Nodes.Add("Middle color: " + MiddleMouseColor);
-			returned.Nodes.Add("X1 color: " + X1MouseColor);
-			returned.Nodes.Add("X2 color: " + X2MouseColor);
+			node.Nodes.Add("Middle color: " + MiddleMouseColor);
+			node.Nodes.Add("X1 color: " + X1MouseColor);
+			node.Nodes.Add("X2 color: " + X2MouseColor);
 
-			return returned;
+			return node;
 		}
 	}
 

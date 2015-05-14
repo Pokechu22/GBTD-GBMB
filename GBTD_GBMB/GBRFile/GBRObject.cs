@@ -72,8 +72,8 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected abstract void SaveToStream(Stream s);
-		protected abstract void LoadFromStream(Stream s);
+		protected abstract void SaveToStream(GBRFile file, Stream s);
+		protected abstract void LoadFromStream(GBRFile file, Stream s);
 
 		/// <summary>
 		/// Reads an object and its Header and returns said object.
@@ -90,7 +90,7 @@ namespace GB.Shared.GBRFile
 			} else {
 				exportable = new GBRObjectUnknownData(h, s);
 			}
-
+			
 			return exportable;
 		}
 
@@ -104,27 +104,17 @@ namespace GB.Shared.GBRFile
 		/// Converts to a treenode, for debug purposes.
 		/// </summary>
 		/// <returns></returns>
-		public abstract TreeNode ToTreeNode();
+		public virtual TreeNode ToTreeNode() {
+			TreeNode node = new TreeNode(String.Format("{0} ({1:X4}) - #{2:X4}, size {3}", GetTypeName(), Header.ObjectTypeID, Header.UniqueID, Header.Size)); //TODO: this should all be done in Header.ToString().  But we'd need to have the name in GBRInitialization.
 
-		/// <summary>
-		/// Creates a treenode for the root level, which has the proper name.
-		/// </summary>
-		/// <returns></returns>
-		protected TreeNode CreateRootTreeNode() {
-			return new TreeNode(GetTypeName() + " (" + this.Header.ObjectTypeID.ToString("X4") + ") - #" + this.Header.UniqueID.ToString("X4") + ", size " + this.Header.Size);
-		}
-
-		/// <summary>
-		/// Adds the extradata to the treenode, if present.
-		/// </summary>
-		/// <param name="node"></param>
-		protected void AddExtraDataToTreeNode(TreeNode node) {
 			if (extraData != null) {
 				TreeNode extraNode = new TreeNode("Extra unknown data (" + extraData.Length + " bytes)");
 				extraNode.Nodes.Add(string.Join(" ", extraData.Select(x => x.ToString()).ToArray()));
 
 				node.Nodes.Add(extraNode);
 			}
+
+			return node;
 		}
 
 		public static void RegisterExportable(UInt16 ID, Type type) {
@@ -180,12 +170,28 @@ namespace GB.Shared.GBRFile
 	public abstract class ReferentialGBRObject<TRefered> : GBRObject
 		where TRefered : GBRObject
 	{
-		protected ReferentialGBRObject(UInt16 UniqueID, TRefered ReferedObject) : base(UniqueID) {
-			this.ReferedObject = ReferedObject;
-			this.ReferedObjectID = ReferedObject.Header.UniqueID;
+		protected ReferentialGBRObject(UInt16 UniqueID) : base(UniqueID) {
+			this.ReferedObject = null;
+		}
+
+		protected override void LoadFromStream(GBRFile file, Stream s) {
+			UInt16 ReferedObjectUniqueID = s.ReadWord();
+			file.GetObjectWithID<TRefered>(ReferedObjectUniqueID);
+		}
+
+		protected override void SaveToStream(GBRFile file, Stream s) {
+			s.WriteWord(ReferedObjectUniqueID);
+		}
+
+		public override TreeNode ToTreeNode() {
+			TreeNode node = base.ToTreeNode();
+
+			node.Nodes.Add("ReferedObjectUniqueID", "ReferedObjectUniqueID: " + ReferedObjectUniqueID);
+
+			return node;
 		}
 
 		public TRefered ReferedObject { get; private set; }
-		public UInt16 ReferedObjectID { get; private set; }
+		public UInt16 ReferedObjectUniqueID { get { return ReferedObject.Header.UniqueID; } }
 	}
 }

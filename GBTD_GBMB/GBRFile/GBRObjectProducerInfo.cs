@@ -45,13 +45,13 @@ namespace GB.Shared.GBRFile
 			set { if (value == null) { throw new ArgumentNullException("value"); } info = value; }
 		}
 
-		protected override void SaveToStream(Stream s) {
+		protected override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(name, 30);
 			s.WriteString(version, 10);
 			s.WriteString(info, 80);
 		}
 
-		protected override void LoadFromStream(Stream s) {
+		protected override void LoadFromStream(GBRFile file, Stream s) {
 			this.name = s.ReadString(30);
 			this.version = s.ReadString(10);
 			this.info = s.ReadString(80);
@@ -62,13 +62,11 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode returned = CreateRootTreeNode();
+			TreeNode returned = base.ToTreeNode();
 
 			returned.Nodes.Add("name", "Name: " + name);
 			returned.Nodes.Add("version", "Version: " + version);
 			returned.Nodes.Add("info", "Info: " + info);
-
-			AddExtraDataToTreeNode(returned);
 
 			return returned;
 		}

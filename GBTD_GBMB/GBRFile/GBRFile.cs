@@ -148,7 +148,7 @@ namespace GB.Shared.GBRFile
 		public TRefferedType GetReferedObject<TRefferedType>(ReferentialGBRObject<TRefferedType> obj) where TRefferedType : GBRObject {
 			return Objects
 				.OfType<TRefferedType>()
-				.Single(o => o.Header.UniqueID == obj.ReferedObjectID);
+				.Single(o => o.Header.UniqueID == obj.ReferedObjectUniqueID);
 		}
 
 		/// <summary>
@@ -159,7 +159,7 @@ namespace GB.Shared.GBRFile
 		public List<ReferentialGBRObject<TObjectType>> GetReferingObjects<TObjectType>(TObjectType obj) where TObjectType : GBRObject {
 			return new List<ReferentialGBRObject<TObjectType>>(Objects
 				.OfType<ReferentialGBRObject<TObjectType>>()
-				.Where(o => o.ReferedObjectID == obj.Header.UniqueID));
+				.Where(o => o.ReferedObjectUniqueID == obj.Header.UniqueID));
 		}
 
 		public GBRFile() {

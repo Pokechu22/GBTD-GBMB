@@ -9,16 +9,10 @@ namespace GB.Shared.GBRFile
 {
 	public class GBRObjectTileImport : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectTileImport(UInt16 UniqueID, GBRObjectTileData ReferedObject)
-			: base(UniqueID, ReferedObject) {
+		public GBRObjectTileImport(UInt16 UniqueID) : base(UniqueID) {
 			//TODO: Set defaults
 		}
 
-		/// <summary>
-		/// The coresponding object ID.
-		/// </summary>
-		/// <remarks>Since: Initial version</remarks>
-		public override UInt16 ReferedObjectID { get; set; }
 		/// <summary>
 		/// The name of the file to export to.
 		/// </summary>
@@ -60,8 +54,9 @@ namespace GB.Shared.GBRFile
 		/// <remarks>Since: GBTD 1.5</remarks>
 		public ImportBinaryFileFormat BinaryFileFormat { get; set; }
 
-		protected override void SaveToStream(Stream s) {
-			s.WriteWord(ReferedObjectID);
+		protected override void SaveToStream(GBRFile file, Stream s) {
+			base.SaveToStream(file, s);
+
 			s.WriteString(FileName, 128);
 			s.WriteByte((byte)FileType);
 			s.WriteWord(FirstImportFileTile);
@@ -72,8 +67,9 @@ namespace GB.Shared.GBRFile
 			s.WriteByte((byte)BinaryFileFormat);
 		}
 
-		protected override void LoadFromStream(Stream s) {
-			this.ReferedObjectID = s.ReadWord();
+		protected override void LoadFromStream(GBRFile file, Stream s) {
+			base.LoadFromStream(file, s);
+			
 			this.FileName = s.ReadString(128);
 			this.FileType = (ImportFileType)s.ReadByteEx();
 			this.FirstImportFileTile = s.ReadWord();
@@ -89,9 +85,8 @@ namespace GB.Shared.GBRFile
 		}
 
 		public override TreeNode ToTreeNode() {
-			TreeNode node = CreateRootTreeNode();
+			TreeNode node = base.ToTreeNode();
 
-			node.Nodes.Add("ReferedObjectID", "ReferedObjectID: " + ReferedObjectID);
 			TreeNode fileName = new TreeNode("FileName");
 			fileName.Nodes.Add(FileName);
 			node.Nodes.Add(fileName);
