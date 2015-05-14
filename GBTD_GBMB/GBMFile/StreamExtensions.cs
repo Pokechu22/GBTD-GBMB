@@ -404,8 +404,6 @@ namespace GB.Shared.GBMFile
 		#endregion
 
 		#region GBMObjectHeader-handling methods
-#pragma warning disable 618 //Disables obsolete warnings - http://stackoverflow.com/q/968293/3991344
-
 		/// <summary>
 		/// Reads a <see cref="GBMObjectHeader"/> from the stream, throwing an exception if at the end.
 		/// </summary>
@@ -478,7 +476,6 @@ namespace GB.Shared.GBMFile
 			stream.WriteUnsignedLong(value.CRC);
 			stream.WriteUnsignedLong(value.Size);
 		}
-#pragma warning restore 618
 		#endregion
 	}
 }
