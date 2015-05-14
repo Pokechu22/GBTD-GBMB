@@ -30,7 +30,7 @@ namespace GB.Shared.GBRFile
 			this.Header = new GBRObjectHeader(GBRInitialization.GetTypeID(this.GetType()), UniqueID, 0);
 		}
 
-		private void LoadObject(Stream s) {
+		private void LoadObject(GBRFile file, Stream s) {
 			byte[] data = new byte[Header.Size];
 			int read = s.Read(data, 0, (int)Header.Size);
 
@@ -41,7 +41,7 @@ namespace GB.Shared.GBRFile
 			loadedData = data;
 
 			using (MemoryStream ns = new MemoryStream(data, false)) {
-				LoadFromStream(ns);
+				LoadFromStream(file, ns);
 
 				if (ns.Position != ns.Length) {
 					extraData = new byte[ns.Length - ns.Position];
@@ -54,21 +54,22 @@ namespace GB.Shared.GBRFile
 		/// Saves this object to the specified stream.
 		/// </summary>
 		/// <param name="s"></param>
-		public void SaveObject(Stream s) {
-			if (loadedData == null) {
-				s.WriteHeader(this.Header);
-				this.SaveToStream(s);
-			} else {
-				using (MemoryStream ns = new MemoryStream(loadedData.Length)) {
-					ns.Position = 0;
-					ns.Write(loadedData, 0, loadedData.Length);
-					ns.Position = 0;
-					this.SaveToStream(ns);
+		public void SaveObject(GBRFile file, Stream s) {
+			using (MemoryStream ms = new MemoryStream()) {
+				ms.Position = 0;
 
-					this.Header.Size = (UInt32)ns.Length;
-					s.WriteHeader(this.Header);
-					s.Write(ns.ToArray(), 0, (int)this.Header.Size);
+				if (loadedData != null) {
+					//Write data, but then allow overwriting.
+					ms.Write(loadedData, 0, loadedData.Length);
+					ms.Position = 0;
 				}
+				this.SaveToStream(file, ms);
+
+				this.Header.SetSize((UInt32)ms.Length);
+				s.WriteHeader(this.Header);
+
+				ms.Position = 0;
+				ms.CopyTo(s);
 			}
 		}
 
@@ -97,6 +98,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
+		[Obsolete]
 		public static GBRObject ReadObject(Stream s) {
 			GBRObjectHeader h = s.ReadHeader();
 
@@ -162,22 +164,26 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The typeid of this object, which should remain constant.
 		/// </summary>
-		public readonly UInt16 ObjectTypeID;
+		public UInt16 ObjectTypeID { get; private set; }
 
 		/// <summary>
 		/// The Unique ID of the object.
 		/// </summary>
-		public readonly UInt16 UniqueID;
+		public UInt16 UniqueID { get; private set; }
 
 		/// <summary>
 		/// The size that this object was deserialized with.
 		/// </summary>
-		public UInt32 Size;
+		public UInt32 Size { get; private set; }
 
 		public GBRObjectHeader(UInt16 ObjectTypeID, UInt16 UniqueID, UInt32 Size) {
 			this.ObjectTypeID = ObjectTypeID;
 			this.UniqueID = UniqueID;
 			this.Size = Size;
+		}
+
+		public void SetSize(UInt32 newSize) {
+			this.Size = newSize;
 		}
 	}
 
