@@ -72,8 +72,25 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
+		/// <summary>
+		/// Saves the object to the given stream.
+		/// </summary>
+		/// <param name="file">The current GBRFile.</param>
+		/// <param name="s">The stream to save to.</param>
 		protected abstract void SaveToStream(GBRFile file, Stream s);
+		/// <summary>
+		/// Loads the object from the given stream.
+		/// </summary>
+		/// <param name="file">The current GBRFile.</param>
+		/// <param name="s">The stream to load from.</param>
 		protected abstract void LoadFromStream(GBRFile file, Stream s);
+		/// <summary>
+		/// Used to set up the given object when creating a new one.  Set up any initialization logic here, such as events or master objects.
+		/// 
+		/// <para>Will NOT be called when loading from the stream.</para>
+		/// </summary>
+		/// <param name="file"></param>
+		protected virtual void SetupObject(GBRFile file) { }
 
 		/// <summary>
 		/// Reads an object and its Header and returns said object.
@@ -176,11 +193,17 @@ namespace GB.Shared.GBRFile
 
 		protected override void LoadFromStream(GBRFile file, Stream s) {
 			UInt16 ReferedObjectUniqueID = s.ReadWord();
-			file.GetObjectWithID<TRefered>(ReferedObjectUniqueID);
+			this.ReferedObject = file.GetObjectWithID<TRefered>(ReferedObjectUniqueID);
 		}
 
 		protected override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteWord(ReferedObjectUniqueID);
+		}
+
+		protected override void SetupObject(GBRFile file) {
+			base.SetupObject(file);
+
+			this.ReferedObject = file.GetOrCreateObjectOfType<TRefered>();
 		}
 
 		public override TreeNode ToTreeNode() {
