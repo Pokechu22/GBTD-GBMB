@@ -42,7 +42,7 @@ namespace GB.Shared.GBRFile
 			obj.loadedData = data;
 
 			using (MemoryStream ns = new MemoryStream(data, false)) {
-				obj.LoadFromStream(file, s);
+				obj.LoadFromStream(file, ns);
 
 				if (ns.Position != ns.Length) {
 					obj.extraData = new byte[ns.Length - ns.Position];
@@ -168,7 +168,15 @@ namespace GB.Shared.GBRFile
 		}
 
 		static GBRInitialization() {
-			
+			RegisterExportable<GBRObjectProducerInfo>(0x0001, (u) => new GBRObjectProducerInfo(u));
+			RegisterExportable<GBRObjectTileData>(0x0002, (u) => new GBRObjectTileData(u));
+			RegisterExportable<GBRObjectTileSettings>(0x0003, (u) => new GBRObjectTileSettings(u));
+			RegisterExportable<GBRObjectTileExport>(0x0004, (u) => new GBRObjectTileExport(u));
+			RegisterExportable<GBRObjectTileImport>(0x0005, (u) => new GBRObjectTileImport(u));
+			RegisterExportable<GBRObjectPalettes>(0x000D, (u) => new GBRObjectPalettes(u));
+			RegisterExportable<GBRObjectTilePalette>(0x000E, (u) => new GBRObjectTilePalette(u));
+
+			RegisterExportable<GBRObjectDeleted>(0x00FF, (u) => new GBRObjectDeleted(u));
 		}
 	}
 }
