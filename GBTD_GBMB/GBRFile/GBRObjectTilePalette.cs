@@ -12,9 +12,9 @@ namespace GB.Shared.GBRFile
 	/// </summary>
 	public class GBRObjectTilePalette : ReferentialGBRObject<GBRObjectTileData>
 	{
-		public GBRObjectTilePalette(UInt16 UniqueID)
-			: base(UniqueID) {
-			//TODO: Set defaults
+		public GBRObjectTilePalette(UInt16 UniqueID) : base(UniqueID) {
+			this.GBCPalettes = new UInt32[0];
+			this.SGBPalettes = new UInt32[0];
 		}
 
 		/// <summary>
@@ -52,6 +52,13 @@ namespace GB.Shared.GBRFile
 			for (int i = 0; i < SGBPalettes.Length; i++) {
 				SGBPalettes[i] = s.ReadLong();
 			}
+		}
+
+		protected internal override void SetupObject(GBRFile file) {
+			base.SetupObject(file);
+
+			this.GBCPalettes = new UInt32[ReferedObject.tiles.Length]; //TODO: When there is an onchanged event for length, use that.
+			this.SGBPalettes = new UInt32[ReferedObject.tiles.Length];
 		}
 
 		public override string GetTypeName() {

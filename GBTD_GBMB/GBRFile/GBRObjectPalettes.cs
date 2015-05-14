@@ -13,7 +13,8 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectPalettes : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectPalettes(UInt16 UniqueID) : base(UniqueID) {
-			//TODO: Set defaults
+			GBCPalettes = new PaletteSet(8);
+			SGBPalettes = new PaletteSet(4);
 		}
 
 		/// <summary>

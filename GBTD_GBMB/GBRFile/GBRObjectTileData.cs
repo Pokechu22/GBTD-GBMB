@@ -11,7 +11,15 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectTileData : GBRObject
 	{
 		public GBRObjectTileData(UInt16 UniqueID) : base(UniqueID) {
-			//TODO set defaults
+			this.name = "";
+			this.Width = 8;
+			this.Height = 8;
+			this.Count = 128;
+			this.Color0Mapping = GBColor.WHITE;
+			this.Color1Mapping = GBColor.DARK_GRAY;
+			this.Color2Mapping = GBColor.LIGHT_GRAY;
+			this.Color3Mapping = GBColor.BLACK;
+			this.tiles = new Tile[Count]; //TODO: This may be wrong.
 		}
 
 		private string name;

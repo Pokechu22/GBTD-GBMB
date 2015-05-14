@@ -10,7 +10,14 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectTileImport : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectTileImport(UInt16 UniqueID) : base(UniqueID) {
-			//TODO: Set defaults
+			this.FileName = "";
+			this.FileType = ImportFileType.GBEFile;
+			this.FirstImportFileTile = 0;
+			this.FirstProgramTile = 0;
+			this.TileCount = 127;
+			this.ColorConversion = ImportColorConversion.ByColors;
+			this.FirstByte = 0;
+			this.BinaryFileFormat = ImportBinaryFileFormat.BytePerPixel;
 		}
 
 		/// <summary>

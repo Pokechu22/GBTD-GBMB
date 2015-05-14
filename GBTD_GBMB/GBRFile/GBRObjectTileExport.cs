@@ -10,7 +10,26 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectTileExport : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectTileExport(UInt16 UniqueID) : base(UniqueID) {
-			//TODO: Set defaults
+			this.FileName = "";
+			this.FileType = GBRExportFileType.RGBDSAssemblyFile;
+			this.SectionName = "";
+			this.LabelName = "";
+			this.Bank = 0;
+			this.StoreTilesInArray = true;
+			this.Format = ExportFormat.GameBoy4Color;
+			this.CounterType = ExportCounterType.None;
+			this.FromTile = 0;
+			this.ToTile = 0;
+			this.UseCompression = ExportCompressionMode.None;
+			this.IncludeColors = false;
+			this.SGBPalMode = ExportPaletteMode.None;
+			this.GBCPalMode = ExportPaletteMode.None;
+			this.MakeMetaTiles = false;
+			this.MetaTileOffset = 0;
+			this.MetaCounterFormat = ExportCounterType.None;
+			this.Split = false;
+			this.BlockSize = 0;
+			this.SelectedTab = 0;
 		}
 
 		/// <summary>
@@ -159,7 +178,7 @@ namespace GB.Shared.GBRFile
 			this.GBCPalMode = (ExportPaletteMode)s.ReadByte((byte)ExportPaletteMode.None);
 			this.MakeMetaTiles = s.ReadBool(false);
 			this.MetaTileOffset = s.ReadLong(0);
-			this.MetaCounterFormat = (ExportCounterType)s.ReadByte((byte)ExportPaletteMode.None);
+			this.MetaCounterFormat = (ExportCounterType)s.ReadByte((byte)ExportCounterType.None);
 			this.Split = s.ReadBool(false);
 			this.BlockSize = s.ReadLong(0);
 			this.SelectedTab = s.ReadByte(0);

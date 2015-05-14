@@ -12,13 +12,28 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectTileSettings : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectTileSettings(UInt16 UniqueID) : base(UniqueID) {
-			//TODO: Set defaults
+			SimpleMode = true;
+			ShowGrid = true;
+			ShowNibbleMarkers = true;
+			LeftColor = GBColor.WHITE;
+			RightColor = GBColor.WHITE;
+			SplitWidth = 1;
+			SplitHeight = 1;
+			SplitOrder = SplitOrder.LEFT_TO_RIGHT_FIRST;
+			ColorSet = ColorSet.GAMEBOY_POCKET;
+			Bookmark1 = NON_BOOKMAKRED_NUMBER;
+			Bookmark2 = NON_BOOKMAKRED_NUMBER;
+			Bookmark3 = NON_BOOKMAKRED_NUMBER;
+			AutoUpdate = false;
+			MiddleMouseColor = GBColor.DARK_GRAY;
+			X1MouseColor = GBColor.BLACK;
+			X2MouseColor = GBColor.BLACK;
 		}
 
 		/// <summary>
 		/// The constant value that is used to represent a non-bookmarked-tile.
 		/// </summary>
-		public const UInt16 NON_BOOKMAKRED_NUMBER = UInt16.MaxValue;
+		public const UInt16 NON_BOOKMAKRED_NUMBER = 0xFFFF;
 
 		#region Since initial version
 		/// <summary>
