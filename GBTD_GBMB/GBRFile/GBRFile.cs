@@ -83,9 +83,15 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
+		/// <summary>
+		/// The header of the file.
+		/// </summary>
 		public readonly GBRFileHeader Header;
 
-		public List<GBRObject> Objects;
+		/// <summary>
+		/// All actual objects, arranged by their ID.
+		/// </summary>
+		public Dictionary<UInt16, GBRObject> Objects;
 
 		/// <summary>
 		/// Gets the Object with the specified objectID, ignoring objects that have been deleted.
@@ -93,7 +99,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="ObjectID"></param>
 		/// <returns>The specified object, or <c>null</c> if none exist.</returns>
 		public GBRObject GetObjectWithID(UInt16 ID) {
-			return Objects.Where(o => o.Header.UniqueID == ID).FirstOrDefault();
+			return Objects[ID];
 		}
 		/// <summary>
 		/// Gets the Object with the specified objectID and of the specified type, ignoring objects that have been deleted.
@@ -102,10 +108,7 @@ namespace GB.Shared.GBRFile
 		/// <typeparam name="TObjectType">The type of object to search for.</typeparam>
 		/// <returns>The specified object, or <c>null</c> if none exist.</returns>
 		public TObjectType GetObjectWithID<TObjectType>(UInt16 ID) where TObjectType : GBRObject {
-			return Objects
-				.OfType<TObjectType>()
-				.Where(o => o.Header.UniqueID == ID)
-				.FirstOrDefault();
+			return (Objects[ID] as TObjectType);
 		}
 
 		/// <summary>

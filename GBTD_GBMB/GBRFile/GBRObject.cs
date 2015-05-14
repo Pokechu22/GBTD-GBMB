@@ -51,29 +51,6 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
-		/// Saves this object to the specified stream.
-		/// </summary>
-		/// <param name="s"></param>
-		public void SaveObject(GBRFile file, Stream s) {
-			using (MemoryStream ms = new MemoryStream()) {
-				ms.Position = 0;
-
-				if (loadedData != null) {
-					//Write data, but then allow overwriting.
-					ms.Write(loadedData, 0, loadedData.Length);
-					ms.Position = 0;
-				}
-				this.SaveToStream(file, ms);
-
-				this.Header.SetSize((UInt32)ms.Length);
-				s.WriteHeader(this.Header);
-
-				ms.Position = 0;
-				ms.CopyTo(s);
-			}
-		}
-
-		/// <summary>
 		/// Saves the object to the given stream.
 		/// </summary>
 		/// <param name="file">The current GBRFile.</param>
@@ -92,26 +69,6 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="file"></param>
 		protected virtual void SetupObject(GBRFile file) { }
-
-		/// <summary>
-		/// Reads an object and its Header and returns said object.
-		/// </summary>
-		/// <param name="s"></param>
-		/// <returns></returns>
-		[Obsolete]
-		public static GBRObject ReadObject(Stream s) {
-			GBRObjectHeader h = s.ReadHeader();
-
-			GBRObject exportable;
-			if (mapping.ContainsKey(h.ObjectTypeID)) {
-				var ctor = mapping[h.ObjectTypeID].GetConstructor(new Type[] { typeof(GBRObjectHeader), typeof(Stream) });
-				exportable = (GBRObject)ctor.Invoke(new Object[] { h, s });
-			} else {
-				exportable = new GBRObjectUnknownData(h, s);
-			}
-			
-			return exportable;
-		}
 
 		/// <summary>
 		/// Gets the name of the object type, which should be constant for all instances.
