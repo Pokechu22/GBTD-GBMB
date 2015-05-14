@@ -131,11 +131,32 @@ namespace GB.Shared.GBRFile
 			throw new InvalidOperationException("There are no more unique object IDs!");
 		}
 
+		public static String GetTypeString(GBRObject obj) {
+			return GetTypeString(obj.GetType());
+		}
+
+		public static String GetTypeString(Type type) {
+			try {
+				return mapping.Values.Single(o => (o.Type == type)).TypeString;
+			} catch (InvalidOperationException) {
+				return "Unknown data";
+			}
+		}
+
+		public static String GetTypeString(UInt16 typeID) {
+			try {
+				return mapping[typeID].TypeString;
+			} catch (InvalidOperationException) {
+				return "Unknown data";
+			}
+		}
+
 		private class ObjectMapping
 		{
-			public ObjectMapping(UInt16 ID, Type Type, Func<UInt16, GBRObject> Create) {
+			public ObjectMapping(UInt16 ID, Type Type, String TypeString, Func<UInt16, GBRObject> Create) {
 				this.ID = ID;
 				this.Type = Type;
+				this.TypeString = TypeString;
 				this.Create = Create;
 			}
 
@@ -148,37 +169,42 @@ namespace GB.Shared.GBRFile
 			/// </summary>
 			public readonly Type Type;
 			/// <summary>
+			/// User-facing string representation of the type.
+			/// </summary>
+			public readonly String TypeString;
+			/// <summary>
 			/// Function that creates a new object, but doesn't populate the object.
 			/// </summary>
 			public readonly Func<UInt16, GBRObject> Create;
 
 			public override string ToString()
 			{
-				return String.Format("ID: 0x{0:X4}\nType: {1}\nCreate: {2}\n", this.ID, this.Type, this.Create);
+				return String.Format("ID: 0x{0:X4}\nType: {1}\nTypeString: {2}\nCreate: {3}\n", this.ID, this.Type, this.TypeString, this.Create);
 			}
 		}
 
 		private static Dictionary<UInt16, ObjectMapping> mapping = new Dictionary<UInt16, ObjectMapping>();
 
-		public static void RegisterExportable<TObjectType>(UInt16 ID, Func<UInt16, TObjectType> Constructor) where TObjectType : GBRObject {
+		public static void RegisterExportable<TObjectType>(UInt16 ID, String TypeString, Func<UInt16, TObjectType> Constructor)
+				where TObjectType : GBRObject {
 
 			if (mapping.ContainsKey(ID)) {
 				throw new InvalidOperationException(String.Format("Already registered mapping for ID 0x{0:X4}:\n{1}", ID, mapping[ID]));
 			}
 
-			mapping.Add(ID, new ObjectMapping(ID, typeof(TObjectType), Constructor));
+			mapping.Add(ID, new ObjectMapping(ID, typeof(TObjectType), TypeString, Constructor));
 		}
 
 		static GBRInitialization() {
-			RegisterExportable<GBRObjectProducerInfo>(0x0001, (u) => new GBRObjectProducerInfo(u));
-			RegisterExportable<GBRObjectTileData>(0x0002, (u) => new GBRObjectTileData(u));
-			RegisterExportable<GBRObjectTileSettings>(0x0003, (u) => new GBRObjectTileSettings(u));
-			RegisterExportable<GBRObjectTileExport>(0x0004, (u) => new GBRObjectTileExport(u));
-			RegisterExportable<GBRObjectTileImport>(0x0005, (u) => new GBRObjectTileImport(u));
-			RegisterExportable<GBRObjectPalettes>(0x000D, (u) => new GBRObjectPalettes(u));
-			RegisterExportable<GBRObjectTilePalette>(0x000E, (u) => new GBRObjectTilePalette(u));
+			RegisterExportable<GBRObjectProducerInfo>(0x0001, "Producing App Info", (u) => new GBRObjectProducerInfo(u));
+			RegisterExportable<GBRObjectTileData>(0x0002, "Tile data", (u) => new GBRObjectTileData(u));
+			RegisterExportable<GBRObjectTileSettings>(0x0003, "Tile settings", (u) => new GBRObjectTileSettings(u));
+			RegisterExportable<GBRObjectTileExport>(0x0004, "Tile export settings", (u) => new GBRObjectTileExport(u));
+			RegisterExportable<GBRObjectTileImport>(0x0005, "Tile import settings", (u) => new GBRObjectTileImport(u));
+			RegisterExportable<GBRObjectPalettes>(0x000D, "Palettes", (u) => new GBRObjectPalettes(u));
+			RegisterExportable<GBRObjectTilePalette>(0x000E, "Tile palette mapping", (u) => new GBRObjectTilePalette(u));
 
-			RegisterExportable<GBRObjectDeleted>(0x00FF, (u) => new GBRObjectDeleted(u));
+			RegisterExportable<GBRObjectDeleted>(0x00FF, "[DELETED]", (u) => new GBRObjectDeleted(u));
 		}
 	}
 }

@@ -82,10 +82,6 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		public override string GetTypeName() {
-			return "Palettes";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode node = base.ToTreeNode();
 			

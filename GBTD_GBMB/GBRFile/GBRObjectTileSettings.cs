@@ -203,10 +203,6 @@ namespace GB.Shared.GBRFile
 			this.X2MouseColor = (GBColor)s.ReadByte((byte)GBColor.BLACK);
 		}
 
-		public override string GetTypeName() {
-			return "Tile settings";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode node = base.ToTreeNode();
 

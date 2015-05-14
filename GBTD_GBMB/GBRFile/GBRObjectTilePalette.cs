@@ -61,10 +61,6 @@ namespace GB.Shared.GBRFile
 			this.SGBPalettes = new UInt32[ReferedObject.tiles.Length];
 		}
 
-		public override string GetTypeName() {
-			return "Tile-Palette Mapping";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode node = base.ToTreeNode();
 

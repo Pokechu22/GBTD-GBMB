@@ -53,17 +53,16 @@ namespace GB.Shared.GBRFile
 		protected internal virtual void SetupObject(GBRFile file) { }
 
 		/// <summary>
-		/// Gets the name of the object type, which should be constant for all instances.
-		/// </summary>
-		/// <returns></returns>
-		public abstract string GetTypeName();
-
-		/// <summary>
 		/// Converts to a treenode, for debug purposes.
 		/// </summary>
 		/// <returns></returns>
 		public virtual TreeNode ToTreeNode() {
-			TreeNode node = new TreeNode(String.Format("{0} ({1:X4}) - #{2:X4}, size {3}", GetTypeName(), Header.ObjectTypeID, Header.UniqueID, Header.Size)); //TODO: this should all be done in Header.ToString().  But we'd need to have the name in GBRInitialization.
+			TreeNode node = new TreeNode(Header.ToString());
+
+			TreeNode headerNode = new TreeNode("Header");
+			headerNode.Nodes.Add("ObjectTypeID", "ObjectTypeID: " + Header.ObjectTypeID + "(" + GBRInitialization.GetTypeString(this) + ")");
+			headerNode.Nodes.Add("UniqueID", "UniqueID: " + Header.UniqueID);
+			headerNode.Nodes.Add("Size", "Size: " + Header.Size);
 
 			if (extraData != null) {
 				TreeNode extraNode = new TreeNode("Extra unknown data (" + extraData.Length + " bytes)");
@@ -119,6 +118,10 @@ namespace GB.Shared.GBRFile
 			this.ObjectTypeID = ObjectTypeID;
 			this.UniqueID = UniqueID;
 			this.Size = Size;
+		}
+
+		public override string ToString() {
+			return String.Format("{0} (0x{1:X4}) - ID {2:X4}, size {3}", GBRInitialization.GetTypeString(ObjectTypeID), ObjectTypeID, UniqueID, Size);
 		}
 	}
 

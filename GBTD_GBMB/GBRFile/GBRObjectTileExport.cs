@@ -184,10 +184,6 @@ namespace GB.Shared.GBRFile
 			this.SelectedTab = s.ReadByte(0);
 		}
 
-		public override string GetTypeName() {
-			return "Tile export settings";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode root = base.ToTreeNode();
 

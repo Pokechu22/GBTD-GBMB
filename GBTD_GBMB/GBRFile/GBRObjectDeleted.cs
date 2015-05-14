@@ -28,10 +28,6 @@ namespace GB.Shared.GBRFile
 			s.Read(data, 0, (int)Header.Size);
 		}
 
-		public override string GetTypeName() {
-			return "[DELETED]";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode returned = base.ToTreeNode();
 

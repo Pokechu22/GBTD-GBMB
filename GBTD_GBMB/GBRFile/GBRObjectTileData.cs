@@ -136,11 +136,6 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		public override string GetTypeName() {
-			//return "Tile data (" + name + ")";
-			return "Tile data";
-		}
-
 		public override TreeNode ToTreeNode() {
 			const char BLACK = '\u2588', DARK_GRAY = '\u2593', LIGHT_GRAY = '\u2592', WHITE = '\u2591';
 

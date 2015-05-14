@@ -57,10 +57,6 @@ namespace GB.Shared.GBRFile
 			this.info = s.ReadString(80);
 		}
 
-		public override string GetTypeName() {
-			return "Producer info";
-		}
-
 		public override TreeNode ToTreeNode() {
 			TreeNode returned = base.ToTreeNode();
 

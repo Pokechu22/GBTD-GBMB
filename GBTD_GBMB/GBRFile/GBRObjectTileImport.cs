@@ -76,7 +76,7 @@ namespace GB.Shared.GBRFile
 
 		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			base.LoadFromStream(file, s);
-			
+
 			this.FileName = s.ReadString(128);
 			this.FileType = (ImportFileType)s.ReadByteEx();
 			this.FirstImportFileTile = s.ReadWord();
@@ -85,10 +85,6 @@ namespace GB.Shared.GBRFile
 			this.ColorConversion = (ImportColorConversion)s.ReadByteEx();
 			this.FirstByte = s.ReadLong(0);
 			this.BinaryFileFormat = (ImportBinaryFileFormat)s.ReadByte((byte)ImportBinaryFileFormat.BytePerPixel);
-		}
-
-		public override string GetTypeName() {
-			return "Tile Import Settings";
 		}
 
 		public override TreeNode ToTreeNode() {
