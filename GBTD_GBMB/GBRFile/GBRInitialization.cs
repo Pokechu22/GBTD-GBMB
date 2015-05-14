@@ -32,7 +32,23 @@ namespace GB.Shared.GBRFile
 				obj = new GBRObjectUnknownData(header);
 			}
 
-			obj.LoadFromStream(file, s);
+			byte[] data = new byte[header.Size];
+			int read = s.Read(data, 0, (int)header.Size);
+
+			if (read != header.Size) {
+				throw new EndOfStreamException();
+			}
+
+			obj.loadedData = data;
+
+			using (MemoryStream ns = new MemoryStream(data, false)) {
+				obj.LoadFromStream(file, s);
+
+				if (ns.Position != ns.Length) {
+					obj.extraData = new byte[ns.Length - ns.Position];
+					ns.Read(obj.extraData, 0, (int)(ns.Length - ns.Position));
+				}
+			}
 
 			return obj;
 		}

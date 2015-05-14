@@ -15,9 +15,11 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The data loaded when origionally deserialized.
 		/// </summary>
-		private byte[] loadedData;
-
-		protected byte[] extraData;
+		internal byte[] loadedData;
+		/// <summary>
+		/// Extra data after the end of the object.
+		/// </summary>
+		internal byte[] extraData;
 
 		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
 

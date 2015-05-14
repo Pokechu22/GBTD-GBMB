@@ -169,18 +169,57 @@ namespace GB.Shared.GBRFile
 			this.Header = new GBRFileHeader();
 		}
 
-		public GBRFile(Stream stream) {
-			this.Header = new GBRFileHeader(stream);
+		/// <summary>
+		/// Contains the location and header of an object that may not yet have been deserialized.
+		/// </summary>
+		private struct GBRObjectReference
+		{
+			public GBRObjectReference(GBRObjectHeader Header, long Position) {
+				this.Header = Header;
+				this.Position = Position;
+			}
 
-			//TODO validation here.
+			public readonly GBRObjectHeader Header;
+			public readonly long Position;
+
+			public override string ToString() {
+				return "Header: " + Header + "; Position: " + Position;
+			}
+		}
+
+		public GBRFile(Stream stream) {
+			if (!stream.CanSeek) {
+				throw new NotSupportedException("Stream does not support seeking; that is required for this functionality");
+			}
+
+			const UInt16 DELETED_OBJECT_TYPE = 0x00FF;
+
+			this.Header = new GBRFileHeader(stream);
+			//TODO: this.Header.Validate();
+
 			Objects = new Dictionary<UInt16, GBRObject>();
 
-			while (true) {
-				try {
-					Objects.Add(GBRObject.ReadObject(stream));
-				} catch (EndOfStreamException) {
-					break;
+			Dictionary<UInt16, GBRObjectReference> dict = new Dictionary<UInt16, GBRObjectReference>();
+			try {
+				while (true) {
+					GBRObjectHeader header = stream.ReadHeader();
+
+					if (header.ObjectTypeID != DELETED_OBJECT_TYPE) {
+						GBRObjectReference r = new GBRObjectReference(header, stream.Position);
+						dict.Add(header.UniqueID, r);
+					}
+
+					//Advance the stream by the specified amount.
+					stream.Seek(header.Size, SeekOrigin.Current);
 				}
+			} catch (EndOfStreamException) {
+				//End of the stream; we want to go back and read all of the objects now.
+			}
+
+			foreach (GBRObjectReference reference in dict.Values) {
+				stream.Position = reference.Position;
+
+				this.Objects.Add(reference.Header.UniqueID, GBRInitialization.ReadObject(reference.Header, this, stream));
 			}
 		}
 	}
