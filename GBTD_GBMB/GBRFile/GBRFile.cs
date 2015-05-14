@@ -173,7 +173,7 @@ namespace GB.Shared.GBRFile
 			this.Header = new GBRFileHeader(stream);
 
 			//TODO validation here.
-			Objects = new List<GBRObject>();
+			Objects = new Dictionary<UInt16, GBRObject>();
 
 			while (true) {
 				try {

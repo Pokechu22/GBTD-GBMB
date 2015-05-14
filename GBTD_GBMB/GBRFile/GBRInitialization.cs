@@ -23,7 +23,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="header">The header of the object.</param>
 		/// <param name="s">The stream to read from.</param>
 		/// <returns></returns>
-		public static GBRObject ReadObject(GBRObjectHeader header, Stream s) {
+		public static GBRObject ReadObject(GBRObjectHeader header, GBRFile file, Stream s) {
 			GBRObject obj;
 
 			if (mapping.ContainsKey(header.ObjectTypeID)) {
@@ -32,7 +32,8 @@ namespace GB.Shared.GBRFile
 				obj = new GBRObjectUnknownData(header);
 			}
 
-			//TODO: obj.LoadFromStream.
+			obj.LoadFromStream(file, s);
+
 			return obj;
 		}
 
@@ -75,8 +76,8 @@ namespace GB.Shared.GBRFile
 			var objectMapping = mapping.Values.Single(o => (o.Type == typeof(TObjectType)));
 
 			TObjectType obj = (TObjectType)objectMapping.Create(ObjectID);
-			
-			//TODO: obj.Create();
+			obj.SetupObject(file);
+
 			return obj;
 		}
 
@@ -93,7 +94,8 @@ namespace GB.Shared.GBRFile
 			var objectMapping = mapping[ObjectType];
 
 			GBRObject obj = objectMapping.Create(ObjectID);
-			//TODO: obj.create()
+			obj.SetupObject(file);
+
 			return obj;
 		}
 
