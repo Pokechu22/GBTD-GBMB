@@ -117,7 +117,7 @@ namespace GB.Shared.GBRFile
 		/// <typeparam name="TObjectType"></typeparam>
 		/// <returns></returns>
 		public TObjectType GetObjectOfType<TObjectType>() where TObjectType : GBRObject {
-			return Objects.OfType<TObjectType>().Single();
+			return Objects.Values.OfType<TObjectType>().Single();
 		}
 
 		/// <summary>
@@ -126,12 +126,12 @@ namespace GB.Shared.GBRFile
 		/// <typeparam name="TObjectType"></typeparam>
 		/// <returns></returns>
 		public TObjectType GetOrCreateObjectOfType<TObjectType>() where TObjectType : GBRObject {
-			if (Objects.OfType<TObjectType>().Count() == 0) {
-				//TODO: Create a new object.
-				return null;
+			if (Objects.Values.OfType<TObjectType>().Count() == 0) {
+				TObjectType obj = GBRInitialization.CreateObject<TObjectType>(this);
+				this.Objects.Add(obj.Header.UniqueID, obj);
 			}
 
-			return Objects.OfType<TObjectType>().Single();
+			return Objects.Values.OfType<TObjectType>().Single();
 		}
 
 		/// <summary>
@@ -140,7 +140,7 @@ namespace GB.Shared.GBRFile
 		/// <typeparam name="TObjectType"></typeparam>
 		/// <returns></returns>
 		public List<TObjectType> GetObjectsOfType<TObjectType>() where TObjectType : GBRObject {
-			return new List<TObjectType>(Objects.OfType<TObjectType>());
+			return new List<TObjectType>(Objects.Values.OfType<TObjectType>());
 		}
 
 		/// <summary>
@@ -160,7 +160,7 @@ namespace GB.Shared.GBRFile
 		/// <param name="obj"></param>
 		/// <returns></returns>
 		public List<ReferentialGBRObject<TObjectType>> GetReferingObjects<TObjectType>(TObjectType obj) where TObjectType : GBRObject {
-			return new List<ReferentialGBRObject<TObjectType>>(Objects
+			return new List<ReferentialGBRObject<TObjectType>>(Objects.Values
 				.OfType<ReferentialGBRObject<TObjectType>>()
 				.Where(o => o.ReferedObjectUniqueID == obj.Header.UniqueID));
 		}
