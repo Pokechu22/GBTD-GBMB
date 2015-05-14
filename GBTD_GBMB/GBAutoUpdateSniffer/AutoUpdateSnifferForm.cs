@@ -89,6 +89,7 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Color_set_change));
+					listBoxMessages.SelectedIndex = listBoxMessages.Items.Count - 1;
 				}));
 			} catch (Exception ex) {
 				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,6 +106,8 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_palette));
+
+					listBoxMessages.SelectedIndex = listBoxMessages.Items.Count - 1;
 
 					mmfColor0MappingTextBox.Value = mmf.GBPalettes.Color0;
 					mmfColor1MappingTextBox.Value = mmf.GBPalettes.Color1;
@@ -126,6 +129,7 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Single_tile));
+					listBoxMessages.SelectedIndex = listBoxMessages.Items.Count - 1;
 
 					//Update only if the right tile.
 					if (args.TileID == mmfTileNumberTextBox.Value) {
@@ -149,6 +153,7 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_refresh));
+					listBoxMessages.SelectedIndex = listBoxMessages.Items.Count - 1;
 
 					mmfTileCountTextBox.Value = mmf.TileCount;
 
@@ -171,6 +176,7 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Tile_size));
+					listBoxMessages.SelectedIndex = listBoxMessages.Items.Count - 1;
 
 					mmfTileCountTextBox.Value = mmf.TileCount;
 					mmfTileWidthTextBox.Value = mmf.TileWidth;
@@ -191,6 +197,7 @@ namespace GBAutoUpdateSniffer
 				Invoke(new MethodInvoker(delegate
 				{
 					listBoxMessages.Items.Add(new AUEventInfo(args, AUEventType.Total_refresh));
+					listBoxMessages.SelectedIndex = listBoxMessages.Items.Count - 1;
 
 					mmfTileCountTextBox.Value = mmf.TileCount;
 					mmfTileWidthTextBox.Value = mmf.TileWidth;
