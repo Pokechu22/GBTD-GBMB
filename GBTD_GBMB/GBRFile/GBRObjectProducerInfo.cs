@@ -45,13 +45,13 @@ namespace GB.Shared.GBRFile
 			set { if (value == null) { throw new ArgumentNullException("value"); } info = value; }
 		}
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(name, 30);
 			s.WriteString(version, 10);
 			s.WriteString(info, 80);
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			this.name = s.ReadString(30);
 			this.version = s.ReadString(10);
 			this.info = s.ReadString(80);

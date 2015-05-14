@@ -115,7 +115,7 @@ namespace GB.Shared.GBRFile
 		/// <remarks>Since: GBTD 1.8</remarks>
 		public byte SelectedTab { get; set; }
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			base.SaveToStream(file, s);
 
 			s.WriteString(FileName, 128);
@@ -140,7 +140,7 @@ namespace GB.Shared.GBRFile
 			s.WriteByte(SelectedTab);
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			base.LoadFromStream(file, s);
 
 			this.FileName = s.ReadString(128);

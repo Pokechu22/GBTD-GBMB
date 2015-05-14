@@ -55,20 +55,20 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		/// <param name="file">The current GBRFile.</param>
 		/// <param name="s">The stream to save to.</param>
-		protected abstract void SaveToStream(GBRFile file, Stream s);
+		protected internal abstract void SaveToStream(GBRFile file, Stream s);
 		/// <summary>
 		/// Loads the object from the given stream.
 		/// </summary>
 		/// <param name="file">The current GBRFile.</param>
 		/// <param name="s">The stream to load from.</param>
-		protected abstract void LoadFromStream(GBRFile file, Stream s);
+		protected internal abstract void LoadFromStream(GBRFile file, Stream s);
 		/// <summary>
 		/// Used to set up the given object when creating a new one.  Set up any initialization logic here, such as events or master objects.
 		/// 
 		/// <para>Will NOT be called when loading from the stream.</para>
 		/// </summary>
 		/// <param name="file"></param>
-		protected virtual void SetupObject(GBRFile file) { }
+		protected internal virtual void SetupObject(GBRFile file) { }
 
 		/// <summary>
 		/// Gets the name of the object type, which should be constant for all instances.
@@ -154,16 +154,16 @@ namespace GB.Shared.GBRFile
 			this.ReferedObject = null;
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			UInt16 ReferedObjectUniqueID = s.ReadWord();
 			this.ReferedObject = file.GetObjectWithID<TRefered>(ReferedObjectUniqueID);
 		}
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteWord(ReferedObjectUniqueID);
 		}
 
-		protected override void SetupObject(GBRFile file) {
+		protected internal override void SetupObject(GBRFile file) {
 			base.SetupObject(file);
 
 			this.ReferedObject = file.GetOrCreateObjectOfType<TRefered>();

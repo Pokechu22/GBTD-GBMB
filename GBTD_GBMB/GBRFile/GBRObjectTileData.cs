@@ -57,7 +57,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public Tile[] tiles;
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(name, 30);
 
 			s.WriteWord(Width);
@@ -79,7 +79,7 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			name = s.ReadString(30);
 
 			Width = s.ReadWord();

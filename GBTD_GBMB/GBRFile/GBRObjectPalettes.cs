@@ -25,7 +25,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public PaletteSet SGBPalettes { get; set; }
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			base.SaveToStream(file, s);
 			
 			s.WriteWord(GBCPalettes.Size);
@@ -49,7 +49,7 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			base.LoadFromStream(file, s);
 			
 			this.GBCPalettes = new PaletteSet(s.ReadWord());

@@ -127,7 +127,7 @@ namespace GB.Shared.GBRFile
 		public GBColor X2MouseColor { get; set; }
 		#endregion
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			base.SaveToStream(file, s);
 
 			s.WriteBool(SimpleMode);
@@ -158,7 +158,7 @@ namespace GB.Shared.GBRFile
 			s.WriteByte((byte)X2MouseColor);
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			base.LoadFromStream(file, s);
 
 			this.SimpleMode = s.ReadBool(false);

@@ -20,11 +20,11 @@ namespace GB.Shared.GBRFile
 			this.data = new byte[0];
 		}
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.Write(data, 0, (int)Header.Size);
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			data = new byte[Header.Size];
 			s.Read(data, 0, (int)Header.Size);
 		}

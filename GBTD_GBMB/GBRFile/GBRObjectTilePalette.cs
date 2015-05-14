@@ -26,7 +26,7 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public UInt32[] SGBPalettes { get; set; }
 
-		protected override void SaveToStream(GBRFile file, Stream s) {
+		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			base.SaveToStream(file, s);
 
 			s.WriteWord((UInt16)GBCPalettes.Length);
@@ -40,7 +40,7 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
-		protected override void LoadFromStream(GBRFile file, Stream s) {
+		protected internal override void LoadFromStream(GBRFile file, Stream s) {
 			base.LoadFromStream(file, s);
 
 			GBCPalettes = new UInt32[s.ReadWord()];
