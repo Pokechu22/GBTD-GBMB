@@ -11,10 +11,10 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectTileData : GBRObject
 	{
 		public GBRObjectTileData(UInt16 UniqueID) : base(UniqueID) {
-			this.name = "";
-			this.Width = 8;
-			this.Height = 8;
-			this.Count = 128;
+			this.Name = "";
+			this.width = 8;
+			this.height = 8;
+			this.count = 128;
 			this.Color0Mapping = GBColor.WHITE;
 			this.Color1Mapping = GBColor.DARK_GRAY;
 			this.Color2Mapping = GBColor.LIGHT_GRAY;
@@ -22,26 +22,51 @@ namespace GB.Shared.GBRFile
 			this.Tiles = new Tile[Count]; //TODO: This may be wrong.
 		}
 
-		private string name;
 		/// <summary>
 		/// The user-facing name of the tileset.
 		/// </summary>
-		public string Name {
-			get { return name; }
-			set { if (value == null) { throw new ArgumentNullException(); } value = name; }
-		}
+		public string Name { get; set; }
+
+		private UInt16 width;
+		private UInt16 height;
+		private UInt16 count;
+
 		/// <summary>
 		/// Width of each individual tile.
 		/// </summary>
-		public UInt16 Width { get; set; }
+		public UInt16 Width {
+			get { return width; }
+			set {
+				if (value != width) {
+					value = width;
+					OnSizeChanged();
+				}
+			}
+		}
 		/// <summary>
 		/// Height of each individual tile.
 		/// </summary>
-		public UInt16 Height { get; set; }
+		public UInt16 Height {
+			get { return height; }
+			set {
+				if (value != height) {
+					value = height;
+					OnSizeChanged();
+				}
+			}
+		}
 		/// <summary>
 		/// Total number of tiles in the file.
 		/// </summary>
-		public UInt16 Count { get; set; }
+		public UInt16 Count {
+			get { return count; }
+			set {
+				if (value != count) {
+					value = count;
+					OnCountChanged();
+				}
+			}
+		}
 
 		/// <summary>
 		/// Color mapping between number and color (As with BGP_REG).
@@ -60,13 +85,46 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		public GBColor Color3Mapping { get; set; }
 
+		private Tile[] tiles;
 		/// <summary>
 		/// The actual tile data payload.
 		/// </summary>
-		public Tile[] Tiles;
+		public Tile[] Tiles {
+			get { return tiles; }
+			set {
+				tiles = value;
+				if (tiles.Length != Count) {
+					Count = (UInt16)tiles.Length;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Fires whenever the number of tiles changes.  This will also occur when the tile size changes.
+		/// </summary>
+		public event EventHandler CountChanged;
+		/// <summary>
+		/// Fires whenever the size of each tlie changes.
+		/// </summary>
+		public event EventHandler SizeChanged;
+
+		private void OnCountChanged() {
+			//TODO: Resize tiles array.
+
+			if (CountChanged != null) {
+				CountChanged(this, new EventArgs());
+			}
+		}
+		private void OnSizeChanged() {
+			//TODO: Resize tiles array.
+
+			if (SizeChanged != null) {
+				SizeChanged(this, new EventArgs());
+			}
+		}
 
 		protected internal override void SaveToStream(GBRFile file, Stream s) {
-			s.WriteString(name, 30);
+			s.WriteString(Name, 30);
 
 			s.WriteWord(Width);
 			s.WriteWord(Height);
@@ -88,7 +146,7 @@ namespace GB.Shared.GBRFile
 		}
 
 		protected internal override void LoadFromStream(GBRFile file, Stream s) {
-			name = s.ReadString(30);
+			Name = s.ReadString(30);
 
 			Width = s.ReadWord();
 			Height = s.ReadWord();
@@ -141,7 +199,7 @@ namespace GB.Shared.GBRFile
 
 			TreeNode returned = base.ToTreeNode();
 
-			returned.Nodes.Add("name", "Name: " + name);
+			returned.Nodes.Add("name", "Name: " + Name);
 			returned.Nodes.Add("width", "Width: " + Width);
 			returned.Nodes.Add("height", "Height: " + Height);
 			returned.Nodes.Add("count", "Count: " + Count);

@@ -16,8 +16,8 @@ namespace GB.GBTD
 {
 	public partial class TileEdit : Form
 	{
-		private string filePath;
-		private GBRFile GBRFile;
+		//private string filePath;
+		//private GBRFile GBRFile;
 
 		public TileEdit() {
 			InitializeComponent();
