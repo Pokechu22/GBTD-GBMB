@@ -528,13 +528,13 @@
 			// zoomInMenuItem
 			// 
 			this.zoomInMenuItem.Index = 0;
-			this.zoomInMenuItem.Text = "Zoom &in";
+			this.zoomInMenuItem.Text = "Zoom &in\tCtrl +";
 			this.zoomInMenuItem.Click += new System.EventHandler(this.zoomInMenuItem_Click);
 			// 
 			// zoomOutMenuItem
 			// 
 			this.zoomOutMenuItem.Index = 1;
-			this.zoomOutMenuItem.Text = "Zoom &out";
+			this.zoomOutMenuItem.Text = "Zoom &out\tCtrl -";
 			this.zoomOutMenuItem.Click += new System.EventHandler(this.zoomOutMenuItem_Click);
 			// 
 			// zoom25PercentMenuItem

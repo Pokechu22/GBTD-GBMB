@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using GB.Shared.GBRFile;
-using GB.Shared.GBMFile;
 using System.IO;
-using GB.Shared.AutoUpdate;
-using GB.Shared.Palettes;
 using System.Runtime.InteropServices;
-using GB.Shared.Controls;
+using System.Windows.Forms;
 using GB.GBMB.Dialogs;
 using GB.GBMB.Exporting;
-using System.Reflection;
+using GB.Shared.AutoUpdate;
+using GB.Shared.Controls;
+using GB.Shared.GBMFile;
+using GB.Shared.GBRFile;
+using GB.Shared.Palettes;
 
 namespace GB.GBMB
 {
@@ -412,41 +407,27 @@ namespace GB.GBMB
 		/// </summary>
 		/// <param name="e"></param>
 		protected override void OnLoad(EventArgs e) {
-			const Shortcut CONTROL_PLUS = (Shortcut)((int)Keys.Control + (int)Keys.Oemplus);
-			const Shortcut CONTROL_MINUS = (Shortcut)((int)Keys.Control + (int)Keys.OemMinus);
-
 			base.OnLoad(e);
 			this.Menu = mainMenu;
 			
 			AddClipboardFormatListener(this.Handle);
 			pasteButton.Enabled = pasteMenuItem.Enabled = Clipboard.ContainsText();
 
-			// I want a shortcut, but it's not a valid value for the default menu item...
-			// even though windows excepts it.  So, we trick it with reflection.
-			// I'm looking for a better option: http://stackoverflow.com/q/30197697/3991344
-			try {
-				var dataField = typeof(MenuItem).GetField("data", BindingFlags.NonPublic | BindingFlags.Instance);
-				var updateMenuItemMethod = typeof(MenuItem).GetMethod("UpdateMenuItem", BindingFlags.NonPublic | BindingFlags.Instance);
-				var menuItemDataClass = typeof(MenuItem).GetNestedType("MenuItemData", BindingFlags.NonPublic);
-				var menuItemDataShortcutField = menuItemDataClass.GetField("shortcut", BindingFlags.NonPublic | BindingFlags.Instance);
-
-				var zoomInData = dataField.GetValue(zoomInMenuItem);
-				menuItemDataShortcutField.SetValue(zoomInData, CONTROL_PLUS);
-				updateMenuItemMethod.Invoke(zoomInMenuItem, new object[] { true });
-
-				var zoomOutData = dataField.GetValue(zoomOutMenuItem);
-				menuItemDataShortcutField.SetValue(zoomOutData, CONTROL_MINUS);
-				updateMenuItemMethod.Invoke(zoomOutMenuItem, new object[] { true });
-			} catch (Exception ex) {
-				//Something went wrong with setting it up control+plus or such; just ignore it as this isn't critical.
-				Console.Error.WriteLine("Error setting up zoom menu items!\n{0}", ex);
-			}
-
 			LoadReopenList();
 
 			if (gbmFile == null) {
 				LoadMapFile(GBMFile.CreatePrePopulated());
 			}
+		}
+
+		protected override void OnKeyDown(KeyEventArgs e) {
+			if (e.Control && e.KeyCode == Keys.Oemplus) {
+				zoomInMenuItem.PerformClick();
+			} else if (e.Control && e.KeyCode == Keys.OemMinus) {
+				zoomOutMenuItem.PerformClick();
+			}
+
+			base.OnKeyDown(e);
 		}
 
 		protected override void OnResize(EventArgs e) {
@@ -1205,11 +1186,15 @@ namespace GB.GBMB
 		}
 
 		private void zoomInMenuItem_Click(object sender, EventArgs e) {
-			ZoomLevel++;
+			if (zoomInMenuItem.Enabled) {
+				ZoomLevel++;
+			}
 		}
 
 		private void zoomOutMenuItem_Click(object sender, EventArgs e) {
-			ZoomLevel--;
+			if (zoomOutMenuItem.Enabled) {
+				ZoomLevel--;
+			}
 		}
 	}
 }
