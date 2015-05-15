@@ -37,8 +37,6 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			GB.Shared.Palettes.PaletteData paletteData5 = new GB.Shared.Palettes.PaletteData();
-			GB.GBTD.PixelTileEditor pixelTileEditor5 = new GB.GBTD.PixelTileEditor();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -106,12 +104,6 @@
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
-			this.tileList1 = new GB.Shared.Controls.TileListControl();
-			this.tileEditBorder = new GB.Shared.Controls.Border();
-			this.paletteChooser = new GB.Shared.Palettes.GBTDPaletteChooser();
-			this.mainTileEdit = new GB.GBTD.EditableTileRenderer();
-			this.toolList = new GB.GBTD.ToolList();
-			this.previewRenderer1 = new GB.GBTD.PreviewRenderer();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -123,7 +115,6 @@
 			seperatorMenuItem9 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem13 = new System.Windows.Forms.MenuItem();
-			this.tileEditBorder.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuItem6
@@ -212,20 +203,17 @@
 			this.openMenuItem.Index = 0;
 			this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
 			this.openMenuItem.Text = "&Open...";
-			this.openMenuItem.Click += new System.EventHandler(this.openButton_Click);
 			// 
 			// saveMenuItem
 			// 
 			this.saveMenuItem.Index = 1;
 			this.saveMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
 			this.saveMenuItem.Text = "&Save";
-			this.saveMenuItem.Click += new System.EventHandler(this.saveButton_Click);
 			// 
 			// saveAsMenuItem
 			// 
 			this.saveAsMenuItem.Index = 2;
 			this.saveAsMenuItem.Text = "Save &As...";
-			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsButton_Click);
 			// 
 			// reopenMenuItem
 			// 
@@ -244,13 +232,11 @@
 			// 
 			this.exportToMenuItem.Index = 7;
 			this.exportToMenuItem.Text = "Ex&port to...";
-			this.exportToMenuItem.Click += new System.EventHandler(this.exportToMenuItem_Click);
 			// 
 			// importFromMenuItem
 			// 
 			this.importFromMenuItem.Index = 8;
 			this.importFromMenuItem.Text = "&Import from...";
-			this.importFromMenuItem.Click += new System.EventHandler(this.importFromMenuItem_Click);
 			// 
 			// exitMenuItem
 			// 
@@ -283,21 +269,18 @@
 			this.cutMenuItem.Index = 2;
 			this.cutMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
 			this.cutMenuItem.Text = "Cu&t tile";
-			this.cutMenuItem.Click += new System.EventHandler(this.cutButtonClicked);
 			// 
 			// copyMenuItem
 			// 
 			this.copyMenuItem.Index = 3;
 			this.copyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
 			this.copyMenuItem.Text = "&Copy tile";
-			this.copyMenuItem.Click += new System.EventHandler(this.copyButtonClicked);
 			// 
 			// pasteMenuItem
 			// 
 			this.pasteMenuItem.Index = 4;
 			this.pasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
 			this.pasteMenuItem.Text = "&Paste tile";
-			this.pasteMenuItem.Click += new System.EventHandler(this.pasteButtonClicked);
 			// 
 			// splitCopyMenuItem
 			// 
@@ -344,7 +327,6 @@
 			this.penMenuItem.RadioCheck = true;
 			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
 			this.penMenuItem.Text = "&Pen";
-			this.penMenuItem.Click += new System.EventHandler(this.penMenuItem_Click);
 			// 
 			// floodFillMenuItem
 			// 
@@ -352,52 +334,44 @@
 			this.floodFillMenuItem.RadioCheck = true;
 			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
 			this.floodFillMenuItem.Text = "&Flood Fill";
-			this.floodFillMenuItem.Click += new System.EventHandler(this.floodFillMenuItem_Click);
 			// 
 			// flipVerticallyMenuItem
 			// 
 			this.flipVerticallyMenuItem.Index = 3;
 			this.flipVerticallyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
 			this.flipVerticallyMenuItem.Text = "Flip Verticall&y";
-			this.flipVerticallyMenuItem.Click += new System.EventHandler(this.flipVerticallyClicked);
 			// 
 			// flipHorizontallyMenuItem
 			// 
 			this.flipHorizontallyMenuItem.Index = 4;
 			this.flipHorizontallyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
 			this.flipHorizontallyMenuItem.Text = "Flip &Horizontally";
-			this.flipHorizontallyMenuItem.Click += new System.EventHandler(this.flipHorizontallyClicked);
 			// 
 			// rotateClockwiseMenuItem
 			// 
 			this.rotateClockwiseMenuItem.Index = 5;
 			this.rotateClockwiseMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
 			this.rotateClockwiseMenuItem.Text = "&Rotate clockwise";
-			this.rotateClockwiseMenuItem.Click += new System.EventHandler(this.rotateClockwiseClicked);
 			// 
 			// scrollLeftMenuItem
 			// 
 			this.scrollLeftMenuItem.Index = 7;
 			this.scrollLeftMenuItem.Text = "Scroll &Left";
-			this.scrollLeftMenuItem.Click += new System.EventHandler(this.scrollLeftClicked);
 			// 
 			// scrollRightMenuItem
 			// 
 			this.scrollRightMenuItem.Index = 8;
 			this.scrollRightMenuItem.Text = "Scroll Ri&ght";
-			this.scrollRightMenuItem.Click += new System.EventHandler(this.scrollRightClicked);
 			// 
 			// scrollUpMenuItem
 			// 
 			this.scrollUpMenuItem.Index = 9;
 			this.scrollUpMenuItem.Text = "Scroll &Up";
-			this.scrollUpMenuItem.Click += new System.EventHandler(this.scrollUpClicked);
 			// 
 			// scrollDownMenuItem
 			// 
 			this.scrollDownMenuItem.Index = 10;
 			this.scrollDownMenuItem.Text = "Scroll &Down";
-			this.scrollDownMenuItem.Click += new System.EventHandler(this.scrollDownClicked);
 			// 
 			// seperatorMenuItem8
 			// 
@@ -451,62 +425,53 @@
 			this.size8x8MenuItem.Index = 0;
 			this.size8x8MenuItem.RadioCheck = true;
 			this.size8x8MenuItem.Text = "&8 x 8";
-			this.size8x8MenuItem.Click += new System.EventHandler(this.size8x8MenuItem_Click);
 			// 
 			// size8x16MenuItem
 			// 
 			this.size8x16MenuItem.Index = 1;
 			this.size8x16MenuItem.RadioCheck = true;
 			this.size8x16MenuItem.Text = "8 x &16";
-			this.size8x16MenuItem.Click += new System.EventHandler(this.size8x16MenuItem_Click);
 			// 
 			// size16x16MenuItem
 			// 
 			this.size16x16MenuItem.Index = 2;
 			this.size16x16MenuItem.RadioCheck = true;
 			this.size16x16MenuItem.Text = "1&6 x 16";
-			this.size16x16MenuItem.Click += new System.EventHandler(this.size16x16MenuItem_Click);
 			// 
 			// size32x32MenuItem
 			// 
 			this.size32x32MenuItem.Index = 3;
 			this.size32x32MenuItem.RadioCheck = true;
 			this.size32x32MenuItem.Text = "&32 x 32";
-			this.size32x32MenuItem.Click += new System.EventHandler(this.size32x32MenuItem_Click);
 			// 
 			// tileCountMenuItem
 			// 
 			this.tileCountMenuItem.Index = 1;
 			this.tileCountMenuItem.Text = "Tile &count...";
-			this.tileCountMenuItem.Click += new System.EventHandler(this.tileCountMenuItem_Click);
 			// 
 			// simpleModeMenuItem
 			// 
 			this.simpleModeMenuItem.Index = 3;
 			this.simpleModeMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
 			this.simpleModeMenuItem.Text = "Si&mple";
-			this.simpleModeMenuItem.Click += new System.EventHandler(this.simpleModeMenuItem_Click);
 			// 
 			// gridMenuItem
 			// 
 			this.gridMenuItem.Index = 4;
 			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
 			this.gridMenuItem.Text = "&Grid";
-			this.gridMenuItem.Click += new System.EventHandler(this.gridMenuItem_Click);
 			// 
 			// nibbleMarkersMenuItem
 			// 
 			this.nibbleMarkersMenuItem.Index = 5;
 			this.nibbleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.nibbleMarkersMenuItem.Text = "&Nibble markers";
-			this.nibbleMarkersMenuItem.Click += new System.EventHandler(this.nibbleMarkersMenuItem_Click);
 			// 
 			// autoUpdateMenuItem
 			// 
 			this.autoUpdateMenuItem.Index = 7;
 			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
 			this.autoUpdateMenuItem.Text = "Auto &update";
-			this.autoUpdateMenuItem.Click += new System.EventHandler(this.autoUpdateMenuItem_Click);
 			// 
 			// seperatorMenuItem11
 			// 
@@ -531,7 +496,6 @@
 			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
 			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
-			this.colorSetGameboyPocketMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
 			// colorSetGameboyMenuItem
 			// 
@@ -539,7 +503,6 @@
 			this.colorSetGameboyMenuItem.RadioCheck = true;
 			this.colorSetGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY;
 			this.colorSetGameboyMenuItem.Text = "&Gameboy";
-			this.colorSetGameboyMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
 			// colorSetSuperGameboyMenuItem
 			// 
@@ -547,7 +510,6 @@
 			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
 			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.SUPER_GAMEBOY;
 			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
-			this.colorSetSuperGameboyMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
 			// colorSetGameboyColorMenuItem
 			// 
@@ -555,7 +517,6 @@
 			this.colorSetGameboyColorMenuItem.RadioCheck = true;
 			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
 			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
-			this.colorSetGameboyColorMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
 			// colorSetFilteredGameboyColorMenuItem
 			// 
@@ -563,14 +524,12 @@
 			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
 			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR_FILTERED;
 			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
-			this.colorSetFilteredGameboyColorMenuItem.Click += new System.EventHandler(this.colorSetMenuItems_Click);
 			// 
 			// palettesMenuItem
 			// 
 			this.palettesMenuItem.Index = 10;
 			this.palettesMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
 			this.palettesMenuItem.Text = "P&alettes...";
-			this.palettesMenuItem.Click += new System.EventHandler(this.palettesMenuItem_Click);
 			// 
 			// seperatorMenuItem12
 			// 
@@ -620,7 +579,6 @@
 			this.helpButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Help_NoHover;
 			this.helpButton.Size = new System.Drawing.Size(24, 24);
 			this.helpButton.TabIndex = 15;
-			this.helpButton.Text = "imageButton7";
 			this.toolTip.SetToolTip(this.helpButton, "Help topics");
 			// 
 			// pasteButton
@@ -631,9 +589,7 @@
 			this.pasteButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Paste_NoHover;
 			this.pasteButton.Size = new System.Drawing.Size(24, 24);
 			this.pasteButton.TabIndex = 14;
-			this.pasteButton.Text = "imageButton6";
 			this.toolTip.SetToolTip(this.pasteButton, "Paste");
-			this.pasteButton.Click += new System.EventHandler(this.pasteButtonClicked);
 			// 
 			// copyButton
 			// 
@@ -643,9 +599,7 @@
 			this.copyButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Copy_NoHover;
 			this.copyButton.Size = new System.Drawing.Size(24, 24);
 			this.copyButton.TabIndex = 13;
-			this.copyButton.Text = "imageButton5";
 			this.toolTip.SetToolTip(this.copyButton, "Copy");
-			this.copyButton.Click += new System.EventHandler(this.copyButtonClicked);
 			// 
 			// cutButton
 			// 
@@ -655,9 +609,7 @@
 			this.cutButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Cut_NoHover;
 			this.cutButton.Size = new System.Drawing.Size(24, 24);
 			this.cutButton.TabIndex = 12;
-			this.cutButton.Text = "imageButton4";
 			this.toolTip.SetToolTip(this.cutButton, "Cut");
-			this.cutButton.Click += new System.EventHandler(this.cutButtonClicked);
 			// 
 			// exportButton
 			// 
@@ -667,7 +619,6 @@
 			this.exportButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Export_NoHover;
 			this.exportButton.Size = new System.Drawing.Size(24, 24);
 			this.exportButton.TabIndex = 10;
-			this.exportButton.Text = "imageButton3";
 			this.toolTip.SetToolTip(this.exportButton, "Export");
 			// 
 			// saveButton
@@ -678,9 +629,7 @@
 			this.saveButton.NonhoveredImage = global::GB.GBTD.Properties.Resources.Save_NoHover;
 			this.saveButton.Size = new System.Drawing.Size(24, 24);
 			this.saveButton.TabIndex = 9;
-			this.saveButton.Text = "imageButton2";
 			this.toolTip.SetToolTip(this.saveButton, "Save");
-			this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
 			// 
 			// openButton
 			// 
@@ -691,7 +640,6 @@
 			this.openButton.Size = new System.Drawing.Size(24, 24);
 			this.openButton.TabIndex = 8;
 			this.toolTip.SetToolTip(this.openButton, "Open");
-			this.openButton.Click += new System.EventHandler(this.openButton_Click);
 			// 
 			// toolStripSeperatorBorder
 			// 
@@ -705,7 +653,6 @@
 			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
 			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
 			this.toolStripSeperatorBorder.TabIndex = 11;
-			this.toolStripSeperatorBorder.Text = "border2";
 			this.toolStripSeperatorBorder.TopBorder = null;
 			// 
 			// toolStripBorder
@@ -720,107 +667,7 @@
 			this.toolStripBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
 			this.toolStripBorder.Size = new System.Drawing.Size(397, 32);
 			this.toolStripBorder.TabIndex = 7;
-			this.toolStripBorder.Text = "border1";
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
-			// 
-			// tileList1
-			// 
-			this.tileList1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.tileList1.Location = new System.Drawing.Point(341, 38);
-			this.tileList1.Name = "tileList1";
-			this.tileList1.NumberOfEntries = 16;
-			this.tileList1.PaletteSet = paletteData5;
-			this.tileList1.SelectedEntry = 0;
-			this.tileList1.Size = new System.Drawing.Size(56, 223);
-			this.tileList1.TabIndex = 5;
-			this.tileList1.SelectedEntryChanged += new System.EventHandler(this.tileList1_SelectedEntryChanged);
-			// 
-			// tileEditBorder
-			// 
-			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Controls.Add(this.paletteChooser);
-			this.tileEditBorder.Controls.Add(this.mainTileEdit);
-			this.tileEditBorder.Controls.Add(this.toolList);
-			this.tileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Location = new System.Drawing.Point(0, 34);
-			this.tileEditBorder.Name = "tileEditBorder";
-			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
-			this.tileEditBorder.TabIndex = 4;
-			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			// 
-			// paletteChooser
-			// 
-			this.paletteChooser.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.paletteChooser.DisplayedButtons = ((System.Windows.Forms.MouseButtons)((System.Windows.Forms.MouseButtons.Left | System.Windows.Forms.MouseButtons.Right)));
-			this.paletteChooser.Location = new System.Drawing.Point(34, 200);
-			this.paletteChooser.Margin = new System.Windows.Forms.Padding(2);
-			this.paletteChooser.Name = "paletteChooser";
-			this.paletteChooser.Padding = new System.Windows.Forms.Padding(2);
-			this.paletteChooser.SelectedRow = 0;
-			this.paletteChooser.Size = new System.Drawing.Size(191, 26);
-			this.paletteChooser.TabIndex = 2;
-			this.paletteChooser.SelectedPaletteChanged += new System.EventHandler(this.paletteChooser_SelectedPaletteChanged);
-			this.paletteChooser.MouseButtonColorChanged += new System.EventHandler(this.gbtdgbcPaletteChooser1_MouseButtonColorChanged);
-			// 
-			// mainTileEdit
-			// 
-			this.mainTileEdit.Border = true;
-			this.mainTileEdit.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.mainTileEdit.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.mainTileEdit.Editor = pixelTileEditor5;
-			this.mainTileEdit.EditorTypeID = GB.GBTD.TileEditorID.PixelEdit;
-			this.mainTileEdit.Grid = false;
-			this.mainTileEdit.LeftMouseColor = GB.Shared.Tiles.GBColor.BLACK;
-			this.mainTileEdit.Location = new System.Drawing.Point(33, 4);
-			this.mainTileEdit.Margin = new System.Windows.Forms.Padding(0);
-			this.mainTileEdit.MiddleMouseColor = GB.Shared.Tiles.GBColor.DARK_GRAY;
-			this.mainTileEdit.Name = "mainTileEdit";
-			this.mainTileEdit.NibbleMarkers = false;
-			this.mainTileEdit.PixelScale = 24;
-			this.mainTileEdit.RightMouseColor = GB.Shared.Tiles.GBColor.WHITE;
-			this.mainTileEdit.Selected = false;
-			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
-			this.mainTileEdit.TabIndex = 1;
-			this.mainTileEdit.XButton1MouseColor = GB.Shared.Tiles.GBColor.WHITE;
-			this.mainTileEdit.XButton2MouseColor = GB.Shared.Tiles.GBColor.WHITE;
-			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
-			this.mainTileEdit.PalatteChanged += new System.EventHandler(this.mainTileEdit_PalatteChanged);
-			// 
-			// toolList
-			// 
-			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(4, 4);
-			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
-			this.toolList.Size = new System.Drawing.Size(26, 217);
-			this.toolList.TabIndex = 0;
-			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList1_SelectedToolChanged);
-			this.toolList.ScrollUpClicked += new System.EventHandler(this.scrollUpClicked);
-			this.toolList.ScrollDownClicked += new System.EventHandler(this.scrollDownClicked);
-			this.toolList.ScrollLeftClicked += new System.EventHandler(this.scrollLeftClicked);
-			this.toolList.ScrollRightClicked += new System.EventHandler(this.scrollRightClicked);
-			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.flipVerticallyClicked);
-			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.flipHorizontallyClicked);
-			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.rotateClockwiseClicked);
-			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
-			// 
-			// previewRenderer1
-			// 
-			this.previewRenderer1.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.previewRenderer1.Location = new System.Drawing.Point(235, 39);
-			this.previewRenderer1.Name = "previewRenderer1";
-			this.previewRenderer1.Simple = false;
-			this.previewRenderer1.Size = new System.Drawing.Size(98, 192);
-			this.previewRenderer1.TabIndex = 6;
 			// 
 			// TileEdit
 			// 
@@ -836,15 +683,11 @@
 			this.Controls.Add(this.saveButton);
 			this.Controls.Add(this.openButton);
 			this.Controls.Add(this.toolStripBorder);
-			this.Controls.Add(this.previewRenderer1);
-			this.Controls.Add(this.tileList1);
-			this.Controls.Add(this.tileEditBorder);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = global::GB.GBTD.Properties.Resources.GBTDIcon;
 			this.MaximizeBox = false;
 			this.Name = "TileEdit";
 			this.Text = " ";
-			this.Icon = global::GB.GBTD.Properties.Resources.GBTDIcon;
-			this.tileEditBorder.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -852,12 +695,6 @@
 		#endregion
 
 		private System.Windows.Forms.MainMenu mainMenu;
-		private GB.Shared.Controls.Border tileEditBorder;
-		private ToolList toolList;
-		private Shared.Palettes.GBTDPaletteChooser paletteChooser;
-		private GBTD.EditableTileRenderer mainTileEdit;
-		private Shared.Controls.TileListControl tileList1;
-		private PreviewRenderer previewRenderer1;
 		private System.Windows.Forms.MenuItem fileMenuItem;
 		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem designMenuItem;
