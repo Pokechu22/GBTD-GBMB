@@ -123,7 +123,7 @@
 			this.infoPanelLocationLabel = new GB.Shared.Controls.CleanLabel();
 			this.infoPanelHorizontalFlipCheckBox = new System.Windows.Forms.CheckBox();
 			this.infoPanelVerticalFlipCheckBox = new System.Windows.Forms.CheckBox();
-			this.infoPanelPaletteComboBox = new System.Windows.Forms.ComboBox();
+			this.infoPannelColorDropDown = new GB.Shared.Palettes.ColorDropdown();
 			this.infoPanelPalLabel = new GB.Shared.Controls.CleanLabel();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.helpButton = new GB.Shared.Controls.ImageButton();
@@ -966,13 +966,14 @@
 			this.infoPanelVerticalFlipCheckBox.UseVisualStyleBackColor = true;
 			this.infoPanelVerticalFlipCheckBox.Click += new System.EventHandler(this.infoPanelVerticalFlipCheckBox_Click);
 			// 
-			// infoPanelPaletteComboBox
+			// infoPannelColorDropDown
 			// 
-			this.infoPanelPaletteComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.infoPanelPaletteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.infoPanelPaletteComboBox.FormattingEnabled = true;
-			this.infoPanelPaletteComboBox.ItemHeight = 13;
-			this.infoPanelPaletteComboBox.Items.AddRange(new object[] {
+			this.infoPannelColorDropDown.AllowDefault = true;
+			this.infoPannelColorDropDown.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.infoPannelColorDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.infoPannelColorDropDown.FormattingEnabled = true;
+			this.infoPannelColorDropDown.ItemHeight = 13;
+			this.infoPannelColorDropDown.Items.AddRange(new object[] {
             "Default",
             "0",
             "1",
@@ -982,13 +983,12 @@
             "5",
             "6",
             "7"});
-			this.infoPanelPaletteComboBox.Location = new System.Drawing.Point(73, 211);
-			this.infoPanelPaletteComboBox.MaxDropDownItems = 9;
-			this.infoPanelPaletteComboBox.Name = "infoPanelPaletteComboBox";
-			this.infoPanelPaletteComboBox.Size = new System.Drawing.Size(83, 19);
-			this.infoPanelPaletteComboBox.TabIndex = 23;
-			this.infoPanelPaletteComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.infoPanelPaletteComboBox_DrawItem);
-			this.infoPanelPaletteComboBox.SelectedIndexChanged += new System.EventHandler(this.infoPanelPaletteComboBox_SelectedIndexChanged);
+			this.infoPannelColorDropDown.Location = new System.Drawing.Point(73, 211);
+			this.infoPannelColorDropDown.MaxDropDownItems = 9;
+			this.infoPannelColorDropDown.Name = "infoPannelColorDropDown";
+			this.infoPannelColorDropDown.Size = new System.Drawing.Size(83, 19);
+			this.infoPannelColorDropDown.TabIndex = 23;
+			this.infoPannelColorDropDown.SelectedIndexChanged += new System.EventHandler(this.infoPanelPaletteComboBox_SelectedIndexChanged);
 			// 
 			// infoPanelPalLabel
 			// 
@@ -1135,7 +1135,7 @@
 			this.Controls.Add(this.infoPanelPropBorder1);
 			this.Controls.Add(this.infoPanelPropBorder2);
 			this.Controls.Add(this.infoPanelPalLabel);
-			this.Controls.Add(this.infoPanelPaletteComboBox);
+			this.Controls.Add(this.infoPannelColorDropDown);
 			this.Controls.Add(this.infoPanelVerticalFlipCheckBox);
 			this.Controls.Add(this.infoPanelHorizontalFlipCheckBox);
 			this.Controls.Add(this.infoPanelLocationLabel);
@@ -1251,7 +1251,7 @@
 		private Shared.Controls.CleanLabel infoPanelLocationLabel;
 		private System.Windows.Forms.CheckBox infoPanelHorizontalFlipCheckBox;
 		private System.Windows.Forms.CheckBox infoPanelVerticalFlipCheckBox;
-		private System.Windows.Forms.ComboBox infoPanelPaletteComboBox;
+		private GB.Shared.Palettes.ColorDropdown infoPannelColorDropDown;
 		private Shared.Controls.CleanLabel infoPanelPalLabel;
 		private System.Windows.Forms.ToolTip toolTip;
 		private Shared.Controls.Border infoPanelPropBorder1;

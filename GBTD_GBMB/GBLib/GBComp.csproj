@@ -67,6 +67,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="Palettes\ColorDropdown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Palettes\ColorFiltration.cs" />
     <Compile Include="Controls\Basic\Spinner.cs">
       <SubType>UserControl</SubType>
