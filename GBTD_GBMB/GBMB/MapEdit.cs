@@ -41,8 +41,8 @@ namespace GB.GBMB
 				infoPanelHorizontalFlipCheckBox.Enabled = value;
 				infoPanelLocationLabel.Visible = value;
 				infoPanelLocationLabel.Enabled = value;
-				infoPannelColorDropDown.Visible = value;
-				infoPannelColorDropDown.Enabled = value;
+				infoPanelColorDropDown.Visible = value;
+				infoPanelColorDropDown.Enabled = value;
 				infoPanelPalLabel.Visible = value;
 				infoPanelPalLabel.Enabled = value;
 				infoPanelVerticalFlipCheckBox.Visible = value;
@@ -141,7 +141,7 @@ namespace GB.GBMB
 					colorSetFilteredGameboyColorMenuItem
 				};
 
-				infoPannelColorDropDown.ColorSet = value;
+				infoPanelColorDropDown.ColorSet = value;
 
 				foreach (MenuItem item in ColorSetControls) {
 					if (item.Tag is ColorSet) {
@@ -154,34 +154,17 @@ namespace GB.GBMB
 
 				mapControl.ColorSet = value;
 				tileList.ColorSet = value;
+				infoPanelColorDropDown.ColorSet = value;
 
 				infoPanelVerticalFlipCheckBox.Visible = infoPanelVerticalFlipCheckBox.Enabled = value.SupportsTileFlipping();
 				infoPanelHorizontalFlipCheckBox.Visible = infoPanelHorizontalFlipCheckBox.Enabled = value.SupportsTileFlipping();
 
-				infoPannelColorDropDown.Visible = infoPannelColorDropDown.Enabled = value.SupportsPaletteCustomization();
+				infoPanelColorDropDown.Visible = infoPanelColorDropDown.Enabled = value.SupportsPaletteCustomization();
 				infoPanelPalLabel.Visible = infoPanelPalLabel.Enabled = value.SupportsPaletteCustomization();
 
-				infoPannelColorDropDown.Items.Clear();
-				infoPannelColorDropDown.MaxDropDownItems = value.GetNumberOfRows() + 1;
-				infoPannelColorDropDown.Items.Add("Defualt");
-				for (int i = 0; i < value.GetNumberOfRows(); i++) {
-					infoPannelColorDropDown.Items.Add(i.ToString());
-				}
+				infoPanelColorDropDown.ActiveSelectedPalette = mapControl.SelectionPalette;
 
-				if (value.SupportsPaletteCustomization()) {
-					var palTemp = mapControl.SelectionPalette;
-					if (palTemp.HasValue) {
-						if (palTemp >= 0) {
-							infoPannelColorDropDown.SelectedIndex = palTemp.Value + 1;
-						} else {
-							infoPannelColorDropDown.SelectedIndex = -1;
-						}
-					} else {
-						infoPannelColorDropDown.SelectedIndex = 0;
-					}
-				}
-
-				infoPannelColorDropDown.Location =
+				infoPanelColorDropDown.Location =
 					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 246 : 96), infoPanelBorder.Top + 1);
 				infoPanelPalLabel.Location = 
 					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 270 : 120), infoPanelBorder.Top + 3);
@@ -414,7 +397,7 @@ namespace GB.GBMB
 			PaletteData paletteData = new Shared.Palettes.PaletteData(pals.SGBPalettes, pals.GBCPalettes);
 			this.tileList.PaletteData = paletteData;
 			this.mapControl.PaletteData = paletteData;
-			this.infoPannelColorDropDown.PaletteData = paletteData;
+			this.infoPanelColorDropDown.PaletteData = paletteData;
 
 			auMessenger.FileName = tilePath;
 			if (mmf != null) {
@@ -494,7 +477,7 @@ namespace GB.GBMB
 			infoPanelLocationLabel.Location = new Point(infoPanelBorder.Left + 4, infoPanelBorder.Top + 3);
 			infoPanelHorizontalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 80, infoPanelBorder.Top + 3);
 			infoPanelVerticalFlipCheckBox.Location = new Point(infoPanelBorder.Right - 150, infoPanelBorder.Top + 3);
-			infoPannelColorDropDown.Location = new Point(infoPanelBorder.Right - (showFlips ? 246 : 96), infoPanelBorder.Top + 1);
+			infoPanelColorDropDown.Location = new Point(infoPanelBorder.Right - (showFlips ? 246 : 96), infoPanelBorder.Top + 1);
 			infoPanelPalLabel.Location = new Point(infoPanelBorder.Right - (showFlips ? 270 : 120), infoPanelBorder.Top + 3);
 
 			this.ResumeLayout(true);
@@ -787,12 +770,12 @@ namespace GB.GBMB
 				var palTemp = mapControl.SelectionPalette;
 				if (palTemp.HasValue) {
 					if (palTemp >= 0) {
-						infoPannelColorDropDown.SelectedIndex = palTemp.Value + 1;
+						infoPanelColorDropDown.SelectedIndex = palTemp.Value + 1;
 					} else {
-						infoPannelColorDropDown.SelectedIndex = -1;
+						infoPanelColorDropDown.SelectedIndex = -1;
 					}
 				} else {
-					infoPannelColorDropDown.SelectedIndex = 0;
+					infoPanelColorDropDown.SelectedIndex = 0;
 				}
 			}
 			for (int i = 0; i < properties.Master.PropCount; i++) {
@@ -828,13 +811,13 @@ namespace GB.GBMB
 		}
 
 		private void infoPanelPaletteComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-			var palTemp = infoPannelColorDropDown.SelectedIndex;
+			var palTemp = infoPanelColorDropDown.SelectedIndex;
 			if (palTemp == -1) {
 				return; //Do nothing
 			} else if (palTemp == 0) {
 				mapControl.SelectionPalette = null;
 			} else {
-				mapControl.SelectionPalette = infoPannelColorDropDown.SelectedIndex - 1;
+				mapControl.SelectionPalette = infoPanelColorDropDown.SelectedIndex - 1;
 			}
 		}
 

@@ -33,6 +33,8 @@ namespace GB.Shared.Palettes
 					this.Enabled = true;
 				}
 
+				RecreateItems();
+
 				this.Invalidate(true);
 			}
 		}
@@ -48,6 +50,7 @@ namespace GB.Shared.Palettes
 				suspendUpdating = true;
 
 				this.allowDefault = value;
+
 				if (allowDefault && !this.Items.Contains("Default")) {
 					this.Items.Insert(0, "Default");
 				} else if (!allowDefault && this.Items.Contains("Default")) {
@@ -123,10 +126,61 @@ namespace GB.Shared.Palettes
 			suspendUpdating = false;
 		}
 
+		/// <summary>
+		/// (re) creates all of the items.
+		/// </summary>
+		private void RecreateItems() {
+			suspendUpdating = true;
+
+			this.SelectedIndex = -1;
+
+			this.Items.Clear();
+
+			if (allowDefault) {
+				Items.Add("Default");
+			}
+			for (int i = 0; i < colorSet.GetNumberOfRows(); i++) {
+				Items.Add(i);
+			}
+
+			suspendUpdating = false;
+		}
+
 		private int? gbcSelectedPalette;
 		private int? sgbSelectedPalette;
 
-		[Description("The current palette index selected for GBC.  If null, there are multiple values.  If -1, the default value is chosen.")]
+		/// <summary>
+		/// The current palette index selected for the active ColorSet.
+		/// If -1, there are multiple values.  If null, the default value is chosen.
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public int? ActiveSelectedPalette {
+			get {
+				switch (colorSet) {
+				case ColorSet.GAMEBOY: throw new InvalidOperationException("Currently selected ColorSet doesn't have a palette!");
+				case ColorSet.GAMEBOY_POCKET: throw new InvalidOperationException("Currently selected ColorSet doesn't have a palette!");
+				case ColorSet.GAMEBOY_COLOR: return GBCSelectedPalette;
+				case ColorSet.GAMEBOY_COLOR_FILTERED: return GBCSelectedPalette;
+				case ColorSet.SUPER_GAMEBOY: return SGBSelectedPalette;
+				default: throw new InvalidOperationException("Currently selected ColorSet is unrecognised: " + colorSet + "(" + (int)colorSet + ").");
+				}
+			}
+			set {
+				switch (colorSet) {
+				case ColorSet.GAMEBOY: throw new InvalidOperationException("Currently selected ColorSet doesn't have a palette!");
+				case ColorSet.GAMEBOY_POCKET: throw new InvalidOperationException("Currently selected ColorSet doesn't have a palette!");
+				case ColorSet.GAMEBOY_COLOR: GBCSelectedPalette = value; break;
+				case ColorSet.GAMEBOY_COLOR_FILTERED: GBCSelectedPalette = value; break;
+				case ColorSet.SUPER_GAMEBOY: SGBSelectedPalette = value; break;
+				default: throw new InvalidOperationException("Currently selected ColorSet is unrecognised: " + colorSet + "(" + (int)colorSet + ").");
+				}
+			}
+		}
+
+		/// <summary>
+		/// The current palette index selected for GBC.
+		/// If -1, there are multiple values.  If null, the default value is chosen.
+		/// </summary>
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public int? GBCSelectedPalette {
 			get { return gbcSelectedPalette; }
@@ -135,7 +189,10 @@ namespace GB.Shared.Palettes
 				UpdateSelectedItem();
 			}
 		}
-		[Description("The current palette index selected for SGB.  If null, there are multiple values.  If -1, the default value is chosen.")]
+		/// <summary>
+		/// The current palette index selected for SGB.
+		/// If -1, there are multiple values.  If null, the default value is chosen.
+		/// </summary>
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public int? SGBSelectedPalette {
 			get { return sgbSelectedPalette; }
@@ -151,6 +208,8 @@ namespace GB.Shared.Palettes
 			this.FormattingEnabled = true;
 			this.ItemHeight = 13;
 			this.Size = new Size(83, 19);
+
+			RecreateItems();
 		}
 
 		protected override void OnDrawItem(DrawItemEventArgs e) {
@@ -165,20 +224,26 @@ namespace GB.Shared.Palettes
 
 			if (e.Index == -1) {
 				return;
-			} else if (e.Index == 0) {
-				e.Graphics.DrawString("Default", e.Font, SystemBrushes.ControlText, e.Bounds);
 			} else {
-				Palette palette = PaletteData.GetPaletteSet(this.ColorSet)[e.Index - 1];
+				var item = this.Items[e.Index];
 
-				float width = e.Bounds.Width / 5f;
+				if ((item as string) == "Default") {
+					e.Graphics.DrawString("Default", e.Font, SystemBrushes.ControlText, e.Bounds);
+				} else {
+					int paletteNum = Convert.ToInt32(item);
 
-				RectangleF rect = new RectangleF(e.Bounds.X, e.Bounds.Y, width, e.Bounds.Height);
+					Palette palette = PaletteData.GetPaletteSet(this.ColorSet)[paletteNum];
 
-				for (int i = 0; i < 4; i++) {
-					rect.X = e.Bounds.X + (width * i);
-					using (SolidBrush brush = new SolidBrush(palette[i])) {
-						e.Graphics.FillRectangle(brush, rect);
-						e.Graphics.DrawRectangle(Pens.Black, rect.X, rect.Y, rect.Width - 1, rect.Height - 1);
+					float width = e.Bounds.Width / 5f;
+
+					RectangleF rect = new RectangleF(e.Bounds.X, e.Bounds.Y, width, e.Bounds.Height);
+
+					for (int i = 0; i < 4; i++) {
+						rect.X = e.Bounds.X + (width * i);
+						using (SolidBrush brush = new SolidBrush(palette[i])) {
+							e.Graphics.FillRectangle(brush, rect);
+							e.Graphics.DrawRectangle(Pens.Black, rect.X, rect.Y, rect.Width - 1, rect.Height - 1);
+						}
 					}
 				}
 			}
@@ -189,9 +254,9 @@ namespace GB.Shared.Palettes
 		protected override void OnSelectedItemChanged(EventArgs e) {
 			if (!suspendUpdating) {
 				UpdateSelectedPalette();
-			}
 
-			base.OnSelectedIndexChanged(e);
+				base.OnSelectedIndexChanged(e);
+			}
 		}
 	}
 }
