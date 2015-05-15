@@ -57,8 +57,41 @@ namespace GB.Shared.GBRFile
 		protected internal override void SetupObject(GBRFile file) {
 			base.SetupObject(file);
 
-			this.GBCPalettes = new UInt32[ReferedObject.Tiles.Length]; //TODO: When there is an onchanged event for length, use that.
-			this.SGBPalettes = new UInt32[ReferedObject.Tiles.Length];
+			ReferedObject.CountChanged += new EventHandler(ReferedObject_CountChanged);
+
+			this.GBCPalettes = new UInt32[ReferedObject.Count];
+			this.SGBPalettes = new UInt32[ReferedObject.Count];
+		}
+
+		void ReferedObject_CountChanged(object sender, EventArgs e) {
+			if (GBCPalettes.Length < ReferedObject.Count) {
+				UInt32[] gbcPalettesOld = GBCPalettes;
+
+				GBCPalettes = new UInt32[ReferedObject.Count];
+
+				//Copy the old data.
+				for (int i = 0; i < GBCPalettes.Length; i++) {
+					if (i < gbcPalettesOld.Length) {
+						GBCPalettes[i] = gbcPalettesOld[i];
+					} else {
+						GBCPalettes[i] = 0;
+					}
+				}
+			}
+			if (SGBPalettes.Length < ReferedObject.Count) {
+				UInt32[] sgbPalettesOld = SGBPalettes;
+
+				SGBPalettes = new UInt32[ReferedObject.Count];
+
+				//Copy the old data.
+				for (int i = 0; i < SGBPalettes.Length; i++) {
+					if (i < sgbPalettesOld.Length) {
+						SGBPalettes[i] = sgbPalettesOld[i];
+					} else {
+						SGBPalettes[i] = 0;
+					}
+				}
+			}
 		}
 
 		public override TreeNode ToTreeNode() {
