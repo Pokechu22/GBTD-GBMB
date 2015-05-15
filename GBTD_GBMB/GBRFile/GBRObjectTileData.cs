@@ -19,7 +19,7 @@ namespace GB.Shared.GBRFile
 			this.Color1Mapping = GBColor.DARK_GRAY;
 			this.Color2Mapping = GBColor.LIGHT_GRAY;
 			this.Color3Mapping = GBColor.BLACK;
-			this.tiles = new Tile[Count]; //TODO: This may be wrong.
+			this.Tiles = new Tile[Count]; //TODO: This may be wrong.
 		}
 
 		private string name;
@@ -63,7 +63,7 @@ namespace GB.Shared.GBRFile
 		/// <summary>
 		/// The actual tile data payload.
 		/// </summary>
-		public Tile[] tiles;
+		public Tile[] Tiles;
 
 		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(name, 30);
@@ -77,8 +77,8 @@ namespace GB.Shared.GBRFile
 			s.WriteByte((byte)Color2Mapping);
 			s.WriteByte((byte)Color3Mapping);
 
-			for (int i = 0; i < tiles.Length; i++) {
-				Tile tile = tiles[i];
+			for (int i = 0; i < Tiles.Length; i++) {
+				Tile tile = Tiles[i];
 				for (int y = 0; y < Height; y++) {
 					for (int x = 0; x < Width; x++) {
 						s.WriteByte(GBColorToByte(tile[x, y]));
@@ -99,9 +99,9 @@ namespace GB.Shared.GBRFile
 			Color2Mapping = (GBColor)s.ReadByte();
 			Color3Mapping = (GBColor)s.ReadByte();
 
-			tiles = new Tile[Count];
+			Tiles = new Tile[Count];
 
-			for (int i = 0; i < tiles.Length; i++) {
+			for (int i = 0; i < Tiles.Length; i++) {
 				Tile tile = new Tile(Width, Height);
 				for (int y = 0; y < Height; y++) {
 					for (int x = 0; x < Width; x++) {
@@ -112,7 +112,7 @@ namespace GB.Shared.GBRFile
 						tile[x, y] = ByteToGBColor((byte)read);
 					}
 				}
-				tiles[i] = tile;
+				Tiles[i] = tile;
 			}
 		}
 
@@ -170,9 +170,9 @@ namespace GB.Shared.GBRFile
 					StringBuilder chard = new StringBuilder();
 
 					for (int x = 0; x < Width; x++) {
-						named.Append(tiles[i][x, y]).Append(' ');
-						numbered.Append(tiles[i][x, y]).Append(' ');
-						switch (tiles[i][x, y]) {
+						named.Append(Tiles[i][x, y]).Append(' ');
+						numbered.Append(Tiles[i][x, y]).Append(' ');
+						switch (Tiles[i][x, y]) {
 						case GBColor.BLACK: chard.Append(BLACK).Append(' '); break;
 						case GBColor.DARK_GRAY: chard.Append(DARK_GRAY).Append(' '); break;
 						case GBColor.LIGHT_GRAY: chard.Append(LIGHT_GRAY).Append(' '); break;

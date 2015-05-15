@@ -502,7 +502,7 @@ namespace GB.GBMB
 		private void auMessenger_OnTileChanged(object sender, TileChangedEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				gbrFile.GetObjectOfType<GBRObjectTileData>().tiles[args.TileID] = mmf.Tiles[args.TileID];
+				gbrFile.GetObjectOfType<GBRObjectTileData>().Tiles[args.TileID] = mmf.Tiles[args.TileID];
 				//TODO: Below is very ineficiant.
 				gbrFile.GetObjectOfType<GBRObjectTilePalette>().GBCPalettes[args.TileID] = mmf.PalMaps[args.TileID].GBC;
 				gbrFile.GetObjectOfType<GBRObjectTilePalette>().SGBPalettes[args.TileID] = mmf.PalMaps[args.TileID].SGB;
@@ -535,7 +535,7 @@ namespace GB.GBMB
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
-				tileData.tiles = mmf.Tiles.GetTilesArray();
+				tileData.Tiles = mmf.Tiles.GetTilesArray();
 
 				//Inefficiant, but it works.
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];
@@ -584,7 +584,7 @@ namespace GB.GBMB
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
-				tileData.tiles = mmf.Tiles.GetTilesArray();
+				tileData.Tiles = mmf.Tiles.GetTilesArray();
 
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];
 				UInt32[] sgbPal = new UInt32[mmf.TileCount];

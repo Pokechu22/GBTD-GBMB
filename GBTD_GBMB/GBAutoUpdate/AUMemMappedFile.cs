@@ -434,7 +434,7 @@ namespace GB.Shared.AutoUpdate
 				GBPalettes.GBColor3 = tiles.Color3Mapping;
 
 				for (UInt16 i = 0; i < tiles.Count; i++) {
-					Tiles[i] = tiles.tiles[i];
+					Tiles[i] = tiles.Tiles[i];
 				}
 
 				for (UInt16 i = 0; i < pals.GBCPalettes.Size; i++) {

@@ -592,7 +592,7 @@ namespace GB.GBMB
 				for (int y = 0; y < map.Master.Height; y++) {
 					for (int x = 0; x < map.Master.Width; x++) {
 						GBMObjectMapTileDataRecord record = map.Tiles[x, y];
-						Tile t = tileset.tiles[record.TileNumber];
+						Tile t = tileset.Tiles[record.TileNumber];
 
 						Bitmap bmp = MakeTileBitmap(record, t,
 							GetColor(colorSet, record, GBColor.WHITE),
@@ -779,7 +779,7 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		}
 
 		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord record, int tileX, int tileY) {
-			Tile t = tileset.tiles[record.TileNumber];
+			Tile t = tileset.Tiles[record.TileNumber];
 			RectangleF rect = new RectangleF(
 				(tileX * t.Width * zoom) + AFTER_BOX_X,
 				(tileY * t.Height * zoom) + AFTER_BOX_Y,

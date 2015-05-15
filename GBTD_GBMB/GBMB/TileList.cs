@@ -199,7 +199,7 @@ namespace GB.GBMB
 							}
 
 							//The tile itself.
-							g.DrawImage(MakeTileBitmap(TileSet.tiles[tileNum],
+							g.DrawImage(MakeTileBitmap(TileSet.Tiles[tileNum],
 									GetApropriatelyFilteredColor(tileNum, GBColor.WHITE),
 									GetApropriatelyFilteredColor(tileNum, GBColor.LIGHT_GRAY),
 									GetApropriatelyFilteredColor(tileNum, GBColor.DARK_GRAY),
