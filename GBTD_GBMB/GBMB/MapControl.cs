@@ -56,6 +56,7 @@ namespace GB.GBMB
 				case ZoomLevel._200: this.zoom = 4.0f; break;
 				}
 
+				this.OnResize(new EventArgs());
 				this.Invalidate();
 			}
 		}
@@ -824,15 +825,18 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		/// Draws the borders and stuff around the scroll bars, if the scroll bars are visible.
 		/// </summary>
 		private void DrawScrollBarBorders(PaintEventArgs e) {
-			if (vScrollBar.Visible && hScrollBar.Visible) {
+			if (vScrollBar.Visible && !hScrollBar.Visible) {
+				e.Graphics.DrawLine(SystemPens.ControlDark, vScrollBar.Left, vScrollBar.Top, vScrollBar.Left, vScrollBar.Bottom);
+			} else if (!vScrollBar.Visible && hScrollBar.Visible) {
+				e.Graphics.DrawLine(SystemPens.ControlDark, hScrollBar.Left, hScrollBar.Top, hScrollBar.Right, hScrollBar.Top);
+			} else if (vScrollBar.Visible && hScrollBar.Visible) {
 				e.Graphics.DrawLine(SystemPens.ControlDark, vScrollBar.Left, vScrollBar.Top, vScrollBar.Left, vScrollBar.Bottom);
 				e.Graphics.DrawLine(SystemPens.ControlDark, hScrollBar.Left, hScrollBar.Top, hScrollBar.Right, hScrollBar.Top);
 
-
-
 				e.Graphics.FillRectangle(SystemBrushes.Control, hScrollBar.Right, vScrollBar.Bottom, hScrollBar.Width, vScrollBar.Height);
 
-				BorderPaint.DrawBorderFull(e.Graphics, hScrollBar.Right + 1, vScrollBar.Bottom + 1, hScrollBar.Width - 1, vScrollBar.Height - 1, Color.White, Border3DSide.Left | Border3DSide.Top);
+				BorderPaint.DrawBorderFull(e.Graphics, hScrollBar.Right + 1, vScrollBar.Bottom + 1, hScrollBar.Width - 1, vScrollBar.Height - 1, 
+					Color.White, Border3DSide.Left | Border3DSide.Top);
 			}
 		}
 
@@ -998,14 +1002,35 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		}
 
 		protected override void OnResize(EventArgs e) {
-			vScrollBar.Visible = true;
-			hScrollBar.Visible = true;
+			if (map != null) {
+				int fullWidth = AFTER_BOX_X + (int)(map.Master.Width * TileWidth * zoom);
+				int fullHeight = AFTER_BOX_Y + (int)(map.Master.Height * TileHeight * zoom);
 
-			this.vScrollBar.Location = new Point(this.Width - vScrollBar.Width, 0);
-			this.vScrollBar.Height = (this.Height - (this.hScrollBar.Height + 1));
+				hScrollBar.Visible = (this.Height < fullHeight);
+				vScrollBar.Visible = (this.Width < fullWidth);
+			}
 
-			this.hScrollBar.Location = new Point(0, this.Height - hScrollBar.Height);
-			this.hScrollBar.Width = (this.Width - (this.vScrollBar.Width + 1));
+			this.SuspendLayout();
+			
+			if (vScrollBar.Visible && !hScrollBar.Visible) {
+				
+				this.vScrollBar.Location = new Point(this.Width - vScrollBar.Width, 0);
+				this.vScrollBar.Height = this.Height;
+
+			} else if (!vScrollBar.Visible && hScrollBar.Visible) {
+				
+				this.hScrollBar.Location = new Point(0, this.Height - hScrollBar.Height);
+				this.hScrollBar.Width = this.Width;
+
+			} else if (vScrollBar.Visible && hScrollBar.Visible) {
+				this.vScrollBar.Location = new Point(this.Width - vScrollBar.Width, 0);
+				this.vScrollBar.Height = (this.Height - (this.hScrollBar.Height + 1));
+
+				this.hScrollBar.Location = new Point(0, this.Height - hScrollBar.Height);
+				this.hScrollBar.Width = (this.Width - (this.vScrollBar.Width + 1));
+			}
+
+			this.ResumeLayout();
 
 			base.OnResize(e);
 		}
