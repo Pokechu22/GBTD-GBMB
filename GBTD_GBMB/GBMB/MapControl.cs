@@ -108,6 +108,7 @@ namespace GB.GBMB
 				map = value;
 				if (value != null) {
 					map.Master.SizeChanged += new EventHandler(map_SizeChanged);
+					map_SizeChanged(map, new EventArgs());
 				}
 
 				OnMapChanged();
@@ -517,8 +518,14 @@ namespace GB.GBMB
 
 			this.hScrollBar = new HScrollBar();
 			hScrollBar.Visible = false;
+			hScrollBar.SmallChange = 1;
+			hScrollBar.LargeChange = 1;
+			hScrollBar.ValueChanged += new EventHandler(hScrollBar_ValueChanged);
 			this.vScrollBar = new VScrollBar();
 			vScrollBar.Visible = false;
+			vScrollBar.SmallChange = 1;
+			vScrollBar.LargeChange = 1;
+			vScrollBar.ValueChanged += new EventHandler(vScrollBar_ValueChanged);
 
 			this.Controls.Add(hScrollBar);
 			this.Controls.Add(vScrollBar);
@@ -613,6 +620,7 @@ namespace GB.GBMB
 		/// </summary>
 		private int MouseToTileX(int mouseX) {
 			int value = (mouseX - AFTER_BOX_X) / (int)(TileWidth * zoom);
+			value += hScrollBar.Value;
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Width) { return (int)(map.Master.Width - 1); }
@@ -624,6 +632,7 @@ namespace GB.GBMB
 		/// </summary>
 		private int MouseToTileY(int mouseY) {
 			int value = (mouseY - AFTER_BOX_Y) / (int)(TileHeight * zoom);
+			value += vScrollBar.Value;
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Height) { return (int)(map.Master.Height - 1); }
@@ -731,7 +740,7 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			InnerBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TileWidth * zoom) - 1, BOX_HEIGHT - 1);
 			TextRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(TileWidth * zoom) - 3, BOX_HEIGHT - 3);
 
-			for (int XPos = AFTER_BOX_X, RowNumber = 0;
+			for (int XPos = AFTER_BOX_X, RowNumber = hScrollBar.Value;
 					XPos < this.Width;
 					XPos += (int)(TileWidth * zoom), RowNumber++) {
 
@@ -769,7 +778,7 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			InnerBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH - 1, (int)(TileHeight * zoom) - 1);
 			TextRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 3, (int)(TileHeight * zoom) - 3);
 
-			for (int YPos = AFTER_BOX_Y, ColNumber = 0;
+			for (int YPos = AFTER_BOX_Y, ColNumber = vScrollBar.Value;
 					YPos < this.Height;
 					YPos += (int)(TileHeight * zoom), ColNumber++) {
 
@@ -804,8 +813,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		}
 
 		private void DrawGrid(PaintEventArgs e) {
-			int endOfTilesX = (int)(TileWidth * zoom * map.Master.Width) + AFTER_BOX_X;
-			int endOfTilesY = (int)(TileHeight * zoom * map.Master.Height) + AFTER_BOX_Y;
+			int endOfTilesX = (int)(TileWidth * zoom * (map.Master.Width - hScrollBar.Value)) + AFTER_BOX_X;
+			int endOfTilesY = (int)(TileHeight * zoom * (map.Master.Height - vScrollBar.Value)) + AFTER_BOX_Y;
 
 			for (int XPos = AFTER_BOX_X; XPos <= endOfTilesX; XPos += (int)(TileWidth * zoom)) {
 				e.Graphics.DrawLine(Pens.Black, XPos, AFTER_BOX_Y, XPos, endOfTilesY);
@@ -854,8 +863,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		private void DrawTile(PaintEventArgs e, GBMObjectMapTileDataRecord record, int tileX, int tileY) {
 			Tile t = tileset.Tiles[record.TileNumber];
 			RectangleF rect = new RectangleF(
-				(tileX * t.Width * zoom) + AFTER_BOX_X,
-				(tileY * t.Height * zoom) + AFTER_BOX_Y,
+				((tileX - hScrollBar.Value) * t.Width * zoom) + AFTER_BOX_X,
+				((tileY - vScrollBar.Value) * t.Height * zoom) + AFTER_BOX_Y,
 				t.Width * zoom,
 				t.Height * zoom);
 
@@ -1012,8 +1021,19 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			this.OnMapChanged();
 		}
 
+		void vScrollBar_ValueChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
+		}
+
+		void hScrollBar_ValueChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
+		}
+
 		void map_SizeChanged(object sender, EventArgs e) {
 			this.OnResize(new EventArgs());
+
+			this.vScrollBar.Maximum = (int)map.Master.Height;
+			this.hScrollBar.Maximum = (int)map.Master.Width;
 
 			OnMapChanged();
 		}
@@ -1023,8 +1043,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 				int fullWidth = AFTER_BOX_X + (int)(map.Master.Width * TileWidth * zoom);
 				int fullHeight = AFTER_BOX_Y + (int)(map.Master.Height * TileHeight * zoom);
 
-				hScrollBar.Visible = (this.Height < fullHeight);
-				vScrollBar.Visible = (this.Width < fullWidth);
+				vScrollBar.Visible = (this.Height < fullHeight);
+				hScrollBar.Visible = (this.Width < fullWidth);
 			}
 
 			this.SuspendLayout();
@@ -1045,6 +1065,9 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 
 				this.hScrollBar.Location = new Point(0, this.Height - hScrollBar.Height);
 				this.hScrollBar.Width = (this.Width - (this.vScrollBar.Width + 1));
+			} else {
+				vScrollBar.Value = 0;
+				hScrollBar.Value = 0;
 			}
 
 			this.ResumeLayout();
