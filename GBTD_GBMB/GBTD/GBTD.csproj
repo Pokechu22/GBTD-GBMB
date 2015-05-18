@@ -52,9 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditableTileRenderer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="TileEditor.cs" />
     <Compile Include="TileEditorProvider.cs" />
     <Compile Include="TileTransformations.cs" />
@@ -75,12 +72,6 @@
     </Compile>
     <Compile Include="Dialogs\TileCountDialog.Designer.cs">
       <DependentUpon>TileCountDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PreviewRenderer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PreviewRenderer.Designer.cs">
-      <DependentUpon>PreviewRenderer.cs</DependentUpon>
     </Compile>
     <Compile Include="TileEdit.cs">
       <SubType>Form</SubType>
@@ -104,9 +95,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\TileCountDialog.resx">
       <DependentUpon>TileCountDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PreviewRenderer.resx">
-      <DependentUpon>PreviewRenderer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

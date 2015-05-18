@@ -52,6 +52,10 @@ namespace GB.Shared.GBRFile
 			for (int i = 0; i < SGBPalettes.Length; i++) {
 				SGBPalettes[i] = s.ReadLong();
 			}
+
+			ReferedObject.CountChanged += new EventHandler(ReferedObject_CountChanged);
+			//Make sure that the size is actually that of the refered object.
+			ReferedObject_CountChanged(this, new EventArgs());
 		}
 
 		protected internal override void SetupObject(GBRFile file) {
