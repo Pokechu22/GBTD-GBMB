@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("GBMFile")]
+[assembly: AssemblyDescription("Library for working with .GBM map files (of file type 1)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Pokechu22")]
 [assembly: AssemblyProduct("GBMFile")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]

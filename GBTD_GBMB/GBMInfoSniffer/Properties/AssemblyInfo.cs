@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GBMInfoSniffer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Utility to view the raw contents of a GBM file")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Pokechu22")]
 [assembly: AssemblyProduct("GBMInfoSniffer")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GBAutoUpdate")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Auto-update library for GBTD and GBMB")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Pokechu22")]
 [assembly: AssemblyProduct("GBAutoUpdate")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]

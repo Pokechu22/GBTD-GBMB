@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GB.GBMB")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("GBMB")]
+[assembly: AssemblyDescription("GameBoy Map Builder: Rewrite of H. Mudler's GBMB in C#")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GB.GBMB")]
+[assembly: AssemblyCompany("Pokechu22")]
+[assembly: AssemblyProduct("GBMB")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
