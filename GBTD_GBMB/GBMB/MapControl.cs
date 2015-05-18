@@ -450,9 +450,28 @@ namespace GB.GBMB
 		}
 
 		/// <summary>
-		/// Tile sizes.
+		/// The width of a tile.
 		/// </summary>
-		private int tileWidth = 8, tileHeight = 8;
+		private UInt16 TileWidth {
+			get {
+				if (tileset == null) {
+					return 8;
+				}
+				return tileset.Width;
+			}
+		}
+
+		/// <summary>
+		/// The height of a tile.
+		/// </summary>
+		private UInt16 TileHeight {
+			get {
+				if (tileset == null) {
+					return 8;
+				}
+				return tileset.Height;
+			}
+		}
 
 		/// <summary>
 		/// The sizes of the labels.  The other part is based off of the zoom.
@@ -570,7 +589,7 @@ namespace GB.GBMB
 		/// Converts a mouse click position to a tile position.
 		/// </summary>
 		private int MouseToTileX(int mouseX) {
-			int value = (mouseX - AFTER_BOX_X) / (int)(tileWidth * zoom);
+			int value = (mouseX - AFTER_BOX_X) / (int)(TileWidth * zoom);
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Width) { return (int)(map.Master.Width - 1); }
@@ -581,7 +600,7 @@ namespace GB.GBMB
 		/// Converts a mouse click position to a tile position.
 		/// </summary>
 		private int MouseToTileY(int mouseY) {
-			int value = (mouseY - AFTER_BOX_Y) / (int)(tileHeight * zoom);
+			int value = (mouseY - AFTER_BOX_Y) / (int)(TileHeight * zoom);
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Height) { return (int)(map.Master.Height - 1); }
@@ -653,7 +672,7 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 					DrawGrid(e);
 				}
 				if (showDoubleMarkers) {
-					DrawDoubleMarkers(e); //TODO
+					DrawDoubleMarkers(e);
 				}
 			}
 
@@ -683,13 +702,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
 
 			//All of the labels on the top.
-			OuterBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(tileWidth * zoom), BOX_HEIGHT);
-			InnerBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(tileWidth * zoom) - 1, BOX_HEIGHT - 1);
-			TextRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(tileWidth * zoom) - 3, BOX_HEIGHT - 3);
+			OuterBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TileWidth * zoom), BOX_HEIGHT);
+			InnerBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TileWidth * zoom) - 1, BOX_HEIGHT - 1);
+			TextRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(TileWidth * zoom) - 3, BOX_HEIGHT - 3);
 
 			for (int XPos = AFTER_BOX_X, RowNumber = 0;
 					XPos < this.Width;
-					XPos += (int)(tileWidth * zoom), RowNumber++) {
+					XPos += (int)(TileWidth * zoom), RowNumber++) {
 
 				OuterBorderRect.X = XPos;
 				InnerBorderRect.X = XPos;
@@ -721,13 +740,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			}
 
 			//All of the labels on the side.
-			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(tileHeight * zoom));
-			InnerBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH - 1, (int)(tileHeight * zoom) - 1);
-			TextRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 3, (int)(tileHeight * zoom) - 3);
+			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(TileHeight * zoom));
+			InnerBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH - 1, (int)(TileHeight * zoom) - 1);
+			TextRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 3, (int)(TileHeight * zoom) - 3);
 
 			for (int YPos = AFTER_BOX_Y, ColNumber = 0;
 					YPos < this.Height;
-					YPos += (int)(tileWidth * zoom), ColNumber++) {
+					YPos += (int)(TileHeight * zoom), ColNumber++) {
 
 				OuterBorderRect.Y = YPos;
 				InnerBorderRect.Y = YPos;
@@ -760,13 +779,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		}
 
 		private void DrawGrid(PaintEventArgs e) {
-			int endOfTilesX = (int)(tileWidth * zoom * map.Master.Width) + AFTER_BOX_X;
-			int endOfTilesY = (int)(tileHeight * zoom * map.Master.Height) + AFTER_BOX_Y;
+			int endOfTilesX = (int)(TileWidth * zoom * map.Master.Width) + AFTER_BOX_X;
+			int endOfTilesY = (int)(TileHeight * zoom * map.Master.Height) + AFTER_BOX_Y;
 
-			for (int XPos = AFTER_BOX_X; XPos <= endOfTilesX; XPos += (int)(tileWidth * zoom)) {
+			for (int XPos = AFTER_BOX_X; XPos <= endOfTilesX; XPos += (int)(TileWidth * zoom)) {
 				e.Graphics.DrawLine(Pens.Black, XPos, AFTER_BOX_Y, XPos, endOfTilesY);
 			}
-			for (int YPos = AFTER_BOX_Y; YPos <= endOfTilesY; YPos += (int)(tileHeight * zoom)) {
+			for (int YPos = AFTER_BOX_Y; YPos <= endOfTilesY; YPos += (int)(TileHeight * zoom)) {
 				e.Graphics.DrawLine(Pens.Black, AFTER_BOX_X, YPos, endOfTilesX, YPos);
 			}
 		}
@@ -779,8 +798,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			//TODO make this work off of scrolled position.
 			for (int tileY = 2; tileY < map.Master.Height; tileY += 2) {
 				for (int tileX = 2; tileX < map.Master.Width; tileX += 2) {
-					int centX = (int)(tileX * tileWidth * zoom) + AFTER_BOX_X - 1;
-					int centY = (int)(tileY * tileHeight * zoom) + AFTER_BOX_Y - 1;
+					int centX = (int)(tileX * TileWidth * zoom) + AFTER_BOX_X - 1;
+					int centY = (int)(tileY * TileHeight * zoom) + AFTER_BOX_Y - 1;
 
 					e.Graphics.FillRectangle(Brushes.Red, centX - 1, centY, 3, 1);
 					e.Graphics.FillRectangle(Brushes.Red, centX, centY - 1, 1, 3);
@@ -946,9 +965,6 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		}
 
 		private void tileset_SizeChanged(object sender, EventArgs e) {
-			this.tileWidth = tileset.Width;
-			this.tileHeight = tileset.Height;
-
 			this.OnMapChanged();
 		}
 	}
