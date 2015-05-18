@@ -48,14 +48,23 @@ namespace GB.GBMB
 		public GBRObjectTileData TileSet {
 			get { return tileSet; }
 			set {
+				if (this.tileSet != null) {
+					tileSet.SizeChanged -= new EventHandler(tileSet_SizeChanged);
+				}
 				tileSet = value;
+				if (tileSet != null) {
+					tileSet.SizeChanged += new EventHandler(tileSet_SizeChanged);
+				}
 
 				scrollBar.Enabled = (tileSet != null);
 				scrollBar.Maximum = (tileSet != null ? tileSet.Count : 16) - 1;
 
+				this.OnResize(new EventArgs());
+
 				this.Invalidate(true);
 			}
 		}
+
 		public UInt16 SelectedTile {
 			get { return selectedTile; }
 			set { selectedTile = value; this.Invalidate(true); }
@@ -99,16 +108,16 @@ namespace GB.GBMB
 			}
 		}
 
-		private const int NUMBER_WIDTH = 21;
-		private const int NUMBER_HEIGHT = 16;
-		private const int TILE_X = NUMBER_WIDTH + 1;
-		private const int TILE_Y = 0;
-		private const int TILE_WIDTH = 16;
-		private const int TILE_HEIGHT = 16;
-		private const int INFO_WIDTH = NUMBER_WIDTH + TILE_WIDTH + 1;
-		private const int INFO_HEIGHT = 17;
-		private const int SCROLL_X = INFO_WIDTH + 2;
-		private const int SCROLL_Y = 1;
+		private int NUMBER_WIDTH { get { return 21; } }
+		private int NUMBER_HEIGHT { get { return TILE_HEIGHT; } }
+		private int TILE_X { get { return NUMBER_WIDTH + 1; } }
+		private int TILE_Y { get { return 0; } }
+		private int TILE_WIDTH { get { return (tileSet != null ? tileSet.Width * 2 : 32); } }
+		private int TILE_HEIGHT { get { return (tileSet != null ? tileSet.Height * 2 : 32); } }
+		private int INFO_WIDTH { get { return NUMBER_WIDTH + TILE_WIDTH + 1; } }
+		private int INFO_HEIGHT { get { return NUMBER_HEIGHT + 1; } }
+		private int SCROLL_X { get { return INFO_WIDTH + 2; } }
+		private int SCROLL_Y { get { return 1; } }
 
 		public TileList() {
 			SetStyle(ControlStyles.FixedWidth, true);
@@ -146,6 +155,7 @@ namespace GB.GBMB
 			this.Width = INFO_WIDTH + scrollBar.Width + 2;
 			this.numberOfVisibleTiles = ((this.Height - 1) / INFO_HEIGHT);
 			this.Height = (numberOfVisibleTiles * INFO_HEIGHT) + 1;
+			this.scrollBar.Location = new Point(SCROLL_X, SCROLL_Y);
 			this.scrollBar.Height = this.Height - 2;
 			
 			this.ResumeLayout();
@@ -340,6 +350,10 @@ namespace GB.GBMB
 			}
 
 			base.OnMouseClick(e);
+		}
+
+		void tileSet_SizeChanged(object sender, EventArgs e) {
+			this.OnResize(e);
 		}
 	}
 }
