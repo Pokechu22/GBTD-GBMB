@@ -15,6 +15,8 @@ namespace GB.GBMB
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MapEdit());
+
+			Properties.Settings.Default.Save();
 		}
 	}
 }
