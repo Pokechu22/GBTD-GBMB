@@ -577,8 +577,6 @@ namespace GB.GBMB
 			if (map.Height >= 1023) { return; }
 
 			map.Resize(map.Width, map.Height + 1);
-
-			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void addColumnButtonClicked(object sender, EventArgs e) {
@@ -587,8 +585,6 @@ namespace GB.GBMB
 			if (map.Width >= 1023) { return; }
 
 			map.Resize(map.Width + 1, map.Height);
-
-			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void removeRowButtonClicked(object sender, EventArgs e) {
@@ -597,8 +593,6 @@ namespace GB.GBMB
 			if (map.Height <= 1) { return; }
 
 			map.Resize(map.Width, map.Height - 1);
-
-			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void removeColumnButtonClicked(object sender, EventArgs e) {
@@ -607,8 +601,6 @@ namespace GB.GBMB
 			if (map.Width <= 1) { return; }
 
 			map.Resize(map.Width - 1, map.Height);
-
-			mapControl.Map = mapControl.Map; //TODO this is not logical -- use an event?
 		}
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {

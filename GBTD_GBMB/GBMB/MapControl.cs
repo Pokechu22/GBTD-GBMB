@@ -101,8 +101,19 @@ namespace GB.GBMB
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBMObjectMapTileData Map {
 			get { return map; }
-			set { map = value; OnMapChanged(); }
+			set {
+				if (this.map != null) {
+					this.map.Master.SizeChanged -= new EventHandler(map_SizeChanged);
+				}
+				map = value;
+				if (value != null) {
+					map.Master.SizeChanged += new EventHandler(map_SizeChanged);
+				}
+
+				OnMapChanged();
+			}
 		}
+
 		[Category("Map data"), Description("The tileset to use.")]
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBRObjectTileData TileSet {
@@ -999,6 +1010,12 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 
 		private void tileset_SizeChanged(object sender, EventArgs e) {
 			this.OnMapChanged();
+		}
+
+		void map_SizeChanged(object sender, EventArgs e) {
+			this.OnResize(new EventArgs());
+
+			OnMapChanged();
 		}
 
 		protected override void OnResize(EventArgs e) {
