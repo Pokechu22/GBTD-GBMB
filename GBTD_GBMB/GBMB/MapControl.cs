@@ -490,6 +490,9 @@ namespace GB.GBMB
 		/// </summary>
 		private const int AFTER_BOX_Y = INITIAL_BOX_Y + BOX_HEIGHT;
 
+		private HScrollBar hScrollBar;
+		private VScrollBar vScrollBar;
+
 		public MapControl() {
 			DoubleBuffered = true;
 
@@ -499,6 +502,14 @@ namespace GB.GBMB
 			PaletteData = new PaletteData();
 
 			ColorSet = Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+
+			this.hScrollBar = new HScrollBar();
+			hScrollBar.Visible = false;
+			this.vScrollBar = new VScrollBar();
+			vScrollBar.Visible = false;
+
+			this.Controls.Add(hScrollBar);
+			this.Controls.Add(vScrollBar);
 		}
 
 		[Description("Fires when the map's tiles have changed.")]
@@ -681,6 +692,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			DrawNumberLabels(e);
 			e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
 
+			DrawScrollBarBorders(e);
+
 			base.OnPaint(e);
 		}
 
@@ -804,6 +817,22 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 					e.Graphics.FillRectangle(Brushes.Red, centX - 1, centY, 3, 1);
 					e.Graphics.FillRectangle(Brushes.Red, centX, centY - 1, 1, 3);
 				}
+			}
+		}
+
+		/// <summary>
+		/// Draws the borders and stuff around the scroll bars, if the scroll bars are visible.
+		/// </summary>
+		private void DrawScrollBarBorders(PaintEventArgs e) {
+			if (vScrollBar.Visible && hScrollBar.Visible) {
+				e.Graphics.DrawLine(SystemPens.ControlDark, vScrollBar.Left, vScrollBar.Top, vScrollBar.Left, vScrollBar.Bottom);
+				e.Graphics.DrawLine(SystemPens.ControlDark, hScrollBar.Left, hScrollBar.Top, hScrollBar.Right, hScrollBar.Top);
+
+
+
+				e.Graphics.FillRectangle(SystemBrushes.Control, hScrollBar.Right, vScrollBar.Bottom, hScrollBar.Width, vScrollBar.Height);
+
+				BorderPaint.DrawBorderFull(e.Graphics, hScrollBar.Right + 1, vScrollBar.Bottom + 1, hScrollBar.Width - 1, vScrollBar.Height - 1, Color.White, Border3DSide.Left | Border3DSide.Top);
 			}
 		}
 
@@ -966,6 +995,19 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 
 		private void tileset_SizeChanged(object sender, EventArgs e) {
 			this.OnMapChanged();
+		}
+
+		protected override void OnResize(EventArgs e) {
+			vScrollBar.Visible = true;
+			hScrollBar.Visible = true;
+
+			this.vScrollBar.Location = new Point(this.Width - vScrollBar.Width, 0);
+			this.vScrollBar.Height = (this.Height - (this.hScrollBar.Height + 1));
+
+			this.hScrollBar.Location = new Point(0, this.Height - hScrollBar.Height);
+			this.hScrollBar.Width = (this.Width - (this.vScrollBar.Width + 1));
+
+			base.OnResize(e);
 		}
 	}
 
