@@ -112,8 +112,8 @@ namespace GB.GBMB
 		private int NUMBER_HEIGHT { get { return TILE_HEIGHT; } }
 		private int TILE_X { get { return NUMBER_WIDTH + 1; } }
 		private int TILE_Y { get { return 0; } }
-		private int TILE_WIDTH { get { return (tileSet != null ? tileSet.Width * 2 : 32); } }
-		private int TILE_HEIGHT { get { return (tileSet != null ? tileSet.Height * 2 : 32); } }
+		private int TILE_WIDTH { get { return (tileSet != null ? tileSet.Width * 2 : 16); } }
+		private int TILE_HEIGHT { get { return (tileSet != null ? tileSet.Height * 2 : 16); } }
 		private int INFO_WIDTH { get { return NUMBER_WIDTH + TILE_WIDTH + 1; } }
 		private int INFO_HEIGHT { get { return NUMBER_HEIGHT + 1; } }
 		private int SCROLL_X { get { return INFO_WIDTH + 2; } }

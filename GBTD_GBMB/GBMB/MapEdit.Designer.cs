@@ -974,6 +974,7 @@
 			this.infoPanelColorDropDown.FormattingEnabled = true;
 			this.infoPanelColorDropDown.ItemHeight = 13;
 			this.infoPanelColorDropDown.Items.AddRange(new object[] {
+            "Default",
             "Default"});
 			this.infoPanelColorDropDown.Location = new System.Drawing.Point(73, 211);
 			this.infoPanelColorDropDown.MaxDropDownItems = 9;
@@ -1114,10 +1115,11 @@
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
 			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(56, 205);
+			this.tileList.Size = new System.Drawing.Size(72, 199);
 			this.tileList.TabIndex = 17;
 			this.tileList.TileSet = null;
 			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
+			this.tileList.Click += new System.EventHandler(this.tileList_Click);
 			// 
 			// MapEdit
 			// 

@@ -438,7 +438,7 @@ namespace GB.GBMB
 			bool showFlips = infoPanelVerticalFlipCheckBox.Visible || infoPanelHorizontalFlipCheckBox.Visible;
 
 			mainTileEditBorder.Height = this.ClientSize.Height - 34;
-			mainTileEditBorder.Width = this.ClientSize.Width - 59;
+			mainTileEditBorder.Width = this.ClientSize.Width - (3 + tileList.Width);
 			mapEditBorder.Width = mainTileEditBorder.Width - 37;
 			mapEditBorder.Height = mainTileEditBorder.Height - (ShowInfoPanel ? (showProperties ? 58 : 33) : 8);
 
@@ -1187,6 +1187,10 @@ namespace GB.GBMB
 			if (zoomOutMenuItem.Enabled) {
 				ZoomLevel--;
 			}
+		}
+
+		private void tileList_Click(object sender, EventArgs e) {
+			this.OnResize(e);
 		}
 	}
 }
