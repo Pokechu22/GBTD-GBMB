@@ -331,7 +331,7 @@ namespace GB.GBMB
 				if (this.colorSet != ColorSet.GAMEBOY_COLOR
 					&& this.colorSet != ColorSet.GAMEBOY_COLOR_FILTERED
 					&& this.colorSet != ColorSet.SUPER_GAMEBOY) {
-					throw new InvalidOperationException("Can only get the selected palette when using a GBC or SGB color set!");
+					throw new InvalidOperationException("Can only set the selected palette when using a GBC or SGB color set!");
 				}
 
 				int lowerSelectionX = (selectionX1 < selectionX2 ? selectionX1 : selectionX2);

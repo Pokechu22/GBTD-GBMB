@@ -157,7 +157,9 @@ namespace GB.GBMB
 				infoPanelColorDropDown.Visible = infoPanelColorDropDown.Enabled = value.SupportsPaletteCustomization();
 				infoPanelPalLabel.Visible = infoPanelPalLabel.Enabled = value.SupportsPaletteCustomization();
 
-				infoPanelColorDropDown.ActiveSelectedPalette = mapControl.SelectionPalette;
+				if (value.SupportsPaletteCustomization()) {
+					infoPanelColorDropDown.ActiveSelectedPalette = mapControl.SelectionPalette;
+				}
 
 				infoPanelColorDropDown.Location =
 					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 246 : 96), infoPanelBorder.Top + 1);
