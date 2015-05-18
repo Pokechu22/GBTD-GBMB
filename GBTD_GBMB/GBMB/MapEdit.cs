@@ -394,11 +394,12 @@ namespace GB.GBMB
 			this.mapControl.PaletteData = paletteData;
 			this.infoPanelColorDropDown.PaletteData = paletteData;
 
-			auMessenger.FileName = tilePath;
+			//TODO: Re-enable the MMF -- we need it off for now, though, since it doesn't like non-8x8 tiles.
+			/*auMessenger.FileName = tilePath;
 			if (mmf != null) {
 				mmf.Dispose(); //Remove old MMF.
 			}
-			mmf = new AUMemMappedFile(tilePath, auMessenger, gbrFile);
+			mmf = new AUMemMappedFile(tilePath, auMessenger, gbrFile);*/
 		}
 
 		/// <summary>
@@ -530,16 +531,7 @@ namespace GB.GBMB
 		private void auMessenger_OnTileSizeChanged(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				//Hahaha.  You thought you could get away with changing the size?
-				//This app doesn't yet supportsizes other than 8.  So we force it.
-				if (mmf.TileWidth != 8) {
-					mmf.TileWidth = 8;
-				}
-				if (mmf.TileHeight != 8) {
-					mmf.TileHeight = 8;
-				}
-
-				//Ignore this as well!
+				//TODO: Actually use this.
 			}));
 		}
 

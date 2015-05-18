@@ -106,7 +106,17 @@ namespace GB.GBMB
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public GBRObjectTileData TileSet {
 			get { return tileset; }
-			set { tileset = value; OnMapChanged(); }
+			set {
+				if (value == null) {
+					throw new ArgumentNullException("value");
+				}
+				if (this.tileset != null) {
+					this.tileset.SizeChanged -= new EventHandler(tileset_SizeChanged);
+				}
+				tileset = value;
+				value.SizeChanged += new EventHandler(tileset_SizeChanged);
+				OnMapChanged();
+			}
 		}
 		[Category("Map data"), Description("The default palette to use.")]
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -440,9 +450,9 @@ namespace GB.GBMB
 		}
 
 		/// <summary>
-		/// Tile sizes.  THis currently isn't dynamic and the app just won't be happy if something else is given.
+		/// Tile sizes.
 		/// </summary>
-		private const int TILE_WIDTH = 8, TILE_HEIGHT = 8;
+		private int tileWidth = 8, tileHeight = 8;
 
 		/// <summary>
 		/// The sizes of the labels.  The other part is based off of the zoom.
@@ -560,7 +570,7 @@ namespace GB.GBMB
 		/// Converts a mouse click position to a tile position.
 		/// </summary>
 		private int MouseToTileX(int mouseX) {
-			int value = (mouseX - AFTER_BOX_X) / (int)(TILE_WIDTH * zoom);
+			int value = (mouseX - AFTER_BOX_X) / (int)(tileWidth * zoom);
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Width) { return (int)(map.Master.Width - 1); }
@@ -571,7 +581,7 @@ namespace GB.GBMB
 		/// Converts a mouse click position to a tile position.
 		/// </summary>
 		private int MouseToTileY(int mouseY) {
-			int value = (mouseY - AFTER_BOX_Y) / (int)(TILE_HEIGHT * zoom);
+			int value = (mouseY - AFTER_BOX_Y) / (int)(tileHeight * zoom);
 
 			if (value < 0) { return 0; }
 			if (value >= map.Master.Height) { return (int)(map.Master.Height - 1); }
@@ -673,13 +683,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			e.Graphics.FillRectangle(SystemBrushes.ButtonFace, TextRect);
 
 			//All of the labels on the top.
-			OuterBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TILE_WIDTH * zoom), BOX_HEIGHT);
-			InnerBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(TILE_WIDTH * zoom) - 1, BOX_HEIGHT - 1);
-			TextRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(TILE_WIDTH * zoom) - 3, BOX_HEIGHT - 3);
+			OuterBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(tileWidth * zoom), BOX_HEIGHT);
+			InnerBorderRect = new Rectangle(AFTER_BOX_X, INITIAL_BOX_Y, (int)(tileWidth * zoom) - 1, BOX_HEIGHT - 1);
+			TextRect = new Rectangle(AFTER_BOX_X + 1, INITIAL_BOX_Y + 1, (int)(tileWidth * zoom) - 3, BOX_HEIGHT - 3);
 
 			for (int XPos = AFTER_BOX_X, RowNumber = 0;
 					XPos < this.Width;
-					XPos += (int)(TILE_WIDTH * zoom), RowNumber++) {
+					XPos += (int)(tileWidth * zoom), RowNumber++) {
 
 				OuterBorderRect.X = XPos;
 				InnerBorderRect.X = XPos;
@@ -711,13 +721,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			}
 
 			//All of the labels on the side.
-			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(TILE_HEIGHT * zoom));
-			InnerBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH - 1, (int)(TILE_HEIGHT * zoom) - 1);
-			TextRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 3, (int)(TILE_HEIGHT * zoom) - 3);
+			OuterBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH, (int)(tileHeight * zoom));
+			InnerBorderRect = new Rectangle(INITIAL_BOX_X, AFTER_BOX_Y, BOX_WIDTH - 1, (int)(tileHeight * zoom) - 1);
+			TextRect = new Rectangle(INITIAL_BOX_X + 1, AFTER_BOX_Y + 1, BOX_WIDTH - 3, (int)(tileHeight * zoom) - 3);
 
 			for (int YPos = AFTER_BOX_Y, ColNumber = 0;
 					YPos < this.Height;
-					YPos += (int)(TILE_WIDTH * zoom), ColNumber++) {
+					YPos += (int)(tileWidth * zoom), ColNumber++) {
 
 				OuterBorderRect.Y = YPos;
 				InnerBorderRect.Y = YPos;
@@ -750,13 +760,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		}
 
 		private void DrawGrid(PaintEventArgs e) {
-			int endOfTilesX = (int)(TILE_WIDTH * zoom * map.Master.Width) + AFTER_BOX_X;
-			int endOfTilesY = (int)(TILE_HEIGHT * zoom * map.Master.Height) + AFTER_BOX_Y;
+			int endOfTilesX = (int)(tileWidth * zoom * map.Master.Width) + AFTER_BOX_X;
+			int endOfTilesY = (int)(tileHeight * zoom * map.Master.Height) + AFTER_BOX_Y;
 
-			for (int XPos = AFTER_BOX_X; XPos <= endOfTilesX; XPos += (int)(TILE_WIDTH * zoom)) {
+			for (int XPos = AFTER_BOX_X; XPos <= endOfTilesX; XPos += (int)(tileWidth * zoom)) {
 				e.Graphics.DrawLine(Pens.Black, XPos, AFTER_BOX_Y, XPos, endOfTilesY);
 			}
-			for (int YPos = AFTER_BOX_Y; YPos <= endOfTilesY; YPos += (int)(TILE_HEIGHT * zoom)) {
+			for (int YPos = AFTER_BOX_Y; YPos <= endOfTilesY; YPos += (int)(tileHeight * zoom)) {
 				e.Graphics.DrawLine(Pens.Black, AFTER_BOX_X, YPos, endOfTilesX, YPos);
 			}
 		}
@@ -769,8 +779,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			//TODO make this work off of scrolled position.
 			for (int tileY = 2; tileY < map.Master.Height; tileY += 2) {
 				for (int tileX = 2; tileX < map.Master.Width; tileX += 2) {
-					int centX = (int)(tileX * TILE_WIDTH * zoom) + AFTER_BOX_X - 1;
-					int centY = (int)(tileY * TILE_HEIGHT * zoom) + AFTER_BOX_Y - 1;
+					int centX = (int)(tileX * tileWidth * zoom) + AFTER_BOX_X - 1;
+					int centY = (int)(tileY * tileHeight * zoom) + AFTER_BOX_Y - 1;
 
 					e.Graphics.FillRectangle(Brushes.Red, centX - 1, centY, 3, 1);
 					e.Graphics.FillRectangle(Brushes.Red, centX, centY - 1, 1, 3);
@@ -933,6 +943,13 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 			this.SuspendLayout();
 			this.ResumeLayout(false);
 
+		}
+
+		private void tileset_SizeChanged(object sender, EventArgs e) {
+			this.tileWidth = tileset.Width;
+			this.tileHeight = tileset.Height;
+
+			this.OnMapChanged();
 		}
 	}
 

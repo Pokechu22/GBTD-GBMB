@@ -37,8 +37,8 @@ namespace GB.Shared.GBRFile
 		public UInt16 Width {
 			get { return width; }
 			set {
-				if (value != width) {
-					value = width;
+				if (width != value) {
+					width = value;
 					OnSizeChanged();
 				}
 			}
@@ -49,8 +49,8 @@ namespace GB.Shared.GBRFile
 		public UInt16 Height {
 			get { return height; }
 			set {
-				if (value != height) {
-					value = height;
+				if (height != value) {
+					height = value;
 					OnSizeChanged();
 				}
 			}
@@ -61,8 +61,8 @@ namespace GB.Shared.GBRFile
 		public UInt16 Count {
 			get { return count; }
 			set {
-				if (value != count) {
-					value = count;
+				if (count != value) {
+					count = value;
 					OnCountChanged();
 				}
 			}
