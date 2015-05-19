@@ -254,28 +254,22 @@ namespace GB.GBMB
 		}
 
 		private void onSaveButtonClicked(object sender, EventArgs e) {
-			var result = MessageBox.Show("WARNING!  Saving is buggy.  Continue?  You may lose extra data from newer versions of the app.",
-				"Saving is dangerous", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-			if (result != DialogResult.Yes) { return; }
+			if (String.IsNullOrEmpty(mapFileName)) {
+				//If the file hasn't been saved before, save as does what we need in regards to chosing a file location.
+				saveAsMenuItem_Click(sender, e);
+			}
 
 			UpdateProducerInfo();
 
 			using (var stream = File.Open(mapFileName, FileMode.Create, FileAccess.ReadWrite)) {
 				gbmFile.SaveToStream(stream);
 			}
-
-			MessageBox.Show("File saved successfully.", "File saved successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void saveAsMenuItem_Click(object sender, EventArgs e) {
-			var result = MessageBox.Show("WARNING!  Saving is buggy.  Continue?  You may lose extra data from newer versions of the app.",
-				"Saving is dangerous", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-			if (result != DialogResult.Yes) { return; }
-
 			UpdateProducerInfo();
 
+			DialogResult result;
 			SaveFileDialog d = new SaveFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
@@ -284,11 +278,11 @@ namespace GB.GBMB
 			result = d.ShowDialog();
 			if (result != DialogResult.OK) { return; }
 
+			mapFileName = d.FileName;
+
 			using (var stream = d.OpenFile()) {
 				gbmFile.SaveToStream(stream);
 			}
-
-			MessageBox.Show("File saved successfully.", "File saved successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 			Properties.Settings.Default.GBMPath = Path.GetDirectoryName(d.FileName);
 		}
