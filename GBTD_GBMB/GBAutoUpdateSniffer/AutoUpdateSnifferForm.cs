@@ -226,7 +226,7 @@ namespace GBAutoUpdateSniffer
 			mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
 		}
 
-		private void mmfTileRenderer_PixelClicked(object sender, GB.Shared.Controls.PixelClickEventArgs e) {
+		private void mmfTileRenderer_PixelClicked(object sender, PixelClickEventArgs e) {
 			//Ignore out of range clicks.
 			if (e.x < 0 || e.x >= mmfTileRenderer.Tile.Width || e.y < 0 || e.y >= mmfTileRenderer.Tile.Height) { return; }
 

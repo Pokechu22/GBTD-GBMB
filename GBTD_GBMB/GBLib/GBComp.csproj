@@ -89,21 +89,6 @@
     <Compile Include="Tiles\Tile.cs" />
     <Compile Include="Tiles\TileData.cs" />
     <Compile Include="Tiles\TileDataList.cs" />
-    <Compile Include="Controls\Tiles\TileListControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Tiles\TileListControl.Designer.cs">
-      <DependentUpon>TileListControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Tiles\TileListEntryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Tiles\TileListEntryControl.Designer.cs">
-      <DependentUpon>TileListEntryControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Tiles\TileRenderer.cs">
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\Basic\GroupBox.resx">
@@ -115,12 +100,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Tiles\TileListControl.resx">
-      <DependentUpon>TileListControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Tiles\TileListEntryControl.resx">
-      <DependentUpon>TileListEntryControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

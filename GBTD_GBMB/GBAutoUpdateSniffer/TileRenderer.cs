@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using GB.Shared.Palettes;
 using GB.Shared.Tiles;
 
-namespace GB.Shared.Controls
+namespace GBAutoUpdateSniffer
 {
 	public class TileRenderer : Control
 	{

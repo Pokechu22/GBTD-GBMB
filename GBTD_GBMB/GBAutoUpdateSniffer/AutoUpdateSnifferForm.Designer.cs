@@ -80,7 +80,7 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.mmfTileRenderer = new GB.Shared.Controls.TileRenderer();
+			this.mmfTileRenderer = new GBAutoUpdateSniffer.TileRenderer();
 			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
 			mmfIDAndColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfMagicMarkerGroupBox = new System.Windows.Forms.GroupBox();
@@ -888,7 +888,7 @@
 			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
 			this.mmfTileRenderer.TabIndex = 1;
 			this.mmfTileRenderer.Text = "editableTileRenderer1";
-			this.mmfTileRenderer.PixelClicked += new GB.Shared.Controls.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
+			this.mmfTileRenderer.PixelClicked += new GBAutoUpdateSniffer.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
 			// 
 			// auListener
 			// 
@@ -993,7 +993,7 @@
 		private System.Windows.Forms.NumericUpDown mmfTileHeightTextBox;
 		private System.Windows.Forms.NumericUpDown mmfTileCountTextBox;
 		private System.Windows.Forms.NumericUpDown mmfTileNumberTextBox;
-		private GB.Shared.Controls.TileRenderer mmfTileRenderer;
+		private GBAutoUpdateSniffer.TileRenderer mmfTileRenderer;
 		private System.Windows.Forms.NumericUpDown mmfGBCPaletteTextBox;
 		private System.Windows.Forms.NumericUpDown mmfSGBPaletteTextBox;
 		private System.Windows.Forms.NumericUpDown mmfColor0MappingTextBox;
