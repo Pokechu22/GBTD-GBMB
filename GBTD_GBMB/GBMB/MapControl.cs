@@ -1032,8 +1032,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 		void map_SizeChanged(object sender, EventArgs e) {
 			this.OnResize(new EventArgs());
 
-			this.vScrollBar.Maximum = (int)map.Master.Height;
-			this.hScrollBar.Maximum = (int)map.Master.Width;
+			this.vScrollBar.Maximum = ((int)map.Master.Height - 1);
+			this.hScrollBar.Maximum = ((int)map.Master.Width - 1);
 
 			OnMapChanged();
 		}
