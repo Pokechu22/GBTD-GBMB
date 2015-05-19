@@ -58,9 +58,9 @@
 			this.mmfTileHeightTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfTileCountTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfFileNameTextBox = new System.Windows.Forms.TextBox();
+			this.mmfTileRenderer = new GBAutoUpdateSniffer.TileRenderer();
 			this.mmfGBCPaletteTextBox = new System.Windows.Forms.NumericUpDown();
 			this.mmfSGBPaletteTextBox = new System.Windows.Forms.NumericUpDown();
-			this.mmfAdvancedTileSettingsButton = new System.Windows.Forms.Button();
 			this.mmfTileNumberTextBox = new System.Windows.Forms.NumericUpDown();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageFileData = new System.Windows.Forms.TabPage();
@@ -80,8 +80,8 @@
 			this.groupBoxMessageInfo = new System.Windows.Forms.GroupBox();
 			this.textBoxMessageInfo = new System.Windows.Forms.TextBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.mmfTileRenderer = new GBAutoUpdateSniffer.TileRenderer();
 			this.auListener = new GB.Shared.AutoUpdate.AUMessenger();
+			this.mmfAdvancedTileSettingsButton = new System.Windows.Forms.Button();
 			mmfIDAndColorMappingTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			mmfMagicMarkerGroupBox = new System.Windows.Forms.GroupBox();
 			mmfColorMappingGroupBox = new System.Windows.Forms.GroupBox();
@@ -577,6 +577,17 @@
 			mmfTilePalettesTileLayoutPanel.Size = new System.Drawing.Size(216, 65);
 			mmfTilePalettesTileLayoutPanel.TabIndex = 1;
 			// 
+			// mmfTileRenderer
+			// 
+			this.mmfTileRenderer.Location = new System.Drawing.Point(0, 0);
+			this.mmfTileRenderer.Margin = new System.Windows.Forms.Padding(0);
+			this.mmfTileRenderer.Name = "mmfTileRenderer";
+			mmfTilePalettesTileLayoutPanel.SetRowSpan(this.mmfTileRenderer, 2);
+			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
+			this.mmfTileRenderer.TabIndex = 1;
+			this.mmfTileRenderer.Text = "editableTileRenderer1";
+			this.mmfTileRenderer.PixelClicked += new GBAutoUpdateSniffer.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
+			// 
 			// mmfGBCPaletteGroupBox
 			// 
 			mmfGBCPaletteGroupBox.Controls.Add(this.mmfGBCPaletteTextBox);
@@ -628,19 +639,6 @@
 			this.mmfSGBPaletteTextBox.Size = new System.Drawing.Size(64, 20);
 			this.mmfSGBPaletteTextBox.TabIndex = 0;
 			this.mmfSGBPaletteTextBox.ValueChanged += new System.EventHandler(this.mmfSGBPaletteTextBox_ValueChanged);
-			// 
-			// mmfAdvancedTileSettingsButton
-			// 
-			mmfTilePalettesTileLayoutPanel.SetColumnSpan(this.mmfAdvancedTileSettingsButton, 2);
-			this.mmfAdvancedTileSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mmfAdvancedTileSettingsButton.Enabled = false;
-			this.mmfAdvancedTileSettingsButton.Location = new System.Drawing.Point(68, 45);
-			this.mmfAdvancedTileSettingsButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-			this.mmfAdvancedTileSettingsButton.Name = "mmfAdvancedTileSettingsButton";
-			this.mmfAdvancedTileSettingsButton.Size = new System.Drawing.Size(145, 20);
-			this.mmfAdvancedTileSettingsButton.TabIndex = 4;
-			this.mmfAdvancedTileSettingsButton.Text = "Advanced tile info...";
-			this.mmfAdvancedTileSettingsButton.UseVisualStyleBackColor = true;
 			// 
 			// mmfSelectTileGroupBox
 			// 
@@ -869,30 +867,8 @@
 			// 
 			this.openFileDialog.Filter = "GBR files|*.gbr|All files|*.*";
 			// 
-			// mmfTileRenderer
-			// 
-			this.mmfTileRenderer.Border = true;
-			this.mmfTileRenderer.BorderSides = ((System.Windows.Forms.Border3DSide)(((((System.Windows.Forms.Border3DSide.Left | System.Windows.Forms.Border3DSide.Top) 
-            | System.Windows.Forms.Border3DSide.Right) 
-            | System.Windows.Forms.Border3DSide.Bottom) 
-            | System.Windows.Forms.Border3DSide.Middle)));
-			this.mmfTileRenderer.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.mmfTileRenderer.Grid = false;
-			this.mmfTileRenderer.Location = new System.Drawing.Point(0, 0);
-			this.mmfTileRenderer.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-			this.mmfTileRenderer.Name = "mmfTileRenderer";
-			this.mmfTileRenderer.NibbleMarkers = false;
-			this.mmfTileRenderer.PixelScale = 8;
-			mmfTilePalettesTileLayoutPanel.SetRowSpan(this.mmfTileRenderer, 2);
-			this.mmfTileRenderer.Selected = false;
-			this.mmfTileRenderer.Size = new System.Drawing.Size(65, 65);
-			this.mmfTileRenderer.TabIndex = 1;
-			this.mmfTileRenderer.Text = "editableTileRenderer1";
-			this.mmfTileRenderer.PixelClicked += new GBAutoUpdateSniffer.PixelClickedEventHandler(this.mmfTileRenderer_PixelClicked);
-			// 
 			// auListener
 			// 
-			this.auListener.Enabled = false;
 			this.auListener.FileName = null;
 			this.auListener.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auListener_OnTileChanged);
 			this.auListener.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnTotalRefreshNeeded);
@@ -901,14 +877,27 @@
 			this.auListener.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnGBPaletteChanged);
 			this.auListener.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auListener_OnColorPaletteChanged);
 			// 
+			// mmfAdvancedTileSettingsButton
+			// 
+			mmfTilePalettesTileLayoutPanel.SetColumnSpan(this.mmfAdvancedTileSettingsButton, 2);
+			this.mmfAdvancedTileSettingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mmfAdvancedTileSettingsButton.Enabled = false;
+			this.mmfAdvancedTileSettingsButton.Location = new System.Drawing.Point(68, 45);
+			this.mmfAdvancedTileSettingsButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+			this.mmfAdvancedTileSettingsButton.Name = "mmfAdvancedTileSettingsButton";
+			this.mmfAdvancedTileSettingsButton.Size = new System.Drawing.Size(145, 20);
+			this.mmfAdvancedTileSettingsButton.TabIndex = 4;
+			this.mmfAdvancedTileSettingsButton.Text = "Advanced tile info...";
+			this.mmfAdvancedTileSettingsButton.UseVisualStyleBackColor = true;
+			// 
 			// AutoUpdateSnifferForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 286);
 			this.Controls.Add(this.tabControl);
-			this.Name = "AutoUpdateSnifferForm";
 			this.Icon = global::GBAutoUpdateSniffer.Properties.Resources.AUSnifferIcon;
+			this.Name = "AutoUpdateSnifferForm";
 			this.Text = "GBTD Auto Update Sniffer";
 			mmfIDAndColorMappingTableLayoutPanel.ResumeLayout(false);
 			mmfMagicMarkerGroupBox.ResumeLayout(false);
