@@ -181,6 +181,10 @@ namespace GBAutoUpdateSniffer
 					mmfTileCountTextBox.Value = mmf.TileCount;
 					mmfTileWidthTextBox.Value = mmf.TileWidth;
 					mmfTileHeightTextBox.Value = mmf.TileHeight;
+
+					mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+					mmfGBCPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].GBC;
+					mmfSGBPaletteTextBox.Value = mmf.PalMaps[(UInt16)mmfTileNumberTextBox.Value].SGB;
 				}));
 			} catch (Exception ex) {
 				MessageBox.Show("Exception occured while updating from MemoryMappedFile change:\n" + new AUEventInfo(args, AUEventType.Color_set_change) + "\n\n" + ex.ToString(), "MemoryMappedFile updating error", MessageBoxButtons.OK, MessageBoxIcon.Error);

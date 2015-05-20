@@ -24,50 +24,63 @@ namespace GB.Shared.AutoUpdate
 		/// </summary>
 		public class MMFTileList
 		{
-			private const int TILE_WIDTH = 8, TILE_HEIGHT = 8;
-
 			private readonly AUMemMappedFile file;
+
+			private int TileWidth = 8;
+			private int TileHeight = 8;
+
 			internal MMFTileList(AUMemMappedFile file) {
 				this.file = file;
 			}
 
 			public Tile this[UInt16 tile] {
 				get {
-					var stream = file.stream;
-					stream.Position = TILES_INDEX + (tile * TILE_WIDTH * TILE_HEIGHT);
+					if (file.TileWidth != this.TileWidth || file.TileHeight != this.TileHeight) {
+						this.TileWidth = (int)file.TileWidth;
+						this.TileHeight = (int)file.TileHeight;
+					}
 
-					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
-					var read = stream.Read(data, 0, TILE_WIDTH * TILE_HEIGHT);
-					if (read != TILE_WIDTH * TILE_HEIGHT) {
+					var stream = file.stream;
+
+					stream.Position = TILES_INDEX + (tile * TileWidth * TileHeight);
+
+					byte[] data = new byte[TileWidth * TileHeight];
+					var read = stream.Read(data, 0, TileWidth * TileHeight);
+					if (read != TileWidth * TileHeight) {
 						throw new EndOfStreamException();
 					}
 
-					GBColor[,] pixels = new GBColor[TILE_WIDTH, TILE_HEIGHT];
+					GBColor[,] pixels = new GBColor[TileWidth, TileHeight];
 
-					for (int y = 0; y < TILE_HEIGHT; y++) {
-						for (int x = 0; x < TILE_WIDTH; x++) {
-							pixels[x, y] = ByteToGBColor(data[x + (y * TILE_WIDTH)]);
+					for (int y = 0; y < TileHeight; y++) {
+						for (int x = 0; x < TileWidth; x++) {
+							pixels[x, y] = ByteToGBColor(data[x + (y * TileWidth)]);
 						}
 					}
 
 					return new Tile(pixels);
 				}
 				set {
+					if (file.TileWidth != this.TileWidth || file.TileHeight != this.TileHeight) {
+						this.TileWidth = (int)file.TileWidth;
+						this.TileHeight = (int)file.TileHeight;
+					}
+
 					var stream = file.stream;
-					stream.Position = TILES_INDEX + (tile * TILE_WIDTH * TILE_HEIGHT);
+					stream.Position = TILES_INDEX + (tile * TileWidth * TileHeight);
 
-					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
+					byte[] data = new byte[TileWidth * TileHeight];
 
-					if (value.Width != TILE_WIDTH) { throw new ArgumentException("Tile width MUST be " + TILE_WIDTH + ".", "value"); }
-					if (value.Height != TILE_HEIGHT) { throw new ArgumentException("Tile height MUST be " + TILE_HEIGHT + ".", "value"); }
+					if (value.Width != TileWidth) { throw new ArgumentException("Tile width MUST be " + TileWidth + ".", "value"); }
+					if (value.Height != TileHeight) { throw new ArgumentException("Tile height MUST be " + TileHeight + ".", "value"); }
 
-					for (int y = 0; y < TILE_HEIGHT; y++) {
-						for (int x = 0; x < TILE_WIDTH; x++) {
-							data[x + (y * TILE_WIDTH)] = GBColorToByte(value[x, y]);
+					for (int y = 0; y < TileHeight; y++) {
+						for (int x = 0; x < TileWidth; x++) {
+							data[x + (y * TileWidth)] = GBColorToByte(value[x, y]);
 						}
 					}
 
-					stream.Write(data, 0, TILE_WIDTH * TILE_HEIGHT);
+					stream.Write(data, 0, TileWidth * TileHeight);
 
 					file.messenger.SendTileChangeMessage(tile);
 				}
@@ -86,17 +99,17 @@ namespace GB.Shared.AutoUpdate
 				stream.Position = TILES_INDEX;
 
 				for (int tileNum = 0; tileNum < returned.Length; tileNum++) {
-					byte[] data = new byte[TILE_WIDTH * TILE_HEIGHT];
-					var read = stream.Read(data, 0, TILE_WIDTH * TILE_HEIGHT);
-					if (read != TILE_WIDTH * TILE_HEIGHT) {
+					byte[] data = new byte[TileWidth * TileHeight];
+					var read = stream.Read(data, 0, TileWidth * TileHeight);
+					if (read != TileWidth * TileHeight) {
 						throw new EndOfStreamException();
 					}
 
-					GBColor[,] pixels = new GBColor[TILE_WIDTH, TILE_HEIGHT];
+					GBColor[,] pixels = new GBColor[TileWidth, TileHeight];
 
-					for (int y = 0; y < TILE_HEIGHT; y++) {
-						for (int x = 0; x < TILE_WIDTH; x++) {
-							pixels[x, y] = ByteToGBColor(data[x + (y * TILE_WIDTH)]);
+					for (int y = 0; y < TileHeight; y++) {
+						for (int x = 0; x < TileWidth; x++) {
+							pixels[x, y] = ByteToGBColor(data[x + (y * TileWidth)]);
 						}
 					}
 
@@ -104,6 +117,72 @@ namespace GB.Shared.AutoUpdate
 				}
 
 				return returned;
+			}
+
+			/// <summary>
+			/// Set all of the tiles to the new size.
+			/// 
+			/// Only call this when the app is resizing the tiles; if it was done by another app this is unneeded.
+			/// </summary>
+			internal void ResizeTiles(UInt32 oldTileWidth, UInt32 oldTileHeight, UInt32 newTileWidth, UInt32 newTileHeight) {
+				this.TileWidth = (int)newTileWidth;
+				this.TileHeight = (int)newTileHeight;
+
+				if (oldTileHeight == newTileHeight && oldTileWidth == newTileWidth) {
+					return;
+				}
+
+				var stream = file.stream;
+
+				uint oldTileCount = TILES_SIZE / (oldTileWidth * oldTileHeight);
+				byte[, ,] oldTiles = new byte[oldTileCount, oldTileWidth, oldTileHeight];
+
+				uint newTileCount = TILES_SIZE / (newTileWidth * newTileHeight);
+				byte[, ,] newTiles = new byte[newTileCount, newTileWidth, newTileHeight];
+
+				//Build the old tile list.
+				stream.Position = TILES_INDEX;
+
+				for (int tile = 0; tile < oldTileCount; tile++) { 
+					for (int y = 0; y < oldTileHeight; y++) {
+						for (int x = 0; x < oldTileWidth; x++) {
+							oldTiles[tile, x, y] = stream.ReadByteEx();
+						}
+					}
+				}
+
+				//Build the new tiles list.
+				int currentTile = 0;
+				int currentX = 0;
+				int currentY = 0;
+
+				for (int tile = 0; tile < newTileCount; tile++) {
+					for (int y = 0; y < newTileHeight; y++) {
+						for (int x = 0; x < newTileWidth; x++) {
+							newTiles[tile, x, y] = oldTiles[currentTile, currentX, currentY];
+							currentX++;
+							if (currentX >= oldTileWidth) {
+								currentY++;
+								currentX = 0;
+							}
+							if (currentY >= oldTileHeight) {
+								currentTile++;
+								currentY = 0;
+							}
+						}
+					}
+				}
+
+				//Save the new tile list.
+				stream.Position = TILES_INDEX;
+
+				for (int tile = 0; tile < newTileCount; tile++) {
+					for (int y = 0; y < newTileHeight; y++) {
+						for (int x = 0; x < newTileWidth; x++) {
+							stream.WriteByteEx(newTiles[tile, x, y]);
+						}
+					}
+				}
 			}
 		}
 
@@ -402,7 +481,7 @@ namespace GB.Shared.AutoUpdate
 			if (overwrite && (loadedFile == null)) {
 				throw new Exception("Cannot overwrite MemmoryMappedFile contents when loadedFile is null!");
 			}
-
+			
 			this.stream = file.CreateViewStream();
 
 			Tiles = new MMFTileList(this);
@@ -532,6 +611,12 @@ namespace GB.Shared.AutoUpdate
 				return stream.ReadInteger();
 			}
 			set {
+				UInt32 oldTileWidth = this.TileWidth;
+
+				if (oldTileWidth != 0 && TileHeight != 0) {
+					Tiles.ResizeTiles(oldTileWidth, TileHeight, value, TileHeight);
+				}
+
 				stream.Position = TILEWIDTH_INDEX;
 				stream.WriteInteger(value);
 
@@ -545,11 +630,37 @@ namespace GB.Shared.AutoUpdate
 				return stream.ReadInteger();
 			}
 			set {
+				UInt32 oldTileHeight = this.TileHeight;
+
+				if (oldTileHeight != 0 && TileWidth != 0) {
+					Tiles.ResizeTiles(TileWidth, oldTileHeight, TileWidth, value);
+				}
+
 				stream.Position = TILEHEIGHT_INDEX;
 				stream.WriteInteger(value);
 
 				messenger.SendTileDimensionsMessage();
 			}
+		}
+		
+		/// <summary>
+		/// Sets both the <see cref="TileWidth"/> and <see cref="TileHeight"/> at the same time.
+		/// </summary>
+		public void SetTileSize(UInt32 newTileWidth, UInt32 newTileHeight) {
+			UInt32 oldTileWidth = this.TileWidth;
+			UInt32 oldTileHeight = this.TileHeight;
+
+			if (oldTileWidth != 0 && oldTileHeight != 0) {
+				Tiles.ResizeTiles(oldTileWidth, oldTileHeight, newTileWidth, newTileHeight);
+			}
+
+			stream.Position = TILEWIDTH_INDEX;
+			stream.WriteInteger(newTileWidth);
+
+			stream.Position = TILEHEIGHT_INDEX;
+			stream.WriteInteger(newTileHeight);
+
+			messenger.SendTileDimensionsMessage();
 		}
 
 		/// <summary>
