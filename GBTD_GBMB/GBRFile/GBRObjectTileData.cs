@@ -19,7 +19,10 @@ namespace GB.Shared.GBRFile
 			this.Color1Mapping = GBColor.DARK_GRAY;
 			this.Color2Mapping = GBColor.LIGHT_GRAY;
 			this.Color3Mapping = GBColor.BLACK;
-			this.Tiles = new Tile[Count]; //TODO: This may be wrong.
+			this.Tiles = new Tile[Count];
+			for (int i = 0; i < Tiles.Length; i++) {
+				Tiles[i] = new Tile(Width, Height);
+			}
 		}
 
 		/// <summary>
