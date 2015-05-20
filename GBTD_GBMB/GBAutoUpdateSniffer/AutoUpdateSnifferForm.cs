@@ -325,12 +325,14 @@ namespace GBAutoUpdateSniffer
 		private void mmfTileWidthTextBox_ValueChanged(object sender, EventArgs e) {
 			if (!updating) {
 				mmf.TileWidth = (UInt32)mmfTileWidthTextBox.Value;
+				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			}
 		}
 
 		private void mmfTileHeightTextBox_ValueChanged(object sender, EventArgs e) {
 			if (!updating) {
 				mmf.TileHeight = (UInt32)mmfTileHeightTextBox.Value;
+				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
 			}
 		}
 	}
