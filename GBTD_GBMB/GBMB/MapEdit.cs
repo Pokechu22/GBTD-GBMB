@@ -390,12 +390,11 @@ namespace GB.GBMB
 			this.mapControl.PaletteData = paletteData;
 			this.infoPanelColorDropDown.PaletteData = paletteData;
 
-			//TODO: Re-enable the MMF -- we need it off for now, though, since it doesn't like non-8x8 tiles.
-			/*auMessenger.FileName = tilePath;
+			auMessenger.FileName = tilePath;
 			if (mmf != null) {
 				mmf.Dispose(); //Remove old MMF.
 			}
-			mmf = new AUMemMappedFile(tilePath, auMessenger, gbrFile);*/
+			mmf = new AUMemMappedFile(tilePath, auMessenger, gbrFile);
 		}
 
 		/// <summary>
@@ -527,7 +526,36 @@ namespace GB.GBMB
 		private void auMessenger_OnTileSizeChanged(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				//TODO: Actually use this.
+				var map = gbmFile.GetOrCreateObjectOfType<GBMObjectMap>();
+
+				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
+				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+
+				tileData.Width = (UInt16)mmf.TileWidth;
+				tileData.Height = (UInt16)mmf.TileHeight;
+
+				tileData.Tiles = mmf.Tiles.GetTilesArray();
+
+				//Inefficiant, but it works.
+				UInt32[] gbcPal = new UInt32[mmf.TileCount];
+				UInt32[] sgbPal = new UInt32[mmf.TileCount];
+
+				for (UInt16 i = 0; i < mmf.TileCount; i++) {
+					gbcPal[i] = mmf.PalMaps[i].GBC;
+					sgbPal[i] = mmf.PalMaps[i].SGB;
+				}
+
+				defaultPalette.GBCPalettes = gbcPal;
+				defaultPalette.SGBPalettes = sgbPal;
+
+				if (map.TileCount < tileData.Count) { //GBR File has more tiles than GBM; update!
+					map.TileCount = tileData.Count;
+				}
+
+				this.mapControl.TileSet = tileData;
+				this.mapControl.DefaultPalette = defaultPalette;
+				this.tileList.TileSet = tileData;
+				this.tileList.PaletteMapping = defaultPalette;
 			}));
 		}
 

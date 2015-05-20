@@ -92,6 +92,11 @@ namespace GB.Shared.AutoUpdate
 			/// If you only want one tile, use the indexer.
 			/// </summary>
 			public Tile[] GetTilesArray() {
+				if (file.TileWidth != this.TileWidth || file.TileHeight != this.TileHeight) {
+					this.TileWidth = (int)file.TileWidth;
+					this.TileHeight = (int)file.TileHeight;
+				}
+
 				var stream = file.stream;
 
 				Tile[] returned = new Tile[file.TileCount];

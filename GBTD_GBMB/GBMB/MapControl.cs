@@ -912,7 +912,8 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 				for (int x = 0; x < width; x++) {
 					int usedARGB = 0;
 
-					switch (tile[(record.FlippedHorizontally && canFlip) ? 7 - x : x, (record.FlippedVertically && canFlip) ? 7 - y : y]) {
+					switch (tile[(record.FlippedHorizontally && canFlip) ? width - x - 1 : x,
+						(record.FlippedVertically && canFlip) ? height - y - 1: y]) {
 					case GBColor.WHITE: usedARGB = whiteARGB; break;
 					case GBColor.LIGHT_GRAY: usedARGB = lightGrayARGB; break;
 					case GBColor.DARK_GRAY: usedARGB = darkGrayARGB; break;
