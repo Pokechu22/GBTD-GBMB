@@ -167,6 +167,16 @@ namespace GB.Shared.GBRFile
 
 		public GBRFile() {
 			this.Header = new GBRFileHeader();
+
+			Objects = new Dictionary<UInt16, GBRObject>();
+
+			this.Objects.Add(0, GBRInitialization.CreateObject<GBRObjectProducerInfo>(0, this));
+			this.Objects.Add(1, GBRInitialization.CreateObject<GBRObjectTileData>(1, this));
+			this.Objects.Add(2, GBRInitialization.CreateObject<GBRObjectTileSettings>(2, this));
+			this.Objects.Add(3, GBRInitialization.CreateObject<GBRObjectTileExport>(3, this));
+			this.Objects.Add(4, GBRInitialization.CreateObject<GBRObjectTileImport>(4, this));
+			this.Objects.Add(5, GBRInitialization.CreateObject<GBRObjectPalettes>(5, this));
+			this.Objects.Add(6, GBRInitialization.CreateObject<GBRObjectTilePalette>(6, this));
 		}
 
 		/// <summary>
