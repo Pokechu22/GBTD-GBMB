@@ -54,6 +54,9 @@
   <ItemGroup>
     <Compile Include="TileEditor.cs" />
     <Compile Include="TileEditorProvider.cs" />
+    <Compile Include="TileList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TileTransformations.cs" />
     <Compile Include="Dialogs\ExportDialog.cs">
       <SubType>Form</SubType>

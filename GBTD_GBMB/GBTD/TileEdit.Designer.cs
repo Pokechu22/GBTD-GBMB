@@ -37,6 +37,7 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TileEdit));
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -104,6 +105,7 @@
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
+			this.tileList = new GB.GBTD.TileList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -203,17 +205,20 @@
 			this.openMenuItem.Index = 0;
 			this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
 			this.openMenuItem.Text = "&Open...";
+			this.openMenuItem.Click += new System.EventHandler(this.openButton_OnClick);
 			// 
 			// saveMenuItem
 			// 
 			this.saveMenuItem.Index = 1;
 			this.saveMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
 			this.saveMenuItem.Text = "&Save";
+			this.saveMenuItem.Click += new System.EventHandler(this.saveButton_OnClicked);
 			// 
 			// saveAsMenuItem
 			// 
 			this.saveAsMenuItem.Index = 2;
 			this.saveAsMenuItem.Text = "Save &As...";
+			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsButton_OnClicked);
 			// 
 			// reopenMenuItem
 			// 
@@ -227,16 +232,19 @@
 			this.exportMenuItem.Index = 6;
 			this.exportMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
 			this.exportMenuItem.Text = "&Export";
+			this.exportMenuItem.Click += new System.EventHandler(this.exportButton_OnClicked);
 			// 
 			// exportToMenuItem
 			// 
 			this.exportToMenuItem.Index = 7;
 			this.exportToMenuItem.Text = "Ex&port to...";
+			this.exportToMenuItem.Click += new System.EventHandler(this.exportToButton_OnClicked);
 			// 
 			// importFromMenuItem
 			// 
 			this.importFromMenuItem.Index = 8;
 			this.importFromMenuItem.Text = "&Import from...";
+			this.importFromMenuItem.Click += new System.EventHandler(this.importFromButton_OnClicked);
 			// 
 			// exitMenuItem
 			// 
@@ -620,6 +628,7 @@
 			this.exportButton.Size = new System.Drawing.Size(24, 24);
 			this.exportButton.TabIndex = 10;
 			this.toolTip.SetToolTip(this.exportButton, "Export");
+			this.exportButton.Click += new System.EventHandler(this.exportButton_OnClicked);
 			// 
 			// saveButton
 			// 
@@ -630,6 +639,7 @@
 			this.saveButton.Size = new System.Drawing.Size(24, 24);
 			this.saveButton.TabIndex = 9;
 			this.toolTip.SetToolTip(this.saveButton, "Save");
+			this.saveButton.Click += new System.EventHandler(this.saveButton_OnClicked);
 			// 
 			// openButton
 			// 
@@ -640,6 +650,7 @@
 			this.openButton.Size = new System.Drawing.Size(24, 24);
 			this.openButton.TabIndex = 8;
 			this.toolTip.SetToolTip(this.openButton, "Open");
+			this.openButton.Click += new System.EventHandler(this.openButton_OnClick);
 			// 
 			// toolStripSeperatorBorder
 			// 
@@ -669,11 +680,23 @@
 			this.toolStripBorder.TabIndex = 7;
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
+			// tileList1
+			// 
+			this.tileList.Bookmark1Icon = ((System.Drawing.Image)(resources.GetObject("tileList1.Bookmark1Icon")));
+			this.tileList.Bookmark2Icon = ((System.Drawing.Image)(resources.GetObject("tileList1.Bookmark2Icon")));
+			this.tileList.Bookmark3Icon = ((System.Drawing.Image)(resources.GetObject("tileList1.Bookmark3Icon")));
+			this.tileList.Location = new System.Drawing.Point(341, 35);
+			this.tileList.Name = "tileList1";
+			this.tileList.SelectedTile = ((ushort)(0));
+			this.tileList.Size = new System.Drawing.Size(56, 205);
+			this.tileList.TabIndex = 16;
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 264);
+			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
 			this.Controls.Add(this.copyButton);
@@ -761,6 +784,7 @@
 		private System.Windows.Forms.MenuItem colorSetSuperGameboyMenuItem;
 		private System.Windows.Forms.MenuItem colorSetGameboyColorMenuItem;
 		private System.Windows.Forms.MenuItem colorSetFilteredGameboyColorMenuItem;
+		private TileList tileList;
 
 	}
 }
