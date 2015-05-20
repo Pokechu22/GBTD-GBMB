@@ -106,6 +106,7 @@
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.tileList = new GB.GBTD.TileList();
+			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -680,16 +681,26 @@
 			this.toolStripBorder.TabIndex = 7;
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
-			// tileList1
+			// tileList
 			// 
-			this.tileList.Bookmark1Icon = ((System.Drawing.Image)(resources.GetObject("tileList1.Bookmark1Icon")));
-			this.tileList.Bookmark2Icon = ((System.Drawing.Image)(resources.GetObject("tileList1.Bookmark2Icon")));
-			this.tileList.Bookmark3Icon = ((System.Drawing.Image)(resources.GetObject("tileList1.Bookmark3Icon")));
+			this.tileList.Bookmark1Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark1Icon")));
+			this.tileList.Bookmark2Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark2Icon")));
+			this.tileList.Bookmark3Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark3Icon")));
 			this.tileList.Location = new System.Drawing.Point(341, 35);
-			this.tileList.Name = "tileList1";
+			this.tileList.Name = "tileList";
 			this.tileList.SelectedTile = ((ushort)(0));
 			this.tileList.Size = new System.Drawing.Size(56, 205);
 			this.tileList.TabIndex = 16;
+			// 
+			// auMessenger
+			// 
+			this.auMessenger.FileName = null;
+			this.auMessenger.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auMessenger_OnTileChanged);
+			this.auMessenger.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTotalRefreshNeeded);
+			this.auMessenger.OnTileRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileRefreshNeeded);
+			this.auMessenger.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileSizeChanged);
+			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
+			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
 			// TileEdit
 			// 
@@ -785,6 +796,7 @@
 		private System.Windows.Forms.MenuItem colorSetGameboyColorMenuItem;
 		private System.Windows.Forms.MenuItem colorSetFilteredGameboyColorMenuItem;
 		private TileList tileList;
+		private Shared.AutoUpdate.AUMessenger auMessenger;
 
 	}
 }

@@ -567,6 +567,9 @@ namespace GB.GBMB
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
+				tileData.Width = (UInt16)mmf.TileWidth;
+				tileData.Height = (UInt16)mmf.TileHeight;
+
 				tileData.Tiles = mmf.Tiles.GetTilesArray();
 
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];

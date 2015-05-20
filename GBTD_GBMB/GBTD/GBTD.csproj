@@ -126,6 +126,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GBAutoUpdate\GBAutoUpdate.csproj">
+      <Project>{68552CD6-DC2F-4EFF-AE57-1011F7F2967A}</Project>
+      <Name>GBAutoUpdate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GBLib\GBComp.csproj">
       <Project>{144B0760-8612-4695-BE59-3547CE449BCA}</Project>
       <Name>GBComp</Name>

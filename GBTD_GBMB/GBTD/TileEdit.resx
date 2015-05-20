@@ -157,22 +157,25 @@
     <value>120, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tileList1.Bookmark1Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tileList.Bookmark1Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAANSURBVBhXYxhsgIEBAACTAAGdXEpdAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAANSURBVBhXYxhsgIEBAACTAAGdXEpdAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="tileList1.Bookmark2Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tileList.Bookmark2Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAANSURBVBhXYxhsgIEBAACTAAGdXEpdAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAANSURBVBhXYxhsgIEBAACTAAGdXEpdAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="tileList1.Bookmark3Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tileList.Bookmark3Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAANSURBVBhXYxhsgIEBAACTAAGdXEpdAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAANSURBVBhXYxhsgIEBAACTAAGdXEpdAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="auMessenger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>205, 17</value>
+  </metadata>
 </root>
