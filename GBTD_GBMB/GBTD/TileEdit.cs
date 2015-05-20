@@ -23,6 +23,73 @@ namespace GB.GBTD
 
 		private AUMemMappedFile mmf;
 
+		public ColorSet ColorSet {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ColorSet; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ColorSet = value;
+
+				tileList.ColorSet = value;
+			}
+		}
+
+		public bool AutoUpdate{
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().AutoUpdate; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().AutoUpdate = value;
+
+				auMessenger.Enabled = value;
+			}
+		}
+
+		public bool ShowNibbleMarkers {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowNibbleMarkers; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowNibbleMarkers = value;
+
+				//TODO
+			}
+		}
+
+		public bool ShowGrid {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowGrid; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowGrid = value;
+
+				//TODO
+			}
+		}
+
+		public bool SimpleMode {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().SimpleMode; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().SimpleMode = value;
+
+				//TODO
+			}
+		}
+
+		public UInt16 Bookmark1 {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark1; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark1 = value;
+				tileList.Bookmark1 = value;
+			}
+		}
+		public UInt16 Bookmark2 {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark2; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark2 = value;
+				tileList.Bookmark2 = value;
+			}
+		}
+		public UInt16 Bookmark3 {
+			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark3; }
+			set {
+				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark3 = value;
+				tileList.Bookmark3 = value;
+			}
+		}
+
 		public TileEdit() {
 			InitializeComponent();
 

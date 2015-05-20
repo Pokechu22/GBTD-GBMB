@@ -37,7 +37,6 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TileEdit));
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -683,9 +682,9 @@
 			// 
 			// tileList
 			// 
-			this.tileList.Bookmark1Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark1Icon")));
-			this.tileList.Bookmark2Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark2Icon")));
-			this.tileList.Bookmark3Icon = ((System.Drawing.Image)(resources.GetObject("tileList.Bookmark3Icon")));
+			this.tileList.Bookmark1Icon = global::GB.GBTD.Properties.Resources.TileListBookmarkIcon1;
+			this.tileList.Bookmark2Icon = global::GB.GBTD.Properties.Resources.TileListBookmarkIcon2;
+			this.tileList.Bookmark3Icon = global::GB.GBTD.Properties.Resources.TileListBookmarkIcon3;
 			this.tileList.Location = new System.Drawing.Point(341, 35);
 			this.tileList.Name = "tileList";
 			this.tileList.SelectedTile = ((ushort)(0));
