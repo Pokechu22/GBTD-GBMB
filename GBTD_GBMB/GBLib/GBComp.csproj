@@ -42,28 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Basic\Border.cs">
+    <Compile Include="Controls\Border.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\GroupBox.cs">
+    <Compile Include="Controls\GroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\GroupBox.Designer.cs">
+    <Compile Include="Controls\GroupBox.Designer.cs">
       <DependentUpon>GroupBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Basic\CleanLabel.cs">
+    <Compile Include="Controls\CleanLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\ImageButton.cs">
+    <Compile Include="Controls\ImageButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\ImageCheckBox.cs">
+    <Compile Include="Controls\ImageCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\ImageRadioButton.cs">
+    <Compile Include="Controls\ImageRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\NumericTextBox.cs">
+    <Compile Include="Controls\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="NativeMethods.cs" />
@@ -71,10 +71,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Palettes\ColorFiltration.cs" />
-    <Compile Include="Controls\Basic\Spinner.cs">
+    <Compile Include="Controls\Spinner.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Basic\Spinner.Designer.cs">
+    <Compile Include="Controls\Spinner.Designer.cs">
       <DependentUpon>Spinner.cs</DependentUpon>
     </Compile>
     <Compile Include="Palettes\ColorSet.cs" />
@@ -91,10 +91,10 @@
     <Compile Include="Tiles\TileDataList.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\Basic\GroupBox.resx">
+    <EmbeddedResource Include="Controls\GroupBox.resx">
       <DependentUpon>GroupBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Basic\Spinner.resx">
+    <EmbeddedResource Include="Controls\Spinner.resx">
       <DependentUpon>Spinner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
