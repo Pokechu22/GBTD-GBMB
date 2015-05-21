@@ -156,38 +156,40 @@ namespace GB.Shared.AutoUpdate
 					}
 				}
 
-				//Build a list of 8x8 tiles in the old tile list.
-				int sizedTileCount = TILES_SIZE / (8 * 8);
-				byte[, ,] sizedOldTiles = new byte[sizedTileCount, 8, 8];
+				//Build a list of 8x8 tiles.
+				const int SIZED_TILE_WIDTH = 8;
+				const int SIZED_TILE_HEIGHT = 8;
+				const int SIZED_TILE_COUNT = TILES_SIZE / (SIZED_TILE_WIDTH * SIZED_TILE_HEIGHT);
+				byte[, ,] sizedTiles = new byte[SIZED_TILE_COUNT, SIZED_TILE_WIDTH, SIZED_TILE_HEIGHT];
 
-				int horizOldTileCount = (int)(oldTileWidth / 8);
-				int vertOldTileCount = (int)(oldTileHeight / 8);
+				int horizOldTileCount = (int)(oldTileWidth / SIZED_TILE_WIDTH);
+				int vertOldTileCount = (int)(oldTileHeight / SIZED_TILE_HEIGHT);
 
 				for (int tile = 0; tile < oldTileCount; tile++) {
 					for (int y = 0; y < oldTileHeight; y++) {
 						for (int x = 0; x < oldTileWidth; x++) {
-							int sizedTileNum = (((x / 8) * vertOldTileCount) + 
-								((y / 8) * horizOldTileCount) + (tile * (vertOldTileCount * horizOldTileCount)));
+							int sizedTileNum = (((x / SIZED_TILE_WIDTH) * vertOldTileCount) +
+								((y / SIZED_TILE_HEIGHT) * horizOldTileCount) + (tile * (vertOldTileCount * horizOldTileCount)));
 
-							if (sizedTileNum < sizedTileCount) {
-								sizedOldTiles[sizedTileNum, x % 8, y % 8] = oldTiles[tile, x, y];
+							if (sizedTileNum < SIZED_TILE_COUNT) {
+								sizedTiles[sizedTileNum, x % SIZED_TILE_WIDTH, y % SIZED_TILE_HEIGHT] = oldTiles[tile, x, y];
 							}
 						}
 					}
 				}
 
 				//Build the new tile list.
-				int horizNewTileCount = (int)(newTileWidth / 8);
-				int vertNewTileCount = (int)(newTileHeight / 8);
+				int horizNewTileCount = (int)(newTileWidth / SIZED_TILE_WIDTH);
+				int vertNewTileCount = (int)(newTileHeight / SIZED_TILE_HEIGHT);
 
 				for (int tile = 0; tile < newTileCount; tile++) {
 					for (int y = 0; y < newTileHeight; y++) {
 						for (int x = 0; x < newTileWidth; x++) {
-							int sizedTileNum = (((x / 8) * vertNewTileCount) +
-								((y / 8) * horizNewTileCount) + (tile * (vertNewTileCount * horizNewTileCount)));
+							int sizedTileNum = (((x / SIZED_TILE_WIDTH) * vertNewTileCount) +
+								((y / SIZED_TILE_HEIGHT) * horizNewTileCount) + (tile * (vertNewTileCount * horizNewTileCount)));
 
-							if (sizedTileNum < sizedTileCount) {
-								newTiles[tile, x, y] = sizedOldTiles[sizedTileNum, x % 8, y % 8];
+							if (sizedTileNum < SIZED_TILE_COUNT) {
+								newTiles[tile, x, y] = sizedTiles[sizedTileNum, x % SIZED_TILE_WIDTH, y % SIZED_TILE_HEIGHT];
 							}
 						}
 					}
