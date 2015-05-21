@@ -106,6 +106,7 @@
 			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.tileList = new GB.GBTD.TileList();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
+			this.toolList = new GB.GBTD.ToolList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -462,24 +463,28 @@
 			this.simpleModeMenuItem.Index = 3;
 			this.simpleModeMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
 			this.simpleModeMenuItem.Text = "Si&mple";
+			this.simpleModeMenuItem.Click += new System.EventHandler(this.simpleModeMenuItem_Click);
 			// 
 			// gridMenuItem
 			// 
 			this.gridMenuItem.Index = 4;
 			this.gridMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlG;
 			this.gridMenuItem.Text = "&Grid";
+			this.gridMenuItem.Click += new System.EventHandler(this.gridMenuItem_Click);
 			// 
 			// nibbleMarkersMenuItem
 			// 
 			this.nibbleMarkersMenuItem.Index = 5;
 			this.nibbleMarkersMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.nibbleMarkersMenuItem.Text = "&Nibble markers";
+			this.nibbleMarkersMenuItem.Click += new System.EventHandler(this.nibbleMarkersMenuItem_Click);
 			// 
 			// autoUpdateMenuItem
 			// 
 			this.autoUpdateMenuItem.Index = 7;
 			this.autoUpdateMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlU;
 			this.autoUpdateMenuItem.Text = "Auto &update";
+			this.autoUpdateMenuItem.Click += new System.EventHandler(this.autoUpdateMenuItem_Click);
 			// 
 			// seperatorMenuItem11
 			// 
@@ -701,11 +706,22 @@
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
+			// toolList
+			// 
+			this.toolList.AutoUpdate = false;
+			this.toolList.Location = new System.Drawing.Point(7, 36);
+			this.toolList.Name = "toolList";
+			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
+			this.toolList.Size = new System.Drawing.Size(26, 217);
+			this.toolList.TabIndex = 17;
+			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 264);
+			this.Controls.Add(this.toolList);
 			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
@@ -796,6 +812,7 @@
 		private System.Windows.Forms.MenuItem colorSetFilteredGameboyColorMenuItem;
 		private TileList tileList;
 		private Shared.AutoUpdate.AUMessenger auMessenger;
+		private ToolList toolList;
 
 	}
 }

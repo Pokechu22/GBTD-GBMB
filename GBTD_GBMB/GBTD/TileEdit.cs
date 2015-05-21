@@ -32,10 +32,13 @@ namespace GB.GBTD
 			}
 		}
 
-		public bool AutoUpdate{
+		public bool AutoUpdate {
 			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().AutoUpdate; }
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().AutoUpdate = value;
+
+				autoUpdateMenuItem.Checked = value;
+				toolList.AutoUpdate = value;
 
 				auMessenger.Enabled = value;
 			}
@@ -46,7 +49,7 @@ namespace GB.GBTD
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowNibbleMarkers = value;
 
-				//TODO
+				nibbleMarkersMenuItem.Checked = value;
 			}
 		}
 
@@ -55,7 +58,7 @@ namespace GB.GBTD
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowGrid = value;
 
-				//TODO
+				gridMenuItem.Checked = value;
 			}
 		}
 
@@ -64,7 +67,7 @@ namespace GB.GBTD
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().SimpleMode = value;
 
-				//TODO
+				simpleModeMenuItem.Checked = value;
 			}
 		}
 
@@ -120,6 +123,7 @@ namespace GB.GBTD
 			var tileData = file.GetOrCreateObjectOfType<GBRObjectTileData>();
 			var palettes = file.GetOrCreateObjectOfType<GBRObjectPalettes>();
 			var paletteMapping = file.GetOrCreateObjectOfType<GBRObjectTilePalette>();
+			var settings = file.GetOrCreateObjectOfType<GBRObjectTileSettings>();
 
 			PaletteData paletteData = new PaletteData(palettes.SGBPalettes, palettes.GBCPalettes);
 
@@ -127,14 +131,21 @@ namespace GB.GBTD
 			tileList.PaletteData = paletteData;
 			tileList.PaletteMapping = paletteMapping;
 
+			this.AutoUpdate = settings.AutoUpdate;
+			this.ColorSet = settings.ColorSet;
+			this.ShowNibbleMarkers = settings.ShowNibbleMarkers;
+			this.ShowGrid = settings.ShowGrid;
+			this.SimpleMode = settings.SimpleMode;
+			this.Bookmark1 = settings.Bookmark1;
+			this.Bookmark2 = settings.Bookmark2;
+			this.Bookmark3 = settings.Bookmark3;
+
 			if (!String.IsNullOrEmpty(filePath)) {
 				auMessenger.FileName = filePath;
 				if (mmf != null) {
 					mmf.Dispose(); //Remove old MMF.
 				}
 				mmf = new AUMemMappedFile(filePath, auMessenger, gbrFile);
-
-				auMessenger.Enabled = true; //TODO: Proper control over this (ToolList).
 			}
 		}
 
@@ -298,6 +309,26 @@ namespace GB.GBTD
 				this.tileList.PaletteMapping = defaultPalette;
 				//TODO load the palettedata from MMF
 			}));
+		}
+
+		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
+			this.AutoUpdate = toolList.AutoUpdate;
+		}
+
+		private void autoUpdateMenuItem_Click(object sender, EventArgs e) {
+			this.AutoUpdate = !this.AutoUpdate;
+		}
+
+		private void simpleModeMenuItem_Click(object sender, EventArgs e) {
+			this.SimpleMode = !this.SimpleMode;
+		}
+
+		private void gridMenuItem_Click(object sender, EventArgs e) {
+			this.ShowGrid = !this.ShowGrid;
+		}
+
+		private void nibbleMarkersMenuItem_Click(object sender, EventArgs e) {
+			this.ShowNibbleMarkers = !this.ShowNibbleMarkers;
 		}
 	}
 }

@@ -36,7 +36,11 @@ namespace GB.Shared.Controls
 		private bool @checked;
 		public bool Checked {
 			get { return @checked; }
-			set { @checked = value; this.OnCheckedChanged(new EventArgs()); this.Invalidate(true); }
+			set {
+				if (this.@checked != value) {
+					@checked = value; this.OnCheckedChanged(new EventArgs()); this.Invalidate(true);
+				}
+			}
 		}
 
 		private Image nonhoveredImage = new Bitmap(16, 16);

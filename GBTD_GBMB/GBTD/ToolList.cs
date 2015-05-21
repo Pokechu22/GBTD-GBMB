@@ -175,8 +175,10 @@ namespace GB.GBTD
 				return autoUpdateCheckbox.Checked;
 			}
 			set {
-				autoUpdateCheckbox.Checked = value;
-				OnAutoUpdateChanged();
+				if (value != autoUpdateCheckbox.Checked) {
+					autoUpdateCheckbox.Checked = value;
+					OnAutoUpdateChanged();
+				}
 			}
 		}
 	}
