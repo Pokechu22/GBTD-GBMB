@@ -157,7 +157,8 @@ namespace GB.Shared.AutoUpdate
 				}
 
 				//Build a list of 8x8 tiles in the old tile list.
-				byte[, ,] sizedOldTiles = new byte[TILES_SIZE / (8 * 8), 8, 8];
+				int sizedTileCount = TILES_SIZE / (8 * 8);
+				byte[, ,] sizedOldTiles = new byte[sizedTileCount, 8, 8];
 
 				int horizOldTileCount = (int)(oldTileWidth / 8);
 				int vertOldTileCount = (int)(oldTileHeight / 8);
@@ -165,10 +166,12 @@ namespace GB.Shared.AutoUpdate
 				for (int tile = 0; tile < oldTileCount; tile++) {
 					for (int y = 0; y < oldTileHeight; y++) {
 						for (int x = 0; x < oldTileWidth; x++) {
-							int sizedTileNum = (((x / 8)) + 
-								((y / 8) * horizOldTileCount) + (tile / (vertOldTileCount * horizOldTileCount)));
+							int sizedTileNum = (((x / 8) * vertOldTileCount) + 
+								((y / 8) * horizOldTileCount) + (tile * (vertOldTileCount * horizOldTileCount)));
 
-							sizedOldTiles[sizedTileNum, x % 8, y % 8] = oldTiles[tile, x, y];
+							if (sizedTileNum < sizedTileCount) {
+								sizedOldTiles[sizedTileNum, x % 8, y % 8] = oldTiles[tile, x, y];
+							}
 						}
 					}
 				}
@@ -180,10 +183,12 @@ namespace GB.Shared.AutoUpdate
 				for (int tile = 0; tile < newTileCount; tile++) {
 					for (int y = 0; y < newTileHeight; y++) {
 						for (int x = 0; x < newTileWidth; x++) {
-							int sizedTileNum = (((x / 8)) +
+							int sizedTileNum = (((x / 8) * vertNewTileCount) +
 								((y / 8) * horizNewTileCount) + (tile * (vertNewTileCount * horizNewTileCount)));
 
-							newTiles[tile, x, y] = sizedOldTiles[sizedTileNum, x % 8, y % 8];
+							if (sizedTileNum < sizedTileCount) {
+								newTiles[tile, x, y] = sizedOldTiles[sizedTileNum, x % 8, y % 8];
+							}
 						}
 					}
 				}
