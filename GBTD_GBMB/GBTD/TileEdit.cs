@@ -93,6 +93,11 @@ namespace GB.GBTD
 			}
 		}
 
+		public UInt16 SelectedTile {
+			get { return tileList.SelectedTile; }
+			set { tileList.SelectedTile = value; }
+		}
+
 		public TileEdit() {
 			InitializeComponent();
 
@@ -329,6 +334,44 @@ namespace GB.GBTD
 
 		private void nibbleMarkersMenuItem_Click(object sender, EventArgs e) {
 			this.ShowNibbleMarkers = !this.ShowNibbleMarkers;
+		}
+
+		private void setBookmarkMenuItem_Click(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				switch (Convert.ToInt32(item.Tag)) {
+				case 1: this.Bookmark1 = this.SelectedTile; break;
+				case 2: this.Bookmark2 = this.SelectedTile; break;
+				case 3: this.Bookmark3 = this.SelectedTile; break;
+				}
+			}
+		}
+
+		private void gotoBookmarkMenuItem_Click(object sender, EventArgs e) {
+			//TODO: Add a bounds check so that we don't go to an illegal tile.
+			
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				switch (Convert.ToInt32(item.Tag)) {
+				case 1: this.SelectedTile = this.Bookmark1; break;
+				case 2: this.SelectedTile = this.Bookmark2; break;
+				case 3: this.SelectedTile = this.Bookmark3; break;
+				}
+			}
+		}
+
+		private void clearBookmarkMenuItem_Click(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				switch (Convert.ToInt32(item.Tag)) {
+				case 1: this.Bookmark1 = 0xFFFF; break;
+				case 2: this.Bookmark2 = 0xFFFF; break;
+				case 3: this.Bookmark3 = 0xFFFF; break;
+				}
+			}
 		}
 	}
 }

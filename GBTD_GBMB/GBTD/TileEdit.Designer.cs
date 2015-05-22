@@ -107,6 +107,16 @@
 			this.tileList = new GB.GBTD.TileList();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.toolList = new GB.GBTD.ToolList();
+			this.setBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.setBookmark3MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.gotoBookmark3MenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmarkMenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmark1MenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmark2MenuItem = new System.Windows.Forms.MenuItem();
+			this.clearBookmark3MenuItem = new System.Windows.Forms.MenuItem();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -415,7 +425,8 @@
             this.palettesMenuItem,
             this.seperatorMenuItem12,
             this.setBookmarkMenuItem,
-            this.gotoBookmarkMenuItem});
+            this.gotoBookmarkMenuItem,
+            this.clearBookmarkMenuItem});
 			this.viewMenuItem.Text = "&View";
 			// 
 			// tileSizeMenuItem
@@ -552,11 +563,19 @@
 			// setBookmarkMenuItem
 			// 
 			this.setBookmarkMenuItem.Index = 12;
+			this.setBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.setBookmark1MenuItem,
+            this.setBookmark2MenuItem,
+            this.setBookmark3MenuItem});
 			this.setBookmarkMenuItem.Text = "&Set bookmark";
 			// 
 			// gotoBookmarkMenuItem
 			// 
 			this.gotoBookmarkMenuItem.Index = 13;
+			this.gotoBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.gotoBookmark1MenuItem,
+            this.gotoBookmark2MenuItem,
+            this.gotoBookmark3MenuItem});
 			this.gotoBookmarkMenuItem.Text = "Goto &bookmark";
 			// 
 			// helpMenuItem
@@ -716,6 +735,87 @@
 			this.toolList.TabIndex = 17;
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
+			// setBookmark1MenuItem
+			// 
+			this.setBookmark1MenuItem.Index = 0;
+			this.setBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt1;
+			this.setBookmark1MenuItem.Tag = "1";
+			this.setBookmark1MenuItem.Text = "1";
+			this.setBookmark1MenuItem.Click += new System.EventHandler(this.setBookmarkMenuItem_Click);
+			// 
+			// setBookmark2MenuItem
+			// 
+			this.setBookmark2MenuItem.Index = 1;
+			this.setBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt2;
+			this.setBookmark2MenuItem.Tag = "2";
+			this.setBookmark2MenuItem.Text = "2";
+			this.setBookmark2MenuItem.Click += new System.EventHandler(this.setBookmarkMenuItem_Click);
+			// 
+			// setBookmark3MenuItem
+			// 
+			this.setBookmark3MenuItem.Index = 2;
+			this.setBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Alt3;
+			this.setBookmark3MenuItem.Tag = "3";
+			this.setBookmark3MenuItem.Text = "3";
+			this.setBookmark3MenuItem.Click += new System.EventHandler(this.setBookmarkMenuItem_Click);
+			// 
+			// gotoBookmark1MenuItem
+			// 
+			this.gotoBookmark1MenuItem.Index = 0;
+			this.gotoBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl1;
+			this.gotoBookmark1MenuItem.Tag = "1";
+			this.gotoBookmark1MenuItem.Text = "1";
+			this.gotoBookmark1MenuItem.Click += new System.EventHandler(this.gotoBookmarkMenuItem_Click);
+			// 
+			// gotoBookmark2MenuItem
+			// 
+			this.gotoBookmark2MenuItem.Index = 1;
+			this.gotoBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl2;
+			this.gotoBookmark2MenuItem.Tag = "2";
+			this.gotoBookmark2MenuItem.Text = "2";
+			this.gotoBookmark2MenuItem.Click += new System.EventHandler(this.gotoBookmarkMenuItem_Click);
+			// 
+			// gotoBookmark3MenuItem
+			// 
+			this.gotoBookmark3MenuItem.Index = 2;
+			this.gotoBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.Ctrl3;
+			this.gotoBookmark3MenuItem.Tag = "3";
+			this.gotoBookmark3MenuItem.Text = "3";
+			this.gotoBookmark3MenuItem.Click += new System.EventHandler(this.gotoBookmarkMenuItem_Click);
+			// 
+			// clearBookmarkMenuItem
+			// 
+			this.clearBookmarkMenuItem.Index = 14;
+			this.clearBookmarkMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.clearBookmark1MenuItem,
+            this.clearBookmark2MenuItem,
+            this.clearBookmark3MenuItem});
+			this.clearBookmarkMenuItem.Text = "C&lear bookmark";
+			// 
+			// clearBookmark1MenuItem
+			// 
+			this.clearBookmark1MenuItem.Index = 0;
+			this.clearBookmark1MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift1;
+			this.clearBookmark1MenuItem.Tag = "1";
+			this.clearBookmark1MenuItem.Text = "1";
+			this.clearBookmark1MenuItem.Click += new System.EventHandler(this.clearBookmarkMenuItem_Click);
+			// 
+			// clearBookmark2MenuItem
+			// 
+			this.clearBookmark2MenuItem.Index = 1;
+			this.clearBookmark2MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift2;
+			this.clearBookmark2MenuItem.Tag = "2";
+			this.clearBookmark2MenuItem.Text = "2";
+			this.clearBookmark2MenuItem.Click += new System.EventHandler(this.clearBookmarkMenuItem_Click);
+			// 
+			// clearBookmark3MenuItem
+			// 
+			this.clearBookmark3MenuItem.Index = 2;
+			this.clearBookmark3MenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShift3;
+			this.clearBookmark3MenuItem.Tag = "3";
+			this.clearBookmark3MenuItem.Text = "3";
+			this.clearBookmark3MenuItem.Click += new System.EventHandler(this.clearBookmarkMenuItem_Click);
+			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,6 +913,16 @@
 		private TileList tileList;
 		private Shared.AutoUpdate.AUMessenger auMessenger;
 		private ToolList toolList;
+		private System.Windows.Forms.MenuItem setBookmark1MenuItem;
+		private System.Windows.Forms.MenuItem setBookmark2MenuItem;
+		private System.Windows.Forms.MenuItem setBookmark3MenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmark1MenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmark2MenuItem;
+		private System.Windows.Forms.MenuItem gotoBookmark3MenuItem;
+		private System.Windows.Forms.MenuItem clearBookmarkMenuItem;
+		private System.Windows.Forms.MenuItem clearBookmark1MenuItem;
+		private System.Windows.Forms.MenuItem clearBookmark2MenuItem;
+		private System.Windows.Forms.MenuItem clearBookmark3MenuItem;
 
 	}
 }
