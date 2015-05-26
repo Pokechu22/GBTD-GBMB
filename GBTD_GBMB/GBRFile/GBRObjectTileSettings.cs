@@ -12,9 +12,9 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectTileSettings : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectTileSettings(UInt16 UniqueID) : base(UniqueID) {
-			SimpleMode = true;
+			SimpleMode = false;
 			ShowGrid = true;
-			ShowNibbleMarkers = true;
+			ShowNibbleMarkers = false;
 			LeftColor = GBColor.WHITE;
 			RightColor = GBColor.WHITE;
 			SplitWidth = 1;
