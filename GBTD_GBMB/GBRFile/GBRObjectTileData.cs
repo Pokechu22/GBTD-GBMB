@@ -259,5 +259,87 @@ namespace GB.Shared.GBRFile
 
 			return returned;
 		}
+
+		public void ResizeTiles(UInt16 newTileWidth, UInt16 newTileHeight) {
+			UInt16 oldTileWidth = this.width;
+			UInt16 oldTileHeight = this.height;
+
+			this.width = newTileWidth;
+			this.height = newTileHeight;
+
+			if (oldTileHeight == newTileHeight && oldTileWidth == newTileWidth) {
+				return;
+			}
+
+			uint oldTileCount = (uint)tiles.Length;
+			GBColor[, ,] oldTiles = new GBColor[oldTileCount, oldTileWidth, oldTileHeight];
+
+			uint newTileCount = (uint)(tiles.Length * ((oldTileWidth * oldTileHeight) / (float)(newTileWidth * newTileHeight)));
+			GBColor[, ,] newTiles = new GBColor[newTileCount, newTileWidth, newTileHeight];
+
+			for (int tile = 0; tile < oldTileCount; tile++) { 
+				for (int y = 0; y < oldTileHeight; y++) {
+					for (int x = 0; x < oldTileWidth; x++) {
+						oldTiles[tile, x, y] = tiles[tile][x, y];
+					}
+				}
+			}
+
+			//Build a list of 8x8 tiles.
+			const int SIZED_TILE_WIDTH = 8;
+			const int SIZED_TILE_HEIGHT = 8;
+			int sizedTileCount = (int)(tiles.Length * ((oldTileWidth * oldTileHeight) / (float)(8 * 8)));
+
+			GBColor[, ,] sizedTiles = new GBColor[sizedTileCount, SIZED_TILE_WIDTH, SIZED_TILE_HEIGHT];
+
+			int horizOldTileCount = (int)(oldTileWidth / SIZED_TILE_WIDTH);
+			int vertOldTileCount = (int)(oldTileHeight / SIZED_TILE_HEIGHT);
+
+			for (int tile = 0; tile < oldTileCount; tile++) {
+				for (int y = 0; y < oldTileHeight; y++) {
+					for (int x = 0; x < oldTileWidth; x++) {
+						int sizedTileNum = ((x / SIZED_TILE_WIDTH) +
+							((y / SIZED_TILE_HEIGHT) * horizOldTileCount) + (tile * vertOldTileCount * horizOldTileCount));
+
+						if (sizedTileNum < sizedTileCount) {
+							sizedTiles[sizedTileNum, x % SIZED_TILE_WIDTH, y % SIZED_TILE_HEIGHT] = oldTiles[tile, x, y];
+						}
+					}
+				}
+			}
+
+			//Build the new tile list.
+			int horizNewTileCount = (int)(newTileWidth / SIZED_TILE_WIDTH);
+			int vertNewTileCount = (int)(newTileHeight / SIZED_TILE_HEIGHT);
+
+			for (int tile = 0; tile < newTileCount; tile++) {
+				for (int y = 0; y < newTileHeight; y++) {
+					for (int x = 0; x < newTileWidth; x++) {
+						int sizedTileNum = ((x / SIZED_TILE_WIDTH) +
+							((y / SIZED_TILE_HEIGHT) * horizNewTileCount) + (tile * vertNewTileCount * horizNewTileCount));
+
+						if (sizedTileNum < sizedTileCount) {
+							newTiles[tile, x, y] = sizedTiles[sizedTileNum, x % SIZED_TILE_WIDTH, y % SIZED_TILE_HEIGHT];
+						}
+					}
+				}
+			}
+
+			//Save the new tile list.
+			this.tiles = new Tile[newTileCount];
+
+			for (int tile = 0; tile < newTileCount; tile++) {
+				GBColor[,] colors = new GBColor[newTileWidth, newTileHeight];
+				for (int y = 0; y < newTileHeight; y++) {
+					for (int x = 0; x < newTileWidth; x++) {
+						colors[x, y] = newTiles[tile, x, y];
+					}
+				}
+
+				tiles[tile] = new Tile(colors);
+			}
+
+			OnSizeChanged();
+		}
 	}
 }

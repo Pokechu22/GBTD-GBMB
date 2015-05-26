@@ -386,5 +386,59 @@ namespace GB.GBTD
 				}
 			}
 		}
+
+		public void SetTileSize(UInt16 Width, UInt16 Height) {
+			if (Width == 8 && Height == 8) {
+				size8x8MenuItem.Checked = true;
+				size8x16MenuItem.Checked = false;
+				size16x16MenuItem.Checked = false;
+				size32x32MenuItem.Checked = false;
+			} else if (Width == 8 && Height == 16) {
+				size8x8MenuItem.Checked = false;
+				size8x16MenuItem.Checked = true;
+				size16x16MenuItem.Checked = false;
+				size32x32MenuItem.Checked = false;
+			} else if (Width == 16 && Height == 16) {
+				size8x8MenuItem.Checked = false;
+				size8x16MenuItem.Checked = false;
+				size16x16MenuItem.Checked = true;
+				size32x32MenuItem.Checked = false;
+			} else if (Width == 32 && Height == 32) {
+				size8x8MenuItem.Checked = false;
+				size8x16MenuItem.Checked = false;
+				size16x16MenuItem.Checked = false;
+				size32x32MenuItem.Checked = true;
+			} else {
+				size8x8MenuItem.Checked = false;
+				size8x16MenuItem.Checked = false;
+				size16x16MenuItem.Checked = false;
+				size32x32MenuItem.Checked = false;
+			}
+
+			var tileSet = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			tileSet.ResizeTiles(Width, Height);
+			if (mmf != null) {
+				mmf.SetTileSize(Width, Height);
+			}
+
+			this.tileList.TileSet = tileSet;
+		}
+
+		private void size8x8MenuItem_Click(object sender, EventArgs e) {
+			SetTileSize(8, 8);
+		}
+
+		private void size8x16MenuItem_Click(object sender, EventArgs e) {
+			SetTileSize(8, 16);
+		}
+
+		private void size16x16MenuItem_Click(object sender, EventArgs e) {
+			SetTileSize(16, 16);
+		}
+
+		private void size32x32MenuItem_Click(object sender, EventArgs e) {
+			SetTileSize(32, 32);
+		}
 	}
 }
