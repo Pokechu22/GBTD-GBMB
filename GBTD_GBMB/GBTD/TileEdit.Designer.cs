@@ -114,9 +114,9 @@
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
+			this.toolList = new GB.GBTD.ToolList();
 			this.tileList = new GB.GBTD.TileList();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
-			this.toolList = new GB.GBTD.ToolList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
@@ -472,6 +472,7 @@
 			// 
 			this.tileCountMenuItem.Index = 1;
 			this.tileCountMenuItem.Text = "Tile &count...";
+			this.tileCountMenuItem.Click += new System.EventHandler(this.tileCountMenuItem_Click);
 			// 
 			// simpleModeMenuItem
 			// 
@@ -789,6 +790,16 @@
 			this.toolStripBorder.TabIndex = 7;
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
+			// toolList
+			// 
+			this.toolList.AutoUpdate = false;
+			this.toolList.Location = new System.Drawing.Point(7, 36);
+			this.toolList.Name = "toolList";
+			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
+			this.toolList.Size = new System.Drawing.Size(26, 217);
+			this.toolList.TabIndex = 17;
+			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
+			// 
 			// tileList
 			// 
 			this.tileList.Bookmark1Icon = global::GB.GBTD.Properties.Resources.TileListBookmarkIcon1;
@@ -809,16 +820,6 @@
 			this.auMessenger.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileSizeChanged);
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
-			// 
-			// toolList
-			// 
-			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(7, 36);
-			this.toolList.Name = "toolList";
-			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
-			this.toolList.Size = new System.Drawing.Size(26, 217);
-			this.toolList.TabIndex = 17;
-			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
 			// TileEdit
 			// 

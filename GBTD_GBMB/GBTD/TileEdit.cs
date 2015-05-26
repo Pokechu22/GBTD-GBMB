@@ -440,5 +440,19 @@ namespace GB.GBTD
 		private void size32x32MenuItem_Click(object sender, EventArgs e) {
 			SetTileSize(32, 32);
 		}
+
+		private void tileCountMenuItem_Click(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			TileCountDialog dialog = new TileCountDialog(tileset);
+
+			var result = dialog.ShowDialog();
+
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			tileList.TileSet = tileset;
+		}
 	}
 }
