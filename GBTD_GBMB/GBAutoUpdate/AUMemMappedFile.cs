@@ -525,9 +525,9 @@ namespace GB.Shared.AutoUpdate
 				var pals = loadedFile.GetObjectOfType<GBRObjectPalettes>();
 				var palMaps = loadedFile.GetObjectOfType<GBRObjectTilePalette>();
 
-				TileCount = tiles.Count;
 				TileWidth = tiles.Width;
 				TileHeight = tiles.Height;
+				TileCount = tiles.Count;
 
 				GBPalettes.GBColor0 = tiles.Color0Mapping;
 				GBPalettes.GBColor1 = tiles.Color1Mapping;
@@ -634,13 +634,19 @@ namespace GB.Shared.AutoUpdate
 			}
 			set {
 				UInt32 oldTileWidth = this.TileWidth;
+				UInt32 oldTileCount = this.TileCount;
 
 				if (oldTileWidth != 0 && TileHeight != 0) {
 					Tiles.ResizeTiles(oldTileWidth, TileHeight, value, TileHeight);
 				}
 
+				UInt32 newTileCount = (UInt32)(oldTileCount * ((oldTileWidth) / (float)(value)));
+
 				stream.Position = TILEWIDTH_INDEX;
 				stream.WriteInteger(value);
+
+				stream.Position = TILECOUNT_INDEX;
+				stream.WriteInteger(newTileCount);
 
 				messenger.SendTileDimensionsMessage();
 			}
@@ -653,13 +659,19 @@ namespace GB.Shared.AutoUpdate
 			}
 			set {
 				UInt32 oldTileHeight = this.TileHeight;
+				UInt32 oldTileCount = this.TileCount;
 
 				if (oldTileHeight != 0 && TileWidth != 0) {
 					Tiles.ResizeTiles(TileWidth, oldTileHeight, TileWidth, value);
 				}
 
+				UInt32 newTileCount = (UInt32)(oldTileCount * ((oldTileHeight) / (float)(value)));
+
 				stream.Position = TILEHEIGHT_INDEX;
 				stream.WriteInteger(value);
+
+				stream.Position = TILECOUNT_INDEX;
+				stream.WriteInteger(newTileCount);
 
 				messenger.SendTileDimensionsMessage();
 			}
@@ -671,16 +683,22 @@ namespace GB.Shared.AutoUpdate
 		public void SetTileSize(UInt32 newTileWidth, UInt32 newTileHeight) {
 			UInt32 oldTileWidth = this.TileWidth;
 			UInt32 oldTileHeight = this.TileHeight;
+			UInt32 oldTileCount = this.TileCount;
 
 			if (oldTileWidth != 0 && oldTileHeight != 0) {
 				Tiles.ResizeTiles(oldTileWidth, oldTileHeight, newTileWidth, newTileHeight);
 			}
+
+			UInt32 newTileCount = (UInt32)(oldTileCount * ((oldTileWidth * oldTileHeight) / (float)(newTileWidth * newTileHeight)));
 
 			stream.Position = TILEWIDTH_INDEX;
 			stream.WriteInteger(newTileWidth);
 
 			stream.Position = TILEHEIGHT_INDEX;
 			stream.WriteInteger(newTileHeight);
+
+			stream.Position = TILECOUNT_INDEX;
+			stream.WriteInteger(newTileCount);
 
 			messenger.SendTileDimensionsMessage();
 		}

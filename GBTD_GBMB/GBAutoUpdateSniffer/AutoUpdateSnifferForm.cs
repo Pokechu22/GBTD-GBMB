@@ -326,6 +326,10 @@ namespace GBAutoUpdateSniffer
 			if (!updating) {
 				mmf.TileWidth = (UInt32)mmfTileWidthTextBox.Value;
 				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+
+				updating = true;
+				mmfTileCountTextBox.Value = mmf.TileCount;
+				updating = false;
 			}
 		}
 
@@ -333,6 +337,10 @@ namespace GBAutoUpdateSniffer
 			if (!updating) {
 				mmf.TileHeight = (UInt32)mmfTileHeightTextBox.Value;
 				mmfTileRenderer.Tile = mmf.Tiles[(UInt16)mmfTileNumberTextBox.Value];
+
+				updating = true;
+				mmfTileCountTextBox.Value = mmf.TileCount;
+				updating = false;
 			}
 		}
 	}
