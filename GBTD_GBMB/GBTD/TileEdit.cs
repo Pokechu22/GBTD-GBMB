@@ -76,6 +76,9 @@ namespace GB.GBTD
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark1 = value;
 				tileList.Bookmark1 = value;
+
+				gotoBookmark1MenuItem.Enabled = (value < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length);
+				clearBookmark1MenuItem.Enabled = (value != 0xFFFF);
 			}
 		}
 		public UInt16 Bookmark2 {
@@ -83,6 +86,9 @@ namespace GB.GBTD
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark2 = value;
 				tileList.Bookmark2 = value;
+
+				gotoBookmark2MenuItem.Enabled = (value < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length);
+				clearBookmark2MenuItem.Enabled = (value != 0xFFFF);
 			}
 		}
 		public UInt16 Bookmark3 {
@@ -90,6 +96,9 @@ namespace GB.GBTD
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().Bookmark3 = value;
 				tileList.Bookmark3 = value;
+
+				gotoBookmark3MenuItem.Enabled = (value < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length);
+				clearBookmark3MenuItem.Enabled = (value != 0xFFFF);
 			}
 		}
 
@@ -349,15 +358,19 @@ namespace GB.GBTD
 		}
 
 		private void gotoBookmarkMenuItem_Click(object sender, EventArgs e) {
-			//TODO: Add a bounds check so that we don't go to an illegal tile.
-			
 			MenuItem item = sender as MenuItem;
 
 			if (item != null) {
+				UInt16 bookmark = 0xFFFF;
+
 				switch (Convert.ToInt32(item.Tag)) {
-				case 1: this.SelectedTile = this.Bookmark1; break;
-				case 2: this.SelectedTile = this.Bookmark2; break;
-				case 3: this.SelectedTile = this.Bookmark3; break;
+				case 1: bookmark = this.Bookmark1; break;
+				case 2: bookmark = this.Bookmark2; break;
+				case 3: bookmark = this.Bookmark3; break;
+				}
+
+				if (bookmark < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length) {
+					this.SelectedTile = bookmark;
 				}
 			}
 		}
