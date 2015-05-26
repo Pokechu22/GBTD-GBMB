@@ -66,8 +66,11 @@ namespace GB.GBTD
 			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().SimpleMode; }
 			set {
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().SimpleMode = value;
+				var tileSet = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 				simpleModeMenuItem.Checked = value;
+
+				UpdateSize();
 			}
 		}
 
@@ -141,6 +144,11 @@ namespace GB.GBTD
 
 			PaletteData paletteData = new PaletteData(palettes.SGBPalettes, palettes.GBCPalettes);
 
+			tileData.SizeChanged += new EventHandler(tileData_SizeChanged);
+			tileData.CountChanged += new EventHandler(tileData_CountChanged);
+
+			setDisplayedTileSize(tileData.Width, tileData.Height);
+
 			tileList.TileSet = file.GetOrCreateObjectOfType<GBRObjectTileData>();
 			tileList.PaletteData = paletteData;
 			tileList.PaletteMapping = paletteMapping;
@@ -154,6 +162,8 @@ namespace GB.GBTD
 			this.Bookmark2 = settings.Bookmark2;
 			this.Bookmark3 = settings.Bookmark3;
 
+			this.UpdateSize();
+
 			if (!String.IsNullOrEmpty(filePath)) {
 				auMessenger.FileName = filePath;
 				if (mmf != null) {
@@ -161,6 +171,17 @@ namespace GB.GBTD
 				}
 				mmf = new AUMemMappedFile(filePath, auMessenger, gbrFile);
 			}
+		}
+
+		void tileData_SizeChanged(object sender, EventArgs e) {
+			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			setDisplayedTileSize(tileData.Width, tileData.Height);
+			this.UpdateSize();
+		}
+
+		void tileData_CountChanged(object sender, EventArgs e) {
+			//TODO
 		}
 
 		private void initClipboardChangeCheck() {
@@ -387,7 +408,7 @@ namespace GB.GBTD
 			}
 		}
 
-		public void SetTileSize(UInt16 Width, UInt16 Height) {
+		private void setDisplayedTileSize(UInt16 Width, UInt16 Height) {
 			if (Width == 8 && Height == 8) {
 				size8x8MenuItem.Checked = true;
 				size8x16MenuItem.Checked = false;
@@ -414,6 +435,11 @@ namespace GB.GBTD
 				size16x16MenuItem.Checked = false;
 				size32x32MenuItem.Checked = false;
 			}
+		}
+
+		public void SetTileSize(UInt16 Width, UInt16 Height) {
+			setDisplayedTileSize(Width, Height);
+			this.UpdateSize();
 
 			var tileSet = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
@@ -423,6 +449,56 @@ namespace GB.GBTD
 			}
 
 			this.tileList.TileSet = tileSet;
+		}
+
+		protected void UpdateSize() {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+			UInt16 Width = tileset.Width;
+			UInt16 Height = tileset.Height;
+
+			this.SuspendLayout();
+
+			if (Width == 8 && Height == 8) {
+				if (SimpleMode) {
+					this.ClientSize = new Size(324, 264);
+				} else {
+					this.ClientSize = new Size(397, 264);
+				}
+
+				tileList.Height = 222;
+				tileList.Top = 38;
+			} else if (Width == 8 && Height == 16) {
+				if (SimpleMode) {
+					this.ClientSize = new Size(344, 456);
+				} else {
+					this.ClientSize = new Size(417, 456);
+				}
+
+				tileList.Height = 397;
+				tileList.Top = 46;
+			} else if (Width == 16 && Height == 16) {
+				if (SimpleMode) {
+					this.ClientSize = new Size(410, 296);
+				} else {
+					this.ClientSize = new Size(507, 296);
+				}
+
+				tileList.Height = 232;
+				tileList.Top = 49;
+			} else if (Width == 32 && Height == 32) {
+				if (SimpleMode) {
+					this.ClientSize = new Size(506, 328);
+				} else {
+					this.ClientSize = new Size(603, 328);
+				}
+
+				tileList.Height = 261;
+				tileList.Top = 50;
+			}
+
+			tileList.Left = this.ClientSize.Width - tileList.Width;
+
+			this.ResumeLayout(true);
 		}
 
 		private void size8x8MenuItem_Click(object sender, EventArgs e) {
@@ -451,7 +527,7 @@ namespace GB.GBTD
 			if (result != DialogResult.OK) {
 				return;
 			}
-
+			
 			tileList.TileSet = tileset;
 		}
 	}
