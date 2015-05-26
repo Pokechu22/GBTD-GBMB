@@ -42,7 +42,8 @@ namespace GB.Shared.GBRFile
 			set {
 				if (width != value) {
 					width = value;
-					OnSizeChanged();
+
+					ResizeTiles(width, height);
 				}
 			}
 		}
@@ -54,7 +55,8 @@ namespace GB.Shared.GBRFile
 			set {
 				if (height != value) {
 					height = value;
-					OnSizeChanged();
+
+					ResizeTiles(width, height);
 				}
 			}
 		}
@@ -66,6 +68,20 @@ namespace GB.Shared.GBRFile
 			set {
 				if (count != value) {
 					count = value;
+
+					Tile[] oldTiles = this.tiles;
+					Tile[] newTiles = new Tile[count];
+
+					for (int i = 0; i < count; i++) {
+						if (i < tiles.Length) {
+							newTiles[i] = oldTiles[i];
+						} else {
+							newTiles[i] = new Tile(width, height);
+						}
+					}
+
+					this.tiles = newTiles;
+
 					OnCountChanged();
 				}
 			}
@@ -112,15 +128,11 @@ namespace GB.Shared.GBRFile
 		public event EventHandler SizeChanged;
 
 		private void OnCountChanged() {
-			//TODO: Resize tiles array.
-
 			if (CountChanged != null) {
 				CountChanged(this, new EventArgs());
 			}
 		}
 		private void OnSizeChanged() {
-			//TODO: Resize tiles array.
-
 			if (SizeChanged != null) {
 				SizeChanged(this, new EventArgs());
 			}
