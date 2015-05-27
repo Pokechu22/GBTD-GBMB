@@ -115,6 +115,8 @@
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
+			this.tileEditBorder = new GB.Shared.Controls.Border();
+			this.mainTileEdit = new GB.GBTD.MainTileEdit();
 			this.toolList = new GB.GBTD.ToolList();
 			this.tileList = new GB.GBTD.TileList();
 			menuItem6 = new System.Windows.Forms.MenuItem();
@@ -801,10 +803,35 @@
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
+			// tileEditBorder
+			// 
+			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Location = new System.Drawing.Point(0, 34);
+			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
+			this.tileEditBorder.TabIndex = 18;
+			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
+			// mainTileEdit
+			// 
+			this.mainTileEdit.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.mainTileEdit.Location = new System.Drawing.Point(37, 40);
+			this.mainTileEdit.Name = "mainTileEdit";
+			this.mainTileEdit.Size = new System.Drawing.Size(201, 201);
+			this.mainTileEdit.TabIndex = 19;
+			this.mainTileEdit.Text = "mainTileEdit1";
+			// 
 			// toolList
 			// 
 			this.toolList.AutoUpdate = false;
-			this.toolList.Location = new System.Drawing.Point(7, 36);
+			this.toolList.Location = new System.Drawing.Point(4, 38);
 			this.toolList.Name = "toolList";
 			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
 			this.toolList.Size = new System.Drawing.Size(26, 217);
@@ -821,13 +848,16 @@
 			this.tileList.SelectedTile = ((ushort)(0));
 			this.tileList.Size = new System.Drawing.Size(56, 205);
 			this.tileList.TabIndex = 16;
+			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
 			// 
 			// TileEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 264);
+			this.Controls.Add(this.mainTileEdit);
 			this.Controls.Add(this.toolList);
+			this.Controls.Add(this.tileEditBorder);
 			this.Controls.Add(this.tileList);
 			this.Controls.Add(this.helpButton);
 			this.Controls.Add(this.pasteButton);
@@ -929,6 +959,8 @@
 		private System.Windows.Forms.MenuItem clearBookmark1MenuItem;
 		private System.Windows.Forms.MenuItem clearBookmark2MenuItem;
 		private System.Windows.Forms.MenuItem clearBookmark3MenuItem;
+		private Shared.Controls.Border tileEditBorder;
+		private MainTileEdit mainTileEdit;
 
 	}
 }

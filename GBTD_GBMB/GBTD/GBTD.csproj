@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainTileEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TileEditor.cs" />
     <Compile Include="TileEditorProvider.cs" />
     <Compile Include="TileList.cs">

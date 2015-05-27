@@ -29,6 +29,7 @@ namespace GB.GBTD
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ColorSet = value;
 
 				tileList.ColorSet = value;
+				mainTileEdit.ColorSet = value;
 			}
 		}
 
@@ -107,7 +108,10 @@ namespace GB.GBTD
 
 		public UInt16 SelectedTile {
 			get { return tileList.SelectedTile; }
-			set { tileList.SelectedTile = value; }
+			set {
+				tileList.SelectedTile = value;
+				mainTileEdit.SelectedTile = value;
+			}
 		}
 
 		public TileEdit() {
@@ -137,21 +141,25 @@ namespace GB.GBTD
 		private void LoadTileFile(GBRFile file) {
 			this.gbrFile = file;
 
-			var tileData = file.GetOrCreateObjectOfType<GBRObjectTileData>();
+			var tileSet = file.GetOrCreateObjectOfType<GBRObjectTileData>();
 			var palettes = file.GetOrCreateObjectOfType<GBRObjectPalettes>();
 			var paletteMapping = file.GetOrCreateObjectOfType<GBRObjectTilePalette>();
 			var settings = file.GetOrCreateObjectOfType<GBRObjectTileSettings>();
 
 			PaletteData paletteData = new PaletteData(palettes.SGBPalettes, palettes.GBCPalettes);
 
-			tileData.SizeChanged += new EventHandler(tileData_SizeChanged);
-			tileData.CountChanged += new EventHandler(tileData_CountChanged);
+			tileSet.SizeChanged += new EventHandler(tileSet_SizeChanged);
+			tileSet.CountChanged += new EventHandler(tileSet_CountChanged);
 
-			setDisplayedTileSize(tileData.Width, tileData.Height);
+			setDisplayedTileSize(tileSet.Width, tileSet.Height);
 
-			tileList.TileSet = file.GetOrCreateObjectOfType<GBRObjectTileData>();
+			tileList.TileSet = tileSet;
 			tileList.PaletteData = paletteData;
 			tileList.PaletteMapping = paletteMapping;
+
+			mainTileEdit.TileSet = tileSet;
+			mainTileEdit.Palettes = palettes;
+			mainTileEdit.PaletteMapping = paletteMapping;
 
 			this.AutoUpdate = settings.AutoUpdate;
 			this.ColorSet = settings.ColorSet;
@@ -161,6 +169,8 @@ namespace GB.GBTD
 			this.Bookmark1 = settings.Bookmark1;
 			this.Bookmark2 = settings.Bookmark2;
 			this.Bookmark3 = settings.Bookmark3;
+
+			this.SelectedTile = 0;
 
 			this.UpdateSize();
 
@@ -173,14 +183,14 @@ namespace GB.GBTD
 			}
 		}
 
-		void tileData_SizeChanged(object sender, EventArgs e) {
+		void tileSet_SizeChanged(object sender, EventArgs e) {
 			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 			setDisplayedTileSize(tileData.Width, tileData.Height);
 			this.UpdateSize();
 		}
 
-		void tileData_CountChanged(object sender, EventArgs e) {
+		void tileSet_CountChanged(object sender, EventArgs e) {
 			//TODO
 		}
 
@@ -498,6 +508,9 @@ namespace GB.GBTD
 
 			tileList.Left = this.ClientSize.Width - tileList.Width;
 
+			tileEditBorder.Width = this.ClientSize.Width - tileList.Width - 3;
+			tileEditBorder.Height = this.ClientSize.Height - 34;
+
 			this.ResumeLayout(true);
 		}
 
@@ -529,6 +542,10 @@ namespace GB.GBTD
 			}
 			
 			tileList.TileSet = tileset;
+		}
+
+		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
+			this.SelectedTile = tileList.SelectedTile;
 		}
 	}
 }
