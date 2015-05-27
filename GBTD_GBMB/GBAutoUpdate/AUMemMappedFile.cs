@@ -691,14 +691,16 @@ namespace GB.Shared.AutoUpdate
 
 			UInt32 newTileCount = (UInt32)(oldTileCount * ((oldTileWidth * oldTileHeight) / (float)(newTileWidth * newTileHeight)));
 
+			stream.Position = TILECOUNT_INDEX;
+			stream.WriteInteger(newTileCount);
+
 			stream.Position = TILEWIDTH_INDEX;
 			stream.WriteInteger(newTileWidth);
 
 			stream.Position = TILEHEIGHT_INDEX;
 			stream.WriteInteger(newTileHeight);
 
-			stream.Position = TILECOUNT_INDEX;
-			stream.WriteInteger(newTileCount);
+			messenger.SendTileListRefreshMessage(); //Sent to make sure that GBTD doesn't crash -- the previous tile number might be invalid now.
 
 			messenger.SendTileDimensionsMessage();
 		}

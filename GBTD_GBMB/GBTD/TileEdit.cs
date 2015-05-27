@@ -350,6 +350,8 @@ namespace GB.GBTD
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
+				this.SelectedTile = 0;
+
 				tileData.Tiles = mmf.Tiles.GetTilesArray();
 
 				//Inefficiant, but it works.
@@ -374,6 +376,8 @@ namespace GB.GBTD
 			{
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+
+				this.SelectedTile = 0;
 
 				tileData.Width = (UInt16)mmf.TileWidth;
 				tileData.Height = (UInt16)mmf.TileHeight;
@@ -402,6 +406,8 @@ namespace GB.GBTD
 			{
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
 				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+
+				this.SelectedTile = 0;
 
 				tileData.Width = (UInt16)mmf.TileWidth;
 				tileData.Height = (UInt16)mmf.TileHeight;
@@ -662,6 +668,10 @@ namespace GB.GBTD
 			}
 			
 			tileList.TileSet = tileset;
+
+			if (mmf != null) {
+				mmf.TileCount = tileset.Count;
+			}
 		}
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {

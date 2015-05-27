@@ -67,7 +67,15 @@ namespace GB.GBTD
 
 		public UInt16 SelectedTile {
 			get { return selectedTile; }
-			set { selectedTile = value; this.Invalidate(true); }
+			set {
+				selectedTile = value;
+
+				if (selectedTile < scrollBar.Value || selectedTile > scrollBar.Value + numberOfVisibleTiles) {
+					scrollBar.Value = selectedTile;
+				}
+
+				this.Invalidate(true);
+			}
 		}
 		[DefaultValue(typeof(UInt16), "65535")]
 		public UInt16 Bookmark1 { get { return bookmark1; } set { bookmark1 = value; this.Invalidate(true); } }
