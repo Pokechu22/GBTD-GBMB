@@ -92,6 +92,12 @@ namespace GB.GBTD
 			set { largeCount = value; this.Invalidate(true); }
 		}
 
+		public PreviewRenderer() {
+			DoubleBuffered = true;
+
+			SetStyle(ControlStyles.ResizeRedraw, true);
+		}
+
 		protected override void OnPaint(PaintEventArgs e) {
 			e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
 			e.Graphics.SmoothingMode = SmoothingMode.None;
@@ -104,19 +110,38 @@ namespace GB.GBTD
 			} else if (paletteMapping == null) {
 				e.Graphics.DrawString("paletteMapping is null!", Font, Brushes.Red, new Point(0, 0));
 			} else {
-				e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
-				e.Graphics.DrawRectangle(Pens.Black, new Rectangle(smallLocation, new Size((tileset.Width * 3) + 1, (tileset.Height * 3) + 1)));
+				using (Bitmap tileBitmap = MakeTileBitmap(tileset.Tiles[selectedTile], 
+						GetColor(colorSet, selectedTile, GBColor.WHITE),
+						GetColor(colorSet, selectedTile, GBColor.LIGHT_GRAY),
+						GetColor(colorSet, selectedTile, GBColor.DARK_GRAY), 
+						GetColor(colorSet, selectedTile, GBColor.BLACK))) {
 
-				e.Graphics.PixelOffsetMode = PixelOffsetMode.Half;
-				//TODO: Draw tiles.
-
-				if (!simple) {
 					e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
-					e.Graphics.DrawRectangle(Pens.Black,
-						new Rectangle(largeLocation, new Size((tileset.Width * 3 * largeCount) + 1, (tileset.Height * 3 * largeCount) + 1)));
+					e.Graphics.DrawRectangle(Pens.Black, new Rectangle(smallLocation, new Size((tileset.Width * 3) + 1, (tileset.Height * 3) + 1)));
 
 					e.Graphics.PixelOffsetMode = PixelOffsetMode.Half;
-					//TODO: Draw tiles.
+					
+					e.Graphics.DrawImage(tileBitmap, 
+						new Rectangle(smallLocation.X + 1, smallLocation.Y + 1, (tileset.Width * 3), (tileset.Height * 3)));
+
+					if (!simple) {
+						e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
+						e.Graphics.DrawRectangle(Pens.Black,
+							new Rectangle(largeLocation, new Size((tileset.Width * 3 * largeCount) + 1, (tileset.Height * 3 * largeCount) + 1)));
+
+						e.Graphics.PixelOffsetMode = PixelOffsetMode.Half;
+
+						for (int x = 0; x < largeCount; x++) {
+							for (int y = 0; y < largeCount; y++) {
+								Rectangle tileRect = new Rectangle(
+									largeLocation.X + 1 + (x * tileset.Width * 3),
+									largeLocation.Y + 1 + (y * tileset.Height * 3),
+									(tileset.Width * 3), (tileset.Height * 3));
+
+								e.Graphics.DrawImage(tileBitmap, tileRect);
+							}
+						}
+					}
 				}
 			}
 
@@ -160,7 +185,7 @@ namespace GB.GBTD
 		}
 
 		/// <summary>
-		//// Gets the proper color for the given ColorSet.
+		/// Gets the proper color for the given ColorSet.
 		/// </summary>
 		/// <param name="set"></param>
 		/// <param name="Palette"></param>
