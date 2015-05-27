@@ -116,6 +116,37 @@ namespace GB.GBTD
 			}
 		}
 
+		public GBColor LeftColor {
+			get { return mainTileEdit.LeftColor; }
+			set {
+				mainTileEdit.LeftColor = value;
+			}
+		}
+		public GBColor RightColor {
+			get { return mainTileEdit.RightColor; }
+			set {
+				mainTileEdit.RightColor = value;
+			}
+		}
+		public GBColor MiddleColor {
+			get { return mainTileEdit.MiddleColor; }
+			set {
+				mainTileEdit.MiddleColor = value;
+			}
+		}
+		public GBColor X1Color {
+			get { return mainTileEdit.X1Color; }
+			set {
+				mainTileEdit.X1Color = value;
+			}
+		}
+		public GBColor X2Color {
+			get { return mainTileEdit.X2Color; }
+			set {
+				mainTileEdit.X2Color = value;
+			}
+		}
+
 		public TileEdit() {
 			InitializeComponent();
 
@@ -173,6 +204,14 @@ namespace GB.GBTD
 			this.Bookmark3 = settings.Bookmark3;
 
 			this.SelectedTile = 0;
+
+			this.LeftColor = settings.LeftColor;
+			this.RightColor = settings.RightColor;
+			this.MiddleColor = settings.MiddleMouseColor;
+			this.X1Color = settings.X1MouseColor;
+			this.X2Color = settings.X2MouseColor;
+
+			mainTileEdit.TileEditor = new PixelTileEditor();
 
 			this.UpdateSize();
 
