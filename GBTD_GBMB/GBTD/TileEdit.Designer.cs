@@ -81,11 +81,6 @@
 			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
 			this.seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
 			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetSuperGameboyMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
-			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			this.palettesMenuItem = new System.Windows.Forms.MenuItem();
 			this.seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
@@ -105,17 +100,23 @@
 			this.helpIndexMenuItem = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.helpButton = new GB.Shared.Controls.ImageButton();
 			this.pasteButton = new GB.Shared.Controls.ImageButton();
 			this.copyButton = new GB.Shared.Controls.ImageButton();
 			this.cutButton = new GB.Shared.Controls.ImageButton();
+			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.exportButton = new GB.Shared.Controls.ImageButton();
 			this.saveButton = new GB.Shared.Controls.ImageButton();
 			this.openButton = new GB.Shared.Controls.ImageButton();
-			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
-			this.tileEditBorder = new GB.Shared.Controls.Border();
+			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetSuperGameboyMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
+			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
+			this.colorSelector = new GB.GBTD.ColorSelector();
 			this.previewRenderer = new GB.GBTD.PreviewRenderer();
 			this.mainTileEdit = new GB.GBTD.MainTileEdit();
 			this.toolList = new GB.GBTD.ToolList();
@@ -521,42 +522,6 @@
             this.colorSetFilteredGameboyColorMenuItem});
 			this.colorSetMenuItem.Text = "C&olor set";
 			// 
-			// colorSetGameboyPocketMenuItem
-			// 
-			this.colorSetGameboyPocketMenuItem.Checked = true;
-			this.colorSetGameboyPocketMenuItem.Index = 0;
-			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
-			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
-			// 
-			// colorSetGameboyMenuItem
-			// 
-			this.colorSetGameboyMenuItem.Index = 1;
-			this.colorSetGameboyMenuItem.RadioCheck = true;
-			this.colorSetGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY;
-			this.colorSetGameboyMenuItem.Text = "&Gameboy";
-			// 
-			// colorSetSuperGameboyMenuItem
-			// 
-			this.colorSetSuperGameboyMenuItem.Index = 2;
-			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
-			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.SUPER_GAMEBOY;
-			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
-			// 
-			// colorSetGameboyColorMenuItem
-			// 
-			this.colorSetGameboyColorMenuItem.Index = 3;
-			this.colorSetGameboyColorMenuItem.RadioCheck = true;
-			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
-			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
-			// 
-			// colorSetFilteredGameboyColorMenuItem
-			// 
-			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
-			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
-			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR_FILTERED;
-			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
-			// 
 			// palettesMenuItem
 			// 
 			this.palettesMenuItem.Index = 10;
@@ -692,6 +657,22 @@
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
 			// 
+			// tileEditBorder
+			// 
+			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Top,
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left,
+        System.Windows.Forms.Border3DSide.Bottom};
+			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Location = new System.Drawing.Point(0, 34);
+			this.tileEditBorder.Name = "tileEditBorder";
+			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
+			this.tileEditBorder.TabIndex = 18;
+			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			// 
 			// helpButton
 			// 
 			this.helpButton.HoveredImage = global::GB.GBTD.Properties.Resources.Help_Hover;
@@ -732,6 +713,20 @@
 			this.cutButton.TabIndex = 12;
 			this.toolTip.SetToolTip(this.cutButton, "Cut");
 			// 
+			// toolStripSeperatorBorder
+			// 
+			this.toolStripSeperatorBorder.BottomBorder = null;
+			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
+        System.Windows.Forms.Border3DSide.Right,
+        System.Windows.Forms.Border3DSide.Left};
+			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
+			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
+			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
+			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
+			this.toolStripSeperatorBorder.TabIndex = 11;
+			this.toolStripSeperatorBorder.TopBorder = null;
+			// 
 			// exportButton
 			// 
 			this.exportButton.HoveredImage = global::GB.GBTD.Properties.Resources.Export_Hover;
@@ -765,20 +760,6 @@
 			this.toolTip.SetToolTip(this.openButton, "Open");
 			this.openButton.Click += new System.EventHandler(this.openButton_OnClick);
 			// 
-			// toolStripSeperatorBorder
-			// 
-			this.toolStripSeperatorBorder.BottomBorder = null;
-			this.toolStripSeperatorBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left};
-			this.toolStripSeperatorBorder.LeftBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.toolStripSeperatorBorder.Location = new System.Drawing.Point(81, 2);
-			this.toolStripSeperatorBorder.Name = "toolStripSeperatorBorder";
-			this.toolStripSeperatorBorder.RightBorder = System.Windows.Forms.Border3DStyle.Etched;
-			this.toolStripSeperatorBorder.Size = new System.Drawing.Size(82, 28);
-			this.toolStripSeperatorBorder.TabIndex = 11;
-			this.toolStripSeperatorBorder.TopBorder = null;
-			// 
 			// toolStripBorder
 			// 
 			this.toolStripBorder.BottomBorder = System.Windows.Forms.Border3DStyle.Etched;
@@ -794,21 +775,41 @@
 			this.toolStripBorder.TabIndex = 7;
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
-			// tileEditBorder
+			// colorSetGameboyPocketMenuItem
 			// 
-			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.DrawOrder = new System.Windows.Forms.Border3DSide[] {
-        System.Windows.Forms.Border3DSide.Top,
-        System.Windows.Forms.Border3DSide.Right,
-        System.Windows.Forms.Border3DSide.Left,
-        System.Windows.Forms.Border3DSide.Bottom};
-			this.tileEditBorder.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Location = new System.Drawing.Point(0, 34);
-			this.tileEditBorder.Name = "tileEditBorder";
-			this.tileEditBorder.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
-			this.tileEditBorder.Size = new System.Drawing.Size(338, 230);
-			this.tileEditBorder.TabIndex = 18;
-			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.colorSetGameboyPocketMenuItem.Checked = true;
+			this.colorSetGameboyPocketMenuItem.Index = 0;
+			this.colorSetGameboyPocketMenuItem.RadioCheck = true;
+			this.colorSetGameboyPocketMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
+			this.colorSetGameboyPocketMenuItem.Text = "Gameboy &Pocket";
+			// 
+			// colorSetGameboyMenuItem
+			// 
+			this.colorSetGameboyMenuItem.Index = 1;
+			this.colorSetGameboyMenuItem.RadioCheck = true;
+			this.colorSetGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY;
+			this.colorSetGameboyMenuItem.Text = "&Gameboy";
+			// 
+			// colorSetSuperGameboyMenuItem
+			// 
+			this.colorSetSuperGameboyMenuItem.Index = 2;
+			this.colorSetSuperGameboyMenuItem.RadioCheck = true;
+			this.colorSetSuperGameboyMenuItem.Tag = GB.Shared.Palettes.ColorSet.SUPER_GAMEBOY;
+			this.colorSetSuperGameboyMenuItem.Text = "&Super Gameboy";
+			// 
+			// colorSetGameboyColorMenuItem
+			// 
+			this.colorSetGameboyColorMenuItem.Index = 3;
+			this.colorSetGameboyColorMenuItem.RadioCheck = true;
+			this.colorSetGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR;
+			this.colorSetGameboyColorMenuItem.Text = "Gameboy &Color";
+			// 
+			// colorSetFilteredGameboyColorMenuItem
+			// 
+			this.colorSetFilteredGameboyColorMenuItem.Index = 4;
+			this.colorSetFilteredGameboyColorMenuItem.RadioCheck = true;
+			this.colorSetFilteredGameboyColorMenuItem.Tag = GB.Shared.Palettes.ColorSet.GAMEBOY_COLOR_FILTERED;
+			this.colorSetFilteredGameboyColorMenuItem.Text = "Gameboy Color (&Filtered)";
 			// 
 			// auMessenger
 			// 
@@ -819,6 +820,14 @@
 			this.auMessenger.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileSizeChanged);
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
+			// 
+			// colorSelector
+			// 
+			this.colorSelector.Location = new System.Drawing.Point(34, 234);
+			this.colorSelector.Name = "colorSelector";
+			this.colorSelector.Size = new System.Drawing.Size(191, 26);
+			this.colorSelector.TabIndex = 21;
+			this.colorSelector.Text = "colorSelector1";
 			// 
 			// previewRenderer
 			// 
@@ -864,6 +873,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 264);
+			this.Controls.Add(this.colorSelector);
 			this.Controls.Add(this.previewRenderer);
 			this.Controls.Add(this.mainTileEdit);
 			this.Controls.Add(this.toolList);
@@ -972,6 +982,7 @@
 		private Shared.Controls.Border tileEditBorder;
 		private MainTileEdit mainTileEdit;
 		private PreviewRenderer previewRenderer;
+		private ColorSelector colorSelector;
 
 	}
 }

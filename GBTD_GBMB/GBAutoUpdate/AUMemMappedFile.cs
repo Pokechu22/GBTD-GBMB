@@ -14,7 +14,6 @@ namespace GB.Shared.AutoUpdate
 {
 	/// <summary>
 	/// Provides access to the shared data contained in the MemoryMappedFile.
-	/// TODO: Have the AUListener send its messages on changes.
 	/// </summary>
 	public class AUMemMappedFile : IDisposable
 	{
