@@ -542,7 +542,10 @@ namespace GB.GBTD
 				if (SimpleMode) {
 					this.ClientSize = new Size(324, 264);
 
-					//TODO
+					previewRenderer.Size = new Size(26, 193);
+					previewRenderer.SmallLocation = new Point(0, 83);
+					previewRenderer.LargeLocation = new Point(0, 0);
+					previewRenderer.LargeCount = 0;
 				} else {
 					this.ClientSize = new Size(397, 264);
 
@@ -559,6 +562,11 @@ namespace GB.GBTD
 			} else if (Width == 8 && Height == 16) {
 				if (SimpleMode) {
 					this.ClientSize = new Size(344, 456);
+
+					previewRenderer.Size = new Size(26, 385);
+					previewRenderer.SmallLocation = new Point(0, 167);
+					previewRenderer.LargeLocation = new Point(0, 0);
+					previewRenderer.LargeCount = 0;
 				} else {
 					this.ClientSize = new Size(417, 456);
 
@@ -575,6 +583,11 @@ namespace GB.GBTD
 			} else if (Width == 16 && Height == 16) {
 				if (SimpleMode) {
 					this.ClientSize = new Size(410, 296);
+
+					previewRenderer.Size = new Size(50, 225);
+					previewRenderer.SmallLocation = new Point(0, 79);
+					previewRenderer.LargeLocation = new Point(0, 0);
+					previewRenderer.LargeCount = 0;
 				} else {
 					this.ClientSize = new Size(507, 296);
 
@@ -590,7 +603,12 @@ namespace GB.GBTD
 				tileList.Top = 49;
 			} else if (Width == 32 && Height == 32) {
 				if (SimpleMode) {
-					this.ClientSize = new Size(506, 336);
+					this.ClientSize = new Size(506, 328);
+
+					previewRenderer.Size = new Size(98, 294);
+					previewRenderer.SmallLocation = new Point(0, 81);
+					previewRenderer.LargeLocation = new Point(0, 0);
+					previewRenderer.LargeCount = 0;
 				} else {
 					this.ClientSize = new Size(603, 336);
 
