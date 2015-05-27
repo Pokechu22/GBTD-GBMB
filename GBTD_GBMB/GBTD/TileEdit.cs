@@ -538,6 +538,8 @@ namespace GB.GBTD
 					this.ClientSize = new Size(397, 264);
 				}
 
+				mainTileEdit.Size = new Size(193, 193);
+
 				tileList.Height = 222;
 				tileList.Top = 38;
 			} else if (Width == 8 && Height == 16) {
@@ -546,6 +548,8 @@ namespace GB.GBTD
 				} else {
 					this.ClientSize = new Size(417, 456);
 				}
+
+				mainTileEdit.Size = new Size(193, 385);
 
 				tileList.Height = 397;
 				tileList.Top = 46;
@@ -556,6 +560,8 @@ namespace GB.GBTD
 					this.ClientSize = new Size(507, 296);
 				}
 
+				mainTileEdit.Size = new Size(225, 225);
+
 				tileList.Height = 232;
 				tileList.Top = 49;
 			} else if (Width == 32 && Height == 32) {
@@ -564,6 +570,8 @@ namespace GB.GBTD
 				} else {
 					this.ClientSize = new Size(603, 328);
 				}
+
+				mainTileEdit.Size = new Size(257, 257);
 
 				tileList.Height = 261;
 				tileList.Top = 50;
