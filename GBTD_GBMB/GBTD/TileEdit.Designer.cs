@@ -834,6 +834,7 @@
 			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
 			this.mainTileEdit.TabIndex = 19;
 			this.mainTileEdit.Text = "mainTileEdit1";
+			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
 			// 
 			// toolList
 			// 

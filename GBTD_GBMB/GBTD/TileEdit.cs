@@ -671,5 +671,17 @@ namespace GB.GBTD
 		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
 			this.TileEditor = toolList.SelectedTool;
 		}
+
+		private void mainTileEdit_TileChanged(object sender, EventArgs e) {
+			var tile = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles[SelectedTile];
+
+			//TODO: Event that automatically updates this in the gbrfile.  
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
 	}
 }

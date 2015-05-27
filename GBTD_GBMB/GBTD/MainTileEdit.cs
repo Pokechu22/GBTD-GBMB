@@ -17,6 +17,7 @@ namespace GB.GBTD
 	/// <summary>
 	/// Draws the main tile-edit control.
 	/// </summary>
+	[DefaultEvent("TileChanged")]
 	public class MainTileEdit : Control
 	{
 		private UInt16 selectedTile;
@@ -87,6 +88,9 @@ namespace GB.GBTD
 		public GBColor X1Color { get; set; }
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public GBColor X2Color { get; set; }
+
+		[Description("Fires when the selected tile is changed.")]
+		public event EventHandler TileChanged;
 
 		public MainTileEdit() {
 			DoubleBuffered = true;
@@ -258,7 +262,12 @@ namespace GB.GBTD
 				}
 
 				tileset.Tiles[selectedTile] = TileEditor.EditTile(tileset.Tiles[selectedTile], x, y, color);
-				this.Invalidate(true);
+
+				this.Refresh();
+
+				if (TileChanged != null) {
+					TileChanged(this, new EventArgs());
+				}
 			}
 		}
 
