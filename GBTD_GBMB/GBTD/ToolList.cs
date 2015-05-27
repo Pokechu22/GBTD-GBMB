@@ -147,6 +147,12 @@ namespace GB.GBTD
 				return TileEditorID.PixelEdit;
 			}
 			set {
+				TileEditorID oldTool = this.SelectedTool;
+
+				if (value == oldTool) {
+					return;
+				}
+
 				switch (value) {
 				case TileEditorID.NoEdit:
 					penButton.Checked = false;
@@ -162,6 +168,7 @@ namespace GB.GBTD
 					break;
 				default: throw new InvalidEnumArgumentException("value", (int)value, typeof(TileEditorID));
 				}
+
 				OnSelectedToolChanged();
 			}
 		}

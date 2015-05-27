@@ -114,8 +114,8 @@
 			this.openButton = new GB.Shared.Controls.ImageButton();
 			this.toolStripSeperatorBorder = new GB.Shared.Controls.Border();
 			this.toolStripBorder = new GB.Shared.Controls.Border();
-			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
+			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
 			this.mainTileEdit = new GB.GBTD.MainTileEdit();
 			this.toolList = new GB.GBTD.ToolList();
 			this.tileList = new GB.GBTD.TileList();
@@ -793,16 +793,6 @@
 			this.toolStripBorder.TabIndex = 7;
 			this.toolStripBorder.TopBorder = System.Windows.Forms.Border3DStyle.Etched;
 			// 
-			// auMessenger
-			// 
-			this.auMessenger.FileName = null;
-			this.auMessenger.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auMessenger_OnTileChanged);
-			this.auMessenger.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTotalRefreshNeeded);
-			this.auMessenger.OnTileRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileRefreshNeeded);
-			this.auMessenger.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileSizeChanged);
-			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
-			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
-			// 
 			// tileEditBorder
 			// 
 			this.tileEditBorder.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
@@ -819,11 +809,18 @@
 			this.tileEditBorder.TabIndex = 18;
 			this.tileEditBorder.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
+			// auMessenger
+			// 
+			this.auMessenger.FileName = null;
+			this.auMessenger.OnTileChanged += new GB.Shared.AutoUpdate.TileChangedEventHandler(this.auMessenger_OnTileChanged);
+			this.auMessenger.OnTotalRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTotalRefreshNeeded);
+			this.auMessenger.OnTileRefreshNeeded += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileRefreshNeeded);
+			this.auMessenger.OnTileSizeChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnTileSizeChanged);
+			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
+			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
+			// 
 			// mainTileEdit
 			// 
-			this.mainTileEdit.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.mainTileEdit.DrawGrid = false;
-			this.mainTileEdit.DrawNibbleMarkers = false;
 			this.mainTileEdit.Location = new System.Drawing.Point(33, 38);
 			this.mainTileEdit.Name = "mainTileEdit";
 			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
@@ -838,6 +835,7 @@
 			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 17;
+			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
 			// tileList

@@ -147,6 +147,28 @@ namespace GB.GBTD
 			}
 		}
 
+		public TileEditorID TileEditor {
+			get { return toolList.SelectedTool; }
+			set {
+				toolList.SelectedTool = value;
+
+				switch (value) {
+				case TileEditorID.NoEdit:
+					mainTileEdit.TileEditor = new NoEditTileEditor();
+					break;
+				case TileEditorID.PixelEdit:
+					mainTileEdit.TileEditor = new PixelTileEditor();
+					break;
+				case TileEditorID.FloodFill:
+					mainTileEdit.TileEditor = new FloodFillTileEditor();
+					break;
+				default:
+					mainTileEdit.TileEditor = null;
+					break;
+				}
+			}
+		}
+
 		public TileEdit() {
 			InitializeComponent();
 
@@ -178,7 +200,7 @@ namespace GB.GBTD
 			var palettes = file.GetOrCreateObjectOfType<GBRObjectPalettes>();
 			var paletteMapping = file.GetOrCreateObjectOfType<GBRObjectTilePalette>();
 			var settings = file.GetOrCreateObjectOfType<GBRObjectTileSettings>();
-
+			
 			PaletteData paletteData = new PaletteData(palettes.SGBPalettes, palettes.GBCPalettes);
 
 			tileSet.SizeChanged += new EventHandler(tileSet_SizeChanged);
@@ -211,7 +233,7 @@ namespace GB.GBTD
 			this.X1Color = settings.X1MouseColor;
 			this.X2Color = settings.X2MouseColor;
 
-			mainTileEdit.TileEditor = new PixelTileEditor();
+			this.TileEditor = TileEditorID.PixelEdit;
 
 			this.UpdateSize();
 
@@ -587,6 +609,10 @@ namespace GB.GBTD
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
 			this.SelectedTile = tileList.SelectedTile;
+		}
+
+		private void toolList_SelectedToolChanged(object sender, EventArgs e) {
+			this.TileEditor = toolList.SelectedTool;
 		}
 	}
 }
