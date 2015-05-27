@@ -822,9 +822,11 @@
 			// mainTileEdit
 			// 
 			this.mainTileEdit.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
-			this.mainTileEdit.Location = new System.Drawing.Point(37, 40);
+			this.mainTileEdit.DrawGrid = false;
+			this.mainTileEdit.DrawNibbleMarkers = false;
+			this.mainTileEdit.Location = new System.Drawing.Point(33, 38);
 			this.mainTileEdit.Name = "mainTileEdit";
-			this.mainTileEdit.Size = new System.Drawing.Size(201, 201);
+			this.mainTileEdit.Size = new System.Drawing.Size(193, 193);
 			this.mainTileEdit.TabIndex = 19;
 			this.mainTileEdit.Text = "mainTileEdit1";
 			// 

@@ -51,6 +51,7 @@ namespace GB.GBTD
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowNibbleMarkers = value;
 
 				nibbleMarkersMenuItem.Checked = value;
+				mainTileEdit.DrawNibbleMarkers = value;
 			}
 		}
 
@@ -60,6 +61,7 @@ namespace GB.GBTD
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ShowGrid = value;
 
 				gridMenuItem.Checked = value;
+				mainTileEdit.DrawGrid = value;
 			}
 		}
 

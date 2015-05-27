@@ -20,12 +20,30 @@ namespace GB.GBTD
 	public class MainTileEdit : Control
 	{
 		private UInt16 selectedTile;
+		private bool drawGrid;
+		private bool drawNibbleMarkers;
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public UInt16 SelectedTile {
 			get { return selectedTile; }
 			set {
 				selectedTile = value;
+				this.Invalidate(true);
+			}
+		}
+
+		public bool DrawGrid {
+			get { return drawGrid; }
+			set {
+				drawGrid = value;
+				this.Invalidate(true);
+			}
+		}
+
+		public bool DrawNibbleMarkers {
+			get { return drawNibbleMarkers; }
+			set {
+				drawNibbleMarkers = value;
 				this.Invalidate(true);
 			}
 		}
@@ -85,6 +103,46 @@ namespace GB.GBTD
 			e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
 
 			ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, Width, Height), Color.Black, ButtonBorderStyle.Solid);
+
+			if (drawGrid) {
+				//Offset sizes.
+				float w = this.Width - 1;
+				float h = this.Height - 1;
+
+				Tile tile = tileset.Tiles[selectedTile];
+
+				for (UInt16 x = 1; x < tile.Width; x++) {
+					e.Graphics.DrawLine(Pens.Black,
+						x * (w / tile.Width),
+						0,
+						x * (w / tile.Width),
+						this.Height);
+				}
+				for (UInt16 y = 1; y < tile.Height; y++) {
+					e.Graphics.DrawLine(Pens.Black,
+						0,
+						y * (h / tile.Height),
+						this.Width,
+						y * (h / tile.Height));
+				}
+			}
+			if (drawNibbleMarkers) {
+				e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
+				float w = this.Width - 1;
+				float h = this.Height - 1;
+
+				Tile tile = tileset.Tiles[selectedTile];
+
+				for (UInt16 x = 0; x <= tile.Width; x += 4) {
+					for (UInt16 y = 0; y <= tile.Height; y += 4) {
+						int nx = (int)(x * (w / tile.Width));
+						int ny = (int)(y * (h / tile.Height));
+
+						e.Graphics.DrawLine(Pens.Blue, nx - 1, ny, nx + 1, ny);
+						e.Graphics.DrawLine(Pens.Blue, nx, ny - 1, nx, ny + 1);
+					}
+				}
+			}
 
 			base.OnPaint(e);
 		}
