@@ -30,6 +30,7 @@ namespace GB.GBTD
 
 				tileList.ColorSet = value;
 				mainTileEdit.ColorSet = value;
+				previewRenderer.ColorSet = value;
 			}
 		}
 
@@ -72,6 +73,7 @@ namespace GB.GBTD
 				var tileSet = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 				simpleModeMenuItem.Checked = value;
+				previewRenderer.Simple = value;
 
 				UpdateSize();
 			}
@@ -113,6 +115,7 @@ namespace GB.GBTD
 			set {
 				tileList.SelectedTile = value;
 				mainTileEdit.SelectedTile = value;
+				previewRenderer.SelectedTile = value;
 			}
 		}
 
@@ -215,6 +218,10 @@ namespace GB.GBTD
 			mainTileEdit.TileSet = tileSet;
 			mainTileEdit.Palettes = palettes;
 			mainTileEdit.PaletteMapping = paletteMapping;
+
+			previewRenderer.TileSet = tileSet;
+			previewRenderer.Palettes = palettes;
+			previewRenderer.PaletteMapping = paletteMapping;
 
 			this.AutoUpdate = settings.AutoUpdate;
 			this.ColorSet = settings.ColorSet;
@@ -534,8 +541,15 @@ namespace GB.GBTD
 			if (Width == 8 && Height == 8) {
 				if (SimpleMode) {
 					this.ClientSize = new Size(324, 264);
+
+					//TODO
 				} else {
 					this.ClientSize = new Size(397, 264);
+
+					previewRenderer.Size = new Size(98, 193);
+					previewRenderer.SmallLocation = new Point(36, 35);
+					previewRenderer.LargeLocation = new Point(0, 95);
+					previewRenderer.LargeCount = 4;
 				}
 
 				mainTileEdit.Size = new Size(193, 193);
@@ -547,6 +561,11 @@ namespace GB.GBTD
 					this.ClientSize = new Size(344, 456);
 				} else {
 					this.ClientSize = new Size(417, 456);
+
+					previewRenderer.Size = new Size(98, 385);
+					previewRenderer.SmallLocation = new Point(36, 72);
+					previewRenderer.LargeLocation = new Point(0, 191);
+					previewRenderer.LargeCount = 4;
 				}
 
 				mainTileEdit.Size = new Size(193, 385);
@@ -558,6 +577,11 @@ namespace GB.GBTD
 					this.ClientSize = new Size(410, 296);
 				} else {
 					this.ClientSize = new Size(507, 296);
+
+					previewRenderer.Size = new Size(146, 225);
+					previewRenderer.SmallLocation = new Point(48, 12);
+					previewRenderer.LargeLocation = new Point(0, 79);
+					previewRenderer.LargeCount = 3;
 				}
 
 				mainTileEdit.Size = new Size(225, 225);
@@ -566,9 +590,14 @@ namespace GB.GBTD
 				tileList.Top = 49;
 			} else if (Width == 32 && Height == 32) {
 				if (SimpleMode) {
-					this.ClientSize = new Size(506, 328);
+					this.ClientSize = new Size(506, 336);
 				} else {
-					this.ClientSize = new Size(603, 328);
+					this.ClientSize = new Size(603, 336);
+
+					previewRenderer.Size = new Size(194, 294);
+					previewRenderer.SmallLocation = new Point(48, 0);
+					previewRenderer.LargeLocation = new Point(0, 100);
+					previewRenderer.LargeCount = 2;
 				}
 
 				mainTileEdit.Size = new Size(257, 257);
@@ -581,6 +610,8 @@ namespace GB.GBTD
 
 			tileEditBorder.Width = this.ClientSize.Width - tileList.Width - 3;
 			tileEditBorder.Height = this.ClientSize.Height - 34;
+
+			previewRenderer.Left = tileEditBorder.Right - previewRenderer.Width - 5;
 
 			this.ResumeLayout(true);
 		}

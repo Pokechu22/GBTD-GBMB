@@ -116,6 +116,7 @@
 			this.toolStripBorder = new GB.Shared.Controls.Border();
 			this.tileEditBorder = new GB.Shared.Controls.Border();
 			this.auMessenger = new GB.Shared.AutoUpdate.AUMessenger();
+			this.previewRenderer = new GB.GBTD.PreviewRenderer();
 			this.mainTileEdit = new GB.GBTD.MainTileEdit();
 			this.toolList = new GB.GBTD.ToolList();
 			this.tileList = new GB.GBTD.TileList();
@@ -819,6 +820,13 @@
 			this.auMessenger.OnGBPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnGBPaletteChanged);
 			this.auMessenger.OnColorPaletteChanged += new GB.Shared.AutoUpdate.MessageEventHandler(this.auMessenger_OnColorPaletteChanged);
 			// 
+			// previewRenderer
+			// 
+			this.previewRenderer.Location = new System.Drawing.Point(235, 38);
+			this.previewRenderer.Name = "previewRenderer";
+			this.previewRenderer.Size = new System.Drawing.Size(98, 193);
+			this.previewRenderer.TabIndex = 20;
+			// 
 			// mainTileEdit
 			// 
 			this.mainTileEdit.Location = new System.Drawing.Point(33, 38);
@@ -855,6 +863,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(397, 264);
+			this.Controls.Add(this.previewRenderer);
 			this.Controls.Add(this.mainTileEdit);
 			this.Controls.Add(this.toolList);
 			this.Controls.Add(this.tileEditBorder);
@@ -961,6 +970,7 @@
 		private System.Windows.Forms.MenuItem clearBookmark3MenuItem;
 		private Shared.Controls.Border tileEditBorder;
 		private MainTileEdit mainTileEdit;
+		private PreviewRenderer previewRenderer;
 
 	}
 }
