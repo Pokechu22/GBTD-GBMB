@@ -703,5 +703,11 @@ namespace GB.GBTD
 				mmf.Tiles[SelectedTile] = tile;
 			}
 		}
+
+		private void colorSelector_PaletteChanged(object sender, EventArgs e) {
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+			mainTileEdit.Invalidate(true);
+		}
 	}
 }
