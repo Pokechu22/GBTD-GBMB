@@ -226,9 +226,45 @@ namespace GB.Shared.AutoUpdate
 				}
 			}
 
+			/// <summary>
+			/// List of the single palettes.
+			/// </summary>
+			public class MMFSinglePalMapList
+			{
+				private readonly AUMemMappedFile file;
+				private readonly int offset;
+
+				/// <param name="file">The mmf associated with this object.</param>
+				/// <param name="offset">The offset for the group of palettes.</param>
+				internal MMFSinglePalMapList(AUMemMappedFile file, int offset) {
+					this.file = file;
+					this.offset = offset;
+				}
+
+				public byte this[UInt16 tile] {
+					get {
+						var stream = file.stream;
+						stream.Position = PALMAPS_INDEX + (tile * 2);
+
+						return stream.ReadByteEx();
+					}
+					set {
+						var stream = file.stream;
+						stream.Position = PALMAPS_INDEX + (tile * 2);
+
+						stream.WriteByteEx(value);
+
+						file.messenger.SendTileChangeMessage(tile);
+					}
+				}
+			}
+
 			private readonly AUMemMappedFile file;
 			internal MMFPalMapList(AUMemMappedFile file) {
 				this.file = file;
+
+				this.GBC = new MMFSinglePalMapList(file, 0);
+				this.SGB = new MMFSinglePalMapList(file, 1);
 			}
 
 			public PalMapEntry this[UInt16 tile] {
@@ -251,6 +287,9 @@ namespace GB.Shared.AutoUpdate
 					file.messenger.SendTileChangeMessage(tile);
 				}
 			}
+
+			public MMFSinglePalMapList GBC { get; private set; }
+			public MMFSinglePalMapList SGB { get; private set; }
 		}
 
 		/// <summary>

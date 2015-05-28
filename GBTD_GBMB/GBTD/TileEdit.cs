@@ -349,8 +349,10 @@ namespace GB.GBTD
 				gbrFile.GetObjectOfType<GBRObjectTilePalette>().GBCPalettes[args.TileID] = mmf.PalMaps[args.TileID].GBC;
 				gbrFile.GetObjectOfType<GBRObjectTilePalette>().SGBPalettes[args.TileID] = mmf.PalMaps[args.TileID].SGB;
 
-				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.tileList.TileSet = gbrFile.GetObjectOfType<GBRObjectTileData>();
+				this.tileList.Invalidate(true);
+				this.previewRenderer.Invalidate(true);
+				this.mainTileEdit.Invalidate(true);
+				this.colorSelector.Invalidate(true);
 			}));
 		}
 
@@ -358,13 +360,12 @@ namespace GB.GBTD
 			Invoke(new MethodInvoker(delegate
 			{
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
-				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+				var paletteMapping = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
 				this.SelectedTile = 0;
 
 				tileData.Tiles = mmf.Tiles.GetTilesArray();
 
-				//Inefficiant, but it works.
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];
 				UInt32[] sgbPal = new UInt32[mmf.TileCount];
 
@@ -373,11 +374,13 @@ namespace GB.GBTD
 					sgbPal[i] = mmf.PalMaps[i].SGB;
 				}
 
-				defaultPalette.GBCPalettes = gbcPal;
-				defaultPalette.SGBPalettes = sgbPal;
+				paletteMapping.GBCPalettes = gbcPal;
+				paletteMapping.SGBPalettes = sgbPal;
 
-				this.tileList.TileSet = tileData;
-				this.tileList.PaletteMapping = defaultPalette;
+				this.tileList.Invalidate(true);
+				this.previewRenderer.Invalidate(true);
+				this.mainTileEdit.Invalidate(true);
+				this.colorSelector.Invalidate(true);
 			}));
 		}
 
@@ -385,7 +388,7 @@ namespace GB.GBTD
 			Invoke(new MethodInvoker(delegate
 			{
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
-				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+				var paletteMapping = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
 				this.SelectedTile = 0;
 
@@ -394,7 +397,6 @@ namespace GB.GBTD
 
 				tileData.Tiles = mmf.Tiles.GetTilesArray();
 
-				//Inefficiant, but it works.
 				UInt32[] gbcPal = new UInt32[mmf.TileCount];
 				UInt32[] sgbPal = new UInt32[mmf.TileCount];
 
@@ -403,11 +405,13 @@ namespace GB.GBTD
 					sgbPal[i] = mmf.PalMaps[i].SGB;
 				}
 
-				defaultPalette.GBCPalettes = gbcPal;
-				defaultPalette.SGBPalettes = sgbPal;
+				paletteMapping.GBCPalettes = gbcPal;
+				paletteMapping.SGBPalettes = sgbPal;
 
-				this.tileList.TileSet = tileData;
-				this.tileList.PaletteMapping = defaultPalette;
+				this.tileList.Invalidate(true);
+				this.previewRenderer.Invalidate(true);
+				this.mainTileEdit.Invalidate(true);
+				this.colorSelector.Invalidate(true);
 			}));
 		}
 
@@ -415,7 +419,7 @@ namespace GB.GBTD
 			Invoke(new MethodInvoker(delegate
 			{
 				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
-				var defaultPalette = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
+				var paletteMapping = gbrFile.GetObjectOfType<GBRObjectTilePalette>();
 
 				this.SelectedTile = 0;
 
@@ -432,12 +436,14 @@ namespace GB.GBTD
 					sgbPal[i] = mmf.PalMaps[i].SGB;
 				}
 
-				defaultPalette.GBCPalettes = gbcPal;
-				defaultPalette.SGBPalettes = sgbPal;
+				paletteMapping.GBCPalettes = gbcPal;
+				paletteMapping.SGBPalettes = sgbPal;
 
-				//Alert it of the change (This is bad code, but I don't know how to fix yet)
-				this.tileList.TileSet = tileData;
-				this.tileList.PaletteMapping = defaultPalette;
+				this.tileList.Invalidate(true);
+				this.previewRenderer.Invalidate(true);
+				this.mainTileEdit.Invalidate(true);
+				this.colorSelector.Invalidate(true);
+
 				//TODO load the palettedata from MMF
 			}));
 		}
@@ -708,6 +714,19 @@ namespace GB.GBTD
 			tileList.Invalidate(true);
 			previewRenderer.Invalidate(true);
 			mainTileEdit.Invalidate(true);
+
+			if (mmf != null) {
+				var palMaps = gbrFile.GetOrCreateObjectOfType<GBRObjectTilePalette>();
+				switch (ColorSet) {
+				case ColorSet.GAMEBOY_COLOR:
+				case ColorSet.GAMEBOY_COLOR_FILTERED:
+					mmf.PalMaps.GBC[SelectedTile] = (byte)palMaps.GBCPalettes[SelectedTile];
+					break;
+				case ColorSet.SUPER_GAMEBOY:
+					mmf.PalMaps.SGB[SelectedTile] = (byte)palMaps.SGBPalettes[SelectedTile];
+					break;
+				}
+			}
 		}
 	}
 }
