@@ -199,7 +199,7 @@ namespace GB.GBTD
 		}
 
 		/// <summary>
-		//// Gets the proper color for the given ColorSet.
+		/// Gets the proper color for the given ColorSet.
 		/// </summary>
 		/// <param name="set"></param>
 		/// <param name="Palette"></param>

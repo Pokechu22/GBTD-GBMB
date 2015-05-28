@@ -31,6 +31,7 @@ namespace GB.GBTD
 				tileList.ColorSet = value;
 				mainTileEdit.ColorSet = value;
 				previewRenderer.ColorSet = value;
+				colorSelector.ColorSet = value;
 			}
 		}
 
@@ -116,6 +117,7 @@ namespace GB.GBTD
 				tileList.SelectedTile = value;
 				mainTileEdit.SelectedTile = value;
 				previewRenderer.SelectedTile = value;
+				colorSelector.SelectedTile = value;
 			}
 		}
 
@@ -222,6 +224,9 @@ namespace GB.GBTD
 			previewRenderer.TileSet = tileSet;
 			previewRenderer.Palettes = palettes;
 			previewRenderer.PaletteMapping = paletteMapping;
+
+			colorSelector.Palettes = palettes;
+			colorSelector.PaletteMapping = paletteMapping;
 
 			this.AutoUpdate = settings.AutoUpdate;
 			this.ColorSet = settings.ColorSet;
