@@ -125,30 +125,35 @@ namespace GB.GBTD
 			get { return mainTileEdit.LeftColor; }
 			set {
 				mainTileEdit.LeftColor = value;
+				colorSelector.LeftColor = value;
 			}
 		}
 		public GBColor RightColor {
 			get { return mainTileEdit.RightColor; }
 			set {
 				mainTileEdit.RightColor = value;
+				colorSelector.RightColor = value;
 			}
 		}
 		public GBColor MiddleColor {
 			get { return mainTileEdit.MiddleColor; }
 			set {
 				mainTileEdit.MiddleColor = value;
+				colorSelector.MiddleColor = value;
 			}
 		}
 		public GBColor X1Color {
 			get { return mainTileEdit.X1Color; }
 			set {
 				mainTileEdit.X1Color = value;
+				colorSelector.X1Color = value;
 			}
 		}
 		public GBColor X2Color {
 			get { return mainTileEdit.X2Color; }
 			set {
 				mainTileEdit.X2Color = value;
+				colorSelector.X2Color = value;
 			}
 		}
 
