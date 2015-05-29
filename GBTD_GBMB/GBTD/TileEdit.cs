@@ -351,7 +351,9 @@ namespace GB.GBTD
 		private void auMessenger_OnGBPaletteChanged(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				//TODO
+				var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+				tileData.SetColorMapping(mmf.GBPalettes.GBColor0, mmf.GBPalettes.GBColor1, mmf.GBPalettes.GBColor2, mmf.GBPalettes.GBColor3);
 			}));
 		}
 
@@ -457,6 +459,8 @@ namespace GB.GBTD
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
+
+				tileData.SetColorMapping(mmf.GBPalettes.GBColor0, mmf.GBPalettes.GBColor1, mmf.GBPalettes.GBColor2, mmf.GBPalettes.GBColor3);
 
 				//TODO load the palettedata from MMF
 			}));

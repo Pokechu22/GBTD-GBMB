@@ -326,9 +326,21 @@ namespace GB.GBTD
 		public GBRObjectTileData TileSet {
 			get { return tileset; }
 			set {
+				if (tileset != null) {
+					tileset.ColorMappingChanged -= new EventHandler(tileset_ColorMappingChanged);
+				}
+
 				tileset = value;
 				this.Invalidate(true);
+
+				if (tileset != null) {
+					tileset.ColorMappingChanged += new EventHandler(tileset_ColorMappingChanged);
+				}
 			}
+		}
+
+		void tileset_ColorMappingChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
 		}
 
 		private GBColor leftColor, rightColor, middleColor, x1Color, x2Color;

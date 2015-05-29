@@ -50,10 +50,12 @@ namespace GB.GBMB
 			set {
 				if (this.tileSet != null) {
 					tileSet.SizeChanged -= new EventHandler(tileSet_SizeChanged);
+					tileSet.ColorMappingChanged -= new EventHandler(tileSet_ColorMappingChanged);
 				}
 				tileSet = value;
 				if (tileSet != null) {
 					tileSet.SizeChanged += new EventHandler(tileSet_SizeChanged);
+					tileSet.ColorMappingChanged += new EventHandler(tileSet_ColorMappingChanged);
 				}
 
 				scrollBar.Enabled = (tileSet != null);
@@ -354,6 +356,10 @@ namespace GB.GBMB
 
 		void tileSet_SizeChanged(object sender, EventArgs e) {
 			this.OnResize(e);
+		}
+
+		void tileSet_ColorMappingChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
 		}
 	}
 }

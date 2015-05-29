@@ -35,7 +35,18 @@ namespace GB.GBTD
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public GBRObjectTileData TileSet {
 			get { return tileset; }
-			set { tileset = value; this.Invalidate(true); }
+			set {
+				if (tileset != null) {
+					tileset.ColorMappingChanged -= new EventHandler(tileset_ColorMappingChanged);
+				}
+
+				tileset = value;
+				this.Invalidate(true);
+
+				if (tileset != null) {
+					tileset.ColorMappingChanged += new EventHandler(tileset_ColorMappingChanged);
+				}
+			}
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public GBRObjectTilePalette PaletteMapping {
@@ -51,6 +62,10 @@ namespace GB.GBTD
 		public ColorSet ColorSet {
 			get { return colorSet; }
 			set { colorSet = value; this.Invalidate(true); }
+		}
+
+		void tileset_ColorMappingChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
 		}
 
 		private Point smallLocation;

@@ -159,6 +159,20 @@ namespace GB.Shared.GBRFile
 			case 2: color2Mapping = value; break;
 			case 3: color3Mapping = value; break;
 			}
+
+			OnColorMappingChanged();
+		}
+
+		/// <summary>
+		/// Sets the entire color mapping.
+		/// </summary>
+		public void SetColorMapping(GBColor color0, GBColor color1, GBColor color2, GBColor color3) {
+			this.color0Mapping = color0;
+			this.color1Mapping = color1;
+			this.color2Mapping = color2;
+			this.color3Mapping = color3;
+
+			OnColorMappingChanged();
 		}
 
 		/// <summary>

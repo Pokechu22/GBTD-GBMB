@@ -50,10 +50,12 @@ namespace GB.GBTD
 			set {
 				if (this.tileSet != null) {
 					tileSet.SizeChanged -= new EventHandler(tileSet_SizeChanged);
+					tileSet.ColorMappingChanged -= new EventHandler(tileSet_ColorMappingChanged);
 				}
 				tileSet = value;
 				if (tileSet != null) {
 					tileSet.SizeChanged += new EventHandler(tileSet_SizeChanged);
+					tileSet.ColorMappingChanged += new EventHandler(tileSet_ColorMappingChanged);
 				}
 
 				scrollBar.Enabled = (tileSet != null);
@@ -63,6 +65,10 @@ namespace GB.GBTD
 
 				this.Invalidate(true);
 			}
+		}
+
+		void tileSet_ColorMappingChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
 		}
 
 		public UInt16 SelectedTile {

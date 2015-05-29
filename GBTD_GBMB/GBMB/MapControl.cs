@@ -125,9 +125,13 @@ namespace GB.GBMB
 				}
 				if (this.tileset != null) {
 					this.tileset.SizeChanged -= new EventHandler(tileset_SizeChanged);
+					tileset.ColorMappingChanged -= new EventHandler(tileset_ColorMappingChanged);
 				}
 				tileset = value;
-				value.SizeChanged += new EventHandler(tileset_SizeChanged);
+				if (tileset != null) {
+					tileset.SizeChanged += new EventHandler(tileset_SizeChanged);
+					tileset.ColorMappingChanged += new EventHandler(tileset_ColorMappingChanged);
+				}
 				OnMapChanged();
 			}
 		}
@@ -1020,6 +1024,10 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 
 		private void tileset_SizeChanged(object sender, EventArgs e) {
 			this.OnMapChanged();
+		}
+
+		void tileset_ColorMappingChanged(object sender, EventArgs e) {
+			this.Invalidate(true);
 		}
 
 		void vScrollBar_ValueChanged(object sender, EventArgs e) {
