@@ -190,7 +190,7 @@ namespace GB.GBTD
 					}
 				}
 
-				parent.Invalidate(false);
+				parent.Invalidate(true);
 
 				base.OnSelectedIndexChanged(e);
 			}
@@ -393,6 +393,8 @@ namespace GB.GBTD
 
 		private PaletteButton palButton0, palButton1, palButton2, palButton3;
 
+		private Spinner spinner;
+
 		public ColorSelector() {
 			DoubleBuffered = true;
 
@@ -402,6 +404,15 @@ namespace GB.GBTD
 			this.paletteDropdown.Location = new Point(94, 2);
 
 			this.Controls.Add(paletteDropdown);
+
+			this.spinner = new Spinner();
+			this.spinner.TimerInterval = 600;
+			this.spinner.Location = new Point(78, 2);
+			this.spinner.Size = new Size(16, 21);
+			this.spinner.Up += new EventHandler(spinner_Up);
+			this.spinner.Down += new EventHandler(spinner_Down);
+
+			this.Controls.Add(spinner);
 
 			this.palButton0 = new PaletteButton(this, GBColor.WHITE);
 			this.palButton0.Location = new Point(95, 3);
@@ -421,6 +432,50 @@ namespace GB.GBTD
 			this.Controls.Add(palButton3);
 
 			this.paletteDropdown.SendToBack();
+		}
+
+		void spinner_Down(object sender, EventArgs e) {
+			if (tileset == null || palettes == null || paletteMapping == null) {
+				return;
+			}
+
+			if (colorSet.SupportsPaletteCustomization()) {
+				if (paletteDropdown.SelectedIndex == 0) {
+					paletteDropdown.SelectedIndex = colorSet.GetNumberOfRows() - 1;
+				} else {
+					paletteDropdown.SelectedIndex--;
+				}
+			} else {
+				GBColor color = tileset.GetMappedColor(LeftColor);
+				switch (color) {
+				case GBColor.BLACK: tileset.SetMappedColor(LeftColor, GBColor.WHITE); break;
+				case GBColor.DARK_GRAY: tileset.SetMappedColor(LeftColor, GBColor.BLACK); break;
+				case GBColor.LIGHT_GRAY: tileset.SetMappedColor(LeftColor, GBColor.DARK_GRAY); break;
+				case GBColor.WHITE: tileset.SetMappedColor(LeftColor, GBColor.LIGHT_GRAY); break;
+				}
+			}
+		}
+
+		void spinner_Up(object sender, EventArgs e) {
+			if (tileset == null || palettes == null || paletteMapping == null) {
+				return;
+			}
+
+			if (colorSet.SupportsPaletteCustomization()) {
+				if (paletteDropdown.SelectedIndex == colorSet.GetNumberOfRows() - 1) {
+					paletteDropdown.SelectedIndex = 0;
+				} else {
+					paletteDropdown.SelectedIndex++;
+				}
+			} else {
+				GBColor color = tileset.GetMappedColor(LeftColor);
+				switch (color) {
+				case GBColor.BLACK: tileset.SetMappedColor(LeftColor, GBColor.DARK_GRAY); break;
+				case GBColor.DARK_GRAY: tileset.SetMappedColor(LeftColor, GBColor.LIGHT_GRAY); break;
+				case GBColor.LIGHT_GRAY: tileset.SetMappedColor(LeftColor, GBColor.WHITE); break;
+				case GBColor.WHITE: tileset.SetMappedColor(LeftColor, GBColor.BLACK); break;
+				}
+			}
 		}
 		
 		[Description("Fires when one of the mouse colors has changed.")]

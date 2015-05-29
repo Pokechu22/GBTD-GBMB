@@ -86,12 +86,14 @@ namespace GB.Shared.Controls
 		private void StartButtonPress(MouseEventArgs e) {
 			if (e.Y < this.Height / 2) {
 				clicked = SpinnerButton.UP;
+				OnUp();
 			} else {
 				clicked = SpinnerButton.DOWN;
+				OnDown();
 			}
 			this.Capture = true;
 
-			timer.Start();
+			StartTimer();
 
 			this.Invalidate(true); //Redraw buttons
 		}
@@ -120,6 +122,9 @@ namespace GB.Shared.Controls
 		}
 
 		public Spinner() {
+			DoubleBuffered = true;
+			SetStyle(ControlStyles.ResizeRedraw, true);
+
 			InitializeComponent();
 		}
 

@@ -148,6 +148,20 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
+		/// Sets the mapped color for the input.
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public void SetMappedColor(GBColor input, GBColor value) {
+			switch (GBColorToByte(input)) {
+			case 0: color0Mapping = value; break;
+			case 1: color1Mapping = value; break;
+			case 2: color2Mapping = value; break;
+			case 3: color3Mapping = value; break;
+			}
+		}
+
+		/// <summary>
 		/// Fires whenever the number of tiles has changed.  This will also occur when the tile size changes.
 		/// </summary>
 		public event EventHandler CountChanged;
