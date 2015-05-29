@@ -589,6 +589,8 @@ namespace GB.GBTD
 
 			this.SuspendLayout();
 
+			toolList.RotateEnabled = (tileset.Width == tileset.Height);
+
 			if (Width == 8 && Height == 8) {
 				if (SimpleMode) {
 					this.ClientSize = new Size(324, 264);
@@ -854,6 +856,21 @@ namespace GB.GBTD
 			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 			var tile = TileTransform.FlippedHoriziontally(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void toolList_RotateClockwiseClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.RotateClockwise(tileset.Tiles[SelectedTile]);
 			tileset.Tiles[SelectedTile] = tile;
 
 			mainTileEdit.Invalidate(true);

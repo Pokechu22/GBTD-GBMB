@@ -188,5 +188,13 @@ namespace GB.GBTD
 				}
 			}
 		}
+
+		/// <summary>
+		/// Whether or not rotation is possible (IE, tile must be same width as height)
+		/// </summary>
+		public bool RotateEnabled {
+			get { return rotateClockwiseButton.Enabled; }
+			set { rotateClockwiseButton.Enabled = value; }
+		}
 	}
 }

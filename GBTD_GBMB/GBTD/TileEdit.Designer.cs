@@ -867,6 +867,7 @@
 			this.toolList.ScrollRightClicked += new System.EventHandler(this.toolList_ScrollRightClicked);
 			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.toolList_FlipVerticallyClicked);
 			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.toolList_FlipHorizontallyClicked);
+			this.toolList.RotateClockwiseClicked += new System.EventHandler(this.toolList_RotateClockwiseClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
 			// tileList
