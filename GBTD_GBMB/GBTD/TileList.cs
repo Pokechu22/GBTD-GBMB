@@ -328,9 +328,9 @@ namespace GB.GBTD
 					return PaletteData.SGBPaletteSet[0][color];
 				}
 			case ColorSet.GAMEBOY:
-				return color.GetNormalColor();
+				return tileSet.GetMappedColor(color).GetNormalColor();
 			case ColorSet.GAMEBOY_POCKET:
-				return color.GetPocketColor();
+				return tileSet.GetMappedColor(color).GetPocketColor();
 			default: throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 			}
 		}

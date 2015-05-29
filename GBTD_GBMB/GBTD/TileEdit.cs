@@ -245,6 +245,7 @@ namespace GB.GBTD
 
 			colorSelector.Palettes = palettes;
 			colorSelector.PaletteMapping = paletteMapping;
+			colorSelector.TileSet = tileSet;
 
 			this.AutoUpdate = settings.AutoUpdate;
 			this.ColorSet = settings.ColorSet;

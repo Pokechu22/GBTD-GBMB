@@ -214,9 +214,9 @@ namespace GB.GBTD
 			case ColorSet.SUPER_GAMEBOY:
 				return palettes.SGBPalettes[paletteMapping.SGBPalettes[tile]][color];
 			case ColorSet.GAMEBOY:
-				return color.GetNormalColor();
+				return tileset.GetMappedColor(color).GetNormalColor();
 			case ColorSet.GAMEBOY_POCKET:
-				return color.GetPocketColor();
+				return tileset.GetMappedColor(color).GetPocketColor();
 			default: throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 			}
 		}

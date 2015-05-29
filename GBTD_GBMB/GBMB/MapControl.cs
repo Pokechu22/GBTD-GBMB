@@ -1005,9 +1005,9 @@ Goto File, Map properties to select a tileset.", this.Font, SystemBrushes.Contro
 					}
 				}
 			case ColorSet.GAMEBOY:
-				return color.GetNormalColor();
+				return tileset.GetMappedColor(color).GetNormalColor();
 			case ColorSet.GAMEBOY_POCKET:
-				return color.GetPocketColor();
+				return tileset.GetMappedColor(color).GetPocketColor();
 			default: throw new InvalidEnumArgumentException("set", (int)set, typeof(ColorSet));
 			}
 		}

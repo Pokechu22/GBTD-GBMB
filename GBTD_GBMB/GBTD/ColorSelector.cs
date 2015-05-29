@@ -217,7 +217,9 @@ namespace GB.GBTD
 				e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
 				e.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
-				if (parent.palettes == null) {
+				if (parent.tileset == null) {
+					e.Graphics.DrawString("tileset is null!", Font, Brushes.Red, new Point(0, 0));
+				} else if (parent.palettes == null) {
 					e.Graphics.DrawString("palettes is null!", Font, Brushes.Red, new Point(0, 0));
 				} else if (parent.paletteMapping == null) {
 					e.Graphics.DrawString("paletteMapping is null!", Font, Brushes.Red, new Point(0, 0));
@@ -287,6 +289,7 @@ namespace GB.GBTD
 		private ColorSet colorSet;
 		private GBRObjectPalettes palettes;
 		private GBRObjectTilePalette paletteMapping;
+		private GBRObjectTileData tileset;
 
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public UInt16 SelectedTile {
@@ -316,6 +319,14 @@ namespace GB.GBTD
 			set {
 				paletteMapping = value;
 				paletteDropdown.RecreateItems();
+				this.Invalidate(true);
+			}
+		}
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public GBRObjectTileData TileSet {
+			get { return tileset; }
+			set {
+				tileset = value;
 				this.Invalidate(true);
 			}
 		}
@@ -423,7 +434,9 @@ namespace GB.GBTD
 			e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
 			e.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
-			if (palettes == null) {
+			if (tileset == null) {
+				e.Graphics.DrawString("tileset is null!", Font, Brushes.Red, new Point(0, 0));
+			} else if (palettes == null) {
 				e.Graphics.DrawString("palettes is null!", Font, Brushes.Red, new Point(0, 0));
 			} else if (paletteMapping == null) {
 				e.Graphics.DrawString("paletteMapping is null!", Font, Brushes.Red, new Point(0, 0));
@@ -500,9 +513,9 @@ namespace GB.GBTD
 			case ColorSet.SUPER_GAMEBOY:
 				return palettes.SGBPalettes[paletteMapping.SGBPalettes[this.selectedTile]][color];
 			case ColorSet.GAMEBOY:
-				return color.GetNormalColor();
+				return tileset.GetMappedColor(color).GetNormalColor();
 			case ColorSet.GAMEBOY_POCKET:
-				return color.GetPocketColor();
+				return tileset.GetMappedColor(color).GetPocketColor();
 			default: throw new InvalidOperationException("Current colorset is unrecognised: " + this.colorSet + " (" + (int)this.colorSet + ")!");
 			}
 		}

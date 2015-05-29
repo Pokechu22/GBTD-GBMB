@@ -16,8 +16,8 @@ namespace GB.Shared.GBRFile
 			this.height = 8;
 			this.count = 128;
 			this.Color0Mapping = GBColor.WHITE;
-			this.Color1Mapping = GBColor.DARK_GRAY;
-			this.Color2Mapping = GBColor.LIGHT_GRAY;
+			this.Color1Mapping = GBColor.LIGHT_GRAY;
+			this.Color2Mapping = GBColor.DARK_GRAY;
 			this.Color3Mapping = GBColor.BLACK;
 			this.Tiles = new Tile[Count];
 			for (int i = 0; i < Tiles.Length; i++) {
@@ -87,22 +87,36 @@ namespace GB.Shared.GBRFile
 			}
 		}
 
+		private GBColor color0Mapping, color1Mapping, color2Mapping, color3Mapping;
+
 		/// <summary>
 		/// Color mapping between number and color (As with BGP_REG).
 		/// </summary>
-		public GBColor Color0Mapping { get; set; }
+		public GBColor Color0Mapping {
+			get { return color0Mapping; }
+			set { color0Mapping = value; OnColorMappingChanged(); }
+		}
 		/// <summary>
 		/// Color mapping between number and color (As with BGP_REG).
 		/// </summary>
-		public GBColor Color1Mapping { get; set; }
+		public GBColor Color1Mapping {
+			get { return color1Mapping; }
+			set { color1Mapping = value; OnColorMappingChanged(); }
+		}
 		/// <summary>
 		/// Color mapping between number and color (As with BGP_REG).
 		/// </summary>
-		public GBColor Color2Mapping { get; set; }
+		public GBColor Color2Mapping {
+			get { return color2Mapping; }
+			set { color2Mapping = value; OnColorMappingChanged(); }
+		}
 		/// <summary>
 		/// Color mapping between number and color (As with BGP_REG).
 		/// </summary>
-		public GBColor Color3Mapping { get; set; }
+		public GBColor Color3Mapping {
+			get { return color3Mapping; }
+			set { color3Mapping = value; OnColorMappingChanged(); }
+		}
 
 		private Tile[] tiles;
 		/// <summary>
@@ -119,13 +133,32 @@ namespace GB.Shared.GBRFile
 		}
 
 		/// <summary>
-		/// Fires whenever the number of tiles changes.  This will also occur when the tile size changes.
+		/// Gets the mapped color for the input.
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public GBColor GetMappedColor(GBColor input) {
+			switch (GBColorToByte(input)) {
+			case 0: return color0Mapping;
+			case 1: return color1Mapping;
+			case 2: return color2Mapping;
+			case 3: return color3Mapping;
+			default: return input;
+			}
+		}
+
+		/// <summary>
+		/// Fires whenever the number of tiles has changed.  This will also occur when the tile size changes.
 		/// </summary>
 		public event EventHandler CountChanged;
 		/// <summary>
-		/// Fires whenever the size of each tlie changes.
+		/// Fires whenever the size of each tile has changed.
 		/// </summary>
 		public event EventHandler SizeChanged;
+		/// <summary>
+		/// Fires whenever the color mapping has changed.
+		/// </summary>
+		public event EventHandler ColorMappingChanged;
 
 		private void OnCountChanged() {
 			if (CountChanged != null) {
@@ -137,6 +170,11 @@ namespace GB.Shared.GBRFile
 				SizeChanged(this, new EventArgs());
 			}
 		}
+		private void OnColorMappingChanged() {
+			if (ColorMappingChanged != null) {
+				ColorMappingChanged(this, new EventArgs());
+			}
+		}
 
 		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(Name, 30);
@@ -145,10 +183,10 @@ namespace GB.Shared.GBRFile
 			s.WriteWord(Height);
 			s.WriteWord(Count);
 
-			s.WriteByte((byte)Color0Mapping);
-			s.WriteByte((byte)Color1Mapping);
-			s.WriteByte((byte)Color2Mapping);
-			s.WriteByte((byte)Color3Mapping);
+			s.WriteByte(GBColorToByte(Color0Mapping));
+			s.WriteByte(GBColorToByte(Color1Mapping));
+			s.WriteByte(GBColorToByte(Color2Mapping));
+			s.WriteByte(GBColorToByte(Color3Mapping));
 
 			for (int i = 0; i < Tiles.Length; i++) {
 				Tile tile = Tiles[i];
@@ -167,10 +205,10 @@ namespace GB.Shared.GBRFile
 			Height = s.ReadWord();
 			Count = s.ReadWord();
 
-			Color0Mapping = (GBColor)s.ReadByte();
-			Color1Mapping = (GBColor)s.ReadByte();
-			Color2Mapping = (GBColor)s.ReadByte();
-			Color3Mapping = (GBColor)s.ReadByte();
+			Color0Mapping = ByteToGBColor(s.ReadByteEx());
+			Color1Mapping = ByteToGBColor(s.ReadByteEx());
+			Color2Mapping = ByteToGBColor(s.ReadByteEx());
+			Color3Mapping = ByteToGBColor(s.ReadByteEx());
 
 			Tiles = new Tile[Count];
 
@@ -178,11 +216,7 @@ namespace GB.Shared.GBRFile
 				Tile tile = new Tile(Width, Height);
 				for (int y = 0; y < Height; y++) {
 					for (int x = 0; x < Width; x++) {
-						int read = s.ReadByte();
-
-						if (read < 0) { throw new EndOfStreamException(); }
-
-						tile[x, y] = ByteToGBColor((byte)read);
+						tile[x, y] = ByteToGBColor(s.ReadByteEx());
 					}
 				}
 				Tiles[i] = tile;
