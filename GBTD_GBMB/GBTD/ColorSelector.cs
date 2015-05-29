@@ -219,9 +219,9 @@ namespace GB.GBTD
 				} else if (parent.paletteMapping == null) {
 					e.Graphics.DrawString("paletteMapping is null!", Font, Brushes.Red, new Point(0, 0));
 				} else {
-					Color c = parent.GetColor(ID);
+					Color drawColor = parent.GetColor(ID);
 
-					using (Brush b = new SolidBrush(c)) {
+					using (Brush b = new SolidBrush(drawColor)) {
 						e.Graphics.FillRectangle(b, 0, 0, Width - 1, Height - 1);
 					}
 
@@ -244,7 +244,16 @@ namespace GB.GBTD
 					default: colorNum = (int)ID; break;
 					}
 
-					e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.Black, new Rectangle(0, 0, Width, Height), format);
+					int count = 0;
+					if (drawColor.R < 20) { count++; }
+					if (drawColor.G < 20) { count++; }
+					if (drawColor.B < 20) { count++; }
+
+					if (count > 2) {
+						e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.White, new Rectangle(0, 0, Width, Height), format);
+					} else {
+						e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.Black, new Rectangle(0, 0, Width, Height), format);
+					}
 				}
 
 				base.OnPaint(e);
@@ -424,12 +433,23 @@ namespace GB.GBTD
 			default: colorNum = (int)color; break;
 			}
 
-			using (SolidBrush brush = new SolidBrush(GetColor(color))) {
+			Color drawColor = GetColor(color);
+
+			using (SolidBrush brush = new SolidBrush(drawColor)) {
 				e.Graphics.FillRectangle(brush, x + 15, y + 1, 19, 19);
 			}
 			e.Graphics.DrawRectangle(Pens.Black, x + 15, y + 1, 19, 19);
 
-			e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.Black, new Rectangle(x + 19, y + 3, 11, 18), format);
+			int count = 0;
+			if (drawColor.R < 20) { count++; }
+			if (drawColor.G < 20) { count++; }
+			if (drawColor.B < 20) { count++; }
+
+			if (count > 2) {
+				e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.White, new Rectangle(x + 19, y + 3, 11, 18), format);
+			} else {
+				e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.Black, new Rectangle(x + 19, y + 3, 11, 18), format);
+			}
 		}
 
 		protected override void OnResize(EventArgs e) {
