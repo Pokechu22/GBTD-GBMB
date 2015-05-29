@@ -26,12 +26,25 @@ namespace GB.GBTD
 		public ColorSet ColorSet {
 			get { return gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ColorSet; }
 			set {
+				MenuItem[] colorSetItems = new MenuItem[] {
+					colorSetGameboyPocketMenuItem,
+					colorSetGameboyMenuItem,
+					colorSetGameboyColorMenuItem,
+					colorSetFilteredGameboyColorMenuItem,
+					colorSetSuperGameboyMenuItem
+				};
+
 				gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>().ColorSet = value;
 
 				tileList.ColorSet = value;
 				mainTileEdit.ColorSet = value;
 				previewRenderer.ColorSet = value;
 				colorSelector.ColorSet = value;
+
+				foreach (MenuItem item in colorSetItems) {
+					ColorSet itemSet = (ColorSet)item.Tag;
+					item.Checked = (value == itemSet);
+				}
 			}
 		}
 
@@ -735,6 +748,14 @@ namespace GB.GBTD
 			this.MiddleColor = colorSelector.MiddleColor;
 			this.X1Color = colorSelector.X1Color;
 			this.X2Color = colorSelector.X2Color;
+		}
+
+		private void colorSetMenuItem_Clicked(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+
+			if (item != null) {
+				this.ColorSet = (ColorSet)item.Tag;
+			}
 		}
 	}
 }
