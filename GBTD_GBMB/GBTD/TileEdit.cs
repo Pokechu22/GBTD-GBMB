@@ -228,6 +228,7 @@ namespace GB.GBTD
 
 			tileSet.SizeChanged += new EventHandler(tileSet_SizeChanged);
 			tileSet.CountChanged += new EventHandler(tileSet_CountChanged);
+			tileSet.ColorMappingChanged += new EventHandler(tileSet_ColorMappingChanged);
 
 			setDisplayedTileSize(tileSet.Width, tileSet.Height);
 
@@ -275,6 +276,12 @@ namespace GB.GBTD
 				}
 				mmf = new AUMemMappedFile(filePath, auMessenger, gbrFile);
 			}
+		}
+
+		void tileSet_ColorMappingChanged(object sender, EventArgs e) {
+			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			mmf.GBPalettes.SetPalettes(tileData.Color0Mapping, tileData.Color1Mapping, tileData.Color2Mapping, tileData.Color3Mapping);
 		}
 
 		void tileSet_SizeChanged(object sender, EventArgs e) {
@@ -369,6 +376,8 @@ namespace GB.GBTD
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
+
+				this.UpdateSize();
 			}));
 		}
 
@@ -454,6 +463,8 @@ namespace GB.GBTD
 
 				paletteMapping.GBCPalettes = gbcPal;
 				paletteMapping.SGBPalettes = sgbPal;
+
+				this.UpdateSize();
 
 				this.tileList.Invalidate(true);
 				this.previewRenderer.Invalidate(true);

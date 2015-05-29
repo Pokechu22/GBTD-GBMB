@@ -479,7 +479,9 @@ namespace GB.GBMB
 		private void auMessenger_OnGBPaletteChanged(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				//Ignored.
+				var tileData = gbrFile.GetObjectOfType<GBRObjectTileData>();
+
+				tileData.SetColorMapping(mmf.GBPalettes.GBColor0, mmf.GBPalettes.GBColor1, mmf.GBPalettes.GBColor2, mmf.GBPalettes.GBColor3);
 			}));
 		}
 
@@ -586,6 +588,8 @@ namespace GB.GBMB
 				if (map.TileCount < tileData.Count) { //GBR File has more tiles than GBM; update!
 					map.TileCount = tileData.Count;
 				}
+
+				tileData.SetColorMapping(mmf.GBPalettes.GBColor0, mmf.GBPalettes.GBColor1, mmf.GBPalettes.GBColor2, mmf.GBPalettes.GBColor3);
 
 				//Alert it of the change (This is bad code, but I don't know how to fix yet)
 				this.mapControl.TileSet = tileData;

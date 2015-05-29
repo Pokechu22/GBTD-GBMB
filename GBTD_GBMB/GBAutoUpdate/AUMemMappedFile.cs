@@ -425,6 +425,22 @@ namespace GB.Shared.AutoUpdate
 					file.messenger.SendColorMappingsMessage();
 				}
 			}
+
+			public void SetPalettes(byte color0, byte color1, byte color2, byte color3) {
+				Stream stream = file.stream;
+				stream.Position = GBPAL_INDEX;
+
+				stream.WriteByteEx(color0);
+				stream.WriteByteEx(color1);
+				stream.WriteByteEx(color2);
+				stream.WriteByteEx(color3);
+
+				file.messenger.SendColorMappingsMessage();
+			}
+
+			public void SetPalettes(GBColor color0, GBColor color1, GBColor color2, GBColor color3) {
+				this.SetPalettes(GBColorToByte(color0), GBColorToByte(color1), GBColorToByte(color2), GBColorToByte(color3));
+			}
 		}
 
 		/// <summary>
