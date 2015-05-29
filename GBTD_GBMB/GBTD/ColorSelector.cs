@@ -40,8 +40,8 @@ namespace GB.GBTD
 				this.DrawMode = DrawMode.OwnerDrawFixed;
 				this.DropDownStyle = ComboBoxStyle.DropDownList;
 				this.FormattingEnabled = true;
-				this.ItemHeight = 13;
-				this.Size = new Size(83, 19);
+				this.ItemHeight = 16;
+				this.Size = new Size(95, 22);
 
 				this.RecreateItems();
 			}
@@ -196,6 +196,61 @@ namespace GB.GBTD
 			}
 		}
 
+		private class PaletteButton : Control
+		{
+			protected override Size DefaultSize { get { return new Size(19, 19); } }
+
+			private readonly ColorSelector parent;
+			private readonly GBColor ID;
+
+			internal PaletteButton(ColorSelector parent, GBColor ID) {
+				this.parent = parent;
+				this.ID = ID;
+			}
+
+			protected override void OnPaint(PaintEventArgs e) {
+				e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+				e.Graphics.SmoothingMode = SmoothingMode.None;
+				e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
+				e.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
+
+				if (parent.palettes == null) {
+					e.Graphics.DrawString("palettes is null!", Font, Brushes.Red, new Point(0, 0));
+				} else if (parent.paletteMapping == null) {
+					e.Graphics.DrawString("paletteMapping is null!", Font, Brushes.Red, new Point(0, 0));
+				} else {
+					Color c = parent.GetColor(ID);
+
+					using (Brush b = new SolidBrush(c)) {
+						e.Graphics.FillRectangle(b, 0, 0, Width - 1, Height - 1);
+					}
+
+					e.Graphics.DrawRectangle(Pens.Black, 0, 0, Width - 1, Height - 1);
+
+					if (this.ID == parent.leftColor) {
+						e.Graphics.DrawRectangle(SystemPens.Highlight, 1, 1, Width - 3, Height - 3);
+					}
+
+					StringFormat format = new StringFormat();
+					format.Alignment = StringAlignment.Center;
+					format.LineAlignment = StringAlignment.Center;
+
+					int colorNum;
+					switch (this.ID) {
+					case GBColor.WHITE: colorNum = 0; break;
+					case GBColor.LIGHT_GRAY: colorNum = 1; break;
+					case GBColor.DARK_GRAY: colorNum = 2; break;
+					case GBColor.BLACK: colorNum = 3; break;
+					default: colorNum = (int)ID; break;
+					}
+
+					e.Graphics.DrawString(colorNum.ToString(), Font, Brushes.Black, new Rectangle(0, 0, Width, Height), format);
+				}
+
+				base.OnPaint(e);
+			}
+		}
+
 		private UInt16 selectedTile;
 		private ColorSet colorSet;
 		private GBRObjectPalettes palettes;
@@ -288,15 +343,36 @@ namespace GB.GBTD
 
 		private PaletteDropdown paletteDropdown;
 
+		private PaletteButton palButton0, palButton1, palButton2, palButton3;
+
 		public ColorSelector() {
 			DoubleBuffered = true;
 
 			SetStyle(ControlStyles.ResizeRedraw, true);
 
 			this.paletteDropdown = new PaletteDropdown(this);
-			this.paletteDropdown.Location = new Point(60, 2); //TODO
+			this.paletteDropdown.Location = new Point(94, 2);
 
 			this.Controls.Add(paletteDropdown);
+
+			this.palButton0 = new PaletteButton(this, GBColor.WHITE);
+			this.palButton0.Location = new Point(95, 3);
+
+			this.palButton1 = new PaletteButton(this, GBColor.LIGHT_GRAY);
+			this.palButton1.Location = new Point(114, 3);
+
+			this.palButton2 = new PaletteButton(this, GBColor.DARK_GRAY);
+			this.palButton2.Location = new Point(133, 3);
+
+			this.palButton3 = new PaletteButton(this, GBColor.BLACK);
+			this.palButton3.Location = new Point(152, 3);
+
+			this.Controls.Add(palButton0);
+			this.Controls.Add(palButton1);
+			this.Controls.Add(palButton2);
+			this.Controls.Add(palButton3);
+
+			this.paletteDropdown.SendToBack();
 		}
 		
 		[Description("Fires when one of the mouse colors has changed.")]
