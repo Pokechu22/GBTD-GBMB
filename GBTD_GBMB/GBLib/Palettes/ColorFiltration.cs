@@ -145,7 +145,7 @@ namespace GB.Shared.Palettes
 		public static Color GetNormalColor(this GBColor @this) {
 			switch (@this) {
 			case GBColor.BLACK: return Color.FromArgb(7, 57, 46);
-			case GBColor.DARK_GRAY: return Color.FromArgb(32, 177, 49);
+			case GBColor.DARK_GRAY: return Color.FromArgb(32, 117, 49);
 			case GBColor.LIGHT_GRAY: return Color.FromArgb(57, 185, 66);
 			case GBColor.WHITE: return Color.FromArgb(224, 239, 41);
 			default: throw new InvalidEnumArgumentException("@this", (int)@this, typeof(GBColor));
