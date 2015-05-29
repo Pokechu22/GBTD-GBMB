@@ -34,6 +34,9 @@ namespace GB.GBTD
 			public PaletteDropdown(ColorSelector parent) {
 				this.parent = parent;
 
+				DoubleBuffered = true;
+				SetStyle(ControlStyles.ResizeRedraw, true);
+
 				this.DrawMode = DrawMode.OwnerDrawFixed;
 				this.DropDownStyle = ComboBoxStyle.DropDownList;
 				this.FormattingEnabled = true;
@@ -41,6 +44,30 @@ namespace GB.GBTD
 				this.Size = new Size(83, 19);
 
 				this.RecreateItems();
+			}
+
+			protected override void OnInvalidated(InvalidateEventArgs e) {
+				if (!updating) {
+					int expectedSI;
+					switch (parent.colorSet) {
+					case ColorSet.GAMEBOY_COLOR:
+					case ColorSet.GAMEBOY_COLOR_FILTERED:
+						expectedSI = (int)parent.paletteMapping.GBCPalettes[parent.selectedTile];
+						break;
+					case ColorSet.SUPER_GAMEBOY:
+						expectedSI = (int)parent.paletteMapping.SGBPalettes[parent.selectedTile];
+						break;
+					default:
+						expectedSI = 0;
+						break;
+					}
+
+					if (this.SelectedIndex != expectedSI) {
+						this.RecreateItems();
+					}
+				}
+
+				base.OnInvalidated(e);
 			}
 
 			protected override void OnDrawItem(DrawItemEventArgs e) {
@@ -163,6 +190,8 @@ namespace GB.GBTD
 					}
 				}
 
+				parent.Invalidate(false);
+
 				base.OnSelectedIndexChanged(e);
 			}
 		}
@@ -177,6 +206,7 @@ namespace GB.GBTD
 			get { return selectedTile; }
 			set {
 				selectedTile = value;
+				paletteDropdown.RecreateItems();
 				this.Invalidate(true);
 			}
 		}
@@ -198,6 +228,7 @@ namespace GB.GBTD
 			get { return paletteMapping; }
 			set {
 				paletteMapping = value;
+				paletteDropdown.RecreateItems();
 				this.Invalidate(true);
 			}
 		}
@@ -290,7 +321,9 @@ namespace GB.GBTD
 				DrawMouseButtonDisplay(e, "L", leftColor, 2, 2);
 				DrawMouseButtonDisplay(e, "R", rightColor, 39, 2);
 			}
-			
+
+			paletteDropdown.Invalidate(true);
+
 			base.OnPaint(e);
 		}
 
