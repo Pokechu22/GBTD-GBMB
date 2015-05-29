@@ -773,5 +773,96 @@ namespace GB.GBTD
 				this.ColorSet = (ColorSet)item.Tag;
 			}
 		}
+
+		private void toolList_ScrollUpClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.ScrolledUp(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			//TODO: Event that automatically updates this in the gbrfile.  
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void toolList_ScrollLeftClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.ScrolledLeft(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void toolList_ScrollRightClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.ScrolledRight(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void toolList_ScrollDownClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.ScrolledDown(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void toolList_FlipVerticallyClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.FlippedVertically(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void toolList_FlipHorizontallyClicked(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			var tile = TileTransform.FlippedHoriziontally(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
 	}
 }

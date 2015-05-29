@@ -861,6 +861,12 @@
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 17;
 			this.toolList.SelectedToolChanged += new System.EventHandler(this.toolList_SelectedToolChanged);
+			this.toolList.ScrollUpClicked += new System.EventHandler(this.toolList_ScrollUpClicked);
+			this.toolList.ScrollDownClicked += new System.EventHandler(this.toolList_ScrollDownClicked);
+			this.toolList.ScrollLeftClicked += new System.EventHandler(this.toolList_ScrollLeftClicked);
+			this.toolList.ScrollRightClicked += new System.EventHandler(this.toolList_ScrollRightClicked);
+			this.toolList.FlipVerticallyClicked += new System.EventHandler(this.toolList_FlipVerticallyClicked);
+			this.toolList.FlipHorizontallyClicked += new System.EventHandler(this.toolList_FlipHorizontallyClicked);
 			this.toolList.AutoUpdateChanged += new System.EventHandler(this.toolList_AutoUpdateChanged);
 			// 
 			// tileList
