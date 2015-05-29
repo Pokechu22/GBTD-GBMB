@@ -728,5 +728,13 @@ namespace GB.GBTD
 				}
 			}
 		}
+
+		private void colorSelector_MouseColorChanged(object sender, EventArgs e) {
+			this.LeftColor = colorSelector.LeftColor;
+			this.RightColor = colorSelector.RightColor;
+			this.MiddleColor = colorSelector.MiddleColor;
+			this.X1Color = colorSelector.X1Color;
+			this.X2Color = colorSelector.X2Color;
+		}
 	}
 }

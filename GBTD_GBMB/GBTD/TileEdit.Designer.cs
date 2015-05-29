@@ -828,6 +828,7 @@
 			this.colorSelector.Size = new System.Drawing.Size(191, 26);
 			this.colorSelector.TabIndex = 21;
 			this.colorSelector.Text = "colorSelector1";
+			this.colorSelector.MouseColorChanged += new System.EventHandler(this.colorSelector_MouseColorChanged);
 			this.colorSelector.PaletteChanged += new System.EventHandler(this.colorSelector_PaletteChanged);
 			// 
 			// previewRenderer

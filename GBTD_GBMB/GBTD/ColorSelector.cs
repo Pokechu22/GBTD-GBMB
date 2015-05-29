@@ -204,6 +204,9 @@ namespace GB.GBTD
 			private readonly GBColor ID;
 
 			internal PaletteButton(ColorSelector parent, GBColor ID) {
+				DoubleBuffered = true;
+				SetStyle(ControlStyles.ResizeRedraw, true);
+
 				this.parent = parent;
 				this.ID = ID;
 			}
@@ -258,6 +261,26 @@ namespace GB.GBTD
 
 				base.OnPaint(e);
 			}
+
+			protected override void OnMouseDown(MouseEventArgs e) {
+				if (e.Button.HasFlag(MouseButtons.Left)) {
+					parent.LeftColor = this.ID;
+				}
+				if (e.Button.HasFlag(MouseButtons.Right)) {
+					parent.RightColor = this.ID;
+				}
+				if (e.Button.HasFlag(MouseButtons.Middle)) {
+					parent.MiddleColor = this.ID;
+				}
+				if (e.Button.HasFlag(MouseButtons.XButton1)) {
+					parent.X1Color = this.ID;
+				}
+				if (e.Button.HasFlag(MouseButtons.XButton2)) {
+					parent.X2Color = this.ID;
+				}
+
+				base.OnMouseClick(e);
+			}
 		}
 
 		private UInt16 selectedTile;
@@ -305,6 +328,7 @@ namespace GB.GBTD
 			set {
 				if (value != leftColor) {
 					leftColor = value;
+					this.Invalidate(true);
 					if (MouseColorChanged != null) { MouseColorChanged(this, new EventArgs()); }
 				}
 			}
@@ -315,6 +339,7 @@ namespace GB.GBTD
 			set {
 				if (value != rightColor) {
 					rightColor = value;
+					this.Invalidate(true);
 					if (MouseColorChanged != null) { MouseColorChanged(this, new EventArgs()); }
 				}
 			}
@@ -325,6 +350,7 @@ namespace GB.GBTD
 			set {
 				if (value != middleColor) {
 					middleColor = value;
+					this.Invalidate(true);
 					if (MouseColorChanged != null) { MouseColorChanged(this, new EventArgs()); }
 				}
 			}
@@ -335,6 +361,7 @@ namespace GB.GBTD
 			set {
 				if (value != x1Color) {
 					x1Color = value;
+					this.Invalidate(true);
 					if (MouseColorChanged != null) { MouseColorChanged(this, new EventArgs()); }
 				}
 			}
@@ -345,6 +372,7 @@ namespace GB.GBTD
 			set {
 				if (value != x2Color) {
 					x2Color = value;
+					this.Invalidate(true);
 					if (MouseColorChanged != null) { MouseColorChanged(this, new EventArgs()); }
 				}
 			}
