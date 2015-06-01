@@ -980,7 +980,32 @@ namespace GB.GBTD
 		}
 
 		private void flipColorsMenuItem_Click(object sender, EventArgs e) {
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
+			Tile oldTile = tileset.Tiles[SelectedTile];
+			Tile tile = new Tile(oldTile.Width, oldTile.Height);
+			for (int y = 0; y < tile.Height; y++) {
+				for (int x = 0; x < tile.Width; x++) {
+					GBColor oldColor = oldTile[x, y];
+					if (oldColor == LeftColor) {
+						tile[x, y] = RightColor;
+					} else if (oldColor == RightColor) {
+						tile[x, y] = LeftColor;
+					} else {
+						tile[x, y] = oldColor;
+					}
+				}
+			}
+
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
 		}
 	}
 }
