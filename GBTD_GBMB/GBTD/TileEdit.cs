@@ -301,7 +301,8 @@ namespace GB.GBTD
 		}
 
 		private void OnClipboardUpdate() {
-			//TODO
+			pasteMenuItem.Enabled = Clipboard.ContainsImage();
+			pasteButton.Enabled = Clipboard.ContainsImage();
 		}
 
 		protected override void WndProc(ref Message m) {
@@ -881,6 +882,76 @@ namespace GB.GBTD
 			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 			var tile = TileTransform.RotateClockwise(tileset.Tiles[SelectedTile]);
+			tileset.Tiles[SelectedTile] = tile;
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void cutButton_Click(object sender, EventArgs e) {
+			var tileset = gbrFile.GetObjectOfType<GBRObjectTileData>();
+			Tile tile = tileset.Tiles[SelectedTile];
+
+			Clipboard.SetImage(tile.ToImage());
+
+			//Clear the old tile.
+			tileset.Tiles[SelectedTile] = new Tile(tile.Width, tile.Height);
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles[SelectedTile] = tile;
+			}
+		}
+
+		private void copyButton_Click(object sender, EventArgs e) {
+			var tileset = gbrFile.GetObjectOfType<GBRObjectTileData>();
+			Tile tile = tileset.Tiles[SelectedTile];
+
+			Clipboard.SetImage(tile.ToImage());
+		}
+
+		private void pasteButton_Click(object sender, EventArgs e) {
+			if (!Clipboard.ContainsImage()) {
+				throw new WarningException("Clipboard must contain an image to paste a tile!");
+			}
+
+			Color white = Color.FromArgb(255, 255, 255);
+			Color lightGray = Color.FromArgb(192, 192, 192);
+			Color darkGray = Color.FromArgb(128, 128, 128);
+			Color black = Color.FromArgb(0, 0, 0);
+
+			var tileset = gbrFile.GetObjectOfType<GBRObjectTileData>();
+
+			Tile tile = tileset.Tiles[SelectedTile];
+
+			using (Bitmap bitmap = new Bitmap(Clipboard.GetImage())) {
+				for (int y = 0; y < bitmap.Height && y < tile.Height; y++) {
+					for (int x = 0; x < bitmap.Width && x < tile.Width; x++) {
+						Color pixel = bitmap.GetPixel(x, y);
+						if (pixel == white) {
+							tile[x, y] = GBColor.WHITE;
+						} else if (pixel == lightGray) {
+							tile[x, y] = GBColor.LIGHT_GRAY;
+						} else if (pixel == darkGray) {
+							tile[x, y] = GBColor.DARK_GRAY;
+						} else if (pixel == black) {
+							tile[x, y] = GBColor.BLACK;
+						} else {
+							//By default, use white.
+							tile[x, y] = GBColor.WHITE;
+						}
+					}
+				}
+			}
+
 			tileset.Tiles[SelectedTile] = tile;
 
 			mainTileEdit.Invalidate(true);

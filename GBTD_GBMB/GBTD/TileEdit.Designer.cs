@@ -292,18 +292,21 @@
 			this.cutMenuItem.Index = 2;
 			this.cutMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
 			this.cutMenuItem.Text = "Cu&t tile";
+			this.cutMenuItem.Click += new System.EventHandler(this.cutButton_Click);
 			// 
 			// copyMenuItem
 			// 
 			this.copyMenuItem.Index = 3;
 			this.copyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
 			this.copyMenuItem.Text = "&Copy tile";
+			this.copyMenuItem.Click += new System.EventHandler(this.copyButton_Click);
 			// 
 			// pasteMenuItem
 			// 
 			this.pasteMenuItem.Index = 4;
 			this.pasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
 			this.pasteMenuItem.Text = "&Paste tile";
+			this.pasteMenuItem.Click += new System.EventHandler(this.pasteButton_Click);
 			// 
 			// splitCopyMenuItem
 			// 
@@ -717,6 +720,7 @@
 			this.pasteButton.Size = new System.Drawing.Size(24, 24);
 			this.pasteButton.TabIndex = 14;
 			this.toolTip.SetToolTip(this.pasteButton, "Paste");
+			this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
 			// 
 			// copyButton
 			// 
@@ -727,6 +731,7 @@
 			this.copyButton.Size = new System.Drawing.Size(24, 24);
 			this.copyButton.TabIndex = 13;
 			this.toolTip.SetToolTip(this.copyButton, "Copy");
+			this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
 			// 
 			// cutButton
 			// 
@@ -737,6 +742,7 @@
 			this.cutButton.Size = new System.Drawing.Size(24, 24);
 			this.cutButton.TabIndex = 12;
 			this.toolTip.SetToolTip(this.cutButton, "Cut");
+			this.cutButton.Click += new System.EventHandler(this.cutButton_Click);
 			// 
 			// exportButton
 			// 
@@ -857,6 +863,7 @@
 			this.toolList.AutoUpdate = false;
 			this.toolList.Location = new System.Drawing.Point(4, 38);
 			this.toolList.Name = "toolList";
+			this.toolList.RotateEnabled = true;
 			this.toolList.SelectedTool = GB.GBTD.TileEditorID.PixelEdit;
 			this.toolList.Size = new System.Drawing.Size(26, 217);
 			this.toolList.TabIndex = 17;

@@ -87,8 +87,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tiles\Tile.cs" />
-    <Compile Include="Tiles\TileData.cs" />
-    <Compile Include="Tiles\TileDataList.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\GroupBox.resx">
