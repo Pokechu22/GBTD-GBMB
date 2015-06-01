@@ -13,6 +13,7 @@ using GB.GBTD.Dialogs;
 using GB.Shared.GBRFile;
 using System.IO;
 using GB.Shared.AutoUpdate;
+using System.Runtime.InteropServices;
 
 namespace GB.GBTD
 {
@@ -303,8 +304,13 @@ namespace GB.GBTD
 			//TODO
 		}
 
+		// See http://msdn.microsoft.com/en-us/library/ms632599%28VS.85%29.aspx#message_only
+		[DllImport("user32.dll", SetLastError = true)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		public static extern bool AddClipboardFormatListener(IntPtr hwnd);
+
 		private void initClipboardChangeCheck() {
-			NativeMethods.AddClipboardFormatListener(Handle);
+			AddClipboardFormatListener(Handle);
 			OnClipboardUpdate();
 		}
 
@@ -314,7 +320,9 @@ namespace GB.GBTD
 		}
 
 		protected override void WndProc(ref Message m) {
-			if (m.Msg == NativeMethods.WM_CLIPBOARDUPDATE) {
+			const int WM_CLIPBOARDUPDATE = 0x031D;
+
+			if (m.Msg == WM_CLIPBOARDUPDATE) {
 				OnClipboardUpdate();
 			}
 
