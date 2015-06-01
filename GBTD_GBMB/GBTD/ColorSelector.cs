@@ -423,6 +423,7 @@ namespace GB.GBTD
 			this.spinner.Size = new Size(16, 21);
 			this.spinner.Up += new EventHandler(spinner_Up);
 			this.spinner.Down += new EventHandler(spinner_Down);
+			this.spinner.Paint += new PaintEventHandler(spinner_Paint);
 
 			this.Controls.Add(spinner);
 
@@ -496,6 +497,8 @@ namespace GB.GBTD
 		public event EventHandler PaletteChanged;
 
 		protected override void OnPaint(PaintEventArgs e) {
+			base.OnPaint(e);
+
 			e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
 			e.Graphics.SmoothingMode = SmoothingMode.None;
 			e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
@@ -513,11 +516,15 @@ namespace GB.GBTD
 
 				DrawMouseButtonDisplay(e, "L", leftColor, 2, 2);
 				DrawMouseButtonDisplay(e, "R", rightColor, 39, 2);
+
+				e.Graphics.DrawLine(SystemPens.ControlLightLight, spinner.Left + 1, spinner.Bottom, spinner.Right, spinner.Bottom);
 			}
 
 			paletteDropdown.Invalidate(true);
+		}
 
-			base.OnPaint(e);
+		void spinner_Paint(object sender, PaintEventArgs e) {
+			e.Graphics.DrawLine(SystemPens.ControlDark, 0, 0, 0, spinner.Height - 1);
 		}
 
 		private void DrawMouseButtonDisplay(PaintEventArgs e, String text, GBColor color, int x, int y) {

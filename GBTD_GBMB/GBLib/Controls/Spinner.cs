@@ -202,6 +202,8 @@ namespace GB.Shared.Controls
 
 			e.Graphics.DrawImage(SpinnerButtonRenderer.Render(upperButtonState, ScrollButton.Up, upperButtonBounds.Size), upperButtonBounds);
 			e.Graphics.DrawImage(SpinnerButtonRenderer.Render(lowerButtonState, ScrollButton.Down, lowerButtonBounds.Size), lowerButtonBounds);
+
+			base.OnPaint(e);
 		}
 
 		private void timer_Tick(object sender, EventArgs e) {
