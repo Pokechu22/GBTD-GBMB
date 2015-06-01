@@ -376,8 +376,6 @@ namespace GB.GBTD
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
-
-				this.UpdateSize();
 			}));
 		}
 
@@ -437,6 +435,9 @@ namespace GB.GBTD
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
+
+				this.setDisplayedTileSize(tileData.Width, tileData.Height);
+				this.UpdateSize();
 			}));
 		}
 
@@ -464,14 +465,15 @@ namespace GB.GBTD
 				paletteMapping.GBCPalettes = gbcPal;
 				paletteMapping.SGBPalettes = sgbPal;
 
-				this.UpdateSize();
-
 				this.tileList.Invalidate(true);
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
 
 				tileData.SetColorMapping(mmf.GBPalettes.GBColor0, mmf.GBPalettes.GBColor1, mmf.GBPalettes.GBColor2, mmf.GBPalettes.GBColor3);
+
+				this.setDisplayedTileSize(tileData.Width, tileData.Height);
+				this.UpdateSize();
 
 				//TODO load the palettedata from MMF
 			}));
