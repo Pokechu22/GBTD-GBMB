@@ -612,6 +612,8 @@ namespace GB.GBTD
 
 				mainTileEdit.Size = new Size(193, 193);
 
+				colorSelector.Location = new Point(34, 234);
+
 				tileList.Height = 222;
 				tileList.Top = 38;
 			} else if (Width == 8 && Height == 16) {
@@ -632,6 +634,8 @@ namespace GB.GBTD
 				}
 
 				mainTileEdit.Size = new Size(193, 385);
+
+				colorSelector.Location = new Point(34, 426);
 
 				tileList.Height = 397;
 				tileList.Top = 46;
@@ -654,6 +658,8 @@ namespace GB.GBTD
 
 				mainTileEdit.Size = new Size(225, 225);
 
+				colorSelector.Location = new Point(50, 266);
+
 				tileList.Height = 232;
 				tileList.Top = 49;
 			} else if (Width == 32 && Height == 32) {
@@ -674,6 +680,8 @@ namespace GB.GBTD
 				}
 
 				mainTileEdit.Size = new Size(257, 257);
+
+				colorSelector.Location = new Point(66, 298);
 
 				tileList.Height = 261;
 				tileList.Top = 50;
