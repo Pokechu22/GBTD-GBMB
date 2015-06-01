@@ -430,6 +430,18 @@ namespace GB.Shared.AutoUpdate
 				Stream stream = file.stream;
 				stream.Position = GBPAL_INDEX;
 
+				byte[] oldValues = stream.ReadBytesEx(4);
+
+				if (color0 == oldValues[0] &&
+					color1 == oldValues[1] &&
+					color2 == oldValues[2] &&
+					color3 == oldValues[3]) {
+
+					return;
+				}
+
+				stream.Position = GBPAL_INDEX;
+
 				stream.WriteByteEx(color0);
 				stream.WriteByteEx(color1);
 				stream.WriteByteEx(color2);
