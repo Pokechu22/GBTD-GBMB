@@ -124,6 +124,40 @@ namespace GB.Shared.AutoUpdate
 			}
 
 			/// <summary>
+			/// Sets the tiles array to the specific value.
+			/// </summary>
+			public void SetTilesArray(Tile[] tiles) {
+				if (file.TileWidth != this.TileWidth || file.TileHeight != this.TileHeight) {
+					this.TileWidth = (int)file.TileWidth;
+					this.TileHeight = (int)file.TileHeight;
+				}
+
+				if (tiles.Length != file.TileCount) {
+					throw new ArgumentException("Tiles array must be the same length as MMF!", "tiles");
+				}
+
+				var stream = file.stream;
+
+				stream.Position = TILES_INDEX;
+
+				for (int tileNum = 0; tileNum < tiles.Length; tileNum++) {
+					Tile tile = tiles[tileNum];
+
+					if (tile.Width != TileWidth || tile.Height != TileHeight) {
+						throw new Exception("Tile " + tileNum + " has an invalid size!");
+					}
+
+					for (int y = 0; y < TileHeight; y++) {
+						for (int x = 0; x < TileWidth; x++) {
+							stream.WriteByteEx(GBColorToByte(tile[x, y]));
+						}
+					}
+				}
+
+				file.messenger.SendTileListRefreshMessage();
+			}
+
+			/// <summary>
 			/// Set all of the tiles to the new size.
 			/// 
 			/// Only call this when the app is resizing the tiles; if it was done by another app this is unneeded.

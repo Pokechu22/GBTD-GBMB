@@ -408,12 +408,14 @@
 			// 
 			this.clearTilesMenuItem.Index = 12;
 			this.clearTilesMenuItem.Text = "&Clear tiles";
+			this.clearTilesMenuItem.Click += new System.EventHandler(this.clearTilesMenuItem_Click);
 			// 
 			// flipColorsMenuItem
 			// 
 			this.flipColorsMenuItem.Index = 13;
 			this.flipColorsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlI;
 			this.flipColorsMenuItem.Text = "Fl&ip colors";
+			this.flipColorsMenuItem.Click += new System.EventHandler(this.flipColorsMenuItem_Click);
 			// 
 			// viewMenuItem
 			// 

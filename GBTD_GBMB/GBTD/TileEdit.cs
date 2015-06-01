@@ -962,5 +962,25 @@ namespace GB.GBTD
 				mmf.Tiles[SelectedTile] = tile;
 			}
 		}
+
+		private void clearTilesMenuItem_Click(object sender, EventArgs e) {
+			var tileset = gbrFile.GetObjectOfType<GBRObjectTileData>();
+
+			for (int i = 0; i < tileset.Count; i++) {
+				tileset.Tiles[i] = new Tile(tileset.Width, tileset.Height);
+			}
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles.SetTilesArray(tileset.Tiles);
+			}
+		}
+
+		private void flipColorsMenuItem_Click(object sender, EventArgs e) {
+
+		}
 	}
 }
