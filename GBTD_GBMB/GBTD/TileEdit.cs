@@ -178,15 +178,23 @@ namespace GB.GBTD
 				switch (value) {
 				case TileEditorID.NoEdit:
 					mainTileEdit.TileEditor = new NoEditTileEditor();
+					penMenuItem.Checked = false;
+					floodFillMenuItem.Checked = false;
 					break;
 				case TileEditorID.PixelEdit:
 					mainTileEdit.TileEditor = new PixelTileEditor();
+					penMenuItem.Checked = true;
+					floodFillMenuItem.Checked = false;
 					break;
 				case TileEditorID.FloodFill:
 					mainTileEdit.TileEditor = new FloodFillTileEditor();
+					penMenuItem.Checked = false;
+					floodFillMenuItem.Checked = true;
 					break;
 				default:
 					mainTileEdit.TileEditor = null;
+					penMenuItem.Checked = false;
+					floodFillMenuItem.Checked = false;
 					break;
 				}
 			}
@@ -1006,6 +1014,14 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+		}
+
+		private void penMenuItem_Click(object sender, EventArgs e) {
+			this.TileEditor = TileEditorID.PixelEdit;
+		}
+
+		private void floodFillMenuItem_Click(object sender, EventArgs e) {
+			this.TileEditor = TileEditorID.FloodFill;
 		}
 	}
 }

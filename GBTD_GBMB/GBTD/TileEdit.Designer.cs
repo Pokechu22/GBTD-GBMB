@@ -353,6 +353,7 @@
 			this.penMenuItem.RadioCheck = true;
 			this.penMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
 			this.penMenuItem.Text = "&Pen";
+			this.penMenuItem.Click += new System.EventHandler(this.penMenuItem_Click);
 			// 
 			// floodFillMenuItem
 			// 
@@ -360,6 +361,7 @@
 			this.floodFillMenuItem.RadioCheck = true;
 			this.floodFillMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
 			this.floodFillMenuItem.Text = "&Flood Fill";
+			this.floodFillMenuItem.Click += new System.EventHandler(this.floodFillMenuItem_Click);
 			// 
 			// flipVerticallyMenuItem
 			// 
