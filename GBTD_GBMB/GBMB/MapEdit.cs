@@ -258,6 +258,8 @@ namespace GB.GBMB
 			if (String.IsNullOrEmpty(mapFileName)) {
 				//If the file hasn't been saved before, save as does what we need in regards to chosing a file location.
 				saveAsMenuItem_Click(sender, e);
+
+				return;
 			}
 
 			UpdateProducerInfo();
@@ -286,6 +288,8 @@ namespace GB.GBMB
 			}
 
 			Properties.Settings.Default.GBMPath = Path.GetDirectoryName(d.FileName);
+
+			this.Text = "Gameboy Map Builder - " + Path.GetFileName(d.FileName);
 		}
 
 		/// <summary>
@@ -315,6 +319,7 @@ namespace GB.GBMB
 			Environment.CurrentDirectory = Path.GetDirectoryName(mapPath);
 			using (var stream = File.OpenRead(mapPath)) {
 				LoadMapFile(new GBMFile(stream));
+				this.Text = "Gameboy Map Builder - " + Path.GetFileName(mapPath);
 			}
 
 			RecentFileUtils.AddToRecentlyUsedFilesList(mapPath, Properties.Settings.Default);
