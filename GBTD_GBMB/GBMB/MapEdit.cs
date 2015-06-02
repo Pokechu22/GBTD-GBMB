@@ -421,7 +421,8 @@ namespace GB.GBMB
 				if (arg.StartsWith("-")) {
 					MessageBox.Show("This switch is not supported by this version.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-					Application.Exit();
+					Environment.Exit(1);
+					return;
 				}
 			}
 
