@@ -232,5 +232,17 @@ namespace GB.Shared.GBRFile
 				this.Objects.Add(reference.Header.UniqueID, GBRInitialization.ReadObject(reference.Header, this, stream));
 			}
 		}
+
+		public void SaveToStream(Stream s) {
+			if (!s.CanWrite) { throw new NotSupportedException("Cannot write to stream."); }
+			if (!s.CanSeek) { throw new NotSupportedException("Cannot seek stream."); }
+
+			s.Position = 0;
+			this.Header.SaveToStream(s);
+
+			foreach (GBRObject obj in this.Objects.Values) {
+				GBRInitialization.SaveObject(s, this, obj);
+			}
+		}
 	}
 }

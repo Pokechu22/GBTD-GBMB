@@ -117,6 +117,25 @@ namespace GB.Shared.GBRFile
 			return obj;
 		}
 
+		public static void SaveObject(Stream stream, GBRFile file, GBRObject obj) {
+			using (MemoryStream ms = new MemoryStream()) {
+				ms.Position = 0;
+
+				if (obj.loadedData != null) {
+					//Write data, but then allow overwriting.
+					ms.Write(obj.loadedData, 0, obj.loadedData.Length);
+					ms.Position = 0;
+				}
+				obj.SaveToStream(file, ms);
+
+				obj.Header.Size = (UInt32)ms.Length;
+				stream.WriteHeader(obj.Header);
+
+				ms.Position = 0;
+				ms.CopyTo(stream);
+			}
+		}
+
 		/// <summary>
 		/// Gets the next open UniqueID in the given file.
 		/// </summary>

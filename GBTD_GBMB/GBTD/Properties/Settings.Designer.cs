@@ -33,5 +33,17 @@ namespace GB.GBTD.Properties {
                 this["RecentlyUsedFiles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GBRPath {
+            get {
+                return ((string)(this["GBRPath"]));
+            }
+            set {
+                this["GBRPath"] = value;
+            }
+        }
     }
 }

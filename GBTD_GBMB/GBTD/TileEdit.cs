@@ -223,6 +223,7 @@ namespace GB.GBTD
 			using (Stream stream = File.OpenRead(path)) {
 				LoadTileFile(new GBRFile(stream));
 				RecentFileUtils.AddToRecentlyUsedFilesList(path, Properties.Settings.Default);
+				Properties.Settings.Default.GBRPath = Path.GetDirectoryName(filePath);
 				this.Text = "Gameboy Tile Designer - " + Path.GetFileName(path);
 			}
 		}
@@ -348,12 +349,39 @@ namespace GB.GBTD
 		}
 
 		private void saveButton_OnClicked(object sender, EventArgs e) {
-			
+			if (filePath == null) {
+				//If we didn't initially load the file, we save as instead.
+				saveAsButton_OnClicked(sender, e);
+			}
+
+			gbrFile.GetOrCreateObjectOfType<GBRObjectProducerInfo>().UpdateWithCurrentApp();
+
+			using (var stream = File.OpenWrite(filePath)) {
+				gbrFile.SaveToStream(stream);
+			}
 		}
 
 		private void saveAsButton_OnClicked(object sender, EventArgs e) {
-			//TODO: Set file name.
-			//this.Text = "Gameboy Tile Designer - " + Path.GetFileName(fileName);
+			gbrFile.GetOrCreateObjectOfType<GBRObjectProducerInfo>().UpdateWithCurrentApp();
+
+			DialogResult result;
+			SaveFileDialog d = new SaveFileDialog();
+			d.Filter = "GBR files|*.gbr|All files|*.*";
+
+			d.InitialDirectory = Properties.Settings.Default.GBRPath;
+
+			result = d.ShowDialog();
+			if (result != DialogResult.OK) { return; }
+
+			filePath = d.FileName;
+
+			using (var stream = d.OpenFile()) {
+				gbrFile.SaveToStream(stream);
+			}
+
+			Properties.Settings.Default.GBRPath = Path.GetDirectoryName(filePath);
+			this.Text = "Gameboy Tile Designer - " + Path.GetFileName(filePath);
+			Properties.Settings.Default.GBRPath = Path.GetDirectoryName(filePath);
 		}
 
 		private void exportButton_OnClicked(object sender, EventArgs e) {
