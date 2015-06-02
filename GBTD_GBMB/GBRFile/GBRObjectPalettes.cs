@@ -10,6 +10,10 @@ using GB.Shared.Tiles;
 
 namespace GB.Shared.GBRFile
 {
+	/// <remarks>
+	/// For a palette object written to the file, windows' 4-byte format is used.
+	/// However, ALPHA (the last byte) is always 0, even though that normally would be 100% transparent.
+	/// </remarks>
 	public class GBRObjectPalettes : ReferentialGBRObject<GBRObjectTileData>
 	{
 		public GBRObjectPalettes(UInt16 UniqueID) : base(UniqueID) {
@@ -35,7 +39,7 @@ namespace GB.Shared.GBRFile
 					s.WriteByte(GBCPalettes[i][x].R);
 					s.WriteByte(GBCPalettes[i][x].G);
 					s.WriteByte(GBCPalettes[i][x].B);
-					s.WriteByte(GBCPalettes[i][x].A);
+					s.WriteByte(0);
 				}
 			}
 			
@@ -45,7 +49,7 @@ namespace GB.Shared.GBRFile
 					s.WriteByte(SGBPalettes[i][x].R);
 					s.WriteByte(SGBPalettes[i][x].G);
 					s.WriteByte(SGBPalettes[i][x].B);
-					s.WriteByte(SGBPalettes[i][x].A);
+					s.WriteByte(0);
 				}
 			}
 		}
@@ -63,7 +67,7 @@ namespace GB.Shared.GBRFile
 						throw new EndOfStreamException();
 					}
 
-					GBCPalettes[i][x] = Color.FromArgb(255, bytes[0], bytes[1], bytes[2]);
+					GBCPalettes[i][x] = Color.FromArgb(bytes[0], bytes[1], bytes[2]);
 				}
 			}
 
@@ -77,7 +81,7 @@ namespace GB.Shared.GBRFile
 						throw new EndOfStreamException();
 					}
 
-					SGBPalettes[i][x] = Color.FromArgb(255, bytes[0], bytes[1], bytes[2]);
+					SGBPalettes[i][x] = Color.FromArgb(bytes[0], bytes[1], bytes[2]);
 				}
 			}
 		}
