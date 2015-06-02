@@ -415,9 +415,23 @@ namespace GB.GBMB
 			AddClipboardFormatListener(this.Handle);
 			pasteButton.Enabled = pasteMenuItem.Enabled = Clipboard.ContainsText();
 
-			if (gbmFile == null) {
+			String[] environmentArgs = Environment.GetCommandLineArgs();
+
+			foreach (string arg in environmentArgs) {
+				if (arg.StartsWith("-")) {
+					MessageBox.Show("This switch is not supported by this version.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+					Application.Exit();
+				}
+			}
+
+			if (environmentArgs.Length >= 2) {
+				LoadMapFile(environmentArgs[1]);
+			} else {
 				LoadMapFile(GBMFile.CreatePrePopulated());
 			}
+
+			base.OnLoad(e);
 		}
 
 		protected override void OnKeyDown(KeyEventArgs e) {

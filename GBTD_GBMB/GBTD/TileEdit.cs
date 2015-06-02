@@ -212,7 +212,21 @@ namespace GB.GBTD
 			//http://stackoverflow.com/a/28462365/3991344
 			this.Menu = this.mainMenu;
 
-			LoadTileFile(new GBRFile());
+			String[] environmentArgs = Environment.GetCommandLineArgs();
+
+			foreach (string arg in environmentArgs) {
+				if (arg.StartsWith("-")) {
+					MessageBox.Show("This switch is not supported by this version.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+					Application.Exit();
+				}
+			}
+
+			if (environmentArgs.Length >= 2) {
+				LoadTileFile(environmentArgs[1]);
+			} else {
+				LoadTileFile(new GBRFile());
+			}
 
 			base.OnLoad(e);
 		}
