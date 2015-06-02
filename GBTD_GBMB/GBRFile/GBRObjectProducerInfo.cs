@@ -13,9 +13,7 @@ namespace GB.Shared.GBRFile
 	public class GBRObjectProducerInfo : GBRObject
 	{
 		public GBRObjectProducerInfo(UInt16 UniqueID) : base(UniqueID) {
-			this.Name = "Gameboy Tile Designer";
-			this.Version = "2.2";
-			this.Info = "Home: www.casema.net/~hpmulder";
+			this.UpdateWithCurrentApp();
 		}
 
 		private string name, version, info;
@@ -51,13 +49,9 @@ namespace GB.Shared.GBRFile
 		public void UpdateWithCurrentApp() {
 			var splitVersion = Application.ProductVersion.Split('.');
 
-			//TODO: Use actual info.
-			this.Name = "Gameboy Tile Designer";
-			this.Version = "2.2";
-			this.Info = "Home: www.casema.net/~hpmulder";
-			//this.Name = "GBTB in C# v" + Application.ProductVersion + " by Pokechu22";
-			//this.Version = splitVersion[0] + "." + splitVersion[1];
-			//this.Info = "By Pokechu22; a remake of Harry Mulder's GBTB.  See http://github.com/pokechu22/GBTD_GBMB.";
+			this.Name = "GBTB in C# v" + Application.ProductVersion + " by Pokechu22";
+			this.Version = splitVersion[0] + "." + splitVersion[1];
+			this.Info = "By Pokechu22; a remake of Harry Mulder's GBTB.  See http://github.com/pokechu22/GBTD_GBMB.";
 		}
 
 		protected internal override void SaveToStream(GBRFile file, Stream s) {
