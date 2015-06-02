@@ -222,6 +222,7 @@ namespace GB.GBTD
 
 			using (Stream stream = File.OpenRead(path)) {
 				LoadTileFile(new GBRFile(stream));
+				RecentFileUtils.AddToRecentlyUsedFilesList(path, Properties.Settings.Default);
 			}
 		}
 
@@ -1030,6 +1031,27 @@ namespace GB.GBTD
 
 		private void floodFillMenuItem_Click(object sender, EventArgs e) {
 			this.TileEditor = TileEditorID.FloodFill;
+		}
+
+		private void fileMenuItem_Popup(object sender, EventArgs e) {
+			// Handle recently used list.
+			if (RecentFileUtils.IsRecentlyUsedFilesListEmpty(Properties.Settings.Default) ){
+				reopenMenuItem.Visible = false;
+				reopenSeperatorMenuItem.Visible = false;
+			} else {
+				reopenMenuItem.Visible = true;
+				reopenSeperatorMenuItem.Visible = true;
+
+				RecentFileUtils.AddRecentlyUsedFilesListItems(Properties.Settings.Default, reopenMenuItem, 
+					new EventHandler(reopenMenuItem_Click));
+			}
+		}
+
+		private void reopenMenuItem_Click(object sender, EventArgs e) {
+			MenuItem item = sender as MenuItem;
+			if (item != null) {
+				LoadTileFile(item.Text);
+			}
 		}
 	}
 }

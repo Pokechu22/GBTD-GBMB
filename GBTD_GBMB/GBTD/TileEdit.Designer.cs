@@ -26,9 +26,7 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.MenuItem menuItem6;
 			System.Windows.Forms.MenuItem seperatorMenuItem1;
-			System.Windows.Forms.MenuItem seperatorMenuItem2;
 			System.Windows.Forms.MenuItem seperatorMenuItem3;
 			System.Windows.Forms.MenuItem seperatorMenuItem4;
 			System.Windows.Forms.MenuItem seperatorMenuItem5;
@@ -37,6 +35,10 @@
 			System.Windows.Forms.MenuItem seperatorMenuItem9;
 			System.Windows.Forms.MenuItem seperatorMenuItem10;
 			System.Windows.Forms.MenuItem seperatorMenuItem13;
+			System.Windows.Forms.MenuItem seperatorMenuItem8;
+			System.Windows.Forms.MenuItem seperatorMenuItem11;
+			System.Windows.Forms.MenuItem seperatorMenuItem12;
+			this.reopenSeperatorMenuItem = new System.Windows.Forms.MenuItem();
 			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
 			this.fileMenuItem = new System.Windows.Forms.MenuItem();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
@@ -65,7 +67,6 @@
 			this.scrollRightMenuItem = new System.Windows.Forms.MenuItem();
 			this.scrollUpMenuItem = new System.Windows.Forms.MenuItem();
 			this.scrollDownMenuItem = new System.Windows.Forms.MenuItem();
-			this.seperatorMenuItem8 = new System.Windows.Forms.MenuItem();
 			this.clearTilesMenuItem = new System.Windows.Forms.MenuItem();
 			this.flipColorsMenuItem = new System.Windows.Forms.MenuItem();
 			this.viewMenuItem = new System.Windows.Forms.MenuItem();
@@ -79,7 +80,6 @@
 			this.gridMenuItem = new System.Windows.Forms.MenuItem();
 			this.nibbleMarkersMenuItem = new System.Windows.Forms.MenuItem();
 			this.autoUpdateMenuItem = new System.Windows.Forms.MenuItem();
-			this.seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
 			this.colorSetMenuItem = new System.Windows.Forms.MenuItem();
 			this.colorSetGameboyPocketMenuItem = new System.Windows.Forms.MenuItem();
 			this.colorSetGameboyMenuItem = new System.Windows.Forms.MenuItem();
@@ -87,7 +87,6 @@
 			this.colorSetGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			this.colorSetFilteredGameboyColorMenuItem = new System.Windows.Forms.MenuItem();
 			this.palettesMenuItem = new System.Windows.Forms.MenuItem();
-			this.seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.setBookmarkMenuItem = new System.Windows.Forms.MenuItem();
 			this.setBookmark1MenuItem = new System.Windows.Forms.MenuItem();
 			this.setBookmark2MenuItem = new System.Windows.Forms.MenuItem();
@@ -121,9 +120,7 @@
 			this.mainTileEdit = new GB.GBTD.MainTileEdit();
 			this.toolList = new GB.GBTD.ToolList();
 			this.tileList = new GB.GBTD.TileList();
-			menuItem6 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem1 = new System.Windows.Forms.MenuItem();
-			seperatorMenuItem2 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem3 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem4 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem5 = new System.Windows.Forms.MenuItem();
@@ -132,22 +129,20 @@
 			seperatorMenuItem9 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem10 = new System.Windows.Forms.MenuItem();
 			seperatorMenuItem13 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem8 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem11 = new System.Windows.Forms.MenuItem();
+			seperatorMenuItem12 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
-			// 
-			// menuItem6
-			// 
-			menuItem6.Index = 0;
-			menuItem6.Text = "Stuff should be here";
 			// 
 			// seperatorMenuItem1
 			// 
 			seperatorMenuItem1.Index = 3;
 			seperatorMenuItem1.Text = "-";
 			// 
-			// seperatorMenuItem2
+			// reopenSeperatorMenuItem
 			// 
-			seperatorMenuItem2.Index = 5;
-			seperatorMenuItem2.Text = "-";
+			this.reopenSeperatorMenuItem.Index = 5;
+			this.reopenSeperatorMenuItem.Text = "-";
 			// 
 			// seperatorMenuItem3
 			// 
@@ -207,13 +202,14 @@
             this.saveAsMenuItem,
             seperatorMenuItem1,
             this.reopenMenuItem,
-            seperatorMenuItem2,
+            this.reopenSeperatorMenuItem,
             this.exportMenuItem,
             this.exportToMenuItem,
             this.importFromMenuItem,
             seperatorMenuItem3,
             this.exitMenuItem});
 			this.fileMenuItem.Text = "&File";
+			this.fileMenuItem.Popup += new System.EventHandler(this.fileMenuItem_Popup);
 			// 
 			// openMenuItem
 			// 
@@ -238,8 +234,6 @@
 			// reopenMenuItem
 			// 
 			this.reopenMenuItem.Index = 4;
-			this.reopenMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            menuItem6});
 			this.reopenMenuItem.Text = "&Reopen";
 			// 
 			// exportMenuItem
@@ -341,7 +335,7 @@
             this.scrollRightMenuItem,
             this.scrollUpMenuItem,
             this.scrollDownMenuItem,
-            this.seperatorMenuItem8,
+            seperatorMenuItem8,
             this.clearTilesMenuItem,
             this.flipColorsMenuItem});
 			this.designMenuItem.Text = "&Design";
@@ -403,8 +397,8 @@
 			// 
 			// seperatorMenuItem8
 			// 
-			this.seperatorMenuItem8.Index = 11;
-			this.seperatorMenuItem8.Text = "-";
+			seperatorMenuItem8.Index = 11;
+			seperatorMenuItem8.Text = "-";
 			// 
 			// clearTilesMenuItem
 			// 
@@ -431,10 +425,10 @@
             this.nibbleMarkersMenuItem,
             seperatorMenuItem10,
             this.autoUpdateMenuItem,
-            this.seperatorMenuItem11,
+            seperatorMenuItem11,
             this.colorSetMenuItem,
             this.palettesMenuItem,
-            this.seperatorMenuItem12,
+            seperatorMenuItem12,
             this.setBookmarkMenuItem,
             this.gotoBookmarkMenuItem,
             this.clearBookmarkMenuItem});
@@ -515,8 +509,8 @@
 			// 
 			// seperatorMenuItem11
 			// 
-			this.seperatorMenuItem11.Index = 8;
-			this.seperatorMenuItem11.Text = "-";
+			seperatorMenuItem11.Index = 8;
+			seperatorMenuItem11.Text = "-";
 			// 
 			// colorSetMenuItem
 			// 
@@ -578,8 +572,8 @@
 			// 
 			// seperatorMenuItem12
 			// 
-			this.seperatorMenuItem12.Index = 11;
-			this.seperatorMenuItem12.Text = "-";
+			seperatorMenuItem12.Index = 11;
+			seperatorMenuItem12.Text = "-";
 			// 
 			// setBookmarkMenuItem
 			// 
@@ -954,7 +948,6 @@
 		private System.Windows.Forms.MenuItem scrollRightMenuItem;
 		private System.Windows.Forms.MenuItem scrollUpMenuItem;
 		private System.Windows.Forms.MenuItem scrollDownMenuItem;
-		private System.Windows.Forms.MenuItem seperatorMenuItem8;
 		private System.Windows.Forms.MenuItem clearTilesMenuItem;
 		private System.Windows.Forms.MenuItem flipColorsMenuItem;
 		private System.Windows.Forms.MenuItem tileSizeMenuItem;
@@ -967,10 +960,8 @@
 		private System.Windows.Forms.MenuItem gridMenuItem;
 		private System.Windows.Forms.MenuItem nibbleMarkersMenuItem;
 		private System.Windows.Forms.MenuItem autoUpdateMenuItem;
-		private System.Windows.Forms.MenuItem seperatorMenuItem11;
 		private System.Windows.Forms.MenuItem colorSetMenuItem;
 		private System.Windows.Forms.MenuItem palettesMenuItem;
-		private System.Windows.Forms.MenuItem seperatorMenuItem12;
 		private System.Windows.Forms.MenuItem setBookmarkMenuItem;
 		private System.Windows.Forms.MenuItem gotoBookmarkMenuItem;
 		private System.Windows.Forms.MenuItem helpTopicsMenuItem;
@@ -1008,6 +999,7 @@
 		private MainTileEdit mainTileEdit;
 		private PreviewRenderer previewRenderer;
 		private ColorSelector colorSelector;
+		private System.Windows.Forms.MenuItem reopenSeperatorMenuItem;
 
 	}
 }

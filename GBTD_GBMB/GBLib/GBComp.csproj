@@ -66,7 +66,6 @@
     <Compile Include="Controls\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="NativeMethods.cs" />
     <Compile Include="Palettes\ColorDropdown.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -79,6 +78,7 @@
     </Compile>
     <Compile Include="Palettes\ColorSet.cs" />
     <Compile Include="Palettes\PaletteObjects.cs" />
+    <Compile Include="RecentFileUtils.cs" />
     <Compile Include="Tiles\GBColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

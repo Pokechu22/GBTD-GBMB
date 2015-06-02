@@ -22,5 +22,16 @@ namespace GB.GBTD.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection RecentlyUsedFiles {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RecentlyUsedFiles"]));
+            }
+            set {
+                this["RecentlyUsedFiles"] = value;
+            }
+        }
     }
 }
