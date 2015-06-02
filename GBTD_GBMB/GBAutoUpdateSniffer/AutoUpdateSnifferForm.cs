@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using GB.Shared.AutoUpdate;
 using GB.Shared.Tiles;
 using GB.Shared.GBRFile;
+using System.IO;
 
 namespace GBAutoUpdateSniffer
 {
@@ -32,14 +33,33 @@ namespace GBAutoUpdateSniffer
 
 		private AUMemMappedFile mmf;
 
+		protected override void OnLoad(EventArgs e) {
+			String[] args = Environment.GetCommandLineArgs();
+
+			if (args.Length >= 2) {
+				LoadFile(args[1]);
+			}
+
+			base.OnLoad(e);
+		}
+
 		private void openButton_Click(object sender, EventArgs e) {
 			var result = openFileDialog.ShowDialog();
 			if (result != DialogResult.OK) {
 				return;
 			}
 
-			fileNameLabel.Text = openFileDialog.FileName;
-			auListener.FileName = openFileDialog.FileName;
+			LoadFile(openFileDialog.FileName);
+		}
+
+		private void LoadFile(String path) {
+			if (!File.Exists(path)) {
+				MessageBox.Show("File " + path + " does not exist!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			fileNameLabel.Text = path;
+			auListener.FileName = path;
 
 			auListener.Enabled = true;
 
@@ -48,11 +68,11 @@ namespace GBAutoUpdateSniffer
 			labelMessageHex.Text = auListener.AutoUpdateMessageID.ToString("X4");
 			labelMessageName.Text = auListener.AutoUpdateMessageName;
 
-			using (var stream = openFileDialog.OpenFile()) {
+			using (Stream stream = File.OpenRead(path)) {
 				if (mmf != null) {
 					mmf.Dispose();
 				}
-				this.mmf = new AUMemMappedFile(openFileDialog.FileName, this.auListener, new GBRFile(stream));
+				this.mmf = new AUMemMappedFile(path, this.auListener, new GBRFile(stream));
 			}
 
 			//While the "Enabled" property claims to be useless for TabPage, it *does* disable the inner controls, which is useful.

@@ -17,13 +17,32 @@ namespace GBRInfoSniffer
 			InitializeComponent();
 		}
 
+		protected override void OnLoad(EventArgs e) {
+			String[] args = Environment.GetCommandLineArgs();
+
+			if (args.Length >= 2) {
+				LoadFile(args[1]);
+			}
+
+			base.OnLoad(e);
+		}
+
 		private void openButton_Click(object sender, EventArgs e) {
 			var result = openFileDialog.ShowDialog();
 			if (result == System.Windows.Forms.DialogResult.OK) {
-				groupBox.Text = openFileDialog.FileName;
-				using (Stream stream = openFileDialog.OpenFile()) {
-					LoadTreeFromStream(stream);
-				}
+				LoadFile(openFileDialog.FileName);
+			}
+		}
+
+		public void LoadFile(String path) {
+			if (!File.Exists(path)) {
+				MessageBox.Show("File " + path + " not found!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			groupBox.Text = path;
+			using (Stream stream = File.OpenRead(path)) {
+				LoadTreeFromStream(stream);
 			}
 		}
 
