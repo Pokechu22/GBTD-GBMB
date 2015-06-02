@@ -56,6 +56,12 @@
     <Compile Include="ColorSelector.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dialogs\GBTDAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\GBTDAboutBox.Designer.cs">
+      <DependentUpon>GBTDAboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTileEdit.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <EmbeddedResource Include="Dialogs\ExportDialog.resx">
       <DependentUpon>ExportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\GBTDAboutBox.resx">
+      <DependentUpon>GBTDAboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ImportDialog.resx">
       <DependentUpon>ImportDialog.cs</DependentUpon>
@@ -267,6 +276,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TileListBookmarkIcon3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GBTD_Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

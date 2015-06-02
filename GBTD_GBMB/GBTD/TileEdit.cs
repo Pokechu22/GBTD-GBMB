@@ -1098,5 +1098,9 @@ namespace GB.GBTD
 				LoadTileFile(item.Text);
 			}
 		}
+
+		private void aboutMenuItem_Click(object sender, EventArgs e) {
+			new GBTDAboutBox().ShowDialog();
+		}
 	}
 }

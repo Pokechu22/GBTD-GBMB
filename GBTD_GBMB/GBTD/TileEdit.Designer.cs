@@ -698,6 +698,7 @@
 			// 
 			this.aboutMenuItem.Index = 3;
 			this.aboutMenuItem.Text = "&About...";
+			this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
 			// 
 			// helpButton
 			// 
