@@ -11,6 +11,7 @@ using GB.Shared.Controls;
 using GB.Shared.GBMFile;
 using GB.Shared.GBRFile;
 using GB.Shared.Palettes;
+using GB.Shared;
 
 namespace GB.GBMB
 {
@@ -316,7 +317,7 @@ namespace GB.GBMB
 				LoadMapFile(new GBMFile(stream));
 			}
 
-			AddToReopenList(mapPath);
+			RecentFileUtils.AddToRecentlyUsedFilesList(mapPath, Properties.Settings.Default);
 		}
 
 		/// <summary>
@@ -408,8 +409,6 @@ namespace GB.GBMB
 			
 			AddClipboardFormatListener(this.Handle);
 			pasteButton.Enabled = pasteMenuItem.Enabled = Clipboard.ContainsText();
-
-			LoadReopenList();
 
 			if (gbmFile == null) {
 				LoadMapFile(GBMFile.CreatePrePopulated());
@@ -1076,35 +1075,6 @@ namespace GB.GBMB
 			dialog.ShowDialog();
 		}
 
-		private void LoadReopenList() {
-			if (Properties.Settings.Default.RecentlyUsedFiles == null) {
-				Properties.Settings.Default.RecentlyUsedFiles = new System.Collections.Specialized.StringCollection();
-			}
-
-			reopenMenuItem.MenuItems.Clear();
-			if (Properties.Settings.Default.RecentlyUsedFiles.Count > 0) {
-				reopenMenuItem.Enabled = reopenMenuItem.Visible = true;
-				reopenSeperatorMenuItem.Enabled = reopenSeperatorMenuItem.Visible = true;
-
-				foreach (String fileName in Properties.Settings.Default.RecentlyUsedFiles) {
-					reopenMenuItem.MenuItems.Add(new MenuItem(fileName, new EventHandler(anyReopenMenuItem_Click)));
-				}
-			} else {
-				reopenMenuItem.Enabled = reopenMenuItem.Visible = false;
-				reopenSeperatorMenuItem.Enabled = reopenSeperatorMenuItem.Visible = false;
-			}
-		}
-
-		private void AddToReopenList(String gbmFile) {
-			//TODO cap the length.
-
-			//If the item is already present, remove it (so that we don't get a duplicate item).  Then, add it to the start.
-			Properties.Settings.Default.RecentlyUsedFiles.Remove(gbmFile.ToLowerInvariant());
-			Properties.Settings.Default.RecentlyUsedFiles.Insert(0, gbmFile.ToLowerInvariant());
-
-			LoadReopenList();
-		}
-
 		void anyReopenMenuItem_Click(object sender, EventArgs e) {
 			MenuItem item = sender as MenuItem;
 			if (item != null) {
@@ -1214,6 +1184,21 @@ namespace GB.GBMB
 
 		private void tileList_Click(object sender, EventArgs e) {
 			this.OnResize(e);
+		}
+
+		private void fileMenuItem_Popup(object sender, EventArgs e) {
+			menuItemWithGBRCheckingSubitems_Popup(sender, e);
+
+			if (RecentFileUtils.IsRecentlyUsedFilesListEmpty(Properties.Settings.Default)) {
+				reopenMenuItem.Visible = false;
+				reopenSeperatorMenuItem.Visible = false;
+			} else {
+				reopenMenuItem.Visible = true;
+				reopenSeperatorMenuItem.Visible = true;
+
+				RecentFileUtils.AddRecentlyUsedFilesListItems(Properties.Settings.Default, reopenMenuItem,
+					new EventHandler(anyReopenMenuItem_Click));
+			}
 		}
 	}
 }

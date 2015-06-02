@@ -294,7 +294,7 @@
             seperatorMenuItem4,
             this.exitMenuItem});
 			this.fileMenuItem.Text = "&File";
-			this.fileMenuItem.Popup += new System.EventHandler(this.menuItemWithGBRCheckingSubitems_Popup);
+			this.fileMenuItem.Popup += new System.EventHandler(this.fileMenuItem_Popup);
 			// 
 			// openMenuItem
 			// 
@@ -975,6 +975,7 @@
 			this.infoPanelColorDropDown.ItemHeight = 13;
 			this.infoPanelColorDropDown.Items.AddRange(new object[] {
             "Default",
+            "Default",
             "Default"});
 			this.infoPanelColorDropDown.Location = new System.Drawing.Point(73, 211);
 			this.infoPanelColorDropDown.MaxDropDownItems = 9;
@@ -1115,7 +1116,7 @@
 			this.tileList.PaletteData = null;
 			this.tileList.PaletteMapping = null;
 			this.tileList.SelectedTile = ((ushort)(0));
-			this.tileList.Size = new System.Drawing.Size(72, 199);
+			this.tileList.Size = new System.Drawing.Size(56, 188);
 			this.tileList.TabIndex = 17;
 			this.tileList.TileSet = null;
 			this.tileList.SelectedTileChanged += new System.EventHandler(this.tileList_SelectedTileChanged);
