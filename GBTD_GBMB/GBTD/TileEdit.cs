@@ -223,6 +223,7 @@ namespace GB.GBTD
 			using (Stream stream = File.OpenRead(path)) {
 				LoadTileFile(new GBRFile(stream));
 				RecentFileUtils.AddToRecentlyUsedFilesList(path, Properties.Settings.Default);
+				this.Text = "Gameboy Tile Designer - " + Path.GetFileName(path);
 			}
 		}
 
@@ -347,11 +348,12 @@ namespace GB.GBTD
 		}
 
 		private void saveButton_OnClicked(object sender, EventArgs e) {
-
+			
 		}
 
 		private void saveAsButton_OnClicked(object sender, EventArgs e) {
-
+			//TODO: Set file name.
+			//this.Text = "Gameboy Tile Designer - " + Path.GetFileName(fileName);
 		}
 
 		private void exportButton_OnClicked(object sender, EventArgs e) {

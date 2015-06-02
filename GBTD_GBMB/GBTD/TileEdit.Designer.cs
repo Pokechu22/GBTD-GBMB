@@ -139,11 +139,6 @@
 			seperatorMenuItem1.Index = 3;
 			seperatorMenuItem1.Text = "-";
 			// 
-			// reopenSeperatorMenuItem
-			// 
-			this.reopenSeperatorMenuItem.Index = 5;
-			this.reopenSeperatorMenuItem.Text = "-";
-			// 
 			// seperatorMenuItem3
 			// 
 			seperatorMenuItem3.Index = 9;
@@ -183,6 +178,26 @@
 			// 
 			seperatorMenuItem13.Index = 2;
 			seperatorMenuItem13.Text = "-";
+			// 
+			// seperatorMenuItem8
+			// 
+			seperatorMenuItem8.Index = 11;
+			seperatorMenuItem8.Text = "-";
+			// 
+			// seperatorMenuItem11
+			// 
+			seperatorMenuItem11.Index = 8;
+			seperatorMenuItem11.Text = "-";
+			// 
+			// seperatorMenuItem12
+			// 
+			seperatorMenuItem12.Index = 11;
+			seperatorMenuItem12.Text = "-";
+			// 
+			// reopenSeperatorMenuItem
+			// 
+			this.reopenSeperatorMenuItem.Index = 5;
+			this.reopenSeperatorMenuItem.Text = "-";
 			// 
 			// mainMenu
 			// 
@@ -395,11 +410,6 @@
 			this.scrollDownMenuItem.Index = 10;
 			this.scrollDownMenuItem.Text = "Scroll &Down";
 			// 
-			// seperatorMenuItem8
-			// 
-			seperatorMenuItem8.Index = 11;
-			seperatorMenuItem8.Text = "-";
-			// 
 			// clearTilesMenuItem
 			// 
 			this.clearTilesMenuItem.Index = 12;
@@ -507,11 +517,6 @@
 			this.autoUpdateMenuItem.Text = "Auto &update";
 			this.autoUpdateMenuItem.Click += new System.EventHandler(this.autoUpdateMenuItem_Click);
 			// 
-			// seperatorMenuItem11
-			// 
-			seperatorMenuItem11.Index = 8;
-			seperatorMenuItem11.Text = "-";
-			// 
 			// colorSetMenuItem
 			// 
 			this.colorSetMenuItem.Index = 9;
@@ -569,11 +574,6 @@
 			this.palettesMenuItem.Index = 10;
 			this.palettesMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
 			this.palettesMenuItem.Text = "P&alettes...";
-			// 
-			// seperatorMenuItem12
-			// 
-			seperatorMenuItem12.Index = 11;
-			seperatorMenuItem12.Text = "-";
 			// 
 			// setBookmarkMenuItem
 			// 
@@ -911,7 +911,7 @@
 			this.Icon = global::GB.GBTD.Properties.Resources.GBTDIcon;
 			this.MaximizeBox = false;
 			this.Name = "TileEdit";
-			this.Text = " ";
+			this.Text = "Gameboy Tile Designer";
 			this.ResumeLayout(false);
 
 		}
