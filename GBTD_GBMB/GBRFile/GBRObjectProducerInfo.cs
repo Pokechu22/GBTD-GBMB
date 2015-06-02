@@ -45,6 +45,21 @@ namespace GB.Shared.GBRFile
 			set { if (value == null) { throw new ArgumentNullException("value"); } info = value; }
 		}
 
+		/// <summary>
+		/// Writes the current app information to this object's data.
+		/// </summary>
+		public void UpdateWithCurrentApp() {
+			var splitVersion = Application.ProductVersion.Split('.');
+
+			//TODO: Use actual info.
+			this.Name = "Gameboy Tile Designer";
+			this.Version = "2.2";
+			this.Info = "Home: www.casema.net/~hpmulder";
+			//this.Name = "GBTB in C# v" + Application.ProductVersion + " by Pokechu22";
+			//this.Version = splitVersion[0] + "." + splitVersion[1];
+			//this.Info = "By Pokechu22; a remake of Harry Mulder's GBTB.  See http://github.com/pokechu22/GBTD_GBMB.";
+		}
+
 		protected internal override void SaveToStream(GBRFile file, Stream s) {
 			s.WriteString(name, 30);
 			s.WriteString(version, 10);

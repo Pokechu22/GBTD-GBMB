@@ -21,8 +21,6 @@ namespace GB.Shared.GBRFile
 		/// </summary>
 		internal byte[] extraData;
 
-		private static Dictionary<UInt16, Type> mapping = new Dictionary<UInt16, Type>();
-
 		/// <summary>
 		/// The Header of this object.
 		/// </summary>
@@ -72,28 +70,6 @@ namespace GB.Shared.GBRFile
 			}
 
 			return node;
-		}
-
-		public static void RegisterExportable(UInt16 ID, Type type) {
-			if (mapping.ContainsKey(ID)) {
-				throw new InvalidOperationException("Already registered mapping for ID " + ID);
-			}
-			if (type == null) {
-				throw new ArgumentNullException("type");
-			}
-			
-			mapping.Add(ID, type);
-		}
-
-		static GBRObject() {
-			RegisterExportable(0xFF, typeof(GBRObjectDeleted));
-			RegisterExportable(0x01, typeof(GBRObjectProducerInfo));
-			RegisterExportable(0x02, typeof(GBRObjectTileData));
-			RegisterExportable(0x03, typeof(GBRObjectTileSettings));
-			RegisterExportable(0x04, typeof(GBRObjectTileExport));
-			RegisterExportable(0x05, typeof(GBRObjectTileImport));
-			RegisterExportable(0x0D, typeof(GBRObjectPalettes));
-			RegisterExportable(0x0E, typeof(GBRObjectTilePalette));
 		}
 	}
 
