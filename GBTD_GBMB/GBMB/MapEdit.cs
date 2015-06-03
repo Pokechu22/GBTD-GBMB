@@ -47,6 +47,8 @@ namespace GB.GBMB
 				this.OnResize(new EventArgs());
 
 				this.ResumeLayout(true);
+
+				FileModified = true;
 			}
 		}
 		[Description("Whether or not a grid is displayed.")]
@@ -56,6 +58,8 @@ namespace GB.GBMB
 				gridMenuItem.Checked = value;
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowGrid = value;
 				mapControl.ShowGrid = value;
+
+				FileModified = true;
 			}
 		}
 		[Description("Whether or not double markers are displayed.")]
@@ -65,6 +69,8 @@ namespace GB.GBMB
 				doubleMarkersMenuItem.Checked = value;
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowDoubleMarkers = value;
 				mapControl.ShowDoubleMarkers = value;
+
+				FileModified = true;
 			}
 		}
 		[Description("Whether or not properties are colorized.")]
@@ -74,6 +80,8 @@ namespace GB.GBMB
 				propertyColorsMenuItem.Checked = value;
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().ShowPropColors = value;
 				mapControl.ShowPropertyColors = value;
+
+				FileModified = true;
 			}
 		}
 		[Description("Whether or not AutoUpdate is enabled.")]
@@ -83,6 +91,8 @@ namespace GB.GBMB
 				autoUpdateMenuItem.Checked = value;
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().AutoUpdate = value;
 				toolList.AutoUpdate = value;
+
+				FileModified = true;
 			}
 		}
 
@@ -122,6 +132,8 @@ namespace GB.GBMB
 				zoomOutMenuItem.Enabled = (value != ZoomLevel._25);
 
 				mapControl.ZoomLevel = value;
+
+				FileModified = true;
 			}
 		}
 
@@ -166,6 +178,8 @@ namespace GB.GBMB
 					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 246 : 96), infoPanelBorder.Top + 1);
 				infoPanelPalLabel.Location = 
 					new Point(infoPanelBorder.Right - (value.SupportsTileFlipping() ? 270 : 120), infoPanelBorder.Top + 3);
+
+				FileModified = true;
 			}
 		}
 
@@ -192,6 +206,8 @@ namespace GB.GBMB
 				}
 
 				tool = value;
+
+				FileModified = true;
 			}
 		}
 
@@ -209,6 +225,8 @@ namespace GB.GBMB
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Bookmark1 = value;
 
 				gotoBookmark1MenuItem.Enabled = (value != 0xFFFF);
+
+				FileModified = true;
 			}
 		}
 		public UInt16 Bookmark2 {
@@ -218,6 +236,8 @@ namespace GB.GBMB
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Bookmark2 = value;
 
 				gotoBookmark2MenuItem.Enabled = (value != 0xFFFF);
+
+				FileModified = true;
 			}
 		}
 		public UInt16 Bookmark3 {
@@ -227,8 +247,15 @@ namespace GB.GBMB
 				gbmFile.GetOrCreateObjectOfType<GBMObjectMapSettings>().Bookmark3 = value;
 
 				gotoBookmark3MenuItem.Enabled = (value != 0xFFFF);
+
+				FileModified = true;
 			}
 		}
+
+		/// <summary>
+		/// Whether the GBRFile has been modified.
+		/// </summary>
+		public bool FileModified { get; private set; }
 
 		public MapEdit() {
 			InitializeComponent();
@@ -239,6 +266,18 @@ namespace GB.GBMB
 		}
 
 		private void onOpenButtonClicked(object sender, EventArgs e) {
+			if (this.FileModified) {
+				var saveResult = MessageBox.Show("The current tiles have been changed.  Save changes first ?", "Confirm",
+					MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+				if (saveResult == DialogResult.Cancel) {
+					return;
+				} else if (saveResult == DialogResult.Yes) {
+					onSaveButtonClicked(sender, e);
+				}
+				//A result of No just continues exectuing to below.
+			}
+
 			OpenFileDialog d = new OpenFileDialog();
 			d.Filter = "GBM files|*.gbm|All files|*.*";
 
@@ -370,6 +409,8 @@ namespace GB.GBMB
 			this.WindowState = (settings.FormMaximized ? FormWindowState.Maximized : FormWindowState.Normal);
 
 			this.map_PropCountChanged(map, new EventArgs());
+
+			this.FileModified = false;
 		}
 
 		public void LoadTileFile(string tilePath) {
@@ -433,6 +474,24 @@ namespace GB.GBMB
 			}
 
 			base.OnLoad(e);
+		}
+
+		protected override void OnClosing(CancelEventArgs e) {
+			if (this.FileModified) {
+				var result = MessageBox.Show("The current tiles have been changed.  Save changes first ?", "Confirm",
+					MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+				if (result == DialogResult.Cancel) {
+					e.Cancel = true;
+				} else if (result == DialogResult.Yes) {
+					onSaveButtonClicked(this, e);
+					e.Cancel = false;
+				} else if (result == DialogResult.No) {
+					e.Cancel = false;
+				}
+			}
+
+			base.OnClosing(e);
 		}
 
 		protected override void OnKeyDown(KeyEventArgs e) {
@@ -625,6 +684,8 @@ namespace GB.GBMB
 			if (map.Height >= 1023) { return; }
 
 			map.Resize(map.Width, map.Height + 1);
+
+			FileModified = true;
 		}
 
 		private void addColumnButtonClicked(object sender, EventArgs e) {
@@ -633,6 +694,8 @@ namespace GB.GBMB
 			if (map.Width >= 1023) { return; }
 
 			map.Resize(map.Width + 1, map.Height);
+
+			FileModified = true;
 		}
 
 		private void removeRowButtonClicked(object sender, EventArgs e) {
@@ -641,6 +704,8 @@ namespace GB.GBMB
 			if (map.Height <= 1) { return; }
 
 			map.Resize(map.Width, map.Height - 1);
+
+			FileModified = true;
 		}
 
 		private void removeColumnButtonClicked(object sender, EventArgs e) {
@@ -649,11 +714,15 @@ namespace GB.GBMB
 			if (map.Width <= 1) { return; }
 
 			map.Resize(map.Width - 1, map.Height);
+
+			FileModified = true;
 		}
 
 		private void toolList_AutoUpdateChanged(object sender, EventArgs e) {
 			autoUpdateMenuItem.Checked = toolList.AutoUpdate;
 			auMessenger.Enabled = toolList.AutoUpdate;
+
+			FileModified = true;
 		}
 
 		private void infoPanelMenuItem_Click(object sender, EventArgs e) {
@@ -740,6 +809,8 @@ namespace GB.GBMB
 
 			mapControl.Map = map;
 			mapControl.Properties = properties;
+
+			FileModified = true;
 		}
 
 		private void tileList_SelectedTileChanged(object sender, EventArgs e) {
@@ -863,6 +934,8 @@ namespace GB.GBMB
 			}
 
 			e.mapControl.Map = map;
+
+			FileModified = true;
 		}
 
 		/// <summary>
@@ -914,6 +987,8 @@ namespace GB.GBMB
 		private void onCutButtonClicked(object sender, EventArgs e) {
 			Clipboard.SetText(mapControl.GetSelectedTiles().ToCopyPasteString());
 			mapControl.FillSelectedTiles();
+
+			FileModified = true;
 		}
 
 		private void onCopyButtonClicked(object sender, EventArgs e) {
@@ -922,6 +997,8 @@ namespace GB.GBMB
 
 		private void onPasteButtonClicked(object sender, EventArgs e) {
 			mapControl.PasteAtSelection(MapCopyPaste.FromCopyPasteString(Clipboard.GetText()));
+
+			FileModified = true;
 		}
 
 		[DllImport("user32.dll", SetLastError = true)]
@@ -1006,6 +1083,8 @@ namespace GB.GBMB
 
 		void map_TileFileChanged(object sender, EventArgs e) {
 			LoadTileFile((sender as GBMObjectMap).TileFile);
+
+			FileModified = true;
 		}
 
 		void infoPanelPropertyTextBox_TextChanged(object sender, EventArgs e) {
@@ -1042,6 +1121,8 @@ namespace GB.GBMB
 					}
 				}
 			}
+
+			FileModified = true;
 		}
 
 		private void mapPropertiesMenuItem_Click(object sender, EventArgs e) {
@@ -1051,6 +1132,8 @@ namespace GB.GBMB
 			dialog.ShowDialog();
 
 			mapControl.Map = mapControl.Map;
+
+			FileModified = true;
 		}
 
 		private void blockFillMenuItem_Click(object sender, EventArgs e) {
@@ -1081,6 +1164,8 @@ namespace GB.GBMB
 
 			mapControl.Properties = mapControl.Properties;
 			mapControl.PropertyColors = mapControl.PropertyColors;
+
+			FileModified = true;
 		}
 
 		private void defaultLocationPropertiesMenuItem_Click(object sender, EventArgs e) {
@@ -1093,6 +1178,8 @@ namespace GB.GBMB
 				paletteMapping, tileList.PaletteData, properties, defaultProperties);
 
 			dialog.ShowDialog();
+
+			FileModified = true;
 		}
 
 		void anyReopenMenuItem_Click(object sender, EventArgs e) {

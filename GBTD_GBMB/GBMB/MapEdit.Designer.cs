@@ -976,6 +976,7 @@
 			this.infoPanelColorDropDown.Items.AddRange(new object[] {
             "Default",
             "Default",
+            "Default",
             "Default"});
 			this.infoPanelColorDropDown.Location = new System.Drawing.Point(73, 211);
 			this.infoPanelColorDropDown.MaxDropDownItems = 9;
