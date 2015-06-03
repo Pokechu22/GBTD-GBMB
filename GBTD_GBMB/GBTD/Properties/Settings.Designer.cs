@@ -45,5 +45,17 @@ namespace GB.GBTD.Properties {
                 this["GBRPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ImportDirectory {
+            get {
+                return ((string)(this["ImportDirectory"]));
+            }
+            set {
+                this["ImportDirectory"] = value;
+            }
+        }
     }
 }

@@ -52,6 +52,7 @@
 			this.browseButton = new System.Windows.Forms.Button();
 			this.labelType = new GB.Shared.Controls.CleanLabel();
 			this.typeComboBox = new System.Windows.Forms.ComboBox();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.settingsGroupBox.SuspendLayout();
 			this.fileGroupBox.SuspendLayout();
 			this.SuspendLayout();
@@ -273,6 +274,7 @@
 			this.browseButton.TabIndex = 6;
 			this.browseButton.Text = "&Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
+			this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
 			// 
 			// labelType
 			// 
@@ -349,5 +351,6 @@
 		private Shared.Controls.CleanLabel labelFormat;
 		private Shared.Controls.CleanLabel labelFirstByteToUse;
 		private Shared.Controls.CleanLabel labelFirstImportFileTile;
+		private System.Windows.Forms.OpenFileDialog openFileDialog;
 	}
 }

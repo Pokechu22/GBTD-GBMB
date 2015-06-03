@@ -30,6 +30,8 @@ namespace GB.GBTD.Dialogs
 			this.firstImportFileTileTextBox.Value = settings.FirstImportFileTile;
 			this.firstByteToUseTextBox.Value = settings.FirstByte;
 			this.formatComboBox.SelectedIndex = (int)settings.BinaryFileFormat;
+
+			openFileDialog.InitialDirectory = Properties.Settings.Default.ImportDirectory;
 		}
 
 		private void InitializeComboboxes() {
@@ -57,6 +59,12 @@ namespace GB.GBTD.Dialogs
 			firstByteToUseTextBox.Enabled = !isGBE;
 			labelFormat.Enabled = !isGBE;
 			formatComboBox.Enabled = !isGBE;
+
+			openFileDialog.Filter = (isGBE ?
+				"GBE Files|*.gbe|All files|*.*" :
+				"Binary files|*.bin;*.dat|Gameboy ROM files|*.gb;*.gbc;*.sgb;*.dmg|All files|*.*");
+
+			fileNameTextBox.Text = Path.ChangeExtension(fileNameTextBox.Text, (isGBE ? "gbe" : "bin"));
 		}
 
 		private void ShowError(Control control, String message) {
@@ -127,6 +135,14 @@ namespace GB.GBTD.Dialogs
 		private void cancelButton_Click(object sender, EventArgs e) {
 			DialogResult = DialogResult.Cancel;
 			this.Close();
+		}
+
+		private void browseButton_Click(object sender, EventArgs e) {
+			DialogResult result = openFileDialog.ShowDialog();
+
+			if (result == DialogResult.OK) {
+				fileNameTextBox.Text = openFileDialog.FileName;
+			}
 		}
 	}
 }

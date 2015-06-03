@@ -281,6 +281,12 @@ namespace GB.GBTD
 			base.OnClosing(e);
 		}
 
+		protected override void OnClosed(EventArgs e) {
+			base.OnClosed(e);
+
+			Properties.Settings.Default.Save();
+		}
+
 		private void LoadTileFile(String path) {
 			this.filePath = path;
 
