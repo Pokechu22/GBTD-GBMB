@@ -483,7 +483,10 @@ namespace GB.GBTD
 		}
 
 		private void importFromButton_OnClicked(object sender, EventArgs e) {
-			ImportDialog dialog = new ImportDialog();
+			var importSettings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileImport>();
+			var tileset = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+
+			ImportDialog dialog = new ImportDialog(importSettings, tileset);
 
 			var result = dialog.ShowDialog();
 
