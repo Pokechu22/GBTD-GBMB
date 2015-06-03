@@ -473,11 +473,23 @@ namespace GB.GBTD
 		}
 
 		private void exportToButton_OnClicked(object sender, EventArgs e) {
+			ExportDialog dialog = new ExportDialog();
 
+			var result = dialog.ShowDialog();
+
+			if (result == DialogResult.OK) {
+				//TODO: Actually export.
+			}
 		}
 
 		private void importFromButton_OnClicked(object sender, EventArgs e) {
+			ImportDialog dialog = new ImportDialog();
 
+			var result = dialog.ShowDialog();
+
+			if (result == DialogResult.OK) {
+				//TODO: Actually import.
+			}
 		}
 
 		private void auMessenger_OnColorPaletteChanged(object sender, MessageEventArgs args) {
