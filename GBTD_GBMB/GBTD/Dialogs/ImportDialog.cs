@@ -95,9 +95,19 @@ namespace GB.GBTD.Dialogs
 				ShowError(firstGBTDTileTextBox, "'First tile in GBTD' combined with 'Tile count' can not exceed " + tileset.Count + ".");
 				return false;
 			}
-			if (!File.Exists(fileNameTextBox.Text)) {
-				ShowError(fileNameTextBox, "File '" + fileNameTextBox.Text + "' does not exist.");
-				return false;
+			//Validate vile existance -- a loop is used for dialog.
+			while (!File.Exists(fileNameTextBox.Text)) {
+				DialogResult result = MessageBox.Show("File '" + fileNameTextBox.Text + "' does not exist.", 
+					"", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+
+				if (result == DialogResult.Abort) {
+					fileNameTextBox.Focus();
+					return false;
+				} else if (result == DialogResult.Retry) {
+					continue;
+				} else if (result == DialogResult.Ignore) {
+					break;
+				}
 			}
 
 			return true;
