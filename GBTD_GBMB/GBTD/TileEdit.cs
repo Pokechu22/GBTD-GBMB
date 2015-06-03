@@ -46,6 +46,8 @@ namespace GB.GBTD
 					ColorSet itemSet = (ColorSet)item.Tag;
 					item.Checked = (value == itemSet);
 				}
+
+				this.FileModified = true;
 			}
 		}
 
@@ -58,6 +60,8 @@ namespace GB.GBTD
 				toolList.AutoUpdate = value;
 
 				auMessenger.Enabled = value;
+
+				this.FileModified = true;
 			}
 		}
 
@@ -78,6 +82,8 @@ namespace GB.GBTD
 
 				gridMenuItem.Checked = value;
 				mainTileEdit.DrawGrid = value;
+
+				this.FileModified = true;
 			}
 		}
 
@@ -91,6 +97,8 @@ namespace GB.GBTD
 				previewRenderer.Simple = value;
 
 				UpdateSize();
+
+				this.FileModified = true;
 			}
 		}
 
@@ -102,6 +110,8 @@ namespace GB.GBTD
 
 				gotoBookmark1MenuItem.Enabled = (value < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length);
 				clearBookmark1MenuItem.Enabled = (value != 0xFFFF);
+
+				this.FileModified = true;
 			}
 		}
 		public UInt16 Bookmark2 {
@@ -112,6 +122,8 @@ namespace GB.GBTD
 
 				gotoBookmark2MenuItem.Enabled = (value < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length);
 				clearBookmark2MenuItem.Enabled = (value != 0xFFFF);
+
+				this.FileModified = true;
 			}
 		}
 		public UInt16 Bookmark3 {
@@ -122,6 +134,8 @@ namespace GB.GBTD
 
 				gotoBookmark3MenuItem.Enabled = (value < gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>().Tiles.Length);
 				clearBookmark3MenuItem.Enabled = (value != 0xFFFF);
+
+				this.FileModified = true;
 			}
 		}
 
@@ -140,6 +154,8 @@ namespace GB.GBTD
 			set {
 				mainTileEdit.LeftColor = value;
 				colorSelector.LeftColor = value;
+
+				this.FileModified = true;
 			}
 		}
 		public GBColor RightColor {
@@ -147,6 +163,8 @@ namespace GB.GBTD
 			set {
 				mainTileEdit.RightColor = value;
 				colorSelector.RightColor = value;
+
+				this.FileModified = true;
 			}
 		}
 		public GBColor MiddleColor {
@@ -154,6 +172,8 @@ namespace GB.GBTD
 			set {
 				mainTileEdit.MiddleColor = value;
 				colorSelector.MiddleColor = value;
+
+				this.FileModified = true;
 			}
 		}
 		public GBColor X1Color {
@@ -161,6 +181,8 @@ namespace GB.GBTD
 			set {
 				mainTileEdit.X1Color = value;
 				colorSelector.X1Color = value;
+
+				this.FileModified = true;
 			}
 		}
 		public GBColor X2Color {
@@ -168,6 +190,8 @@ namespace GB.GBTD
 			set {
 				mainTileEdit.X2Color = value;
 				colorSelector.X2Color = value;
+
+				this.FileModified = true;
 			}
 		}
 
@@ -198,8 +222,15 @@ namespace GB.GBTD
 					floodFillMenuItem.Checked = false;
 					break;
 				}
+
+				this.FileModified = true;
 			}
 		}
+
+		/// <summary>
+		/// Whether the currently loaded file has been modified.
+		/// </summary>
+		public bool FileModified { get; private set; }
 
 		public TileEdit() {
 			InitializeComponent();
@@ -230,6 +261,24 @@ namespace GB.GBTD
 			}
 
 			base.OnLoad(e);
+		}
+
+		protected override void OnClosing(CancelEventArgs e) {
+			if (this.FileModified) {
+				var result = MessageBox.Show("The current tiles have been changed.  Save changes first ?", "Confirm",
+					MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+				if (result == DialogResult.Cancel) {
+					e.Cancel = true;
+				} else if (result == DialogResult.Yes) {
+					saveButton_OnClicked(this, e);
+					e.Cancel = false;
+				} else if (result == DialogResult.No) {
+					e.Cancel = false;
+				}
+			}
+
+			base.OnClosing(e);
 		}
 
 		private void LoadTileFile(String path) {
@@ -303,12 +352,16 @@ namespace GB.GBTD
 				}
 				mmf = new AUMemMappedFile(filePath, auMessenger, gbrFile);
 			}
+
+			this.FileModified = false;
 		}
 
 		void tileSet_ColorMappingChanged(object sender, EventArgs e) {
 			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 			mmf.GBPalettes.SetPalettes(tileData.Color0Mapping, tileData.Color1Mapping, tileData.Color2Mapping, tileData.Color3Mapping);
+
+			this.FileModified = true;
 		}
 
 		void tileSet_SizeChanged(object sender, EventArgs e) {
@@ -316,10 +369,14 @@ namespace GB.GBTD
 
 			setDisplayedTileSize(tileData.Width, tileData.Height);
 			this.UpdateSize();
+
+			this.FileModified = true;
 		}
 
 		void tileSet_CountChanged(object sender, EventArgs e) {
 			//TODO
+
+			this.FileModified = true;
 		}
 
 		// See http://msdn.microsoft.com/en-us/library/ms632599%28VS.85%29.aspx#message_only
@@ -351,6 +408,18 @@ namespace GB.GBTD
 		/// Called when anything that acts as an open button is clicked.
 		/// </summary>
 		private void openButton_OnClick(object sender, EventArgs e) {
+			if (this.FileModified) {
+				var saveResult = MessageBox.Show("The current tiles have been changed.  Save changes first ?", "Confirm",
+					MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+				if (saveResult == DialogResult.Cancel) {
+					return;
+				} else if (saveResult == DialogResult.Yes) {
+					saveButton_OnClicked(this, e);
+				}
+				//A result of No just continues exectuing to below.
+			}
+
 			OpenFileDialog dialog = new OpenFileDialog();
 			dialog.Filter = "GBR files|*.gbr|All files|*.*";
 
@@ -415,6 +484,8 @@ namespace GB.GBTD
 			Invoke(new MethodInvoker(delegate
 			{
 				//TODO
+
+				this.FileModified = true;
 			}));
 		}
 
@@ -424,6 +495,8 @@ namespace GB.GBTD
 				var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 				tileData.SetColorMapping(mmf.GBPalettes.GBColor0, mmf.GBPalettes.GBColor1, mmf.GBPalettes.GBColor2, mmf.GBPalettes.GBColor3);
+
+				this.FileModified = true;
 			}));
 		}
 
@@ -439,6 +512,8 @@ namespace GB.GBTD
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
+
+				this.FileModified = true;
 			}));
 		}
 
@@ -467,6 +542,8 @@ namespace GB.GBTD
 				this.previewRenderer.Invalidate(true);
 				this.mainTileEdit.Invalidate(true);
 				this.colorSelector.Invalidate(true);
+
+				this.FileModified = true;
 			}));
 		}
 
@@ -501,6 +578,8 @@ namespace GB.GBTD
 
 				this.setDisplayedTileSize(tileData.Width, tileData.Height);
 				this.UpdateSize();
+
+				this.FileModified = true;
 			}));
 		}
 
@@ -539,6 +618,8 @@ namespace GB.GBTD
 				this.UpdateSize();
 
 				//TODO load the palettedata from MMF
+
+				this.FileModified = true;
 			}));
 		}
 
@@ -812,6 +893,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void colorSelector_PaletteChanged(object sender, EventArgs e) {
@@ -831,6 +914,8 @@ namespace GB.GBTD
 					break;
 				}
 			}
+
+			this.FileModified = true;
 		}
 
 		private void colorSelector_MouseColorChanged(object sender, EventArgs e) {
@@ -839,6 +924,8 @@ namespace GB.GBTD
 			this.MiddleColor = colorSelector.MiddleColor;
 			this.X1Color = colorSelector.X1Color;
 			this.X2Color = colorSelector.X2Color;
+
+			this.FileModified = true;
 		}
 
 		private void colorSetMenuItem_Clicked(object sender, EventArgs e) {
@@ -847,6 +934,8 @@ namespace GB.GBTD
 			if (item != null) {
 				this.ColorSet = (ColorSet)item.Tag;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_ScrollUpClicked(object sender, EventArgs e) {
@@ -863,6 +952,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_ScrollLeftClicked(object sender, EventArgs e) {
@@ -878,6 +969,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_ScrollRightClicked(object sender, EventArgs e) {
@@ -893,6 +986,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_ScrollDownClicked(object sender, EventArgs e) {
@@ -908,6 +1003,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_FlipVerticallyClicked(object sender, EventArgs e) {
@@ -923,6 +1020,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_FlipHorizontallyClicked(object sender, EventArgs e) {
@@ -938,6 +1037,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void toolList_RotateClockwiseClicked(object sender, EventArgs e) {
@@ -953,6 +1054,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void cutButton_Click(object sender, EventArgs e) {
@@ -971,6 +1074,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void copyButton_Click(object sender, EventArgs e) {
@@ -1023,6 +1128,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void clearTilesMenuItem_Click(object sender, EventArgs e) {
@@ -1039,6 +1146,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles.SetTilesArray(tileset.Tiles);
 			}
+
+			this.FileModified = true;
 		}
 
 		private void flipColorsMenuItem_Click(object sender, EventArgs e) {
@@ -1068,6 +1177,8 @@ namespace GB.GBTD
 			if (mmf != null) {
 				mmf.Tiles[SelectedTile] = tile;
 			}
+
+			this.FileModified = true;
 		}
 
 		private void penMenuItem_Click(object sender, EventArgs e) {
