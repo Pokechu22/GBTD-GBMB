@@ -30,6 +30,8 @@ namespace GB.GBTD
 			set {
 				selectedTile = value;
 				this.Invalidate(true);
+
+				HasUndo = false;
 			}
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
@@ -68,17 +70,19 @@ namespace GB.GBTD
 				if (tileset != null) {
 					tileset.ColorMappingChanged += new EventHandler(tileset_ColorMappingChanged);
 				}
+
+				HasUndo = false;
 			}
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public GBRObjectTilePalette PaletteMapping {
 			get { return paletteMapping; }
-			set { paletteMapping = value; this.Invalidate(true); }
+			set { paletteMapping = value; this.Invalidate(true); HasUndo = false; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public GBRObjectPalettes Palettes {
 			get { return palettes; }
-			set { palettes = value; this.Invalidate(true); }
+			set { palettes = value; this.Invalidate(true); HasUndo = false; }
 		}
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public ColorSet ColorSet {
@@ -253,6 +257,10 @@ namespace GB.GBTD
 
 		protected void OnMouseDoSomething(MouseEventArgs e) {
 			if (TileEditor != null) {
+				if (e.Button != MouseButtons.None) {
+					HasUndo = true;
+				}
+
 				GBColor color;
 
 				if (e.Button.HasFlag(MouseButtons.Left)) {
@@ -302,6 +310,80 @@ namespace GB.GBTD
 				return 0xFF;
 			}
 			return returned;
+		}
+
+		/// <summary>
+		/// Tile used for the simple undo system.  If null, there is no tile to undo to.
+		/// </summary>
+		private Tile? undoTile;
+
+		private bool hasUndo;
+		/// <summary>
+		/// Whether or not an undo is present.
+		/// Changing the value to something that it wasn't before will update the undoTile.
+		/// </summary>
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+		public bool HasUndo {
+			get {
+				if (tileset == null || paletteMapping == null || palettes == null || undoTile == null) {
+					if (hasUndo == true) {
+						hasUndo = false;
+
+						if (HasUndoChanged != null) {
+							HasUndoChanged(this, new EventArgs());
+						}
+					}
+
+					return false;
+				}
+				return hasUndo;
+			}
+			set {
+				if (tileset == null || paletteMapping == null || palettes == null) {
+					if (hasUndo == true) {
+						hasUndo = false;
+						if (HasUndoChanged != null) {
+							HasUndoChanged(this, new EventArgs());
+						}
+					}
+					return;
+				}
+
+				if (this.hasUndo != value) {
+					if (value == true) {
+						this.undoTile = tileset.Tiles[selectedTile];
+					} else {
+						this.undoTile = null;
+					}
+
+					hasUndo = value;
+
+					if (HasUndoChanged != null) {
+						HasUndoChanged(this, new EventArgs());
+					}
+				}
+			}
+		}
+
+		[Description("Fires when whether undo is avaialble has changed.")]
+		public event EventHandler HasUndoChanged;
+
+		/// <summary>
+		/// Performs an undo.  If undo is not available, nothing happens.
+		/// </summary>
+		public void Undo() {
+			if (!HasUndo) {
+				return;
+			}
+
+			tileset.Tiles[this.selectedTile] = undoTile.Value;
+
+			this.Invalidate(true);
+			if (TileChanged != null) {
+				TileChanged(this, new EventArgs());
+			}
+
+			HasUndo = false;
 		}
 	}
 }

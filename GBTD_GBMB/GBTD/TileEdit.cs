@@ -1213,5 +1213,13 @@ namespace GB.GBTD
 		private void aboutMenuItem_Click(object sender, EventArgs e) {
 			new GBTDAboutBox().ShowDialog();
 		}
+
+		private void mainTileEdit_HasUndoChanged(object sender, EventArgs e) {
+			undoMenuItem.Enabled = mainTileEdit.HasUndo;
+		}
+
+		private void undoMenuItem_Click(object sender, EventArgs e) {
+			mainTileEdit.Undo();
+		}
 	}
 }

@@ -292,9 +292,11 @@
 			// 
 			// undoMenuItem
 			// 
+			this.undoMenuItem.Enabled = false;
 			this.undoMenuItem.Index = 0;
 			this.undoMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
 			this.undoMenuItem.Text = "&Undo";
+			this.undoMenuItem.Click += new System.EventHandler(this.undoMenuItem_Click);
 			// 
 			// cutMenuItem
 			// 
@@ -856,6 +858,7 @@
 			this.mainTileEdit.TabIndex = 19;
 			this.mainTileEdit.Text = "mainTileEdit1";
 			this.mainTileEdit.TileChanged += new System.EventHandler(this.mainTileEdit_TileChanged);
+			this.mainTileEdit.HasUndoChanged += new System.EventHandler(this.mainTileEdit_HasUndoChanged);
 			// 
 			// toolList
 			// 
