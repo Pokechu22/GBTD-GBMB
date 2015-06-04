@@ -518,6 +518,9 @@ namespace GB.GBTD
 			}
 
 			this.Invalidate(true);
+			if (mmf != null) {
+				mmf.Tiles.SetTilesArray(tileset.Tiles);
+			}
 		}
 
 		private void auMessenger_OnColorPaletteChanged(object sender, MessageEventArgs args) {
