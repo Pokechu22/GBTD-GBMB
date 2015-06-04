@@ -494,14 +494,17 @@ namespace GB.GBMB
 			base.OnClosing(e);
 		}
 
-		protected override void OnKeyDown(KeyEventArgs e) {
-			if (e.Control && e.KeyCode == Keys.Oemplus) {
+		//http://stackoverflow.com/a/30265184/3991344
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+			if (keyData == (Keys.Control | Keys.Oemplus)) {
 				zoomInMenuItem.PerformClick();
-			} else if (e.Control && e.KeyCode == Keys.OemMinus) {
-				zoomOutMenuItem.PerformClick();
+				return true;
 			}
-
-			base.OnKeyDown(e);
+			if (keyData == (Keys.Control | Keys.OemMinus)) {
+				zoomOutMenuItem.PerformClick();
+				return true;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
 		protected override void OnResize(EventArgs e) {
