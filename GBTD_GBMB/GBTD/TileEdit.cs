@@ -14,6 +14,7 @@ using GB.Shared.GBRFile;
 using System.IO;
 using GB.Shared.AutoUpdate;
 using System.Runtime.InteropServices;
+using GB.GBTD.Importing;
 
 namespace GB.GBTD
 {
@@ -497,8 +498,20 @@ namespace GB.GBTD
 			var result = dialog.ShowDialog();
 
 			if (result == DialogResult.OK) {
-				//TODO: Actually import.
+				switch (importSettings.FileType) {
+				case ImportFileType.Binary8x8:
+					BinaryImport import = new BinaryImport();
+					using (FileStream stream = File.OpenRead(importSettings.FileName)) {
+						import.Import(stream, tileset, importSettings);
+					}
+					break;
+				default:
+					MessageBox.Show("Type " + importSettings.FileType + " (" + (int)importSettings.FileType + ") is not supported!");
+					break;
+				}
 			}
+
+			this.Invalidate(true);
 		}
 
 		private void auMessenger_OnColorPaletteChanged(object sender, MessageEventArgs args) {

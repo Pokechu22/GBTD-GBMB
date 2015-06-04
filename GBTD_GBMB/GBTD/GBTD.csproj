@@ -62,6 +62,7 @@
     <Compile Include="Dialogs\GBTDAboutBox.Designer.cs">
       <DependentUpon>GBTDAboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Importing\BinaryImport.cs" />
     <Compile Include="Importing\ImportBase.cs" />
     <Compile Include="MainTileEdit.cs">
       <SubType>Component</SubType>
