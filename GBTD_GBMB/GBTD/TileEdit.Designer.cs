@@ -336,6 +336,7 @@
 			this.splitOptionsMenuItem.Index = 8;
 			this.splitOptionsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlL;
 			this.splitOptionsMenuItem.Text = "Sp&lit options";
+			this.splitOptionsMenuItem.Click += new System.EventHandler(this.splitOptionsMenuItem_Click);
 			// 
 			// designMenuItem
 			// 

@@ -62,6 +62,12 @@
     <Compile Include="Dialogs\GBTDAboutBox.Designer.cs">
       <DependentUpon>GBTDAboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\SplitOptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SplitOptionsDialog.Designer.cs">
+      <DependentUpon>SplitOptionsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Importing\BinaryImport.cs" />
     <Compile Include="Importing\GBEImport.cs" />
     <Compile Include="Importing\ImportBase.cs" />
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ImportDialog.resx">
       <DependentUpon>ImportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SplitOptionsDialog.resx">
+      <DependentUpon>SplitOptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\TileCountDialog.resx">
       <DependentUpon>TileCountDialog.cs</DependentUpon>

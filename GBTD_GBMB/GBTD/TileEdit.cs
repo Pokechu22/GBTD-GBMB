@@ -1264,5 +1264,13 @@ namespace GB.GBTD
 		private void undoMenuItem_Click(object sender, EventArgs e) {
 			mainTileEdit.Undo();
 		}
+
+		private void splitOptionsMenuItem_Click(object sender, EventArgs e) {
+			SplitOptionsDialog d = new SplitOptionsDialog();
+
+			d.ShowDialog();
+
+			//TODO
+		}
 	}
 }
