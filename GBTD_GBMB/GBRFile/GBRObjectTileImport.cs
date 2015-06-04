@@ -11,7 +11,7 @@ namespace GB.Shared.GBRFile
 	{
 		public GBRObjectTileImport(UInt16 UniqueID) : base(UniqueID) {
 			this.FileName = "";
-			this.FileType = ImportFileType.GBEFile;
+			this.FileType = ImportFileType.Binary8x8;
 			this.FirstImportFileTile = 0;
 			this.FirstProgramTile = 0;
 			this.TileCount = 127;

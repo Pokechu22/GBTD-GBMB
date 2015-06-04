@@ -498,16 +498,22 @@ namespace GB.GBTD
 			var result = dialog.ShowDialog();
 
 			if (result == DialogResult.OK) {
+				ImportBase import;
+
 				switch (importSettings.FileType) {
 				case ImportFileType.Binary8x8:
-					BinaryImport import = new BinaryImport();
-					using (FileStream stream = File.OpenRead(importSettings.FileName)) {
-						import.Import(stream, tileset, importSettings);
-					}
+					import = new BinaryImport();
+					break;
+				case ImportFileType.GBEFile:
+					import = new GBEImport();
 					break;
 				default:
 					MessageBox.Show("Type " + importSettings.FileType + " (" + (int)importSettings.FileType + ") is not supported!");
-					break;
+					return;
+				}
+
+				using (FileStream stream = File.OpenRead(importSettings.FileName)) {
+					import.Import(stream, tileset, importSettings);
 				}
 			}
 
