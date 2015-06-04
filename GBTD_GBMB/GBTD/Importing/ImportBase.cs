@@ -62,14 +62,14 @@ namespace GB.GBTD.Importing
 					throw new EndOfStreamException();
 				}
 
-				pixels[0, y] = ConvertToGBColorSequental(bytes[0] & 0xC0 >> 6);
-				pixels[1, y] = ConvertToGBColorSequental(bytes[0] & 0x30 >> 4);
-				pixels[2, y] = ConvertToGBColorSequental(bytes[0] & 0x0C >> 2);
-				pixels[3, y] = ConvertToGBColorSequental(bytes[0] & 0x03 >> 0);
-				pixels[4, y] = ConvertToGBColorSequental(bytes[1] & 0xC0 >> 6);
-				pixels[5, y] = ConvertToGBColorSequental(bytes[1] & 0x30 >> 4);
-				pixels[6, y] = ConvertToGBColorSequental(bytes[1] & 0x0C >> 2);
-				pixels[7, y] = ConvertToGBColorSequental(bytes[1] & 0x03 >> 0);
+				pixels[0, y] = ConvertToGBColorSequental((bytes[0] & 0xC0) >> 6);
+				pixels[1, y] = ConvertToGBColorSequental((bytes[0] & 0x30) >> 4);
+				pixels[2, y] = ConvertToGBColorSequental((bytes[0] & 0x0C) >> 2);
+				pixels[3, y] = ConvertToGBColorSequental((bytes[0] & 0x03) >> 0);
+				pixels[4, y] = ConvertToGBColorSequental((bytes[1] & 0xC0) >> 6);
+				pixels[5, y] = ConvertToGBColorSequental((bytes[1] & 0x30) >> 4);
+				pixels[6, y] = ConvertToGBColorSequental((bytes[1] & 0x0C) >> 2);
+				pixels[7, y] = ConvertToGBColorSequental((bytes[1] & 0x03) >> 0);
 			}
 
 			return new Tile(pixels);
@@ -88,14 +88,14 @@ namespace GB.GBTD.Importing
 					throw new EndOfStreamException();
 				}
 
-				pixels[0, y] = ConvertToGBColorVRAM(bytes[0] & 0xC0 >> 6);
-				pixels[1, y] = ConvertToGBColorVRAM(bytes[0] & 0x30 >> 4);
-				pixels[2, y] = ConvertToGBColorVRAM(bytes[0] & 0x0C >> 2);
-				pixels[3, y] = ConvertToGBColorVRAM(bytes[0] & 0x03 >> 0);
-				pixels[4, y] = ConvertToGBColorVRAM(bytes[1] & 0xC0 >> 6);
-				pixels[5, y] = ConvertToGBColorVRAM(bytes[1] & 0x30 >> 4);
-				pixels[6, y] = ConvertToGBColorVRAM(bytes[1] & 0x0C >> 2);
-				pixels[7, y] = ConvertToGBColorVRAM(bytes[1] & 0x03 >> 0);
+				pixels[0, y] = ConvertToGBColorVRAM(bytes[0] & 0x80, bytes[1] & 0x80);
+				pixels[1, y] = ConvertToGBColorVRAM(bytes[0] & 0x40, bytes[1] & 0x40);
+				pixels[2, y] = ConvertToGBColorVRAM(bytes[0] & 0x20, bytes[1] & 0x20);
+				pixels[3, y] = ConvertToGBColorVRAM(bytes[0] & 0x10, bytes[1] & 0x10);
+				pixels[4, y] = ConvertToGBColorVRAM(bytes[0] & 0x08, bytes[1] & 0x08);
+				pixels[5, y] = ConvertToGBColorVRAM(bytes[0] & 0x04, bytes[1] & 0x04);
+				pixels[6, y] = ConvertToGBColorVRAM(bytes[0] & 0x02, bytes[1] & 0x02);
+				pixels[7, y] = ConvertToGBColorVRAM(bytes[0] & 0x01, bytes[1] & 0x01);
 			}
 
 			return new Tile(pixels);
@@ -121,13 +121,19 @@ namespace GB.GBTD.Importing
 		/// 
 		/// (00: White, 01: Dark gray, 10: Light gray, 11: black)
 		/// </summary>
-		protected GBColor ConvertToGBColorVRAM(int b) {
-			switch (b) {
-			case 0: return GBColor.WHITE;
-			case 1: return GBColor.DARK_GRAY;
-			case 2: return GBColor.LIGHT_GRAY;
-			case 3: return GBColor.BLACK;
-			default: return (GBColor)b;
+		protected GBColor ConvertToGBColorVRAM(int b1, int b2) {
+			if (b1 != 0) {
+				if (b2 != 0) {
+					return GBColor.BLACK;
+				} else {
+					return GBColor.LIGHT_GRAY;
+				}
+			} else {
+				if (b2 != 0) {
+					return GBColor.DARK_GRAY;
+				} else {
+					return GBColor.WHITE;
+				}
 			}
 		}
 	}

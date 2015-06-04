@@ -30,7 +30,7 @@ namespace GB.GBTD.Importing
 					}
 				}
 			} catch (EndOfStreamException) {
-				//Ignore, as
+				//Ignore, as it is expected to encounter this.
 			}
 
 			return returned;
