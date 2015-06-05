@@ -1266,7 +1266,9 @@ namespace GB.GBTD
 		}
 
 		private void splitOptionsMenuItem_Click(object sender, EventArgs e) {
-			SplitOptionsDialog d = new SplitOptionsDialog();
+			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>();
+
+			SplitOptionsDialog d = new SplitOptionsDialog(settings);
 
 			d.ShowDialog();
 
