@@ -1270,8 +1270,24 @@ namespace GB.GBTD
 
 			SplitOptionsDialog d = new SplitOptionsDialog(settings);
 
-			d.ShowDialog();
+			var result = d.ShowDialog();
 
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			if (d.Paste) {
+				splitPasteMenuItem_Click(d, new EventArgs());
+			} else {
+				splitCopyMenuItem_Click(d, new EventArgs());
+			}
+		}
+
+		private void splitCopyMenuItem_Click(object sender, EventArgs e) {
+			//TODO
+		}
+
+		private void splitPasteMenuItem_Click(object sender, EventArgs e) {
 			//TODO
 		}
 	}

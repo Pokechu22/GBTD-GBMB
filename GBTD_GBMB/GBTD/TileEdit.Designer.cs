@@ -324,12 +324,14 @@
 			this.splitCopyMenuItem.Index = 6;
 			this.splitCopyMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
 			this.splitCopyMenuItem.Text = "Split C&opy";
+			this.splitCopyMenuItem.Click += new System.EventHandler(this.splitCopyMenuItem_Click);
 			// 
 			// splitPasteMenuItem
 			// 
 			this.splitPasteMenuItem.Index = 7;
 			this.splitPasteMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftV;
 			this.splitPasteMenuItem.Text = "Split P&aste";
+			this.splitPasteMenuItem.Click += new System.EventHandler(this.splitPasteMenuItem_Click);
 			// 
 			// splitOptionsMenuItem
 			// 
