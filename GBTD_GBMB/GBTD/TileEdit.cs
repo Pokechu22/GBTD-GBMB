@@ -1303,8 +1303,8 @@ namespace GB.GBTD
 							}
 						}
 					} else if (settings.SplitOrder == SplitOrder.TOP_TO_BOTTOM_FIRST) {
-						for (int x = 0; x < settings.SplitWidth; x++) {
-							for (int y = 0; y < settings.SplitHeight; y++) {
+						for (int y = 0; y < settings.SplitHeight; y++) {
+							for (int x = 0; x < settings.SplitWidth; x++) {
 								using (Bitmap tile = tileData.Tiles[SelectedTile + (x * settings.SplitHeight) + y].ToImage()) {
 									graphics.DrawImageUnscaled(tile, x * tileData.Width, y * tileData.Height);
 								}
@@ -1318,7 +1318,65 @@ namespace GB.GBTD
 		}
 
 		private void splitPasteMenuItem_Click(object sender, EventArgs e) {
-			//TODO
+			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>();
+
+			Color white = Color.FromArgb(255, 255, 255);
+			Color lightGray = Color.FromArgb(192, 192, 192);
+			Color darkGray = Color.FromArgb(128, 128, 128);
+			Color black = Color.FromArgb(0, 0, 0);
+
+			using (Bitmap bitmap = new Bitmap(Clipboard.GetImage())) {
+				//If a pixel's out of bounds use white.
+				for (int y = 0; y < settings.SplitHeight; y++) {
+					for (int x = 0; x < settings.SplitWidth; x++) {
+						Tile tile = new Tile(tileData.Width, tileData.Height);
+
+						//Bitmap x and y for the tile.
+						int bx = x * tile.Width;
+						int by = y * tile.Height;
+
+						for (int ty = 0; ty < tile.Height; ty++) {
+							for (int tx = 0; tx < tile.Width; tx++) {
+								if (bx + tx >= bitmap.Width || by + ty >= bitmap.Height) {
+									tile[tx, ty] = GBColor.WHITE;
+									continue;
+								}
+
+								Color pixel = bitmap.GetPixel(bx + tx, by + ty);
+								if (pixel == white) {
+									tile[tx, ty] = GBColor.WHITE;
+								} else if (pixel == lightGray) {
+									tile[tx, ty] = GBColor.LIGHT_GRAY;
+								} else if (pixel == darkGray) {
+									tile[tx, ty] = GBColor.DARK_GRAY;
+								} else if (pixel == black) {
+									tile[tx, ty] = GBColor.BLACK;
+								} else {
+									//By default, use white.
+									tile[tx, ty] = GBColor.WHITE;
+								}
+							}
+						}
+
+						if (settings.SplitOrder == SplitOrder.LEFT_TO_RIGHT_FIRST) {
+							tileData.Tiles[SelectedTile + (y * settings.SplitWidth) + x] = tile;
+						} else {
+							tileData.Tiles[SelectedTile + (x * settings.SplitHeight) + y] = tile;
+						}
+					}
+				}
+			}
+
+			mainTileEdit.Invalidate(true);
+			tileList.Invalidate(true);
+			previewRenderer.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.Tiles.SetTilesArray(tileData.Tiles);
+			}
+
+			this.FileModified = true;
 		}
 	}
 }
