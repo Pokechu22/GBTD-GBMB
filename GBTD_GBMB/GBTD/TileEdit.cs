@@ -15,6 +15,7 @@ using System.IO;
 using GB.Shared.AutoUpdate;
 using System.Runtime.InteropServices;
 using GB.GBTD.Importing;
+using System.Drawing.Drawing2D;
 
 namespace GB.GBTD
 {
@@ -1284,7 +1285,36 @@ namespace GB.GBTD
 		}
 
 		private void splitCopyMenuItem_Click(object sender, EventArgs e) {
-			//TODO
+			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
+			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileSettings>();
+
+			using (Bitmap bitmap = new Bitmap(settings.SplitWidth * tileData.Width, settings.SplitHeight * tileData.Height)) {
+				using (Graphics graphics = Graphics.FromImage(bitmap)) {
+					graphics.PixelOffsetMode = PixelOffsetMode.Half;
+					graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+					graphics.SmoothingMode = SmoothingMode.None;
+
+					if (settings.SplitOrder == SplitOrder.LEFT_TO_RIGHT_FIRST) {
+						for (int y = 0; y < settings.SplitHeight; y++) {
+							for (int x = 0; x < settings.SplitWidth; x++) {
+								using (Bitmap tile = tileData.Tiles[SelectedTile + (y * settings.SplitWidth) + x].ToImage()) {
+									graphics.DrawImageUnscaled(tile, x * tileData.Width, y * tileData.Height);
+								}
+							}
+						}
+					} else if (settings.SplitOrder == SplitOrder.TOP_TO_BOTTOM_FIRST) {
+						for (int x = 0; x < settings.SplitWidth; x++) {
+							for (int y = 0; y < settings.SplitHeight; y++) {
+								using (Bitmap tile = tileData.Tiles[SelectedTile + (x * settings.SplitHeight) + y].ToImage()) {
+									graphics.DrawImageUnscaled(tile, x * tileData.Width, y * tileData.Height);
+								}
+							}
+						}
+					}
+				}
+
+				Clipboard.SetImage(bitmap);
+			}
 		}
 
 		private void splitPasteMenuItem_Click(object sender, EventArgs e) {
