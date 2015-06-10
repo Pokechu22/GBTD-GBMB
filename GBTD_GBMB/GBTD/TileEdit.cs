@@ -527,7 +527,12 @@ namespace GB.GBTD
 		private void auMessenger_OnColorPaletteChanged(object sender, MessageEventArgs args) {
 			Invoke(new MethodInvoker(delegate
 			{
-				//TODO
+				var palettes = gbrFile.GetOrCreateObjectOfType<GBRObjectPalettes>();
+
+				mmf.GBCPalettes.CopyTo(palettes.GBCPalettes);
+				mmf.SGBPalettes.CopyTo(palettes.SGBPalettes);
+
+				this.Invalidate(true);
 
 				this.FileModified = true;
 			}));

@@ -550,6 +550,36 @@ namespace GB.Shared.AutoUpdate
 					file.messenger.SendColorSetsMessage();
 				}
 			}
+			
+			/// <summary>
+			/// Sets all palettes to the given set's palettes.
+			/// </summary>
+			public void SetPalettes(PaletteSet set) {
+				var stream = file.stream;
+				stream.Position = USED_INDEX;
+
+				for (int pal = 0; pal < set.Size; pal++) {
+					for (int entry = 0; entry < NUM_OF_ENTRIES; entry++) {
+						stream.WriteColor(set[pal][entry]);
+					}
+				}
+
+				file.messenger.SendColorSetsMessage();
+			}
+
+			/// <summary>
+			/// Puts all of this set's palettes into the given PaletteSet.
+			/// </summary>
+			public void CopyTo(PaletteSet set) {
+				var stream = file.stream;
+				stream.Position = USED_INDEX;
+
+				for (int pal = 0; pal < set.Size; pal++) {
+					for (int entry = 0; entry < NUM_OF_ENTRIES; entry++) {
+						set[pal][entry] = stream.ReadColor();
+					}
+				}
+			}
 		}
 		#endregion
 
