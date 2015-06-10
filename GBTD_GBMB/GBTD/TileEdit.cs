@@ -49,6 +49,8 @@ namespace GB.GBTD
 					item.Checked = (value == itemSet);
 				}
 
+				palettesMenuItem.Enabled = ColorSet.SupportsPaletteCustomization();
+
 				this.FileModified = true;
 			}
 		}
@@ -1379,6 +1381,27 @@ namespace GB.GBTD
 
 			if (mmf != null) {
 				mmf.Tiles.SetTilesArray(tileData.Tiles);
+			}
+
+			this.FileModified = true;
+		}
+
+		private void palettesMenuItem_Click(object sender, EventArgs e) {
+			var palettes = gbrFile.GetOrCreateObjectOfType<GBRObjectPalettes>();
+
+			PalettesDialog dialog = new PalettesDialog(palettes, ColorSet);
+
+			var result = dialog.ShowDialog();
+
+			if (result != DialogResult.OK) {
+				return;
+			}
+
+			this.Invalidate(true);
+
+			if (mmf != null) {
+				mmf.GBCPalettes.SetPalettes(palettes.GBCPalettes);
+				mmf.SGBPalettes.SetPalettes(palettes.SGBPalettes);
 			}
 
 			this.FileModified = true;

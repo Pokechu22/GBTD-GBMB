@@ -579,6 +579,7 @@
 			this.palettesMenuItem.Index = 10;
 			this.palettesMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
 			this.palettesMenuItem.Text = "P&alettes...";
+			this.palettesMenuItem.Click += new System.EventHandler(this.palettesMenuItem_Click);
 			// 
 			// setBookmarkMenuItem
 			// 
