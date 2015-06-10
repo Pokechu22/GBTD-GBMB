@@ -29,7 +29,7 @@
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.groupBox = new GB.Shared.Controls.GroupBox();
-			this.colorPicker1 = new GB.GBTD.Dialogs.ColorPicker();
+			this.colorPicker = new GB.GBTD.Dialogs.ColorPicker();
 			this.groupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -65,19 +65,21 @@
 			// 
 			// groupBox
 			// 
-			this.groupBox.Controls.Add(this.colorPicker1);
+			this.groupBox.Controls.Add(this.colorPicker);
 			this.groupBox.Location = new System.Drawing.Point(8, 8);
 			this.groupBox.Name = "groupBox";
 			this.groupBox.Size = new System.Drawing.Size(249, 280);
 			this.groupBox.TabIndex = 3;
 			this.groupBox.Text = "??? palettes";
 			// 
-			// colorPicker1
+			// colorPicker
 			// 
-			this.colorPicker1.Location = new System.Drawing.Point(179, 19);
-			this.colorPicker1.Name = "colorPicker1";
-			this.colorPicker1.Size = new System.Drawing.Size(53, 230);
-			this.colorPicker1.TabIndex = 4;
+			this.colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GAMMA;
+			this.colorPicker.Location = new System.Drawing.Point(179, 19);
+			this.colorPicker.Name = "colorPicker";
+			this.colorPicker.PixelImage = global::GB.GBTD.Properties.Resources.GAMMA;
+			this.colorPicker.Size = new System.Drawing.Size(53, 230);
+			this.colorPicker.TabIndex = 4;
 			// 
 			// PalettesDialog
 			// 
@@ -107,6 +109,6 @@
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.Button helpButton;
 		private Shared.Controls.GroupBox groupBox;
-		private Dialogs.ColorPicker colorPicker1;
+		private Dialogs.ColorPicker colorPicker;
 	}
 }

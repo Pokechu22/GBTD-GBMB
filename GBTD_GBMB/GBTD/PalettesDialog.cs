@@ -36,12 +36,15 @@ namespace GB.GBTD
 			switch (colorSet) {
 			case ColorSet.GAMEBOY_COLOR:
 				palette = palettes.GBCPalettes;
+				colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GAMMA;
 				break;
 			case ColorSet.GAMEBOY_COLOR_FILTERED:
 				palette = palettes.GBCPalettes;
+				colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GBCGAMMA;
 				break;
 			case ColorSet.SUPER_GAMEBOY:
 				palette = palettes.SGBPalettes;
+				colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GAMMA;
 				break;
 			default: throw new InvalidEnumArgumentException("colorSet", (int)colorSet, typeof(ColorSet));
 			}
