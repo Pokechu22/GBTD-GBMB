@@ -502,8 +502,7 @@ namespace GB.Shared.AutoUpdate
 
 			private readonly AUMemMappedFile file;
 			/// <summary>
-			/// THe index used, because this class uses two different indecies.
-			/// TODO: this seems like an ugly sollution.
+			/// The index used, because this class uses two different indecies.
 			/// </summary>
 			private readonly int USED_INDEX;
 

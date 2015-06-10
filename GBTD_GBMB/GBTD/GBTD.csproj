@@ -74,6 +74,12 @@
     <Compile Include="MainTileEdit.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PalettesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PalettesDialog.Designer.cs">
+      <DependentUpon>PalettesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PreviewRenderer.cs">
       <SubType>Component</SubType>
     </Compile>
