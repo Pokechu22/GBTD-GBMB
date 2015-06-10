@@ -78,14 +78,14 @@
     </Compile>
     <Compile Include="Palettes\ColorSet.cs" />
     <Compile Include="Palettes\PaletteObjects.cs" />
-    <Compile Include="RecentFileUtils.cs" />
-    <Compile Include="Tiles\GBColor.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RecentFileUtils.cs" />
+    <Compile Include="Tiles\GBColor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tiles\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,12 +99,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GAMMA.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GBCGAMMA.bmp" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
