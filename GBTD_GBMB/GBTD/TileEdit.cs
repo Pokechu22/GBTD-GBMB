@@ -446,6 +446,7 @@ namespace GB.GBTD
 			if (filePath == null) {
 				//If we didn't initially load the file, we save as instead.
 				saveAsButton_OnClicked(sender, e);
+				return;
 			}
 
 			gbrFile.GetOrCreateObjectOfType<GBRObjectProducerInfo>().UpdateWithCurrentApp();
