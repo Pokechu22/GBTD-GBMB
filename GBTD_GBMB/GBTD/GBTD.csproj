@@ -56,6 +56,12 @@
     <Compile Include="ColorSelector.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dialogs\ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\GBTDAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     <Compile Include="ToolList.Designer.cs">
       <DependentUpon>ToolList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialogs\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ExportDialog.resx">
       <DependentUpon>ExportDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,6 +312,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exporting\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GAMMA.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GBCGAMMA.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
