@@ -13,9 +13,11 @@ namespace GB.GBTD.Dialogs
 	public partial class ExportDialog : Form
 	{
 		private readonly GBRObjectTileExport settings;
+		private readonly GBRObjectTileData tileData;
 
-		public ExportDialog(GBRObjectTileExport settings) : this() {
+		public ExportDialog(GBRObjectTileExport settings, GBRObjectTileData tileData) : this() {
 			this.settings = settings;
+			this.tileData = tileData;
 
 			this.tabControl.SelectedIndex = settings.SelectedTab;
 
@@ -83,8 +85,91 @@ namespace GB.GBTD.Dialogs
 			settings.BlockSize = this.blockSizeTextBox.Value;
 		}
 
+		/// <summary>
+		/// Focuses the error'd control and displays a messagebox with the given message.
+		/// </summary>
+		/// <param name="message"></param>
+		/// <param name="control"></param>
+		private void MarkError(String message, Control control) {
+			//Try to find the tabpage.
+			Control c = control;
+			while ((c != null) && !(c is TabPage)) {
+				c = c.Parent;
+			}
+
+			if (c != null) {
+				tabControl.SelectedTab = (TabPage)c;
+			}
+
+			// Display the mesage and focus the now-visible control
+			MessageBox.Show(message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			control.Focus();
+		}
+
+		/// <summary>
+		/// Checks if the data is valid; if it isn't, a message is displayed.
+		/// </summary>
+		/// <returns>Whether the data is valid.</returns>
+		private bool IsDataValid() {
+			if (String.IsNullOrWhiteSpace(fileNameTextBox.Text)) {
+				MarkError("'Filename' is is mandatory for this export type.", fileNameTextBox);
+				return false;
+			}
+			if (String.IsNullOrWhiteSpace(fromTextBox.Text)) {
+				MarkError("'From' is is mandatory for this export type.", fileNameTextBox);
+				return false;
+			}
+			if (String.IsNullOrWhiteSpace(toTextBox.Text)) {
+				MarkError("'To' is is mandatory for this export type.", fileNameTextBox);
+				return false;
+			}
+			if (String.IsNullOrWhiteSpace(metatileConvertCheckBox.Text)) {
+				MarkError("'Index offset' is is mandatory for this export type.", fileNameTextBox);
+				return false;
+			}
+
+			if (fileTypeComboBox.SelectedIndex < 4) { //TAsm / GBDK C
+				if (String.IsNullOrWhiteSpace(labelTextBox.Text)) {
+					MarkError("'Label' is is mandatory for this export type.", fileNameTextBox);
+					return false;
+				}
+				if (String.IsNullOrWhiteSpace(blockSizeTextBox.Text)) {
+					MarkError("'Block size' is is mandatory for this export type.", fileNameTextBox);
+					return false;
+				}
+
+				if (fileTypeComboBox.SelectedIndex < 2) { //RGBDS Asm/Obj
+					if (String.IsNullOrWhiteSpace(sectionTextBox.Text)) {
+						MarkError("'Section' is is mandatory for this export type.", fileNameTextBox);
+						return false;
+					}
+					if (String.IsNullOrWhiteSpace(bankTextBox.Text)) {
+						MarkError("'Bank' is is mandatory for this export type.", fileNameTextBox);
+						return false;
+					}
+				}
+			}
+
+			if (fromTextBox.Value > toTextBox.Value) {
+				MarkError("'To' should be higher or equal to 'From'.", toTextBox);
+				return false;
+			}
+			if (toTextBox.Value > tileData.Count - 1) {
+				MarkError("'To' can not exceed '" + (tileData.Count - 1) + "'.", toTextBox);
+				return false;
+			}
+			if (splitDataCheckBox.Checked && blockSizeTextBox.Value < 1) {
+				MarkError("'Block size' should be higher or equal to 1.", blockSizeTextBox);
+				return false;
+			}
+
+			return true;
+		}
+
 		private void okButton_Click(object sender, EventArgs e) {
-			//TODO: Validate.
+			if (!IsDataValid()) {
+				return;
+			}
 
 			this.SaveToSettings();
 

@@ -485,8 +485,9 @@ namespace GB.GBTD
 
 		private void exportToButton_OnClicked(object sender, EventArgs e) {
 			var exportSettings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
+			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
-			ExportDialog dialog = new ExportDialog(exportSettings);
+			ExportDialog dialog = new ExportDialog(exportSettings, tileData);
 
 			var result = dialog.ShowDialog();
 
