@@ -258,12 +258,7 @@ namespace GB.GBTD
 				return;
 			}
 
-			String[] temp = Clipboard.GetText().Split('\n');
-			Color[] colors = new Color[temp.Length];
-
-			for (int i = 0; i < temp.Length; i++) {
-				colors[i] = StringToColor(temp[i]);
-			}
+			Color[] colors = StringToColors(Clipboard.GetText());
 
 			int colorIndex = 0;
 
@@ -277,6 +272,8 @@ namespace GB.GBTD
 					colorIndex++;
 				}
 			}
+
+			this.Invalidate(true);
 		}
 
 		/// <summary>
@@ -289,13 +286,16 @@ namespace GB.GBTD
 		}
 
 		/// <summary>
-		/// Converts a clipboard-format color string into the color itself.
+		/// Converts a clipboard-format colors string into the colors themselves.
 		/// </summary>
 		/// <param name="s"></param>
 		/// <returns></returns>
-		private Color StringToColor(String s) {
-			var match = Regex.Match(s, @"(\d+)\t(\d+)\t(\d+)");
-			if (match.Success) {
+		private Color[] StringToColors(String s) {
+			var matches = Regex.Matches(s, @"(\d+)\t(\d+)\t(\d+)");
+
+			Queue<Color> colors = new Queue<Color>();
+
+			foreach (Match match in matches) {
 				int r = Convert.ToInt32(match.Groups[1].Value);
 				int g = Convert.ToInt32(match.Groups[2].Value);
 				int b = Convert.ToInt32(match.Groups[3].Value);
@@ -307,10 +307,10 @@ namespace GB.GBTD
 				if (b > 31) { throw new ArgumentException("B value is greater than max (31)"); }
 				if (b < 0) { throw new ArgumentException("B value is less than 0"); }
 
-				return Color.FromArgb(r * 8, g * 8, b * 8);
+				colors.Enqueue(Color.FromArgb(r * 8, g * 8, b * 8));
 			}
 
-			throw new ArgumentException("String is not in a valid format!");
+			return colors.ToArray();
 		}
 	}
 }
