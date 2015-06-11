@@ -484,12 +484,15 @@ namespace GB.GBTD
 		}
 
 		private void exportToButton_OnClicked(object sender, EventArgs e) {
-			ExportDialog dialog = new ExportDialog();
+			var exportSettings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
+
+			ExportDialog dialog = new ExportDialog(exportSettings);
 
 			var result = dialog.ShowDialog();
 
 			if (result == DialogResult.OK) {
 				//TODO: Actually export.
+				FileModified = true;
 			}
 		}
 
@@ -519,11 +522,13 @@ namespace GB.GBTD
 				using (FileStream stream = File.OpenRead(importSettings.FileName)) {
 					import.Import(stream, tileset, importSettings);
 				}
-			}
 
-			this.Invalidate(true);
-			if (mmf != null) {
-				mmf.Tiles.SetTilesArray(tileset.Tiles);
+				FileModified = true;
+
+				this.Invalidate(true);
+				if (mmf != null) {
+					mmf.Tiles.SetTilesArray(tileset.Tiles);
+				}
 			}
 		}
 

@@ -12,40 +12,13 @@ namespace GB.GBTD.Dialogs
 {
 	public partial class ExportDialog : Form
 	{
-		private GBRObjectTileExport settings;
-
-		public GBRObjectTileExport Settings {
-			get { return settings; }
-			set {
-				settings = value;
-				LoadFromSettings();
-			}
-		}
+		private readonly GBRObjectTileExport settings;
 
 		public ExportDialog(GBRObjectTileExport settings) : this() {
-			this.Settings = settings;
-		}
+			this.settings = settings;
 
-		public ExportDialog() {
-			InitializeComponent();
-			InitializeDropdowns();
-		}
-
-		/// <summary>
-		/// Initializes all of the dropdowns by seting their SelectedIndex's to 0.
-		/// </summary>
-		private void InitializeDropdowns() {
-			fileTypeComboBox.SelectedIndex = 0;
-			formatComboBox.SelectedIndex = 0;
-			counterComboBox.SelectedIndex = 0;
-			palettesCGBComboBox.SelectedIndex = 0;
-			palettesSGBComboBox.SelectedIndex = 0;
-			indexCounterComboBox.SelectedIndex = 0;
-		}
-
-		protected void LoadFromSettings() {
 			this.tabControl.SelectedIndex = settings.SelectedTab;
-			
+
 			this.fileNameTextBox.Text = settings.FileName;
 			this.fileTypeComboBox.SelectedIndex = (int)settings.FileType;
 			this.labelTextBox.Text = settings.LabelName;
@@ -66,6 +39,23 @@ namespace GB.GBTD.Dialogs
 			this.indexCounterComboBox.SelectedIndex = (int)settings.MetaCounterFormat;
 			this.splitDataCheckBox.Checked = settings.Split;
 			this.blockSizeTextBox.Value = settings.BlockSize;
+		}
+
+		private ExportDialog() {
+			InitializeComponent();
+			InitializeDropdowns();
+		}
+
+		/// <summary>
+		/// Initializes all of the dropdowns by seting their SelectedIndex's to 0.
+		/// </summary>
+		private void InitializeDropdowns() {
+			fileTypeComboBox.SelectedIndex = 0;
+			formatComboBox.SelectedIndex = 0;
+			counterComboBox.SelectedIndex = 0;
+			palettesCGBComboBox.SelectedIndex = 0;
+			palettesSGBComboBox.SelectedIndex = 0;
+			indexCounterComboBox.SelectedIndex = 0;
 		}
 
 		protected void SaveToSettings() {
@@ -91,6 +81,22 @@ namespace GB.GBTD.Dialogs
 			settings.MetaCounterFormat= (ExportCounterType)this.indexCounterComboBox.SelectedIndex;
 			settings.Split = this.splitDataCheckBox.Checked;
 			settings.BlockSize = this.blockSizeTextBox.Value;
+		}
+
+		private void okButton_Click(object sender, EventArgs e) {
+			//TODO: Validate.
+
+			this.SaveToSettings();
+
+			this.DialogResult = DialogResult.OK;
+
+			this.Close();
+		}
+
+		private void cancelButton_Click(object sender, EventArgs e) {
+			this.DialogResult = DialogResult.Cancel;
+
+			this.Close();
 		}
 	}
 }

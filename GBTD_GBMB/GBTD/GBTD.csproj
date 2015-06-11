@@ -80,10 +80,10 @@
     <Compile Include="MainTileEdit.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PalettesDialog.cs">
+    <Compile Include="Dialogs\PalettesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PalettesDialog.Designer.cs">
+    <Compile Include="Dialogs\PalettesDialog.Designer.cs">
       <DependentUpon>PalettesDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="PreviewRenderer.cs">
@@ -145,7 +145,7 @@
     <EmbeddedResource Include="Dialogs\TileCountDialog.resx">
       <DependentUpon>TileCountDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PalettesDialog.resx">
+    <EmbeddedResource Include="Dialogs\PalettesDialog.resx">
       <DependentUpon>PalettesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
