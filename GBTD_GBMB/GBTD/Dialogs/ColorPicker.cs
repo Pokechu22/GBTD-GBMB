@@ -30,7 +30,7 @@ namespace GB.GBTD.Dialogs
 			get { return selectedColor; }
 			set {
 				selectedColor = value;
-				actualColorBox.BackColor = value;
+				actualColorBox.BackColor = FilterIfNeeded(value, ColorSet);
 				updateHoveredColor(value);
 
 				if (SelectedColorChanged != null) {

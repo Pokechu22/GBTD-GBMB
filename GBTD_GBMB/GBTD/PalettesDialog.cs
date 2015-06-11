@@ -61,6 +61,7 @@ namespace GB.GBTD
 			}
 
 			colorPicker.ColorSet = colorSet;
+			colorPicker.SelectedColor = workPalette[0][0];
 
 			this.groupBox.Text = colorSet.GetDisplayName() + " palettes";
 
