@@ -47,7 +47,7 @@ namespace GB.GBTD.Dialogs
 			set;
 		}
 
-		[Description("Fires when the selected color has changed.")]
+		[Description("Fires when the selected color has changed."), Category("Action")]
 		public event EventHandler SelectedColorChanged;
 
 		public ColorPicker() {

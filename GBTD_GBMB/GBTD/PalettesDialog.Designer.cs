@@ -74,12 +74,15 @@
 			// 
 			// colorPicker
 			// 
+			this.colorPicker.ColorSet = GB.Shared.Palettes.ColorSet.GAMEBOY_POCKET;
 			this.colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GAMMA;
 			this.colorPicker.Location = new System.Drawing.Point(179, 19);
 			this.colorPicker.Name = "colorPicker";
 			this.colorPicker.PixelImage = global::GB.GBTD.Properties.Resources.GAMMA;
+			this.colorPicker.SelectedColor = System.Drawing.Color.Empty;
 			this.colorPicker.Size = new System.Drawing.Size(53, 230);
 			this.colorPicker.TabIndex = 4;
+			this.colorPicker.SelectedColorChanged += new System.EventHandler(this.colorPicker_SelectedColorChanged);
 			// 
 			// PalettesDialog
 			// 

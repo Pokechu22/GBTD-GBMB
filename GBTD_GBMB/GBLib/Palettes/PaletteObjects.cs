@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace GB.Shared.Palettes
 {
-	public class PaletteData : ICloneable
+	public class PaletteData
 	{
 		/// <summary>
 		/// Creates a new PaletteData with the specified appearence.

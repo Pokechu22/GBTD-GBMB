@@ -17,7 +17,15 @@ namespace GB.GBTD
 {
 	public partial class PalettesDialog : Form
 	{
-		private readonly PaletteSet palette;
+		/// <summary>
+		/// Origionally provided Palette; don't modify until saving.
+		/// </summary>
+		private readonly GBRObjectPalettes palettes;
+		/// <summary>
+		/// Palette that can be modified.
+		/// </summary>
+		private readonly PaletteSet workPalette;
+
 		private readonly ColorSet colorSet;
 
 		private GBColor selectedX = GBColor.WHITE;
@@ -32,18 +40,20 @@ namespace GB.GBTD
 				throw new ArgumentException("Color set doesn't support customization!", "colorSet");
 			}
 
+			this.palettes = palettes;
+
 			this.colorSet = colorSet;
 			switch (colorSet) {
 			case ColorSet.GAMEBOY_COLOR:
-				palette = palettes.GBCPalettes;
+				workPalette = (PaletteSet)palettes.GBCPalettes.Clone();
 				colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GAMMA;
 				break;
 			case ColorSet.GAMEBOY_COLOR_FILTERED:
-				palette = palettes.GBCPalettes;
+				workPalette = (PaletteSet)palettes.GBCPalettes.Clone();
 				colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GBCGAMMA;
 				break;
 			case ColorSet.SUPER_GAMEBOY:
-				palette = palettes.SGBPalettes;
+				workPalette = (PaletteSet)palettes.SGBPalettes.Clone();
 				colorPicker.DisplayImage = global::GB.GBTD.Properties.Resources.GAMMA;
 				break;
 			default: throw new InvalidEnumArgumentException("colorSet", (int)colorSet, typeof(ColorSet));
@@ -87,7 +97,23 @@ namespace GB.GBTD
 		}
 
 		private void okButton_Click(object sender, EventArgs e) {
-			//TODO: Update palettes.
+			switch (colorSet) {
+			case ColorSet.GAMEBOY_COLOR:
+				for (int i = 0; i < palettes.GBCPalettes.Size; i++) {
+					palettes.GBCPalettes[i] = workPalette[i];
+				}
+				break;
+			case ColorSet.GAMEBOY_COLOR_FILTERED:
+				for (int i = 0; i < palettes.GBCPalettes.Size; i++) {
+					palettes.GBCPalettes[i] = workPalette[i];
+				}
+				break;
+			case ColorSet.SUPER_GAMEBOY:
+				for (int i = 0; i < palettes.SGBPalettes.Size; i++) {
+					palettes.SGBPalettes[i] = workPalette[i];
+				}
+				break;
+			}
 
 			this.DialogResult = DialogResult.OK;
 
@@ -103,8 +129,15 @@ namespace GB.GBTD
 		/// PaletteButtons will call this after they change selectedX and selectedY.
 		/// </summary>
 		private void OnPaletteButtonClicked() {
+			colorPicker.SelectedColor = workPalette[selectedY][selectedX];
+
 			this.Invalidate(true);
-			//TODO -- update the values in the thingy.
+		}
+
+		private void colorPicker_SelectedColorChanged(object sender, EventArgs e) {
+			workPalette[selectedY][selectedX] = colorPicker.SelectedColor;
+
+			this.Invalidate(true);
 		}
 
 		private class PaletteButton : Control
@@ -132,7 +165,7 @@ namespace GB.GBTD
 				e.Graphics.PixelOffsetMode = PixelOffsetMode.None;
 				e.Graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
-				Color drawColor = parent.palette[row][ID];
+				Color drawColor = parent.workPalette[row][ID];
 				if (parent.colorSet.IsFiltered()) {
 					drawColor = drawColor.FilterWithGBC();
 				}
