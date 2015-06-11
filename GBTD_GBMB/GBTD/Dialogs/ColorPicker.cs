@@ -93,9 +93,33 @@ namespace GB.GBTD.Dialogs
 				color = updateHoveredColor(Color.Black);
 			}
 
-			this.actualColorBox.BackColor = selectedColor;
+			this.actualColorBox.BackColor = color;
 			this.selectedColor = color;
 			
+			if (SelectedColorChanged != null) {
+				SelectedColorChanged(this, new EventArgs());
+			}
+		}
+
+		private void actualColorBox_MouseEnter(object sender, EventArgs e) {
+			updateHoveredColor(selectedColor);
+		}
+
+		private void colorTextBox_TextChanged(object sender, EventArgs e) {
+			if (updatingColor) {
+				return;
+			}
+
+			int r = (int)(redTextBox.Value * 8);
+			int g = (int)(greenTextBox.Value * 8);
+			int b = (int)(blueTextBox.Value * 8);
+
+			Color color = Color.FromArgb(r, g, b);
+
+			updateHoveredColor(color);
+			this.actualColorBox.BackColor = color;
+			this.selectedColor = color;
+
 			if (SelectedColorChanged != null) {
 				SelectedColorChanged(this, new EventArgs());
 			}

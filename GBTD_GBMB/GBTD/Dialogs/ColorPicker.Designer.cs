@@ -25,9 +25,9 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat4 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat5 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat6 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
 			GB.Shared.Controls.Border mainBorder2;
 			GB.Shared.Controls.Border mainBorder1;
 			this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -60,42 +60,48 @@
 			// 
 			this.blueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.blueTextBox.Location = new System.Drawing.Point(26, 175);
+			this.blueTextBox.MaxLength = 2;
+			this.blueTextBox.MaxValue = ((uint)(31u));
 			this.blueTextBox.Name = "blueTextBox";
 			this.blueTextBox.Size = new System.Drawing.Size(18, 17);
 			this.blueTextBox.TabIndex = 13;
-			this.blueTextBox.Text = "31";
 			this.blueTextBox.Value = ((uint)(31u));
+			this.blueTextBox.TextChanged += new System.EventHandler(this.colorTextBox_TextChanged);
 			// 
 			// greenTextBox
 			// 
 			this.greenTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.greenTextBox.Location = new System.Drawing.Point(26, 157);
+			this.greenTextBox.MaxLength = 2;
+			this.greenTextBox.MaxValue = ((uint)(31u));
 			this.greenTextBox.Name = "greenTextBox";
 			this.greenTextBox.Size = new System.Drawing.Size(18, 17);
 			this.greenTextBox.TabIndex = 12;
-			this.greenTextBox.Text = "31";
 			this.greenTextBox.Value = ((uint)(31u));
+			this.greenTextBox.TextChanged += new System.EventHandler(this.colorTextBox_TextChanged);
 			// 
 			// redTextBox
 			// 
 			this.redTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.redTextBox.Location = new System.Drawing.Point(26, 139);
+			this.redTextBox.MaxLength = 2;
+			this.redTextBox.MaxValue = ((uint)(31u));
 			this.redTextBox.Name = "redTextBox";
 			this.redTextBox.Size = new System.Drawing.Size(18, 17);
 			this.redTextBox.TabIndex = 11;
-			this.redTextBox.Text = "31";
 			this.redTextBox.Value = ((uint)(31u));
+			this.redTextBox.TextChanged += new System.EventHandler(this.colorTextBox_TextChanged);
 			// 
 			// bLabel
 			// 
 			this.bLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.bLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.bLabel.Font = new System.Drawing.Font("Times New Roman", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			stringFormat4.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat4.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat4.Trimming = System.Drawing.StringTrimming.Character;
-			this.bLabel.Format = stringFormat4;
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.bLabel.Format = stringFormat1;
 			this.bLabel.Location = new System.Drawing.Point(7, 177);
 			this.bLabel.Name = "bLabel";
 			this.bLabel.Size = new System.Drawing.Size(10, 12);
@@ -108,11 +114,11 @@
 			this.gLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.gLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.gLabel.Font = new System.Drawing.Font("Times New Roman", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat5.Trimming = System.Drawing.StringTrimming.Character;
-			this.gLabel.Format = stringFormat5;
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.gLabel.Format = stringFormat2;
 			this.gLabel.Location = new System.Drawing.Point(7, 159);
 			this.gLabel.Name = "gLabel";
 			this.gLabel.Size = new System.Drawing.Size(11, 12);
@@ -125,11 +131,11 @@
 			this.rLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.rLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.rLabel.Font = new System.Drawing.Font("Times New Roman", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat6.Trimming = System.Drawing.StringTrimming.Character;
-			this.rLabel.Format = stringFormat6;
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.rLabel.Format = stringFormat3;
 			this.rLabel.Location = new System.Drawing.Point(7, 141);
 			this.rLabel.Name = "rLabel";
 			this.rLabel.Size = new System.Drawing.Size(10, 12);
@@ -137,7 +143,7 @@
 			this.rLabel.TabStop = false;
 			this.rLabel.Text = "&R";
 			// 
-			// hoveredColor
+			// hoveredColorBox
 			// 
 			this.hoveredColorBox.BackColor = System.Drawing.Color.White;
 			this.hoveredColorBox.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
@@ -148,13 +154,13 @@
         System.Windows.Forms.Border3DSide.Bottom};
 			this.hoveredColorBox.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.hoveredColorBox.Location = new System.Drawing.Point(5, 194);
-			this.hoveredColorBox.Name = "hoveredColor";
+			this.hoveredColorBox.Name = "hoveredColorBox";
 			this.hoveredColorBox.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.hoveredColorBox.Size = new System.Drawing.Size(42, 31);
 			this.hoveredColorBox.TabIndex = 6;
 			this.hoveredColorBox.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			// 
-			// actualColor
+			// actualColorBox
 			// 
 			this.actualColorBox.BackColor = System.Drawing.Color.White;
 			this.actualColorBox.BottomBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
@@ -165,11 +171,12 @@
         System.Windows.Forms.Border3DSide.Bottom};
 			this.actualColorBox.LeftBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.actualColorBox.Location = new System.Drawing.Point(2, 104);
-			this.actualColorBox.Name = "actualColor";
+			this.actualColorBox.Name = "actualColorBox";
 			this.actualColorBox.RightBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
 			this.actualColorBox.Size = new System.Drawing.Size(49, 30);
 			this.actualColorBox.TabIndex = 5;
 			this.actualColorBox.TopBorder = System.Windows.Forms.Border3DStyle.SunkenOuter;
+			this.actualColorBox.MouseEnter += new System.EventHandler(this.actualColorBox_MouseEnter);
 			// 
 			// rgbBorder
 			// 
