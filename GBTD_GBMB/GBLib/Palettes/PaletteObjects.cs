@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace GB.Shared.Palettes
 {
-	public class PaletteData
+	public class PaletteData : ICloneable
 	{
 		/// <summary>
 		/// Creates a new PaletteData with the specified appearence.
@@ -84,7 +84,7 @@ namespace GB.Shared.Palettes
 	/// <summary>
 	/// Represents a series of Palettes.
 	/// </summary>
-	public class PaletteSet
+	public class PaletteSet : ICloneable
 	{
 		/// <summary>
 		/// Creates a paletteset with the specified palettes.
@@ -93,7 +93,10 @@ namespace GB.Shared.Palettes
 		public PaletteSet(params Palette[] palettes) {
 			if (palettes == null) { throw new ArgumentNullException("palettes"); }
 
-			this.palettes = (Palette[])palettes.Clone();
+			this.palettes = new Palette[palettes.Length];
+			for (int i = 0; i < palettes.Length; i++) {
+				this.palettes[i] = (Palette)palettes[i].Clone();
+			}
 		}
 
 		/// <summary>
@@ -128,12 +131,16 @@ namespace GB.Shared.Palettes
 				palettes[index] = value;
 			}
 		}
+
+		public object Clone() {
+			return new PaletteSet(this.palettes);
+		}
 	}
 
 	/// <summary>
 	/// Represents a single 4-color palette.
 	/// </summary>
-	public class Palette
+	public class Palette : ICloneable
 	{
 		/// <summary>
 		/// Creates a palette with the specified colors.
@@ -235,6 +242,10 @@ namespace GB.Shared.Palettes
 				default: throw new InvalidEnumArgumentException("color", (int)color, typeof(GBColor));
 				}
 			}
+		}
+
+		public object Clone() {
+			return new Palette(this.Color0, this.Color1, this.Color2, this.Color3);
 		}
 	}
 }
