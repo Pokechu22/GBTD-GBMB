@@ -1,4 +1,4 @@
-﻿namespace GB.GBTD
+﻿namespace GB.GBTD.Dialogs
 {
 	partial class PalettesDialog
 	{

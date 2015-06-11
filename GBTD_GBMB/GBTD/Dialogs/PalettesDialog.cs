@@ -14,7 +14,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Text.RegularExpressions;
 
-namespace GB.GBTD
+namespace GB.GBTD.Dialogs
 {
 	public partial class PalettesDialog : Form
 	{
