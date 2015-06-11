@@ -183,5 +183,41 @@ namespace GB.GBTD.Dialogs
 
 			this.Close();
 		}
+
+		/// <summary>
+		/// Updates the enabled state of all controls on this form.
+		/// </summary>
+		private void updateEnablement(object sender, EventArgs args) {
+			GBRExportFileType type = (GBRExportFileType)fileTypeComboBox.SelectedIndex;
+
+			if (type == GBRExportFileType.BinaryFile) {
+				splitDataCheckBox.Enabled = false;
+				blockSizeTextBox.Enabled = labelBlockSize.Enabled = false;
+
+				labelTextBox.Enabled = labelLabel.Enabled = false;
+				sectionTextBox.Enabled = labelSection.Enabled = false;
+				bankTextBox.Enabled = labelBank.Enabled = false;
+			} else if (type == GBRExportFileType.GBDKCFile || type == GBRExportFileType.TASMAssemblyFile) {
+				splitDataCheckBox.Enabled = true;
+				blockSizeTextBox.Enabled = labelBlockSize.Enabled = splitDataCheckBox.Checked;
+
+				labelTextBox.Enabled = labelLabel.Enabled = true;
+				sectionTextBox.Enabled = labelSection.Enabled = false;
+				bankTextBox.Enabled = labelBank.Enabled = false;
+			} else {
+				splitDataCheckBox.Enabled = true;
+				blockSizeTextBox.Enabled = labelBlockSize.Enabled = splitDataCheckBox.Checked;
+
+				labelTextBox.Enabled = labelLabel.Enabled = true;
+				sectionTextBox.Enabled = labelSection.Enabled = true;
+				bankTextBox.Enabled = labelBank.Enabled = true;
+			}
+
+			palettesSGBComboBox.Enabled = labelSGBPalettes.Enabled = includePaletteCheckBox.Checked;
+			palettesCGBComboBox.Enabled = labelCGBPalettes.Enabled = includePaletteCheckBox.Checked;
+
+			indexOffsetTextBox.Enabled = labelIndexOffset.Enabled = metatileConvertCheckBox.Checked;
+			indexCounterComboBox.Enabled = labelIndexCounter.Enabled = metatileConvertCheckBox.Checked;
+		}
 	}
 }

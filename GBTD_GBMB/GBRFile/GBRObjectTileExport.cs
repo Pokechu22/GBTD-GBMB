@@ -223,7 +223,8 @@ namespace GB.Shared.GBRFile
 		RGBDSObjectFile = 1,
 		TASMAssemblyFile = 2,
 		GBDKCFile = 3,
-		BinaryFile = 4
+		BinaryFile = 4,
+		ISASAssemblyFile = 5
 	}
 
 	public enum ExportFormat : byte
