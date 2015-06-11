@@ -14,6 +14,7 @@ namespace GB.Shared.Controls
 
 		public NumericTextBox() {
 			this.Text = "0";
+			this.MaxValue = UInt32.MaxValue;
 			this.AutoSize = false;
 		}
 
@@ -21,24 +22,46 @@ namespace GB.Shared.Controls
 		[DefaultValue(0)]
 		public UInt32 Value {
 			get {
+				UInt32 returned;
 				if (String.IsNullOrEmpty(this.Text)) {
 					return 0;
 				}
 				try {
-					return UInt32.Parse(this.Text);
+					returned = UInt32.Parse(this.Text);
 				} catch (OverflowException) {
-					this.Value = UInt32.MaxValue;
-					return UInt32.MaxValue;
+					this.Text = maxValue.ToString();
+					returned = maxValue;
 				} catch (Exception) {
 					throw;
 				}
+
+				if (returned > maxValue) {
+					returned = maxValue;
+					this.Text = maxValue.ToString();
+				}
+
+				return returned;
 			}
 			set {
 				this.Text = value.ToString();
 			}	
 		}
 
+		private UInt32 maxValue;
+		[Category("Data"), Description("The maximum numeric value.")]
+		[DefaultValue(typeof(UInt32), "4294967295")]
+		public UInt32 MaxValue {
+			get {return this.maxValue;}
+			set {
+				maxValue = value;
+				if (this.Value > maxValue) {
+					this.Value = maxValue;
+				}
+			}
+		}
+
 		[DefaultValue("0")]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
 		public override string Text {
 			get { return base.Text; }
 			set {
@@ -57,6 +80,14 @@ namespace GB.Shared.Controls
 				e.Handled = true;
 			}
 			base.OnKeyPress(e);
+		}
+
+		protected override void OnTextChanged(EventArgs e) {
+			if (this.Value > this.maxValue) {
+				this.Value = this.maxValue;
+			}
+
+			base.OnTextChanged(e);
 		}
 	}
 }
