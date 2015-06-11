@@ -49,6 +49,8 @@ namespace GB.GBTD
 			default: throw new InvalidEnumArgumentException("colorSet", (int)colorSet, typeof(ColorSet));
 			}
 
+			colorPicker.ColorSet = colorSet;
+
 			this.groupBox.Text = colorSet.GetDisplayName() + " palettes";
 
 			this.SuspendLayout();

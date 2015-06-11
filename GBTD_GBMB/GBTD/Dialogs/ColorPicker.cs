@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GB.Shared.Palettes;
 
 namespace GB.GBTD.Dialogs
 {
@@ -36,6 +37,14 @@ namespace GB.GBTD.Dialogs
 					SelectedColorChanged(this, new EventArgs());
 				}
 			}
+		}
+
+		/// <summary>
+		/// Colorset that will be used for filtering.
+		/// </summary>
+		public ColorSet ColorSet {
+			get;
+			set;
 		}
 
 		[Description("Fires when the selected color has changed.")]
@@ -71,7 +80,7 @@ namespace GB.GBTD.Dialogs
 			//The "actual" color, IE the one on the Gameboy / elsewhere in the app.
 			Color realColor = Color.FromArgb(r * 8, g * 8, b * 8);
 
-			this.hoveredColorBox.BackColor = realColor;
+			this.hoveredColorBox.BackColor = FilterIfNeeded(realColor, this.ColorSet);
 
 			return realColor;
 		}
@@ -93,7 +102,7 @@ namespace GB.GBTD.Dialogs
 				color = updateHoveredColor(Color.Black);
 			}
 
-			this.actualColorBox.BackColor = color;
+			this.actualColorBox.BackColor = FilterIfNeeded(color, this.ColorSet);
 			this.selectedColor = color;
 			
 			if (SelectedColorChanged != null) {
@@ -117,11 +126,25 @@ namespace GB.GBTD.Dialogs
 			Color color = Color.FromArgb(r, g, b);
 
 			updateHoveredColor(color);
-			this.actualColorBox.BackColor = color;
+			this.actualColorBox.BackColor = FilterIfNeeded(color, this.ColorSet);
 			this.selectedColor = color;
 
 			if (SelectedColorChanged != null) {
 				SelectedColorChanged(this, new EventArgs());
+			}
+		}
+
+		/// <summary>
+		/// Returns a filtered version of the given color, if the colorSet requires filtration.
+		/// </summary>
+		/// <param name="color"></param>
+		/// <param name="set"></param>
+		/// <returns></returns>
+		public Color FilterIfNeeded(Color color, ColorSet set) {
+			if (set.IsFiltered()) {
+				return color.FilterWithGBC();
+			} else {
+				return color;
 			}
 		}
 	}
