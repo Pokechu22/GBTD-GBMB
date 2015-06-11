@@ -25,16 +25,16 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat7 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat8 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat9 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat3 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat2 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat1 = new System.Drawing.StringFormat();
 			this.dimensionsGroupBox = new GB.Shared.Controls.GroupBox();
-			this.orderDropDown = new System.Windows.Forms.ComboBox();
-			this.heightTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.widthTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.labelOrder = new GB.Shared.Controls.CleanLabel();
-			this.labelTileHeight = new GB.Shared.Controls.CleanLabel();
 			this.labelTileWidth = new GB.Shared.Controls.CleanLabel();
+			this.labelTileHeight = new GB.Shared.Controls.CleanLabel();
+			this.labelOrder = new GB.Shared.Controls.CleanLabel();
+			this.widthTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.heightTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.orderDropDown = new System.Windows.Forms.ComboBox();
 			this.pasteButton = new System.Windows.Forms.Button();
 			this.copyButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
@@ -44,17 +44,81 @@
 			// 
 			// dimensionsGroupBox
 			// 
-			this.dimensionsGroupBox.Controls.Add(this.labelTileWidth);
-			this.dimensionsGroupBox.Controls.Add(this.labelTileHeight);
-			this.dimensionsGroupBox.Controls.Add(this.labelOrder);
-			this.dimensionsGroupBox.Controls.Add(this.widthTextBox);
-			this.dimensionsGroupBox.Controls.Add(this.heightTextBox);
 			this.dimensionsGroupBox.Controls.Add(this.orderDropDown);
+			this.dimensionsGroupBox.Controls.Add(this.heightTextBox);
+			this.dimensionsGroupBox.Controls.Add(this.widthTextBox);
+			this.dimensionsGroupBox.Controls.Add(this.labelOrder);
+			this.dimensionsGroupBox.Controls.Add(this.labelTileHeight);
+			this.dimensionsGroupBox.Controls.Add(this.labelTileWidth);
 			this.dimensionsGroupBox.Location = new System.Drawing.Point(8, 8);
 			this.dimensionsGroupBox.Name = "dimensionsGroupBox";
 			this.dimensionsGroupBox.Size = new System.Drawing.Size(329, 96);
 			this.dimensionsGroupBox.TabIndex = 0;
 			this.dimensionsGroupBox.Text = "Dimensions";
+			// 
+			// labelTileWidth
+			// 
+			this.labelTileWidth.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelTileWidth.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat3.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelTileWidth.Format = stringFormat3;
+			this.labelTileWidth.Location = new System.Drawing.Point(14, 19);
+			this.labelTileWidth.Name = "labelTileWidth";
+			this.labelTileWidth.Size = new System.Drawing.Size(52, 14);
+			this.labelTileWidth.TabIndex = 4;
+			this.labelTileWidth.TabStop = false;
+			this.labelTileWidth.Text = "Tile &width";
+			// 
+			// labelTileHeight
+			// 
+			this.labelTileHeight.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelTileHeight.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat2.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelTileHeight.Format = stringFormat2;
+			this.labelTileHeight.Location = new System.Drawing.Point(14, 43);
+			this.labelTileHeight.Name = "labelTileHeight";
+			this.labelTileHeight.Size = new System.Drawing.Size(56, 14);
+			this.labelTileHeight.TabIndex = 5;
+			this.labelTileHeight.TabStop = false;
+			this.labelTileHeight.Text = "Tile &height";
+			// 
+			// labelOrder
+			// 
+			this.labelOrder.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelOrder.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat1.Trimming = System.Drawing.StringTrimming.Character;
+			this.labelOrder.Format = stringFormat1;
+			this.labelOrder.Location = new System.Drawing.Point(14, 67);
+			this.labelOrder.Name = "labelOrder";
+			this.labelOrder.Size = new System.Drawing.Size(33, 14);
+			this.labelOrder.TabIndex = 6;
+			this.labelOrder.TabStop = false;
+			this.labelOrder.Text = "&Order";
+			// 
+			// widthTextBox
+			// 
+			this.widthTextBox.Location = new System.Drawing.Point(75, 16);
+			this.widthTextBox.Name = "widthTextBox";
+			this.widthTextBox.Size = new System.Drawing.Size(33, 21);
+			this.widthTextBox.TabIndex = 7;
+			this.widthTextBox.Value = ((uint)(0u));
+			// 
+			// heightTextBox
+			// 
+			this.heightTextBox.Location = new System.Drawing.Point(75, 40);
+			this.heightTextBox.Name = "heightTextBox";
+			this.heightTextBox.Size = new System.Drawing.Size(33, 21);
+			this.heightTextBox.TabIndex = 8;
+			this.heightTextBox.Value = ((uint)(0u));
 			// 
 			// orderDropDown
 			// 
@@ -67,70 +131,6 @@
 			this.orderDropDown.Name = "orderDropDown";
 			this.orderDropDown.Size = new System.Drawing.Size(174, 21);
 			this.orderDropDown.TabIndex = 9;
-			// 
-			// heightTextBox
-			// 
-			this.heightTextBox.Location = new System.Drawing.Point(75, 40);
-			this.heightTextBox.Name = "heightTextBox";
-			this.heightTextBox.Size = new System.Drawing.Size(33, 21);
-			this.heightTextBox.TabIndex = 8;
-			this.heightTextBox.Value = ((uint)(0u));
-			// 
-			// widthTextBox
-			// 
-			this.widthTextBox.Location = new System.Drawing.Point(75, 16);
-			this.widthTextBox.Name = "widthTextBox";
-			this.widthTextBox.Size = new System.Drawing.Size(33, 21);
-			this.widthTextBox.TabIndex = 7;
-			this.widthTextBox.Value = ((uint)(0u));
-			// 
-			// labelOrder
-			// 
-			this.labelOrder.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelOrder.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat7.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelOrder.Format = stringFormat7;
-			this.labelOrder.Location = new System.Drawing.Point(14, 67);
-			this.labelOrder.Name = "labelOrder";
-			this.labelOrder.Size = new System.Drawing.Size(33, 14);
-			this.labelOrder.TabIndex = 6;
-			this.labelOrder.TabStop = false;
-			this.labelOrder.Text = "&Order";
-			// 
-			// labelTileHeight
-			// 
-			this.labelTileHeight.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelTileHeight.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelTileHeight.Format = stringFormat8;
-			this.labelTileHeight.Location = new System.Drawing.Point(14, 43);
-			this.labelTileHeight.Name = "labelTileHeight";
-			this.labelTileHeight.Size = new System.Drawing.Size(56, 14);
-			this.labelTileHeight.TabIndex = 5;
-			this.labelTileHeight.TabStop = false;
-			this.labelTileHeight.Text = "Tile &height";
-			// 
-			// labelTileWidth
-			// 
-			this.labelTileWidth.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelTileWidth.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.Trimming = System.Drawing.StringTrimming.Character;
-			this.labelTileWidth.Format = stringFormat9;
-			this.labelTileWidth.Location = new System.Drawing.Point(14, 19);
-			this.labelTileWidth.Name = "labelTileWidth";
-			this.labelTileWidth.Size = new System.Drawing.Size(52, 14);
-			this.labelTileWidth.TabIndex = 4;
-			this.labelTileWidth.TabStop = false;
-			this.labelTileWidth.Text = "Tile &width";
 			// 
 			// pasteButton
 			// 
@@ -189,6 +189,7 @@
 			this.MinimizeBox = false;
 			this.Name = "SplitOptionsDialog";
 			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
 			this.Text = "Split options";
 			this.dimensionsGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);

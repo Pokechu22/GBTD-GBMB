@@ -25,20 +25,20 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Drawing.StringFormat stringFormat22 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat23 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat24 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat25 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat26 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat27 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat28 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat16 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat15 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat17 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat19 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat18 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat21 = new System.Drawing.StringFormat();
-			System.Drawing.StringFormat stringFormat20 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat43 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat44 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat45 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat46 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat47 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat48 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat49 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat50 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat51 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat52 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat53 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat54 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat55 = new System.Drawing.StringFormat();
+			System.Drawing.StringFormat stringFormat56 = new System.Drawing.StringFormat();
 			this.okButton = new System.Windows.Forms.Button();
 			this.helpButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
@@ -235,12 +235,12 @@
 			// 
 			this.labelCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat22.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat22.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat22.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat22.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat22.Trimming = System.Drawing.StringTrimming.None;
-			this.labelCounter.Format = stringFormat22;
+			stringFormat43.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat43.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat43.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat43.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat43.Trimming = System.Drawing.StringTrimming.None;
+			this.labelCounter.Format = stringFormat43;
 			this.labelCounter.Location = new System.Drawing.Point(14, 148);
 			this.labelCounter.Name = "labelCounter";
 			this.labelCounter.Size = new System.Drawing.Size(44, 14);
@@ -252,12 +252,12 @@
 			// 
 			this.labelFormat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFormat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat23.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat23.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat23.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat23.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat23.Trimming = System.Drawing.StringTrimming.None;
-			this.labelFormat.Format = stringFormat23;
+			stringFormat44.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat44.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat44.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat44.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat44.Trimming = System.Drawing.StringTrimming.None;
+			this.labelFormat.Format = stringFormat44;
 			this.labelFormat.Location = new System.Drawing.Point(14, 124);
 			this.labelFormat.Name = "labelFormat";
 			this.labelFormat.Size = new System.Drawing.Size(40, 14);
@@ -269,12 +269,12 @@
 			// 
 			this.labelTo.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat24.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat24.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat24.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat24.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat24.Trimming = System.Drawing.StringTrimming.None;
-			this.labelTo.Format = stringFormat24;
+			stringFormat45.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat45.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat45.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat45.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat45.Trimming = System.Drawing.StringTrimming.None;
+			this.labelTo.Format = stringFormat45;
 			this.labelTo.Location = new System.Drawing.Point(118, 94);
 			this.labelTo.Name = "labelTo";
 			this.labelTo.Size = new System.Drawing.Size(17, 14);
@@ -286,12 +286,12 @@
 			// 
 			this.labelFrom.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFrom.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat25.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat25.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat25.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat25.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat25.Trimming = System.Drawing.StringTrimming.None;
-			this.labelFrom.Format = stringFormat25;
+			stringFormat46.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat46.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat46.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat46.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat46.Trimming = System.Drawing.StringTrimming.None;
+			this.labelFrom.Format = stringFormat46;
 			this.labelFrom.Location = new System.Drawing.Point(14, 94);
 			this.labelFrom.Name = "labelFrom";
 			this.labelFrom.Size = new System.Drawing.Size(31, 14);
@@ -303,12 +303,12 @@
 			// 
 			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat26.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat26.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat26.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat26.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat26.Trimming = System.Drawing.StringTrimming.None;
-			this.labelBank.Format = stringFormat26;
+			stringFormat47.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat47.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat47.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat47.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat47.Trimming = System.Drawing.StringTrimming.None;
+			this.labelBank.Format = stringFormat47;
 			this.labelBank.Location = new System.Drawing.Point(14, 67);
 			this.labelBank.Name = "labelBank";
 			this.labelBank.Size = new System.Drawing.Size(30, 14);
@@ -320,12 +320,12 @@
 			// 
 			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat27.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat27.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat27.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat27.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat27.Trimming = System.Drawing.StringTrimming.None;
-			this.labelSection.Format = stringFormat27;
+			stringFormat48.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat48.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat48.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat48.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat48.Trimming = System.Drawing.StringTrimming.None;
+			this.labelSection.Format = stringFormat48;
 			this.labelSection.Location = new System.Drawing.Point(14, 43);
 			this.labelSection.Name = "labelSection";
 			this.labelSection.Size = new System.Drawing.Size(42, 14);
@@ -337,12 +337,12 @@
 			// 
 			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat28.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat28.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat28.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat28.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat28.Trimming = System.Drawing.StringTrimming.None;
-			this.labelLabel.Format = stringFormat28;
+			stringFormat49.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat49.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat49.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat49.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat49.Trimming = System.Drawing.StringTrimming.None;
+			this.labelLabel.Format = stringFormat49;
 			this.labelLabel.Location = new System.Drawing.Point(14, 19);
 			this.labelLabel.Name = "labelLabel";
 			this.labelLabel.Size = new System.Drawing.Size(32, 14);
@@ -424,12 +424,12 @@
 			// 
 			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat16.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat16.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat16.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat16.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat16.Trimming = System.Drawing.StringTrimming.None;
-			this.labelType.Format = stringFormat16;
+			stringFormat50.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat50.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat50.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat50.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat50.Trimming = System.Drawing.StringTrimming.None;
+			this.labelType.Format = stringFormat50;
 			this.labelType.Location = new System.Drawing.Point(14, 43);
 			this.labelType.Name = "labelType";
 			this.labelType.Size = new System.Drawing.Size(29, 14);
@@ -441,12 +441,12 @@
 			// 
 			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat15.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat15.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat15.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat15.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat15.Trimming = System.Drawing.StringTrimming.None;
-			this.labelFileName.Format = stringFormat15;
+			stringFormat51.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat51.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat51.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat51.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat51.Trimming = System.Drawing.StringTrimming.None;
+			this.labelFileName.Format = stringFormat51;
 			this.labelFileName.Location = new System.Drawing.Point(14, 19);
 			this.labelFileName.Name = "labelFileName";
 			this.labelFileName.Size = new System.Drawing.Size(51, 14);
@@ -510,12 +510,12 @@
 			// 
 			this.labelBlockSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelBlockSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat17.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat17.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat17.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat17.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat17.Trimming = System.Drawing.StringTrimming.None;
-			this.labelBlockSize.Format = stringFormat17;
+			stringFormat52.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat52.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat52.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat52.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat52.Trimming = System.Drawing.StringTrimming.None;
+			this.labelBlockSize.Format = stringFormat52;
 			this.labelBlockSize.Location = new System.Drawing.Point(14, 43);
 			this.labelBlockSize.Name = "labelBlockSize";
 			this.labelBlockSize.Size = new System.Drawing.Size(55, 14);
@@ -572,12 +572,12 @@
 			// 
 			this.labelIndexOffset.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelIndexOffset.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat19.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat19.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat19.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat19.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat19.Trimming = System.Drawing.StringTrimming.None;
-			this.labelIndexOffset.Format = stringFormat19;
+			stringFormat53.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat53.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat53.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat53.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat53.Trimming = System.Drawing.StringTrimming.None;
+			this.labelIndexOffset.Format = stringFormat53;
 			this.labelIndexOffset.Location = new System.Drawing.Point(14, 43);
 			this.labelIndexOffset.Name = "labelIndexOffset";
 			this.labelIndexOffset.Size = new System.Drawing.Size(63, 14);
@@ -599,12 +599,12 @@
 			// 
 			this.labelIndexCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelIndexCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat18.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat18.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat18.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat18.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat18.Trimming = System.Drawing.StringTrimming.None;
-			this.labelIndexCounter.Format = stringFormat18;
+			stringFormat54.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat54.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat54.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat54.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat54.Trimming = System.Drawing.StringTrimming.None;
+			this.labelIndexCounter.Format = stringFormat54;
 			this.labelIndexCounter.Location = new System.Drawing.Point(14, 67);
 			this.labelIndexCounter.Name = "labelIndexCounter";
 			this.labelIndexCounter.Size = new System.Drawing.Size(73, 14);
@@ -670,12 +670,12 @@
 			// 
 			this.labelCGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelCGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat21.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat21.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat21.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat21.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat21.Trimming = System.Drawing.StringTrimming.None;
-			this.labelCGBPalettes.Format = stringFormat21;
+			stringFormat55.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat55.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat55.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat55.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat55.Trimming = System.Drawing.StringTrimming.None;
+			this.labelCGBPalettes.Format = stringFormat55;
 			this.labelCGBPalettes.Location = new System.Drawing.Point(14, 67);
 			this.labelCGBPalettes.Name = "labelCGBPalettes";
 			this.labelCGBPalettes.Size = new System.Drawing.Size(71, 14);
@@ -687,12 +687,12 @@
 			// 
 			this.labelSGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.labelSGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat20.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat20.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat20.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat20.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat20.Trimming = System.Drawing.StringTrimming.None;
-			this.labelSGBPalettes.Format = stringFormat20;
+			stringFormat56.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat56.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat56.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat56.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat56.Trimming = System.Drawing.StringTrimming.None;
+			this.labelSGBPalettes.Format = stringFormat56;
 			this.labelSGBPalettes.Location = new System.Drawing.Point(14, 43);
 			this.labelSGBPalettes.Name = "labelSGBPalettes";
 			this.labelSGBPalettes.Size = new System.Drawing.Size(71, 14);
@@ -726,6 +726,8 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ExportDialog";
+			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
 			this.Text = "Export";
 			this.tabControl.ResumeLayout(false);
 			this.tabPageStandard.ResumeLayout(false);
