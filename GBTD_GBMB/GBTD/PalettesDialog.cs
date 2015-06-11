@@ -137,6 +137,12 @@ namespace GB.GBTD
 		private void colorPicker_SelectedColorChanged(object sender, EventArgs e) {
 			workPalette[selectedY][selectedX] = colorPicker.SelectedColor;
 
+			if (colorSet == ColorSet.SUPER_GAMEBOY && selectedX == GBColor.WHITE) {
+				for (int i = 0; i < workPalette.Size; i++) {
+					workPalette[i][GBColor.WHITE] = colorPicker.SelectedColor;
+				}
+			}
+
 			this.Invalidate(true);
 		}
 
