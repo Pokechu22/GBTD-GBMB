@@ -12,6 +12,7 @@ using GB.Shared.Controls;
 using GB.Shared.Tiles;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using System.Text.RegularExpressions;
 
 namespace GB.GBTD
 {
@@ -222,6 +223,94 @@ namespace GB.GBTD
 
 				base.OnMouseClick(e);
 			}
+		}
+
+		private void copyAllButton_Click(object sender, EventArgs e) {
+			StringBuilder builder = new StringBuilder();
+			for (int y = 0; y < workPalette.Size; y++) {
+				for (int x = 0; x < 4; x++) {
+					builder.Append(ColorToString(workPalette[y][x]));
+
+					if (!(y == workPalette.Size - 1 && x == 3)) {
+						builder.AppendLine();
+					}
+				}
+			}
+
+			Clipboard.SetText(builder.ToString());
+		}
+
+		private void copyButton_Click(object sender, EventArgs e) {
+			//Copy the current row.
+
+			StringBuilder builder = new StringBuilder();
+
+			builder.AppendLine(ColorToString(workPalette[selectedY][0]));
+			builder.AppendLine(ColorToString(workPalette[selectedY][1]));
+			builder.AppendLine(ColorToString(workPalette[selectedY][2]));
+			builder.Append(ColorToString(workPalette[selectedY][3]));
+
+			Clipboard.SetText(builder.ToString());
+		}
+
+		private void pasteButton_Click(object sender, EventArgs e) {
+			if (!Clipboard.ContainsText()) {
+				return;
+			}
+
+			String[] temp = Clipboard.GetText().Split('\n');
+			Color[] colors = new Color[temp.Length];
+
+			for (int i = 0; i < temp.Length; i++) {
+				colors[i] = StringToColor(temp[i]);
+			}
+
+			int colorIndex = 0;
+
+			for (int y = selectedY; y < workPalette.Size; y++) {
+				for (int x = 0; x < 4; x++) {
+					if (colorIndex >= colors.Length) {
+						return;
+					}
+
+					workPalette[y][x] = colors[colorIndex];
+					colorIndex++;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Converts a color into a clipboard-format color string.
+		/// </summary>
+		/// <param name="c"></param>
+		/// <returns></returns>
+		private String ColorToString(Color c) {
+			return String.Format("{0}\t{1}\t{2}", c.R / 8, c.G / 8, c.B / 8);
+		}
+
+		/// <summary>
+		/// Converts a clipboard-format color string into the color itself.
+		/// </summary>
+		/// <param name="s"></param>
+		/// <returns></returns>
+		private Color StringToColor(String s) {
+			var match = Regex.Match(s, @"(\d+)\t(\d+)\t(\d+)");
+			if (match.Success) {
+				int r = Convert.ToInt32(match.Groups[1].Value);
+				int g = Convert.ToInt32(match.Groups[2].Value);
+				int b = Convert.ToInt32(match.Groups[3].Value);
+
+				if (r > 31) { throw new ArgumentException("R value is greater than max (31)"); }
+				if (r < 0) { throw new ArgumentException("R value is less than 0"); }
+				if (g > 31) { throw new ArgumentException("G value is greater than max (31)"); }
+				if (g < 0) { throw new ArgumentException("G value is less than 0"); }
+				if (b > 31) { throw new ArgumentException("B value is greater than max (31)"); }
+				if (b < 0) { throw new ArgumentException("B value is less than 0"); }
+
+				return Color.FromArgb(r * 8, g * 8, b * 8);
+			}
+
+			throw new ArgumentException("String is not in a valid format!");
 		}
 	}
 }
