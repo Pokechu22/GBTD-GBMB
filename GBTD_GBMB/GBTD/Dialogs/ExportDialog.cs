@@ -53,6 +53,20 @@ namespace GB.GBTD.Dialogs
 		/// Initializes all of the dropdowns by seting their SelectedIndex's to 0.
 		/// </summary>
 		private void InitializeDropdowns() {
+			fileTypeComboBox.Items.AddRange(Enum.GetValues(typeof(GBRExportFileType)).OfType<GBRExportFileType>()
+				.Select(o => o.GetDisplayName() + " (" + o.GetMainExtension() + ")")
+				.ToArray());
+			formatComboBox.Items.AddRange(Enum.GetValues(typeof(ExportFormat)).OfType<ExportFormat>()
+				.Select(o => o.GetDisplayString()).ToArray());
+			counterComboBox.Items.AddRange(Enum.GetValues(typeof(ExportCounterType)).OfType<ExportCounterType>()
+				.Select(o => o.GetDisplayString()).ToArray());
+			palettesCGBComboBox.Items.AddRange(Enum.GetValues(typeof(ExportPaletteMode)).OfType<ExportPaletteMode>()
+				.Select(o => o.GetDisplayString()).ToArray());
+			palettesSGBComboBox.Items.AddRange(Enum.GetValues(typeof(ExportPaletteMode)).OfType<ExportPaletteMode>()
+				.Select(o => o.GetDisplayString()).ToArray());
+			indexCounterComboBox.Items.AddRange(Enum.GetValues(typeof(ExportCounterType)).OfType<ExportCounterType>()
+				.Select(o => o.GetDisplayString()).ToArray());
+
 			fileTypeComboBox.SelectedIndex = 0;
 			formatComboBox.SelectedIndex = 0;
 			counterComboBox.SelectedIndex = 0;

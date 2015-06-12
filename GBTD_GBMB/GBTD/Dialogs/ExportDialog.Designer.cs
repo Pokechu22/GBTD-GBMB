@@ -45,45 +45,45 @@
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageStandard = new System.Windows.Forms.TabPage();
 			this.groupBoxSettings = new GB.Shared.Controls.GroupBox();
-			this.gbCompressCheckBox = new System.Windows.Forms.CheckBox();
-			this.singleUnitCheckBox = new System.Windows.Forms.CheckBox();
-			this.counterComboBox = new System.Windows.Forms.ComboBox();
-			this.labelLabel = new GB.Shared.Controls.CleanLabel();
-			this.labelSection = new GB.Shared.Controls.CleanLabel();
-			this.labelBank = new GB.Shared.Controls.CleanLabel();
-			this.labelFrom = new GB.Shared.Controls.CleanLabel();
-			this.labelTo = new GB.Shared.Controls.CleanLabel();
-			this.labelFormat = new GB.Shared.Controls.CleanLabel();
-			this.labelCounter = new GB.Shared.Controls.CleanLabel();
-			this.labelTextBox = new System.Windows.Forms.TextBox();
-			this.sectionTextBox = new System.Windows.Forms.TextBox();
-			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.fromTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.toTextBox = new GB.Shared.Controls.NumericTextBox();
 			this.formatComboBox = new System.Windows.Forms.ComboBox();
+			this.toTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.fromTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.bankTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.sectionTextBox = new System.Windows.Forms.TextBox();
+			this.labelTextBox = new System.Windows.Forms.TextBox();
+			this.labelCounter = new GB.Shared.Controls.CleanLabel();
+			this.labelFormat = new GB.Shared.Controls.CleanLabel();
+			this.labelTo = new GB.Shared.Controls.CleanLabel();
+			this.labelFrom = new GB.Shared.Controls.CleanLabel();
+			this.labelBank = new GB.Shared.Controls.CleanLabel();
+			this.labelSection = new GB.Shared.Controls.CleanLabel();
+			this.labelLabel = new GB.Shared.Controls.CleanLabel();
+			this.counterComboBox = new System.Windows.Forms.ComboBox();
+			this.singleUnitCheckBox = new System.Windows.Forms.CheckBox();
+			this.gbCompressCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBoxFile = new GB.Shared.Controls.GroupBox();
-			this.fileTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.labelFileName = new GB.Shared.Controls.CleanLabel();
-			this.labelType = new GB.Shared.Controls.CleanLabel();
-			this.browseButton = new System.Windows.Forms.Button();
 			this.fileNameTextBox = new System.Windows.Forms.TextBox();
+			this.browseButton = new System.Windows.Forms.Button();
+			this.labelType = new GB.Shared.Controls.CleanLabel();
+			this.labelFileName = new GB.Shared.Controls.CleanLabel();
+			this.fileTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.tabPageAdvanced = new System.Windows.Forms.TabPage();
 			this.groupBoxSplitData = new GB.Shared.Controls.GroupBox();
-			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
-			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
 			this.blockSizeTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.labelBlockSize = new GB.Shared.Controls.CleanLabel();
+			this.splitDataCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBoxMetatiles = new GB.Shared.Controls.GroupBox();
-			this.metatileConvertCheckBox = new System.Windows.Forms.CheckBox();
-			this.labelIndexCounter = new GB.Shared.Controls.CleanLabel();
-			this.indexOffsetTextBox = new GB.Shared.Controls.NumericTextBox();
-			this.labelIndexOffset = new GB.Shared.Controls.CleanLabel();
 			this.indexCounterComboBox = new System.Windows.Forms.ComboBox();
+			this.labelIndexOffset = new GB.Shared.Controls.CleanLabel();
+			this.indexOffsetTextBox = new GB.Shared.Controls.NumericTextBox();
+			this.labelIndexCounter = new GB.Shared.Controls.CleanLabel();
+			this.metatileConvertCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBoxColors = new GB.Shared.Controls.GroupBox();
-			this.includePaletteCheckBox = new System.Windows.Forms.CheckBox();
-			this.labelSGBPalettes = new GB.Shared.Controls.CleanLabel();
-			this.labelCGBPalettes = new GB.Shared.Controls.CleanLabel();
-			this.palettesSGBComboBox = new System.Windows.Forms.ComboBox();
 			this.palettesCGBComboBox = new System.Windows.Forms.ComboBox();
+			this.palettesSGBComboBox = new System.Windows.Forms.ComboBox();
+			this.labelCGBPalettes = new GB.Shared.Controls.CleanLabel();
+			this.labelSGBPalettes = new GB.Shared.Controls.CleanLabel();
+			this.includePaletteCheckBox = new System.Windows.Forms.CheckBox();
 			this.tabControl.SuspendLayout();
 			this.tabPageStandard.SuspendLayout();
 			this.groupBoxSettings.SuspendLayout();
@@ -148,22 +148,22 @@
 			// 
 			// groupBoxSettings
 			// 
-			this.groupBoxSettings.Controls.Add(this.formatComboBox);
-			this.groupBoxSettings.Controls.Add(this.toTextBox);
-			this.groupBoxSettings.Controls.Add(this.fromTextBox);
-			this.groupBoxSettings.Controls.Add(this.bankTextBox);
-			this.groupBoxSettings.Controls.Add(this.sectionTextBox);
-			this.groupBoxSettings.Controls.Add(this.labelTextBox);
-			this.groupBoxSettings.Controls.Add(this.labelCounter);
-			this.groupBoxSettings.Controls.Add(this.labelFormat);
-			this.groupBoxSettings.Controls.Add(this.labelTo);
-			this.groupBoxSettings.Controls.Add(this.labelFrom);
-			this.groupBoxSettings.Controls.Add(this.labelBank);
-			this.groupBoxSettings.Controls.Add(this.labelSection);
-			this.groupBoxSettings.Controls.Add(this.labelLabel);
-			this.groupBoxSettings.Controls.Add(this.counterComboBox);
-			this.groupBoxSettings.Controls.Add(this.singleUnitCheckBox);
 			this.groupBoxSettings.Controls.Add(this.gbCompressCheckBox);
+			this.groupBoxSettings.Controls.Add(this.singleUnitCheckBox);
+			this.groupBoxSettings.Controls.Add(this.counterComboBox);
+			this.groupBoxSettings.Controls.Add(this.labelLabel);
+			this.groupBoxSettings.Controls.Add(this.labelSection);
+			this.groupBoxSettings.Controls.Add(this.labelBank);
+			this.groupBoxSettings.Controls.Add(this.labelFrom);
+			this.groupBoxSettings.Controls.Add(this.labelTo);
+			this.groupBoxSettings.Controls.Add(this.labelFormat);
+			this.groupBoxSettings.Controls.Add(this.labelCounter);
+			this.groupBoxSettings.Controls.Add(this.labelTextBox);
+			this.groupBoxSettings.Controls.Add(this.sectionTextBox);
+			this.groupBoxSettings.Controls.Add(this.bankTextBox);
+			this.groupBoxSettings.Controls.Add(this.fromTextBox);
+			this.groupBoxSettings.Controls.Add(this.toTextBox);
+			this.groupBoxSettings.Controls.Add(this.formatComboBox);
 			this.groupBoxSettings.Location = new System.Drawing.Point(8, 90);
 			this.groupBoxSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxSettings.Name = "groupBoxSettings";
@@ -171,96 +171,111 @@
 			this.groupBoxSettings.TabIndex = 1;
 			this.groupBoxSettings.Text = "Settings";
 			// 
-			// gbCompressCheckBox
+			// formatComboBox
 			// 
-			this.gbCompressCheckBox.AutoSize = true;
-			this.gbCompressCheckBox.Location = new System.Drawing.Point(280, 33);
-			this.gbCompressCheckBox.Name = "gbCompressCheckBox";
-			this.gbCompressCheckBox.Size = new System.Drawing.Size(114, 17);
-			this.gbCompressCheckBox.TabIndex = 15;
-			this.gbCompressCheckBox.Text = "GB-Comp&ress data";
-			this.gbCompressCheckBox.UseVisualStyleBackColor = true;
+			this.formatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.formatComboBox.FormattingEnabled = true;
+			this.formatComboBox.Location = new System.Drawing.Point(72, 120);
+			this.formatComboBox.Name = "formatComboBox";
+			this.formatComboBox.Size = new System.Drawing.Size(185, 21);
+			this.formatComboBox.TabIndex = 11;
 			// 
-			// singleUnitCheckBox
+			// toTextBox
 			// 
-			this.singleUnitCheckBox.AutoSize = true;
-			this.singleUnitCheckBox.Location = new System.Drawing.Point(280, 16);
-			this.singleUnitCheckBox.Name = "singleUnitCheckBox";
-			this.singleUnitCheckBox.Size = new System.Drawing.Size(132, 17);
-			this.singleUnitCheckBox.TabIndex = 14;
-			this.singleUnitCheckBox.Text = "&Export tiles as one unit";
-			this.singleUnitCheckBox.UseVisualStyleBackColor = true;
+			this.toTextBox.Location = new System.Drawing.Point(144, 91);
+			this.toTextBox.MaxLength = 3;
+			this.toTextBox.MaxValue = ((uint)(999u));
+			this.toTextBox.Name = "toTextBox";
+			this.toTextBox.Size = new System.Drawing.Size(33, 20);
+			this.toTextBox.TabIndex = 9;
+			this.toTextBox.Value = ((uint)(0u));
 			// 
-			// counterComboBox
+			// fromTextBox
 			// 
-			this.counterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.counterComboBox.FormattingEnabled = true;
-			this.counterComboBox.Items.AddRange(new object[] {
-            "None",
-            "Byte-count as Byte",
-            "Byte-count as Word",
-            "Byte-count as Constant",
-            "Tile-count as Byte",
-            "Tile-count as Word",
-            "Tile-count as Constant",
-            "8x8-count as Byte",
-            "8x8-count as Word",
-            "8x8-count as Constant"});
-			this.counterComboBox.Location = new System.Drawing.Point(72, 144);
-			this.counterComboBox.Name = "counterComboBox";
-			this.counterComboBox.Size = new System.Drawing.Size(185, 21);
-			this.counterComboBox.TabIndex = 13;
+			this.fromTextBox.Location = new System.Drawing.Point(72, 91);
+			this.fromTextBox.MaxLength = 3;
+			this.fromTextBox.MaxValue = ((uint)(999u));
+			this.fromTextBox.Name = "fromTextBox";
+			this.fromTextBox.Size = new System.Drawing.Size(33, 20);
+			this.fromTextBox.TabIndex = 7;
+			this.fromTextBox.Value = ((uint)(0u));
 			// 
-			// labelLabel
+			// bankTextBox
 			// 
-			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.bankTextBox.Location = new System.Drawing.Point(72, 64);
+			this.bankTextBox.MaxLength = 3;
+			this.bankTextBox.MaxValue = ((uint)(999u));
+			this.bankTextBox.Name = "bankTextBox";
+			this.bankTextBox.Size = new System.Drawing.Size(33, 20);
+			this.bankTextBox.TabIndex = 5;
+			this.bankTextBox.Value = ((uint)(0u));
+			// 
+			// sectionTextBox
+			// 
+			this.sectionTextBox.Location = new System.Drawing.Point(72, 40);
+			this.sectionTextBox.MaxLength = 20;
+			this.sectionTextBox.Name = "sectionTextBox";
+			this.sectionTextBox.Size = new System.Drawing.Size(185, 20);
+			this.sectionTextBox.TabIndex = 3;
+			// 
+			// labelTextBox
+			// 
+			this.labelTextBox.Location = new System.Drawing.Point(72, 16);
+			this.labelTextBox.MaxLength = 20;
+			this.labelTextBox.Name = "labelTextBox";
+			this.labelTextBox.Size = new System.Drawing.Size(185, 20);
+			this.labelTextBox.TabIndex = 1;
+			// 
+			// labelCounter
+			// 
+			this.labelCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			stringFormat7.Alignment = System.Drawing.StringAlignment.Near;
 			stringFormat7.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
 			stringFormat7.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			stringFormat7.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat7.Trimming = System.Drawing.StringTrimming.None;
-			this.labelLabel.Format = stringFormat7;
-			this.labelLabel.Location = new System.Drawing.Point(14, 19);
-			this.labelLabel.Name = "labelLabel";
-			this.labelLabel.Size = new System.Drawing.Size(32, 14);
-			this.labelLabel.TabIndex = 0;
-			this.labelLabel.TabStop = false;
-			this.labelLabel.Text = "&Label";
+			this.labelCounter.Format = stringFormat7;
+			this.labelCounter.Location = new System.Drawing.Point(14, 148);
+			this.labelCounter.Name = "labelCounter";
+			this.labelCounter.Size = new System.Drawing.Size(44, 14);
+			this.labelCounter.TabIndex = 12;
+			this.labelCounter.TabStop = false;
+			this.labelCounter.Text = "&Counter";
 			// 
-			// labelSection
+			// labelFormat
 			// 
-			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.labelFormat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFormat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			stringFormat6.Alignment = System.Drawing.StringAlignment.Near;
 			stringFormat6.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
 			stringFormat6.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			stringFormat6.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat6.Trimming = System.Drawing.StringTrimming.None;
-			this.labelSection.Format = stringFormat6;
-			this.labelSection.Location = new System.Drawing.Point(14, 43);
-			this.labelSection.Name = "labelSection";
-			this.labelSection.Size = new System.Drawing.Size(42, 14);
-			this.labelSection.TabIndex = 2;
-			this.labelSection.TabStop = false;
-			this.labelSection.Text = "&Section";
+			this.labelFormat.Format = stringFormat6;
+			this.labelFormat.Location = new System.Drawing.Point(14, 124);
+			this.labelFormat.Name = "labelFormat";
+			this.labelFormat.Size = new System.Drawing.Size(40, 14);
+			this.labelFormat.TabIndex = 10;
+			this.labelFormat.TabStop = false;
+			this.labelFormat.Text = "F&ormat";
 			// 
-			// labelBank
+			// labelTo
 			// 
-			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.labelTo.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			stringFormat5.Alignment = System.Drawing.StringAlignment.Near;
 			stringFormat5.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
 			stringFormat5.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			stringFormat5.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat5.Trimming = System.Drawing.StringTrimming.None;
-			this.labelBank.Format = stringFormat5;
-			this.labelBank.Location = new System.Drawing.Point(14, 67);
-			this.labelBank.Name = "labelBank";
-			this.labelBank.Size = new System.Drawing.Size(30, 14);
-			this.labelBank.TabIndex = 4;
-			this.labelBank.TabStop = false;
-			this.labelBank.Text = "B&ank";
+			this.labelTo.Format = stringFormat5;
+			this.labelTo.Location = new System.Drawing.Point(118, 94);
+			this.labelTo.Name = "labelTo";
+			this.labelTo.Size = new System.Drawing.Size(17, 14);
+			this.labelTo.TabIndex = 8;
+			this.labelTo.TabStop = false;
+			this.labelTo.Text = "&To";
 			// 
 			// labelFrom
 			// 
@@ -279,181 +294,106 @@
 			this.labelFrom.TabStop = false;
 			this.labelFrom.Text = "&From";
 			// 
-			// labelTo
+			// labelBank
 			// 
-			this.labelTo.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.labelBank.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			stringFormat3.Alignment = System.Drawing.StringAlignment.Near;
 			stringFormat3.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
 			stringFormat3.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			stringFormat3.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat3.Trimming = System.Drawing.StringTrimming.None;
-			this.labelTo.Format = stringFormat3;
-			this.labelTo.Location = new System.Drawing.Point(118, 94);
-			this.labelTo.Name = "labelTo";
-			this.labelTo.Size = new System.Drawing.Size(17, 14);
-			this.labelTo.TabIndex = 8;
-			this.labelTo.TabStop = false;
-			this.labelTo.Text = "&To";
+			this.labelBank.Format = stringFormat3;
+			this.labelBank.Location = new System.Drawing.Point(14, 67);
+			this.labelBank.Name = "labelBank";
+			this.labelBank.Size = new System.Drawing.Size(30, 14);
+			this.labelBank.TabIndex = 4;
+			this.labelBank.TabStop = false;
+			this.labelBank.Text = "B&ank";
 			// 
-			// labelFormat
+			// labelSection
 			// 
-			this.labelFormat.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelFormat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.labelSection.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelSection.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			stringFormat2.Alignment = System.Drawing.StringAlignment.Near;
 			stringFormat2.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
 			stringFormat2.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			stringFormat2.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat2.Trimming = System.Drawing.StringTrimming.None;
-			this.labelFormat.Format = stringFormat2;
-			this.labelFormat.Location = new System.Drawing.Point(14, 124);
-			this.labelFormat.Name = "labelFormat";
-			this.labelFormat.Size = new System.Drawing.Size(40, 14);
-			this.labelFormat.TabIndex = 10;
-			this.labelFormat.TabStop = false;
-			this.labelFormat.Text = "F&ormat";
+			this.labelSection.Format = stringFormat2;
+			this.labelSection.Location = new System.Drawing.Point(14, 43);
+			this.labelSection.Name = "labelSection";
+			this.labelSection.Size = new System.Drawing.Size(42, 14);
+			this.labelSection.TabIndex = 2;
+			this.labelSection.TabStop = false;
+			this.labelSection.Text = "&Section";
 			// 
-			// labelCounter
+			// labelLabel
 			// 
-			this.labelCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.labelLabel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelLabel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			stringFormat1.Alignment = System.Drawing.StringAlignment.Near;
 			stringFormat1.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
 			stringFormat1.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
 			stringFormat1.LineAlignment = System.Drawing.StringAlignment.Near;
 			stringFormat1.Trimming = System.Drawing.StringTrimming.None;
-			this.labelCounter.Format = stringFormat1;
-			this.labelCounter.Location = new System.Drawing.Point(14, 148);
-			this.labelCounter.Name = "labelCounter";
-			this.labelCounter.Size = new System.Drawing.Size(44, 14);
-			this.labelCounter.TabIndex = 12;
-			this.labelCounter.TabStop = false;
-			this.labelCounter.Text = "&Counter";
+			this.labelLabel.Format = stringFormat1;
+			this.labelLabel.Location = new System.Drawing.Point(14, 19);
+			this.labelLabel.Name = "labelLabel";
+			this.labelLabel.Size = new System.Drawing.Size(32, 14);
+			this.labelLabel.TabIndex = 0;
+			this.labelLabel.TabStop = false;
+			this.labelLabel.Text = "&Label";
 			// 
-			// labelTextBox
+			// counterComboBox
 			// 
-			this.labelTextBox.Location = new System.Drawing.Point(72, 16);
-			this.labelTextBox.MaxLength = 20;
-			this.labelTextBox.Name = "labelTextBox";
-			this.labelTextBox.Size = new System.Drawing.Size(185, 20);
-			this.labelTextBox.TabIndex = 1;
+			this.counterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.counterComboBox.FormattingEnabled = true;
+			this.counterComboBox.Location = new System.Drawing.Point(72, 144);
+			this.counterComboBox.Name = "counterComboBox";
+			this.counterComboBox.Size = new System.Drawing.Size(185, 21);
+			this.counterComboBox.TabIndex = 13;
 			// 
-			// sectionTextBox
+			// singleUnitCheckBox
 			// 
-			this.sectionTextBox.Location = new System.Drawing.Point(72, 40);
-			this.sectionTextBox.MaxLength = 20;
-			this.sectionTextBox.Name = "sectionTextBox";
-			this.sectionTextBox.Size = new System.Drawing.Size(185, 20);
-			this.sectionTextBox.TabIndex = 3;
+			this.singleUnitCheckBox.AutoSize = true;
+			this.singleUnitCheckBox.Location = new System.Drawing.Point(280, 16);
+			this.singleUnitCheckBox.Name = "singleUnitCheckBox";
+			this.singleUnitCheckBox.Size = new System.Drawing.Size(132, 17);
+			this.singleUnitCheckBox.TabIndex = 14;
+			this.singleUnitCheckBox.Text = "&Export tiles as one unit";
+			this.singleUnitCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// bankTextBox
+			// gbCompressCheckBox
 			// 
-			this.bankTextBox.Location = new System.Drawing.Point(72, 64);
-			this.bankTextBox.MaxLength = 3;
-			this.bankTextBox.MaxValue = ((uint)(999u));
-			this.bankTextBox.Name = "bankTextBox";
-			this.bankTextBox.Size = new System.Drawing.Size(33, 20);
-			this.bankTextBox.TabIndex = 5;
-			this.bankTextBox.Value = ((uint)(0u));
-			// 
-			// fromTextBox
-			// 
-			this.fromTextBox.Location = new System.Drawing.Point(72, 91);
-			this.fromTextBox.MaxLength = 3;
-			this.fromTextBox.MaxValue = ((uint)(999u));
-			this.fromTextBox.Name = "fromTextBox";
-			this.fromTextBox.Size = new System.Drawing.Size(33, 20);
-			this.fromTextBox.TabIndex = 7;
-			this.fromTextBox.Value = ((uint)(0u));
-			// 
-			// toTextBox
-			// 
-			this.toTextBox.Location = new System.Drawing.Point(144, 91);
-			this.toTextBox.MaxLength = 3;
-			this.toTextBox.MaxValue = ((uint)(999u));
-			this.toTextBox.Name = "toTextBox";
-			this.toTextBox.Size = new System.Drawing.Size(33, 20);
-			this.toTextBox.TabIndex = 9;
-			this.toTextBox.Value = ((uint)(0u));
-			// 
-			// formatComboBox
-			// 
-			this.formatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.formatComboBox.FormattingEnabled = true;
-			this.formatComboBox.Items.AddRange(new object[] {
-            "Gameboy 4 color",
-            "Gameboy 2 color",
-            "Byte per color",
-            "Consecutive 4 color"});
-			this.formatComboBox.Location = new System.Drawing.Point(72, 120);
-			this.formatComboBox.Name = "formatComboBox";
-			this.formatComboBox.Size = new System.Drawing.Size(185, 21);
-			this.formatComboBox.TabIndex = 11;
+			this.gbCompressCheckBox.AutoSize = true;
+			this.gbCompressCheckBox.Location = new System.Drawing.Point(280, 33);
+			this.gbCompressCheckBox.Name = "gbCompressCheckBox";
+			this.gbCompressCheckBox.Size = new System.Drawing.Size(114, 17);
+			this.gbCompressCheckBox.TabIndex = 15;
+			this.gbCompressCheckBox.Text = "GB-Comp&ress data";
+			this.gbCompressCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// groupBoxFile
 			// 
-			this.groupBoxFile.Controls.Add(this.fileNameTextBox);
-			this.groupBoxFile.Controls.Add(this.browseButton);
-			this.groupBoxFile.Controls.Add(this.labelType);
-			this.groupBoxFile.Controls.Add(this.labelFileName);
 			this.groupBoxFile.Controls.Add(this.fileTypeComboBox);
+			this.groupBoxFile.Controls.Add(this.labelFileName);
+			this.groupBoxFile.Controls.Add(this.labelType);
+			this.groupBoxFile.Controls.Add(this.browseButton);
+			this.groupBoxFile.Controls.Add(this.fileNameTextBox);
 			this.groupBoxFile.Location = new System.Drawing.Point(8, 10);
 			this.groupBoxFile.Name = "groupBoxFile";
 			this.groupBoxFile.Size = new System.Drawing.Size(433, 73);
 			this.groupBoxFile.TabIndex = 0;
 			this.groupBoxFile.Text = "File";
 			// 
-			// fileTypeComboBox
+			// fileNameTextBox
 			// 
-			this.fileTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.fileTypeComboBox.FormattingEnabled = true;
-			this.fileTypeComboBox.Items.AddRange(new object[] {
-            "RGBDS Assembly file (*.z80)",
-            "RGBDS Object file (*.obj)",
-            "TASM Assembly file (*.z80)",
-            "GBDK C file (*.c)",
-            "All-purpose binary file (*.bin)",
-            "ISAS Assembly file (*.s)"});
-			this.fileTypeComboBox.Location = new System.Drawing.Point(72, 40);
-			this.fileTypeComboBox.Name = "fileTypeComboBox";
-			this.fileTypeComboBox.Size = new System.Drawing.Size(169, 21);
-			this.fileTypeComboBox.TabIndex = 4;
-			this.fileTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.updateEnablement);
-			this.fileTypeComboBox.SelectedValueChanged += new System.EventHandler(this.fileTypeComboBox_SelectedValueChanged);
-			// 
-			// labelFileName
-			// 
-			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat9.Trimming = System.Drawing.StringTrimming.None;
-			this.labelFileName.Format = stringFormat9;
-			this.labelFileName.Location = new System.Drawing.Point(14, 19);
-			this.labelFileName.Name = "labelFileName";
-			this.labelFileName.Size = new System.Drawing.Size(51, 14);
-			this.labelFileName.TabIndex = 0;
-			this.labelFileName.TabStop = false;
-			this.labelFileName.Text = "Filena&me";
-			// 
-			// labelType
-			// 
-			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat8.Trimming = System.Drawing.StringTrimming.None;
-			this.labelType.Format = stringFormat8;
-			this.labelType.Location = new System.Drawing.Point(14, 43);
-			this.labelType.Name = "labelType";
-			this.labelType.Size = new System.Drawing.Size(29, 14);
-			this.labelType.TabIndex = 3;
-			this.labelType.TabStop = false;
-			this.labelType.Text = "T&ype";
+			this.fileNameTextBox.Location = new System.Drawing.Point(72, 16);
+			this.fileNameTextBox.MaxLength = 127;
+			this.fileNameTextBox.Name = "fileNameTextBox";
+			this.fileNameTextBox.Size = new System.Drawing.Size(281, 20);
+			this.fileNameTextBox.TabIndex = 1;
 			// 
 			// browseButton
 			// 
@@ -464,13 +404,50 @@
 			this.browseButton.Text = "&Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
 			// 
-			// fileNameTextBox
+			// labelType
 			// 
-			this.fileNameTextBox.Location = new System.Drawing.Point(72, 16);
-			this.fileNameTextBox.MaxLength = 127;
-			this.fileNameTextBox.Name = "fileNameTextBox";
-			this.fileNameTextBox.Size = new System.Drawing.Size(281, 20);
-			this.fileNameTextBox.TabIndex = 1;
+			this.labelType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat9.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat9.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat9.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat9.Trimming = System.Drawing.StringTrimming.None;
+			this.labelType.Format = stringFormat9;
+			this.labelType.Location = new System.Drawing.Point(14, 43);
+			this.labelType.Name = "labelType";
+			this.labelType.Size = new System.Drawing.Size(29, 14);
+			this.labelType.TabIndex = 3;
+			this.labelType.TabStop = false;
+			this.labelType.Text = "T&ype";
+			// 
+			// labelFileName
+			// 
+			this.labelFileName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelFileName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat8.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat8.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat8.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat8.Trimming = System.Drawing.StringTrimming.None;
+			this.labelFileName.Format = stringFormat8;
+			this.labelFileName.Location = new System.Drawing.Point(14, 19);
+			this.labelFileName.Name = "labelFileName";
+			this.labelFileName.Size = new System.Drawing.Size(51, 14);
+			this.labelFileName.TabIndex = 0;
+			this.labelFileName.TabStop = false;
+			this.labelFileName.Text = "Filena&me";
+			// 
+			// fileTypeComboBox
+			// 
+			this.fileTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.fileTypeComboBox.FormattingEnabled = true;
+			this.fileTypeComboBox.Location = new System.Drawing.Point(72, 40);
+			this.fileTypeComboBox.Name = "fileTypeComboBox";
+			this.fileTypeComboBox.Size = new System.Drawing.Size(169, 21);
+			this.fileTypeComboBox.TabIndex = 4;
+			this.fileTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.updateEnablement);
+			this.fileTypeComboBox.SelectedValueChanged += new System.EventHandler(this.fileTypeComboBox_SelectedValueChanged);
 			// 
 			// tabPageAdvanced
 			// 
@@ -487,9 +464,9 @@
 			// 
 			// groupBoxSplitData
 			// 
-			this.groupBoxSplitData.Controls.Add(this.blockSizeTextBox);
-			this.groupBoxSplitData.Controls.Add(this.labelBlockSize);
 			this.groupBoxSplitData.Controls.Add(this.splitDataCheckBox);
+			this.groupBoxSplitData.Controls.Add(this.labelBlockSize);
+			this.groupBoxSplitData.Controls.Add(this.blockSizeTextBox);
 			this.groupBoxSplitData.Location = new System.Drawing.Point(8, 218);
 			this.groupBoxSplitData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxSplitData.Name = "groupBoxSplitData";
@@ -497,16 +474,15 @@
 			this.groupBoxSplitData.TabIndex = 2;
 			this.groupBoxSplitData.Text = "Split data";
 			// 
-			// splitDataCheckBox
+			// blockSizeTextBox
 			// 
-			this.splitDataCheckBox.AutoSize = true;
-			this.splitDataCheckBox.Location = new System.Drawing.Point(16, 17);
-			this.splitDataCheckBox.Name = "splitDataCheckBox";
-			this.splitDataCheckBox.Size = new System.Drawing.Size(70, 17);
-			this.splitDataCheckBox.TabIndex = 0;
-			this.splitDataCheckBox.Text = "&Split data";
-			this.splitDataCheckBox.UseVisualStyleBackColor = true;
-			this.splitDataCheckBox.CheckedChanged += new System.EventHandler(this.updateEnablement);
+			this.blockSizeTextBox.Location = new System.Drawing.Point(96, 39);
+			this.blockSizeTextBox.MaxLength = 3;
+			this.blockSizeTextBox.MaxValue = ((uint)(999u));
+			this.blockSizeTextBox.Name = "blockSizeTextBox";
+			this.blockSizeTextBox.Size = new System.Drawing.Size(65, 20);
+			this.blockSizeTextBox.TabIndex = 2;
+			this.blockSizeTextBox.Value = ((uint)(0u));
 			// 
 			// labelBlockSize
 			// 
@@ -525,29 +501,83 @@
 			this.labelBlockSize.TabStop = false;
 			this.labelBlockSize.Text = "&Block size";
 			// 
-			// blockSizeTextBox
+			// splitDataCheckBox
 			// 
-			this.blockSizeTextBox.Location = new System.Drawing.Point(96, 39);
-			this.blockSizeTextBox.MaxLength = 3;
-			this.blockSizeTextBox.MaxValue = ((uint)(999u));
-			this.blockSizeTextBox.Name = "blockSizeTextBox";
-			this.blockSizeTextBox.Size = new System.Drawing.Size(65, 20);
-			this.blockSizeTextBox.TabIndex = 2;
-			this.blockSizeTextBox.Value = ((uint)(0u));
+			this.splitDataCheckBox.AutoSize = true;
+			this.splitDataCheckBox.Location = new System.Drawing.Point(16, 17);
+			this.splitDataCheckBox.Name = "splitDataCheckBox";
+			this.splitDataCheckBox.Size = new System.Drawing.Size(70, 17);
+			this.splitDataCheckBox.TabIndex = 0;
+			this.splitDataCheckBox.Text = "&Split data";
+			this.splitDataCheckBox.UseVisualStyleBackColor = true;
+			this.splitDataCheckBox.CheckedChanged += new System.EventHandler(this.updateEnablement);
 			// 
 			// groupBoxMetatiles
 			// 
-			this.groupBoxMetatiles.Controls.Add(this.indexCounterComboBox);
-			this.groupBoxMetatiles.Controls.Add(this.labelIndexOffset);
-			this.groupBoxMetatiles.Controls.Add(this.indexOffsetTextBox);
-			this.groupBoxMetatiles.Controls.Add(this.labelIndexCounter);
 			this.groupBoxMetatiles.Controls.Add(this.metatileConvertCheckBox);
+			this.groupBoxMetatiles.Controls.Add(this.labelIndexCounter);
+			this.groupBoxMetatiles.Controls.Add(this.indexOffsetTextBox);
+			this.groupBoxMetatiles.Controls.Add(this.labelIndexOffset);
+			this.groupBoxMetatiles.Controls.Add(this.indexCounterComboBox);
 			this.groupBoxMetatiles.Location = new System.Drawing.Point(8, 114);
 			this.groupBoxMetatiles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.groupBoxMetatiles.Name = "groupBoxMetatiles";
 			this.groupBoxMetatiles.Size = new System.Drawing.Size(433, 97);
 			this.groupBoxMetatiles.TabIndex = 0;
 			this.groupBoxMetatiles.Text = "Metatiles";
+			// 
+			// indexCounterComboBox
+			// 
+			this.indexCounterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.indexCounterComboBox.FormattingEnabled = true;
+			this.indexCounterComboBox.Location = new System.Drawing.Point(96, 63);
+			this.indexCounterComboBox.Name = "indexCounterComboBox";
+			this.indexCounterComboBox.Size = new System.Drawing.Size(153, 21);
+			this.indexCounterComboBox.TabIndex = 4;
+			// 
+			// labelIndexOffset
+			// 
+			this.labelIndexOffset.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelIndexOffset.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat12.Trimming = System.Drawing.StringTrimming.None;
+			this.labelIndexOffset.Format = stringFormat12;
+			this.labelIndexOffset.Location = new System.Drawing.Point(14, 43);
+			this.labelIndexOffset.Name = "labelIndexOffset";
+			this.labelIndexOffset.Size = new System.Drawing.Size(63, 14);
+			this.labelIndexOffset.TabIndex = 1;
+			this.labelIndexOffset.TabStop = false;
+			this.labelIndexOffset.Text = "In&dex offset";
+			// 
+			// indexOffsetTextBox
+			// 
+			this.indexOffsetTextBox.Location = new System.Drawing.Point(96, 39);
+			this.indexOffsetTextBox.MaxLength = 3;
+			this.indexOffsetTextBox.MaxValue = ((uint)(999u));
+			this.indexOffsetTextBox.Name = "indexOffsetTextBox";
+			this.indexOffsetTextBox.Size = new System.Drawing.Size(33, 20);
+			this.indexOffsetTextBox.TabIndex = 2;
+			this.indexOffsetTextBox.Value = ((uint)(0u));
+			// 
+			// labelIndexCounter
+			// 
+			this.labelIndexCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelIndexCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat11.Trimming = System.Drawing.StringTrimming.None;
+			this.labelIndexCounter.Format = stringFormat11;
+			this.labelIndexCounter.Location = new System.Drawing.Point(14, 67);
+			this.labelIndexCounter.Name = "labelIndexCounter";
+			this.labelIndexCounter.Size = new System.Drawing.Size(73, 14);
+			this.labelIndexCounter.TabIndex = 3;
+			this.labelIndexCounter.TabStop = false;
+			this.labelIndexCounter.Text = "Index cou&nter";
 			// 
 			// metatileConvertCheckBox
 			// 
@@ -560,82 +590,70 @@
 			this.metatileConvertCheckBox.UseVisualStyleBackColor = true;
 			this.metatileConvertCheckBox.CheckedChanged += new System.EventHandler(this.updateEnablement);
 			// 
-			// labelIndexCounter
-			// 
-			this.labelIndexCounter.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelIndexCounter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat12.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat12.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat12.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat12.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat12.Trimming = System.Drawing.StringTrimming.None;
-			this.labelIndexCounter.Format = stringFormat12;
-			this.labelIndexCounter.Location = new System.Drawing.Point(14, 67);
-			this.labelIndexCounter.Name = "labelIndexCounter";
-			this.labelIndexCounter.Size = new System.Drawing.Size(73, 14);
-			this.labelIndexCounter.TabIndex = 3;
-			this.labelIndexCounter.TabStop = false;
-			this.labelIndexCounter.Text = "Index cou&nter";
-			// 
-			// indexOffsetTextBox
-			// 
-			this.indexOffsetTextBox.Location = new System.Drawing.Point(96, 39);
-			this.indexOffsetTextBox.MaxLength = 3;
-			this.indexOffsetTextBox.MaxValue = ((uint)(999u));
-			this.indexOffsetTextBox.Name = "indexOffsetTextBox";
-			this.indexOffsetTextBox.Size = new System.Drawing.Size(33, 20);
-			this.indexOffsetTextBox.TabIndex = 2;
-			this.indexOffsetTextBox.Value = ((uint)(0u));
-			// 
-			// labelIndexOffset
-			// 
-			this.labelIndexOffset.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelIndexOffset.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat11.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat11.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat11.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat11.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat11.Trimming = System.Drawing.StringTrimming.None;
-			this.labelIndexOffset.Format = stringFormat11;
-			this.labelIndexOffset.Location = new System.Drawing.Point(14, 43);
-			this.labelIndexOffset.Name = "labelIndexOffset";
-			this.labelIndexOffset.Size = new System.Drawing.Size(63, 14);
-			this.labelIndexOffset.TabIndex = 1;
-			this.labelIndexOffset.TabStop = false;
-			this.labelIndexOffset.Text = "In&dex offset";
-			// 
-			// indexCounterComboBox
-			// 
-			this.indexCounterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.indexCounterComboBox.FormattingEnabled = true;
-			this.indexCounterComboBox.Items.AddRange(new object[] {
-            "None",
-            "Byte-count as Byte",
-            "Byte-count as Word",
-            "Byte-count as Constant",
-            "Tile-count as Byte",
-            "Tile-count as Word",
-            "Tile-count as Constant",
-            "8x8-count as Byte",
-            "8x8-count as Word",
-            "8x8-count as Constant"});
-			this.indexCounterComboBox.Location = new System.Drawing.Point(96, 63);
-			this.indexCounterComboBox.Name = "indexCounterComboBox";
-			this.indexCounterComboBox.Size = new System.Drawing.Size(153, 21);
-			this.indexCounterComboBox.TabIndex = 4;
-			// 
 			// groupBoxColors
 			// 
-			this.groupBoxColors.Controls.Add(this.palettesCGBComboBox);
-			this.groupBoxColors.Controls.Add(this.palettesSGBComboBox);
-			this.groupBoxColors.Controls.Add(this.labelCGBPalettes);
-			this.groupBoxColors.Controls.Add(this.labelSGBPalettes);
 			this.groupBoxColors.Controls.Add(this.includePaletteCheckBox);
+			this.groupBoxColors.Controls.Add(this.labelSGBPalettes);
+			this.groupBoxColors.Controls.Add(this.labelCGBPalettes);
+			this.groupBoxColors.Controls.Add(this.palettesSGBComboBox);
+			this.groupBoxColors.Controls.Add(this.palettesCGBComboBox);
 			this.groupBoxColors.Location = new System.Drawing.Point(8, 10);
 			this.groupBoxColors.Name = "groupBoxColors";
 			this.groupBoxColors.Size = new System.Drawing.Size(433, 97);
 			this.groupBoxColors.TabIndex = 1;
 			this.groupBoxColors.Text = "Colors";
+			// 
+			// palettesCGBComboBox
+			// 
+			this.palettesCGBComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.palettesCGBComboBox.FormattingEnabled = true;
+			this.palettesCGBComboBox.Location = new System.Drawing.Point(96, 63);
+			this.palettesCGBComboBox.Name = "palettesCGBComboBox";
+			this.palettesCGBComboBox.Size = new System.Drawing.Size(153, 21);
+			this.palettesCGBComboBox.TabIndex = 4;
+			// 
+			// palettesSGBComboBox
+			// 
+			this.palettesSGBComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.palettesSGBComboBox.FormattingEnabled = true;
+			this.palettesSGBComboBox.Location = new System.Drawing.Point(96, 39);
+			this.palettesSGBComboBox.Name = "palettesSGBComboBox";
+			this.palettesSGBComboBox.Size = new System.Drawing.Size(153, 21);
+			this.palettesSGBComboBox.TabIndex = 2;
+			// 
+			// labelCGBPalettes
+			// 
+			this.labelCGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelCGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat14.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat14.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat14.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat14.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat14.Trimming = System.Drawing.StringTrimming.None;
+			this.labelCGBPalettes.Format = stringFormat14;
+			this.labelCGBPalettes.Location = new System.Drawing.Point(14, 67);
+			this.labelCGBPalettes.Name = "labelCGBPalettes";
+			this.labelCGBPalettes.Size = new System.Drawing.Size(71, 14);
+			this.labelCGBPalettes.TabIndex = 3;
+			this.labelCGBPalettes.TabStop = false;
+			this.labelCGBPalettes.Text = "CGB &palettes";
+			// 
+			// labelSGBPalettes
+			// 
+			this.labelSGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.labelSGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			stringFormat13.Alignment = System.Drawing.StringAlignment.Near;
+			stringFormat13.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
+			stringFormat13.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
+			stringFormat13.LineAlignment = System.Drawing.StringAlignment.Near;
+			stringFormat13.Trimming = System.Drawing.StringTrimming.None;
+			this.labelSGBPalettes.Format = stringFormat13;
+			this.labelSGBPalettes.Location = new System.Drawing.Point(14, 43);
+			this.labelSGBPalettes.Name = "labelSGBPalettes";
+			this.labelSGBPalettes.Size = new System.Drawing.Size(71, 14);
+			this.labelSGBPalettes.TabIndex = 1;
+			this.labelSGBPalettes.TabStop = false;
+			this.labelSGBPalettes.Text = "S&GB palettes";
 			// 
 			// includePaletteCheckBox
 			// 
@@ -647,70 +665,6 @@
 			this.includePaletteCheckBox.Text = "&Include palette colors";
 			this.includePaletteCheckBox.UseVisualStyleBackColor = true;
 			this.includePaletteCheckBox.CheckedChanged += new System.EventHandler(this.updateEnablement);
-			// 
-			// labelSGBPalettes
-			// 
-			this.labelSGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelSGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat14.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat14.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat14.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat14.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat14.Trimming = System.Drawing.StringTrimming.None;
-			this.labelSGBPalettes.Format = stringFormat14;
-			this.labelSGBPalettes.Location = new System.Drawing.Point(14, 43);
-			this.labelSGBPalettes.Name = "labelSGBPalettes";
-			this.labelSGBPalettes.Size = new System.Drawing.Size(71, 14);
-			this.labelSGBPalettes.TabIndex = 1;
-			this.labelSGBPalettes.TabStop = false;
-			this.labelSGBPalettes.Text = "S&GB palettes";
-			// 
-			// labelCGBPalettes
-			// 
-			this.labelCGBPalettes.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.labelCGBPalettes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-			stringFormat13.Alignment = System.Drawing.StringAlignment.Near;
-			stringFormat13.FormatFlags = ((System.Drawing.StringFormatFlags)((System.Drawing.StringFormatFlags.FitBlackBox | System.Drawing.StringFormatFlags.MeasureTrailingSpaces)));
-			stringFormat13.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.Show;
-			stringFormat13.LineAlignment = System.Drawing.StringAlignment.Near;
-			stringFormat13.Trimming = System.Drawing.StringTrimming.None;
-			this.labelCGBPalettes.Format = stringFormat13;
-			this.labelCGBPalettes.Location = new System.Drawing.Point(14, 67);
-			this.labelCGBPalettes.Name = "labelCGBPalettes";
-			this.labelCGBPalettes.Size = new System.Drawing.Size(71, 14);
-			this.labelCGBPalettes.TabIndex = 3;
-			this.labelCGBPalettes.TabStop = false;
-			this.labelCGBPalettes.Text = "CGB &palettes";
-			// 
-			// palettesSGBComboBox
-			// 
-			this.palettesSGBComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.palettesSGBComboBox.FormattingEnabled = true;
-			this.palettesSGBComboBox.Items.AddRange(new object[] {
-            "None",
-            "Constant per entry",
-            "2 Bits per entry",
-            "4 Bits per entry",
-            "1 Byte per entry"});
-			this.palettesSGBComboBox.Location = new System.Drawing.Point(96, 39);
-			this.palettesSGBComboBox.Name = "palettesSGBComboBox";
-			this.palettesSGBComboBox.Size = new System.Drawing.Size(153, 21);
-			this.palettesSGBComboBox.TabIndex = 2;
-			// 
-			// palettesCGBComboBox
-			// 
-			this.palettesCGBComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.palettesCGBComboBox.FormattingEnabled = true;
-			this.palettesCGBComboBox.Items.AddRange(new object[] {
-            "None",
-            "Constant per entry",
-            "2 Bits per entry",
-            "4 Bits per entry",
-            "1 Byte per entry"});
-			this.palettesCGBComboBox.Location = new System.Drawing.Point(96, 63);
-			this.palettesCGBComboBox.Name = "palettesCGBComboBox";
-			this.palettesCGBComboBox.Size = new System.Drawing.Size(153, 21);
-			this.palettesCGBComboBox.TabIndex = 4;
 			// 
 			// ExportDialog
 			// 
