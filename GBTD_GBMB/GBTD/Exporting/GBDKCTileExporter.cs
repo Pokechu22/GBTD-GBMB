@@ -36,7 +36,7 @@ namespace GB.GBTD.Exporting
 			get { return "*/"; }
 		}
 
-		protected override bool IncludeIncBank {
+		protected override bool IncludeSectionAndBank {
 			get { return false; }
 		}
 
