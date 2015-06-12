@@ -50,6 +50,10 @@ namespace GB.GBTD.Exporting
 						Stream.WriteLine("extern unsigned char {0}TLE{1}[];", settings.LabelName, tileNum);
 					}
 				} else {
+					//TODO: This probably should only be done on the first block, but GBTD does it on all.
+					//Should I remove it?
+					Stream.WriteLine("/* Start of tile array. */");
+
 					if (block != null) {
 						Stream.WriteLine("extern unsigned char {0}BLK{1}[];", settings.LabelName, block);
 					} else {
@@ -64,6 +68,8 @@ namespace GB.GBTD.Exporting
 						Stream.WriteLine("unsigned char {0}TLE{1}[] =", settings.LabelName, tileNum);
 					}
 				} else {
+					Stream.WriteLine("/* Start of tile array. */");
+
 					if (block != null) {
 						Stream.WriteLine("unsigned char {0}BLK{1}[] =", settings.LabelName, block);
 					} else {
