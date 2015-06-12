@@ -21,7 +21,7 @@ namespace GB.Shared.GBRFile
 			this.CounterType = ExportCounterType.None;
 			this.FromTile = 0;
 			this.ToTile = 0;
-			this.UseCompression = ExportCompressionMode.None;
+			this.CompressionType = ExportCompressionMode.None;
 			this.IncludeColors = false;
 			this.SGBPalMode = ExportPaletteMode.None;
 			this.GBCPalMode = ExportPaletteMode.None;
@@ -84,10 +84,10 @@ namespace GB.Shared.GBRFile
 		/// <remarks>Since: Initial version</remarks>
 		public UInt16 ToTile { get; set; }
 		/// <summary>
-		/// Whether or not GBCompression should be used.
+		/// What type of compression to use.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public ExportCompressionMode UseCompression { get; set; }
+		public ExportCompressionMode CompressionType { get; set; }
 		/// <summary>
 		/// Whether or not palette colors should be included.
 		/// </summary>
@@ -148,7 +148,7 @@ namespace GB.Shared.GBRFile
 			s.WriteByte((byte)CounterType);
 			s.WriteWord(FromTile);
 			s.WriteWord(ToTile);
-			s.WriteByte((byte)UseCompression);
+			s.WriteByte((byte)CompressionType);
 			s.WriteBool(IncludeColors);
 			s.WriteByte((byte)SGBPalMode);
 			s.WriteByte((byte)GBCPalMode);
@@ -173,7 +173,7 @@ namespace GB.Shared.GBRFile
 			this.CounterType = (ExportCounterType)s.ReadByte();
 			this.FromTile = s.ReadWord();
 			this.ToTile = s.ReadWord();
-			this.UseCompression = (ExportCompressionMode)s.ReadByte();
+			this.CompressionType = (ExportCompressionMode)s.ReadByte();
 			this.IncludeColors = s.ReadBool(false);
 			this.SGBPalMode = (ExportPaletteMode)s.ReadByte((byte)ExportPaletteMode.None);
 			this.GBCPalMode = (ExportPaletteMode)s.ReadByte((byte)ExportPaletteMode.None);
@@ -204,7 +204,7 @@ namespace GB.Shared.GBRFile
 			root.Nodes.Add("Counter", "Counter: " + CounterType);
 			root.Nodes.Add("FromTile", "FromTile: " + FromTile);
 			root.Nodes.Add("ToTile", "ToTile: " + ToTile);
-			root.Nodes.Add("UseCompression", "UseCompression: " + UseCompression);
+			root.Nodes.Add("CompressionType", "CompressionType: " + CompressionType);
 			root.Nodes.Add("IncludeColors", "IncludeColors: " + IncludeColors);
 			root.Nodes.Add("SGBPalettes", "SGB Palette Mode: " + SGBPalMode);
 			root.Nodes.Add("GBCPalettes", "GBC Palette Mode: " + GBCPalMode);
@@ -230,11 +230,10 @@ namespace GB.Shared.GBRFile
 
 	public enum ExportFormat : byte
 	{
-		//TODO this might not be right
 		GameBoy4Color = 0, 
 		GameBoy2Color = 1,
-		BytePerColor = 3,
-		//Where's consecutive 4 color?
+		BytePerColor = 2,
+		ConsecutiveFourColor = 3
 	}
 
 	public enum ExportCounterType : byte
@@ -266,7 +265,7 @@ namespace GB.Shared.GBRFile
 		_1BytePerEntry = 4
 	}
 
-	public static class GBRExportFileTypeExtensions
+	public static class GBRExportEnumExtensions
 	{
 		/// <summary>
 		/// Gets the display string for a GBRExportFileType.
@@ -316,6 +315,51 @@ namespace GB.Shared.GBRFile
 			case GBRExportFileType.BinaryFile: throw new InvalidOperationException();
 			case GBRExportFileType.ISASAssemblyFile: return "inc";
 			default: throw new InvalidEnumArgumentException("fileType", (int)fileType, typeof(GBRExportFileType));
+			}
+		}
+
+		public static String GetDisplayString(this ExportFormat format) {
+			switch (format) {
+			case ExportFormat.GameBoy4Color: return "Gameboy 4 color";
+			case ExportFormat.GameBoy2Color: return "Gameboy 2 color";
+			case ExportFormat.BytePerColor: return "Byte per color";
+			case ExportFormat.ConsecutiveFourColor: return "Consecutive 4 color";
+			default: throw new InvalidEnumArgumentException("format", (int)format, typeof(ExportFormat));
+			}
+		}
+
+		public static String GetDisplayString(this ExportCounterType type) {
+			switch (type) {
+			case ExportCounterType.None: return "None";
+			case ExportCounterType.ByteCountAsByte: return "Byte-count as Byte";
+			case ExportCounterType.ByteCountAsWord: return "Byte-count as Word";
+			case ExportCounterType.ByteCountAsConstant: return "Byte-count as Constant";
+			case ExportCounterType.TileCountAsByte: return "Tile-count as Byte";
+			case ExportCounterType.TileCountAsWord: return "Tile-count as Word";
+			case ExportCounterType.TileCountAsConstant: return "Tile-count as Constant";
+			case ExportCounterType._8x8CountAsByte: return "8x8-count as Byte";
+			case ExportCounterType._8x8CountAsWord: return "8x8-count as Word";
+			case ExportCounterType._8x8CountAsConstant: return "8x8-count as Constant";
+			default: throw new InvalidEnumArgumentException("type", (int)type, typeof(ExportCounterType));
+			}
+		}
+
+		public static String GetDisplayString(this ExportCompressionMode mode) {
+			switch (mode) {
+			case ExportCompressionMode.None: return "None";
+			case ExportCompressionMode.GBCompress: return "GB-Compress";
+			default: throw new InvalidEnumArgumentException("mode", (int)mode, typeof(ExportCompressionMode));
+			}
+		}
+
+		public static String GetDisplayString(this ExportPaletteMode mode) {
+			switch (mode) {
+			case ExportPaletteMode.None: return "None";
+			case ExportPaletteMode.ConstantPerEntry: return "Constant per entry";
+			case ExportPaletteMode._2BitsPerEntry: return "2 Bits per entry";
+			case ExportPaletteMode._4BitsPerEntry: return "4 Bits per entry";
+			case ExportPaletteMode._1BytePerEntry: return "1 Byte per entry";
+			default: throw new InvalidEnumArgumentException("mode", (int)mode, typeof(ExportPaletteMode));
 			}
 		}
 	}
