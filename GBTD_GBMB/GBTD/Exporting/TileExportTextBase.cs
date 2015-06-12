@@ -5,6 +5,7 @@ using System.Text;
 using GB.Shared.GBRFile;
 using System.IO;
 using System.Windows.Forms;
+using GB.Shared.Tiles;
 
 namespace GB.GBTD.Exporting
 {
@@ -171,8 +172,31 @@ namespace GB.GBTD.Exporting
 		/// </summary>
 		protected void WriteTileData(GBRFile gbrFile) {
 			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
+			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
-			//TODO
+			//TODO: Properly respect tile settings.  For now, just assume byte per pixel and split into arrays for each tile.
+			byte[] pixelBuffer = new byte[tileData.Width * tileData.Height];
+
+			for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+				for (int y = 0; y < tileData.Height; y++) {
+					for (int x = 0; x < tileData.Width; x++) {
+						byte b;
+
+						switch (tileData.Tiles[tile][x, y]) {
+						case GBColor.WHITE: b = 0; break;
+						case GBColor.LIGHT_GRAY: b = 1; break;
+						case GBColor.DARK_GRAY: b = 2; break;
+						case GBColor.BLACK: b = 3; break;
+						default: b = (byte)tileData.Tiles[tile][x, y]; break;
+						}
+
+						pixelBuffer[(y * tileData.Width) + x] = b;
+					}
+				}
+
+				//TODO: WritePlaneLabel.
+				WriteData(pixelBuffer);
+			}
 		}
 
 		/// <summary>
