@@ -54,7 +54,7 @@ namespace GB.GBTD.Dialogs
 		/// </summary>
 		private void InitializeDropdowns() {
 			fileTypeComboBox.Items.AddRange(Enum.GetValues(typeof(GBRExportFileType)).OfType<GBRExportFileType>()
-				.Select(o => o.GetDisplayName() + " (" + o.GetMainExtension() + ")")
+				.Select(o => o.GetDisplayName() + " (." + o.GetMainExtension() + ")")
 				.ToArray());
 			formatComboBox.Items.AddRange(Enum.GetValues(typeof(ExportFormat)).OfType<ExportFormat>()
 				.Select(o => o.GetDisplayString()).ToArray());
