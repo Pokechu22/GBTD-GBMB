@@ -28,55 +28,20 @@ namespace GB.GBTD.Exporting
 			get { return "};"; }
 		}
 
-		protected override string FooterBegin {
-			get { return "/*"; }
-		}
-
-		protected override string FooterEnd {
-			get { return "*/"; }
-		}
-
 		protected override bool IncludeSectionAndBank {
 			get { return false; }
 		}
 
-		protected override void WriteLabel(GBRObjectTileExport settings, int? tileNum = null, int? block = null) {
-			//TODO: This is a bit of a mess; mabye use a StringBuilder instead?
+		protected override void WriteLabel(String label) {
 			if (Header) {
-				if (tileNum != null) {
-					if (block != null) {
-						Stream.WriteLine("extern unsigned char {0}BLK{1}TLE{2}[];", settings.LabelName, block, tileNum);
-					} else {
-						Stream.WriteLine("extern unsigned char {0}TLE{1}[];", settings.LabelName, tileNum);
-					}
-				} else {
-					//TODO: This probably should only be done on the first block, but GBTD does it on all.
-					//Should I remove it?
-					Stream.WriteLine("/* Start of tile array. */");
-
-					if (block != null) {
-						Stream.WriteLine("extern unsigned char {0}BLK{1}[];", settings.LabelName, block);
-					} else {
-						Stream.WriteLine("extern unsigned char {0}[];", settings.LabelName);
-					}
-				}
+				Stream.WriteLine("extern unsigned char {0}[];", label);
 			} else {
-				if (tileNum != null) {
-					if (block != null) {
-						Stream.WriteLine("unsigned char {0}BLK{1}TLE{2}[] =", settings.LabelName, block, tileNum);
-					} else {
-						Stream.WriteLine("unsigned char {0}TLE{1}[] =", settings.LabelName, tileNum);
-					}
-				} else {
-					Stream.WriteLine("/* Start of tile array. */");
-
-					if (block != null) {
-						Stream.WriteLine("unsigned char {0}BLK{1}[] =", settings.LabelName, block);
-					} else {
-						Stream.WriteLine("unsigned char {0}[] =", settings.LabelName);
-					}
-				}
+				Stream.WriteLine("unsigned char {0}[] =", label);
 			}
+		}
+
+		protected override void WriteLineComment(string contents) {
+			Stream.WriteLine("/* " + contents + " */");
 		}
 
 		protected override void WriteDataLine(byte[] bytes, ref int position, int count) {

@@ -56,17 +56,6 @@ namespace GB.GBTD.Exporting
 		protected abstract string BlockEnd { get; }
 
 		/// <summary>
-		/// The text that begins the line of the footer.  EG for C, "<c>/*</c>".
-		/// A newline is not, by default, appended after this.
-		/// </summary>
-		protected abstract string FooterBegin { get; }
-		/// <summary>
-		/// The text that ends the line of the footer.  EG for C, "<c>*/</c>".
-		/// A newline is appended after this by default.
-		/// </summary>
-		protected abstract string FooterEnd { get; }
-
-		/// <summary>
 		/// Whether or not to inlcude the "Section" and "Bank" text on the header.  True for RGBDS only.
 		/// </summary>
 		protected abstract bool IncludeSectionAndBank { get; }
@@ -89,7 +78,9 @@ namespace GB.GBTD.Exporting
 				Stream.WriteLine();
 				WriteSection(exportSettings, 0);
 				WriteTileData(gbrFile);
-				WriteFooter(fileName);
+
+				Stream.WriteLine();
+				WriteLineComment("End of " + Path.GetFileName(fileName).ToUpperInvariant());
 			}
 
 			this.Stream = null;
@@ -110,7 +101,9 @@ namespace GB.GBTD.Exporting
 				Stream.WriteLine();
 				WriteSection(exportSettings, 0);
 				WriteMapDataIncludes(gbrFile);
-				WriteFooter(fileName);
+
+				Stream.WriteLine();
+				WriteLineComment("End of " + Path.GetFileName(fileName).ToUpperInvariant());
 			}
 
 			this.Stream = null;
@@ -168,7 +161,7 @@ namespace GB.GBTD.Exporting
 		}
 
 		/// <summary>
-		/// Writes the label for the tile.
+		/// Writes a label used for a tile.
 		/// </summary>
 		/// <param name="settings">General settings.</param>
 		/// <param name="tileNum">
@@ -176,7 +169,38 @@ namespace GB.GBTD.Exporting
 		/// This will increment regardless of the block value.
 		/// </param>
 		/// <param name="block">The current block, or null if the block doesn't need to be included.</param>
-		protected abstract void WriteLabel(GBRObjectTileExport settings, int? tileNum = null, int? block = null);
+		protected virtual void WriteTileLabel(GBRObjectTileExport settings, int? tileNum = null, int? block = null) {
+			String label;
+
+			if (tileNum != null) {
+				if (block != null) {
+					label = String.Format("{0}BLK{1}TLE{2}", settings.LabelName, block, tileNum);
+				} else {
+					label = String.Format("{0}TLE{1}", settings.LabelName, tileNum);
+				}
+			} else {
+				WriteLineComment("Start of tile array.");
+
+				if (block != null) {
+					label = String.Format("{0}BLK{1}", settings.LabelName, block);
+				} else {
+					label = String.Format("{0}", settings.LabelName);
+				}
+			}
+
+			WriteLabel(label);
+		}
+
+		/// <summary>
+		/// Writes a label that starts an array.
+		/// </summary>
+		protected abstract void WriteLabel(String label);
+
+		/// <summary>
+		/// Writes a single-line comment containing the given text.
+		/// </summary>
+		/// <param name="contents"></param>
+		protected abstract void WriteLineComment(String contents);
 		
 		/// <summary>
 		/// Writes the entire tileset's data.
@@ -194,7 +218,7 @@ namespace GB.GBTD.Exporting
 					for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
 						byte[] pixels = TileDataMaker.GetTileBytes(tileData.Tiles[tile], settings);
 
-						WriteLabel(settings, tile, block);
+						WriteTileLabel(settings, tile, block);
 						WriteData(pixels);
 
 						blockCounter++;
@@ -214,7 +238,7 @@ namespace GB.GBTD.Exporting
 							if (blockCounter == settings.BlockSize) {
 								blockCounter = 0;
 
-								WriteLabel(settings, block: block);
+								WriteTileLabel(settings, block: block);
 								WriteData(stream.ToArray());
 
 								block++;
@@ -224,7 +248,7 @@ namespace GB.GBTD.Exporting
 						}
 
 						if (stream.Length != 0) {
-							WriteLabel(settings, block: block);
+							WriteTileLabel(settings, block: block);
 							WriteData(stream.ToArray());
 						}
 					}
@@ -234,7 +258,7 @@ namespace GB.GBTD.Exporting
 					for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
 						byte[] pixels = TileDataMaker.GetTileBytes(tileData.Tiles[tile], settings);
 
-						WriteLabel(settings, tile);
+						WriteTileLabel(settings, tile);
 						WriteData(pixels);
 					}
 				} else {
@@ -249,7 +273,7 @@ namespace GB.GBTD.Exporting
 						data = stream.ToArray();
 					}
 
-					WriteLabel(settings);
+					WriteTileLabel(settings);
 					WriteData(data);
 				}
 			}
@@ -262,18 +286,18 @@ namespace GB.GBTD.Exporting
 			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
 
 			for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
-				WriteLabel(settings, tile);
+				WriteTileLabel(settings, tile);
 			}
 		}
 
 		/// <summary>
 		/// Writes a section of data.
 		/// </summary>
-		/// <param name="bytes"></param>
+		/// <param name="bytes">The bytes for the tile itself.</param>
 		protected virtual void WriteData(Byte[] bytes) {
 			//The number of values to write each line.
 			const int DATA_PER_LINE = 8;
-
+			
 			Stream.Write(BlockBegin);
 			int position = 0;
 			while (position < bytes.Length) {
@@ -291,12 +315,5 @@ namespace GB.GBTD.Exporting
 		/// <param name="position">The position in the array to start at.  Will be incremented.</param>
 		/// <param name="count">The number of bytes to write.</param>
 		protected abstract void WriteDataLine(Byte[] bytes, ref int position, int count);
-
-		/// <summary>
-		/// Writes the footer.
-		/// </summary>
-		protected virtual void WriteFooter(String fileName) {
-			Stream.WriteLine("{0} End of {1} {2}", FooterBegin, Path.GetFileName(fileName).ToUpperInvariant(), FooterEnd);
-		}
 	}
 }
