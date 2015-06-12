@@ -168,6 +168,13 @@ namespace GB.GBTD.Exporting
 		}
 
 		/// <summary>
+		/// Writes the label for a tile.
+		/// </summary>
+		/// <param name="settings"></param>
+		/// <param name="tileNum"></param>
+		protected abstract void WriteLabel(GBRObjectTileExport settings, int tileNum);
+		
+		/// <summary>
 		/// Writes the entire tileset's data.
 		/// </summary>
 		protected void WriteTileData(GBRFile gbrFile) {
@@ -175,27 +182,11 @@ namespace GB.GBTD.Exporting
 			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 			//TODO: Properly respect tile settings.  For now, just assume byte per pixel and split into arrays for each tile.
-			byte[] pixelBuffer = new byte[tileData.Width * tileData.Height];
-
 			for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
-				for (int y = 0; y < tileData.Height; y++) {
-					for (int x = 0; x < tileData.Width; x++) {
-						byte b;
+				byte[] pixels = TileDataMaker.GetTileBytes(tileData.Tiles[tile], settings);
 
-						switch (tileData.Tiles[tile][x, y]) {
-						case GBColor.WHITE: b = 0; break;
-						case GBColor.LIGHT_GRAY: b = 1; break;
-						case GBColor.DARK_GRAY: b = 2; break;
-						case GBColor.BLACK: b = 3; break;
-						default: b = (byte)tileData.Tiles[tile][x, y]; break;
-						}
-
-						pixelBuffer[(y * tileData.Width) + x] = b;
-					}
-				}
-
-				//TODO: WritePlaneLabel.
-				WriteData(pixelBuffer);
+				WriteLabel(settings, tile);
+				WriteData(pixels);
 			}
 		}
 
@@ -205,7 +196,9 @@ namespace GB.GBTD.Exporting
 		protected void WriteMapDataIncludes(GBRFile gbrFile) {
 			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
 
-			//TODO
+			for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+				WriteLabel(settings, tile);
+			}
 		}
 
 		/// <summary>

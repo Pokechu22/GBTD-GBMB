@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Exporting\GBDKCTileExporter.cs" />
     <Compile Include="Exporting\ITileExporter.cs" />
+    <Compile Include="Exporting\TileDataMaker.cs" />
     <Compile Include="Exporting\TileExportTextBase.cs" />
     <Compile Include="Importing\BinaryImport.cs" />
     <Compile Include="Importing\GBEImport.cs" />

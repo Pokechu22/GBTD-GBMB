@@ -25,7 +25,7 @@ namespace GB.GBTD.Exporting
 		}
 
 		protected override string BlockEnd {
-			get { return "};" + Stream.NewLine; }
+			get { return "};"; }
 		}
 
 		protected override string FooterBegin {
@@ -38,6 +38,22 @@ namespace GB.GBTD.Exporting
 
 		protected override bool IncludeSectionAndBank {
 			get { return false; }
+		}
+
+		protected override void WriteLabel(GBRObjectTileExport settings, int tileNum) {
+			if (Header) {
+				if (settings.StoreTilesInArray) {
+					Stream.WriteLine("extern unsigned char {0}[];", settings.LabelName);
+				} else {
+					Stream.WriteLine("extern unsigned char {0}TLE{1}[];", settings.LabelName, tileNum);
+				}
+			} else {
+				if (settings.StoreTilesInArray) {
+					Stream.WriteLine("unsigned char {0}[] =", settings.LabelName);
+				} else {
+					Stream.WriteLine("unsigned char {0}TLE{1}[] =", settings.LabelName, tileNum);
+				}
+			}
 		}
 
 		protected override void WriteDataLine(byte[] bytes, ref int position, int count) {
