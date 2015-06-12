@@ -285,8 +285,45 @@ namespace GB.GBTD.Exporting
 		protected void WriteMapDataIncludes(GBRFile gbrFile) {
 			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
 
-			for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
-				WriteTileLabel(settings, tile);
+			if (settings.Split) {
+				int blockCounter = 0;
+				int block = 0;
+
+				if (settings.CreateArrayForEachTile) {
+					for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+						WriteTileLabel(settings, tile, block);
+
+						blockCounter++;
+						if (blockCounter == settings.BlockSize) {
+							blockCounter = 0;
+
+							block++;
+						}
+					}
+				} else {
+					for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+						blockCounter++;
+						if (blockCounter == settings.BlockSize) {
+							blockCounter = 0;
+
+							WriteTileLabel(settings, block: block);
+
+							block++;;
+						}
+					}
+
+					if (blockCounter != 0) {
+						WriteTileLabel(settings, block: block);
+					}
+				}
+			} else {
+				if (settings.CreateArrayForEachTile) {
+					for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+						WriteTileLabel(settings, tile);
+					}
+				} else {
+					WriteTileLabel(settings);
+				}
 			}
 		}
 
