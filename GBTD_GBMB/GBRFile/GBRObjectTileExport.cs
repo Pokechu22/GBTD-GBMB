@@ -16,7 +16,7 @@ namespace GB.Shared.GBRFile
 			this.SectionName = "";
 			this.LabelName = "";
 			this.Bank = 0;
-			this.StoreTilesInArray = true;
+			this.CreateArrayForEachTile = true;
 			this.Format = ExportFormat.GameBoy4Color;
 			this.CounterType = ExportCounterType.None;
 			this.FromTile = 0;
@@ -59,10 +59,10 @@ namespace GB.Shared.GBRFile
 		/// <remarks>Since: Initial version</remarks>
 		public byte Bank { get; set; }
 		/// <summary>
-		/// Store the tiles in an array?
+		/// Whether or not each tile should get a seperate array.
 		/// </summary>
 		/// <remarks>Since: Initial version</remarks>
-		public bool StoreTilesInArray { get; set; }
+		public bool CreateArrayForEachTile { get; set; }
 		/// <summary>
 		/// The format to use for the tile data.
 		/// </summary>
@@ -143,7 +143,7 @@ namespace GB.Shared.GBRFile
 			s.WriteString(SectionName, 20);
 			s.WriteString(LabelName, 20);
 			s.WriteByte(Bank);
-			s.WriteBool(StoreTilesInArray);
+			s.WriteBool(CreateArrayForEachTile);
 			s.WriteByte((byte)Format);
 			s.WriteByte((byte)CounterType);
 			s.WriteWord(FromTile);
@@ -168,7 +168,7 @@ namespace GB.Shared.GBRFile
 			this.SectionName = s.ReadString(20);
 			this.LabelName = s.ReadString(20);
 			this.Bank = s.ReadByteEx();
-			this.StoreTilesInArray = s.ReadBool();
+			this.CreateArrayForEachTile = s.ReadBool();
 			this.Format = (ExportFormat)s.ReadByte();
 			this.CounterType = (ExportCounterType)s.ReadByte();
 			this.FromTile = s.ReadWord();
@@ -199,7 +199,7 @@ namespace GB.Shared.GBRFile
 			labelName.Nodes.Add(LabelName);
 			root.Nodes.Add(labelName);
 			root.Nodes.Add("Bank", "Bank: " + Bank);
-			root.Nodes.Add("TilesArray", "StoreTilesInArray: " + StoreTilesInArray);
+			root.Nodes.Add("TilesArray", "StoreTilesInArray: " + CreateArrayForEachTile);
 			root.Nodes.Add("Format", "Format: " + Format);
 			root.Nodes.Add("Counter", "Counter: " + CounterType);
 			root.Nodes.Add("FromTile", "FromTile: " + FromTile);

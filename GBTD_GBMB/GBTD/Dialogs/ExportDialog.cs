@@ -31,7 +31,7 @@ namespace GB.GBTD.Dialogs
 			this.toTextBox.Value = settings.ToTile;
 			this.formatComboBox.SelectedIndex = (int)settings.Format;
 			this.counterComboBox.SelectedIndex = (int)settings.CounterType;
-			this.singleUnitCheckBox.Checked = !settings.StoreTilesInArray;
+			this.singleUnitCheckBox.Checked = !settings.CreateArrayForEachTile;
 			this.gbCompressCheckBox.Checked = (settings.CompressionType == ExportCompressionMode.GBCompress);
 
 			this.includePaletteCheckBox.Checked = settings.IncludeColors;
@@ -87,7 +87,7 @@ namespace GB.GBTD.Dialogs
 			settings.ToTile = (UInt16)this.toTextBox.Value;
 			settings.Format = (ExportFormat)this.formatComboBox.SelectedIndex;
 			settings.CounterType= (ExportCounterType)this.counterComboBox.SelectedIndex;
-			settings.StoreTilesInArray = !this.singleUnitCheckBox.Checked;
+			settings.CreateArrayForEachTile = !this.singleUnitCheckBox.Checked;
 			settings.CompressionType = this.gbCompressCheckBox.Checked ? ExportCompressionMode.GBCompress : ExportCompressionMode.None;
 
 			settings.IncludeColors = this.includePaletteCheckBox.Checked;

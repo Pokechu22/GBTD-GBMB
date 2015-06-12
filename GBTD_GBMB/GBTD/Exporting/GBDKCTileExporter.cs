@@ -40,18 +40,35 @@ namespace GB.GBTD.Exporting
 			get { return false; }
 		}
 
-		protected override void WriteLabel(GBRObjectTileExport settings, int tileNum) {
+		protected override void WriteLabel(GBRObjectTileExport settings, int? tileNum = null, int? block = null) {
+			//TODO: This is a bit of a mess; mabye use a StringBuilder instead?
 			if (Header) {
-				if (settings.StoreTilesInArray) {
-					Stream.WriteLine("extern unsigned char {0}[];", settings.LabelName);
+				if (tileNum != null) {
+					if (block != null) {
+						Stream.WriteLine("extern unsigned char {0}BLK{1}TLE{2}[];", settings.LabelName, block, tileNum);
+					} else {
+						Stream.WriteLine("extern unsigned char {0}TLE{1}[];", settings.LabelName, tileNum);
+					}
 				} else {
-					Stream.WriteLine("extern unsigned char {0}TLE{1}[];", settings.LabelName, tileNum);
+					if (block != null) {
+						Stream.WriteLine("extern unsigned char {0}BLK{1}[];", settings.LabelName, block);
+					} else {
+						Stream.WriteLine("extern unsigned char {0}[];", settings.LabelName);
+					}
 				}
 			} else {
-				if (settings.StoreTilesInArray) {
-					Stream.WriteLine("unsigned char {0}[] =", settings.LabelName);
+				if (tileNum != null) {
+					if (block != null) {
+						Stream.WriteLine("unsigned char {0}BLK{1}TLE{2}[] =", settings.LabelName, block, tileNum);
+					} else {
+						Stream.WriteLine("unsigned char {0}TLE{1}[] =", settings.LabelName, tileNum);
+					}
 				} else {
-					Stream.WriteLine("unsigned char {0}TLE{1}[] =", settings.LabelName, tileNum);
+					if (block != null) {
+						Stream.WriteLine("unsigned char {0}BLK{1}[] =", settings.LabelName, block);
+					} else {
+						Stream.WriteLine("unsigned char {0}[] =", settings.LabelName);
+					}
 				}
 			}
 		}

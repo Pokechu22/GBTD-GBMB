@@ -135,7 +135,7 @@ namespace GB.GBTD.Exporting
 				Stream.WriteLine(HeaderLine + "  Bank                 : " + settings.Bank);
 			}
 			Stream.WriteLine(HeaderLine + "  Form                 : " + 
-				(settings.StoreTilesInArray ? "All tiles as one unit." : "Each tile separate."));
+				(settings.CreateArrayForEachTile ? "All tiles as one unit." : "Each tile separate."));
 			Stream.WriteLine(HeaderLine + "  Format               : " + settings.Format.GetDisplayString() + ".");
 			Stream.WriteLine(HeaderLine + "  Compression          : " + settings.CompressionType.GetDisplayString() + ".");
 			Stream.WriteLine(HeaderLine + "  Counter              : " + settings.CounterType.GetDisplayString() + ".");
@@ -168,11 +168,15 @@ namespace GB.GBTD.Exporting
 		}
 
 		/// <summary>
-		/// Writes the label for a tile.
+		/// Writes the label for the tile.
 		/// </summary>
-		/// <param name="settings"></param>
-		/// <param name="tileNum"></param>
-		protected abstract void WriteLabel(GBRObjectTileExport settings, int tileNum);
+		/// <param name="settings">General settings.</param>
+		/// <param name="tileNum">
+		/// The current tile number, or null if tileNum doesn't need to be included.
+		/// This will increment regardless of the block value.
+		/// </param>
+		/// <param name="block">The current block, or null if the block doesn't need to be included.</param>
+		protected abstract void WriteLabel(GBRObjectTileExport settings, int? tileNum = null, int? block = null);
 		
 		/// <summary>
 		/// Writes the entire tileset's data.
@@ -181,12 +185,27 @@ namespace GB.GBTD.Exporting
 			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
 			var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
-			//TODO: Properly respect tile settings.  For now, just assume byte per pixel and split into arrays for each tile.
-			for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
-				byte[] pixels = TileDataMaker.GetTileBytes(tileData.Tiles[tile], settings);
+			if (settings.CreateArrayForEachTile) {
+				for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+					byte[] pixels = TileDataMaker.GetTileBytes(tileData.Tiles[tile], settings);
 
-				WriteLabel(settings, tile);
-				WriteData(pixels);
+					WriteLabel(settings, tile);
+					WriteData(pixels);
+				}
+			} else {
+				byte[] data;
+
+				using (MemoryStream stream = new MemoryStream()) {
+					for (int tile = settings.FromTile; tile <= settings.ToTile; tile++) {
+						byte[] pixels = TileDataMaker.GetTileBytes(tileData.Tiles[tile], settings);
+						stream.Write(pixels, 0, pixels.Length);
+					}
+
+					data = stream.ToArray();
+				}
+
+				WriteLabel(settings);
+				WriteData(data);
 			}
 		}
 
