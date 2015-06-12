@@ -89,17 +89,17 @@ namespace GB.Shared.GBRFile
 		/// <remarks>Since: Initial version</remarks>
 		public ExportCompressionMode CompressionType { get; set; }
 		/// <summary>
-		/// Whether or not palette colors should be included.
+		/// Whether or not the *global* palette should be included.
 		/// </summary>
 		/// <remarks>Since: GBTD 1.3</remarks>
 		public bool IncludeColors { get; set; }
 		/// <summary>
-		/// The mode used for SGB palettes, if they are enabled.
+		/// Whether or not an array continaing the per-tile SGB palettes should be included.
 		/// </summary>
 		/// <remarks>Since: GBTD 1.4</remarks>
 		public ExportPaletteMode SGBPalMode { get; set; }
 		/// <summary>
-		/// The mode used for GBC palettes, if they are enabled.
+		/// Whether or not an array continaing the per-tile GBC palettes should be included.
 		/// </summary>
 		/// <remarks>Since: GBTD 1.4</remarks>
 		public ExportPaletteMode GBCPalMode { get; set; }

@@ -228,9 +228,6 @@ namespace GB.GBTD.Dialogs
 				bankTextBox.Enabled = labelBank.Enabled = true;
 			}
 
-			palettesSGBComboBox.Enabled = labelSGBPalettes.Enabled = includePaletteCheckBox.Checked;
-			palettesCGBComboBox.Enabled = labelCGBPalettes.Enabled = includePaletteCheckBox.Checked;
-
 			indexOffsetTextBox.Enabled = labelIndexOffset.Enabled = metatileConvertCheckBox.Checked;
 			indexCounterComboBox.Enabled = labelIndexCounter.Enabled = metatileConvertCheckBox.Checked;
 		}
