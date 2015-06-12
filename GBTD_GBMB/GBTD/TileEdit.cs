@@ -16,6 +16,7 @@ using GB.Shared.AutoUpdate;
 using System.Runtime.InteropServices;
 using GB.GBTD.Importing;
 using System.Drawing.Drawing2D;
+using GB.GBTD.Exporting;
 
 namespace GB.GBTD
 {
@@ -480,7 +481,7 @@ namespace GB.GBTD
 		}
 
 		private void exportButton_OnClicked(object sender, EventArgs e) {
-
+			this.Export();
 		}
 
 		private void exportToButton_OnClicked(object sender, EventArgs e) {
@@ -492,8 +493,29 @@ namespace GB.GBTD
 			var result = dialog.ShowDialog();
 
 			if (result == DialogResult.OK) {
-				//TODO: Actually export.
+				this.Export();
+
 				FileModified = true;
+			}
+		}
+
+		/// <summary>
+		/// Exports the current tileset via the current settings.
+		/// </summary>
+		public void Export() {
+			var settings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
+
+			//TODO: Proper export to file.
+			using (MemoryStream stream = new MemoryStream()) {
+				ITileExporter exporter = settings.FileType.CreateExporter();
+
+				if (MessageBox.Show("Export main?", "", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+					exporter.ExportMain(gbrFile, stream, settings.FileName);
+				} else {
+					exporter.ExportInclude(gbrFile, stream, settings.FileName);
+				}
+
+				Clipboard.SetText(Encoding.Default.GetString(stream.ToArray()));
 			}
 		}
 

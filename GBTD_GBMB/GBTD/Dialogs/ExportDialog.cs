@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GB.Shared.GBRFile;
+using System.IO;
 
 namespace GB.GBTD.Dialogs
 {
@@ -218,6 +219,11 @@ namespace GB.GBTD.Dialogs
 
 			indexOffsetTextBox.Enabled = labelIndexOffset.Enabled = metatileConvertCheckBox.Checked;
 			indexCounterComboBox.Enabled = labelIndexCounter.Enabled = metatileConvertCheckBox.Checked;
+		}
+
+		private void fileTypeComboBox_SelectedValueChanged(object sender, EventArgs e) {
+			fileNameTextBox.Text = Path.ChangeExtension(fileNameTextBox.Text, 
+				((GBRExportFileType)fileTypeComboBox.SelectedIndex).GetMainExtension());
 		}
 	}
 }

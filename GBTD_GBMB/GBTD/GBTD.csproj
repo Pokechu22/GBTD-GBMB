@@ -74,6 +74,7 @@
     <Compile Include="Dialogs\SplitOptionsDialog.Designer.cs">
       <DependentUpon>SplitOptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exporting\GBDKCTileExporter.cs" />
     <Compile Include="Exporting\ITileExporter.cs" />
     <Compile Include="Exporting\TileExportTextBase.cs" />
     <Compile Include="Importing\BinaryImport.cs" />

@@ -45,7 +45,7 @@ namespace GB.GBTD.Exporting
 		/// <exception cref="WarningException">When fileType is not a recognized type.</exception>
 		public static ITileExporter CreateExporter(this GBRExportFileType fileType) {
 			switch (fileType) {
-			//TODO
+			case GBRExportFileType.GBDKCFile: return new GBDKCTileExporter();
 			default:
 				try {
 					throw new WarningException(String.Format("File type {0} ({1} : {2}) is not a recognized / supported export mode!",
@@ -55,23 +55,6 @@ namespace GB.GBTD.Exporting
 							"an exception occured when trying to get the display name for said type!",
 							fileType, (int)fileType), e);
 				}
-			}
-		}
-
-		/// <summary>
-		/// Gets the display string for a GBRExportFileType.
-		/// </summary>
-		/// <param name="fileType"></param>
-		/// <returns></returns>
-		public static String GetDisplayName(this GBRExportFileType fileType) {
-			switch (fileType) {
-			case GBRExportFileType.RGBDSAssemblyFile: return "RGBDS Assembly file";
-			case GBRExportFileType.RGBDSObjectFile: return "RGBDS Object file";
-			case GBRExportFileType.TASMAssemblyFile: return "TASM Assembly file";
-			case GBRExportFileType.GBDKCFile: return "GBDK C file";
-			case GBRExportFileType.BinaryFile: return "All-purpose binary file";
-			case GBRExportFileType.ISASAssemblyFile: return "ISAS Assembly file";
-			default: throw new InvalidEnumArgumentException("fileType", (int)fileType, typeof(GBRExportFileType));
 			}
 		}
 	}

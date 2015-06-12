@@ -84,7 +84,6 @@ namespace GB.GBTD.Exporting
 
 				WriteHeader(exportSettings, fileName);
 				Stream.WriteLine();
-				WriteSizeDefines(exportSettings);
 				WriteSection(exportSettings, 0);
 				WriteTileData(gbrFile);
 				WriteFooter(fileName);
@@ -105,7 +104,6 @@ namespace GB.GBTD.Exporting
 
 				WriteHeader(exportSettings, fileName);
 				Stream.WriteLine();
-				WriteSizeDefines(exportSettings);
 				WriteSection(exportSettings, 0);
 				WriteMapDataIncludes(gbrFile);
 				WriteFooter(fileName);
@@ -130,11 +128,6 @@ namespace GB.GBTD.Exporting
 				Stream.WriteLine(HeaderEnd);
 			}
 		}
-
-		/// <summary>
-		/// Writes the defines that state the width, height, and bank.
-		/// </summary>
-		protected abstract void WriteSizeDefines(GBRObjectTileExport settings);
 
 		/// <summary>
 		/// Writes a section label.  Only relevant for ASM; by default this method does nothing.

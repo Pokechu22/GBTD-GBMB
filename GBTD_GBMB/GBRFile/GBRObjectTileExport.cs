@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace GB.Shared.GBRFile
 {
@@ -263,5 +264,59 @@ namespace GB.Shared.GBRFile
 		_2BitsPerEntry = 2,
 		_4BitsPerEntry = 3,
 		_1BytePerEntry = 4
+	}
+
+	public static class GBRExportFileTypeExtensions
+	{
+		/// <summary>
+		/// Gets the display string for a GBRExportFileType.
+		/// </summary>
+		/// <param name="fileType"></param>
+		/// <returns></returns>
+		public static String GetDisplayName(this GBRExportFileType fileType) {
+			switch (fileType) {
+			case GBRExportFileType.RGBDSAssemblyFile: return "RGBDS Assembly file";
+			case GBRExportFileType.RGBDSObjectFile: return "RGBDS Object file";
+			case GBRExportFileType.TASMAssemblyFile: return "TASM Assembly file";
+			case GBRExportFileType.GBDKCFile: return "GBDK C file";
+			case GBRExportFileType.BinaryFile: return "All-purpose binary file";
+			case GBRExportFileType.ISASAssemblyFile: return "ISAS Assembly file";
+			default: throw new InvalidEnumArgumentException("fileType", (int)fileType, typeof(GBRExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// Gets the main file extension for a GBRExportFileType.
+		/// </summary>
+		/// <param name="fileType"></param>
+		/// <returns></returns>
+		public static String GetMainExtension(this GBRExportFileType fileType) {
+			switch (fileType) {
+			case GBRExportFileType.RGBDSAssemblyFile: return "z80";
+			case GBRExportFileType.RGBDSObjectFile: return "obj";
+			case GBRExportFileType.TASMAssemblyFile: return "z80";
+			case GBRExportFileType.GBDKCFile: return "c";
+			case GBRExportFileType.BinaryFile: return "bin";
+			case GBRExportFileType.ISASAssemblyFile: return "s";
+			default: throw new InvalidEnumArgumentException("fileType", (int)fileType, typeof(GBRExportFileType));
+			}
+		}
+
+		/// <summary>
+		/// Gets the include file extension for a GBRExportFileType.
+		/// </summary>
+		/// <param name="fileType"></param>
+		/// <returns></returns>
+		public static String GetIncludeExtension(this GBRExportFileType fileType) {
+			switch (fileType) {
+			case GBRExportFileType.RGBDSAssemblyFile: return "inc";
+			case GBRExportFileType.RGBDSObjectFile: return "inc";
+			case GBRExportFileType.TASMAssemblyFile: throw new InvalidOperationException();
+			case GBRExportFileType.GBDKCFile: return "h";
+			case GBRExportFileType.BinaryFile: throw new InvalidOperationException();
+			case GBRExportFileType.ISASAssemblyFile: return "inc";
+			default: throw new InvalidEnumArgumentException("fileType", (int)fileType, typeof(GBRExportFileType));
+			}
+		}
 	}
 }
