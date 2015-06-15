@@ -308,7 +308,7 @@ namespace GB.GBTD.Exporting
 
 							WriteTileLabel(settings, block: block);
 
-							block++;;
+							block++;
 						}
 					}
 
