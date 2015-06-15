@@ -44,6 +44,10 @@ namespace GB.GBTD.Exporting
 			Stream.WriteLine("/* " + contents + " */");
 		}
 
+		protected override void WriteDefine(string label, string value) {
+			Stream.WriteLine("#define {0} {1}", label, value);
+		}
+
 		protected override void WriteDataLine(byte[] bytes, ref int position, int count) {
 			int endPos = position + count;
 

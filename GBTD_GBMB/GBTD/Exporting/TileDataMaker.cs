@@ -98,5 +98,16 @@ namespace GB.GBTD.Exporting
 				throw new Exception("ExportSetting's format " + exportSettings.Format + "(" + (int)exportSettings.Format + ") is invalid!");
 			}
 		}
+
+		/// <summary>
+		/// Converts a color to the GBC 16-bit version.
+		/// </summary>
+		/// <param name="r"></param>
+		/// <param name="g"></param>
+		/// <param name="b"></param>
+		/// <returns></returns>
+		public static UInt16 RGB(int r, int g, int b) {
+			return (UInt16)((r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10));
+		}
 	}
 }

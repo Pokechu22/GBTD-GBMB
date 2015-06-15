@@ -6,6 +6,8 @@ using GB.Shared.GBRFile;
 using System.IO;
 using System.Windows.Forms;
 using GB.Shared.Tiles;
+using GB.Shared.Palettes;
+using System.Drawing;
 
 namespace GB.GBTD.Exporting
 {
@@ -95,10 +97,12 @@ namespace GB.GBTD.Exporting
 
 			using (this.Stream = new StreamWriter(stream)) {
 				var exportSettings = gbrFile.GetOrCreateObjectOfType<GBRObjectTileExport>();
+				var palettes = gbrFile.GetOrCreateObjectOfType<GBRObjectPalettes>();
 				var tileData = gbrFile.GetOrCreateObjectOfType<GBRObjectTileData>();
 
 				WriteHeader(exportSettings, tileData, fileName);
 				Stream.WriteLine();
+				WritePalettes(palettes, exportSettings);
 				WriteSection(exportSettings, 0);
 				WriteMapDataIncludes(gbrFile);
 
@@ -201,7 +205,49 @@ namespace GB.GBTD.Exporting
 		/// </summary>
 		/// <param name="contents"></param>
 		protected abstract void WriteLineComment(String contents);
-		
+
+		/// <summary>
+		/// Writes a #define or equivilent statement.
+		/// </summary>
+		/// <param name="label">The label to define.</param>
+		/// <param name="value">The value to define it to.</param>
+		protected abstract void WriteDefine(String label, String value);
+
+		/// <summary>
+		/// Writes the palettes defines.  (Should be called only in the header)
+		/// </summary>
+		/// <param name="palettes"></param>
+		/// <param name="settings"></param>
+		protected void WritePalettes(GBRObjectPalettes palettes, GBRObjectTileExport settings) {
+			if (settings.IncludeColors) {
+				PaletteSet sgb = palettes.SGBPalettes;
+				PaletteSet gbc = palettes.GBCPalettes;
+
+				for (int y = 0; y < sgb.Size; y++) {
+					Stream.WriteLine();
+					WriteLineComment("Super Gameboy palette " + y);
+
+					for (int x = 0; x < 4; x++) {
+						Color c = sgb[y][x];
+
+						WriteDefine(String.Format("{0}SGBPal{1}c{2}", settings.LabelName, y, x), TileDataMaker.RGB(c.R, c.G, c.B).ToString());
+					}
+				}
+				for (int y = 0; y < gbc.Size; y++) {
+					Stream.WriteLine();
+					WriteLineComment("Gameboy Color palette " + y);
+
+					for (int x = 0; x < 4; x++) {
+						Color c = gbc[y][x];
+
+						WriteDefine(String.Format("{0}CGBPal{1}c{2}", settings.LabelName, y, x), TileDataMaker.RGB(c.R, c.G, c.B).ToString());
+					}
+				}
+
+				Stream.WriteLine();
+			}
+		}
+
 		/// <summary>
 		/// Writes the entire tileset's data.
 		/// </summary>
